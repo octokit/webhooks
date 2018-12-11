@@ -6,9 +6,6 @@
   },
   "description": "",
   "main": "index.json",
-  "bin": {
-    "octokit-webhooks": "bin/octokit-webhooks.js"
-  },
   "devDependencies": {
     "@octokit/request": "^2.2.0",
     "cheerio": "^1.0.0-rc.2",
