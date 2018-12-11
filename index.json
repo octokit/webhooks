@@ -1189,16 +1189,6 @@
     ]
   },
   {
-    "name": "download",
-    "actions": [],
-    "examples": []
-  },
-  {
-    "name": "follow",
-    "actions": [],
-    "examples": []
-  },
-  {
     "name": "fork",
     "actions": [],
     "examples": [
@@ -1414,11 +1404,6 @@
     ]
   },
   {
-    "name": "fork_apply",
-    "actions": [],
-    "examples": []
-  },
-  {
     "name": "github_app_authorization",
     "actions": [],
     "examples": [
@@ -1446,11 +1431,6 @@
         }
       }
     ]
-  },
-  {
-    "name": "gist",
-    "actions": [],
-    "examples": []
   },
   {
     "name": "gollum",
