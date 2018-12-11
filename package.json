@@ -7,7 +7,7 @@
   "description": "",
   "main": "index.json",
   "bin": {
-    "octokit-webhooks": "octokit-webhooks.js"
+    "octokit-webhooks": "bin/octokit-webhooks.js"
   },
   "devDependencies": {
     "@octokit/request": "^2.2.0",
@@ -31,7 +31,6 @@
   "author": "Gregor Martynus (https://github.com/gr2m)",
   "license": "MIT",
   "files": [
-    "bin",
-    "lib"
+    "index.json"
   ]
 }
