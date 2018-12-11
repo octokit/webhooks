@@ -1,7 +1,3 @@
-# 🚧 THIS IS WORK IN PROGRESS 🚧
-
-See [#1](https://github.com/octokit/webhooks)
-
 # Octokit Webhooks
 
 > machine-readable, always up-to-date GitHub Webhooks specifications
@@ -223,6 +219,11 @@ The update script is scraping [GitHub’s Webhooks Event Types & Payloads](https
 
 For simpler local testing and tracking of changes all loaded pages are cached
 in the [`cache/`](cache/) folder.
+
+## See also
+
+- [octokit/graphql-schema](https://github.com/octokit/graphql-schema) – GitHub’s GraphQL Schema with validation
+- [octokit/routes](https://github.com/octokit/routes) – GitHub REST API route specifications
 
 ## LICENSE
 
