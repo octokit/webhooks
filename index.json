@@ -440,7 +440,9 @@
   },
   {
     "name": "commit_comment",
-    "actions": [],
+    "actions": [
+      "created"
+    ],
     "examples": [
       {
         "action": "created",
@@ -2327,7 +2329,11 @@
   },
   {
     "name": "member",
-    "actions": [],
+    "actions": [
+      "added",
+      "deleted",
+      "edited"
+    ],
     "examples": [
       {
         "action": "edited",
