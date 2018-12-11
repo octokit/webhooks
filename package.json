@@ -1,6 +1,9 @@
 {
   "name": "@octokit/webhooks-definitions",
   "version": "0.0.0-development",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "",
   "main": "index.json",
   "bin": {
