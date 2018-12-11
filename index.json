@@ -1565,7 +1565,10 @@
   },
   {
     "name": "installation",
-    "actions": [],
+    "actions": [
+      "created",
+      "deleted"
+    ],
     "examples": [
       {
         "action": "deleted",
@@ -1644,7 +1647,10 @@
   },
   {
     "name": "installation_repositories",
-    "actions": [],
+    "actions": [
+      "added",
+      "removed"
+    ],
     "examples": [
       {
         "action": "removed",
@@ -1725,7 +1731,11 @@
   },
   {
     "name": "issue_comment",
-    "actions": [],
+    "actions": [
+      "created",
+      "edited",
+      "deleted"
+    ],
     "examples": [
       {
         "action": "created",
@@ -2120,7 +2130,11 @@
   },
   {
     "name": "label",
-    "actions": [],
+    "actions": [
+      "created",
+      "edited",
+      "deleted"
+    ],
     "examples": [
       {
         "action": "deleted",
@@ -2460,7 +2474,10 @@
   },
   {
     "name": "membership",
-    "actions": [],
+    "actions": [
+      "added",
+      "removed"
+    ],
     "examples": [
       {
         "action": "removed",
@@ -2993,7 +3010,13 @@
   },
   {
     "name": "project_card",
-    "actions": [],
+    "actions": [
+      "created",
+      "edited",
+      "converted",
+      "moved",
+      "deleted"
+    ],
     "examples": [
       {
         "action": "created",
@@ -3146,7 +3169,12 @@
   },
   {
     "name": "project_column",
-    "actions": [],
+    "actions": [
+      "created",
+      "edited",
+      "moved",
+      "deleted"
+    ],
     "examples": [
       {
         "action": "created",
@@ -3278,7 +3306,13 @@
   },
   {
     "name": "project",
-    "actions": [],
+    "actions": [
+      "created",
+      "edited",
+      "closed",
+      "reopened",
+      "deleted"
+    ],
     "examples": [
       {
         "action": "created",
@@ -3556,10 +3590,16 @@
   {
     "name": "pull_request",
     "actions": [
-      "merged",
-      "false",
-      "merged",
-      "true"
+      "assigned",
+      "unassigned",
+      "review_requested",
+      "review_request_removed",
+      "labeled",
+      "unlabeled",
+      "opened",
+      "edited",
+      "closed",
+      "reopened"
     ],
     "examples": [
       {
@@ -4008,7 +4048,11 @@
   },
   {
     "name": "pull_request_review",
-    "actions": [],
+    "actions": [
+      "submitted",
+      "edited",
+      "dismissed"
+    ],
     "examples": [
       {
         "action": "submitted",
@@ -4482,7 +4526,11 @@
   },
   {
     "name": "pull_request_review_comment",
-    "actions": [],
+    "actions": [
+      "created",
+      "edited",
+      "deleted"
+    ],
     "examples": [
       {
         "action": "created",
@@ -5105,7 +5153,9 @@
   },
   {
     "name": "release",
-    "actions": [],
+    "actions": [
+      "published"
+    ],
     "examples": [
       {
         "action": "published",
