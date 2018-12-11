@@ -2,10 +2,10 @@
   {
     "name": "check_run",
     "actions": [
-      "created",
-      "rerequested",
       "completed",
-      "requested_action"
+      "created",
+      "requested_action",
+      "rerequested"
     ],
     "examples": [
       {
@@ -1735,8 +1735,8 @@
     "name": "issue_comment",
     "actions": [
       "created",
-      "edited",
-      "deleted"
+      "deleted",
+      "edited"
     ],
     "examples": [
       {
@@ -1944,18 +1944,18 @@
   {
     "name": "issues",
     "actions": [
-      "opened",
-      "edited",
-      "deleted",
-      "transferred",
-      "closed",
-      "reopened",
       "assigned",
-      "unassigned",
+      "closed",
+      "deleted",
+      "demilestoned",
+      "edited",
       "labeled",
-      "unlabeled",
       "milestoned",
-      "demilestoned"
+      "opened",
+      "reopened",
+      "transferred",
+      "unassigned",
+      "unlabeled"
     ],
     "examples": [
       {
@@ -2134,8 +2134,8 @@
     "name": "label",
     "actions": [
       "created",
-      "edited",
-      "deleted"
+      "deleted",
+      "edited"
     ],
     "examples": [
       {
@@ -2267,11 +2267,11 @@
   {
     "name": "marketplace_purchase",
     "actions": [
-      "purchased",
       "cancelled",
+      "changed",
       "pending_change",
       "pending_change_cancelled",
-      "changed"
+      "purchased"
     ],
     "examples": [
       {
@@ -2560,11 +2560,11 @@
   {
     "name": "milestone",
     "actions": [
-      "created",
       "closed",
-      "opened",
+      "created",
+      "deleted",
       "edited",
-      "deleted"
+      "opened"
     ],
     "examples": [
       {
@@ -2726,8 +2726,8 @@
     "name": "organization",
     "actions": [
       "member_added",
-      "member_removed",
-      "member_invited"
+      "member_invited",
+      "member_removed"
     ],
     "examples": [
       {
@@ -3017,11 +3017,11 @@
   {
     "name": "project_card",
     "actions": [
-      "created",
-      "edited",
       "converted",
-      "moved",
-      "deleted"
+      "created",
+      "deleted",
+      "edited",
+      "moved"
     ],
     "examples": [
       {
@@ -3177,9 +3177,9 @@
     "name": "project_column",
     "actions": [
       "created",
+      "deleted",
       "edited",
-      "moved",
-      "deleted"
+      "moved"
     ],
     "examples": [
       {
@@ -3313,11 +3313,11 @@
   {
     "name": "project",
     "actions": [
-      "created",
-      "edited",
       "closed",
-      "reopened",
-      "deleted"
+      "created",
+      "deleted",
+      "edited",
+      "reopened"
     ],
     "examples": [
       {
@@ -3597,15 +3597,15 @@
     "name": "pull_request",
     "actions": [
       "assigned",
-      "unassigned",
-      "review_requested",
-      "review_request_removed",
-      "labeled",
-      "unlabeled",
-      "opened",
-      "edited",
       "closed",
+      "edited",
+      "labeled",
+      "opened",
       "reopened",
+      "review_request_removed",
+      "review_requested",
+      "unassigned",
+      "unlabeled",
       "synchronize"
     ],
     "examples": [
@@ -4056,9 +4056,9 @@
   {
     "name": "pull_request_review",
     "actions": [
-      "submitted",
+      "dismissed",
       "edited",
-      "dismissed"
+      "submitted"
     ],
     "examples": [
       {
@@ -4535,8 +4535,8 @@
     "name": "pull_request_review_comment",
     "actions": [
       "created",
-      "edited",
-      "deleted"
+      "deleted",
+      "edited"
     ],
     "examples": [
       {
@@ -5324,12 +5324,12 @@
   {
     "name": "repository",
     "actions": [
+      "archived",
       "created",
       "deleted",
-      "archived",
-      "unarchived",
+      "privatized",
       "publicized",
-      "privatized"
+      "unarchived"
     ],
     "examples": [
       {
@@ -5632,9 +5632,9 @@
   {
     "name": "security_advisory",
     "actions": [
+      "performed",
       "published",
-      "updated",
-      "performed"
+      "updated"
     ],
     "examples": [
       {
@@ -5919,10 +5919,10 @@
   {
     "name": "team",
     "actions": [
+      "added_to_repository",
       "created",
       "deleted",
       "edited",
-      "added_to_repository",
       "removed_from_repository"
     ],
     "examples": [
