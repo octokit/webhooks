@@ -69,13 +69,21 @@
           <div id="js-dropdown-menu" class="dropdown-menu">
             <a class="dropdown-menu-item" data-proofer-ignore>GitHub.com</a>
 
-            <a class="dropdown-menu-item" data-proofer-ignore>Enterprise 2.15</a>
 
-            <a class="dropdown-menu-item" data-proofer-ignore>Enterprise 2.14</a>
+            <a class="dropdown-menu-item" data-proofer-ignore>GitHub Enterprise Server 2.16</a>
 
-            <a class="dropdown-menu-item" data-proofer-ignore>Enterprise 2.13</a>
 
-            <a class="dropdown-menu-item" data-proofer-ignore>Enterprise 2.12</a>
+
+            <a class="dropdown-menu-item" data-proofer-ignore>GitHub Enterprise 2.15</a>
+
+
+
+            <a class="dropdown-menu-item" data-proofer-ignore>GitHub Enterprise 2.14</a>
+
+
+
+            <a class="dropdown-menu-item" data-proofer-ignore>GitHub Enterprise 2.13</a>
+
 
           </div>
       </div>
@@ -93,6 +101,12 @@
 
 
   <div class="container">
+
+
+
+
+
+
 
 
 
@@ -181,10 +195,22 @@
   <optgroup label="GitHub Apps">
     <option value="/v3/apps/">GitHub Apps overview</a></h3>
     <option value="/v3/apps/installations/">Installations</option>
-
-    <option value="/v3/apps/marketplace/">Marketplace</option>
     <option value="/v3/apps/permissions/">Permissions</option>
     <option value="/v3/apps/available-endpoints/">Available Endpoints</option>
+  </optgroup>
+
+
+
+  <optgroup label="Marketplace">
+    <option value="/v3/apps/marketplace/">GitHub Marketplace</option></h3>
+  </optgroup>
+
+
+
+  <optgroup label="Interactions">
+    <option value="/v3/interactions/">Interactions</a></h3>
+    <option value="/v3/interactions/orgs/">Organization</option>
+    <option value="/v3/interactions/repos/">Repository</option>
   </optgroup>
 
 
@@ -289,21 +315,17 @@
     <option value="/v3/search/#search-repositories">Repositories</option>
     <option value="/v3/search/#search-code">Code</option>
     <option value="/v3/search/#search-commits">Commits</option>
-    <option value="/v3/search/#search-issues">Issues</option>
+    <option value="/v3/search/#search-issues-and-pull-requests">Issues</option>
     <option value="/v3/search/#search-users">Users</option>
-
     <option value="/v3/search/#search-topics">Topics</option>
-
     <option value="/v3/search/#text-match-metadata">Text match metadata</<option>
     <option value="/v3/search/legacy/">Legacy search</option>
   </optgroup>
 
   <optgroup label="Teams">
     <option value="/v3/teams/">Teams</a></h3>
-
     <option value="/v3/teams/discussions/">Discussions</option>
     <option value="/v3/teams/discussion_comments/">Discussion comments</option>
-
     <option value="/v3/teams/members/">Members</option>
   </optgroup>
 
@@ -346,6 +368,7 @@ created for various internal and webhook purposes.</p>
 <li><a href="#checkrunevent" id="markdown-toc-checkrunevent">CheckRunEvent</a></li>
 <li><a href="#checksuiteevent" id="markdown-toc-checksuiteevent">CheckSuiteEvent</a></li>
 <li><a href="#commitcommentevent" id="markdown-toc-commitcommentevent">CommitCommentEvent</a></li>
+<li><a href="#contentreferenceevent" id="markdown-toc-contentreferenceevent">ContentReferenceEvent</a></li>
 <li><a href="#createevent" id="markdown-toc-createevent">CreateEvent</a></li>
 <li><a href="#deleteevent" id="markdown-toc-deleteevent">DeleteEvent</a></li>
 <li><a href="#deploymentevent" id="markdown-toc-deploymentevent">DeploymentEvent</a></li>
@@ -1149,6 +1172,149 @@ created for various internal and webhook purposes.</p>
 
 
 <h2>
+<a id="contentreferenceevent" class="anchor" href="#contentreferenceevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ContentReferenceEvent</h2>
+
+<p>Triggered when the body or comment of an issue or pull request includes a URL that matches a configured content reference domain. Only GitHub Apps can receive this event. GitHub Apps that have the <code>content_references</code> <code>write</code> permission and subscribe to the <code>content_reference</code> event receive this webhook event when a new content reference is <code>created</code>. See "<a href="/apps/using-content-attachments/">Using content attachments</a>" to learn more about content references and attachments.</p>
+
+<p>Webhook events are triggered based on the specificity of the domain you register. For example, if you register a subdomain (<code>https://subdomain.example.com</code>) then only URLs for the subdomain trigger this event. If you register a domain (<code>https://example.com</code>) then URLs for domain and all subdomains trigger this event. See "<a href="/v3/apps/#create-a-content-attachment">Create a content attachment</a>" to create a new content attachment.</p>
+
+<h3>
+<a id="webhook-event-name-3" class="anchor" href="#webhook-event-name-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
+
+<p><code>content_reference</code></p>
+
+<h3>
+<a id="webhook-payload-example-3" class="anchor" href="#webhook-payload-example-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
+
+<pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"content_reference"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDE2OkNvbnRlbnRSZWZlcmVuY2UxNjA5"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://errors.ai/"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"repository"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">145551601</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDEwOlJlcG9zaXRvcnkxNDU1NTE2MDE="</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hello-world"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"octocoders/hello-world"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"private"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Codertocat"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7718702</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDQ6VXNlcjc3MTg3MDI="</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://avatars1.githubusercontent.com/u/7718702?v=4"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"gravatar_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"html_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/Codertocat"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"followers_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/followers"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"following_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/following{/other_user}"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"gists_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/gists{/gist_id}"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"starred_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/starred{/owner}{/repo}"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"subscriptions_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/subscriptions"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"organizations_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/orgs"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"repos_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/repos"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/events{/privacy}"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"received_events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/received_events"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"site_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"html_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/Codertocat/hello-world"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fork"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"forks_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/forks"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"keys_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/keys{/key_id}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"collaborators_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/collaborators{/collaborator}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"teams_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/teams"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"hooks_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/hooks"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"issue_events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/issues/events{/number}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/events"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"assignees_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/assignees{/user}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"branches_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/branches{/branch}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tags_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/tags"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"blobs_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/git/blobs{/sha}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"git_tags_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/git/tags{/sha}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"git_refs_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/git/refs{/sha}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"trees_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/git/trees{/sha}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"statuses_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/statuses/{sha}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"languages_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/languages"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"stargazers_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/stargazers"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"contributors_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/contributors"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"subscribers_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/subscribers"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"subscription_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/subscription"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"commits_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/commits{/sha}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"git_commits_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/git/commits{/sha}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"comments_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/comments{/number}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"issue_comment_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/issues/comments{/number}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"contents_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/contents/{+path}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"compare_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/compare/{base}...{head}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"merges_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/merges"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"archive_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/{archive_format}{/ref}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"downloads_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/downloads"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"issues_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/issues{/number}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pulls_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/pulls{/number}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"milestones_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/milestones{/number}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"notifications_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/notifications{?since,all,participating}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"labels_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/labels{/name}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"releases_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/releases{/id}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deployments_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world/deployments"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-21T10:58:58Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-21T10:59:01Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pushed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-21T10:59:00Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"git_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git://github.com/Codertocat/hello-world.git"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ssh_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git@github.com:Codertocat/hello-world.git"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"clone_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/Codertocat/hello-world.git"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"svn_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/Codertocat/hello-world"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"homepage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"stargazers_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"watchers_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"language"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"has_issues"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"has_projects"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"has_downloads"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"has_wiki"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"has_pages"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"forks_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mirror_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"open_issues_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"license"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"forks"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"open_issues"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"watchers"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"default_branch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"master"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Codertocat"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7718702</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDQ6VXNlcjc3MTg3MDI="</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://avatars1.githubusercontent.com/u/7718702?v=4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"gravatar_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"html_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/Codertocat"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"followers_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/followers"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"following_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/following{/other_user}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"gists_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/gists{/gist_id}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"starred_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/starred{/owner}{/repo}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"subscriptions_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/subscriptions"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"organizations_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/orgs"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"repos_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/repos"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/events{/privacy}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"received_events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/received_events"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"site_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"installation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">371641</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDIzOkludGVncmF0aW9uSW5zdGFsbGF0aW9uMzcxNjQx"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+
+<h2>
 <a id="createevent" class="anchor" href="#createevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CreateEvent</h2>
 
 <p>Represents a created repository, branch, or tag.</p>
@@ -1170,7 +1336,8 @@ created for various internal and webhook purposes.</p>
 <tr>
 <td><code>ref_type</code></td>
 <td><code>string</code></td>
-<td>The object that was created. Can be one of "repository", "branch", or "tag"</td>
+<td>The object that was created. Can be one of <code>repository</code>, <code>branch</code>, or <code>tag</code>
+</td>
 </tr>
 <tr>
 <td><code>ref</code></td>
@@ -1343,7 +1510,7 @@ created for various internal and webhook purposes.</p>
 <tr>
 <td><code>ref_type</code></td>
 <td><code>string</code></td>
-<td>The object that was deleted. Can be "branch" or "tag".</td>
+<td>The object that was deleted. Can be <code>branch</code> or <code>tag</code>.</td>
 </tr>
 <tr>
 <td><code>ref</code></td>
@@ -2244,7 +2411,7 @@ You cannot create webhooks that listen to these events.</p>
 <h2>
 <a id="forkapplyevent" class="anchor" href="#forkapplyevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ForkApplyEvent</h2>
 
-<p>Triggered when a patch is applied in the Fork Queue.</p>
+<p>Triggered when a patch is applied in the fork queue.</p>
 
 <div class="alert warning">
 
@@ -2357,7 +2524,8 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>action</code></td>
 <td><code>string</code></td>
-<td>The action that was performed. Can be "create" or "update"</td>
+<td>The action that was performed. Can be <code>create</code> or <code>update</code>
+</td>
 </tr>
 <tr>
 <td><code>gist</code></td>
@@ -2407,7 +2575,7 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>pages[][action]</code></td>
 <td><code>string</code></td>
-<td>The action that was performed on the page. Can be "created" or "edited".</td>
+<td>The action that was performed on the page. Can be <code>created</code> or <code>edited</code>.</td>
 </tr>
 <tr>
 <td><code>pages[][sha]</code></td>
@@ -2561,7 +2729,7 @@ You cannot create webhooks that listen to these events.</p>
 <h2>
 <a id="installationevent" class="anchor" href="#installationevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>InstallationEvent</h2>
 
-<p>Triggered when a GitHub App has been installed or uninstalled.</p>
+<p>Triggered when someone installs (<code>created</code>) , uninstalls (<code>deleted</code>), or accepts new permissions (<code>new_permissions_accepted</code>) for a GitHub App. When a GitHub App owner requests new permissions, the person who installed the GitHub App must accept the new permissions request.</p>
 
 <h3>
 <a id="events-api-payload-12" class="anchor" href="#events-api-payload-12" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
@@ -2578,7 +2746,7 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>action</code></td>
 <td><code>string</code></td>
-<td>The action that was performed. Can be either "created" or "deleted".</td>
+<td>The action that was performed. Can be one of <code>created</code>, <code>deleted</code>, or <code>new_permissions_accepted</code>.</td>
 </tr>
 <tr>
 <td><code>installation</code></td>
@@ -2675,7 +2843,7 @@ You cannot create webhooks that listen to these events.</p>
 <h2>
 <a id="installationrepositoriesevent" class="anchor" href="#installationrepositoriesevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>InstallationRepositoriesEvent</h2>
 
-<p>Triggered when a repository is added or removed from an installation.</p>
+<p>Triggered when a repository is <code>added</code> or <code>removed</code> from an installation.</p>
 
 <h3>
 <a id="events-api-payload-13" class="anchor" href="#events-api-payload-13" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
@@ -2692,7 +2860,7 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>action</code></td>
 <td><code>string</code></td>
-<td>The action that was performed. Can be either "added" or "removed".</td>
+<td>The action that was performed. Can be either <code>added</code> or <code>removed</code>.</td>
 </tr>
 <tr>
 <td><code>installation</code></td>
@@ -2702,7 +2870,7 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>repository_selection</code></td>
 <td><code>string</code></td>
-<td>The choice of repositories the installation is on. Can be either "selected" or "all".</td>
+<td>The choice of repositories the installation is on. Can be either <code>selected</code> or <code>all</code>.</td>
 </tr>
 <tr>
 <td><code>repositories_added</code></td>
@@ -2808,7 +2976,7 @@ You cannot create webhooks that listen to these events.</p>
 <h2>
 <a id="issuecommentevent" class="anchor" href="#issuecommentevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>IssueCommentEvent</h2>
 
-<p>Triggered when an <a href="/v3/issues/comments/">issue comment</a> is created, edited, or deleted.</p>
+<p>Triggered when an <a href="/v3/issues/comments/">issue comment</a> is <code>created</code>, <code>edited</code>, or <code>deleted</code>.</p>
 
 <h3>
 <a id="events-api-payload-14" class="anchor" href="#events-api-payload-14" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
@@ -2825,17 +2993,17 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>action</code></td>
 <td><code>string</code></td>
-<td>The action that was performed on the comment. Can be one of "created", "edited", or "deleted".</td>
+<td>The action that was performed on the comment. Can be one of <code>created</code>, <code>edited</code>, or <code>deleted</code>.</td>
 </tr>
 <tr>
 <td><code>changes</code></td>
 <td><code>object</code></td>
-<td>The changes to the comment if the action was "edited".</td>
+<td>The changes to the comment if the action was <code>edited</code>.</td>
 </tr>
 <tr>
 <td><code>changes[body][from]</code></td>
 <td><code>string</code></td>
-<td>The previous version of the body if the action was "edited".</td>
+<td>The previous version of the body if the action was <code>edited</code>.</td>
 </tr>
 <tr>
 <td><code>issue</code></td>
@@ -3066,7 +3234,7 @@ You cannot create webhooks that listen to these events.</p>
 <h2>
 <a id="issuesevent" class="anchor" href="#issuesevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>IssuesEvent</h2>
 
-<p>Triggered when an <a href="/v3/issues">issue</a> is <code>opened</code>, <code>edited</code>, <code>deleted</code>, <code>transferred</code>, <code>closed</code>, <code>reopened</code>, <code>assigned</code>, <code>unassigned</code>, <code>labeled</code>, <code>unlabeled</code>, <code>milestoned</code>, or <code>demilestoned</code>.</p>
+<p>Triggered when an <a href="/v3/issues">issue</a> is <code>opened</code>, <code>edited</code>, <code>deleted</code>, <code>transferred</code>, <code>pinned</code>, <code>unpinned</code>, <code>closed</code>, <code>reopened</code>, <code>assigned</code>, <code>unassigned</code>, <code>labeled</code>, <code>unlabeled</code>, <code>milestoned</code>, or <code>demilestoned</code>.</p>
 
 <h3>
 <a id="events-api-payload-15" class="anchor" href="#events-api-payload-15" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
@@ -3083,7 +3251,7 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>action</code></td>
 <td><code>string</code></td>
-<td>The action that was performed. Can be one of <code>opened</code>, <code>edited</code>, <code>deleted</code>, <code>transferred</code>, <code>closed</code>, <code>reopened</code>, <code>assigned</code>, <code>unassigned</code>, <code>labeled</code>, <code>unlabeled</code>, <code>milestoned</code>, or <code>demilestoned</code>.</td>
+<td>The action that was performed. Can be one of <code>opened</code>, <code>edited</code>, <code>deleted</code>, <code>transferred</code>, <code>pinned</code>, <code>unpinned</code>, <code>closed</code>, <code>reopened</code>, <code>assigned</code>, <code>unassigned</code>, <code>labeled</code>, <code>unlabeled</code>, <code>milestoned</code>, or <code>demilestoned</code>.</td>
 </tr>
 <tr>
 <td><code>issue</code></td>
@@ -3093,17 +3261,17 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>changes</code></td>
 <td><code>object</code></td>
-<td>The changes to the issue if the action was "edited".</td>
+<td>The changes to the issue if the action was <code>edited</code>.</td>
 </tr>
 <tr>
 <td><code>changes[title][from]</code></td>
 <td><code>string</code></td>
-<td>The previous version of the title if the action was "edited".</td>
+<td>The previous version of the title if the action was <code>edited</code>.</td>
 </tr>
 <tr>
 <td><code>changes[body][from]</code></td>
 <td><code>string</code></td>
-<td>The previous version of the body if the action was "edited".</td>
+<td>The previous version of the body if the action was <code>edited</code>.</td>
 </tr>
 <tr>
 <td><code>assignee</code></td>
@@ -3305,7 +3473,7 @@ You cannot create webhooks that listen to these events.</p>
 <h2>
 <a id="labelevent" class="anchor" href="#labelevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LabelEvent</h2>
 
-<p>Triggered when a repository's label is <a href="/v3/issues/labels/#create-a-label">created</a>, <a href="/v3/issues/labels/#update-a-label">edited</a>, or <a href="/v3/issues/labels/#delete-a-label">deleted</a>.</p>
+<p>Triggered when a repository's label is <code>created</code>, <code>edited</code>, or <code>deleted</code>.</p>
 
 <p>Events of this type are not visible in timelines. These events are only used to trigger hooks.</p>
 
@@ -3324,7 +3492,7 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>action</code></td>
 <td><code>string</code></td>
-<td>The action that was performed. Can be "created", "edited", or "deleted".</td>
+<td>The action that was performed. Can be <code>created</code>, <code>edited</code>, or <code>deleted</code>.</td>
 </tr>
 <tr>
 <td><code>label</code></td>
@@ -3334,17 +3502,17 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>changes</code></td>
 <td><code>object</code></td>
-<td>The changes to the label if the action was "edited".</td>
+<td>The changes to the label if the action was <code>edited</code>.</td>
 </tr>
 <tr>
 <td><code>changes[name][from]</code></td>
 <td><code>string</code></td>
-<td>The previous version of the name if the action was "edited".</td>
+<td>The previous version of the name if the action was <code>edited</code>.</td>
 </tr>
 <tr>
 <td><code>changes[color][from]</code></td>
 <td><code>string</code></td>
-<td>The previous version of the color if the action was "edited".</td>
+<td>The previous version of the color if the action was <code>edited</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -3768,9 +3936,9 @@ You cannot create webhooks that listen to these events.</p>
 <h2>
 <a id="membershipevent" class="anchor" href="#membershipevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MembershipEvent</h2>
 
-<p>Triggered when a user is added or removed from a team.</p>
+<p>Triggered when a user is <code>added</code> or <code>removed</code> from a team.</p>
 
-<p>Events of this type are not visible in timelines. These events are only used to trigger hooks.</p>
+<p>Events of this type are not visible in timelines. These events are only used to trigger organization hooks.</p>
 
 <h3>
 <a id="events-api-payload-19" class="anchor" href="#events-api-payload-19" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
@@ -3787,12 +3955,12 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>action</code></td>
 <td><code>string</code></td>
-<td>The action that was performed. Can be "added" or "removed".</td>
+<td>The action that was performed. Can be <code>added</code> or <code>removed</code>.</td>
 </tr>
 <tr>
 <td><code>scope</code></td>
 <td><code>string</code></td>
-<td>The scope of the membership. Currently, can only be "team".</td>
+<td>The scope of the membership. Currently, can only be <code>team</code>.</td>
 </tr>
 <tr>
 <td><code>member</code></td>
@@ -3891,7 +4059,7 @@ You cannot create webhooks that listen to these events.</p>
 <h2>
 <a id="milestoneevent" class="anchor" href="#milestoneevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MilestoneEvent</h2>
 
-<p>Triggered when a milestone is created, closed, opened, edited, or deleted.</p>
+<p>Triggered when a milestone is <code>created</code>, <code>closed</code>, <code>opened</code>, <code>edited</code>, or <code>deleted</code>.</p>
 
 <p>Events of this type are not visible in timelines. These events are only used to trigger hooks.</p>
 
@@ -4107,7 +4275,7 @@ You cannot create webhooks that listen to these events.</p>
 <h2>
 <a id="organizationevent" class="anchor" href="#organizationevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>OrganizationEvent</h2>
 
-<p>Triggered when a user is added, removed, or invited to an Organization.</p>
+<p>Triggered when a user is added, removed, or invited to an organization.</p>
 
 <p>Events of this type are not visible in timelines. These events are only used to trigger organization hooks.</p>
 
@@ -4223,7 +4391,7 @@ You cannot create webhooks that listen to these events.</p>
 <h2>
 <a id="orgblockevent" class="anchor" href="#orgblockevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>OrgBlockEvent</h2>
 
-<p>Triggered when an organization blocks or unblocks a user.</p>
+<p>Triggered when an organization blocks or unblocks a user. These events are only used to trigger organization hooks.</p>
 
 <h3>
 <a id="events-api-payload-22" class="anchor" href="#events-api-payload-22" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
@@ -4518,7 +4686,7 @@ You cannot create webhooks that listen to these events.</p>
 <h2>
 <a id="projectcardevent" class="anchor" href="#projectcardevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ProjectCardEvent</h2>
 
-<p>Triggered when a <a href="/v3/projects/cards">project card</a> is created, updated, moved, converted to an issue, or deleted.</p>
+<p>Triggered when a <a href="/v3/projects/cards">project card</a> is <code>created</code>, <code>updated</code>, <code>moved</code>, <code>converted</code> to an issue, or <code>deleted</code>.</p>
 
 <h3>
 <a id="events-api-payload-24" class="anchor" href="#events-api-payload-24" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
@@ -4535,17 +4703,17 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>action</code></td>
 <td><code>string</code></td>
-<td>The action performed on the project card. Can be "created", "edited", "converted", "moved", or "deleted".</td>
+<td>The action performed on the project card. Can be <code>created</code>, <code>edited</code>, <code>moved</code>, <code>converted</code>, or <code>deleted</code>.</td>
 </tr>
 <tr>
 <td><code>changes</code></td>
 <td><code>object</code></td>
-<td>The changes to the project card if the action was "edited" or "converted".</td>
+<td>The changes to the project card if the action was <code>edited</code> or <code>converted</code>.</td>
 </tr>
 <tr>
 <td><code>changes[note][from]</code></td>
 <td><code>string</code></td>
-<td>The previous version of the note if the action was "edited" or "converted".</td>
+<td>The previous version of the note if the action was <code>edited</code> or <code>converted</code>.</td>
 </tr>
 <tr>
 <td><code>after_id</code></td>
@@ -4721,7 +4889,7 @@ You cannot create webhooks that listen to these events.</p>
 <h2>
 <a id="projectcolumnevent" class="anchor" href="#projectcolumnevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ProjectColumnEvent</h2>
 
-<p>Triggered when a <a href="/v3/projects/columns">project column</a> is created, updated, moved, or deleted.</p>
+<p>Triggered when a <a href="/v3/projects/columns">project column</a> is <code>created</code>, <code>updated</code>, <code>moved</code>, or <code>deleted</code>.</p>
 
 <h3>
 <a id="events-api-payload-25" class="anchor" href="#events-api-payload-25" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
@@ -4738,17 +4906,17 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>action</code></td>
 <td><code>string</code></td>
-<td>The action that was performed on the project column. Can be one of "created", "edited", "moved" or "deleted".</td>
+<td>The action that was performed on the project column. Can be one of <code>created</code>, <code>edited</code>, <code>moved</code> or <code>deleted</code>.</td>
 </tr>
 <tr>
 <td><code>changes</code></td>
 <td><code>object</code></td>
-<td>The changes to the project column if the action was "edited".</td>
+<td>The changes to the project column if the action was <code>edited</code>.</td>
 </tr>
 <tr>
 <td><code>changes[name][from]</code></td>
 <td><code>string</code></td>
-<td>The previous version of the name if the action was "edited".</td>
+<td>The previous version of the name if the action was <code>edited</code>.</td>
 </tr>
 <tr>
 <td><code>after_id</code></td>
@@ -4903,7 +5071,7 @@ You cannot create webhooks that listen to these events.</p>
 <h2>
 <a id="projectevent" class="anchor" href="#projectevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ProjectEvent</h2>
 
-<p>Triggered when a <a href="/v3/projects/">project</a> is created, updated, closed, reopened, or deleted.</p>
+<p>Triggered when a <a href="/v3/projects/">project</a> is <code>created</code>, <code>updated</code>, <code>closed</code>, <code>reopened</code>, or <code>deleted</code>.</p>
 
 <h3>
 <a id="events-api-payload-26" class="anchor" href="#events-api-payload-26" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
@@ -4920,22 +5088,22 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>action</code></td>
 <td><code>string</code></td>
-<td>The action that was performed on the project. Can be one of "created", "edited", "closed", "reopened", or "deleted".</td>
+<td>The action that was performed on the project. Can be one of <code>created</code>, <code>edited</code>, <code>closed</code>, <code>reopened</code>, or <code>deleted</code>.</td>
 </tr>
 <tr>
 <td><code>changes</code></td>
 <td><code>object</code></td>
-<td>The changes to the project if the action was "edited".</td>
+<td>The changes to the project if the action was <code>edited</code>.</td>
 </tr>
 <tr>
 <td><code>changes[name][from]</code></td>
 <td><code>string</code></td>
-<td>The previous version of the name if the action was "edited".</td>
+<td>The previous version of the name if the action was <code>edited</code>.</td>
 </tr>
 <tr>
 <td><code>changes[body][from]</code></td>
 <td><code>string</code></td>
-<td>The previous version of the body if the action was "edited".</td>
+<td>The previous version of the body if the action was <code>edited</code>.</td>
 </tr>
 <tr>
 <td><code>project</code></td>
@@ -5243,7 +5411,7 @@ You cannot create webhooks that listen to these events.</p>
 <h2>
 <a id="pullrequestevent" class="anchor" href="#pullrequestevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PullRequestEvent</h2>
 
-<p>Triggered when a <a href="/v3/pulls">pull request</a> is assigned, unassigned, labeled, unlabeled, opened, edited, closed, reopened, or synchronized. Also triggered when a pull request review is requested, or when a review request is removed.</p>
+<p>Triggered when a <a href="/v3/pulls">pull request</a> is <code>assigned</code>, <code>unassigned</code>, <code>labeled</code>, <code>unlabeled</code>, <code>opened</code>, <code>edited</code>, <code>closed</code>, <code>reopened</code>, <code>synchronize</code>, <code>ready_for_review</code> , a pull request review is requested, or a review request is removed.</p>
 
 <h3>
 <a id="events-api-payload-28" class="anchor" href="#events-api-payload-28" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
@@ -5260,7 +5428,7 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>action</code></td>
 <td><code>string</code></td>
-<td>The action that was performed. Can be one of "assigned", "unassigned", "review_requested", "review_request_removed", "labeled", "unlabeled", "opened", "edited", "closed", or "reopened". If the action is "closed" and the <code>merged</code> key is <code>false</code>, the pull request was closed with unmerged commits. If the action is "closed" and the <code>merged</code> key is <code>true</code>, the pull request was merged. While webhooks are also triggered when a pull request is synchronized, Events API timelines don't include pull request events with the "synchronize" action.</td>
+<td>The action that was performed. Can be one of <code>assigned</code>, <code>unassigned</code>, <code>review_requested</code>, <code>review_request_removed</code>, <code>labeled</code>, <code>unlabeled</code>, <code>opened</code>, <code>edited</code>, <code>closed</code>, <code>ready_for_review</code> , or <code>reopened</code>. If the action is <code>closed</code> and the <code>merged</code> key is <code>false</code>, the pull request was closed with unmerged commits. If the action is <code>closed</code> and the <code>merged</code> key is <code>true</code>, the pull request was merged. While webhooks are also triggered when a pull request is synchronized, Events API timelines don't include pull request events with the <code>synchronize</code> action.</td>
 </tr>
 <tr>
 <td><code>number</code></td>
@@ -5270,17 +5438,17 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>changes</code></td>
 <td><code>object</code></td>
-<td>The changes to the comment if the action was "edited".</td>
+<td>The changes to the comment if the action was <code>edited</code>.</td>
 </tr>
 <tr>
 <td><code>changes[title][from]</code></td>
 <td><code>string</code></td>
-<td>The previous version of the title if the action was "edited".</td>
+<td>The previous version of the title if the action was <code>edited</code>.</td>
 </tr>
 <tr>
 <td><code>changes[body][from]</code></td>
 <td><code>string</code></td>
-<td>The previous version of the body if the action was "edited".</td>
+<td>The previous version of the body if the action was <code>edited</code>.</td>
 </tr>
 <tr>
 <td><code>pull_request</code></td>
@@ -5756,7 +5924,7 @@ You cannot create webhooks that listen to these events.</p>
 <h2>
 <a id="pullrequestreviewevent" class="anchor" href="#pullrequestreviewevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PullRequestReviewEvent</h2>
 
-<p>Triggered when a pull request review is submitted into a non-pending state, the body is edited, or the review is dismissed.</p>
+<p>Triggered when a pull request review is <code>submitted</code> into a non-pending state, the body is <code>edited</code>, or the review is <code>dismissed</code>.</p>
 
 <h3>
 <a id="events-api-payload-29" class="anchor" href="#events-api-payload-29" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API Payload</h3>
@@ -5773,7 +5941,7 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>action</code></td>
 <td><code>string</code></td>
-<td>The action that was performed. Can be "submitted", "edited", or "dismissed".</td>
+<td>The action that was performed. Can be <code>submitted</code>, <code>edited</code>, or <code>dismissed</code>.</td>
 </tr>
 <tr>
 <td><code>pull_request</code></td>
@@ -5788,7 +5956,7 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>changes[body][from]</code></td>
 <td><code>string</code></td>
-<td>The previous version of the body if the action was "edited".</td>
+<td>The previous version of the body if the action was <code>edited</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -6283,7 +6451,7 @@ You cannot create webhooks that listen to these events.</p>
 <h2>
 <a id="pullrequestreviewcommentevent" class="anchor" href="#pullrequestreviewcommentevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PullRequestReviewCommentEvent</h2>
 
-<p>Triggered when a <a href="/v3/pulls/comments">comment on a pull request's unified diff</a> is created, edited, or deleted (in the Files Changed tab).</p>
+<p>Triggered when a <a href="/v3/pulls/comments">comment on a pull request's unified diff</a> is <code>created</code>, <code>edited</code>, or <code>deleted</code> (in the Files Changed tab).</p>
 
 <h3>
 <a id="events-api-payload-30" class="anchor" href="#events-api-payload-30" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
@@ -6300,17 +6468,17 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>action</code></td>
 <td><code>string</code></td>
-<td>The action that was performed on the comment. Can be one of "created", "edited", or "deleted".</td>
+<td>The action that was performed on the comment. Can be one of <code>created</code>, <code>edited</code>, or <code>deleted</code>.</td>
 </tr>
 <tr>
 <td><code>changes</code></td>
 <td><code>object</code></td>
-<td>The changes to the comment if the action was "edited".</td>
+<td>The changes to the comment if the action was <code>edited</code>.</td>
 </tr>
 <tr>
 <td><code>changes[body][from]</code></td>
 <td><code>string</code></td>
-<td>The previous version of the body if the action was "edited".</td>
+<td>The previous version of the body if the action was <code>edited</code>.</td>
 </tr>
 <tr>
 <td><code>pull_request</code></td>
@@ -7062,7 +7230,7 @@ You cannot create webhooks that listen to these events.</p>
 <h2>
 <a id="releaseevent" class="anchor" href="#releaseevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ReleaseEvent</h2>
 
-<p>Triggered when a <a href="/v3/repos/releases/#get-a-single-release">release</a> is published.</p>
+<p>Triggered when a <a href="/v3/repos/releases/#get-a-single-release">release</a> is <code>published</code>.</p>
 
 <h3>
 <a id="events-api-payload-32" class="anchor" href="#events-api-payload-32" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
@@ -7079,7 +7247,7 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>action</code></td>
 <td><code>string</code></td>
-<td>The action that was performed. Currently, can only be "published".</td>
+<td>The action that was performed. Currently, can only be <code>published</code>.</td>
 </tr>
 <tr>
 <td><code>release</code></td>
@@ -7260,7 +7428,7 @@ You cannot create webhooks that listen to these events.</p>
 <h2>
 <a id="repositoryevent" class="anchor" href="#repositoryevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RepositoryEvent</h2>
 
-<p>Triggered when a repository is created, archived, unarchived, made public, or made private. <a href="/v3/orgs/hooks/">Organization hooks</a> are also triggered when a repository is deleted.</p>
+<p>Triggered when a repository is <code>created</code>, <code>archived</code>, <code>unarchived</code>, made public, or made private. <a href="/v3/orgs/hooks/">Organization hooks</a> are also triggered when a repository is <code>deleted</code>.</p>
 
 <p>Events of this type are not visible in timelines. These events are only used to trigger hooks.</p>
 
@@ -7419,7 +7587,7 @@ You cannot create webhooks that listen to these events.</p>
 <h2>
 <a id="repositoryimportevent" class="anchor" href="#repositoryimportevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RepositoryImportEvent</h2>
 
-<p>Triggered when a successful or unsuccessful repository import finishes for a GitHub organization or a personal repository. To receive this event for a personal repository, you must create an empty repository prior to the import. This event can be triggered using either the <a href="https://help.github.com/articles/importing-a-repository-with-github-importer/">GitHub Importer</a> or the <a href="/v3/migrations/source_imports/">Source imports API</a>.</p>
+<p>Triggered when a successful, cancelled, or failed repository import finishes for a GitHub organization or a personal repository. To receive this event for a personal repository, you must create an empty repository prior to the import. This event can be triggered using either the <a href="https://help.github.com/articles/importing-a-repository-with-github-importer/">GitHub Importer</a> or the <a href="/v3/migrations/source_imports/">Source imports API</a>.</p>
 
 <h3>
 <a id="events-api-payload-34" class="anchor" href="#events-api-payload-34" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
@@ -7436,7 +7604,7 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>status</code></td>
 <td><code>string</code></td>
-<td>The final state of the import. This can be either <code>success</code> or <code>failure</code>.</td>
+<td>The final state of the import. This can be one of <code>success</code>, <code>cancelled</code>, or <code>failure</code>.</td>
 </tr>
 <tr>
 <td><code>repository</code></td>
@@ -8046,7 +8214,7 @@ You cannot create webhooks that listen to these events.</p>
 <h2>
 <a id="teamevent" class="anchor" href="#teamevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>TeamEvent</h2>
 
-<p>Triggered when an organization's team is created or deleted.</p>
+<p>Triggered when an organization's team is <code>created</code>, <code>deleted</code>, <code>edited</code>, <code>added_to_repository</code>, or <code>removed_from_repository</code>.</p>
 
 <p>Events of this type are not visible in timelines. These events are only used to trigger organization hooks.</p>
 
@@ -8075,7 +8243,7 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>changes</code></td>
 <td><code>object</code></td>
-<td>The changes to the team if the action was "edited".</td>
+<td>The changes to the team if the action was <code>edited</code>.</td>
 </tr>
 <tr>
 <td><code>changes[description][from]</code></td>
@@ -8460,7 +8628,7 @@ You cannot create webhooks that listen to these events.</p>
 <h2>
 <a id="watchevent" class="anchor" href="#watchevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>WatchEvent</h2>
 
-<p>The WatchEvent is related to <a href="/v3/activity/starring/#star-a-repository">starring a repository</a>, not <a href="/v3/activity/watching/">watching</a>.
+<p>Triggered when someone <a href="/v3/activity/starring/#star-a-repository">stars a repository</a>.  This event is not related to <a href="/v3/activity/watching/">watching a repository</a>.
 See <a href="/changes/2012-09-05-watcher-api/">this API blog post</a> for an explanation.</p>
 
 <p>The event’s actor is the <a href="/v3/users/">user</a> who starred a repository, and the
@@ -8666,10 +8834,22 @@ event’s repository is the <a href="/v3/repos/">repository</a> that was starred
   <optgroup label="GitHub Apps">
     <option value="/v3/apps/">GitHub Apps overview</a></h3>
     <option value="/v3/apps/installations/">Installations</option>
-
-    <option value="/v3/apps/marketplace/">Marketplace</option>
     <option value="/v3/apps/permissions/">Permissions</option>
     <option value="/v3/apps/available-endpoints/">Available Endpoints</option>
+  </optgroup>
+
+
+
+  <optgroup label="Marketplace">
+    <option value="/v3/apps/marketplace/">GitHub Marketplace</option></h3>
+  </optgroup>
+
+
+
+  <optgroup label="Interactions">
+    <option value="/v3/interactions/">Interactions</a></h3>
+    <option value="/v3/interactions/orgs/">Organization</option>
+    <option value="/v3/interactions/repos/">Repository</option>
   </optgroup>
 
 
@@ -8774,21 +8954,17 @@ event’s repository is the <a href="/v3/repos/">repository</a> that was starred
     <option value="/v3/search/#search-repositories">Repositories</option>
     <option value="/v3/search/#search-code">Code</option>
     <option value="/v3/search/#search-commits">Commits</option>
-    <option value="/v3/search/#search-issues">Issues</option>
+    <option value="/v3/search/#search-issues-and-pull-requests">Issues</option>
     <option value="/v3/search/#search-users">Users</option>
-
     <option value="/v3/search/#search-topics">Topics</option>
-
     <option value="/v3/search/#text-match-metadata">Text match metadata</<option>
     <option value="/v3/search/legacy/">Legacy search</option>
   </optgroup>
 
   <optgroup label="Teams">
     <option value="/v3/teams/">Teams</a></h3>
-
     <option value="/v3/teams/discussions/">Discussions</option>
     <option value="/v3/teams/discussion_comments/">Discussion comments</option>
-
     <option value="/v3/teams/members/">Members</option>
   </optgroup>
 
@@ -8868,12 +9044,27 @@ event’s repository is the <a href="/v3/repos/">repository</a> that was starred
         <h3><a href="#" class="js-expand-btn collapsed arrow-btn" data-proofer-ignore></a><a href="/v3/apps/">GitHub Apps</a></h3>
         <ul class="js-guides">
           <li><a href="/v3/apps/installations/">Installations</a></li>
-
-          <li><a href="/v3/apps/marketplace/">GitHub Marketplace</a></li>
           <li><a href="/v3/apps/permissions/">Permissions</a></li>
           <li><a href="/v3/apps/available-endpoints/">Available Endpoints</a></li>
         </ul>
       </li>
+
+
+      <li class="js-topic">
+        <h3 class="standalone">
+          <a href="/v3/apps/marketplace/">GitHub Marketplace</a>
+        </h3>
+      </li>
+
+
+      <li class="js-topic">
+        <h3><a href="#" class="js-expand-btn collapsed arrow-btn" data-proofer-ignore></a><a href="/v3/interactions/">Interactions</a></h3>
+        <ul class="js-guides">
+          <li><a href="/v3/interactions/orgs/">Organization</a></li>
+          <li><a href="/v3/interactions/repos/">Repository</a></li>
+        </ul>
+      </li>
+
 
       <li class="js-topic">
         <h3><a href="#" class="js-expand-btn collapsed arrow-btn" data-proofer-ignore></a><a href="/v3/issues/">Issues</a></h3>
@@ -8895,6 +9086,7 @@ event’s repository is the <a href="/v3/repos/">repository</a> that was starred
           <li><a href="/v3/migrations/users/">User</a></li>
         </ul>
       </li>
+
 
       <li class="js-topic">
         <h3><a href="#" class="js-expand-btn collapsed arrow-btn" data-proofer-ignore></a><a href="/v3/misc/">Miscellaneous</a></h3>
@@ -8983,11 +9175,9 @@ event’s repository is the <a href="/v3/repos/">repository</a> that was starred
           <li><a href="/v3/search/#search-repositories">Repositories</a></li>
           <li><a href="/v3/search/#search-code">Code</a></li>
           <li><a href="/v3/search/#search-commits">Commits</a></li>
-          <li><a href="/v3/search/#search-issues">Issues</a></li>
+          <li><a href="/v3/search/#search-issues-and-pull-requests">Issues</a></li>
           <li><a href="/v3/search/#search-users">Users</a></li>
-
           <li><a href="/v3/search/#search-topics">Topics</a></li>
-
           <li><a href="/v3/search/#text-match-metadata">Text match metadata</a></li>
           <li><a href="/v3/search/legacy/">Legacy search</a></li>
         </ul>
@@ -8995,10 +9185,8 @@ event’s repository is the <a href="/v3/repos/">repository</a> that was starred
       <li class="js-topic">
         <h3><a href="#" class="js-expand-btn collapsed arrow-btn" data-proofer-ignore></a><a href="/v3/teams/">Teams</a></h3>
         <ul class="js-guides">
-
           <li><a href="/v3/teams/discussions/">Discussions</a></li>
           <li><a href="/v3/teams/discussion_comments/">Discussion comments</a></li>
-
           <li><a href="/v3/teams/members/">Members</a></li>
         </ul>
       </li>
@@ -9034,7 +9222,7 @@ event’s repository is the <a href="/v3/repos/">repository</a> that was starred
 
   <footer class="footer text-muted">
   <div class="container">
-    <span class="footer-legal">&copy; 2018 GitHub Inc. All rights reserved.</span>
+    <span class="footer-legal">&copy; 2019 GitHub Inc. All rights reserved.</span>
     <span class="mega-octicon octicon-mark-github footer-mark"></span>
     <nav class="footer-nav">
       <a class="footer-nav-item" href="https://help.github.com/articles/github-terms-of-service">Terms of service</a>
