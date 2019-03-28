@@ -1700,7 +1700,8 @@
     "name": "installation",
     "actions": [
       "created",
-      "deleted"
+      "deleted",
+      "new_permissions_accepted"
     ],
     "examples": [
       {
