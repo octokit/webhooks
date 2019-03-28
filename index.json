@@ -2084,10 +2084,12 @@
       "labeled",
       "milestoned",
       "opened",
+      "pinned",
       "reopened",
       "transferred",
       "unassigned",
-      "unlabeled"
+      "unlabeled",
+      "unpinned"
     ],
     "examples": [
       {
