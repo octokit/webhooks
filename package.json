@@ -7,7 +7,7 @@
   "description": "",
   "main": "index.json",
   "devDependencies": {
-    "@octokit/request": "^2.2.0",
+    "@octokit/request": "^3.0.0",
     "cheerio": "^1.0.0-rc.2",
     "execa": "^1.0.0",
     "fs-extra": "^7.0.1",
