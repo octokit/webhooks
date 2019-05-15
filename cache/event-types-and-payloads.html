@@ -5761,7 +5761,7 @@ You cannot create webhooks that listen to these events.</p>
 <h2>
 <a id="pullrequestevent" class="anchor" href="#pullrequestevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PullRequestEvent</h2>
 
-<p>Triggered when a <a href="/v3/pulls">pull request</a> is <code>assigned</code>, <code>unassigned</code>, <code>labeled</code>, <code>unlabeled</code>, <code>opened</code>, <code>edited</code>, <code>closed</code>, <code>reopened</code>, <code>synchronize</code>, <code>ready_for_review</code>, <code>locked</code>, <code>unlocked</code>, a pull request review is requested, or a review request is removed.</p>
+<p>Triggered when a <a href="/v3/pulls">pull request</a> is <code>assigned</code>, <code>unassigned</code>, <code>labeled</code>, <code>unlabeled</code>, <code>opened</code>, <code>edited</code>, <code>closed</code>, <code>reopened</code>, <code>synchronize</code>, <code>ready_for_review</code>, <code>locked</code>, <code>unlocked</code> or when a pull request review is requested or removed.</p>
 
 <h3>
 <a id="events-api-payload-30" class="anchor" href="#events-api-payload-30" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
@@ -6142,6 +6142,7 @@ You cannot create webhooks that listen to these events.</p>
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"author_association"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OWNER"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"merged"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"draft"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nt">"mergeable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"rebaseable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"mergeable_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clean"</span><span class="p">,</span><span class="w">
