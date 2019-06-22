@@ -1,12 +1,7 @@
 [
   {
     "name": "check_run",
-    "actions": [
-      "completed",
-      "created",
-      "requested_action",
-      "rerequested"
-    ],
+    "actions": [],
     "examples": [
       {
         "action": "created",
