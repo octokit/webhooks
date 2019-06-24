@@ -322,6 +322,7 @@
     <option value="/v3/teams/discussions/">Discussions</option>
     <option value="/v3/teams/discussion_comments/">Discussion comments</option>
     <option value="/v3/teams/members/">Members</option>
+    <option value="/v3/teams/team_sync/">Team sunchronization</option> 
   </optgroup>
 
   
@@ -439,45 +440,20 @@ Webhooks configured on enterprise accounts or organizations that are part of an 
 <tr>
 <td><code>action</code></td>
 <td><code>string</code></td>
-<td>The action performed. Can be one of: <br>* <code>created</code> - A new check run was created.<br>* <code>completed</code> - The <code>status</code> of the check run is <code>completed</code>.<br>* <code>rerequested</code> - Someone requested to re-run your check run.<br>* <code>requested_action</code> - Someone requested that an action be taken. For example, this <code>action</code> will be sent if someone clicks a "Fix it" button in the UI. See <a href="/changes/2018-05-23-request-actions-on-checks/">Request further actions from a check run</a> for details.</td>
-</tr>
-<tr>
-<td><code>check_run</code></td>
-<td><code>object</code></td>
-<td>The <a href="/v3/checks/runs/">check_run</a>.</td>
-</tr>
-<tr>
-<td><code>check_run[status]</code></td>
-<td><code>string</code></td>
-<td>The current status of the check run. Can be <code>queued</code>, <code>in_progress</code>, or <code>completed</code>.</td>
-</tr>
-<tr>
-<td><code>check_run[conclusion]</code></td>
-<td><code>string</code></td>
-<td>The result of the completed check run. Can be one of <code>success</code>, <code>failure</code>, <code>neutral</code>, <code>cancelled</code>, <code>timed_out</code>, or <code>action_required</code>. This value will be <code>null</code> until the check run has <code>completed</code>.</td>
-</tr>
-<tr>
-<td><code>check_run[name]</code></td>
-<td><code>string</code></td>
-<td>The name of the check run.</td>
-</tr>
-<tr>
-<td><code>check_run[check_suite][id]</code></td>
-<td><code>integer</code></td>
-<td>The id of the check suite that this check run is part of.</td>
-</tr>
-<tr>
-<td><code>requested_action</code></td>
-<td><code>object</code></td>
-<td>The action requested by the user.</td>
-</tr>
-<tr>
-<td><code>requested_action[identifier]</code></td>
-<td><code>string</code></td>
-<td>The integrator reference of the action requested by the user.</td>
+<td>The action performed. Can be one of: <br>* <code>created</code> - A new check run was created.<br>* <code>completed</code> - The <code>status</code> of the check run is <code>completed</code>.<br>* <code>rerequested</code> - Someone requested to re-run your check run.<br>* <code>requested_action</code> - Someone requested that an action be taken. For example, this <code>action</code> will be sent if someone clicks a "Fix it" button in the UI.</td>
 </tr>
 </tbody>
 </table>
+
+<p>To learn more about check runs and requested actions, see "<a href="/v3/checks/runs/#check-runs-and-requested-actions">Check runs and requested actions</a>."</p>
+
+<p><code>check_run</code>|<code>object</code> | The <a href="/v3/checks/runs/">check_run</a>.
+<code>check_run[status]</code>|<code>string</code> | The current status of the check run. Can be <code>queued</code>, <code>in_progress</code>, or <code>completed</code>.
+<code>check_run[conclusion]</code>|<code>string</code> | The result of the completed check run. Can be one of <code>success</code>, <code>failure</code>, <code>neutral</code>, <code>cancelled</code>, <code>timed_out</code>, or <code>action_required</code>. This value will be <code>null</code> until the check run has <code>completed</code>.
+<code>check_run[name]</code>|<code>string</code> | The name of the check run.
+<code>check_run[check_suite][id]</code>|<code>integer</code> | The id of the check suite that this check run is part of.
+<code>requested_action</code>|<code>object</code> | The action requested by the user.
+<code>requested_action[identifier]</code>|<code>string</code> | The integrator reference of the action requested by the user.</p>
 
 <h3>
 <a id="webhook-event-name" class="anchor" href="#webhook-event-name" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
@@ -1438,9 +1414,13 @@ Webhooks configured on enterprise accounts or organizations that are part of an 
 <h2>
 <a id="createevent" class="anchor" href="#createevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CreateEvent</h2>
 
-<p>Represents a created repository, branch, or tag.</p>
+<p>Represents a created branch or tag.</p>
 
-<p>Note: webhooks will not receive this event for created repositories. Additionally, webhooks will not receive this event for tags if more than three tags are pushed at once.</p>
+<div class="alert note">
+
+<p><strong>Note:</strong> You will not receive a webhook for this event when you push more than three tags at once.</p>
+
+</div>
 
 <h3>
 <a id="events-api-payload-2" class="anchor" href="#events-api-payload-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
@@ -1457,13 +1437,12 @@ Webhooks configured on enterprise accounts or organizations that are part of an 
 <tr>
 <td><code>ref_type</code></td>
 <td><code>string</code></td>
-<td>The object that was created. Can be one of <code>repository</code>, <code>branch</code>, or <code>tag</code>
-</td>
+<td>The object that was created. Can be either <code>branch</code> or <code>tag</code>.</td>
 </tr>
 <tr>
 <td><code>ref</code></td>
 <td><code>string</code></td>
-<td>The git ref (or <code>null</code> if only a repository was created).</td>
+<td>The <a href="/v3/git/refs/"><code>git ref</code></a>.</td>
 </tr>
 <tr>
 <td><code>master_branch</code></td>
@@ -1615,7 +1594,11 @@ Webhooks configured on enterprise accounts or organizations that are part of an 
 
 <p>Represents a <a href="/v3/git/refs/#delete-a-reference">deleted branch or tag</a>.</p>
 
-<p>Note: webhooks will not receive this event for tags if more than three tags are deleted at once.</p>
+<div class="alert note">
+
+<p><strong>Note:</strong> You will not receive a webhook for this event when you delete more than three tags at once.</p>
+
+</div>
 
 <h3>
 <a id="events-api-payload-3" class="anchor" href="#events-api-payload-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
@@ -1637,7 +1620,7 @@ Webhooks configured on enterprise accounts or organizations that are part of an 
 <tr>
 <td><code>ref</code></td>
 <td><code>string</code></td>
-<td>The full git ref.</td>
+<td>The <a href="/v3/git/refs/"><code>git ref</code></a>.</td>
 </tr>
 </tbody>
 </table>
@@ -6106,7 +6089,7 @@ You cannot create webhooks that listen to these events.</p>
 <h3>
 <a id="webhook-payload-example-28" class="anchor" href="#webhook-payload-example-28" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
 
-<p>Deliveries for <code>review_requested</code> and <code>review_request_removed</code> events will have an additional field called <code>requested_reviewers</code>.</p>
+<p>Deliveries for <code>review_requested</code> and <code>review_request_removed</code> events will have an additional field called <code>requested_reviewer</code>.</p>
 
 <pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"opened"</span><span class="p">,</span><span class="w">
@@ -7645,6 +7628,12 @@ You cannot create webhooks that listen to these events.</p>
 
 <p>Triggered on a push to a repository branch. Branch pushes and repository tag pushes also trigger webhook <a href="/webhooks/#events"><code>push</code> events</a>.</p>
 
+<div class="alert note">
+
+<p><strong>Note:</strong> You will not receive a webhook for this event when you push more than three tags at once.</p>
+
+</div>
+
 <div class="alert tip">
 
 <p><strong>Note</strong>: The webhook payload example following the table differs significantly from the Events API payload described in the table. Among other differences, the webhook payload includes both <code>sender</code> and <code>pusher</code> objects. Sender and pusher are the same user who initiated the <code>push</code> event, but the <code>sender</code> object contains more detail.</p>
@@ -7666,7 +7655,7 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>ref</code></td>
 <td><code>string</code></td>
-<td>The full Git ref that was pushed. Example: <code>refs/heads/master</code>.</td>
+<td>The full <a href="/v3/git/refs/"><code>git ref</code></a> that was pushed. Example: <code>refs/heads/master</code>.</td>
 </tr>
 <tr>
 <td><code>head</code></td>
@@ -9684,7 +9673,7 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>team</code></td>
 <td><code>object</code></td>
-<td>The <a href="/v3/teams/">team</a> that was modified.  Note: older events may not include this in the payload.</td>
+<td>The <a href="/v3/teams/">team</a> that was modified.  <strong>Note:</strong> Older events may not include this in the payload.</td>
 </tr>
 <tr>
 <td><code>repository</code></td>
@@ -10184,6 +10173,7 @@ event’s repository is the <a href="/v3/repos/">repository</a> that was starred
     <option value="/v3/teams/discussions/">Discussions</option>
     <option value="/v3/teams/discussion_comments/">Discussion comments</option>
     <option value="/v3/teams/members/">Members</option>
+    <option value="/v3/teams/team_sync/">Team sunchronization</option> 
   </optgroup>
 
   
@@ -10402,6 +10392,7 @@ event’s repository is the <a href="/v3/repos/">repository</a> that was starred
           <li><a href="/v3/teams/discussions/">Discussions</a></li>
           <li><a href="/v3/teams/discussion_comments/">Discussion comments</a></li>
           <li><a href="/v3/teams/members/">Members</a></li>
+              <li><a href="/v3/teams/team_sync/">Team synchronization</a></li> 
         </ul>
       </li>
       
