@@ -6,7 +6,7 @@ const { cached, _: [command] } = require('yargs')
   .command('update', 'Update webhooks', yargs => {
     yargs
       .options({
-        'cached': {
+        cached: {
           describe: 'Load HTML from local cache',
           type: 'boolean',
           default: false
@@ -17,7 +17,7 @@ const { cached, _: [command] } = require('yargs')
   .command('check', 'Check if webhooks are up-to-date', yargs => {
     yargs
       .options({
-        'cached': {
+        cached: {
           describe: 'Load HTML from local cache',
           type: 'boolean',
           default: false
