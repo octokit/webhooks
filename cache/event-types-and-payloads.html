@@ -82,10 +82,6 @@
             <a class="dropdown-menu-item" data-proofer-ignore>GitHub Enterprise 2.15</a>
             
             
-            
-            <a class="dropdown-menu-item" data-proofer-ignore>GitHub Enterprise 2.14</a>
-            
-            
           </div>
       </div>
       <form accept-charset="UTF-8" action="#" class="site-header-nav-item site-header-search">
@@ -127,10 +123,12 @@
 
 
 
-  
+
   
 
  
+
+
 
     <div class="sub-nav mt-5 mb-3">
       <h2><a href="/v3/">REST API v3</a></h2>
@@ -190,14 +188,12 @@
     <option value="/v3/git/trees/">Trees</option>
   </optgroup>
 
-  
   <optgroup label="GitHub Apps">
     <option value="/v3/apps/">GitHub Apps overview</a></h3>
     <option value="/v3/apps/installations/">Installations</option>
     <option value="/v3/apps/permissions/">Permissions</option>
     <option value="/v3/apps/available-endpoints/">Available Endpoints</option>
   </optgroup>
-  
 
   
   <optgroup label="Marketplace">
@@ -322,6 +318,7 @@
     <option value="/v3/teams/discussions/">Discussions</option>
     <option value="/v3/teams/discussion_comments/">Discussion comments</option>
     <option value="/v3/teams/members/">Members</option>
+    <option value="/v3/teams/team_sync/">Team sunchronization</option> 
   </optgroup>
 
   
@@ -398,6 +395,7 @@ Webhooks configured on enterprise accounts or organizations that are part of an 
 <li><a href="#pushevent" id="markdown-toc-pushevent">PushEvent</a></li>
 <li><a href="#registrypackageevent" id="markdown-toc-registrypackageevent">RegistryPackageEvent</a></li>
 <li><a href="#releaseevent" id="markdown-toc-releaseevent">ReleaseEvent</a></li>
+<li><a href="#repositorydispatchevent" id="markdown-toc-repositorydispatchevent">RepositoryDispatchEvent</a></li>
 <li><a href="#repositoryevent" id="markdown-toc-repositoryevent">RepositoryEvent</a></li>
 <li><a href="#repositoryimportevent" id="markdown-toc-repositoryimportevent">RepositoryImportEvent</a></li>
 <li><a href="#repositoryvulnerabilityalertevent" id="markdown-toc-repositoryvulnerabilityalertevent">RepositoryVulnerabilityAlertEvent</a></li>
@@ -439,7 +437,7 @@ Webhooks configured on enterprise accounts or organizations that are part of an 
 <tr>
 <td><code>action</code></td>
 <td><code>string</code></td>
-<td>The action performed. Can be one of: <br>* <code>created</code> - A new check run was created.<br>* <code>completed</code> - The <code>status</code> of the check run is <code>completed</code>.<br>* <code>rerequested</code> - Someone requested to re-run your check run.<br>* <code>requested_action</code> - Someone requested that an action be taken. For example, this <code>action</code> will be sent if someone clicks a "Fix it" button in the UI. See <a href="/changes/2018-05-23-request-actions-on-checks/">Request further actions from a check run</a> for details.</td>
+<td>The action performed. Can be one of: <br>* <code>created</code> - A new check run was created.<br>* <code>completed</code> - The <code>status</code> of the check run is <code>completed</code>.<br>* <code>rerequested</code> - Someone requested to re-run your check run.<br>* <code>requested_action</code> - Someone requested that an action be taken. For example, this <code>action</code> will be sent if someone clicks a "Fix it" button in the UI. To learn more about check runs and requested actions, see "<a href="/v3/checks/runs/#check-runs-and-requested-actions">Check runs and requested actions</a>."</td>
 </tr>
 <tr>
 <td><code>check_run</code></td>
@@ -1438,9 +1436,13 @@ Webhooks configured on enterprise accounts or organizations that are part of an 
 <h2>
 <a id="createevent" class="anchor" href="#createevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CreateEvent</h2>
 
-<p>Represents a created repository, branch, or tag.</p>
+<p>Represents a created branch or tag.</p>
 
-<p>Note: webhooks will not receive this event for created repositories. Additionally, webhooks will not receive this event for tags if more than three tags are pushed at once.</p>
+<div class="alert note">
+
+<p><strong>Note:</strong> You will not receive a webhook for this event when you push more than three tags at once.</p>
+
+</div>
 
 <h3>
 <a id="events-api-payload-2" class="anchor" href="#events-api-payload-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
@@ -1457,13 +1459,12 @@ Webhooks configured on enterprise accounts or organizations that are part of an 
 <tr>
 <td><code>ref_type</code></td>
 <td><code>string</code></td>
-<td>The object that was created. Can be one of <code>repository</code>, <code>branch</code>, or <code>tag</code>
-</td>
+<td>The object that was created. Can be either <code>branch</code> or <code>tag</code>.</td>
 </tr>
 <tr>
 <td><code>ref</code></td>
 <td><code>string</code></td>
-<td>The git ref (or <code>null</code> if only a repository was created).</td>
+<td>The <a href="/v3/git/refs/"><code>git ref</code></a>.</td>
 </tr>
 <tr>
 <td><code>master_branch</code></td>
@@ -1615,7 +1616,11 @@ Webhooks configured on enterprise accounts or organizations that are part of an 
 
 <p>Represents a <a href="/v3/git/refs/#delete-a-reference">deleted branch or tag</a>.</p>
 
-<p>Note: webhooks will not receive this event for tags if more than three tags are deleted at once.</p>
+<div class="alert note">
+
+<p><strong>Note:</strong> You will not receive a webhook for this event when you delete more than three tags at once.</p>
+
+</div>
 
 <h3>
 <a id="events-api-payload-3" class="anchor" href="#events-api-payload-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
@@ -1637,7 +1642,7 @@ Webhooks configured on enterprise accounts or organizations that are part of an 
 <tr>
 <td><code>ref</code></td>
 <td><code>string</code></td>
-<td>The full git ref.</td>
+<td>The <a href="/v3/git/refs/"><code>git ref</code></a>.</td>
 </tr>
 </tbody>
 </table>
@@ -6106,7 +6111,7 @@ You cannot create webhooks that listen to these events.</p>
 <h3>
 <a id="webhook-payload-example-28" class="anchor" href="#webhook-payload-example-28" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
 
-<p>Deliveries for <code>review_requested</code> and <code>review_request_removed</code> events will have an additional field called <code>requested_reviewers</code>.</p>
+<p>Deliveries for <code>review_requested</code> and <code>review_request_removed</code> events will have an additional field called <code>requested_reviewer</code>.</p>
 
 <pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"opened"</span><span class="p">,</span><span class="w">
@@ -7645,6 +7650,12 @@ You cannot create webhooks that listen to these events.</p>
 
 <p>Triggered on a push to a repository branch. Branch pushes and repository tag pushes also trigger webhook <a href="/webhooks/#events"><code>push</code> events</a>.</p>
 
+<div class="alert note">
+
+<p><strong>Note:</strong> You will not receive a webhook for this event when you push more than three tags at once.</p>
+
+</div>
+
 <div class="alert tip">
 
 <p><strong>Note</strong>: The webhook payload example following the table differs significantly from the Events API payload described in the table. Among other differences, the webhook payload includes both <code>sender</code> and <code>pusher</code> objects. Sender and pusher are the same user who initiated the <code>push</code> event, but the <code>sender</code> object contains more detail.</p>
@@ -7666,7 +7677,7 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>ref</code></td>
 <td><code>string</code></td>
-<td>The full Git ref that was pushed. Example: <code>refs/heads/master</code>.</td>
+<td>The full <a href="/v3/git/refs/"><code>git ref</code></a> that was pushed. Example: <code>refs/heads/master</code>.</td>
 </tr>
 <tr>
 <td><code>head</code></td>
@@ -8389,6 +8400,158 @@ You cannot create webhooks that listen to these events.</p>
 
 
 <h2>
+<a id="repositorydispatchevent" class="anchor" href="#repositorydispatchevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RepositoryDispatchEvent</h2>
+
+<p>Triggered when a GitHub App sends a <code>POST</code> request to the "<a href="/v3/repos/#create-a-repository-dispatch-event">Create a repository dispatch event</a>" endpoint.</p>
+
+<h3>
+<a id="webhook-event-name-39" class="anchor" href="#webhook-event-name-39" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
+
+<p><code>repository_dispatch</code></p>
+
+<h3>
+<a id="webhook-payload-example-34" class="anchor" href="#webhook-payload-example-34" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
+
+<pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"html.preview"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"branch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"master"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"270d8ccac611aa63ce26a31049570fb0e4f41586"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"repository"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17273051</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDEwOlJlcG9zaXRvcnkxNzI3MzA1MQ=="</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"octo-repo"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"octo-org/octo-repo"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"private"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"octo-org"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6811672</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDEyOk9yZ2FuaXphdGlvbjY4MTE2NzI="</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://avatars3.githubusercontent.com/u/6811672?v=4"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"gravatar_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octo-org"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"html_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/octo-org"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"followers_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octo-org/followers"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"following_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octo-org/following{/other_user}"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"gists_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octo-org/gists{/gist_id}"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"starred_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octo-org/starred{/owner}{/repo}"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"subscriptions_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octo-org/subscriptions"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"organizations_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octo-org/orgs"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"repos_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octo-org/repos"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octo-org/events{/privacy}"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"received_events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octo-org/received_events"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organization"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"site_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"html_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/octo-org/octo-repo"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My first repo on GitHub!"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fork"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"forks_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/forks"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"keys_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/keys{/key_id}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"collaborators_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/collaborators{/collaborator}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"teams_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/teams"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"hooks_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/hooks"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"issue_events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/issues/events{/number}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/events"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"assignees_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/assignees{/user}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"branches_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/branches{/branch}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tags_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/tags"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"blobs_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/git/blobs{/sha}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"git_tags_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/git/tags{/sha}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"git_refs_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/git/refs{/sha}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"trees_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/git/trees{/sha}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"statuses_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/statuses/{sha}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"languages_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/languages"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"stargazers_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/stargazers"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"contributors_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/contributors"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"subscribers_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/subscribers"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"subscription_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/subscription"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"commits_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/commits{/sha}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"git_commits_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/git/commits{/sha}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"comments_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/comments{/number}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"issue_comment_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/issues/comments{/number}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"contents_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/contents/{+path}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"compare_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/compare/{base}...{head}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"merges_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/merges"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"archive_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/{archive_format}{/ref}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"downloads_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/downloads"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"issues_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/issues{/number}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pulls_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/pulls{/number}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"milestones_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/milestones{/number}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"notifications_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/notifications{?since,all,participating}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"labels_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/labels{/name}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"releases_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/releases{/id}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deployments_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/octo-org/octo-repo/deployments"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-02-28T02:42:51Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-10T15:58:51Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pushed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-10T15:58:47Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"git_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git://github.com/octo-org/octo-repo.git"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ssh_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git@github.com:octo-org/octo-repo.git"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"clone_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/octo-org/octo-repo.git"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"svn_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/octo-org/octo-repo"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"homepage"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">59</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"stargazers_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"watchers_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JavaScript"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"has_issues"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"has_projects"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"has_downloads"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"has_wiki"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"has_pages"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"forks_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mirror_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"archived"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"open_issues_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"license"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"forks"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"open_issues"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"watchers"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"default_branch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"master"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"organization"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"octo-org"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6811672</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDEyOk9yZ2FuaXphdGlvbjY4MTE2NzI="</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/orgs/octo-org"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"repos_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/orgs/octo-org/repos"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/orgs/octo-org/events"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"hooks_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/orgs/octo-org/hooks"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"issues_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/orgs/octo-org/issues"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"members_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/orgs/octo-org/members{/member}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"public_members_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/orgs/octo-org/public_members{/member}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://avatars3.githubusercontent.com/u/6811672?v=4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Working better together!"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Codertocat"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21031067</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDQ6VXNlcjIxMDMxMDY3"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://avatars1.githubusercontent.com/u/21031067?v=4"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"gravatar_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"html_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/Codertocat"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"followers_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/followers"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"following_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/following{/other_user}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"gists_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/gists{/gist_id}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"starred_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/starred{/owner}{/repo}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"subscriptions_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/subscriptions"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"organizations_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/orgs"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"repos_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/repos"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/events{/privacy}"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"received_events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/received_events"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"site_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"installation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">375706</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDIzOkludGVncmF0aW9uSW5zdGFsbGF0aW9uMzc1NzA2"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+
+<h2>
 <a id="repositoryevent" class="anchor" href="#repositoryevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RepositoryEvent</h2>
 
 <p>Triggered when a repository is <code>created</code>, <code>archived</code>, <code>unarchived</code>, <code>renamed</code>, <code>edited</code>, <code>transferred</code>, made public, or made private. <a href="/v3/orgs/hooks/">Organization hooks</a> are also triggered when a repository is <code>deleted</code>.</p>
@@ -8421,12 +8584,12 @@ You cannot create webhooks that listen to these events.</p>
 </table>
 
 <h3>
-<a id="webhook-event-name-39" class="anchor" href="#webhook-event-name-39" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
+<a id="webhook-event-name-40" class="anchor" href="#webhook-event-name-40" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
 
 <p><code>repository</code></p>
 
 <h3>
-<a id="webhook-payload-example-34" class="anchor" href="#webhook-payload-example-34" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
+<a id="webhook-payload-example-35" class="anchor" href="#webhook-payload-example-35" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
 
 <pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"publicized"</span><span class="p">,</span><span class="w">
@@ -8589,12 +8752,12 @@ You cannot create webhooks that listen to these events.</p>
 </table>
 
 <h3>
-<a id="webhook-event-name-40" class="anchor" href="#webhook-event-name-40" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
+<a id="webhook-event-name-41" class="anchor" href="#webhook-event-name-41" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
 
 <p><code>repository_import</code></p>
 
 <h3>
-<a id="webhook-payload-example-35" class="anchor" href="#webhook-payload-example-35" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
+<a id="webhook-payload-example-36" class="anchor" href="#webhook-payload-example-36" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
 
 <pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
@@ -8760,12 +8923,12 @@ You cannot create webhooks that listen to these events.</p>
 </table>
 
 <h3>
-<a id="webhook-event-name-41" class="anchor" href="#webhook-event-name-41" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
+<a id="webhook-event-name-42" class="anchor" href="#webhook-event-name-42" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
 
 <p><code>repository_vulnerability_alert</code></p>
 
 <h3>
-<a id="webhook-payload-example-36" class="anchor" href="#webhook-payload-example-36" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
+<a id="webhook-payload-example-37" class="anchor" href="#webhook-payload-example-37" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
 
 <pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"create"</span><span class="p">,</span><span class="w">
@@ -8926,12 +9089,12 @@ You cannot create webhooks that listen to these events.</p>
 </table>
 
 <h3>
-<a id="webhook-event-name-42" class="anchor" href="#webhook-event-name-42" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
+<a id="webhook-event-name-43" class="anchor" href="#webhook-event-name-43" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
 
 <p><code>security_advisory</code></p>
 
 <h3>
-<a id="webhook-payload-example-37" class="anchor" href="#webhook-payload-example-37" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
+<a id="webhook-payload-example-38" class="anchor" href="#webhook-payload-example-38" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
 
 <pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"published"</span><span class="p">,</span><span class="w">
@@ -9018,12 +9181,12 @@ You cannot create webhooks that listen to these events.</p>
 </table>
 
 <h3>
-<a id="webhook-event-name-43" class="anchor" href="#webhook-event-name-43" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
+<a id="webhook-event-name-44" class="anchor" href="#webhook-event-name-44" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
 
 <p><code>star</code></p>
 
 <h3>
-<a id="webhook-payload-example-38" class="anchor" href="#webhook-payload-example-38" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
+<a id="webhook-payload-example-39" class="anchor" href="#webhook-payload-example-39" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
 
 <pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
@@ -9194,12 +9357,12 @@ You cannot create webhooks that listen to these events.</p>
 </table>
 
 <h3>
-<a id="webhook-event-name-44" class="anchor" href="#webhook-event-name-44" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
+<a id="webhook-event-name-45" class="anchor" href="#webhook-event-name-45" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
 
 <p><code>status</code></p>
 
 <h3>
-<a id="webhook-payload-example-39" class="anchor" href="#webhook-payload-example-39" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
+<a id="webhook-payload-example-40" class="anchor" href="#webhook-payload-example-40" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
 
 <pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6805126730</span><span class="p">,</span><span class="w">
@@ -9503,12 +9666,12 @@ You cannot create webhooks that listen to these events.</p>
 </table>
 
 <h3>
-<a id="webhook-event-name-45" class="anchor" href="#webhook-event-name-45" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
+<a id="webhook-event-name-46" class="anchor" href="#webhook-event-name-46" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
 
 <p><code>team</code></p>
 
 <h3>
-<a id="webhook-payload-example-40" class="anchor" href="#webhook-payload-example-40" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
+<a id="webhook-payload-example-41" class="anchor" href="#webhook-payload-example-41" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
 
 <pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"added_to_repository"</span><span class="p">,</span><span class="w">
@@ -9684,7 +9847,7 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>team</code></td>
 <td><code>object</code></td>
-<td>The <a href="/v3/teams/">team</a> that was modified.  Note: older events may not include this in the payload.</td>
+<td>The <a href="/v3/teams/">team</a> that was modified.  <strong>Note:</strong> Older events may not include this in the payload.</td>
 </tr>
 <tr>
 <td><code>repository</code></td>
@@ -9695,12 +9858,12 @@ You cannot create webhooks that listen to these events.</p>
 </table>
 
 <h3>
-<a id="webhook-event-name-46" class="anchor" href="#webhook-event-name-46" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
+<a id="webhook-event-name-47" class="anchor" href="#webhook-event-name-47" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
 
 <p><code>team_add</code></p>
 
 <h3>
-<a id="webhook-payload-example-41" class="anchor" href="#webhook-payload-example-41" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
+<a id="webhook-payload-example-42" class="anchor" href="#webhook-payload-example-42" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
 
 <pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"team"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -9878,12 +10041,12 @@ event’s repository is the <a href="/v3/repos/">repository</a> that was starred
 </table>
 
 <h3>
-<a id="webhook-event-name-47" class="anchor" href="#webhook-event-name-47" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
+<a id="webhook-event-name-48" class="anchor" href="#webhook-event-name-48" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
 
 <p><code>watch</code></p>
 
 <h3>
-<a id="webhook-payload-example-42" class="anchor" href="#webhook-payload-example-42" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
+<a id="webhook-payload-example-43" class="anchor" href="#webhook-payload-example-43" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
 
 <pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"started"</span><span class="p">,</span><span class="w">
@@ -10052,14 +10215,12 @@ event’s repository is the <a href="/v3/repos/">repository</a> that was starred
     <option value="/v3/git/trees/">Trees</option>
   </optgroup>
 
-  
   <optgroup label="GitHub Apps">
     <option value="/v3/apps/">GitHub Apps overview</a></h3>
     <option value="/v3/apps/installations/">Installations</option>
     <option value="/v3/apps/permissions/">Permissions</option>
     <option value="/v3/apps/available-endpoints/">Available Endpoints</option>
   </optgroup>
-  
 
   
   <optgroup label="Marketplace">
@@ -10184,6 +10345,7 @@ event’s repository is the <a href="/v3/repos/">repository</a> that was starred
     <option value="/v3/teams/discussions/">Discussions</option>
     <option value="/v3/teams/discussion_comments/">Discussion comments</option>
     <option value="/v3/teams/members/">Members</option>
+    <option value="/v3/teams/team_sync/">Team sunchronization</option> 
   </optgroup>
 
   
@@ -10257,7 +10419,6 @@ event’s repository is the <a href="/v3/repos/">repository</a> that was starred
           <li><a href="/v3/git/trees/">Trees</a></li>
         </ul>
       </li>
-      
       <li class="js-topic">
         <h3><a href="#" class="js-expand-btn collapsed arrow-btn" data-proofer-ignore></a><a href="/v3/apps/">GitHub Apps</a></h3>
         <ul class="js-guides">
@@ -10266,7 +10427,6 @@ event’s repository is the <a href="/v3/repos/">repository</a> that was starred
           <li><a href="/v3/apps/available-endpoints/">Available Endpoints</a></li>
         </ul>
       </li>
-      
       
       <li class="js-topic">
         <h3 class="standalone">
@@ -10402,6 +10562,7 @@ event’s repository is the <a href="/v3/repos/">repository</a> that was starred
           <li><a href="/v3/teams/discussions/">Discussions</a></li>
           <li><a href="/v3/teams/discussion_comments/">Discussion comments</a></li>
           <li><a href="/v3/teams/members/">Members</a></li>
+              <li><a href="/v3/teams/team_sync/">Team synchronization</a></li> 
         </ul>
       </li>
       
