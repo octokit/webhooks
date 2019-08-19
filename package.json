@@ -13,7 +13,7 @@
     "fs-extra": "^8.0.0",
     "json-diff": "^0.5.3",
     "semantic-release": "^15.12.4",
-    "standard": "^13.0.1",
+    "standard": "^14.0.0",
     "yargs": "^14.0.0"
   },
   "scripts": {
