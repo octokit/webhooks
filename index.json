@@ -6292,9 +6292,12 @@
     "actions": [],
     "examples": [
       {
-        "action": "html.preview",
+        "action": "on-demand-test",
         "branch": "master",
-        "ref": "270d8ccac611aa63ce26a31049570fb0e4f41586",
+        "client_payload": {
+          "unit": false,
+          "integration": true
+        },
         "repository": {
           "id": 17273051,
           "node_id": "MDEwOlJlcG9zaXRvcnkxNzI3MzA1MQ==",
