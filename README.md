@@ -2,7 +2,7 @@
 
 > machine-readable, always up-to-date GitHub Webhooks specifications
 
-[![Build Status](https://travis-ci.com/octokit/webhooks.svg?branch=master)](https://travis-ci.com/octokit/webhooks) [![Greenkeeper badge](https://badges.greenkeeper.io/octokit/webhooks.svg)](https://greenkeeper.io/)
+![Update status](https://github.com/octokit/webhooks/workflows/Update/badge.svg) [![Greenkeeper badge](https://badges.greenkeeper.io/octokit/webhooks.svg)](https://greenkeeper.io/)
 
 ## Download
 
