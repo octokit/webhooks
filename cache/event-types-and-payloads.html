@@ -351,10 +351,12 @@
 
 <p><a href="/v3/repos/hooks/">Repository webhooks</a> use event names to specify which events trigger the webhook. The following webhook payload examples are grouped with their corresponding event returned by the <a href="/v3/activity/events/">Events API</a> (except where noted). The Events API uses the CamelCased name (e.g. <code>CommitCommentEvent</code>) in the <code>type</code> field of an event object and does not include the <code>repository</code> or <code>sender</code> fields you see in the webhook payload object. Webhook event names use the event name in lowercase (e.g. <code>commit_comment</code>).</p>
 
-<div class="alert product"><p>
+<p>Webhooks configured on enterprise accounts or organizations that are part of an enterprise account will include an <code>enterprise</code> account object.</p><div class="alert product">
+<p></p>
 
-Webhooks configured on enterprise accounts or organizations that are part of an enterprise account will include an <code>enterprise</code> account object. Enterprise accounts are available with GitHub Enterprise Cloud and may be connected to GitHub Enterprise Server. For more information, see <a href="https://help.github.com/en/articles/about-enterprise-accounts">About enterprise accounts</a> in the GitHub Help documentation.
-</p></div>
+<p>Enterprise accounts are available with GitHub Enterprise Cloud and may be connected to GitHub Enterprise Server. For more information, see <a href="https://help.github.com/en/articles/about-enterprise-accounts">About enterprise accounts</a> in the GitHub Help documentation.
+</p>
+</div>
 
 <ul id="markdown-toc">
 <li><a href="#checkrunevent" id="markdown-toc-checkrunevent">CheckRunEvent</a></li>
