@@ -76,6 +76,8 @@
             
             <a class="dropdown-menu-item" data-proofer-ignore>GitHub Enterprise Server 2.17</a>
             
+            <a class="dropdown-menu-item" data-proofer-ignore>GitHub Enterprise Server 2.16</a>
+            
           </div>
       </div>
       <form accept-charset="UTF-8" action="#" class="site-header-nav-item site-header-search">
@@ -121,8 +123,6 @@
   
 
  
-
-
 
 
 
@@ -185,18 +185,6 @@
     <option value="/v3/git/tags/">Tags</option>
     <option value="/v3/git/trees/">Trees</option>
   </optgroup>
-
-
-  <optgroup label="GitHub Actions">
-    <option value="/v3/actions/">GitHub Actions Overview</a></h3>
-    <option value="/v3/actions/artifacts/">Artifacts</option>
-    <option value="/v3/actions/secrets/">Secrets</option>
-    <option value="/v3/actions/self_hosted_runners/">Self-hosted runners</option>
-    <option value="/v3/actions/workflows/">Workflows</option>
-    <option value="/v3/actions/workflow_jobs/">Workflow jobs</option>
-    <option value="/v3/actions/workflow_runs/">Workflow runs</option>
-  </optgroup>
-
 
   <optgroup label="GitHub Apps">
     <option value="/v3/apps/">GitHub Apps overview</a></h3>
@@ -363,12 +351,10 @@
 
 <p><a href="/v3/repos/hooks/">Repository webhooks</a> use event names to specify which events trigger the webhook. The following webhook payload examples are grouped with their corresponding event returned by the <a href="/v3/activity/events/">Events API</a> (except where noted). The Events API uses the CamelCased name (e.g. <code>CommitCommentEvent</code>) in the <code>type</code> field of an event object and does not include the <code>repository</code> or <code>sender</code> fields you see in the webhook payload object. Webhook event names use the event name in lowercase (e.g. <code>commit_comment</code>).</p>
 
-<p>Webhooks configured on enterprise accounts or organizations that are part of an enterprise account will include an <code>enterprise</code> account object.</p><div class="alert product">
-<p></p>
+<div class="alert product"><p>
 
-<p>Enterprise accounts are available with GitHub Enterprise Cloud and may be connected to GitHub Enterprise Server. For more information, see <a href="https://help.github.com/en/articles/about-enterprise-accounts">About enterprise accounts</a> in the GitHub Help documentation.
-</p>
-</div>
+Webhooks configured on enterprise accounts or organizations that are part of an enterprise account will include an <code>enterprise</code> account object. Enterprise accounts are available with GitHub Enterprise Cloud and may be connected to GitHub Enterprise Server. For more information, see <a href="https://help.github.com/en/articles/about-enterprise-accounts">About enterprise accounts</a> in the GitHub Help documentation.
+</p></div>
 
 <ul id="markdown-toc">
 <li><a href="#checkrunevent" id="markdown-toc-checkrunevent">CheckRunEvent</a></li>
@@ -399,7 +385,6 @@
 <li><a href="#milestoneevent" id="markdown-toc-milestoneevent">MilestoneEvent</a></li>
 <li><a href="#organizationevent" id="markdown-toc-organizationevent">OrganizationEvent</a></li>
 <li><a href="#orgblockevent" id="markdown-toc-orgblockevent">OrgBlockEvent</a></li>
-<li><a href="#packageevent" id="markdown-toc-packageevent">PackageEvent</a></li>
 <li><a href="#pagebuildevent" id="markdown-toc-pagebuildevent">PageBuildEvent</a></li>
 <li><a href="#projectcardevent" id="markdown-toc-projectcardevent">ProjectCardEvent</a></li>
 <li><a href="#projectcolumnevent" id="markdown-toc-projectcolumnevent">ProjectColumnEvent</a></li>
@@ -409,13 +394,13 @@
 <li><a href="#pullrequestreviewevent" id="markdown-toc-pullrequestreviewevent">PullRequestReviewEvent</a></li>
 <li><a href="#pullrequestreviewcommentevent" id="markdown-toc-pullrequestreviewcommentevent">PullRequestReviewCommentEvent</a></li>
 <li><a href="#pushevent" id="markdown-toc-pushevent">PushEvent</a></li>
+<li><a href="#registrypackageevent" id="markdown-toc-registrypackageevent">RegistryPackageEvent</a></li>
 <li><a href="#releaseevent" id="markdown-toc-releaseevent">ReleaseEvent</a></li>
 <li><a href="#repositorydispatchevent" id="markdown-toc-repositorydispatchevent">RepositoryDispatchEvent</a></li>
 <li><a href="#repositoryevent" id="markdown-toc-repositoryevent">RepositoryEvent</a></li>
 <li><a href="#repositoryimportevent" id="markdown-toc-repositoryimportevent">RepositoryImportEvent</a></li>
 <li><a href="#repositoryvulnerabilityalertevent" id="markdown-toc-repositoryvulnerabilityalertevent">RepositoryVulnerabilityAlertEvent</a></li>
 <li><a href="#securityadvisoryevent" id="markdown-toc-securityadvisoryevent">SecurityAdvisoryEvent</a></li>
-<li><a href="#sponsorshipevent" id="markdown-toc-sponsorshipevent">SponsorshipEvent</a></li>
 <li><a href="#starevent" id="markdown-toc-starevent">StarEvent</a></li>
 <li><a href="#statusevent" id="markdown-toc-statusevent">StatusEvent</a></li>
 <li><a href="#teamevent" id="markdown-toc-teamevent">TeamEvent</a></li>
@@ -3129,7 +3114,6 @@ You cannot create webhooks that listen to these events.</p>
   </span><span class="nt">"repositories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1296269</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDEwOlJlcG9zaXRvcnkxODY4NTMwMDc="</span><span class="p">,</span><span class="w">
       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello-World"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"octocat/Hello-World"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"private"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
@@ -4245,7 +4229,7 @@ You cannot create webhooks that listen to these events.</p>
 <tr>
 <td><code>action</code></td>
 <td><code>string</code></td>
-<td>The action that was performed. Can be one of <code>added</code>, <code>removed</code>, or <code>edited</code>.</td>
+<td>The action that was performed. Can be one of <code>added</code>, <code>deleted</code>, or <code>edited</code>.</td>
 </tr>
 <tr>
 <td><code>changes</code></td>
@@ -5153,301 +5137,6 @@ You cannot create webhooks that listen to these events.</p>
 
 
 <h2>
-<a id="packageevent" class="anchor" href="#packageevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PackageEvent</h2>
-
-<p>Triggered when a package version is <code>published</code> or <code>updated</code> in GitHub Packages. See "<a href="https://help.github.com/github/managing-packages-with-github-packages">Managing packages with GitHub Packages</a>" in the GitHub Help documentation to learn more about GitHub Packages.</p>
-
-<h3>
-<a id="events-api-payload-25" class="anchor" href="#events-api-payload-25" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
-
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>action</code></td>
-<td><code>string</code></td>
-<td>The action that was performed. Can be <code>published</code> or <code>updated</code>.</td>
-</tr>
-<tr>
-<td><code>package</code></td>
-<td><code>object</code></td>
-<td>Information about the package.</td>
-</tr>
-<tr>
-<td><code>repository</code></td>
-<td><code>object</code></td>
-<td>The <a href="/v3/repos/">repository</a> object.</td>
-</tr>
-<tr>
-<td><code>organization</code></td>
-<td><code>object</code></td>
-<td>The <a href="/v3/orgs/">organization</a> object.</td>
-</tr>
-<tr>
-<td><code>sender</code></td>
-<td><code>object</code></td>
-<td>The GitHub user who is importing the repository.</td>
-</tr>
-</tbody>
-</table>
-
-<h3>
-<a id="webhook-event-name-28" class="anchor" href="#webhook-event-name-28" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
-
-<p><code>package</code></p>
-
-<h3>
-<a id="webhook-payload-example-22" class="anchor" href="#webhook-payload-example-22" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
-
-<pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"action"</span><span class="p">:</span><span class="s2">"published"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"package"</span><span class="p">:{</span><span class="w">
-       </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">10696</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"hello-world-npm"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"package_type"</span><span class="p">:</span><span class="s2">"npm"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"html_url"</span><span class="p">:</span><span class="s2">"https://github.com/Codertocat/hello-world-npm/packages/10696"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2019-05-09T23:28:29Z"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2019-05-09T23:28:29Z"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"owner"</span><span class="p">:{</span><span class="w">
-          </span><span class="nt">"login"</span><span class="p">:</span><span class="s2">"Codertocat"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">21031067</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"node_id"</span><span class="p">:</span><span class="s2">"MDQ6VXNlcjIxMDMxMDY3"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="s2">"https://avatars1.githubusercontent.com/u/21031067?v=4"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"gravatar_id"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"html_url"</span><span class="p">:</span><span class="s2">"https://github.com/Codertocat"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"followers_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/followers"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"following_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/following{/other_user}"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"gists_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/gists{/gist_id}"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"starred_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/starred{/owner}{/repo}"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"subscriptions_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/subscriptions"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"organizations_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/orgs"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"repos_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/repos"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"events_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/events{/privacy}"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"received_events_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/received_events"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"User"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"site_admin"</span><span class="p">:</span><span class="kc">false</span><span class="w">
-       </span><span class="p">},</span><span class="w">
-       </span><span class="nt">"package_version"</span><span class="p">:{</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">24147</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"version"</span><span class="p">:</span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"summary"</span><span class="p">:</span><span class="s2">"A simple npm package to demonstrate GitHub Packages"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"body"</span><span class="p">:</span><span class="s2">"# hello-world-npm\n\nThis is a simple npm package that demonstrates the [Github Packages](https://github.com/features/package).\n\n## Installation \n\n`$ npm install`\n\n## Usage\n\n```\nconst myPackage = require('hello-world-node-package');\nmyPackage.helloWorld();\n```\n\n"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"body_html"</span><span class="p">:</span><span class="s2">"&lt;h1&gt;hello-world-npm&lt;/h1&gt;\n&lt;p&gt;This is a simple npm package that demonstrates the &lt;a href=\"https://github.com/features/package\"&gt;Github Package Registry&lt;/a&gt;.&lt;/p&gt;\n&lt;h2&gt;Installation&lt;/h2&gt;\n&lt;p&gt;&lt;code&gt;$ npm install&lt;/code&gt;&lt;/p&gt;\n&lt;h2&gt;Usage&lt;/h2&gt;\n&lt;pre&gt;&lt;code&gt;const myPackage = require('hello-world-node-package');\nmyPackage.helloWorld();\n&lt;/code&gt;&lt;/pre&gt;"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"release"</span><span class="p">:{</span><span class="w">
-             </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/releases/17264286"</span><span class="p">,</span><span class="w">
-             </span><span class="nt">"html_url"</span><span class="p">:</span><span class="s2">"https://github.com/Codertocat/hello-world-npm/releases/tag/1.0.0"</span><span class="p">,</span><span class="w">
-             </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">17264286</span><span class="p">,</span><span class="w">
-             </span><span class="nt">"tag_name"</span><span class="p">:</span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
-             </span><span class="nt">"target_commitish"</span><span class="p">:</span><span class="s2">"master"</span><span class="p">,</span><span class="w">
-             </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
-             </span><span class="nt">"draft"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-             </span><span class="nt">"author"</span><span class="p">:{</span><span class="w">
-                </span><span class="nt">"login"</span><span class="p">:</span><span class="s2">"Codertocat"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">21031067</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"node_id"</span><span class="p">:</span><span class="s2">"MDQ6VXNlcjIxMDMxMDY3"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="s2">"https://avatars1.githubusercontent.com/u/21031067?v=4"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"gravatar_id"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"html_url"</span><span class="p">:</span><span class="s2">"https://github.com/Codertocat"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"followers_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/followers"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"following_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/following{/other_user}"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"gists_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/gists{/gist_id}"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"starred_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/starred{/owner}{/repo}"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"subscriptions_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/subscriptions"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"organizations_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/orgs"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"repos_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/repos"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"events_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/events{/privacy}"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"received_events_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/received_events"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"User"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"site_admin"</span><span class="p">:</span><span class="kc">false</span><span class="w">
-             </span><span class="p">},</span><span class="w">
-             </span><span class="nt">"prerelease"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-             </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2019-05-09T23:24:40Z"</span><span class="p">,</span><span class="w">
-             </span><span class="nt">"published_at"</span><span class="p">:</span><span class="s2">"2019-05-09T23:26:59Z"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nt">"manifest"</span><span class="p">:</span><span class="s2">"{\"_from\":\"\",\"_id\":\"@codertocat/hello-world-npm@1.0.0\",\"_nodeVersion\":\"10.0.0\",\"_npmUser\":{},\"_npmVersion\":\"5.6.0\",\"_shasum\":\"\",\"author\":{\"name\":\"Codertocat\"},\"bugs\":{\"url\":\"https://github.com/Codertocat/hello-world-npm/issues\"},\"description\":\"A simple npm package to demonstrate GitHub Package Registry\",\"dependencies\":null,\"devDependencies\":null,\"peerDependencies\":null,\"dist\":{\"integrity\":\"sha512-CcChRwjJk+pvGVERbgdjc0w5h6HrOs6jK6OJuHmFcmbnGuhiy9tPMtb4WcSSdvwrktAxf96LsJBNqeIHAEHl3A==\",\"shasum\":\"a413c56a12997ca1b56715ebe81d8c6e0ffe6abb\",\"tarball\":\"http://npm.pkg.github.com/@codertocat/hello-world-npm/-/@codertocat/hello-world-npm-1.0.0.tgz\"},\"gitHead\":\"6c62fb45fe66bfb1ea9a66abc38f6a0cc974292b\",\"homepage\":\"https://github.com/Codertocat/hello-world-npm#readme\",\"license\":\"ISC\",\"main\":\"index.js\",\"name\":\"@codertocat/hello-world-npm\",\"repository\":{\"type\":\"git\",\"url\":\"git+https://github.com/Codertocat/hello-world-npm.git\"},\"scripts\":{\"test\":\"echo \\\"Error: no test specified\\\" \\u0026\\u0026 exit 1\"},\"version\":\"1.0.0\"}"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"html_url"</span><span class="p">:</span><span class="s2">"https://github.com/Codertocat/hello-world-npm/packages/10696?version=1.0.0"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"tag_name"</span><span class="p">:</span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"target_commitish"</span><span class="p">:</span><span class="s2">"master"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"target_oid"</span><span class="p">:</span><span class="s2">"6c62fb45fe66bfb1ea9a66abc38f6a0cc974292b"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"draft"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"prerelease"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2019-05-09T23:28:29Z"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2019-05-09T23:28:30Z"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"metadata"</span><span class="p">:[</span><span class="w">
-
-          </span><span class="p">],</span><span class="w">
-          </span><span class="nt">"package_files"</span><span class="p">:[</span><span class="w">
-             </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"download_url"</span><span class="p">:</span><span class="s2">"https://github-production-package-file-4f11e5.s3.amazonaws.com/185882436/3e6d9b00-7288-11e9-9d72-c0df4c711800?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20190509%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20190509T232830Z&amp;X-Amz-Expires=300&amp;X-Amz-Signature=4b825c49cd93370123a77d0f97a4ebb0d44efb76da46faf1e382f0c668b35819&amp;X-Amz-SignedHeaders=host&amp;actor_id=0&amp;response-content-disposition=filename%3Dhello-world-npm-1.0.0-npm.tgz&amp;response-content-type=application%2Foctet-stream"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">92167</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"hello-world-npm-1.0.0-npm.tgz"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"sha256"</span><span class="p">:</span><span class="s2">"ba703915435b6ca2ca666b5d8332db34bf9dc37a198ed70d3a5fa5d08b8415c8"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"sha1"</span><span class="p">:</span><span class="s2">"a413c56a12997ca1b56715ebe81d8c6e0ffe6abb"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"md5"</span><span class="p">:</span><span class="s2">"56ebbd5a5a03367f62d0c732bafd3c66"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"content_type"</span><span class="p">:</span><span class="s2">"application/octet-stream"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"state"</span><span class="p">:</span><span class="s2">"uploaded"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"size"</span><span class="p">:</span><span class="mi">654</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2019-05-09T23:28:30Z"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2019-05-09T23:28:30Z"</span><span class="w">
-             </span><span class="p">}</span><span class="w">
-          </span><span class="p">],</span><span class="w">
-          </span><span class="nt">"author"</span><span class="p">:{</span><span class="w">
-             </span><span class="nt">"login"</span><span class="p">:</span><span class="s2">"Codertocat"</span><span class="p">,</span><span class="w">
-             </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">21031067</span><span class="p">,</span><span class="w">
-             </span><span class="nt">"node_id"</span><span class="p">:</span><span class="s2">"MDQ6VXNlcjIxMDMxMDY3"</span><span class="p">,</span><span class="w">
-             </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="s2">"https://avatars1.githubusercontent.com/u/21031067?v=4"</span><span class="p">,</span><span class="w">
-             </span><span class="nt">"gravatar_id"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-             </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat"</span><span class="p">,</span><span class="w">
-             </span><span class="nt">"html_url"</span><span class="p">:</span><span class="s2">"https://github.com/Codertocat"</span><span class="p">,</span><span class="w">
-             </span><span class="nt">"followers_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/followers"</span><span class="p">,</span><span class="w">
-             </span><span class="nt">"following_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/following{/other_user}"</span><span class="p">,</span><span class="w">
-             </span><span class="nt">"gists_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/gists{/gist_id}"</span><span class="p">,</span><span class="w">
-             </span><span class="nt">"starred_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/starred{/owner}{/repo}"</span><span class="p">,</span><span class="w">
-             </span><span class="nt">"subscriptions_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/subscriptions"</span><span class="p">,</span><span class="w">
-             </span><span class="nt">"organizations_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/orgs"</span><span class="p">,</span><span class="w">
-             </span><span class="nt">"repos_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/repos"</span><span class="p">,</span><span class="w">
-             </span><span class="nt">"events_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/events{/privacy}"</span><span class="p">,</span><span class="w">
-             </span><span class="nt">"received_events_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/received_events"</span><span class="p">,</span><span class="w">
-             </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"User"</span><span class="p">,</span><span class="w">
-             </span><span class="nt">"site_admin"</span><span class="p">:</span><span class="kc">false</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nt">"installation_command"</span><span class="p">:</span><span class="s2">"npm install @Codertocat/@1.0.0"</span><span class="w">
-       </span><span class="p">},</span><span class="w">
-       </span><span class="nt">"registry"</span><span class="p">:{</span><span class="w">
-          </span><span class="nt">"about_url"</span><span class="p">:</span><span class="s2">"https://help.github.com/about-github-packages"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"GitHub npm registry"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"npm"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https://npm.pkg.github.com/@Codertocat"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"vendor"</span><span class="p">:</span><span class="s2">"GitHub Inc"</span><span class="w">
-       </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"repository"</span><span class="p">:{</span><span class="w">
-       </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">185882436</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"node_id"</span><span class="p">:</span><span class="s2">"MDEwOlJlcG9zaXRvcnkxODU4ODI0MzY="</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"hello-world-npm"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"full_name"</span><span class="p">:</span><span class="s2">"Codertocat/hello-world-npm"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"private"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"owner"</span><span class="p">:{</span><span class="w">
-          </span><span class="nt">"login"</span><span class="p">:</span><span class="s2">"Codertocat"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">21031067</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"node_id"</span><span class="p">:</span><span class="s2">"MDQ6VXNlcjIxMDMxMDY3"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="s2">"https://avatars1.githubusercontent.com/u/21031067?v=4"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"gravatar_id"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"html_url"</span><span class="p">:</span><span class="s2">"https://github.com/Codertocat"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"followers_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/followers"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"following_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/following{/other_user}"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"gists_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/gists{/gist_id}"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"starred_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/starred{/owner}{/repo}"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"subscriptions_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/subscriptions"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"organizations_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/orgs"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"repos_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/repos"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"events_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/events{/privacy}"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"received_events_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/received_events"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"User"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"site_admin"</span><span class="p">:</span><span class="kc">false</span><span class="w">
-       </span><span class="p">},</span><span class="w">
-       </span><span class="nt">"html_url"</span><span class="p">:</span><span class="s2">"https://github.com/Codertocat/hello-world-npm"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"description"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"fork"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"forks_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/forks"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"keys_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/keys{/key_id}"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"collaborators_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/collaborators{/collaborator}"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"teams_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/teams"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"hooks_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/hooks"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"issue_events_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/issues/events{/number}"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"events_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/events"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"assignees_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/assignees{/user}"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"branches_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/branches{/branch}"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"tags_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/tags"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"blobs_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/git/blobs{/sha}"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"git_tags_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/git/tags{/sha}"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"git_refs_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/git/refs{/sha}"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"trees_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/git/trees{/sha}"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"statuses_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/statuses/{sha}"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"languages_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/languages"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"stargazers_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/stargazers"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"contributors_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/contributors"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"subscribers_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/subscribers"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"subscription_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/subscription"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"commits_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/commits{/sha}"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"git_commits_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/git/commits{/sha}"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"comments_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/comments{/number}"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"issue_comment_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/issues/comments{/number}"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"contents_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/contents/{+path}"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"compare_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/compare/{base}...{head}"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"merges_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/merges"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"archive_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/{archive_format}{/ref}"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"downloads_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/downloads"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"issues_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/issues{/number}"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"pulls_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/pulls{/number}"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"milestones_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/milestones{/number}"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"notifications_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/notifications{?since,all,participating}"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"labels_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/labels{/name}"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"releases_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/releases{/id}"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"deployments_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/deployments"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2019-05-09T22:53:26Z"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2019-05-09T23:24:42Z"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"pushed_at"</span><span class="p">:</span><span class="s2">"2019-05-09T23:27:00Z"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"git_url"</span><span class="p">:</span><span class="s2">"git://github.com/Codertocat/hello-world-npm.git"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"ssh_url"</span><span class="p">:</span><span class="s2">"git@github.com:Codertocat/hello-world-npm.git"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"clone_url"</span><span class="p">:</span><span class="s2">"https://github.com/Codertocat/hello-world-npm.git"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"svn_url"</span><span class="p">:</span><span class="s2">"https://github.com/Codertocat/hello-world-npm"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"homepage"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"size"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"stargazers_count"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"watchers_count"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"language"</span><span class="p">:</span><span class="s2">"JavaScript"</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"has_issues"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"has_projects"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"has_downloads"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"has_wiki"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"has_pages"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"forks_count"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"mirror_url"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"archived"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"disabled"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"open_issues_count"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"license"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"forks"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"open_issues"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"watchers"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-       </span><span class="nt">"default_branch"</span><span class="p">:</span><span class="s2">"master"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Codertocat"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21031067</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDQ6VXNlcjIxMDMxMDY3"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://avatars1.githubusercontent.com/u/21031067?v=4"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"gravatar_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"html_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/Codertocat"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"followers_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/followers"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"following_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/following{/other_user}"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"gists_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/gists{/gist_id}"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"starred_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/starred{/owner}{/repo}"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"subscriptions_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/subscriptions"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"organizations_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/orgs"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"repos_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/repos"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/events{/privacy}"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"received_events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/received_events"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"site_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-
-<h2>
 <a id="pagebuildevent" class="anchor" href="#pagebuildevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PageBuildEvent</h2>
 
 <p>Represents an attempted build of a GitHub Pages site, whether successful or not.</p>
@@ -5457,7 +5146,7 @@ You cannot create webhooks that listen to these events.</p>
 <p>Events of this type are not visible in timelines. These events are only used to trigger hooks.</p>
 
 <h3>
-<a id="events-api-payload-26" class="anchor" href="#events-api-payload-26" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
+<a id="events-api-payload-25" class="anchor" href="#events-api-payload-25" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
 
 <table>
 <thead>
@@ -5477,12 +5166,12 @@ You cannot create webhooks that listen to these events.</p>
 </table>
 
 <h3>
-<a id="webhook-event-name-29" class="anchor" href="#webhook-event-name-29" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
+<a id="webhook-event-name-28" class="anchor" href="#webhook-event-name-28" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
 
 <p><code>page_build</code></p>
 
 <h3>
-<a id="webhook-payload-example-23" class="anchor" href="#webhook-payload-example-23" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
+<a id="webhook-payload-example-22" class="anchor" href="#webhook-payload-example-22" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
 
 <pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">130514899</span><span class="p">,</span><span class="w">
@@ -5641,7 +5330,7 @@ You cannot create webhooks that listen to these events.</p>
 <p>Triggered when a <a href="/v3/projects/cards">project card</a> is <code>created</code>, <code>edited</code>, <code>moved</code>, <code>converted</code> to an issue, or <code>deleted</code>.</p>
 
 <h3>
-<a id="events-api-payload-27" class="anchor" href="#events-api-payload-27" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
+<a id="events-api-payload-26" class="anchor" href="#events-api-payload-26" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
 
 <table>
 <thead>
@@ -5681,12 +5370,12 @@ You cannot create webhooks that listen to these events.</p>
 </table>
 
 <h3>
-<a id="webhook-event-name-30" class="anchor" href="#webhook-event-name-30" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
+<a id="webhook-event-name-29" class="anchor" href="#webhook-event-name-29" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
 
 <p><code>project_card</code></p>
 
 <h3>
-<a id="webhook-payload-example-24" class="anchor" href="#webhook-payload-example-24" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
+<a id="webhook-payload-example-23" class="anchor" href="#webhook-payload-example-23" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
 
 <pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
@@ -5846,7 +5535,7 @@ You cannot create webhooks that listen to these events.</p>
 <p>Triggered when a <a href="/v3/projects/columns">project column</a> is <code>created</code>, <code>updated</code>, <code>moved</code>, or <code>deleted</code>.</p>
 
 <h3>
-<a id="events-api-payload-28" class="anchor" href="#events-api-payload-28" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
+<a id="events-api-payload-27" class="anchor" href="#events-api-payload-27" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
 
 <table>
 <thead>
@@ -5886,12 +5575,12 @@ You cannot create webhooks that listen to these events.</p>
 </table>
 
 <h3>
-<a id="webhook-event-name-31" class="anchor" href="#webhook-event-name-31" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
+<a id="webhook-event-name-30" class="anchor" href="#webhook-event-name-30" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
 
 <p><code>project_column</code></p>
 
 <h3>
-<a id="webhook-payload-example-25" class="anchor" href="#webhook-payload-example-25" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
+<a id="webhook-payload-example-24" class="anchor" href="#webhook-payload-example-24" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
 
 <pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
@@ -6029,7 +5718,7 @@ You cannot create webhooks that listen to these events.</p>
 <p>Triggered when a <a href="/v3/projects/">project</a> is <code>created</code>, <code>updated</code>, <code>closed</code>, <code>reopened</code>, or <code>deleted</code>.</p>
 
 <h3>
-<a id="events-api-payload-29" class="anchor" href="#events-api-payload-29" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
+<a id="events-api-payload-28" class="anchor" href="#events-api-payload-28" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
 
 <table>
 <thead>
@@ -6069,12 +5758,12 @@ You cannot create webhooks that listen to these events.</p>
 </table>
 
 <h3>
-<a id="webhook-event-name-32" class="anchor" href="#webhook-event-name-32" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
+<a id="webhook-event-name-31" class="anchor" href="#webhook-event-name-31" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
 
 <p><code>project</code></p>
 
 <h3>
-<a id="webhook-payload-example-26" class="anchor" href="#webhook-payload-example-26" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
+<a id="webhook-payload-example-25" class="anchor" href="#webhook-payload-example-25" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
 
 <pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
@@ -6236,15 +5925,15 @@ You cannot create webhooks that listen to these events.</p>
 <p>Triggered when a private repository is made <a href="/v3/repos/#edit">public</a>.  Without a doubt: the best GitHub event.</p>
 
 <h3>
-<a id="events-api-payload-30" class="anchor" href="#events-api-payload-30" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
+<a id="events-api-payload-29" class="anchor" href="#events-api-payload-29" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
 
 <h3>
-<a id="webhook-event-name-33" class="anchor" href="#webhook-event-name-33" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
+<a id="webhook-event-name-32" class="anchor" href="#webhook-event-name-32" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
 
 <p><code>public</code></p>
 
 <h3>
-<a id="webhook-payload-example-27" class="anchor" href="#webhook-payload-example-27" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
+<a id="webhook-payload-example-26" class="anchor" href="#webhook-payload-example-26" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
 
 <pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"repository"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -6371,7 +6060,7 @@ You cannot create webhooks that listen to these events.</p>
 <p>Triggered when a <a href="/v3/pulls">pull request</a> is <code>assigned</code>, <code>unassigned</code>, <code>labeled</code>, <code>unlabeled</code>, <code>opened</code>, <code>edited</code>, <code>closed</code>, <code>reopened</code>, <code>synchronize</code>, <code>ready_for_review</code>, <code>locked</code>, <code>unlocked</code> or when a pull request review is requested or removed.</p>
 
 <h3>
-<a id="events-api-payload-31" class="anchor" href="#events-api-payload-31" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
+<a id="events-api-payload-30" class="anchor" href="#events-api-payload-30" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
 
 <table>
 <thead>
@@ -6416,12 +6105,12 @@ You cannot create webhooks that listen to these events.</p>
 </table>
 
 <h3>
-<a id="webhook-event-name-34" class="anchor" href="#webhook-event-name-34" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
+<a id="webhook-event-name-33" class="anchor" href="#webhook-event-name-33" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
 
 <p><code>pull_request</code></p>
 
 <h3>
-<a id="webhook-payload-example-28" class="anchor" href="#webhook-payload-example-28" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
+<a id="webhook-payload-example-27" class="anchor" href="#webhook-payload-example-27" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
 
 <p>Deliveries for <code>review_requested</code> and <code>review_request_removed</code> events will have an additional field called <code>requested_reviewer</code>.</p>
 
@@ -6888,7 +6577,7 @@ You cannot create webhooks that listen to these events.</p>
 <p>Triggered when a pull request review is <code>submitted</code> into a non-pending state, the body is <code>edited</code>, or the review is <code>dismissed</code>.</p>
 
 <h3>
-<a id="events-api-payload-32" class="anchor" href="#events-api-payload-32" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API Payload</h3>
+<a id="events-api-payload-31" class="anchor" href="#events-api-payload-31" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API Payload</h3>
 
 <table>
 <thead>
@@ -6923,12 +6612,12 @@ You cannot create webhooks that listen to these events.</p>
 </table>
 
 <h3>
-<a id="webhook-event-name-35" class="anchor" href="#webhook-event-name-35" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
+<a id="webhook-event-name-34" class="anchor" href="#webhook-event-name-34" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
 
 <p><code>pull_request_review</code></p>
 
 <h3>
-<a id="webhook-payload-example-29" class="anchor" href="#webhook-payload-example-29" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
+<a id="webhook-payload-example-28" class="anchor" href="#webhook-payload-example-28" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
 
 <pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"submitted"</span><span class="p">,</span><span class="w">
@@ -7418,7 +7107,7 @@ You cannot create webhooks that listen to these events.</p>
 <p>Triggered when a <a href="/v3/pulls/comments">comment on a pull request's unified diff</a> is <code>created</code>, <code>edited</code>, or <code>deleted</code> (in the Files Changed tab).</p>
 
 <h3>
-<a id="events-api-payload-33" class="anchor" href="#events-api-payload-33" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
+<a id="events-api-payload-32" class="anchor" href="#events-api-payload-32" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
 
 <table>
 <thead>
@@ -7458,12 +7147,12 @@ You cannot create webhooks that listen to these events.</p>
 </table>
 
 <h3>
-<a id="webhook-event-name-36" class="anchor" href="#webhook-event-name-36" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
+<a id="webhook-event-name-35" class="anchor" href="#webhook-event-name-35" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
 
 <p><code>pull_request_review_comment</code></p>
 
 <h3>
-<a id="webhook-payload-example-30" class="anchor" href="#webhook-payload-example-30" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
+<a id="webhook-payload-example-29" class="anchor" href="#webhook-payload-example-29" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
 
 <pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
@@ -7975,7 +7664,7 @@ You cannot create webhooks that listen to these events.</p>
 </div>
 
 <h3>
-<a id="events-api-payload-34" class="anchor" href="#events-api-payload-34" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
+<a id="events-api-payload-33" class="anchor" href="#events-api-payload-33" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
 
 <table>
 <thead>
@@ -8055,12 +7744,12 @@ You cannot create webhooks that listen to these events.</p>
 </table>
 
 <h3>
-<a id="webhook-event-name-37" class="anchor" href="#webhook-event-name-37" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
+<a id="webhook-event-name-36" class="anchor" href="#webhook-event-name-36" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
 
 <p><code>push</code></p>
 
 <h3>
-<a id="webhook-payload-example-31" class="anchor" href="#webhook-payload-example-31" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
+<a id="webhook-payload-example-30" class="anchor" href="#webhook-payload-example-30" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
 
 <pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"refs/tags/simple-tag"</span><span class="p">,</span><span class="w">
@@ -8197,6 +7886,307 @@ You cannot create webhooks that listen to these events.</p>
     </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"site_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+
+<h2>
+<a id="registrypackageevent" class="anchor" href="#registrypackageevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RegistryPackageEvent</h2>
+
+<div class="alert note">
+
+<p><strong>Note:</strong> GitHub Package Registry is currently available in limited public beta. To request to join the limited public beta, see the "<a href="https://github.com/features/package-registry">GitHub Package Registry page</a>."</p>
+
+</div>
+
+<p>Triggered when a package version is <code>published</code> or <code>updated</code> in GitHub Package Registry. See "<a href="https://help.github.com/en/categories/managing-packages-with-github-package-registry">Managing packages with GitHub Package Registry</a>" in the GitHub Help documentation to learn more about GitHub Package Registry.</p>
+
+<h3>
+<a id="events-api-payload-34" class="anchor" href="#events-api-payload-34" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>action</code></td>
+<td><code>string</code></td>
+<td>The action that was performed. Can be <code>published</code> or <code>updated</code>.</td>
+</tr>
+<tr>
+<td><code>registry_package</code></td>
+<td><code>object</code></td>
+<td>Information about the registry package.</td>
+</tr>
+<tr>
+<td><code>repository</code></td>
+<td><code>object</code></td>
+<td>The <a href="/v3/repos/">repository</a> object.</td>
+</tr>
+<tr>
+<td><code>organization</code></td>
+<td><code>object</code></td>
+<td>The <a href="/v3/orgs/">organization</a> object.</td>
+</tr>
+<tr>
+<td><code>sender</code></td>
+<td><code>object</code></td>
+<td>The GitHub user who is importing the repository.</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="webhook-event-name-37" class="anchor" href="#webhook-event-name-37" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
+
+<p><code>registry_package</code></p>
+
+<h3>
+<a id="webhook-payload-example-31" class="anchor" href="#webhook-payload-example-31" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
+
+<pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"action"</span><span class="p">:</span><span class="s2">"published"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"registry_package"</span><span class="p">:{</span><span class="w">
+       </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">10696</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"hello-world-npm"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"package_type"</span><span class="p">:</span><span class="s2">"npm"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"html_url"</span><span class="p">:</span><span class="s2">"https://github.com/Codertocat/hello-world-npm/packages/10696"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2019-05-09T23:28:29Z"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2019-05-09T23:28:29Z"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"owner"</span><span class="p">:{</span><span class="w">
+          </span><span class="nt">"login"</span><span class="p">:</span><span class="s2">"Codertocat"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">21031067</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"node_id"</span><span class="p">:</span><span class="s2">"MDQ6VXNlcjIxMDMxMDY3"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="s2">"https://avatars1.githubusercontent.com/u/21031067?v=4"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"gravatar_id"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"html_url"</span><span class="p">:</span><span class="s2">"https://github.com/Codertocat"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"followers_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/followers"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"following_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/following{/other_user}"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"gists_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/gists{/gist_id}"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"starred_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/starred{/owner}{/repo}"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"subscriptions_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/subscriptions"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"organizations_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/orgs"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"repos_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/repos"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"events_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/events{/privacy}"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"received_events_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/received_events"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"site_admin"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+       </span><span class="p">},</span><span class="w">
+       </span><span class="nt">"package_version"</span><span class="p">:{</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">24147</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"version"</span><span class="p">:</span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"summary"</span><span class="p">:</span><span class="s2">"A simple npm package to demonstrate GitHub Package Registry"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"body"</span><span class="p">:</span><span class="s2">"# hello-world-npm\n\nThis is a simple npm package that demonstrates the [Github Package Registry](https://github.com/features/package-registry).\n\n## Installation \n\n`$ npm install`\n\n## Usage\n\n```\nconst myPackage = require('hello-world-node-package');\nmyPackage.helloWorld();\n```\n\n"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"body_html"</span><span class="p">:</span><span class="s2">"&lt;h1&gt;hello-world-npm&lt;/h1&gt;\n&lt;p&gt;This is a simple npm package that demonstrates the &lt;a href=\"https://github.com/features/package-registry\"&gt;Github Package Registry&lt;/a&gt;.&lt;/p&gt;\n&lt;h2&gt;Installation&lt;/h2&gt;\n&lt;p&gt;&lt;code&gt;$ npm install&lt;/code&gt;&lt;/p&gt;\n&lt;h2&gt;Usage&lt;/h2&gt;\n&lt;pre&gt;&lt;code&gt;const myPackage = require('hello-world-node-package');\nmyPackage.helloWorld();\n&lt;/code&gt;&lt;/pre&gt;"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"release"</span><span class="p">:{</span><span class="w">
+             </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/releases/17264286"</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"html_url"</span><span class="p">:</span><span class="s2">"https://github.com/Codertocat/hello-world-npm/releases/tag/1.0.0"</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">17264286</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"tag_name"</span><span class="p">:</span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"target_commitish"</span><span class="p">:</span><span class="s2">"master"</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"draft"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"author"</span><span class="p">:{</span><span class="w">
+                </span><span class="nt">"login"</span><span class="p">:</span><span class="s2">"Codertocat"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">21031067</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"node_id"</span><span class="p">:</span><span class="s2">"MDQ6VXNlcjIxMDMxMDY3"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="s2">"https://avatars1.githubusercontent.com/u/21031067?v=4"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"gravatar_id"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"html_url"</span><span class="p">:</span><span class="s2">"https://github.com/Codertocat"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"followers_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/followers"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"following_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/following{/other_user}"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"gists_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/gists{/gist_id}"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"starred_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/starred{/owner}{/repo}"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"subscriptions_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/subscriptions"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"organizations_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/orgs"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"repos_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/repos"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"events_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/events{/privacy}"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"received_events_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/received_events"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"site_admin"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+             </span><span class="p">},</span><span class="w">
+             </span><span class="nt">"prerelease"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2019-05-09T23:24:40Z"</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"published_at"</span><span class="p">:</span><span class="s2">"2019-05-09T23:26:59Z"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"manifest"</span><span class="p">:</span><span class="s2">"{\"_from\":\"\",\"_id\":\"@codertocat/hello-world-npm@1.0.0\",\"_nodeVersion\":\"10.0.0\",\"_npmUser\":{},\"_npmVersion\":\"5.6.0\",\"_shasum\":\"\",\"author\":{\"name\":\"Codertocat\"},\"bugs\":{\"url\":\"https://github.com/Codertocat/hello-world-npm/issues\"},\"description\":\"A simple npm package to demonstrate GitHub Package Registry\",\"dependencies\":null,\"devDependencies\":null,\"peerDependencies\":null,\"dist\":{\"integrity\":\"sha512-CcChRwjJk+pvGVERbgdjc0w5h6HrOs6jK6OJuHmFcmbnGuhiy9tPMtb4WcSSdvwrktAxf96LsJBNqeIHAEHl3A==\",\"shasum\":\"a413c56a12997ca1b56715ebe81d8c6e0ffe6abb\",\"tarball\":\"http://npm.pkg.github.com/@codertocat/hello-world-npm/-/@codertocat/hello-world-npm-1.0.0.tgz\"},\"gitHead\":\"6c62fb45fe66bfb1ea9a66abc38f6a0cc974292b\",\"homepage\":\"https://github.com/Codertocat/hello-world-npm#readme\",\"license\":\"ISC\",\"main\":\"index.js\",\"name\":\"@codertocat/hello-world-npm\",\"repository\":{\"type\":\"git\",\"url\":\"git+https://github.com/Codertocat/hello-world-npm.git\"},\"scripts\":{\"test\":\"echo \\\"Error: no test specified\\\" \\u0026\\u0026 exit 1\"},\"version\":\"1.0.0\"}"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"html_url"</span><span class="p">:</span><span class="s2">"https://github.com/Codertocat/hello-world-npm/packages/10696?version=1.0.0"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"tag_name"</span><span class="p">:</span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"target_commitish"</span><span class="p">:</span><span class="s2">"master"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"target_oid"</span><span class="p">:</span><span class="s2">"6c62fb45fe66bfb1ea9a66abc38f6a0cc974292b"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"draft"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"prerelease"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2019-05-09T23:28:29Z"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2019-05-09T23:28:30Z"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"metadata"</span><span class="p">:[</span><span class="w">
+
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nt">"package_files"</span><span class="p">:[</span><span class="w">
+             </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"download_url"</span><span class="p">:</span><span class="s2">"https://github-production-registry-package-file-4f11e5.s3.amazonaws.com/185882436/3e6d9b00-7288-11e9-9d72-c0df4c711800?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20190509%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20190509T232830Z&amp;X-Amz-Expires=300&amp;X-Amz-Signature=4b825c49cd93370123a77d0f97a4ebb0d44efb76da46faf1e382f0c668b35819&amp;X-Amz-SignedHeaders=host&amp;actor_id=0&amp;response-content-disposition=filename%3Dhello-world-npm-1.0.0-npm.tgz&amp;response-content-type=application%2Foctet-stream"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">92167</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"hello-world-npm-1.0.0-npm.tgz"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"sha256"</span><span class="p">:</span><span class="s2">"ba703915435b6ca2ca666b5d8332db34bf9dc37a198ed70d3a5fa5d08b8415c8"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"sha1"</span><span class="p">:</span><span class="s2">"a413c56a12997ca1b56715ebe81d8c6e0ffe6abb"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"md5"</span><span class="p">:</span><span class="s2">"56ebbd5a5a03367f62d0c732bafd3c66"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"content_type"</span><span class="p">:</span><span class="s2">"application/octet-stream"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"state"</span><span class="p">:</span><span class="s2">"uploaded"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"size"</span><span class="p">:</span><span class="mi">654</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2019-05-09T23:28:30Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2019-05-09T23:28:30Z"</span><span class="w">
+             </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nt">"author"</span><span class="p">:{</span><span class="w">
+             </span><span class="nt">"login"</span><span class="p">:</span><span class="s2">"Codertocat"</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">21031067</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"node_id"</span><span class="p">:</span><span class="s2">"MDQ6VXNlcjIxMDMxMDY3"</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="s2">"https://avatars1.githubusercontent.com/u/21031067?v=4"</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"gravatar_id"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat"</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"html_url"</span><span class="p">:</span><span class="s2">"https://github.com/Codertocat"</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"followers_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/followers"</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"following_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/following{/other_user}"</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"gists_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/gists{/gist_id}"</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"starred_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/starred{/owner}{/repo}"</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"subscriptions_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/subscriptions"</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"organizations_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/orgs"</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"repos_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/repos"</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"events_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/events{/privacy}"</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"received_events_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/received_events"</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+             </span><span class="nt">"site_admin"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nt">"installation_command"</span><span class="p">:</span><span class="s2">"npm install @Codertocat/@1.0.0"</span><span class="w">
+       </span><span class="p">},</span><span class="w">
+       </span><span class="nt">"registry"</span><span class="p">:{</span><span class="w">
+          </span><span class="nt">"about_url"</span><span class="p">:</span><span class="s2">"https://help.github.com/about-github-package-registry"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"GitHub npm registry"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"npm"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https://npm.pkg.github.com/@Codertocat"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"vendor"</span><span class="p">:</span><span class="s2">"GitHub Inc"</span><span class="w">
+       </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"repository"</span><span class="p">:{</span><span class="w">
+       </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">185882436</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"node_id"</span><span class="p">:</span><span class="s2">"MDEwOlJlcG9zaXRvcnkxODU4ODI0MzY="</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"hello-world-npm"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"full_name"</span><span class="p">:</span><span class="s2">"Codertocat/hello-world-npm"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"private"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"owner"</span><span class="p">:{</span><span class="w">
+          </span><span class="nt">"login"</span><span class="p">:</span><span class="s2">"Codertocat"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">21031067</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"node_id"</span><span class="p">:</span><span class="s2">"MDQ6VXNlcjIxMDMxMDY3"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="s2">"https://avatars1.githubusercontent.com/u/21031067?v=4"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"gravatar_id"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"html_url"</span><span class="p">:</span><span class="s2">"https://github.com/Codertocat"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"followers_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/followers"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"following_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/following{/other_user}"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"gists_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/gists{/gist_id}"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"starred_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/starred{/owner}{/repo}"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"subscriptions_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/subscriptions"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"organizations_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/orgs"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"repos_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/repos"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"events_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/events{/privacy}"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"received_events_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/users/Codertocat/received_events"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"site_admin"</span><span class="p">:</span><span class="kc">false</span><span class="w">
+       </span><span class="p">},</span><span class="w">
+       </span><span class="nt">"html_url"</span><span class="p">:</span><span class="s2">"https://github.com/Codertocat/hello-world-npm"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"description"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"fork"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"forks_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/forks"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"keys_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/keys{/key_id}"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"collaborators_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/collaborators{/collaborator}"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"teams_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/teams"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"hooks_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/hooks"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"issue_events_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/issues/events{/number}"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"events_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/events"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"assignees_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/assignees{/user}"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"branches_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/branches{/branch}"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"tags_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/tags"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"blobs_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/git/blobs{/sha}"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"git_tags_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/git/tags{/sha}"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"git_refs_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/git/refs{/sha}"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"trees_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/git/trees{/sha}"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"statuses_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/statuses/{sha}"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"languages_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/languages"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"stargazers_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/stargazers"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"contributors_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/contributors"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"subscribers_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/subscribers"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"subscription_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/subscription"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"commits_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/commits{/sha}"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"git_commits_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/git/commits{/sha}"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"comments_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/comments{/number}"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"issue_comment_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/issues/comments{/number}"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"contents_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/contents/{+path}"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"compare_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/compare/{base}...{head}"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"merges_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/merges"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"archive_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/{archive_format}{/ref}"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"downloads_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/downloads"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"issues_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/issues{/number}"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"pulls_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/pulls{/number}"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"milestones_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/milestones{/number}"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"notifications_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/notifications{?since,all,participating}"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"labels_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/labels{/name}"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"releases_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/releases{/id}"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"deployments_url"</span><span class="p">:</span><span class="s2">"https://api.github.com/repos/Codertocat/hello-world-npm/deployments"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2019-05-09T22:53:26Z"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2019-05-09T23:24:42Z"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"pushed_at"</span><span class="p">:</span><span class="s2">"2019-05-09T23:27:00Z"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"git_url"</span><span class="p">:</span><span class="s2">"git://github.com/Codertocat/hello-world-npm.git"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"ssh_url"</span><span class="p">:</span><span class="s2">"git@github.com:Codertocat/hello-world-npm.git"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"clone_url"</span><span class="p">:</span><span class="s2">"https://github.com/Codertocat/hello-world-npm.git"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"svn_url"</span><span class="p">:</span><span class="s2">"https://github.com/Codertocat/hello-world-npm"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"homepage"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"size"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"stargazers_count"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"watchers_count"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"language"</span><span class="p">:</span><span class="s2">"JavaScript"</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"has_issues"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"has_projects"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"has_downloads"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"has_wiki"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"has_pages"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"forks_count"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"mirror_url"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"archived"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"disabled"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"open_issues_count"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"license"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"forks"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"open_issues"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"watchers"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+       </span><span class="nt">"default_branch"</span><span class="p">:</span><span class="s2">"master"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Codertocat"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21031067</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDQ6VXNlcjIxMDMxMDY3"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://avatars1.githubusercontent.com/u/21031067?v=4"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"gravatar_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"html_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/Codertocat"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"followers_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/followers"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"following_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/following{/other_user}"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"gists_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/gists{/gist_id}"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"starred_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/starred{/owner}{/repo}"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"subscriptions_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/subscriptions"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"organizations_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/orgs"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"repos_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/repos"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/events{/privacy}"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"received_events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/Codertocat/received_events"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"site_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -9165,216 +9155,6 @@ You cannot create webhooks that listen to these events.</p>
 
 
 <h2>
-<a id="sponsorshipevent" class="anchor" href="#sponsorshipevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SponsorshipEvent</h2>
-
-<p>Triggered anytime a sponsorship listing is <code>created</code>, <code>cancelled</code>, <code>edited</code>, or has a <code>tier_changed</code>, <code>pending_cancellation</code>, or <code>pending_tier_change</code>. For more information, see "<a href="https://help.github.com/github/supporting-the-open-source-community-with-github-sponsors/about-github-sponsors">About GitHub Sponsors</a>" in the GitHub Help documentation.</p>
-
-<p>This event is not available in the Events REST API. You can only create a sponsorship webhook on GitHub. For more information, see "<a href="https://help.github.com/github/supporting-the-open-source-community-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account">Configuring webhooks for events in your sponsored account</a>" in the GitHub Help documentation.</p>
-
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>action</code></td>
-<td><code>string</code></td>
-<td>The action that was performed. This can be one of <code>created</code>, <code>cancelled</code>, <code>edited</code>, <code>tier_changed</code>, <code>pending_cancellation</code>, or <code>pending_tier_change</code>.</td>
-</tr>
-</tbody>
-</table>
-
-<p>Deliveries for <code>pending_cancellation</code> and <code>pending_tier_change</code> will include <code>effective_date</code>. Deliveries for <code>tier_changed</code> and <code>pending_tier_change</code> will include <code>changes[tier][from]</code>. For more information, see the <a href="/v3/activity/events/types/#webhook-payload-example-when-someone-downgrades-a-sponsorship">pending tier change payload</a>.</p>
-
-<p>Deliveries for <code>edited</code> include<code>changes[privacy_level][from]</code> in the payload with details about the change when someone edits a sponsorship to change the privacy.</p>
-
-<h3>
-<a id="webhook-event-name-44" class="anchor" href="#webhook-event-name-44" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
-
-<p><code>sponsorship</code></p>
-
-<h3>
-<a id="webhook-payload-example-when-someone-creates-a-sponsorship" class="anchor" href="#webhook-payload-example-when-someone-creates-a-sponsorship" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example when someone creates a sponsorship</h3>
-
-<pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"sponsorship"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDExOlNwb25zb3JzaGlwMQ=="</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-12-20T19:24:46+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"maintainer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"octocat"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDQ6VXNlcjU="</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://avatars2.githubusercontent.com/u/5?"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"gravatar_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octocat"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"html_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/octocat"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"followers_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octocat/followers"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"following_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octocat/following{/other_user}"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"gists_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octocat/gists{/gist_id}"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"starred_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octocat/starred{/owner}{/repo}"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"subscriptions_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octocat/subscriptions"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"organizations_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octocat/orgs"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"repos_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octocat/repos"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octocat/events{/privacy}"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"received_events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octocat/received_events"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"site_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nt">"sponsor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monalisa"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDQ6VXNlcjI="</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://avatars2.githubusercontent.com/u/2?"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"gravatar_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"html_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/monalisa"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"followers_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/followers"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"following_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/following{/other_user}"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"gists_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/gists{/gist_id}"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"starred_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/starred{/owner}{/repo}"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"subscriptions_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/subscriptions"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"organizations_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/orgs"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"repos_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/repos"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/events{/privacy}"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"received_events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/received_events"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"site_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nt">"privacy_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"tier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDEyOlNwb25zb3JzVGllcjE="</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-12-20T19:17:05Z"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"monthly_price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"monthly_price_in_dollars"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$5 a month"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monalisa"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDQ6VXNlcjI="</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://avatars2.githubusercontent.com/u/2?"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"gravatar_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"html_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/monalisa"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"followers_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/followers"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"following_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/following{/other_user}"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"gists_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/gists{/gist_id}"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"starred_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/starred{/owner}{/repo}"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"subscriptions_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/subscriptions"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"organizations_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/orgs"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"repos_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/repos"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/events{/privacy}"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"received_events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/received_events"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"site_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-
-<h3>
-<a id="webhook-payload-example-when-someone-downgrades-a-sponsorship" class="anchor" href="#webhook-payload-example-when-someone-downgrades-a-sponsorship" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example when someone downgrades a sponsorship</h3>
-
-<pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending_tier_change"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"sponsorship"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDExOlNwb25zb3JzaGlwMQ=="</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-12-20T19:24:46+00:00"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"maintainer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"octocat"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDQ6VXNlcjU="</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://avatars2.githubusercontent.com/u/5?"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"gravatar_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octocat"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"html_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/octocat"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"followers_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octocat/followers"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"following_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octocat/following{/other_user}"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"gists_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octocat/gists{/gist_id}"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"starred_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octocat/starred{/owner}{/repo}"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"subscriptions_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octocat/subscriptions"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"organizations_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octocat/orgs"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"repos_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octocat/repos"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octocat/events{/privacy}"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"received_events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/octocat/received_events"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"site_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nt">"sponsor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monalisa"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDQ6VXNlcjI="</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://avatars2.githubusercontent.com/u/2?"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"gravatar_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"html_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/monalisa"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"followers_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/followers"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"following_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/following{/other_user}"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"gists_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/gists{/gist_id}"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"starred_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/starred{/owner}{/repo}"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"subscriptions_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/subscriptions"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"organizations_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/orgs"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"repos_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/repos"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/events{/privacy}"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"received_events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/received_events"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"site_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nt">"privacy_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"tier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDEyOlNwb25zb3JzVGllcjE="</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-12-20T19:17:05Z"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"monthly_price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"monthly_price_in_dollars"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$5 a month"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"changes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"tier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"from"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDEyOlNwb25zb3JzVGllcjI="</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-12-20T19:26:26Z"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"monthly_price_in_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"monthly_price_in_dollars"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$10 a month"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"effective_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-12-30T00:00:00+00:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"login"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monalisa"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"node_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MDQ6VXNlcjI="</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"avatar_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://avatars2.githubusercontent.com/u/2?"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"gravatar_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"html_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/monalisa"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"followers_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/followers"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"following_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/following{/other_user}"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"gists_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/gists{/gist_id}"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"starred_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/starred{/owner}{/repo}"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"subscriptions_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/subscriptions"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"organizations_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/orgs"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"repos_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/repos"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/events{/privacy}"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"received_events_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/users/monalisa/received_events"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"site_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-
-<h2>
 <a id="starevent" class="anchor" href="#starevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>StarEvent</h2>
 
 <p>Triggered when a star is added or removed from a repository.</p>
@@ -9405,7 +9185,7 @@ You cannot create webhooks that listen to these events.</p>
 </table>
 
 <h3>
-<a id="webhook-event-name-45" class="anchor" href="#webhook-event-name-45" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
+<a id="webhook-event-name-44" class="anchor" href="#webhook-event-name-44" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
 
 <p><code>star</code></p>
 
@@ -9581,7 +9361,7 @@ You cannot create webhooks that listen to these events.</p>
 </table>
 
 <h3>
-<a id="webhook-event-name-46" class="anchor" href="#webhook-event-name-46" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
+<a id="webhook-event-name-45" class="anchor" href="#webhook-event-name-45" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
 
 <p><code>status</code></p>
 
@@ -9890,7 +9670,7 @@ You cannot create webhooks that listen to these events.</p>
 </table>
 
 <h3>
-<a id="webhook-event-name-47" class="anchor" href="#webhook-event-name-47" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
+<a id="webhook-event-name-46" class="anchor" href="#webhook-event-name-46" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
 
 <p><code>team</code></p>
 
@@ -10082,7 +9862,7 @@ You cannot create webhooks that listen to these events.</p>
 </table>
 
 <h3>
-<a id="webhook-event-name-48" class="anchor" href="#webhook-event-name-48" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
+<a id="webhook-event-name-47" class="anchor" href="#webhook-event-name-47" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
 
 <p><code>team_add</code></p>
 
@@ -10265,7 +10045,7 @@ event’s repository is the <a href="/v3/repos/">repository</a> that was starred
 </table>
 
 <h3>
-<a id="webhook-event-name-49" class="anchor" href="#webhook-event-name-49" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
+<a id="webhook-event-name-48" class="anchor" href="#webhook-event-name-48" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook event name</h3>
 
 <p><code>watch</code></p>
 
@@ -10438,18 +10218,6 @@ event’s repository is the <a href="/v3/repos/">repository</a> that was starred
     <option value="/v3/git/tags/">Tags</option>
     <option value="/v3/git/trees/">Trees</option>
   </optgroup>
-
-
-  <optgroup label="GitHub Actions">
-    <option value="/v3/actions/">GitHub Actions Overview</a></h3>
-    <option value="/v3/actions/artifacts/">Artifacts</option>
-    <option value="/v3/actions/secrets/">Secrets</option>
-    <option value="/v3/actions/self_hosted_runners/">Self-hosted runners</option>
-    <option value="/v3/actions/workflows/">Workflows</option>
-    <option value="/v3/actions/workflow_jobs/">Workflow jobs</option>
-    <option value="/v3/actions/workflow_runs/">Workflow runs</option>
-  </optgroup>
-
 
   <optgroup label="GitHub Apps">
     <option value="/v3/apps/">GitHub Apps overview</a></h3>
@@ -10658,19 +10426,6 @@ event’s repository is the <a href="/v3/repos/">repository</a> that was starred
           <li><a href="/v3/git/trees/">Trees</a></li>
         </ul>
       </li>
-      
-      <li class="js-topic">
-        <h3><a href="#" class="js-expand-btn collapsed arrow-btn" data-proofer-ignore></a><a href="/v3/actions/">GitHub Actions</a></h3>
-        <ul class="js-guides">
-          <li><a href="/v3/actions/artifacts/">Artifacts</a></li>
-          <li><a href="/v3/actions/secrets/">Secrets</a></li>
-          <li><a href="/v3/actions/self_hosted_runners/">Self-hosted runners</a></li>
-          <li><a href="/v3/actions/workflows/">Workflows</a></li>
-          <li><a href="/v3/actions/workflow_jobs/">Workflow jobs</a></li>
-          <li><a href="/v3/actions/workflow_runs/">Workflow runs</a></li>
-        </ul>
-      </li>
-      
       <li class="js-topic">
         <h3><a href="#" class="js-expand-btn collapsed arrow-btn" data-proofer-ignore></a><a href="/v3/apps/">GitHub Apps</a></h3>
         <ul class="js-guides">
@@ -10852,7 +10607,7 @@ event’s repository is the <a href="/v3/repos/">repository</a> that was starred
 
   <footer class="footer text-muted">
   <div class="container">
-    <span class="footer-legal">&copy; 2020 GitHub Inc. All rights reserved.</span>
+    <span class="footer-legal">&copy; 2019 GitHub Inc. All rights reserved.</span>
     <span class="mega-octicon octicon-mark-github footer-mark"></span>
     <nav class="footer-nav">
       <a class="footer-nav-item" href="https://help.github.com/articles/github-terms-of-service">Terms of service</a>
