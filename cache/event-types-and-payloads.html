@@ -1981,6 +1981,11 @@
 </thead>
 <tbody>
 <tr>
+<td><code>action</code></td>
+<td><code>string</code></td>
+<td>The action performed. Can be <code>created</code>.</td>
+</tr>
+<tr>
 <td><code>deployment</code></td>
 <td><code>object</code></td>
 <td>The <a href="/v3/repos/deployments/#list-deployments">deployment</a>.</td>
@@ -2002,6 +2007,7 @@
 <a id="webhook-payload-example-7" class="anchor" href="#webhook-payload-example-7" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
 
 <pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deployment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/Hello-World/deployments/145988746"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">145988746</span><span class="p">,</span><span class="w">
@@ -2177,6 +2183,11 @@
 </thead>
 <tbody>
 <tr>
+<td><code>action</code></td>
+<td><code>string</code></td>
+<td>The action performed. Can be <code>created</code>.</td>
+</tr>
+<tr>
 <td><code>deployment_status</code></td>
 <td><code>object</code></td>
 <td>The <a href="/v3/repos/deployments/#list-deployment-statuses">deployment status</a>.</td>
@@ -2218,6 +2229,7 @@
 <a id="webhook-payload-example-8" class="anchor" href="#webhook-payload-example-8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
 
 <pre class="highlight highlight-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"deployment_status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.github.com/repos/Codertocat/Hello-World/deployments/145988746/statuses/209916254"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">209916254</span><span class="p">,</span><span class="w">
