@@ -1226,9 +1226,12 @@
   },
   {
     "name": "deployment",
-    "actions": [],
+    "actions": [
+      "created"
+    ],
     "examples": [
       {
+        "action": "created",
         "deployment": {
           "url": "https://api.github.com/repos/Codertocat/Hello-World/deployments/145988746",
           "id": 145988746,
@@ -1384,9 +1387,12 @@
   },
   {
     "name": "deployment_status",
-    "actions": [],
+    "actions": [
+      "created"
+    ],
     "examples": [
       {
+        "action": "created",
         "deployment_status": {
           "url": "https://api.github.com/repos/Codertocat/Hello-World/deployments/145988746/statuses/209916254",
           "id": 209916254,
