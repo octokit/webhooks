@@ -28,6 +28,7 @@
   "author": "Gregor Martynus (https://github.com/gr2m)",
   "license": "MIT",
   "files": [
+    "index.d.ts",
     "index.json"
   ]
 }
