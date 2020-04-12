@@ -7870,7 +7870,7 @@
   {
     "name": "ping",
     "actions": [],
-    "example": [
+    "examples": [
       {
         "event": "ping",
         "payload": {
