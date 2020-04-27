@@ -709,7 +709,9 @@
   },
   {
     "name": "content_reference",
-    "actions": [],
+    "actions": [
+      "created"
+    ],
     "examples": [
       {
         "action": "created",
@@ -1798,7 +1800,9 @@
   },
   {
     "name": "github_app_authorization",
-    "actions": [],
+    "actions": [
+      "revoked"
+    ],
     "examples": [
       {
         "action": "revoked",
@@ -2891,8 +2895,8 @@
     "name": "member",
     "actions": [
       "added",
-      "deleted",
-      "edited"
+      "edited",
+      "removed"
     ],
     "examples": [
       {
@@ -4559,10 +4563,10 @@
       "reopened",
       "review_request_removed",
       "review_requested",
+      "synchronize",
       "unassigned",
       "unlabeled",
-      "unlocked",
-      "synchronize"
+      "unlocked"
     ],
     "examples": [
       {
@@ -6296,7 +6300,9 @@
   },
   {
     "name": "repository_dispatch",
-    "actions": [],
+    "actions": [
+      "on-demand-test"
+    ],
     "examples": [
       {
         "action": "on-demand-test",
@@ -6906,7 +6912,10 @@
   },
   {
     "name": "sponsorship",
-    "actions": [],
+    "actions": [
+      "created",
+      "pending_tier_change"
+    ],
     "examples": [
       {
         "action": "created",
