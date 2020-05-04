@@ -4795,7 +4795,9 @@
     "actions": [
       "created",
       "deleted",
-      "new_permissions_accepted"
+      "new_permissions_accepted",
+      "suspend",
+      "unsuspend"
     ],
     "examples": [
       {
