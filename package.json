@@ -18,7 +18,7 @@
   },
   "scripts": {
     "pretest": "standard",
-    "test": "node bin/octokit-webhooks.js check --cached"
+    "test": "node bin/octokit-webhooks.js check --cached && node test.js"
   },
   "repository": "https://github.com/octokit/webhooks",
   "keywords": [],
