@@ -13416,6 +13416,7 @@
       "edited",
       "labeled",
       "locked",
+      "merged",
       "opened",
       "ready_for_review",
       "reopened",
