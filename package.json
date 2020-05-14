@@ -15,6 +15,7 @@
     "json-diff": "^0.5.3",
     "semantic-release": "^17.0.0",
     "standard": "^14.0.0",
+    "turndown": "^6.0.0",
     "yargs": "^15.0.1"
   },
   "scripts": {

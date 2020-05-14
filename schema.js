@@ -3,6 +3,9 @@ module.exports = {
     name: {
       type: 'string'
     },
+    description: {
+      type: 'string'
+    },
     actions: {
       type: 'array'
     },
