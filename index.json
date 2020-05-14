@@ -5,6 +5,7 @@
     "actions": [
       "completed",
       "created",
+      "requested_action",
       "rerequested"
     ],
     "examples": [
@@ -13416,7 +13417,6 @@
       "edited",
       "labeled",
       "locked",
-      "merged",
       "opened",
       "ready_for_review",
       "reopened",
