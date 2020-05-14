@@ -4,7 +4,6 @@
     "actions": [
       "completed",
       "created",
-      "requested_action",
       "rerequested"
     ],
     "examples": [
