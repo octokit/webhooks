@@ -1,6 +1,7 @@
 [
   {
     "name": "check_run",
+    "description": "Triggered when a check run is `created`, `rerequested`, `completed`, or has a `requested_action`. The `checks` permission allows you to use the checks API. If you plan to create or modify check runs, your GitHub App will need to have the `checks:write` permission. If you only plan to consume check runs, your GitHub App only needs the `checks:read` permission.\n\nGitHub Apps with the `checks:write` permission will receive the `rerequested` action without subscribing to the `check_run` webhook event. The `rerequested` action occurs when someone requests to re-run your app's check from the pull request UI. See \"[About status checks](https://help.github.com/articles/about-status-checks#checks)\" for more details about the GitHub UI. When you receive a `rerequested` action, you'll need to [create a new check run](https://developer.github.com/v3/checks/runs/#create-a-check-run). Only the GitHub App that someone requests to re-run the check will receive the `rerequested` payload. Similarly, only the GitHub App someone requests to perform an action specified by the app will receive the `requested_action` payload.\n\nGitHub Apps that have the `checks:read` permission and subscribe to the `check_run` webhook event receive the `created` and `completed` action payloads for all check runs in the app's repository. Repositories and organizations that subscribe to the `check_run` webhook event only receive `created` and `completed` event actions.",
     "actions": [
       "completed",
       "created",
@@ -1152,6 +1153,7 @@
   },
   {
     "name": "check_suite",
+    "description": "Triggered when a check suite is `completed`, `requested`, or `rerequested`. The `checks` permission allows you to use the Checks API. If you plan to create or modify check runs, your GitHub App will need to have the `checks:write` permission. If you only plan to consume check runs, your GitHub App only needs the `checks:read` permission.\n\nGitHub Apps with the `checks:write` permission will receive the `requested` and `rerequested` action payloads without subscribing to the `check_suite` webhook event. The `requested` action triggers when new code is pushed to the app's repository. A `rerequested` action occurs when someone requests to re-run the entire check suite from the pull request UI. See \"[About status checks](https://help.github.com/articles/about-status-checks#checks)\" for more details about the GitHub UI. When you receive the `requested` or `rerequested` action events, you'll need to [create a new check run](https://developer.github.com/v3/checks/runs/#create-a-check-run). Only the GitHub App that is being asked to run a check will receive the `requested` and `rerequested` payloads.\n\nGitHub Apps that have the `checks:read` permission and subscribe to the `check_suite` webhook event receive the `completed` action payload for all check suites in the app's repository. Repositories and organizations that subscribe to the `check_suite` webhook event only receive the `completed` event action.",
     "actions": [
       "completed",
       "requested",
@@ -2038,6 +2040,7 @@
   },
   {
     "name": "commit_comment",
+    "description": "Triggered when a [commit comment](https://developer.github.com/v3/repos/comments/#list-commit-comments-for-a-repository) is created.",
     "actions": [
       "created"
     ],
@@ -2348,6 +2351,7 @@
   },
   {
     "name": "content_reference",
+    "description": "Triggered when the body or comment of an issue or pull request includes a URL that matches a configured content reference domain. Only GitHub Apps can receive this event. GitHub Apps that have the `content_references` `write` permission and subscribe to the `content_reference` event receive this webhook event when a new content reference is `created`. See \"[Using content attachments](/apps/using-content-attachments/)\" to learn more about content references and attachments.\n\nWebhook events are triggered based on the specificity of the domain you register. For example, if you register a subdomain (`https://subdomain.example.com`) then only URLs for the subdomain trigger this event. If you register a domain (`https://example.com`) then URLs for domain and all subdomains trigger this event. See \"[Create a content attachment](https://developer.github.com/v3/apps/installations/#create-a-content-attachment)\" to create a new content attachment.",
     "actions": [
       "created"
     ],
@@ -2606,6 +2610,7 @@
   },
   {
     "name": "create",
+    "description": "Represents a created branch or tag.",
     "actions": [],
     "examples": [
       {
@@ -2854,6 +2859,7 @@
   },
   {
     "name": "delete",
+    "description": "Represents a [deleted branch or tag](https://developer.github.com/v3/git/refs/#delete-a-reference).",
     "actions": [],
     "examples": [
       {
@@ -3098,6 +3104,7 @@
   },
   {
     "name": "deploy_key",
+    "description": "Triggered when a deploy key is added or removed from a repository.",
     "actions": [
       "created",
       "deleted"
@@ -3357,6 +3364,7 @@
   },
   {
     "name": "deployment",
+    "description": "Represents a [deployment](https://developer.github.com/v3/repos/deployments/#list-deployments).\n\nEvents of this type are not visible in timelines. These events are only used to trigger hooks.",
     "actions": [
       "created"
     ],
@@ -3671,6 +3679,7 @@
   },
   {
     "name": "deployment_status",
+    "description": "Represents a [deployment status](https://developer.github.com/v3/repos/deployments/#list-deployment-statuses).\n\nEvents of this type are not visible in timelines. These events are only used to trigger hooks.",
     "actions": [
       "created"
     ],
@@ -4051,6 +4060,7 @@
   },
   {
     "name": "fork",
+    "description": "Triggered when a user [forks a repository](https://developer.github.com/v3/repos/forks/#create-a-fork).",
     "actions": [],
     "examples": [
       {
@@ -4479,6 +4489,7 @@
   },
   {
     "name": "github_app_authorization",
+    "description": "Triggered when someone revokes their authorization of a GitHub App. A GitHub App receives this webhook by default and cannot unsubscribe from this event. This event is not available in the [Events API](https://developer.github.com/v3/activity/events/).\n\nAnyone can revoke their authorization of a GitHub App from their [GitHub account settings page](https://github.com/settings/apps/authorizations). Revoking the authorization of a GitHub App does not uninstall the GitHub App. You should program your GitHub App so that when it receives this webhook, it stops calling the API on behalf of the person who revoked the token. If your GitHub App continues to use a revoked access token, it will receive the `401 Bad Credentials` error. For details about user-to-server requests, which require GitHub App authorization, see \"[Identifying and authorizing users for GitHub Apps](/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/).\"",
     "actions": [
       "revoked"
     ],
@@ -4533,6 +4544,7 @@
   },
   {
     "name": "gollum",
+    "description": "Triggered when a Wiki page is created or updated.",
     "actions": [],
     "examples": [
       {
@@ -4791,6 +4803,7 @@
   },
   {
     "name": "installation",
+    "description": "Triggered when someone installs (`created`), uninstalls (`deleted`), suspends (`suspend`), unsuspends (`unsuspend`), or accepts new permissions (`new_permissions_accepted`) for a GitHub App. When a GitHub App owner requests new permissions, the person who installed the GitHub App must accept the new permissions request.",
     "actions": [
       "created",
       "deleted",
@@ -5031,6 +5044,7 @@
   },
   {
     "name": "installation_repositories",
+    "description": "Triggered when a repository is `added` or `removed` from an installation.",
     "actions": [
       "added",
       "removed"
@@ -5279,6 +5293,7 @@
   },
   {
     "name": "issue_comment",
+    "description": "Triggered when an [issue comment](https://developer.github.com/v3/issues/comments/) is `created`, `edited`, or `deleted`.",
     "actions": [
       "created",
       "deleted",
@@ -6402,6 +6417,7 @@
   },
   {
     "name": "issues",
+    "description": "Triggered when an [issue](https://developer.github.com/v3/issues) is `opened`, `edited`, `deleted`, `pinned`, `unpinned`, `closed`, `reopened`, `assigned`, `unassigned`, `labeled`, `unlabeled`, `locked`, `unlocked`, `transferred`, `milestoned`, or `demilestoned`.",
     "actions": [
       "assigned",
       "closed",
@@ -8843,6 +8859,7 @@
   },
   {
     "name": "label",
+    "description": "Triggered when a repository's label is `created`, `edited`, or `deleted`.\n\nEvents of this type are not visible in timelines. These events are only used to trigger hooks.",
     "actions": [
       "created",
       "deleted",
@@ -9358,6 +9375,7 @@
   },
   {
     "name": "marketplace_purchase",
+    "description": "Triggered when someone purchases a [GitHub Marketplace](https://github.com/marketplace) plan, cancels their plan, upgrades their plan (effective immediately), downgrades a plan that remains pending until the end of the billing cycle, or cancels a pending plan change.",
     "actions": [
       "cancelled",
       "changed",
@@ -9600,6 +9618,7 @@
   },
   {
     "name": "member",
+    "description": "Triggered when a user accepts an invitation or is removed as a collaborator to a repository, or has their permissions changed.",
     "actions": [
       "added",
       "edited",
@@ -10025,6 +10044,7 @@
   },
   {
     "name": "membership",
+    "description": "Triggered when a user is `added` or `removed` from a team.\n\nEvents of this type are not visible in timelines. These events are only used to trigger organization hooks.",
     "actions": [
       "added",
       "removed"
@@ -10247,6 +10267,7 @@
   },
   {
     "name": "meta",
+    "description": "Triggered when the webhook that this event is configured on is deleted. This event will only listen for changes to the particular hook the event is installed on. Therefore, it must be selected for each hook that you'd like to recieve meta events for.",
     "actions": [
       "deleted"
     ],
@@ -10521,6 +10542,7 @@
   },
   {
     "name": "milestone",
+    "description": "Triggered when a milestone is `created`, `closed`, `opened`, `edited`, or `deleted`.\n\nEvents of this type are not visible in timelines. These events are only used to trigger hooks.",
     "actions": [
       "closed",
       "created",
@@ -11149,6 +11171,7 @@
   },
   {
     "name": "organization",
+    "description": "Triggered when an organization is deleted and renamed, and when a user is added, removed, or invited to an organization.\n\nEvents of this type are not visible in timelines. These events are only used to trigger organization hooks.",
     "actions": [
       "deleted",
       "member_added",
@@ -11287,6 +11310,7 @@
   },
   {
     "name": "org_block",
+    "description": "Triggered when an organization blocks or unblocks a user. These events are only used to trigger organization hooks.",
     "actions": [
       "blocked",
       "unblocked"
@@ -11467,6 +11491,7 @@
   },
   {
     "name": "package",
+    "description": "Triggered when a package version is `published` or `updated` in GitHub Packages. See \"[Managing packages with GitHub Packages](https://help.github.com/github/managing-packages-with-github-packages)\" in the GitHub Help documentation to learn more about GitHub Packages.",
     "actions": [
       "published",
       "updated"
@@ -11950,6 +11975,7 @@
   },
   {
     "name": "page_build",
+    "description": "Represents an attempted build of a GitHub Pages site, whether successful or not.\n\nTriggered on push to a GitHub Pages enabled branch (`gh-pages` for project pages, `master` for user and organization pages).\n\nEvents of this type are not visible in timelines. These events are only used to trigger hooks.",
     "actions": [],
     "examples": [
       {
@@ -12252,6 +12278,7 @@
   },
   {
     "name": "project_card",
+    "description": "Triggered when a [project card](https://developer.github.com/v3/projects/cards) is `created`, `edited`, `moved`, `converted` to an issue, or `deleted`.",
     "actions": [
       "converted",
       "created",
@@ -12562,6 +12589,7 @@
   },
   {
     "name": "project_column",
+    "description": "Triggered when a [project column](https://developer.github.com/v3/projects/columns) is `created`, `updated`, `moved`, or `deleted`.",
     "actions": [
       "created",
       "deleted",
@@ -12827,6 +12855,7 @@
   },
   {
     "name": "project",
+    "description": "Triggered when a [project](https://developer.github.com/v3/projects/) is `created`, `updated`, `closed`, `reopened`, or `deleted`.",
     "actions": [
       "closed",
       "created",
@@ -13141,6 +13170,7 @@
   },
   {
     "name": "public",
+    "description": "Triggered when a private repository is made public. Without a doubt: the best GitHub event.",
     "actions": [],
     "examples": [
       {
@@ -13379,6 +13409,7 @@
   },
   {
     "name": "pull_request",
+    "description": "Triggered when a [pull request](https://developer.github.com/v3/pulls) is `assigned`, `unassigned`, `labeled`, `unlabeled`, `opened`, `edited`, `closed`, `reopened`, `synchronize`, `ready_for_review`, `locked`, `unlocked` or when a pull request review is requested or removed.",
     "actions": [
       "assigned",
       "closed",
@@ -17640,6 +17671,7 @@
   },
   {
     "name": "pull_request_review",
+    "description": "Triggered when a pull request review is `submitted` into a non-pending state, the body is `edited`, or the review is `dismissed`.",
     "actions": [
       "dismissed",
       "edited",
@@ -18592,6 +18624,7 @@
   },
   {
     "name": "pull_request_review_comment",
+    "description": "Triggered when a [comment on a pull request's unified diff](https://developer.github.com/v3/pulls/comments) is `created`, `edited`, or `deleted` (in the Files Changed tab).",
     "actions": [
       "created",
       "deleted",
@@ -19564,6 +19597,7 @@
   },
   {
     "name": "push",
+    "description": "Triggered on a push to a repository branch. Branch pushes and repository tag pushes also trigger webhook [`push` events](/webhooks/#events).",
     "actions": [],
     "examples": [
       {
@@ -19838,6 +19872,7 @@
   },
   {
     "name": "release",
+    "description": "Triggered when a [release](https://developer.github.com/v3/repos/releases/#get-a-single-release) is `published`, `unpublished`, `created`, `edited`, `deleted`, or `prereleased`.",
     "actions": [
       "created",
       "deleted",
@@ -20319,6 +20354,7 @@
   },
   {
     "name": "repository_dispatch",
+    "description": "Triggered when a GitHub App sends a `POST` request to the \"[Create a repository dispatch event](https://developer.github.com/v3/repos/#create-a-repository-dispatch-event)\" endpoint.",
     "actions": [
       "on-demand-test"
     ],
@@ -20605,6 +20641,7 @@
   },
   {
     "name": "repository",
+    "description": "Triggered when a repository is `created`, `archived`, `unarchived`, `renamed`, `edited`, `transferred`, made public, or made private. [Organization hooks](https://developer.github.com/v3/orgs/hooks/) are also triggered when a repository is `deleted`.\n\nEvents of this type are not visible in timelines. These events are only used to trigger hooks.",
     "actions": [
       "archived",
       "created",
@@ -21103,6 +21140,7 @@
   },
   {
     "name": "repository_import",
+    "description": "Triggered when a successful, cancelled, or failed repository import finishes for a GitHub organization or a personal repository. To receive this event for a personal repository, you must create an empty repository prior to the import. This event can be triggered using either the [GitHub Importer](https://help.github.com/articles/importing-a-repository-with-github-importer/) or the [Source imports API](https://developer.github.com/v3/migrations/source_imports/).",
     "actions": [],
     "examples": [
       {
@@ -21369,6 +21407,7 @@
   },
   {
     "name": "repository_vulnerability_alert",
+    "description": "Triggered when a [security alert](https://help.github.com/articles/about-security-alerts-for-vulnerable-dependencies/) is created, dismissed, or resolved.",
     "actions": [
       "create",
       "dismiss",
@@ -21662,6 +21701,7 @@
   },
   {
     "name": "security_advisory",
+    "description": "Triggered when a new security advisory is published, updated, or withdrawn. A security advisory provides information about security-related vulnerabilities in software on GitHub. Security Advisory webhooks are available to GitHub Apps only. The security advisory dataset also powers the GitHub security alerts, see \"[About security alerts for vulnerable dependencies](https://help.github.com/articles/about-security-alerts-for-vulnerable-dependencies/).\"",
     "actions": [
       "performed",
       "published",
@@ -21774,6 +21814,7 @@
   },
   {
     "name": "sponsorship",
+    "description": "Triggered anytime a sponsorship listing is `created`, `cancelled`, `edited`, or has a `tier_changed`, `pending_cancellation`, or `pending_tier_change`. For more information, see \"[About GitHub Sponsors](https://help.github.com/github/supporting-the-open-source-community-with-github-sponsors/about-github-sponsors)\" in the GitHub Help documentation.\n\nThis event is not available in the Events REST API. You can only create a sponsorship webhook on GitHub. For more information, see \"[Configuring webhooks for events in your sponsored account](https://help.github.com/github/supporting-the-open-source-community-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)\" in the GitHub Help documentation.\n\nKey Type Description `action` `string` The action that was performed. This can be one of `created`, `cancelled`, `edited`, `tier_changed`, `pending_cancellation`, or `pending_tier_change`.\n\nDeliveries for `pending_cancellation` and `pending_tier_change` will include `effective_date`. Deliveries for `tier_changed` and `pending_tier_change` will include `changes[tier][from]`. For more information, see the [pending tier change payload](https://developer.github.com/v3/activity/events/types/#webhook-payload-example-when-someone-downgrades-a-sponsorship).\n\nDeliveries for `edited` include`changes[privacy_level][from]` in the payload with details about the change when someone edits a sponsorship to change the privacy.",
     "actions": [
       "created",
       "pending_tier_change"
@@ -22113,6 +22154,7 @@
   },
   {
     "name": "star",
+    "description": "Triggered when a star is added or removed from a repository.",
     "actions": [
       "created",
       "deleted"
@@ -22476,6 +22518,7 @@
   },
   {
     "name": "status",
+    "description": "Triggered when the status of a Git commit changes.\n\nEvents of this type are not visible in timelines. These events are only used to trigger hooks.",
     "actions": [],
     "examples": [
       {
@@ -22930,6 +22973,7 @@
   },
   {
     "name": "team",
+    "description": "Triggered when an organization's team is `created`, `deleted`, `edited`, `added_to_repository`, or `removed_from_repository`.\n\nEvents of this type are not visible in timelines. These events are only used to trigger organization hooks.",
     "actions": [
       "added_to_repository",
       "created",
@@ -23391,6 +23435,7 @@
   },
   {
     "name": "team_add",
+    "description": "Triggered when a [repository is added to a team](https://developer.github.com/v3/teams/#add-or-update-team-repository).\n\nEvents of this type are not visible in timelines. These events are only used to trigger hooks.",
     "actions": [],
     "examples": [
       {
@@ -23683,6 +23728,7 @@
   },
   {
     "name": "watch",
+    "description": "Triggered when someone [stars a repository](https://developer.github.com/v3/activity/starring/#star-a-repository-for-the-authenticated-user). This event is not related to [watching a repository](https://developer.github.com/v3/activity/watching/). See [this API blog post](/changes/2012-09-05-watcher-api/) for an explanation.\n\nThe event’s actor is the [user](https://developer.github.com/v3/users/) who starred a repository, and the event’s repository is the [repository](https://developer.github.com/v3/repos/) that was starred.",
     "actions": [
       "started"
     ],
