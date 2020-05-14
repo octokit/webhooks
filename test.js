@@ -1,4 +1,3 @@
-const assert = require('assert')
 const Ajv = require('ajv')
 const ajv = new Ajv()
 const schema = require('./schema.js')
