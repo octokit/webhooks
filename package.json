@@ -8,17 +8,21 @@
   "main": "index.json",
   "devDependencies": {
     "@octokit/request": "^5.0.0",
+    "ajv": "^6.12.2",
     "cheerio": "^1.0.0-rc.2",
     "execa": "^4.0.0",
     "fs-extra": "^9.0.0",
     "json-diff": "^0.5.3",
     "semantic-release": "^17.0.0",
     "standard": "^14.0.0",
+    "turndown": "^6.0.0",
     "yargs": "^15.0.1"
   },
   "scripts": {
     "pretest": "standard",
-    "test": "node bin/octokit-webhooks.js check --cached && node test.js"
+    "build": "node bin/octokit-webhooks.js check --cached",
+    "test": "npm run build && node test.js",
+    "lint": "standard --fix"
   },
   "repository": "https://github.com/octokit/webhooks",
   "keywords": [],
