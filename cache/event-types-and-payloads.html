@@ -8231,7 +8231,7 @@ Suspending a GitHub App installation is currently in beta and subject to change.
 <h2>
 <a id="releaseevent" class="anchor" href="#releaseevent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ReleaseEvent</h2>
 
-<p>Triggered when a <a href="/v3/repos/releases/#get-a-single-release">release</a> is <code>published</code>, <code>unpublished</code>, <code>created</code>, <code>edited</code>, <code>deleted</code>, or <code>prereleased</code>.</p>
+<p>Triggered when a <a href="/v3/repos/releases/#get-a-single-release">release</a> is <code>published</code>, <code>unpublished</code>, <code>created</code>, <code>edited</code>, <code>deleted</code>, <code>prereleased</code>, or <code>released</code>.</p>
 
 <h3>
 <a id="events-api-payload-35" class="anchor" href="#events-api-payload-35" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events API payload</h3>
@@ -8248,7 +8248,7 @@ Suspending a GitHub App installation is currently in beta and subject to change.
 <tr>
 <td><code>action</code></td>
 <td><code>string</code></td>
-<td>The action that was performed. Currently, can be <code>published</code>, <code>unpublished</code>, <code>created</code>, <code>edited</code>, <code>deleted</code>, or <code>prereleased</code>.</td>
+<td>The action that was performed. Can be one of:<br> - <code>published</code>: a release, pre-release, or draft of a release is published<br>- <code>unpublished</code>: a release or pre-release is deleted<br>- <code>created</code>: a draft is saved, or a release or pre-release is published without previously being saved as a draft <br>- <code>edited</code>: a release, pre-release, or draft release is edited<br>- <code>deleted</code>: a release, pre-release, or draft release is deleted<br>- <code>prereleased</code>: a pre-release is created<br>- <code>released</code>: a release or draft of a release is published, or a pre-release is changed to a release</td>
 </tr>
 <tr>
 <td><code>changes[body][from]</code></td>
