@@ -19873,13 +19873,14 @@
   },
   {
     "name": "release",
-    "description": "Triggered when a [release](https://developer.github.com/v3/repos/releases/#get-a-single-release) is `published`, `unpublished`, `created`, `edited`, `deleted`, or `prereleased`.",
+    "description": "Triggered when a [release](https://developer.github.com/v3/repos/releases/#get-a-single-release) is `published`, `unpublished`, `created`, `edited`, `deleted`, `prereleased`, or `released`.",
     "actions": [
       "created",
       "deleted",
       "edited",
       "prereleased",
       "published",
+      "released",
       "unpublished"
     ],
     "examples": [
