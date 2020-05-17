@@ -22109,8 +22109,12 @@
     "name": "sponsorship",
     "description": "Activity related to a sponsorship listing. The type of activity is specified in the `action` property of the payload object. For more information, see \"[About GitHub Sponsors](https://help.github.com/github/supporting-the-open-source-community-with-github-sponsors/about-github-sponsors)\" in the GitHub Help documentation.\n\nYou can only create a sponsorship webhook on GitHub. For more information, see \"[Configuring webhooks for events in your sponsored account](https://help.github.com/github/supporting-the-open-source-community-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)\" in the GitHub Help documentation.",
     "actions": [
+      "cancelled",
       "created",
-      "pending_tier_change"
+      "edited",
+      "pending_cancellation",
+      "pending_tier_change",
+      "tier_changed"
     ],
     "examples": [
       {
