@@ -2,12 +2,7 @@
   {
     "name": "check_run",
     "description": "Check run activity has occurred. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[check runs](https://developer.github.com/v3/checks/runs/)\" REST API.",
-    "actions": [
-      "completed",
-      "created",
-      "requested_action",
-      "rerequested"
-    ],
+    "actions": ["completed", "created", "requested_action", "rerequested"],
     "examples": [
       {
         "action": "created",
@@ -1155,11 +1150,7 @@
   {
     "name": "check_suite",
     "description": "Check suite activity has occurred. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[check suites](https://developer.github.com/v3/checks/suites/)\" REST API.",
-    "actions": [
-      "completed",
-      "requested",
-      "rerequested"
-    ],
+    "actions": ["completed", "requested", "rerequested"],
     "examples": [
       {
         "action": "completed",
@@ -2042,9 +2033,7 @@
   {
     "name": "commit_comment",
     "description": "A commit comment is created. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[commit comment](https://developer.github.com/v3/repos/comments/)\" REST API.",
-    "actions": [
-      "created"
-    ],
+    "actions": ["created"],
     "examples": [
       {
         "action": "created",
@@ -2353,9 +2342,7 @@
   {
     "name": "content_reference",
     "description": "A new content reference is `created`. A new content reference is created when the body or comment of an issue or pull request includes a URL that matches a configured content reference domain. For more information, see \"[Using content attachments](/apps/using-content-attachments/)\" to learn more about content references and attachments.\n\nWebhook events are triggered based on the specificity of the domain you register. For example, if you register a subdomain (`https://subdomain.example.com`) then only URLs for the subdomain trigger this event. If you register a domain (`https://example.com`) then URLs for domain and all subdomains trigger this event. See \"[Create a content attachment](https://developer.github.com/v3/apps/installations/#create-a-content-attachment)\" to create a new content attachment.\n\nOnly GitHub Apps can receive this event. GitHub Apps must have the `content_references` `write` permission to subscribe to this event.",
-    "actions": [
-      "created"
-    ],
+    "actions": ["created"],
     "examples": [
       {
         "action": "created",
@@ -3106,10 +3093,7 @@
   {
     "name": "deploy_key",
     "description": "A deploy key is added or removed from a repository. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[Deploy keys](https://developer.github.com/v3/repos/keys/)\" REST API.",
-    "actions": [
-      "created",
-      "deleted"
-    ],
+    "actions": ["created", "deleted"],
     "examples": [
       {
         "action": "created",
@@ -3366,9 +3350,7 @@
   {
     "name": "deployment",
     "description": "A deployment is created. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[deployment](https://developer.github.com/v3/repos/deployments/#list-deployments)\" REST API.",
-    "actions": [
-      "created"
-    ],
+    "actions": ["created"],
     "examples": [
       {
         "action": "created",
@@ -3681,9 +3663,7 @@
   {
     "name": "deployment_status",
     "description": "A deployment is created. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[deployment statuses](https://developer.github.com/v3/repos/deployments/#list-deployment-statuses)\" REST API.",
-    "actions": [
-      "created"
-    ],
+    "actions": ["created"],
     "examples": [
       {
         "action": "created",
@@ -4491,9 +4471,7 @@
   {
     "name": "github_app_authorization",
     "description": "When someone revokes their authorization of a GitHub App, this event occurs. A GitHub App receives this webhook by default and cannot unsubscribe from this event.\n\nAnyone can revoke their authorization of a GitHub App from their [GitHub account settings page](https://github.com/settings/apps/authorizations). Revoking the authorization of a GitHub App does not uninstall the GitHub App. You should program your GitHub App so that when it receives this webhook, it stops calling the API on behalf of the person who revoked the token. If your GitHub App continues to use a revoked access token, it will receive the `401 Bad Credentials` error. For details about user-to-server requests, which require GitHub App authorization, see \"[Identifying and authorizing users for GitHub Apps](/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/).\"",
-    "actions": [
-      "revoked"
-    ],
+    "actions": ["revoked"],
     "examples": [
       {
         "action": "revoked",
@@ -4849,10 +4827,7 @@
             "contents": "read",
             "issues": "write"
           },
-          "events": [
-            "push",
-            "pull_request"
-          ],
+          "events": ["push", "pull_request"],
           "created_at": 1525109898,
           "updated_at": 1525109899,
           "single_file_name": "config.yml"
@@ -5003,10 +4978,7 @@
             "contents": "read",
             "issues": "write"
           },
-          "events": [
-            "push",
-            "pull_request"
-          ],
+          "events": ["push", "pull_request"],
           "created_at": 1525109898,
           "updated_at": 1525109899,
           "single_file_name": "config.yml"
@@ -5046,10 +5018,7 @@
   {
     "name": "installation_repositories",
     "description": "Activity related to repositories being added to a GitHub App installation. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[GitHub App installation](https://developer.github.com/v3/apps/)\" REST API.",
-    "actions": [
-      "added",
-      "removed"
-    ],
+    "actions": ["added", "removed"],
     "examples": [
       {
         "action": "added",
@@ -5251,10 +5220,7 @@
             "contents": "read",
             "issues": "write"
           },
-          "events": [
-            "push",
-            "pull_request"
-          ],
+          "events": ["push", "pull_request"],
           "created_at": 1525109898,
           "updated_at": 1525109899,
           "single_file_name": "config.yml"
@@ -5295,11 +5261,7 @@
   {
     "name": "issue_comment",
     "description": "Activity related to an issue comment. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[issue comments](https://developer.github.com/v3/issues/comments/)\" REST API.",
-    "actions": [
-      "created",
-      "deleted",
-      "edited"
-    ],
+    "actions": ["created", "deleted", "edited"],
     "examples": [
       {
         "action": "created",
@@ -8861,11 +8823,7 @@
   {
     "name": "label",
     "description": "Activity related to an issue. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[labels](https://developer.github.com/v3/issues/labels/)\" REST API.",
-    "actions": [
-      "created",
-      "deleted",
-      "edited"
-    ],
+    "actions": ["created", "deleted", "edited"],
     "examples": [
       {
         "action": "deleted",
@@ -9429,10 +9387,7 @@
             "price_model": "per-unit",
             "has_free_trial": true,
             "unit_name": "seat",
-            "bullets": [
-              "Is Basic",
-              "Because Basic "
-            ]
+            "bullets": ["Is Basic", "Because Basic "]
           }
         }
       },
@@ -9480,10 +9435,7 @@
             "price_model": "flat-rate",
             "has_free_trial": true,
             "unit_name": null,
-            "bullets": [
-              "Is Expensive",
-              "And Flat Rate"
-            ]
+            "bullets": ["Is Expensive", "And Flat Rate"]
           }
         }
       },
@@ -9531,10 +9483,7 @@
             "price_model": "per-unit",
             "has_free_trial": true,
             "unit_name": "seat",
-            "bullets": [
-              "Is Basic",
-              "Because Basic "
-            ]
+            "bullets": ["Is Basic", "Because Basic "]
           }
         },
         "previous_marketplace_purchase": {
@@ -9557,10 +9506,7 @@
             "price_model": "per-unit",
             "has_free_trial": true,
             "unit_name": "seat",
-            "bullets": [
-              "Is Basic",
-              "Because Basic "
-            ]
+            "bullets": ["Is Basic", "Because Basic "]
           }
         }
       },
@@ -9608,10 +9554,7 @@
             "price_model": "per-unit",
             "has_free_trial": true,
             "unit_name": "seat",
-            "bullets": [
-              "Is Basic",
-              "Because Basic "
-            ]
+            "bullets": ["Is Basic", "Because Basic "]
           }
         }
       }
@@ -9620,11 +9563,7 @@
   {
     "name": "member",
     "description": "Activity related to repository collaborators. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[collaborators](https://developer.github.com/v3/repos/collaborators/)\" REST API.",
-    "actions": [
-      "added",
-      "edited",
-      "removed"
-    ],
+    "actions": ["added", "edited", "removed"],
     "examples": [
       {
         "action": "added",
@@ -10046,10 +9985,7 @@
   {
     "name": "membership",
     "description": "Activity related to team membership. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[team members](https://developer.github.com/v3/teams/members/)\" REST API.",
-    "actions": [
-      "added",
-      "removed"
-    ],
+    "actions": ["added", "removed"],
     "examples": [
       {
         "action": "removed",
@@ -10269,9 +10205,7 @@
   {
     "name": "meta",
     "description": "The webhook this event is configured on was deleted. This event will only listen for changes to the particular hook the event is installed on. Therefore, it must be selected for each hook that you'd like to recieve meta events for.",
-    "actions": [
-      "deleted"
-    ],
+    "actions": ["deleted"],
     "examples": [
       {
         "action": "deleted",
@@ -10281,9 +10215,7 @@
           "id": 101047067,
           "name": "web",
           "active": true,
-          "events": [
-            "meta"
-          ],
+          "events": ["meta"],
           "config": {
             "content_type": "json",
             "insecure_ssl": "0",
@@ -10414,9 +10346,7 @@
           "id": 101047067,
           "name": "web",
           "active": true,
-          "events": [
-            "meta"
-          ],
+          "events": ["meta"],
           "config": {
             "content_type": "json",
             "insecure_ssl": "0",
@@ -10544,13 +10474,7 @@
   {
     "name": "milestone",
     "description": "Activity related to a milestone. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[milestones](https://developer.github.com/v3/issues/milestones/)\" REST API.'",
-    "actions": [
-      "closed",
-      "created",
-      "deleted",
-      "edited",
-      "opened"
-    ],
+    "actions": ["closed", "created", "deleted", "edited", "opened"],
     "examples": [
       {
         "action": "created",
@@ -11312,10 +11236,7 @@
   {
     "name": "org_block",
     "description": "Activity related to people being blocked in an organization. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[blocking organization users](https://developer.github.com/v3/orgs/blocking/)\" REST API.'",
-    "actions": [
-      "blocked",
-      "unblocked"
-    ],
+    "actions": ["blocked", "unblocked"],
     "examples": [
       {
         "action": "blocked",
@@ -11493,10 +11414,7 @@
   {
     "name": "package",
     "description": "Activity related to GitHub Packages. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[blocking organization users](https://developer.github.com/v3/orgs/blocking/)\" REST API. For more information, see \"[Managing packages with GitHub Packages](https://help.github.com/github/managing-packages-with-github-packages)\" in the GitHub Help documentation to learn more about GitHub Packages.",
-    "actions": [
-      "published",
-      "updated"
-    ],
+    "actions": ["published", "updated"],
     "examples": [
       {
         "action": "published",
@@ -12290,9 +12208,7 @@
           "id": 109948940,
           "name": "web",
           "active": true,
-          "events": [
-            "*"
-          ],
+          "events": ["*"],
           "config": {
             "content_type": "json",
             "url": "https://smee.io/****************",
@@ -12432,9 +12348,7 @@
           "id": 109948940,
           "name": "web",
           "active": true,
-          "events": [
-            "*"
-          ],
+          "events": ["*"],
           "config": {
             "content_type": "json",
             "url": "https://smee.io/YEbF2t8kjvPAn7Ck",
@@ -12571,13 +12485,7 @@
   {
     "name": "project_card",
     "description": "Activity related to a card on a project board. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[project cards](https://developer.github.com/v3/projects/cards/)\" REST API.",
-    "actions": [
-      "converted",
-      "created",
-      "deleted",
-      "edited",
-      "moved"
-    ],
+    "actions": ["converted", "created", "deleted", "edited", "moved"],
     "examples": [
       {
         "action": "created",
@@ -12882,12 +12790,7 @@
   {
     "name": "project_column",
     "description": "Activity related to a column on a project board. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[project columns](https://developer.github.com/v3/projects/columns/)\" REST API.",
-    "actions": [
-      "created",
-      "deleted",
-      "edited",
-      "moved"
-    ],
+    "actions": ["created", "deleted", "edited", "moved"],
     "examples": [
       {
         "action": "created",
@@ -13148,13 +13051,7 @@
   {
     "name": "project",
     "description": "Activity related to a project board. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[projects](https://developer.github.com/v3/projects/)\" REST API.",
-    "actions": [
-      "closed",
-      "created",
-      "deleted",
-      "edited",
-      "reopened"
-    ],
+    "actions": ["closed", "created", "deleted", "edited", "reopened"],
     "examples": [
       {
         "action": "created",
@@ -17964,11 +17861,7 @@
   {
     "name": "pull_request_review",
     "description": "Activity related to pull request reviews. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[pull request reviews](https://developer.github.com/v3/pulls/reviews/)\" REST API.",
-    "actions": [
-      "dismissed",
-      "edited",
-      "submitted"
-    ],
+    "actions": ["dismissed", "edited", "submitted"],
     "examples": [
       {
         "action": "submitted",
@@ -18917,11 +18810,7 @@
   {
     "name": "pull_request_review_comment",
     "description": "Activity related to pull request review comments in the pull request's unified diff. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[pull request review comments](https://developer.github.com/v3/pulls/comments/)\" REST API.",
-    "actions": [
-      "created",
-      "deleted",
-      "edited"
-    ],
+    "actions": ["created", "deleted", "edited"],
     "examples": [
       {
         "action": "created",
@@ -20648,9 +20537,7 @@
   {
     "name": "repository_dispatch",
     "description": "This event occurs when a GitHub App sends a `POST` request to the \"[Create a repository dispatch event](https://developer.github.com/v3/repos/#create-a-repository-dispatch-event)\" endpoint.\n\nGitHub Apps must have the `contents` permission to receive this webhook.",
-    "actions": [
-      "on-demand-test"
-    ],
+    "actions": ["on-demand-test"],
     "examples": [
       {
         "action": "on-demand-test",
@@ -21701,11 +21588,7 @@
   {
     "name": "repository_vulnerability_alert",
     "description": "Activity related to security vulnerability alerts in a repository. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[About security alerts for vulerable dependencies](https://help.github.com/github/managing-security-vulnerabilities/about-security-alerts-for-vulnerable-dependencies)\" in the GitHub Help documentation.",
-    "actions": [
-      "create",
-      "dismiss",
-      "resolve"
-    ],
+    "actions": ["create", "dismiss", "resolve"],
     "examples": [
       {
         "action": "create",
@@ -21995,11 +21878,7 @@
   {
     "name": "security_advisory",
     "description": "Activity related to a security advisory. A security advisory provides information about security-related vulnerabilities in software on GitHub. The security advisory dataset also powers the GitHub security alerts, see \"[About security alerts for vulnerable dependencies](https://help.github.com/articles/about-security-alerts-for-vulnerable-dependencies/).\"",
-    "actions": [
-      "performed",
-      "published",
-      "updated"
-    ],
+    "actions": ["performed", "published", "updated"],
     "examples": [
       {
         "action": "published",
@@ -22452,10 +22331,7 @@
   {
     "name": "star",
     "description": "Activity related to a repository being starred. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[starring](https://developer.github.com/v3/activity/starring/)\" REST API.",
-    "actions": [
-      "created",
-      "deleted"
-    ],
+    "actions": ["created", "deleted"],
     "examples": [
       {
         "action": "created",
@@ -24026,9 +23902,7 @@
   {
     "name": "watch",
     "description": "When someone stars a repository. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[starring](https://developer.github.com/v3/activity/starring/)\" REST API.\n\nThe event’s actor is the [user](https://developer.github.com/v3/users/) who starred a repository, and the event’s repository is the [repository](https://developer.github.com/v3/repos/) that was starred.",
-    "actions": [
-      "started"
-    ],
+    "actions": ["started"],
     "examples": [
       {
         "action": "started",

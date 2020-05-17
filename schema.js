@@ -1,16 +1,16 @@
 module.exports = {
   properties: {
     name: {
-      type: 'string'
+      type: "string",
     },
     description: {
-      type: 'string'
+      type: "string",
     },
     actions: {
-      type: 'array'
+      type: "array",
     },
     examples: {
-      type: 'array'
-    }
-  }
-}
+      type: "array",
+    },
+  },
+};
