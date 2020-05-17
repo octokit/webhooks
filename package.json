@@ -14,15 +14,15 @@
     "fs-extra": "^9.0.0",
     "json-diff": "^0.5.3",
     "semantic-release": "^17.0.0",
-    "standard": "^14.0.0",
     "turndown": "^6.0.0",
     "yargs": "^15.0.1"
   },
   "scripts": {
-    "pretest": "standard",
     "build": "node bin/octokit-webhooks.js check --cached",
+    "pretest": "npm run -s lint",
     "test": "npm run build && node test.js",
-    "lint": "standard --fix"
+    "lint": "prettier --check '{bin,lib}/*.js' '*.{js,md}' package.json index.json",
+    "lint:fix": "prettier --write '{bin,lib}/*.js' '*.{js,md}' package.json index.json"
   },
   "repository": "https://github.com/octokit/webhooks",
   "keywords": [],
@@ -31,5 +31,8 @@
   "files": [
     "index.d.ts",
     "index.json"
-  ]
+  ],
+  "dependencies": {
+    "prettier": "^2.0.5"
+  }
 }
