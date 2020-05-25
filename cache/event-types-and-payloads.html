@@ -352,7 +352,7 @@ Webhooks configured on enterprise accounts or organizations that are part of an 
 <ul>
 <li>Repository webhooks only receive payloads for the <code>created</code> and <code>completed</code> event types in a repository</li>
 <li>Organization webhooks only receive payloads for the <code>created</code> and <code>completed</code> event types in repositories</li>
-<li>GitHub Apps with the <code>checks:read</code> permission receive payloads for the <code>created</code> and <code>completed</code> events that occur in the repository where the app is installed. The app must have the <code>checks:write</code> permission to receive the <code>rerequested</code> and <code>requested_action</code> event types. The <code>rerequested</code> and <code>requested_action</code> event type payloads are only sent to the GitHub App being requested. GitHub Apps with the <code>checks:write</code> are automatically subscribed to this webhook event. </li>
+<li>GitHub Apps with the <code>checks:read</code> permission receive payloads for the <code>created</code> and <code>completed</code> events that occur in the repository where the app is installed. The app must have the <code>checks:write</code> permission to receive the <code>rerequested</code> and <code>requested_action</code> event types. The <code>rerequested</code> and <code>requested_action</code> event type payloads are only sent to the GitHub App being requested. GitHub Apps with the <code>checks:write</code> are automatically subscribed to this webhook event.</li>
 </ul>
 
 <h3>
@@ -768,7 +768,7 @@ Webhooks configured on enterprise accounts or organizations that are part of an 
 <ul>
 <li>Repository webhooks only receive payloads for the <code>completed</code> event types in a repository</li>
 <li>Organization webhooks only receive payloads for the <code>completed</code> event types in repositories</li>
-<li>GitHub Apps with the <code>checks:read</code> permission receive payloads for the <code>created</code> and <code>completed</code> events that occur in the repository where the app is installed. The app must have the <code>checks:write</code> permission to receive the <code>requested</code> and <code>rerequested</code> event types. The <code>requested</code> and <code>rerequested</code> event type payloads are only sent to the GitHub App being requested. GitHub Apps with the <code>checks:write</code> are automatically subscribed to this webhook event. </li>
+<li>GitHub Apps with the <code>checks:read</code> permission receive payloads for the <code>created</code> and <code>completed</code> events that occur in the repository where the app is installed. The app must have the <code>checks:write</code> permission to receive the <code>requested</code> and <code>rerequested</code> event types. The <code>requested</code> and <code>rerequested</code> event type payloads are only sent to the GitHub App being requested. GitHub Apps with the <code>checks:write</code> are automatically subscribed to this webhook event.</li>
 </ul>
 
 <h3>
@@ -1308,7 +1308,7 @@ Webhooks configured on enterprise accounts or organizations that are part of an 
 
 <p>Webhook events are triggered based on the specificity of the domain you register. For example, if you register a subdomain (<code>https://subdomain.example.com</code>) then only URLs for the subdomain trigger this event. If you register a domain (<code>https://example.com</code>) then URLs for domain and all subdomains trigger this event. See "<a href="/v3/apps/installations/#create-a-content-attachment">Create a content attachment</a>" to create a new content attachment.</p>
 
-<p>Only GitHub Apps can receive this event. GitHub Apps must have the <code>content_references</code> <code>write</code> permission to subscribe to this event. </p>
+<p>Only GitHub Apps can receive this event. GitHub Apps must have the <code>content_references</code> <code>write</code> permission to subscribe to this event.</p>
 
 <h3>
 <a id="webhook-payload-example-3" class="anchor" href="#webhook-payload-example-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webhook payload example</h3>
@@ -6972,7 +6972,7 @@ Suspending a GitHub App installation is currently in beta and subject to change.
 <h2>
 <a id="pull_request" class="anchor" href="#pull_request" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>pull_request</h2>
 
-<p>Activity related to pull requests. The type of activity is specified in the <code>action</code> property of the payload object. For more information, see the "<a href="/v3/pulls/">pull requests</a>" REST API. </p>
+<p>Activity related to pull requests. The type of activity is specified in the <code>action</code> property of the payload object. For more information, see the "<a href="/v3/pulls/">pull requests</a>" REST API.</p>
 
 <h3>
 <a id="availability-30" class="anchor" href="#availability-30" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Availability</h3>
