@@ -23608,7 +23608,7 @@
   },
   {
     "name": "team_add",
-    "description": "When a [repository is added to a team](https://developer.github.com/v3/teams/#add-or-update-team-repository).",
+    "description": "When a [repository is added to a team](https://developer.github.com/v3/teams/#add-or-update-team-repository-permissions).",
     "actions": [],
     "examples": [
       {
