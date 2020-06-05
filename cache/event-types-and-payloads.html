@@ -1118,7 +1118,7 @@ Webhooks configured on enterprise accounts or organizations that are part of an 
 <tr>
 <td><code>comment</code></td>
 <td><code>object</code></td>
-<td>The <a href="/v3/repos/comments/#get-a-single-commit-comment">commit comment</a> resource.</td>
+<td>The <a href="/v3/repos/comments/#get-a-commit-comment">commit comment</a> resource.</td>
 </tr>
 <tr>
 <td><code>repository</code></td>
@@ -5739,7 +5739,7 @@ Suspending a GitHub App installation is currently in beta and subject to change.
 <tr>
 <td><code>build</code></td>
 <td><code>object</code></td>
-<td>The <a href="/v3/repos/pages/#list-pages-builds">page build</a> itself.</td>
+<td>The <a href="/v3/repos/pages/#list-github-pages-builds">List GitHub Pages builds</a> itself.</td>
 </tr>
 <tr>
 <td><code>repository</code></td>
@@ -5921,7 +5921,7 @@ Suspending a GitHub App installation is currently in beta and subject to change.
 <h2>
 <a id="ping" class="anchor" href="#ping" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ping</h2>
 
-<p>When you create a new webhook, we'll send you a simple <code>ping</code> event to let you know you've set up the webhook correctly. This event isnt stored so it isn't retrievable via the <a href="/v3/activity/events/">Events API</a>. You can trigger a <code>ping</code> again by calling the <a href="/v3/repos/hooks/#ping-a-hook">ping a hook</a> endpoint.</p>
+<p>When you create a new webhook, we'll send you a simple <code>ping</code> event to let you know you've set up the webhook correctly. This event isnt stored so it isn't retrievable via the <a href="/v3/activity/events/">Events API</a>. You can trigger a <code>ping</code> again by calling the <a href="/v3/repos/hooks/#ping-a-repository-webhook">Ping a repository webhook</a> endpoint.</p>
 
 <h3>
 <a id="availability-25" class="anchor" href="#availability-25" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Availability</h3>
@@ -5957,7 +5957,7 @@ Suspending a GitHub App installation is currently in beta and subject to change.
 <tr>
 <td><code>hook</code></td>
 <td><code>object</code></td>
-<td>The <a href="/v3/repos/hooks/#get-single-hook">webhook configuration</a>.</td>
+<td>The <a href="/v3/repos/hooks/#get-a-repository-webhook">webhook configuration</a>.</td>
 </tr>
 <tr>
 <td><code>hook[app_id]</code></td>
@@ -8963,7 +8963,7 @@ Suspending a GitHub App installation is currently in beta and subject to change.
 <tr>
 <td><code>release</code></td>
 <td><code>object</code></td>
-<td>The <a href="/v3/repos/releases/#get-a-single-release">release</a> object.</td>
+<td>The <a href="/v3/repos/releases/#get-a-release">release</a> object.</td>
 </tr>
 <tr>
 <td><code>repository</code></td>
