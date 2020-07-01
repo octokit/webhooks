@@ -131,6 +131,28 @@
 
 
 
+
+<div class="deprecation-banner deprecation-note">
+  <h5 class="text-center">
+    👋 We've unified all of GitHub's product documentation in one place! Check out the content for <a href="https://docs.github.com/rest">REST API</a>, <a href="https://docs.github.com/graphql">GraphQL API</a>, and <a href="https://docs.github.com/developers">Developers</a>. Learn more on the <a href="https://github.blog/2020-07-01-launching-docs-github-com">GitHub blog</a>. For the most accurate and up-to-date content on this page, visit <a id="newDocsRedirectURL" href="https://docs.github.com">docs.github.com</a>.
+  </h5>
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    const redirectPatterns = [
+      "/v3", "/v4", "/apps", "/webhooks", "/marketplace"
+    ]
+    if (redirectPatterns.some(pattern => window.location.pathname.match(pattern))) {
+      const element = document.getElementById("newDocsRedirectURL");
+      const newUrl = window.location.href.replace(window.location.origin, "https://docs.github.com")
+      element.setAttribute("href", newUrl)
+      element.innerHTML = newUrl.replace("https://", "")
+    }
+});
+</script>
+
     <div class="sub-nav mt-5 mb-3">
       <h2><a href="/webhooks/">Webhooks</a></h2>
     </div>
