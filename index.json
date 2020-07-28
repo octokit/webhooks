@@ -24171,9 +24171,7 @@
     "actions": [],
     "examples": [
       {
-        "inputs": {
-          "name": "Mona the Octocat"
-        },
+        "inputs": {},
         "ref": "refs/heads/master",
         "repository": {
           "id": 17273051,
@@ -24305,9 +24303,7 @@
         "workflow": ".github/workflows/hello-world-workflow.yml"
       },
       {
-        "inputs": {
-          "name": "Mona the Octocat"
-        },
+        "inputs": {},
         "ref": "refs/heads/master",
         "repository": {
           "id": 17273051,
