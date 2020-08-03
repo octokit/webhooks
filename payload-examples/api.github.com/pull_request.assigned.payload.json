@@ -40,28 +40,26 @@
     "merged_at": null,
     "merge_commit_sha": "c4295bd74fb0f4fda03689c3df3f2803b658fd85",
     "assignee": null,
-    "assignees": [
-      {
-        "login": "Codertocat",
-        "id": 21031067,
-        "node_id": "MDQ6VXNlcjIxMDMxMDY3",
-        "avatar_url": "https://avatars1.githubusercontent.com/u/21031067?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/Codertocat",
-        "html_url": "https://github.com/Codertocat",
-        "followers_url": "https://api.github.com/users/Codertocat/followers",
-        "following_url": "https://api.github.com/users/Codertocat/following{/other_user}",
-        "gists_url": "https://api.github.com/users/Codertocat/gists{/gist_id}",
-        "starred_url": "https://api.github.com/users/Codertocat/starred{/owner}{/repo}",
-        "subscriptions_url": "https://api.github.com/users/Codertocat/subscriptions",
-        "organizations_url": "https://api.github.com/users/Codertocat/orgs",
-        "repos_url": "https://api.github.com/users/Codertocat/repos",
-        "events_url": "https://api.github.com/users/Codertocat/events{/privacy}",
-        "received_events_url": "https://api.github.com/users/Codertocat/received_events",
-        "type": "User",
-        "site_admin": false
-      }
-    ],
+    "assignees": [{
+      "login": "Codertocat",
+      "id": 21031067,
+      "node_id": "MDQ6VXNlcjIxMDMxMDY3",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/21031067?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Codertocat",
+      "html_url": "https://github.com/Codertocat",
+      "followers_url": "https://api.github.com/users/Codertocat/followers",
+      "following_url": "https://api.github.com/users/Codertocat/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Codertocat/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Codertocat/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Codertocat/subscriptions",
+      "organizations_url": "https://api.github.com/users/Codertocat/orgs",
+      "repos_url": "https://api.github.com/users/Codertocat/repos",
+      "events_url": "https://api.github.com/users/Codertocat/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Codertocat/received_events",
+      "type": "User",
+      "site_admin": false
+    }],
     "requested_reviewers": [
 
     ],
@@ -469,6 +467,10 @@
     "open_issues": 2,
     "watchers": 0,
     "default_branch": "master"
+  },
+  "installation": {
+    "id": 1,
+    "node_id": "MDIzOkludGVncmF0aW9uSW5zdGFsbGF0aW9uMQ=="
   },
   "sender": {
     "login": "Codertocat",

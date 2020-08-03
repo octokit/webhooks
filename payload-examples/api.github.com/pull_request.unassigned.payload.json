@@ -68,16 +68,14 @@
     "requested_teams": [
 
     ],
-    "labels": [
-      {
-        "id": 1362934389,
-        "node_id": "MDU6TGFiZWwxMzYyOTM0Mzg5",
-        "url": "https://api.github.com/repos/Codertocat/Hello-World/labels/bug",
-        "name": "bug",
-        "color": "d73a4a",
-        "default": true
-      }
-    ],
+    "labels": [{
+      "id": 1362934389,
+      "node_id": "MDU6TGFiZWwxMzYyOTM0Mzg5",
+      "url": "https://api.github.com/repos/Codertocat/Hello-World/labels/bug",
+      "name": "bug",
+      "color": "d73a4a",
+      "default": true
+    }],
     "milestone": {
       "url": "https://api.github.com/repos/Codertocat/Hello-World/milestones/1",
       "html_url": "https://github.com/Codertocat/Hello-World/milestone/1",
@@ -512,6 +510,10 @@
     "open_issues": 2,
     "watchers": 0,
     "default_branch": "master"
+  },
+  "installation": {
+    "id": 1,
+    "node_id": "MDIzOkludGVncmF0aW9uSW5zdGFsbGF0aW9uMQ=="
   },
   "sender": {
     "login": "Codertocat",
