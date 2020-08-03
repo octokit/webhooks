@@ -34,18 +34,13 @@
       "contents": "read",
       "issues": "write"
     },
-    "events": [
-      "push",
-      "pull_request"
-    ],
+    "events": ["push", "pull_request"],
     "created_at": 1525109898,
     "updated_at": 1525109899,
     "single_file_name": "config.yml"
   },
   "repository_selection": "selected",
-  "repositories_added": [
-
-  ],
+  "repositories_added": [],
   "repositories_removed": [
     {
       "id": 1296269,

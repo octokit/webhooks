@@ -59,23 +59,19 @@
       "type": "User",
       "site_admin": false
     },
-    "assignees": [
-
+    "assignees": [],
+    "requested_reviewers": [],
+    "requested_teams": [],
+    "labels": [
+      {
+        "id": 1362934389,
+        "node_id": "MDU6TGFiZWwxMzYyOTM0Mzg5",
+        "url": "https://api.github.com/repos/Codertocat/Hello-World/labels/bug",
+        "name": "bug",
+        "color": "d73a4a",
+        "default": true
+      }
     ],
-    "requested_reviewers": [
-
-    ],
-    "requested_teams": [
-
-    ],
-    "labels": [{
-      "id": 1362934389,
-      "node_id": "MDU6TGFiZWwxMzYyOTM0Mzg5",
-      "url": "https://api.github.com/repos/Codertocat/Hello-World/labels/bug",
-      "name": "bug",
-      "color": "d73a4a",
-      "default": true
-    }],
     "milestone": {
       "url": "https://api.github.com/repos/Codertocat/Hello-World/milestones/1",
       "html_url": "https://github.com/Codertocat/Hello-World/milestone/1",

@@ -21,8 +21,8 @@
     "build": "node bin/octokit-webhooks.js check --cached",
     "pretest": "npm run -s lint",
     "test": "npm run build && node test.js",
-    "lint": "prettier --check '{bin,lib}/*.js' '*.{js,md}' package.json index.json",
-    "lint:fix": "prettier --write '{bin,lib}/*.js' '*.{js,md}' package.json index.json"
+    "lint": "prettier --check '{bin,lib}/*.js' '*.{js,md}' 'payload-examples/**/*.json' *.md package.json index.json",
+    "lint:fix": "prettier --write '{bin,lib}/*.js' '*.{js,md}' 'payload-examples/**/*.json' *.md package.json index.json"
   },
   "repository": "https://github.com/octokit/webhooks",
   "keywords": [],
