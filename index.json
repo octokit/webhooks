@@ -20593,16 +20593,13 @@
   },
   {
     "name": "repository_dispatch",
-    "description": "This event occurs when a GitHub App sends a `POST` request to the \"[Create a repository dispatch event](https://docs.github.com/en/v3/repos/#create-a-repository-dispatch-event)\" endpoint.\n\nGitHub Apps must have the `contents` permission to receive this webhook.",
+    "description": "This event occurs when a GitHub App sends a `POST` request to the \"[Create a repository dispatch event](https://docs.github.com/en/v3/repos/#create-a-repository-dispatch-event)\" endpoint.",
     "actions": ["on-demand-test"],
     "examples": [
       {
         "action": "on-demand-test",
         "branch": "master",
-        "client_payload": {
-          "unit": false,
-          "integration": true
-        },
+        "client_payload": {},
         "repository": {
           "id": 17273051,
           "node_id": "MDEwOlJlcG9zaXRvcnkxNzI3MzA1MQ==",
@@ -20738,10 +20735,7 @@
       {
         "action": "on-demand-test",
         "branch": "master",
-        "client_payload": {
-          "unit": false,
-          "integration": true
-        },
+        "client_payload": {},
         "repository": {
           "id": 17273051,
           "node_id": "MDEwOlJlcG9zaXRvcnkxNzI3MzA1MQ==",
