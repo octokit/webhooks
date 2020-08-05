@@ -1,7 +1,7 @@
 on:
-  # schedule:
-  #  # https://crontab.guru/every-hour
-  #  - cron: 0 * * * *
+  schedule:
+   # https://crontab.guru/every-hour
+   - cron: 0 * * * *
   repository_dispatch:
     types: [github-webhooks-update]
 name: Update
