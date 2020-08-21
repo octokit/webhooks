@@ -708,7 +708,7 @@
 
   
 
-    <header class="container-xl px-3 px-md-6 pt-3 pb-2 position-relative d-flex flex-justify-between width-full">
+    <header class="container-xl px-3 px-md-6 pt-3 pb-2 position-relative d-flex flex-justify-between width-full ">
 
       <div class="d-flex flex-items-center d-md-none" style="z-index: 3;" id="github-logo-mobile">
         <a href="/en" aria-hidden="true">
@@ -812,88 +812,90 @@
               </div>
               <div class="d-md-inline-block">
 
-                <div class="border-top border-md-top-0 py-2 py-md-0 d-md-inline-block">
-                  <details class="dropdown-withArrow position-relative details details-reset mr-md-3 close-when-clicked-outside">
-                    <summary class="py-2 text-gray-dark" role="button" aria-label="Toggle languages list">
-                      <div class="d-flex flex-items-center flex-justify-between">
-                        <!-- Language switcher - 'English', 'Japanese', etc -->
-                        
-                          English
-                        
-                        <svg class="arrow ml-md-1" width="14px" height="8px" viewBox="0 0 14 8" xml:space="preserve" fill="none" stroke="#1B1F23"><path d="M1,1l6.2,6L13,1"></path></svg>
-                      </div>
-                    </summary>
-                    <div id="languages-selector" class="position-md-absolute nav-desktop-langDropdown p-md-4 right-md-n4 top-md-6" style="z-index: 6;">
-                    
-                      
-                        <a
-                          href="/en/developers/webhooks-and-events/webhook-events-and-payloads"
-                          class="d-block py-2 no-underline active link-gray"
-                          style="white-space: nowrap"
-                        >
+                
+                  <div class="border-top border-md-top-0 py-2 py-md-0 d-md-inline-block">
+                    <details class="dropdown-withArrow position-relative details details-reset mr-md-3 close-when-clicked-outside">
+                      <summary class="py-2 text-gray-dark" role="button" aria-label="Toggle languages list">
+                        <div class="d-flex flex-items-center flex-justify-between">
+                          <!-- Language switcher - 'English', 'Japanese', etc -->
                           
                             English
                           
-                        </a>
+                          <svg class="arrow ml-md-1" width="14px" height="8px" viewBox="0 0 14 8" xml:space="preserve" fill="none" stroke="#1B1F23"><path d="M1,1l6.2,6L13,1"></path></svg>
+                        </div>
+                      </summary>
+                      <div id="languages-selector" class="position-md-absolute nav-desktop-langDropdown p-md-4 right-md-n4 top-md-6" style="z-index: 6;">
                       
-                    
+                        
+                          <a
+                            href="/en/developers/webhooks-and-events/webhook-events-and-payloads"
+                            class="d-block py-2 no-underline active link-gray"
+                            style="white-space: nowrap"
+                          >
+                            
+                              English
+                            
+                          </a>
+                        
                       
-                        <a
-                          href="/cn/developers/webhooks-and-events/webhook-events-and-payloads"
-                          class="d-block py-2 no-underline link-gray-dark"
-                          style="white-space: nowrap"
-                        >
-                          
-                            简体中文 (Simplified Chinese)
-                          
-                        </a>
+                        
+                          <a
+                            href="/cn/developers/webhooks-and-events/webhook-events-and-payloads"
+                            class="d-block py-2 no-underline link-gray-dark"
+                            style="white-space: nowrap"
+                          >
+                            
+                              简体中文 (Simplified Chinese)
+                            
+                          </a>
+                        
                       
-                    
+                        
+                          <a
+                            href="/ja/developers/webhooks-and-events/webhook-events-and-payloads"
+                            class="d-block py-2 no-underline link-gray-dark"
+                            style="white-space: nowrap"
+                          >
+                            
+                              日本語 (Japanese)
+                            
+                          </a>
+                        
                       
-                        <a
-                          href="/ja/developers/webhooks-and-events/webhook-events-and-payloads"
-                          class="d-block py-2 no-underline link-gray-dark"
-                          style="white-space: nowrap"
-                        >
-                          
-                            日本語 (Japanese)
-                          
-                        </a>
+                        
+                          <a
+                            href="/es/developers/webhooks-and-events/webhook-events-and-payloads"
+                            class="d-block py-2 no-underline link-gray-dark"
+                            style="white-space: nowrap"
+                          >
+                            
+                              Español (Spanish)
+                            
+                          </a>
+                        
                       
-                    
+                        
+                          <a
+                            href="/pt/developers/webhooks-and-events/webhook-events-and-payloads"
+                            class="d-block py-2 no-underline link-gray-dark"
+                            style="white-space: nowrap"
+                          >
+                            
+                              Português do Brasil (Portuguese)
+                            
+                          </a>
+                        
                       
-                        <a
-                          href="/es/developers/webhooks-and-events/webhook-events-and-payloads"
-                          class="d-block py-2 no-underline link-gray-dark"
-                          style="white-space: nowrap"
-                        >
-                          
-                            Español (Spanish)
-                          
-                        </a>
+                        
                       
-                    
-                      
-                        <a
-                          href="/pt/developers/webhooks-and-events/webhook-events-and-payloads"
-                          class="d-block py-2 no-underline link-gray-dark"
-                          style="white-space: nowrap"
-                        >
-                          
-                            Português do Brasil (Portuguese)
-                          
-                        </a>
-                      
-                    
-                      
-                    
-                    </div>
-                  </details>
-                </div>
-
-                <!-- GitHub.com homepage has a stylized search; Enterprise homepages do not -->
+                      </div>
+                    </details>
+                  </div>
                 
-                <div class="pt-3 pt-md-0 d-md-inline-block ml-md-3 border-top border-md-top-0">
+
+                <!-- GitHub.com homepage and 404 page has a stylized search; Enterprise homepages do not -->
+                
+                <div class="pt-3 pt-md-0 d-md-inline-block ml-md-3 bord'er-top border-md-top-0">
                   <!--
   This form is used in two places:
 
