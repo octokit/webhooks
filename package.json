@@ -19,11 +19,11 @@
     "yargs": "^15.0.1"
   },
   "scripts": {
-    "build": "node bin/octokit-webhooks.js check --cached",
+    "build": "tsc; node lib/bin/octokit-webhooks.js check --cached",
     "pretest": "npm run -s lint",
-    "test": "npm run build && node test.js",
-    "lint": "prettier --check '{bin,lib}/*.js' '*.{js,md}' 'payload-examples/**/*.json' *.md package.json index.json",
-    "lint:fix": "prettier --write '{bin,lib}/*.js' '*.{js,md}' 'payload-examples/**/*.json' *.md package.json index.json"
+    "test": "npm run build && lib/node test.js",
+    "lint": "prettier --check '{bin,src}/*.ts' '*.{ts,md}' 'payload-examples/**/*.json' *.md package.json index.json",
+    "lint:fix": "prettier --write '{bin,src}/*.ts' '*.{ts,md}' 'payload-examples/**/*.json' *.md package.json index.json"
   },
   "repository": "https://github.com/octokit/webhooks",
   "keywords": [],

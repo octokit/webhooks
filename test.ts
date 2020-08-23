@@ -1,6 +1,6 @@
 const Ajv = require("ajv");
 const ajv = new Ajv();
-const schema = require("./schema.js");
+const schema = require("./schema");
 const webhooks = require(".");
 
 const errors: any = [];
