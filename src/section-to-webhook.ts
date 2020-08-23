@@ -1,6 +1,4 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'cheerio'.
 import cheerio from "cheerio";
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'cheerio'.
 import TurndownService from "turndown";
 
 const turndownService = new TurndownService({
@@ -20,7 +18,7 @@ export default function sectionHtmlToWebhook(state: any, section: any) {
   // rewrite local links to /v3* as fully-qualified URLs
   $("a").each((i: any, el: any) => {
     const href = $(el).attr("href");
-    if (href.startsWith("/en/v3")) {
+    if (href?.startsWith("/en/v3")) {
       $(el).attr(
         "href",
         href.replace("/en/v3", "https://docs.github.com/en/v3")

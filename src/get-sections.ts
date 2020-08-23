@@ -1,4 +1,3 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'cheerio'.
 import cheerio from "cheerio";
 
 export default async function getSections(state: any, html: any) {
@@ -8,7 +7,7 @@ export default async function getSections(state: any, html: any) {
     $(".article-grid-toc-content a:not(.link-gray-dark)")
       .map(async (index: any, element: any) => {
         const url = $(element).attr("href");
-        const sectionId = url.split("#")[1];
+        const sectionId = url?.split("#")[1];
 
         if (!sectionId) {
           throw new Error(`${$(element).attr("href")} has no #anchor hash`);

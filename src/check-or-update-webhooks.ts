@@ -1,7 +1,5 @@
 import { writeFileSync } from "fs";
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'diff'.
 import { diff, diffString } from "json-diff";
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'prettier'.
 import prettier from "prettier";
 
 import createPrOnChange from "./create-pr-on-change";
