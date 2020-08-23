@@ -16,10 +16,7 @@ const toWebhook = require("./section-to-webhook");
 const getActionsAndExamplesFromPayloads = require("./get-actions-and-examples-from-payloads");
 
 // @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'checkOrUpd... Remove this comment to see the full error message
-async function checkOrUpdateWebhooks({
-  cached,
-  checkOnly
-}: any) {
+async function checkOrUpdateWebhooks({ cached, checkOnly }: any) {
   const state = {
     cached,
     checkOnly,
