@@ -14,6 +14,7 @@
     "fs-extra": "^9.0.0",
     "json-diff": "^0.5.3",
     "semantic-release": "^17.0.0",
+    "ts-migrate": "^0.1.0",
     "turndown": "^6.0.0",
     "yargs": "^15.0.1"
   },
