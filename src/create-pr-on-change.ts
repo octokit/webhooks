@@ -39,7 +39,7 @@ export default async function createPrOnChange() {
   await execa("git", ["checkout", "-"]);
 
   // start pullrequest
-  const { body } = await request("POST /repos/:owner/:repo/pulls", {
+  const { data: html_url } = await request("POST /repos/:owner/:repo/pulls", {
     owner,
     repo,
     headers: {
@@ -53,5 +53,5 @@ export default async function createPrOnChange() {
 My friend Travis asked me to let you know that they found webhook changes in their daily routine check.`,
   });
 
-  console.log(`🤖  Pull request created: ${body.html_url}`);
+  console.log(`🤖  Pull request created: ${html_url}`);
 }
