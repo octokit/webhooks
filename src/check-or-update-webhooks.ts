@@ -9,6 +9,7 @@ import getSections from "./get-sections";
 import toWebhook from "./section-to-webhook";
 import getActionsAndExamplesFromPayloads from "./get-actions-and-examples-from-payloads";
 import currentWebhooks from "../index.json";
+import { WebhookDefinition } from "../index";
 
 export default async function checkOrUpdateWebhooks({
   cached,
@@ -23,28 +24,33 @@ export default async function checkOrUpdateWebhooks({
   const sections = await getSections(state, html);
   const webhooksFromScrapingDocs = sections
     .map(toWebhook.bind(null, state))
-    .filter(Boolean);
+    .filter(Boolean) as WebhookDefinition[];
   const webhooksFromPayloadExamplesByName = getActionsAndExamplesFromPayloads();
 
-  const webhooks = webhooksFromScrapingDocs.map((webhook: any) => {
-    const name = webhook.name;
-    const webhookFromPayloadExamples = webhooksFromPayloadExamplesByName[name];
+  const webhooks = webhooksFromScrapingDocs.map(
+    (webhook: WebhookDefinition) => {
+      const name = webhook.name;
+      const webhookFromPayloadExamples =
+        webhooksFromPayloadExamplesByName[name];
 
-    if (!webhookFromPayloadExamples) {
-      console.warn(`No payload examples for ${name}`);
-      return webhook;
+      if (!webhookFromPayloadExamples) {
+        console.warn(`No payload examples for ${name}`);
+        return webhook;
+      }
+
+      return {
+        name,
+        description: webhook.description,
+        actions: [
+          // @ts-expect-error ts-migrate(2569) FIXME: Type 'Set<unknown>' is not an array type or a stri... Remove this comment to see the full error message
+          ...new Set(
+            webhook.actions.concat(webhookFromPayloadExamples.actions)
+          ),
+        ],
+        examples: webhook.examples.concat(webhookFromPayloadExamples.examples),
+      };
     }
-
-    return {
-      name,
-      description: webhook.description,
-      actions: [
-        // @ts-expect-error ts-migrate(2569) FIXME: Type 'Set<unknown>' is not an array type or a stri... Remove this comment to see the full error message
-        ...new Set(webhook.actions.concat(webhookFromPayloadExamples.actions)),
-      ],
-      examples: webhook.examples.concat(webhookFromPayloadExamples.examples),
-    };
-  });
+  );
 
   applyWorkarounds(webhooks);
 

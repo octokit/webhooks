@@ -1,11 +1,15 @@
 import cheerio from "cheerio";
 import TurndownService from "turndown";
+import { WebhookDefinition } from "../index";
 
 const turndownService = new TurndownService({
   codeBlockStyle: "fenced",
 });
 
-export default function sectionHtmlToWebhook(state: any, section: any) {
+export default function sectionHtmlToWebhook(
+  state: any,
+  section: any
+): WebhookDefinition | null {
   const $ = cheerio.load(section.html);
 
   // ignore obsolete events that are no longer sent
