@@ -1,10 +1,7 @@
-module.exports = getSections;
-
 // @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'cheerio'.
-const cheerio = require("cheerio");
+import cheerio from "cheerio";
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'getSection... Remove this comment to see the full error message
-async function getSections(state: any, html: any) {
+export default async function getSections(state: any, html: any) {
   const $ = cheerio.load(html);
 
   const sections = await Promise.all(

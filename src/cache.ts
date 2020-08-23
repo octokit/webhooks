@@ -9,7 +9,6 @@ const { resolve: resolvePath, dirname } = require("path");
 
 const CACHE_DIR = resolvePath(__dirname, "..", "cache");
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'cache'.
 const cache = {
   exists(path: any) {
     return pathExists(toCachePath(path));
@@ -37,4 +36,4 @@ function toCachePath(path: any) {
   return resolvePath(CACHE_DIR, `./${path}`);
 }
 
-module.exports = cache;
+export default cache;

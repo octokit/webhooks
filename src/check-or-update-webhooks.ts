@@ -1,22 +1,21 @@
-module.exports = checkOrUpdateWebhooks;
+import { writeFileSync } from "fs";
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'diff'.
+import { diff, diffString } from "json-diff";
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'prettier'.
+import prettier from "prettier";
 
-const { writeFileSync } = require("fs");
-const { diff, diffString } = require("json-diff");
-const prettier = require("prettier");
+import createPrOnChange from "./create-pr-on-change";
+import getHtml from "./get-html";
+import applyWorkarounds from "./workarounds";
+import getSections from "./get-sections";
+import toWebhook from "./section-to-webhook";
+import getActionsAndExamplesFromPayloads from "./get-actions-and-examples-from-payloads";
+import currentWebhooks from "../index.json";
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'createPrOn... Remove this comment to see the full error message
-const createPrOnChange = require("./create-pr-on-change");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'getHtml'.
-const getHtml = require("./get-html");
-const applyWorkarounds = require("./workarounds");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'getSection... Remove this comment to see the full error message
-const getSections = require("./get-sections");
-const toWebhook = require("./section-to-webhook");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'getActions... Remove this comment to see the full error message
-const getActionsAndExamplesFromPayloads = require("./get-actions-and-examples-from-payloads");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'checkOrUpd... Remove this comment to see the full error message
-async function checkOrUpdateWebhooks({ cached, checkOnly }: any) {
+export default async function checkOrUpdateWebhooks({
+  cached,
+  checkOnly,
+}: any) {
   const state = {
     cached,
     checkOnly,
@@ -50,8 +49,6 @@ async function checkOrUpdateWebhooks({ cached, checkOnly }: any) {
   });
 
   applyWorkarounds(webhooks);
-
-  const currentWebhooks = require("../index.json");
 
   if (!diff(currentWebhooks, webhooks)) {
     console.log("✅  webhooks are up-to-date");

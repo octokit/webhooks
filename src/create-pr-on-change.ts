@@ -1,11 +1,7 @@
-module.exports = createPrOnChange;
+import execa from "execa";
+import { request } from "@octokit/request";
 
-const execa = require("execa");
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'request'.
-const { request } = require("@octokit/request");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'createPrOn... Remove this comment to see the full error message
-async function createPrOnChange() {
+export default async function createPrOnChange() {
   // @ts-expect-error ts-migrate(2532) FIXME: Object is possibly 'undefined'.
   const [owner, repo] = process.env.TRAVIS_REPO_SLUG.split("/");
   const branchName = `cron/webhooks-changes/${new Date()
@@ -25,8 +21,8 @@ async function createPrOnChange() {
   const diffResult = await execa("git diff --stat", { shell: true });
   const changesSummary = diffResult.stdout
     .split("\n")
-    .pop()
-    .trim()
+    ?.pop()
+    ?.trim()
     .replace(/file/, "webhook definition");
 
   // push changes back to GitHub

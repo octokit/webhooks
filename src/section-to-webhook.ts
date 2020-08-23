@@ -1,13 +1,13 @@
-module.exports = sectionHtmlToWebhook;
-
 // @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'cheerio'.
-const cheerio = require("cheerio");
-const TurndownService = require("turndown");
+import cheerio from "cheerio";
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'cheerio'.
+import TurndownService from "turndown";
+
 const turndownService = new TurndownService({
   codeBlockStyle: "fenced",
 });
 
-function sectionHtmlToWebhook(state: any, section: any) {
+export default function sectionHtmlToWebhook(state: any, section: any) {
   const $ = cheerio.load(section.html);
 
   // ignore obsolete events that are no longer sent

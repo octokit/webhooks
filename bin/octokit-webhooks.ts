@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'checkOrUpd... Remove this comment to see the full error message
-const checkOrUpdateWebhooks = require("../src/check-or-update-webhooks");
+import checkOrUpdateWebhooks from "../src/check-or-update-webhooks";
 
 const {
   cached,

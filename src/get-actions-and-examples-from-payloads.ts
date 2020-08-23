@@ -1,9 +1,6 @@
-module.exports = getActionsAndExamplesFromPayloads;
+import { readdirSync } from "fs";
 
-const { readdirSync } = require("fs");
-
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'getActions... Remove this comment to see the full error message
-function getActionsAndExamplesFromPayloads() {
+export default function getActionsAndExamplesFromPayloads() {
   const eventsByName = {};
   for (const path of readdirSync("payload-examples/api.github.com")) {
     const [name] = path.split(".");
