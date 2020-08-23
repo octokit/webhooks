@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'checkOrUpd... Remove this comment to see the full error message
 const checkOrUpdateWebhooks = require("../lib/check-or-update-webhooks");
 
 const {
   cached,
   _: [command],
 } = require("yargs")
-  .command("update", "Update webhooks", (yargs) => {
+  .command("update", "Update webhooks", (yargs: any) => {
     yargs
       .options({
         cached: {
@@ -17,7 +18,7 @@ const {
       })
       .example("$0 update --cached");
   })
-  .command("check", "Check if webhooks are up-to-date", (yargs) => {
+  .command("check", "Check if webhooks are up-to-date", (yargs: any) => {
     yargs
       .options({
         cached: {
@@ -39,7 +40,7 @@ if (!["update", "check"].includes(command)) {
 }
 
 checkOrUpdateWebhooks({ cached, checkOnly: command === "check" }).catch(
-  (error) => {
+  (error: any) => {
     console.log(error.stack);
     process.exit(1);
   }

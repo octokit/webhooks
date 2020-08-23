@@ -1,9 +1,12 @@
 module.exports = createPrOnChange;
 
 const execa = require("execa");
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'request'.
 const { request } = require("@octokit/request");
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'createPrOn... Remove this comment to see the full error message
 async function createPrOnChange() {
+  // @ts-expect-error ts-migrate(2532) FIXME: Object is possibly 'undefined'.
   const [owner, repo] = process.env.TRAVIS_REPO_SLUG.split("/");
   const branchName = `cron/webhooks-changes/${new Date()
     .toISOString()

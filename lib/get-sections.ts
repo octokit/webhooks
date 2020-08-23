@@ -1,13 +1,15 @@
 module.exports = getSections;
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'cheerio'.
 const cheerio = require("cheerio");
 
-async function getSections(state, html) {
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'getSection... Remove this comment to see the full error message
+async function getSections(state: any, html: any) {
   const $ = cheerio.load(html);
 
   const sections = await Promise.all(
     $(".article-grid-toc-content a:not(.link-gray-dark)")
-      .map(async (index, element) => {
+      .map(async (index: any, element: any) => {
         const url = $(element).attr("href");
         const sectionId = url.split("#")[1];
 
@@ -21,7 +23,7 @@ async function getSections(state, html) {
           "\n" +
           $title
             .nextUntil("h3")
-            .map((i, el) => $.html(el))
+            .map((i: any, el: any) => $.html(el))
             .get()
             .join("\n");
 

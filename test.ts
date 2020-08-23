@@ -3,9 +3,9 @@ const ajv = new Ajv();
 const schema = require("./schema.js");
 const webhooks = require(".");
 
-const errors = [];
+const errors: any = [];
 
-webhooks.forEach((webhook) => {
+webhooks.forEach((webhook: any) => {
   const valid = ajv.validate(schema, webhook);
   if (!valid) {
     errors.push({

@@ -1,12 +1,13 @@
 module.exports = sectionHtmlToWebhook;
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'cheerio'.
 const cheerio = require("cheerio");
 const TurndownService = require("turndown");
 const turndownService = new TurndownService({
   codeBlockStyle: "fenced",
 });
 
-function sectionHtmlToWebhook(state, section) {
+function sectionHtmlToWebhook(state: any, section: any) {
   const $ = cheerio.load(section.html);
 
   // ignore obsolete events that are no longer sent
@@ -17,7 +18,7 @@ function sectionHtmlToWebhook(state, section) {
   }
 
   // rewrite local links to /v3* as fully-qualified URLs
-  $("a").each((i, el) => {
+  $("a").each((i: any, el: any) => {
     const href = $(el).attr("href");
     if (href.startsWith("/en/v3")) {
       $(el).attr(
@@ -37,21 +38,21 @@ function sectionHtmlToWebhook(state, section) {
   return webhook;
 }
 
-function getName($) {
+function getName($: any) {
   return $("h3").text().trim();
 }
 
-function getDescription($) {
+function getDescription($: any) {
   return $("h3")
     .nextUntil("h4")
     .filter("p")
-    .map((i, el) => $(el).html())
+    .map((i: any, el: any) => $(el).html())
     .get()
-    .map((html) => turndownService.turndown(html))
+    .map((html: any) => turndownService.turndown(html))
     .join("\n\n");
 }
 
-function getActions($) {
+function getActions($: any) {
   const unwantedActions = ["true", "false", "status"];
 
   const $table = $('[id^="webhook-payload-object"]').next("table");
@@ -66,17 +67,18 @@ function getActions($) {
 
   const actions = cheerio
     .load(desc)("code")
-    .map((index, el) => $(el).text().trim())
+    .map((index: any, el: any) => $(el).text().trim())
     .get()
-    .filter((action) => !unwantedActions.includes(action))
+    .filter((action: any) => !unwantedActions.includes(action))
     .sort();
 
   // return unique actions
+  // @ts-expect-error ts-migrate(2569) FIXME: Type 'Set<unknown>' is not an array type or a stri... Remove this comment to see the full error message
   return [...new Set(actions)];
 }
 
-function getExamples($) {
+function getExamples($: any) {
   return $(".language-json")
-    .map((index, el) => JSON.parse($(el).text()))
+    .map((index: any, el: any) => JSON.parse($(el).text()))
     .get();
 }
