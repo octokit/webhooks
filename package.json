@@ -15,7 +15,7 @@
     "json-diff": "^0.5.3",
     "semantic-release": "^17.0.0",
     "turndown": "^6.0.0",
-    "yargs": "^15.0.1"
+    "yargs": "^16.0.0"
   },
   "scripts": {
     "build": "node bin/octokit-webhooks.js check --cached",
