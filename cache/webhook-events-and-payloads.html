@@ -708,7 +708,7 @@
 
     <header class="container-xl px-3 px-md-6 pt-3 pb-2 position-relative d-flex flex-justify-between width-full ">
 
-      <div class="d-flex flex-items-center d-md-none" style="z-index: 3;" id="github-logo-mobile">
+      <div class="d-flex flex-items-center d-lg-none" style="z-index: 3;" id="github-logo-mobile">
         <a href="/en" aria-hidden="true">
           <svg version="1.1" width="32" height="32" viewBox="0 0 16 16" class="octicon octicon-mark-github text-black" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
         </a>
@@ -921,18 +921,17 @@
   </div>
 
       
-        <main class="container-xl px-3 px-md-6 my-4 my-lg-4 d-lg-flex">
+        <main class="container-xl px-3 px-md-6 my-4 my-lg-4 d-xl-flex">
   <article class="markdown-body width-full">
     
 
 
-    <div class="article-grid-container">
-      <div class="article-grid-toc">
-        
-  <details id="article-versions" class="dropdown-withArrow d-inline-block details details-reset mb-4 mb-md-0 position-relative close-when-clicked-outside">
+    <div class="d-lg-flex flex-justify-between">
+      <div class="d-block d-lg-none">
+  <details class="dropdown-withArrow d-inline-block details details-reset mb-4 position-relative close-when-clicked-outside article-versions">
     <summary class="d-flex flex-items-center flex-justify-between f4 h5-mktg btn-outline-mktg btn-mktg p-2">
       <!-- GitHub.com, Enterprise Server 2.16, etc -->
-      <span class="d-md-none d-xl-inline-block mr-1">Article version:</span> GitHub.com
+      <span class="d-xl-inline-block d-lg-none mr-1">Article version:</span> GitHub.com
       <svg class="arrow ml-1" width="14px" height="8px" viewBox="0 0 14 8" xml:space="preserve" fill="none" stroke="#1277eb"><path d="M1,1l6.2,6L13,1"></path></svg>
     </summary>
 
@@ -966,9 +965,8 @@
     </div>
   </details>
 
-
-      </div>
-      <div class="article-grid-body d-flex flex-items-center" style="height: 39px;">
+</div>
+      <div class="d-flex flex-items-center" style="height: 39px;">
         <nav class="breadcrumbs f5" aria-label="Breadcrumb">
   
   <a title="product: Developers" href="/en/developers" class="d-inline-block ">
@@ -986,6 +984,45 @@
 </nav>
 
       </div>
+      <div class="d-none d-lg-block">
+  <details class="dropdown-withArrow d-inline-block details details-reset mb-4 position-relative close-when-clicked-outside article-versions">
+    <summary class="d-flex flex-items-center flex-justify-between f4 h5-mktg btn-outline-mktg btn-mktg p-2">
+      <!-- GitHub.com, Enterprise Server 2.16, etc -->
+      <span class="d-xl-inline-block d-lg-none mr-1">Article version:</span> GitHub.com
+      <svg class="arrow ml-1" width="14px" height="8px" viewBox="0 0 14 8" xml:space="preserve" fill="none" stroke="#1277eb"><path d="M1,1l6.2,6L13,1"></path></svg>
+    </summary>
+
+    <div class="nav-dropdown position-md-absolute bg-white rounded-1 px-4 py-3 top-7 box-shadow-large" style="z-index: 6; width: 210px;">
+      
+      <a
+      href="/en/developers/webhooks-and-events/webhook-events-and-payloads"
+      class="d-block py-2 link-blue active"
+      >GitHub.com</a>
+      
+      <a
+      href="/en/enterprise/2.22/user/developers/webhooks-and-events/webhook-events-and-payloads"
+      class="d-block py-2 link-gray-dark no-underline"
+      >Enterprise Server 2.22</a>
+      
+      <a
+      href="/en/enterprise/2.21/user/developers/webhooks-and-events/webhook-events-and-payloads"
+      class="d-block py-2 link-gray-dark no-underline"
+      >Enterprise Server 2.21</a>
+      
+      <a
+      href="/en/enterprise/2.20/user/developers/webhooks-and-events/webhook-events-and-payloads"
+      class="d-block py-2 link-gray-dark no-underline"
+      >Enterprise Server 2.20</a>
+      
+      <a
+      href="/en/enterprise/2.19/user/developers/webhooks-and-events/webhook-events-and-payloads"
+      class="d-block py-2 link-gray-dark no-underline"
+      >Enterprise Server 2.19</a>
+      
+    </div>
+  </details>
+
+</div>
     </div>
 
     <div class="mt-2 article-grid-container">
