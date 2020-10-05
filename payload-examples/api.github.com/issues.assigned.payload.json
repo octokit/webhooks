@@ -31,7 +31,16 @@
       "type": "User",
       "site_admin": false
     },
-    "labels": [],
+    "labels": [
+      {
+        "id": 1362934389,
+        "node_id": "MDU6TGFiZWwxMzYyOTM0Mzg5",
+        "url": "https://api.github.com/repos/Codertocat/Hello-World/labels/bug",
+        "name": "bug",
+        "color": "d73a4a",
+        "default": true
+      }
+    ],
     "state": "open",
     "locked": false,
     "assignee": {

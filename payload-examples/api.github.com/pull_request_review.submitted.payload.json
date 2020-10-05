@@ -81,7 +81,16 @@
     "assignees": [],
     "requested_reviewers": [],
     "requested_teams": [],
-    "labels": [],
+    "labels": [
+      {
+        "id": 1362934389,
+        "node_id": "MDU6TGFiZWwxMzYyOTM0Mzg5",
+        "url": "https://api.github.com/repos/Codertocat/Hello-World/labels/bug",
+        "name": "bug",
+        "color": "d73a4a",
+        "default": true
+      }
+    ],
     "milestone": null,
     "commits_url": "https://api.github.com/repos/Codertocat/Hello-World/pulls/2/commits",
     "review_comments_url": "https://api.github.com/repos/Codertocat/Hello-World/pulls/2/comments",
