@@ -14,7 +14,7 @@ If you figure out how to fix the issue then please push the fix to the pull requ
 
 ## Adding examples
 
-The [`index.json` file](https://github.com/octokit/webhooks/blob/master/index.json) is generated, please do not edit it. Instead, make changes in the [`payload-examples/api.github.com/` folder](https://github.com/octokit/webhooks/tree/master/payload-examples/api.github.com), then update `index.json` by running the following command 
+The [`index.json` file](https://github.com/octokit/webhooks/blob/master/index.json) is generated, please do not edit it. Instead, make changes in the [`payload-examples/api.github.com/` folder](https://github.com/octokit/webhooks/tree/master/payload-examples/api.github.com), then update `index.json` by running the following command
 
 ```
 node bin/octokit-webhooks.js update --cached
