@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "workflow_run",
+
+  "type": "object",
+  "required": ["action", "organization", "repository", "sender"],
+  "properties": {
+    "action": {
+      "type": "string"
+    },
+    "repository": {
+      "$ref": "$repository"
+    },
+    "sender": {
+      "$ref": "$sender"
+    },
+    "organization": {
+      "$ref": "$organization"
+    }
+  },
+  "additionalProperties": false
+}

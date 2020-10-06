@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "repository_dispatch",
+
+  "type": "object",
+  "required": ["action", "branch", "client_payload", "repository", "organization", "sender", "installation"],
+  "properties": {
+    "action": {
+      "type": "string"
+    },
+    "branch": {
+      "type": "string"
+    },
+    "client_payload": {
+      "type": "object",
+      "required": ["unit", "integration"],
+      "properties": {
+        "unit": {
+          "type": "boolean"
+        },
+        "integration": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    },
+    "repository": {
+      "$ref": "$repository"
+    },
+    "sender": {
+      "$ref": "$sender"
+    },
+    "installation": {
+      "$ref": "$installation"
+    },
+    "organization": {
+      "$ref": "$organization"
+    }
+  },
+  "additionalProperties": true
+}

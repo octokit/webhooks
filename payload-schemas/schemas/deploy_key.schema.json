@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "deploy_key",
+
+  "type": "object",
+  "required": ["action", "key", "repository", "sender"],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["created", "deleted"]
+    },
+    "key": {
+      "type": "object",
+      "required": ["id", "key", "url", "title", "verified", "created_at", "read_only"],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "key": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "verified": {
+          "type": "boolean"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "read_only": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    },
+    "repository": { "$ref": "$repository" },
+    "sender": { "$ref": "$sender" },
+    "installation": { "$ref": "$installation" },
+    "organization": { "$ref": "$organization" }
+  },
+  "additionalProperties": true
+}

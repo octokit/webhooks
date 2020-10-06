@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "$organization",
+  "type": ["object", "null"],
+  "properties": {
+    "login": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "node_id": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "repos_url": {
+      "type": "string"
+    },
+    "events_url": {
+      "type": "string"
+    },
+    "hooks_url": {
+      "type": "string"
+    },
+    "issues_url": {
+      "type": "string"
+    },
+    "members_url": {
+      "type": "string"
+    },
+    "public_members_url": {
+      "type": "string"
+    },
+    "avatar_url": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,658 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "issue_comment",
+
+  "type": "object",
+  "required": ["action", "issue", "comment", "repository", "sender"],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["created", "edited", "deleted"]
+    },
+    "issue": {
+      "type": "object",
+      "required": [
+        "url",
+        "repository_url",
+        "labels_url",
+        "comments_url",
+        "events_url",
+        "html_url",
+        "id",
+        "node_id",
+        "number",
+        "title",
+        "user",
+        "labels",
+        "state",
+        "locked",
+        "assignee",
+        "assignees",
+        "milestone",
+        "comments",
+        "created_at",
+        "updated_at",
+        "closed_at",
+        "author_association",
+        "body"
+      ],
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "repository_url": {
+          "type": "string"
+        },
+        "labels_url": {
+          "type": "string"
+        },
+        "comments_url": {
+          "type": "string"
+        },
+        "events_url": {
+          "type": "string"
+        },
+        "html_url": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "number": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "user": {
+          "type": "object",
+          "required": [
+            "login",
+            "id",
+            "node_id",
+            "avatar_url",
+            "gravatar_id",
+            "url",
+            "html_url",
+            "followers_url",
+            "following_url",
+            "gists_url",
+            "starred_url",
+            "subscriptions_url",
+            "organizations_url",
+            "repos_url",
+            "events_url",
+            "received_events_url",
+            "type",
+            "site_admin"
+          ],
+          "properties": {
+            "login": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            },
+            "node_id": {
+              "type": "string"
+            },
+            "avatar_url": {
+              "type": "string"
+            },
+            "gravatar_id": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "html_url": {
+              "type": "string"
+            },
+            "followers_url": {
+              "type": "string"
+            },
+            "following_url": {
+              "type": "string"
+            },
+            "gists_url": {
+              "type": "string"
+            },
+            "starred_url": {
+              "type": "string"
+            },
+            "subscriptions_url": {
+              "type": "string"
+            },
+            "organizations_url": {
+              "type": "string"
+            },
+            "repos_url": {
+              "type": "string"
+            },
+            "events_url": {
+              "type": "string"
+            },
+            "received_events_url": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "site_admin": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": true
+        },
+        "labels": {
+          "type": "array",
+          "additionalItems": false,
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "required": ["id", "node_id", "url", "name", "color", "default"],
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "node_id": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "color": {
+                    "type": "string"
+                  },
+                  "default": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              }
+            ]
+          }
+        },
+        "state": {
+          "type": "string"
+        },
+        "locked": {
+          "type": "boolean"
+        },
+        "assignee": {
+          "type": "object",
+          "required": [
+            "login",
+            "id",
+            "node_id",
+            "avatar_url",
+            "gravatar_id",
+            "url",
+            "html_url",
+            "followers_url",
+            "following_url",
+            "gists_url",
+            "starred_url",
+            "subscriptions_url",
+            "organizations_url",
+            "repos_url",
+            "events_url",
+            "received_events_url",
+            "type",
+            "site_admin"
+          ],
+          "properties": {
+            "login": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            },
+            "node_id": {
+              "type": "string"
+            },
+            "avatar_url": {
+              "type": "string"
+            },
+            "gravatar_id": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "html_url": {
+              "type": "string"
+            },
+            "followers_url": {
+              "type": "string"
+            },
+            "following_url": {
+              "type": "string"
+            },
+            "gists_url": {
+              "type": "string"
+            },
+            "starred_url": {
+              "type": "string"
+            },
+            "subscriptions_url": {
+              "type": "string"
+            },
+            "organizations_url": {
+              "type": "string"
+            },
+            "repos_url": {
+              "type": "string"
+            },
+            "events_url": {
+              "type": "string"
+            },
+            "received_events_url": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "site_admin": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": true
+        },
+        "assignees": {
+          "type": "array",
+          "additionalItems": false,
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "required": [
+                  "login",
+                  "id",
+                  "node_id",
+                  "avatar_url",
+                  "gravatar_id",
+                  "url",
+                  "html_url",
+                  "followers_url",
+                  "following_url",
+                  "gists_url",
+                  "starred_url",
+                  "subscriptions_url",
+                  "organizations_url",
+                  "repos_url",
+                  "events_url",
+                  "received_events_url",
+                  "type",
+                  "site_admin"
+                ],
+                "properties": {
+                  "login": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "integer"
+                  },
+                  "node_id": {
+                    "type": "string"
+                  },
+                  "avatar_url": {
+                    "type": "string"
+                  },
+                  "gravatar_id": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "html_url": {
+                    "type": "string"
+                  },
+                  "followers_url": {
+                    "type": "string"
+                  },
+                  "following_url": {
+                    "type": "string"
+                  },
+                  "gists_url": {
+                    "type": "string"
+                  },
+                  "starred_url": {
+                    "type": "string"
+                  },
+                  "subscriptions_url": {
+                    "type": "string"
+                  },
+                  "organizations_url": {
+                    "type": "string"
+                  },
+                  "repos_url": {
+                    "type": "string"
+                  },
+                  "events_url": {
+                    "type": "string"
+                  },
+                  "received_events_url": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "site_admin": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              }
+            ]
+          }
+        },
+        "milestone": {
+          "type": "object",
+          "required": [
+            "url",
+            "html_url",
+            "labels_url",
+            "id",
+            "node_id",
+            "number",
+            "title",
+            "description",
+            "creator",
+            "open_issues",
+            "closed_issues",
+            "state",
+            "created_at",
+            "updated_at",
+            "due_on",
+            "closed_at"
+          ],
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "html_url": {
+              "type": "string"
+            },
+            "labels_url": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            },
+            "node_id": {
+              "type": "string"
+            },
+            "number": {
+              "type": "integer"
+            },
+            "title": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "creator": {
+              "type": "object",
+              "required": [
+                "login",
+                "id",
+                "node_id",
+                "avatar_url",
+                "gravatar_id",
+                "url",
+                "html_url",
+                "followers_url",
+                "following_url",
+                "gists_url",
+                "starred_url",
+                "subscriptions_url",
+                "organizations_url",
+                "repos_url",
+                "events_url",
+                "received_events_url",
+                "type",
+                "site_admin"
+              ],
+              "properties": {
+                "login": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "integer"
+                },
+                "node_id": {
+                  "type": "string"
+                },
+                "avatar_url": {
+                  "type": "string"
+                },
+                "gravatar_id": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "html_url": {
+                  "type": "string"
+                },
+                "followers_url": {
+                  "type": "string"
+                },
+                "following_url": {
+                  "type": "string"
+                },
+                "gists_url": {
+                  "type": "string"
+                },
+                "starred_url": {
+                  "type": "string"
+                },
+                "subscriptions_url": {
+                  "type": "string"
+                },
+                "organizations_url": {
+                  "type": "string"
+                },
+                "repos_url": {
+                  "type": "string"
+                },
+                "events_url": {
+                  "type": "string"
+                },
+                "received_events_url": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "site_admin": {
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": true
+            },
+            "open_issues": {
+              "type": "integer"
+            },
+            "closed_issues": {
+              "type": "integer"
+            },
+            "state": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            },
+            "due_on": {
+              "type": "string"
+            },
+            "closed_at": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
+        },
+        "comments": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "closed_at": {
+          "type": "null"
+        },
+        "author_association": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "comment": {
+      "type": "object",
+      "required": [
+        "url",
+        "html_url",
+        "issue_url",
+        "id",
+        "node_id",
+        "user",
+        "created_at",
+        "updated_at",
+        "author_association",
+        "body"
+      ],
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "html_url": {
+          "type": "string"
+        },
+        "issue_url": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "user": {
+          "type": "object",
+          "required": [
+            "login",
+            "id",
+            "node_id",
+            "avatar_url",
+            "gravatar_id",
+            "url",
+            "html_url",
+            "followers_url",
+            "following_url",
+            "gists_url",
+            "starred_url",
+            "subscriptions_url",
+            "organizations_url",
+            "repos_url",
+            "events_url",
+            "received_events_url",
+            "type",
+            "site_admin"
+          ],
+          "properties": {
+            "login": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            },
+            "node_id": {
+              "type": "string"
+            },
+            "avatar_url": {
+              "type": "string"
+            },
+            "gravatar_id": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "html_url": {
+              "type": "string"
+            },
+            "followers_url": {
+              "type": "string"
+            },
+            "following_url": {
+              "type": "string"
+            },
+            "gists_url": {
+              "type": "string"
+            },
+            "starred_url": {
+              "type": "string"
+            },
+            "subscriptions_url": {
+              "type": "string"
+            },
+            "organizations_url": {
+              "type": "string"
+            },
+            "repos_url": {
+              "type": "string"
+            },
+            "events_url": {
+              "type": "string"
+            },
+            "received_events_url": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "site_admin": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": true
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "author_association": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "repository": { "$ref": "$repository" },
+    "sender": { "$ref": "$sender" },
+    "installation": { "$ref": "$installation" },
+    "organization": { "$ref": "$organization" }
+  },
+  "additionalProperties": true
+}

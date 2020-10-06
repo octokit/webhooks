@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "integration_installation_repositories",
+
+  "type": "object",
+  "required": [
+    "action",
+    "installation",
+    "repository_selection",
+    "repositories_added",
+    "repositories_removed",
+    "sender"
+  ],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["added"]
+    },
+    "installation": {
+      "$ref": "$installation"
+    },
+    "repository_selection": {
+      "type": "string"
+    },
+    "repositories_added": {
+      "type": "array",
+      "additionalItems": false,
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "required": ["id", "node_id", "name", "full_name", "private"],
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "node_id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "full_name": {
+                "type": "string"
+              },
+              "private": {
+                "type": "boolean"
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      }
+    },
+    "repositories_removed": {
+      "type": "array",
+      "additionalItems": false,
+      "items": {}
+    },
+    "sender": {
+      "$ref": "$sender"
+    }
+  },
+  "additionalProperties": false
+}
