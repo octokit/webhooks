@@ -187,20 +187,6 @@
     "default_branch": "master"
   },
   "organization": {
-    "login": "github",
-    "id": 340,
-    "node_id": "MDEyOk9yZ2FuaXphdGlvbjM4MzAyODk5",
-    "url": "https://api.github.com/orgs/github",
-    "repos_url": "https://api.github.com/orgs/github/repos",
-    "events_url": "https://api.github.com/orgs/github/events",
-    "hooks_url": "https://api.github.com/orgs/github/hooks",
-    "issues_url": "https://api.github.com/orgs/github/issues",
-    "members_url": "https://api.github.com/orgs/github/members{/member}",
-    "public_members_url": "https://api.github.com/orgs/github/public_members{/member}",
-    "avatar_url": "http://alambic.github.com/avatars/u/340?",
-    "description": "How people build software."
-  },
-  "organization": {
     "login": "Octocoders",
     "id": 38302899,
     "node_id": "MDEyOk9yZ2FuaXphdGlvbjM4MzAyODk5",
