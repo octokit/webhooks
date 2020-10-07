@@ -54,15 +54,6 @@
     "repository": {
       "$ref": "$repository"
     },
-    "sender": {
-      "$ref": "$sender"
-    },
-    "installation": {
-      "$ref": "$installation"
-    },
-    "organization": {
-      "$ref": "$organization"
-    },
     "pusher": {
       "type": "object",
       "required": ["name", "email"],
@@ -74,8 +65,11 @@
           "type": "string"
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
+    },
+    "sender": {
+      "$ref": "$sender"
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

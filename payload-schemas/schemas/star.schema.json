@@ -10,7 +10,7 @@
       "enum": ["created", "deleted"]
     },
     "starred_at": {
-      "type": "string"
+      "oneOf": [{ "type": "null" }, { "type": "string" }]
     },
     "repository": {
       "$ref": "$repository"

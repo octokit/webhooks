@@ -10,9 +10,9 @@ fs.readdirSync('./payload-examples/api.github.com').forEach(filename => {
   try {
     const validationResult = validate(event, file);
     if (!validationResult) {
-      console.error(`Payload '${filename}' does not match schema`);
+      console.error(`X Payload '${filename}' does not match schema`);
     } else {
-      console.error(`Payload '${filename}' matches schema`);
+      console.error(`  Payload '${filename}' matches schema`);
     }
   } catch (err) {
     console.error(`Missing schema for event '${event}'`)

@@ -7,7 +7,7 @@
   "properties": {
     "action": {
       "type": "string",
-      "enum": ["submitted", "edited", "dismissed"]
+      "enum": ["submitted"]
     },
     "review": {
       "type": "object",
@@ -109,7 +109,7 @@
               "type": "boolean"
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "body": {
           "type": "null"
@@ -144,7 +144,7 @@
                   "type": "string"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             },
             "pull_request": {
               "type": "object",
@@ -154,13 +154,13 @@
                   "type": "string"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
     "pull_request": {
       "type": "object",
@@ -311,7 +311,7 @@
               "type": "boolean"
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "body": {
           "type": "string"
@@ -463,7 +463,7 @@
                   "type": "boolean"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             },
             "repo": {
               "type": "object",
@@ -540,11 +540,7 @@
                 "forks",
                 "open_issues",
                 "watchers",
-                "default_branch",
-                "allow_squash_merge",
-                "allow_merge_commit",
-                "allow_rebase_merge",
-                "delete_branch_on_merge"
+                "default_branch"
               ],
               "properties": {
                 "id": {
@@ -640,7 +636,7 @@
                       "type": "boolean"
                     }
                   },
-                  "additionalProperties": true
+                  "additionalProperties": false
                 },
                 "html_url": {
                   "type": "string"
@@ -842,24 +838,12 @@
                 },
                 "default_branch": {
                   "type": "string"
-                },
-                "allow_squash_merge": {
-                  "type": "boolean"
-                },
-                "allow_merge_commit": {
-                  "type": "boolean"
-                },
-                "allow_rebase_merge": {
-                  "type": "boolean"
-                },
-                "delete_branch_on_merge": {
-                  "type": "boolean"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "base": {
           "type": "object",
@@ -952,7 +936,7 @@
                   "type": "boolean"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             },
             "repo": {
               "type": "object",
@@ -1029,11 +1013,7 @@
                 "forks",
                 "open_issues",
                 "watchers",
-                "default_branch",
-                "allow_squash_merge",
-                "allow_merge_commit",
-                "allow_rebase_merge",
-                "delete_branch_on_merge"
+                "default_branch"
               ],
               "properties": {
                 "id": {
@@ -1129,7 +1109,7 @@
                       "type": "boolean"
                     }
                   },
-                  "additionalProperties": true
+                  "additionalProperties": false
                 },
                 "html_url": {
                   "type": "string"
@@ -1331,24 +1311,12 @@
                 },
                 "default_branch": {
                   "type": "string"
-                },
-                "allow_squash_merge": {
-                  "type": "boolean"
-                },
-                "allow_merge_commit": {
-                  "type": "boolean"
-                },
-                "allow_rebase_merge": {
-                  "type": "boolean"
-                },
-                "delete_branch_on_merge": {
-                  "type": "boolean"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "_links": {
           "type": "object",
@@ -1362,7 +1330,7 @@
                   "type": "string"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             },
             "html": {
               "type": "object",
@@ -1372,7 +1340,7 @@
                   "type": "string"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             },
             "issue": {
               "type": "object",
@@ -1382,7 +1350,7 @@
                   "type": "string"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             },
             "comments": {
               "type": "object",
@@ -1392,7 +1360,7 @@
                   "type": "string"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             },
             "review_comments": {
               "type": "object",
@@ -1402,7 +1370,7 @@
                   "type": "string"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             },
             "review_comment": {
               "type": "object",
@@ -1412,7 +1380,7 @@
                   "type": "string"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             },
             "commits": {
               "type": "object",
@@ -1422,7 +1390,7 @@
                   "type": "string"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             },
             "statuses": {
               "type": "object",
@@ -1432,29 +1400,23 @@
                   "type": "string"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "author_association": {
           "type": "string"
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
     "repository": {
       "$ref": "$repository"
     },
     "sender": {
       "$ref": "$sender"
-    },
-    "installation": {
-      "$ref": "$installation"
-    },
-    "organization": {
-      "$ref": "$organization"
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

@@ -3,7 +3,7 @@
   "$id": "pull_request",
 
   "type": "object",
-  "required": ["action", "number", "pull_request", "repository", "sender"],
+  "required": ["action", "number", "pull_request", "repository", "installation", "sender"],
   "properties": {
     "action": {
       "type": "string",
@@ -189,7 +189,7 @@
               "type": "boolean"
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "body": {
           "type": "string"
@@ -201,21 +201,186 @@
           "type": "string"
         },
         "closed_at": {
-          "type": "null"
+          "oneOf": [{ "type": "null" }, { "type": "string" }]
         },
         "merged_at": {
-          "type": "null"
+          "oneOf": [{ "type": "null" }, { "type": "string" }]
         },
         "merge_commit_sha": {
-          "type": "null"
+          "oneOf": [{ "type": "null" }, { "type": "string" }]
         },
         "assignee": {
-          "type": "null"
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "required": [
+                "login",
+                "id",
+                "node_id",
+                "avatar_url",
+                "gravatar_id",
+                "url",
+                "html_url",
+                "followers_url",
+                "following_url",
+                "gists_url",
+                "starred_url",
+                "subscriptions_url",
+                "organizations_url",
+                "repos_url",
+                "events_url",
+                "received_events_url",
+                "type",
+                "site_admin"
+              ],
+              "properties": {
+                "login": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "integer"
+                },
+                "node_id": {
+                  "type": "string"
+                },
+                "avatar_url": {
+                  "type": "string"
+                },
+                "gravatar_id": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "html_url": {
+                  "type": "string"
+                },
+                "followers_url": {
+                  "type": "string"
+                },
+                "following_url": {
+                  "type": "string"
+                },
+                "gists_url": {
+                  "type": "string"
+                },
+                "starred_url": {
+                  "type": "string"
+                },
+                "subscriptions_url": {
+                  "type": "string"
+                },
+                "organizations_url": {
+                  "type": "string"
+                },
+                "repos_url": {
+                  "type": "string"
+                },
+                "events_url": {
+                  "type": "string"
+                },
+                "received_events_url": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "site_admin": {
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
         },
         "assignees": {
           "type": "array",
           "additionalItems": false,
-          "items": {}
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "required": [
+                  "login",
+                  "id",
+                  "node_id",
+                  "avatar_url",
+                  "gravatar_id",
+                  "url",
+                  "html_url",
+                  "followers_url",
+                  "following_url",
+                  "gists_url",
+                  "starred_url",
+                  "subscriptions_url",
+                  "organizations_url",
+                  "repos_url",
+                  "events_url",
+                  "received_events_url",
+                  "type",
+                  "site_admin"
+                ],
+                "properties": {
+                  "login": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "integer"
+                  },
+                  "node_id": {
+                    "type": "string"
+                  },
+                  "avatar_url": {
+                    "type": "string"
+                  },
+                  "gravatar_id": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "html_url": {
+                    "type": "string"
+                  },
+                  "followers_url": {
+                    "type": "string"
+                  },
+                  "following_url": {
+                    "type": "string"
+                  },
+                  "gists_url": {
+                    "type": "string"
+                  },
+                  "starred_url": {
+                    "type": "string"
+                  },
+                  "subscriptions_url": {
+                    "type": "string"
+                  },
+                  "organizations_url": {
+                    "type": "string"
+                  },
+                  "repos_url": {
+                    "type": "string"
+                  },
+                  "events_url": {
+                    "type": "string"
+                  },
+                  "received_events_url": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "site_admin": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              }
+            ]
+          }
         },
         "requested_reviewers": {
           "type": "array",
@@ -233,7 +398,158 @@
           "items": {}
         },
         "milestone": {
-          "type": "null"
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "required": [
+                "url",
+                "html_url",
+                "labels_url",
+                "id",
+                "node_id",
+                "number",
+                "title",
+                "description",
+                "creator",
+                "open_issues",
+                "closed_issues",
+                "state",
+                "created_at",
+                "updated_at",
+                "due_on",
+                "closed_at"
+              ],
+              "properties": {
+                "url": {
+                  "type": "string"
+                },
+                "html_url": {
+                  "type": "string"
+                },
+                "labels_url": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "integer"
+                },
+                "node_id": {
+                  "type": "string"
+                },
+                "number": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "creator": {
+                  "type": "object",
+                  "required": [
+                    "login",
+                    "id",
+                    "node_id",
+                    "avatar_url",
+                    "gravatar_id",
+                    "url",
+                    "html_url",
+                    "followers_url",
+                    "following_url",
+                    "gists_url",
+                    "starred_url",
+                    "subscriptions_url",
+                    "organizations_url",
+                    "repos_url",
+                    "events_url",
+                    "received_events_url",
+                    "type",
+                    "site_admin"
+                  ],
+                  "properties": {
+                    "login": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "integer"
+                    },
+                    "node_id": {
+                      "type": "string"
+                    },
+                    "avatar_url": {
+                      "type": "string"
+                    },
+                    "gravatar_id": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "html_url": {
+                      "type": "string"
+                    },
+                    "followers_url": {
+                      "type": "string"
+                    },
+                    "following_url": {
+                      "type": "string"
+                    },
+                    "gists_url": {
+                      "type": "string"
+                    },
+                    "starred_url": {
+                      "type": "string"
+                    },
+                    "subscriptions_url": {
+                      "type": "string"
+                    },
+                    "organizations_url": {
+                      "type": "string"
+                    },
+                    "repos_url": {
+                      "type": "string"
+                    },
+                    "events_url": {
+                      "type": "string"
+                    },
+                    "received_events_url": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "site_admin": {
+                      "type": "boolean"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "open_issues": {
+                  "type": "integer"
+                },
+                "closed_issues": {
+                  "type": "integer"
+                },
+                "state": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "updated_at": {
+                  "type": "string"
+                },
+                "due_on": {
+                  "type": "string"
+                },
+                "closed_at": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
         },
         "commits_url": {
           "type": "string"
@@ -341,7 +657,7 @@
                   "type": "boolean"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             },
             "repo": {
               "type": "object",
@@ -418,11 +734,7 @@
                 "forks",
                 "open_issues",
                 "watchers",
-                "default_branch",
-                "allow_squash_merge",
-                "allow_merge_commit",
-                "allow_rebase_merge",
-                "delete_branch_on_merge"
+                "default_branch"
               ],
               "properties": {
                 "id": {
@@ -518,7 +830,7 @@
                       "type": "boolean"
                     }
                   },
-                  "additionalProperties": true
+                  "additionalProperties": false
                 },
                 "html_url": {
                   "type": "string"
@@ -674,7 +986,7 @@
                   "type": "integer"
                 },
                 "language": {
-                  "type": "null"
+                  "oneOf": [{ "type": "null" }, { "type": "string" }]
                 },
                 "has_issues": {
                   "type": "boolean"
@@ -720,24 +1032,12 @@
                 },
                 "default_branch": {
                   "type": "string"
-                },
-                "allow_squash_merge": {
-                  "type": "boolean"
-                },
-                "allow_merge_commit": {
-                  "type": "boolean"
-                },
-                "allow_rebase_merge": {
-                  "type": "boolean"
-                },
-                "delete_branch_on_merge": {
-                  "type": "boolean"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "base": {
           "type": "object",
@@ -830,7 +1130,7 @@
                   "type": "boolean"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             },
             "repo": {
               "type": "object",
@@ -907,11 +1207,7 @@
                 "forks",
                 "open_issues",
                 "watchers",
-                "default_branch",
-                "allow_squash_merge",
-                "allow_merge_commit",
-                "allow_rebase_merge",
-                "delete_branch_on_merge"
+                "default_branch"
               ],
               "properties": {
                 "id": {
@@ -1007,7 +1303,7 @@
                       "type": "boolean"
                     }
                   },
-                  "additionalProperties": true
+                  "additionalProperties": false
                 },
                 "html_url": {
                   "type": "string"
@@ -1163,7 +1459,7 @@
                   "type": "integer"
                 },
                 "language": {
-                  "type": "null"
+                  "oneOf": [{ "type": "null" }, { "type": "string" }]
                 },
                 "has_issues": {
                   "type": "boolean"
@@ -1209,24 +1505,12 @@
                 },
                 "default_branch": {
                   "type": "string"
-                },
-                "allow_squash_merge": {
-                  "type": "boolean"
-                },
-                "allow_merge_commit": {
-                  "type": "boolean"
-                },
-                "allow_rebase_merge": {
-                  "type": "boolean"
-                },
-                "delete_branch_on_merge": {
-                  "type": "boolean"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "_links": {
           "type": "object",
@@ -1240,7 +1524,7 @@
                   "type": "string"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             },
             "html": {
               "type": "object",
@@ -1250,7 +1534,7 @@
                   "type": "string"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             },
             "issue": {
               "type": "object",
@@ -1260,7 +1544,7 @@
                   "type": "string"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             },
             "comments": {
               "type": "object",
@@ -1270,7 +1554,7 @@
                   "type": "string"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             },
             "review_comments": {
               "type": "object",
@@ -1280,7 +1564,7 @@
                   "type": "string"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             },
             "review_comment": {
               "type": "object",
@@ -1290,7 +1574,7 @@
                   "type": "string"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             },
             "commits": {
               "type": "object",
@@ -1300,7 +1584,7 @@
                   "type": "string"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             },
             "statuses": {
               "type": "object",
@@ -1310,10 +1594,10 @@
                   "type": "string"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "author_association": {
           "type": "string"
@@ -1325,10 +1609,10 @@
           "type": "boolean"
         },
         "mergeable": {
-          "type": "null"
+          "oneOf": [{ "type": "null" }, { "type": "boolean" }]
         },
         "rebaseable": {
-          "type": "null"
+          "oneOf": [{ "type": "null" }, { "type": "boolean" }]
         },
         "mergeable_state": {
           "type": "string"
@@ -1358,20 +1642,122 @@
           "type": "integer"
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
+    },
+    "label": {
+      "type": "object",
+      "required": ["id", "node_id", "url", "name", "color", "default"],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        },
+        "default": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "assignee": {
+      "type": "object",
+      "required": [
+        "login",
+        "id",
+        "node_id",
+        "avatar_url",
+        "gravatar_id",
+        "url",
+        "html_url",
+        "followers_url",
+        "following_url",
+        "gists_url",
+        "starred_url",
+        "subscriptions_url",
+        "organizations_url",
+        "repos_url",
+        "events_url",
+        "received_events_url",
+        "type",
+        "site_admin"
+      ],
+      "properties": {
+        "login": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "avatar_url": {
+          "type": "string"
+        },
+        "gravatar_id": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "html_url": {
+          "type": "string"
+        },
+        "followers_url": {
+          "type": "string"
+        },
+        "following_url": {
+          "type": "string"
+        },
+        "gists_url": {
+          "type": "string"
+        },
+        "starred_url": {
+          "type": "string"
+        },
+        "subscriptions_url": {
+          "type": "string"
+        },
+        "organizations_url": {
+          "type": "string"
+        },
+        "repos_url": {
+          "type": "string"
+        },
+        "events_url": {
+          "type": "string"
+        },
+        "received_events_url": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "site_admin": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
     },
     "repository": {
       "$ref": "$repository"
     },
-    "sender": {
-      "$ref": "$sender"
-    },
     "installation": {
       "$ref": "$installation"
     },
-    "organization": {
-      "$ref": "$organization"
+    "sender": {
+      "$ref": "$sender"
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

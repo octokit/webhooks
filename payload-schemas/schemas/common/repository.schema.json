@@ -69,7 +69,6 @@
     "forks_count",
     "mirror_url",
     "archived",
-    "disabled",
     "open_issues_count",
     "license",
     "forks",
@@ -121,6 +120,12 @@
         },
         "id": {
           "type": "integer"
+        },
+        "name": {
+          "oneOf": [{ "type": "null" }, { "type": "string" }]
+        },
+        "email": {
+          "oneOf": [{ "type": "null" }, { "type": "string" }]
         },
         "node_id": {
           "type": "string"
@@ -177,7 +182,7 @@
       "type": "string"
     },
     "description": {
-      "type": "null"
+      "oneOf": [{ "type": "null" }, { "type": "string" }]
     },
     "fork": {
       "type": "boolean"
@@ -294,13 +299,13 @@
       "type": "string"
     },
     "created_at": {
-      "type": "string"
+      "oneOf": [{ "type": "integer" }, { "type": "string" }]
     },
     "updated_at": {
       "type": "string"
     },
     "pushed_at": {
-      "type": "string"
+      "oneOf": [{ "type": "integer" }, { "type": "string" }]
     },
     "git_url": {
       "type": "string"
@@ -315,7 +320,7 @@
       "type": "string"
     },
     "homepage": {
-      "type": "null"
+      "oneOf": [{ "type": "null" }, { "type": "string" }]
     },
     "size": {
       "type": "integer"
@@ -327,7 +332,7 @@
       "type": "integer"
     },
     "language": {
-      "type": "string"
+      "oneOf": [{ "type": "null" }, { "type": "string" }]
     },
     "has_issues": {
       "type": "boolean"
@@ -348,7 +353,7 @@
       "type": "integer"
     },
     "mirror_url": {
-      "type": "null"
+      "oneOf": [{ "type": "null" }, { "type": "string" }]
     },
     "archived": {
       "type": "boolean"
@@ -360,7 +365,7 @@
       "type": "integer"
     },
     "license": {
-      "type": "null"
+      "oneOf": [{ "type": "null" }, { "type": "string" }]
     },
     "forks": {
       "type": "integer"
@@ -371,8 +376,30 @@
     "watchers": {
       "type": "integer"
     },
+    "stargazers": {
+      "type": "integer"
+    },
     "default_branch": {
       "type": "string"
+    },
+    "master_branch": {
+      "type": "string"
+    },
+    "permissions": {
+      "type": "object",
+      "required": ["pull", "push", "admin"],
+      "properties": {
+        "pull": {
+          "type": "boolean"
+        },
+        "push": {
+          "type": "boolean"
+        },
+        "admin": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
     }
   },
   "additionalProperties": false

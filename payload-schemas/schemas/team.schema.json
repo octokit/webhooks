@@ -3,12 +3,18 @@
   "$id": "team",
 
   "type": "object",
-  "required": ["action", "team", "repository", "organization", "sender"],
+  "required": ["action", "team", "organization", "sender"],
   "properties": {
     "action": {
       "type": "string",
       "enum": ["created", "deleted", "edited", "added_to_repository", "removed_from_repository"]
     },
+    "changes": {
+      "type": "object",
+      "required": [],
+      "additionalProperties": false
+    },
+
     "team": {
       "type": "object",
       "required": [
@@ -38,7 +44,7 @@
           "type": "string"
         },
         "description": {
-          "type": "string"
+          "oneOf": [{ "type": "null" }, { "type": "string" }]
         },
         "privacy": {
           "type": "string"

@@ -13,12 +13,10 @@
       "type": "object",
       "required": [
         "id",
-        "node_id",
         "head_sha",
         "external_id",
         "url",
         "html_url",
-        "details_url",
         "status",
         "conclusion",
         "started_at",
@@ -56,27 +54,32 @@
           "enum": ["queued", "in_progress", "completed"]
         },
         "conclusion": {
-          "type": ["string", "null"],
-          "enum": ["success", "failure", "neutral", "cancelled", "timed_out", "action_required", "stale"]
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": ["string"],
+              "enum": ["success", "failure", "neutral", "cancelled", "timed_out", "action_required", "stale"]
+            }
+          ]
         },
         "started_at": {
           "type": "string"
         },
         "completed_at": {
-          "type": "string"
+          "oneOf": [{ "type": "null" }, { "type": "string" }]
         },
         "output": {
           "type": "object",
-          "required": ["title", "summary", "text", "annotations_count", "annotations_url"],
+          "required": ["summary", "text", "annotations_count", "annotations_url"],
           "properties": {
             "title": {
-              "type": "null"
+              "oneOf": [{ "type": "null" }, { "type": "string" }]
             },
             "summary": {
-              "type": "null"
+              "oneOf": [{ "type": "null" }, { "type": "string" }]
             },
             "text": {
-              "type": "null"
+              "oneOf": [{ "type": "null" }, { "type": "string" }]
             },
             "annotations_count": {
               "type": "integer"
@@ -94,7 +97,6 @@
           "type": "object",
           "required": [
             "id",
-            "node_id",
             "head_branch",
             "head_sha",
             "status",
@@ -124,7 +126,7 @@
               "type": "string"
             },
             "conclusion": {
-              "type": "string"
+              "oneOf": [{ "type": "null" }, { "type": "string" }]
             },
             "url": {
               "type": "string"
@@ -227,9 +229,7 @@
                 "external_url",
                 "html_url",
                 "created_at",
-                "updated_at",
-                "permissions",
-                "events"
+                "updated_at"
               ],
               "properties": {
                 "id": {
@@ -322,7 +322,7 @@
                   "type": "string"
                 },
                 "description": {
-                  "type": "string"
+                  "oneOf": [{ "type": "null" }, { "type": "string" }]
                 },
                 "external_url": {
                   "type": "string"
@@ -447,9 +447,7 @@
             "external_url",
             "html_url",
             "created_at",
-            "updated_at",
-            "permissions",
-            "events"
+            "updated_at"
           ],
           "properties": {
             "id": {
@@ -542,7 +540,7 @@
               "type": "string"
             },
             "description": {
-              "type": "string"
+              "oneOf": [{ "type": "null" }, { "type": "string" }]
             },
             "external_url": {
               "type": "string"
