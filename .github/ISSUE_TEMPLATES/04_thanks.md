@@ -1,14 +1,14 @@
 ---
 name: "💝 Thank you"
-about: "@octokit/webhooks.js is awesome 🙌"
+about: "Octokit Webhooks is awesome 🙌"
 labels: thanks
 ---
 
 <!-- Please replace all placeholders such as this below -->
 
-**How do you use @octokit/webhooks.js?**
+**How do you use Octokit Webhooks?**
 
-<!-- Please share how you use @octokit/webhooks.js. What are your use cases? -->
+<!-- Please share how you use Octokit Webhooks. What are your use cases? -->
 
 **What do you love about it?**
 
