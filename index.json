@@ -5648,7 +5648,7 @@
   },
   {
     "name": "deployment",
-    "description": "A deployment is created. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[deployment](/en/free-pro-team@latest/v3/repos/deployments/#list-deployments)\" REST API.",
+    "description": "A deployment is created. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[deployment](/en/free-pro-team@latest/rest/reference/repos#list-deployments)\" REST API.",
     "actions": ["created"],
     "examples": [
       {
@@ -5961,7 +5961,7 @@
   },
   {
     "name": "deployment_status",
-    "description": "A deployment is created. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[deployment statuses](/en/free-pro-team@latest/v3/repos/deployments/#list-deployment-statuses)\" REST API.",
+    "description": "A deployment is created. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[deployment statuses](/en/free-pro-team@latest/rest/reference/repos#list-deployment-statuses)\" REST API.",
     "actions": ["created"],
     "examples": [
       {
@@ -18182,7 +18182,7 @@
   },
   {
     "name": "ping",
-    "description": "When you create a new webhook, we'll send you a simple `ping` event to let you know you've set up the webhook correctly. This event isnt stored so it isn't retrievable via the [Events API](/en/free-pro-team@latest/v3/activity/events). You can trigger a `ping` again by calling the [Ping a repository webhook](/en/free-pro-team@latest/v3/repos/hooks/#ping-a-repository-webhook) endpoint.",
+    "description": "When you create a new webhook, we'll send you a simple `ping` event to let you know you've set up the webhook correctly. This event isnt stored so it isn't retrievable via the [Events API](/en/free-pro-team@latest/rest/reference/activity#ping-a-repository-webhook) endpoint.",
     "actions": [],
     "examples": [
       {
