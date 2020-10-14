@@ -124,6 +124,7 @@
     "site_admin": true
   },
   "installation": {
-    "id": 1
+    "id": 1,
+    "node_id": "MDIzOkludGVncmF0aW9uSW5zdGFsbGF0aW9uMQ=="
   }
 }
