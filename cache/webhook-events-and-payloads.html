@@ -733,6 +733,18 @@
         <td>The id of the check suite that this check run is part of.</td>
       </tr>
       <tr>
+        <td><code>check_run[check_suite][pull_requests]</code></td>
+        <td><code>array</code></td>
+        <td>
+          An array of pull requests that match this check suite. A pull request
+          matches a check suite if they have the same <code>head_sha</code> and
+          <code>head_branch</code>. When the check suite&apos;s
+          <code>head_branch</code> is in a forked repository it will be
+          <code>null</code> and the <code>pull_requests</code> array will be
+          empty.
+        </td>
+      </tr>
+      <tr>
         <td><code>requested_action</code></td>
         <td><code>object</code></td>
         <td>The action requested by the user.</td>
