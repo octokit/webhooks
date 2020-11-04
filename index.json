@@ -20959,7 +20959,7 @@
   },
   {
     "name": "ping",
-    "description": "When you create a new webhook, we'll send you a simple `ping` event to let you know you've set up the webhook correctly. This event isnt stored so it isn't retrievable via the [Events API](/en/free-pro-team@latest/rest/reference/activity#ping-a-repository-webhook) endpoint.",
+    "description": "When you create a new webhook, we'll send you a simple `ping` event to let you know you've set up the webhook correctly. This event isn't stored so it isn't retrievable via the [Events API](/en/free-pro-team@latest/rest/reference/activity#ping-a-repository-webhook) endpoint.",
     "actions": [],
     "examples": [
       {
@@ -37615,7 +37615,7 @@
   },
   {
     "name": "repository_vulnerability_alert",
-    "description": "Activity related to security vulnerability alerts in a repository. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[About security alerts for vulerable dependencies](/en/free-pro-team@latest/github/managing-security-vulnerabilities/about-security-alerts-for-vulnerable-dependencies)\".",
+    "description": "Activity related to security vulnerability alerts in a repository. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[About security alerts for vulnerable dependencies](/en/free-pro-team@latest/github/managing-security-vulnerabilities/about-security-alerts-for-vulnerable-dependencies)\".",
     "actions": ["create", "dismiss", "resolve"],
     "examples": [
       {
