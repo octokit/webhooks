@@ -248,7 +248,8 @@ in the [`cache/`](cache/) folder.
 ## See also
 
 - [octokit/graphql-schema](https://github.com/octokit/graphql-schema) – GitHub’s GraphQL Schema with validation
-- [octokit/routes](https://github.com/octokit/routes) – GitHub REST API route specifications
+- [octokit/openapi](https://github.com/octokit/openapi) – GitHub REST API route specifications
+- [octokit/app-permissions](https://github.com/octokit/app-permissions) – GitHub App permission specifications
 
 ## LICENSE
 
