@@ -196,6 +196,10 @@
       </li>
 
       <li class="ml-0 mb-2 lh-condensed">
+        <a href="#secret_scanning_alert">secret_scanning_alert</a>
+      </li>
+
+      <li class="ml-0 mb-2 lh-condensed">
         <a href="#security_advisory">security_advisory</a>
       </li>
 
@@ -11527,6 +11531,241 @@
 }
 </code></pre>
   </div>
+  <h3 id="secret_scanning_alert">
+    <a href="#secret_scanning_alert">secret_scanning_alert</a>
+  </h3>
+  <p>
+    Activity related to secret scanning alerts in a repository. The type of
+    activity is specified in the action property of the payload object. For more
+    information, see &#x201C;<a
+      href="/en/free-pro-team@latest/github/administering-a-repository/about-secret-scanning"
+      >About secret scanning</a
+    >.&#x201D;
+  </p>
+  <h4 id="availability-40"><a href="#availability-40">Availability</a></h4>
+  <ul>
+    <li>Repository webhooks</li>
+    <li>Organization webhooks</li>
+    <li>
+      GitHub Apps with the <code>secret_scanning_alerts:read</code> permission
+    </li>
+  </ul>
+  <h4 id="webhook-payload-object-39">
+    <a href="#webhook-payload-object-39">Webhook payload object</a>
+  </h4>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Key</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>action</code></td>
+        <td><code>string</code></td>
+        <td>
+          The action that was performed. This can be either
+          <code>created</code>, <code>resolved</code>, or <code>reopened</code>.
+        </td>
+      </tr>
+      <tr>
+        <td><code>alert</code></td>
+        <td><code>object</code></td>
+        <td>The secret scanning alert involved in the event.</td>
+      </tr>
+      <tr>
+        <td><code>repository</code></td>
+        <td><code>object</code></td>
+        <td>
+          The
+          <a
+            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+            ><code>repository</code></a
+          >
+          where the event occurred.
+        </td>
+      </tr>
+      <tr>
+        <td><code>organization</code></td>
+        <td><code>object</code></td>
+        <td>
+          Webhook payloads contain the
+          <a
+            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+            ><code>organization</code></a
+          >
+          object when the webhook is configured for an organization or the event
+          occurs from activity in a repository owned by an organization.
+        </td>
+      </tr>
+      <tr>
+        <td><code>installation</code></td>
+        <td><code>object</code></td>
+        <td>
+          The GitHub App installation. Webhook payloads contain the
+          <code>installation</code> property when the event is configured for
+          and sent to a GitHub App.
+        </td>
+      </tr>
+      <tr>
+        <td><code>sender</code></td>
+        <td><code>object</code></td>
+        <td>
+          If the <code>action</code> is <code>resolved</code> or
+          <code>reopened</code>, the <code>sender</code> object will be the user
+          that triggered the event. The <code>sender</code> object is empty for
+          all other actions.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 id="webhook-payload-example-39">
+    <a href="#webhook-payload-example-39">Webhook payload example</a>
+  </h4>
+  <div class="height-constrained-code-block">
+    <pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;action&quot;</span>: <span class="hljs-string">&quot;reopened&quot;</span>,
+  <span class="hljs-attr">&quot;alert&quot;</span>: {
+    <span class="hljs-attr">&quot;number&quot;</span>: <span class="hljs-number">191</span>,
+    <span class="hljs-attr">&quot;secret_type&quot;</span>: <span class="hljs-string">&quot;adafruit_io_key&quot;</span>,
+    <span class="hljs-attr">&quot;resolution&quot;</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">&quot;resolved_by&quot;</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">&quot;resolved_at&quot;</span>: <span class="hljs-literal">null</span>
+  },
+  <span class="hljs-attr">&quot;repository&quot;</span>: {
+    <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-number">257423561</span>,
+    <span class="hljs-attr">&quot;node_id&quot;</span>: <span class="hljs-string">&quot;MDEwOlJlcG9zaXRvcnkyNTc0MjM1NjE=&quot;</span>,
+    <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;Hello-World&quot;</span>,
+    <span class="hljs-attr">&quot;full_name&quot;</span>: <span class="hljs-string">&quot;Codertocat/Hello-World&quot;</span>,
+    <span class="hljs-attr">&quot;private&quot;</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">&quot;owner&quot;</span>: {
+      <span class="hljs-attr">&quot;login&quot;</span>: <span class="hljs-string">&quot;Codertocat&quot;</span>,
+      <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-number">30846345</span>,
+      <span class="hljs-attr">&quot;node_id&quot;</span>: <span class="hljs-string">&quot;MDEyOk9yZ2FuaXphdGlvbjMwODQ2MzQ1&quot;</span>,
+      <span class="hljs-attr">&quot;avatar_url&quot;</span>: <span class="hljs-string">&quot;https://avatars0.githubusercontent.com/u/30846345?v=4&quot;</span>,
+      <span class="hljs-attr">&quot;gravatar_id&quot;</span>: <span class="hljs-string">&quot;&quot;</span>,
+      <span class="hljs-attr">&quot;url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/users/Codertocat&quot;</span>,
+      <span class="hljs-attr">&quot;html_url&quot;</span>: <span class="hljs-string">&quot;https://github.com/Codertocat&quot;</span>,
+      <span class="hljs-attr">&quot;followers_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/users/Codertocat/followers&quot;</span>,
+      <span class="hljs-attr">&quot;following_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/users/Codertocat/following{/other_user}&quot;</span>,
+      <span class="hljs-attr">&quot;gists_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/users/Codertocat/gists{/gist_id}&quot;</span>,
+      <span class="hljs-attr">&quot;starred_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/users/Codertocat/starred{/owner}{/repo}&quot;</span>,
+      <span class="hljs-attr">&quot;subscriptions_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/users/Codertocat/subscriptions&quot;</span>,
+      <span class="hljs-attr">&quot;organizations_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/users/Codertocat/orgs&quot;</span>,
+      <span class="hljs-attr">&quot;repos_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/users/Codertocat/repos&quot;</span>,
+      <span class="hljs-attr">&quot;events_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/users/Codertocat/events{/privacy}&quot;</span>,
+      <span class="hljs-attr">&quot;received_events_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/users/Codertocat/received_events&quot;</span>,
+      <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;Organization&quot;</span>,
+      <span class="hljs-attr">&quot;site_admin&quot;</span>: <span class="hljs-literal">false</span>
+    },
+    <span class="hljs-attr">&quot;html_url&quot;</span>: <span class="hljs-string">&quot;https://github.com/Codertocat/Hello-World&quot;</span>,
+    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">&quot;fork&quot;</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">&quot;url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World&quot;</span>,
+    <span class="hljs-attr">&quot;forks_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/forks&quot;</span>,
+    <span class="hljs-attr">&quot;keys_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/keys{/key_id}&quot;</span>,
+    <span class="hljs-attr">&quot;collaborators_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/collaborators{/collaborator}&quot;</span>,
+    <span class="hljs-attr">&quot;teams_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/teams&quot;</span>,
+    <span class="hljs-attr">&quot;hooks_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/hooks&quot;</span>,
+    <span class="hljs-attr">&quot;issue_events_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/issues/events{/number}&quot;</span>,
+    <span class="hljs-attr">&quot;events_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/events&quot;</span>,
+    <span class="hljs-attr">&quot;assignees_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/assignees{/user}&quot;</span>,
+    <span class="hljs-attr">&quot;branches_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/branches{/branch}&quot;</span>,
+    <span class="hljs-attr">&quot;tags_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/tags&quot;</span>,
+    <span class="hljs-attr">&quot;blobs_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/git/blobs{/sha}&quot;</span>,
+    <span class="hljs-attr">&quot;git_tags_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/git/tags{/sha}&quot;</span>,
+    <span class="hljs-attr">&quot;git_refs_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/git/refs{/sha}&quot;</span>,
+    <span class="hljs-attr">&quot;trees_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/git/trees{/sha}&quot;</span>,
+    <span class="hljs-attr">&quot;statuses_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/statuses/{sha}&quot;</span>,
+    <span class="hljs-attr">&quot;languages_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/languages&quot;</span>,
+    <span class="hljs-attr">&quot;stargazers_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/stargazers&quot;</span>,
+    <span class="hljs-attr">&quot;contributors_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/contributors&quot;</span>,
+    <span class="hljs-attr">&quot;subscribers_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/subscribers&quot;</span>,
+    <span class="hljs-attr">&quot;subscription_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/subscription&quot;</span>,
+    <span class="hljs-attr">&quot;commits_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/commits{/sha}&quot;</span>,
+    <span class="hljs-attr">&quot;git_commits_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/git/commits{/sha}&quot;</span>,
+    <span class="hljs-attr">&quot;comments_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/comments{/number}&quot;</span>,
+    <span class="hljs-attr">&quot;issue_comment_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/issues/comments{/number}&quot;</span>,
+    <span class="hljs-attr">&quot;contents_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/contents/{+path}&quot;</span>,
+    <span class="hljs-attr">&quot;compare_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/compare/{base}...{head}&quot;</span>,
+    <span class="hljs-attr">&quot;merges_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/merges&quot;</span>,
+    <span class="hljs-attr">&quot;archive_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/{archive_format}{/ref}&quot;</span>,
+    <span class="hljs-attr">&quot;downloads_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/downloads&quot;</span>,
+    <span class="hljs-attr">&quot;issues_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/issues{/number}&quot;</span>,
+    <span class="hljs-attr">&quot;pulls_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/pulls{/number}&quot;</span>,
+    <span class="hljs-attr">&quot;milestones_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/milestones{/number}&quot;</span>,
+    <span class="hljs-attr">&quot;notifications_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/notifications{?since,all,participating}&quot;</span>,
+    <span class="hljs-attr">&quot;labels_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/labels{/name}&quot;</span>,
+    <span class="hljs-attr">&quot;releases_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/releases{/id}&quot;</span>,
+    <span class="hljs-attr">&quot;deployments_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/repos/Codertocat/Hello-World/deployments&quot;</span>,
+    <span class="hljs-attr">&quot;created_at&quot;</span>: <span class="hljs-string">&quot;2020-04-20T22:59:11Z&quot;</span>,
+    <span class="hljs-attr">&quot;updated_at&quot;</span>: <span class="hljs-string">&quot;2020-11-24T01:37:33Z&quot;</span>,
+    <span class="hljs-attr">&quot;pushed_at&quot;</span>: <span class="hljs-string">&quot;2020-11-24T01:37:31Z&quot;</span>,
+    <span class="hljs-attr">&quot;git_url&quot;</span>: <span class="hljs-string">&quot;git://github.com/Codertocat/Hello-World.git&quot;</span>,
+    <span class="hljs-attr">&quot;ssh_url&quot;</span>: <span class="hljs-string">&quot;git@github.com:Codertocat/Hello-World.git&quot;</span>,
+    <span class="hljs-attr">&quot;clone_url&quot;</span>: <span class="hljs-string">&quot;https://github.com/Codertocat/Hello-World.git&quot;</span>,
+    <span class="hljs-attr">&quot;svn_url&quot;</span>: <span class="hljs-string">&quot;https://github.com/Codertocat/Hello-World&quot;</span>,
+    <span class="hljs-attr">&quot;homepage&quot;</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">&quot;size&quot;</span>: <span class="hljs-number">1156</span>,
+    <span class="hljs-attr">&quot;stargazers_count&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">&quot;watchers_count&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">&quot;language&quot;</span>: <span class="hljs-string">&quot;JavaScript&quot;</span>,
+    <span class="hljs-attr">&quot;has_issues&quot;</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">&quot;has_projects&quot;</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">&quot;has_downloads&quot;</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">&quot;has_wiki&quot;</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">&quot;has_pages&quot;</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">&quot;forks_count&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">&quot;mirror_url&quot;</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">&quot;archived&quot;</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">&quot;disabled&quot;</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">&quot;open_issues_count&quot;</span>: <span class="hljs-number">3</span>,
+    <span class="hljs-attr">&quot;license&quot;</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">&quot;forks&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">&quot;open_issues&quot;</span>: <span class="hljs-number">3</span>,
+    <span class="hljs-attr">&quot;watchers&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">&quot;default_branch&quot;</span>: <span class="hljs-string">&quot;master&quot;</span>
+  },
+  <span class="hljs-attr">&quot;organization&quot;</span>: {
+    <span class="hljs-attr">&quot;login&quot;</span>: <span class="hljs-string">&quot;Codertocat&quot;</span>,
+    <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-number">30846345</span>,
+    <span class="hljs-attr">&quot;node_id&quot;</span>: <span class="hljs-string">&quot;MDEyOk9yZ2FuaXphdGlvbjMwODQ2MzQ1&quot;</span>,
+    <span class="hljs-attr">&quot;url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/orgs/Codertocat&quot;</span>,
+    <span class="hljs-attr">&quot;repos_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/orgs/Codertocat/repos&quot;</span>,
+    <span class="hljs-attr">&quot;events_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/orgs/Codertocat/events&quot;</span>,
+    <span class="hljs-attr">&quot;hooks_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/orgs/Codertocat/hooks&quot;</span>,
+    <span class="hljs-attr">&quot;issues_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/orgs/Codertocat/issues&quot;</span>,
+    <span class="hljs-attr">&quot;members_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/orgs/Codertocat/members{/member}&quot;</span>,
+    <span class="hljs-attr">&quot;public_members_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/orgs/Codertocat/public_members{/member}&quot;</span>,
+    <span class="hljs-attr">&quot;avatar_url&quot;</span>: <span class="hljs-string">&quot;https://avatars0.githubusercontent.com/u/30846345?v=4&quot;</span>,
+    <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;Demos and testing of GitHub security products&quot;</span>
+  },
+  <span class="hljs-attr">&quot;sender&quot;</span>: {
+    <span class="hljs-attr">&quot;login&quot;</span>: <span class="hljs-string">&quot;Codertocat&quot;</span>,
+    <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-number">10136561</span>,
+    <span class="hljs-attr">&quot;node_id&quot;</span>: <span class="hljs-string">&quot;MDQ6VXNlcjEwMTM2NTYx&quot;</span>,
+    <span class="hljs-attr">&quot;avatar_url&quot;</span>: <span class="hljs-string">&quot;https://avatars1.githubusercontent.com/u/10136561?v=4&quot;</span>,
+    <span class="hljs-attr">&quot;gravatar_id&quot;</span>: <span class="hljs-string">&quot;&quot;</span>,
+    <span class="hljs-attr">&quot;url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/users/Codertocat&quot;</span>,
+    <span class="hljs-attr">&quot;html_url&quot;</span>: <span class="hljs-string">&quot;https://github.com/Codertocat&quot;</span>,
+    <span class="hljs-attr">&quot;followers_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/users/Codertocat/followers&quot;</span>,
+    <span class="hljs-attr">&quot;following_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/users/Codertocat/following{/other_user}&quot;</span>,
+    <span class="hljs-attr">&quot;gists_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/users/Codertocat/gists{/gist_id}&quot;</span>,
+    <span class="hljs-attr">&quot;starred_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/users/Codertocat/starred{/owner}{/repo}&quot;</span>,
+    <span class="hljs-attr">&quot;subscriptions_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/users/Codertocat/subscriptions&quot;</span>,
+    <span class="hljs-attr">&quot;organizations_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/users/Codertocat/orgs&quot;</span>,
+    <span class="hljs-attr">&quot;repos_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/users/Codertocat/repos&quot;</span>,
+    <span class="hljs-attr">&quot;events_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/users/Codertocat/events{/privacy}&quot;</span>,
+    <span class="hljs-attr">&quot;received_events_url&quot;</span>: <span class="hljs-string">&quot;https://api.github.com/users/Codertocat/received_events&quot;</span>,
+    <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;User&quot;</span>,
+    <span class="hljs-attr">&quot;site_admin&quot;</span>: <span class="hljs-literal">true</span>
+  }
+}
+</code></pre>
+  </div>
   <h3 id="security_advisory">
     <a href="#security_advisory">security_advisory</a>
   </h3>
@@ -11539,12 +11778,12 @@
       >About security alerts for vulnerable dependencies</a
     >.&quot;
   </p>
-  <h4 id="availability-40"><a href="#availability-40">Availability</a></h4>
+  <h4 id="availability-41"><a href="#availability-41">Availability</a></h4>
   <ul>
     <li>GitHub Apps with the <code>security_events</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-39">
-    <a href="#webhook-payload-object-39">Webhook payload object</a>
+  <h4 id="webhook-payload-object-40">
+    <a href="#webhook-payload-object-40">Webhook payload object</a>
   </h4>
 
   <table>
@@ -11575,8 +11814,8 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-39">
-    <a href="#webhook-payload-example-39">Webhook payload example</a>
+  <h4 id="webhook-payload-example-40">
+    <a href="#webhook-payload-example-40">Webhook payload example</a>
   </h4>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
@@ -11648,12 +11887,12 @@
       >Configuring webhooks for events in your sponsored account</a
     >&quot;.
   </p>
-  <h4 id="availability-41"><a href="#availability-41">Availability</a></h4>
+  <h4 id="availability-42"><a href="#availability-42">Availability</a></h4>
   <ul>
     <li>Sponsored accounts</li>
   </ul>
-  <h4 id="webhook-payload-object-40">
-    <a href="#webhook-payload-object-40">Webhook payload object</a>
+  <h4 id="webhook-payload-object-41">
+    <a href="#webhook-payload-object-41">Webhook payload object</a>
   </h4>
 
   <table>
@@ -11902,13 +12141,13 @@
       >starring</a
     >&quot; REST API.
   </p>
-  <h4 id="availability-42"><a href="#availability-42">Availability</a></h4>
+  <h4 id="availability-43"><a href="#availability-43">Availability</a></h4>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
   </ul>
-  <h4 id="webhook-payload-object-41">
-    <a href="#webhook-payload-object-41">Webhook payload object</a>
+  <h4 id="webhook-payload-object-42">
+    <a href="#webhook-payload-object-42">Webhook payload object</a>
   </h4>
 
   <table>
@@ -11970,8 +12209,8 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-40">
-    <a href="#webhook-payload-example-40">Webhook payload example</a>
+  <h4 id="webhook-payload-example-41">
+    <a href="#webhook-payload-example-41">Webhook payload example</a>
   </h4>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
@@ -12103,14 +12342,14 @@
       >statuses</a
     >&quot; REST API.
   </p>
-  <h4 id="availability-43"><a href="#availability-43">Availability</a></h4>
+  <h4 id="availability-44"><a href="#availability-44">Availability</a></h4>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>statuses</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-42">
-    <a href="#webhook-payload-object-42">Webhook payload object</a>
+  <h4 id="webhook-payload-object-43">
+    <a href="#webhook-payload-object-43">Webhook payload object</a>
   </h4>
 
   <table>
@@ -12200,8 +12439,8 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-41">
-    <a href="#webhook-payload-example-41">Webhook payload example</a>
+  <h4 id="webhook-payload-example-42">
+    <a href="#webhook-payload-example-42">Webhook payload example</a>
   </h4>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
@@ -12439,13 +12678,13 @@
       >teams</a
     >&quot; REST API.
   </p>
-  <h4 id="availability-44"><a href="#availability-44">Availability</a></h4>
+  <h4 id="availability-45"><a href="#availability-45">Availability</a></h4>
   <ul>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>members</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-43">
-    <a href="#webhook-payload-object-43">Webhook payload object</a>
+  <h4 id="webhook-payload-object-44">
+    <a href="#webhook-payload-object-44">Webhook payload object</a>
   </h4>
 
   <table>
@@ -12559,8 +12798,8 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-42">
-    <a href="#webhook-payload-example-42">Webhook payload example</a>
+  <h4 id="webhook-payload-example-43">
+    <a href="#webhook-payload-example-43">Webhook payload example</a>
   </h4>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
@@ -12722,14 +12961,14 @@
       >repository is added to a team</a
     >.
   </p>
-  <h4 id="availability-45"><a href="#availability-45">Availability</a></h4>
+  <h4 id="availability-46"><a href="#availability-46">Availability</a></h4>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>members</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-44">
-    <a href="#webhook-payload-object-44">Webhook payload object</a>
+  <h4 id="webhook-payload-object-45">
+    <a href="#webhook-payload-object-45">Webhook payload object</a>
   </h4>
 
   <table>
@@ -12792,8 +13031,8 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-43">
-    <a href="#webhook-payload-example-43">Webhook payload example</a>
+  <h4 id="webhook-payload-example-44">
+    <a href="#webhook-payload-example-44">Webhook payload example</a>
   </h4>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
@@ -12957,14 +13196,14 @@
     <a href="/en/free-pro-team@latest/rest/reference/repos">repository</a> that
     was starred.
   </p>
-  <h4 id="availability-46"><a href="#availability-46">Availability</a></h4>
+  <h4 id="availability-47"><a href="#availability-47">Availability</a></h4>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>metadata</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-45">
-    <a href="#webhook-payload-object-45">Webhook payload object</a>
+  <h4 id="webhook-payload-object-46">
+    <a href="#webhook-payload-object-46">Webhook payload object</a>
   </h4>
 
   <table>
@@ -13025,8 +13264,8 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-44">
-    <a href="#webhook-payload-example-44">Webhook payload example</a>
+  <h4 id="webhook-payload-example-45">
+    <a href="#webhook-payload-example-45">Webhook payload example</a>
   </h4>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
@@ -13161,15 +13400,15 @@
       >Events that trigger workflows</a
     >.&quot;
   </p>
-  <h4 id="availability-47"><a href="#availability-47">Availability</a></h4>
+  <h4 id="availability-48"><a href="#availability-48">Availability</a></h4>
   <ul>
     <li>
       GitHub Apps must have the <code>contents</code> permission to receive this
       webhook.
     </li>
   </ul>
-  <h4 id="webhook-payload-example-45">
-    <a href="#webhook-payload-example-45">Webhook payload example</a>
+  <h4 id="webhook-payload-example-46">
+    <a href="#webhook-payload-example-46">Webhook payload example</a>
   </h4>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
@@ -13316,15 +13555,15 @@
       >Events that trigger workflows</a
     >.&quot;
   </p>
-  <h4 id="availability-48"><a href="#availability-48">Availability</a></h4>
+  <h4 id="availability-49"><a href="#availability-49">Availability</a></h4>
   <ul>
     <li>
       GitHub Apps with the <code>actions</code> or
       <code>contents</code> permissions.
     </li>
   </ul>
-  <h4 id="webhook-payload-object-46">
-    <a href="#webhook-payload-object-46">Webhook payload object</a>
+  <h4 id="webhook-payload-object-47">
+    <a href="#webhook-payload-object-47">Webhook payload object</a>
   </h4>
 
   <table>
@@ -13376,8 +13615,8 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-46">
-    <a href="#webhook-payload-example-46">Webhook payload example</a>
+  <h4 id="webhook-payload-example-47">
+    <a href="#webhook-payload-example-47">Webhook payload example</a>
   </h4>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
