@@ -1,10 +1,10 @@
-const Ajv = require('ajv').default;
-const { readdirSync, lstatSync } = require('fs');
-const { resolve } = require('path');
+const Ajv = require("ajv").default;
+const { readdirSync, lstatSync } = require("fs");
+const { resolve } = require("path");
 const ajv = new Ajv();
 
-const commonSchemaDir = './payload-schemas/schemas/common';
-const schemaDir = './payload-schemas/schemas';
+const commonSchemaDir = "./payload-schemas/schemas/common";
+const schemaDir = "./payload-schemas/schemas";
 
 function requireSchema(dir, filename) {
   const filepath = resolve(dir, filename);
@@ -13,8 +13,12 @@ function requireSchema(dir, filename) {
   }
 }
 
-readdirSync(commonSchemaDir).forEach((filename) => requireSchema(commonSchemaDir, filename));
-readdirSync(schemaDir).forEach((filename) => requireSchema(schemaDir, filename));
+readdirSync(commonSchemaDir).forEach((filename) =>
+  requireSchema(commonSchemaDir, filename)
+);
+readdirSync(schemaDir).forEach((filename) =>
+  requireSchema(schemaDir, filename)
+);
 
 module.exports = {
   ajv,
