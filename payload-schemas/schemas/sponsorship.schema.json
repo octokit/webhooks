@@ -7,11 +7,25 @@
   "properties": {
     "action": {
       "type": "string",
-      "enum": ["created", "cancelled", "edited", "tier_changed", "pending_cancellation", "pending_tier_change"]
+      "enum": [
+        "created",
+        "cancelled",
+        "edited",
+        "tier_changed",
+        "pending_cancellation",
+        "pending_tier_change"
+      ]
     },
     "sponsorship": {
       "type": "object",
-      "required": ["node_id", "created_at", "sponsorable", "sponsor", "privacy_level", "tier"],
+      "required": [
+        "node_id",
+        "created_at",
+        "sponsorable",
+        "sponsor",
+        "privacy_level",
+        "tier"
+      ],
       "properties": {
         "node_id": {
           "type": "string"
@@ -267,7 +281,7 @@
       "additionalProperties": false
     },
     "sender": {
-      "$ref": "$sender"
+      "$ref": "$user"
     }
   },
   "additionalProperties": false

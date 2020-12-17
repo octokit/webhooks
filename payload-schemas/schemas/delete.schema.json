@@ -15,9 +15,9 @@
       "type": "string"
     },
     "repository": { "$ref": "$repository" },
-    "sender": { "$ref": "$sender" },
+    "sender": { "$ref": "$user" },
     "installation": { "$ref": "$installation" },
     "organization": { "$ref": "$organization" }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

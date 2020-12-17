@@ -3,7 +3,13 @@
   "$id": "content_reference",
 
   "type": "object",
-  "required": ["action", "content_reference", "repository", "sender", "installation"],
+  "required": [
+    "action",
+    "content_reference",
+    "repository",
+    "sender",
+    "installation"
+  ],
   "properties": {
     "action": {
       "type": "string",
@@ -23,12 +29,12 @@
           "type": "string"
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
     "repository": { "$ref": "$repository" },
-    "sender": { "$ref": "$sender" },
+    "sender": { "$ref": "$user" },
     "installation": { "$ref": "$installation" },
     "organization": { "$ref": "$organization" }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

@@ -87,10 +87,10 @@
           "type": "boolean"
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
     "sender": {
-      "$ref": "$sender"
+      "$ref": "$user"
     },
     "installation": {
       "$ref": "$installation"
@@ -99,5 +99,5 @@
       "$ref": "$organization"
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

@@ -9,7 +9,7 @@
       "$ref": "$repository"
     },
     "sender": {
-      "$ref": "$sender"
+      "$ref": "$user"
     },
     "installation": {
       "$ref": "$installation"
@@ -18,5 +18,5 @@
       "$ref": "$organization"
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

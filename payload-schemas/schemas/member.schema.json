@@ -87,10 +87,14 @@
           "type": "boolean"
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
+    },
+    "changes": {
+      "type": "object"
     },
     "repository": { "$ref": "$repository" },
-    "sender": { "$ref": "$sender" }
+    "installation": { "$ref": "$installation" },
+    "sender": { "$ref": "$user" }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

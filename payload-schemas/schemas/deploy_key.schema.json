@@ -11,7 +11,15 @@
     },
     "key": {
       "type": "object",
-      "required": ["id", "key", "url", "title", "verified", "created_at", "read_only"],
+      "required": [
+        "id",
+        "key",
+        "url",
+        "title",
+        "verified",
+        "created_at",
+        "read_only"
+      ],
       "properties": {
         "id": {
           "type": "integer"
@@ -35,12 +43,12 @@
           "type": "boolean"
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
     "repository": { "$ref": "$repository" },
-    "sender": { "$ref": "$sender" },
+    "sender": { "$ref": "$user" },
     "installation": { "$ref": "$installation" },
     "organization": { "$ref": "$organization" }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

@@ -3,19 +3,11 @@
   "$id": "package",
 
   "type": "object",
-  "required": [
-    "action",
-    "package",
-    "repository",
-    "sender"
-  ],
+  "required": ["action", "package", "repository", "sender"],
   "properties": {
     "action": {
       "type": "string",
-      "enum": [
-        "published",
-        "updated"
-      ]
+      "enum": ["published", "updated"]
     },
     "package": {
       "type": "object",
@@ -127,7 +119,7 @@
               "type": "boolean"
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "package_version": {
           "type": "object",
@@ -283,7 +275,7 @@
                       "type": "boolean"
                     }
                   },
-                  "additionalProperties": true
+                  "additionalProperties": false
                 },
                 "prerelease": {
                   "type": "boolean"
@@ -295,7 +287,7 @@
                   "type": "string"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             },
             "manifest": {
               "type": "string"
@@ -326,12 +318,12 @@
             },
             "metadata": {
               "type": "array",
-              "additionalItems": false,
+
               "items": {}
             },
             "package_files": {
               "type": "array",
-              "additionalItems": false,
+
               "items": {
                 "anyOf": [
                   {
@@ -384,7 +376,7 @@
                         "type": "string"
                       }
                     },
-                    "additionalProperties": true
+                    "additionalProperties": false
                   }
                 ]
               }
@@ -467,23 +459,17 @@
                   "type": "boolean"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             },
             "installation_command": {
               "type": "string"
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "registry": {
           "type": "object",
-          "required": [
-            "about_url",
-            "name",
-            "type",
-            "url",
-            "vendor"
-          ],
+          "required": ["about_url", "name", "type", "url", "vendor"],
           "properties": {
             "about_url": {
               "type": "string"
@@ -501,20 +487,20 @@
               "type": "string"
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
     "repository": {
       "$ref": "$repository"
     },
     "sender": {
-      "$ref": "$sender"
+      "$ref": "$user"
     },
     "organization": {
       "$ref": "$organization"
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

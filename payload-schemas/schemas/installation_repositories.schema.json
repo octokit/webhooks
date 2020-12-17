@@ -184,7 +184,6 @@
         },
         "events": {
           "type": "array",
-          "additionalItems": false,
           "items": {}
         },
         "created_at": {
@@ -194,10 +193,7 @@
           "type": "integer"
         },
         "single_file_name": {
-          "oneOf": [
-            { "type": "string" },
-            { "type": "null" }
-          ]
+          "oneOf": [{ "type": "string" }, { "type": "null" }]
         }
       },
       "additionalProperties": false
@@ -207,7 +203,7 @@
     },
     "repositories_added": {
       "type": "array",
-      "additionalItems": false,
+
       "items": {
         "anyOf": [
           {
@@ -237,7 +233,7 @@
     },
     "repositories_removed": {
       "type": "array",
-      "additionalItems": false,
+
       "items": {}
     },
     "sender": {

@@ -9,6 +9,19 @@
       "type": "string",
       "enum": ["created", "edited", "deleted"]
     },
+    "changes": {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
     "issue": {
       "type": "object",
       "required": [
@@ -145,16 +158,22 @@
               "type": "boolean"
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "labels": {
           "type": "array",
-          "additionalItems": false,
           "items": {
             "anyOf": [
               {
                 "type": "object",
-                "required": ["id", "node_id", "url", "name", "color", "default"],
+                "required": [
+                  "id",
+                  "node_id",
+                  "url",
+                  "name",
+                  "color",
+                  "default"
+                ],
                 "properties": {
                   "id": {
                     "type": "integer"
@@ -175,7 +194,7 @@
                     "type": "boolean"
                   }
                 },
-                "additionalProperties": true
+                "additionalProperties": false
               }
             ]
           }
@@ -264,11 +283,10 @@
               "type": "boolean"
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "assignees": {
           "type": "array",
-          "additionalItems": false,
           "items": {
             "anyOf": [
               {
@@ -349,7 +367,7 @@
                     "type": "boolean"
                   }
                 },
-                "additionalProperties": true
+                "additionalProperties": false
               }
             ]
           }
@@ -477,7 +495,7 @@
                   "type": "boolean"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             },
             "open_issues": {
               "type": "integer"
@@ -501,7 +519,7 @@
               "type": "string"
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "comments": {
           "type": "integer"
@@ -522,7 +540,7 @@
           "type": "string"
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
     "comment": {
       "type": "object",
@@ -632,7 +650,7 @@
               "type": "boolean"
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "created_at": {
           "type": "string"
@@ -647,12 +665,12 @@
           "type": "string"
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
     "repository": { "$ref": "$repository" },
-    "sender": { "$ref": "$sender" },
+    "sender": { "$ref": "$user" },
     "installation": { "$ref": "$installation" },
     "organization": { "$ref": "$organization" }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

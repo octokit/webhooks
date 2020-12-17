@@ -38,7 +38,6 @@
         },
         "identifiers": {
           "type": "array",
-          "additionalItems": false,
           "items": {
             "anyOf": [
               {
@@ -59,7 +58,6 @@
         },
         "references": {
           "type": "array",
-          "additionalItems": false,
           "items": {
             "anyOf": [
               {
@@ -86,12 +84,16 @@
         },
         "vulnerabilities": {
           "type": "array",
-          "additionalItems": false,
           "items": {
             "anyOf": [
               {
                 "type": "object",
-                "required": ["package", "severity", "vulnerable_version_range", "first_patched_version"],
+                "required": [
+                  "package",
+                  "severity",
+                  "vulnerable_version_range",
+                  "first_patched_version"
+                ],
                 "properties": {
                   "package": {
                     "type": "object",

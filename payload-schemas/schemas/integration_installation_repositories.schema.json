@@ -197,7 +197,6 @@
         },
         "events": {
           "type": "array",
-          "additionalItems": false,
           "items": {}
         },
         "created_at": {
@@ -217,7 +216,7 @@
     },
     "repositories_added": {
       "type": "array",
-      "additionalItems": false,
+
       "items": {
         "anyOf": [
           {
@@ -247,11 +246,11 @@
     },
     "repositories_removed": {
       "type": "array",
-      "additionalItems": false,
+
       "items": {}
     },
     "sender": {
-      "$ref": "$sender"
+      "$ref": "$user"
     }
   },
   "additionalProperties": false

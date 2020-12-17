@@ -3,7 +3,14 @@
   "$id": "pull_request",
 
   "type": "object",
-  "required": ["action", "number", "pull_request", "repository", "installation", "sender"],
+  "required": [
+    "action",
+    "number",
+    "pull_request",
+    "repository",
+    "installation",
+    "sender"
+  ],
   "properties": {
     "action": {
       "type": "string",
@@ -296,7 +303,6 @@
         },
         "assignees": {
           "type": "array",
-          "additionalItems": false,
           "items": {
             "anyOf": [
               {
@@ -384,17 +390,14 @@
         },
         "requested_reviewers": {
           "type": "array",
-          "additionalItems": false,
           "items": {}
         },
         "requested_teams": {
           "type": "array",
-          "additionalItems": false,
           "items": {}
         },
         "labels": {
           "type": "array",
-          "additionalItems": false,
           "items": {}
         },
         "milestone": {
@@ -1514,7 +1517,16 @@
         },
         "_links": {
           "type": "object",
-          "required": ["self", "html", "issue", "comments", "review_comments", "review_comment", "commits", "statuses"],
+          "required": [
+            "self",
+            "html",
+            "issue",
+            "comments",
+            "review_comments",
+            "review_comment",
+            "commits",
+            "statuses"
+          ],
           "properties": {
             "self": {
               "type": "object",
@@ -1755,8 +1767,11 @@
     "installation": {
       "$ref": "$installation"
     },
+    "organization": {
+      "$ref": "$organization"
+    },
     "sender": {
-      "$ref": "$sender"
+      "$ref": "$user"
     }
   },
   "additionalProperties": false

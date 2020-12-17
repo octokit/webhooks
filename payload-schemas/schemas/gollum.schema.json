@@ -7,12 +7,19 @@
   "properties": {
     "pages": {
       "type": "array",
-      "additionalItems": false,
+
       "items": {
         "anyOf": [
           {
             "type": "object",
-            "required": ["page_name", "title", "summary", "action", "sha", "html_url"],
+            "required": [
+              "page_name",
+              "title",
+              "summary",
+              "action",
+              "sha",
+              "html_url"
+            ],
             "properties": {
               "page_name": {
                 "type": "string"
@@ -34,15 +41,15 @@
                 "type": "string"
               }
             },
-            "additionalProperties": true
+            "additionalProperties": false
           }
         ]
       }
     },
     "repository": { "$ref": "$repository" },
-    "sender": { "$ref": "$sender" },
+    "sender": { "$ref": "$user" },
     "installation": { "$ref": "$installation" },
     "organization": { "$ref": "$organization" }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

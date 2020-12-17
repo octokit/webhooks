@@ -16,7 +16,7 @@
       "$ref": "$repository"
     },
     "sender": {
-      "$ref": "$sender"
+      "$ref": "$user"
     },
     "organization": {
       "$ref": "$organization"

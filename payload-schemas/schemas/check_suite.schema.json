@@ -56,7 +56,15 @@
             { "type": "null" },
             {
               "type": ["string"],
-              "enum": ["success", "failure", "neutral", "cancelled", "timed_out", "action_required", "stale"]
+              "enum": [
+                "success",
+                "failure",
+                "neutral",
+                "cancelled",
+                "timed_out",
+                "action_required",
+                "stale"
+              ]
             }
           ]
         },
@@ -71,7 +79,6 @@
         },
         "pull_requests": {
           "type": "array",
-          "additionalItems": false,
           "items": {
             "anyOf": [
               {
@@ -111,10 +118,10 @@
                             "type": "string"
                           }
                         },
-                        "additionalProperties": true
+                        "additionalProperties": false
                       }
                     },
-                    "additionalProperties": true
+                    "additionalProperties": false
                   },
                   "base": {
                     "type": "object",
@@ -140,13 +147,13 @@
                             "type": "string"
                           }
                         },
-                        "additionalProperties": true
+                        "additionalProperties": false
                       }
                     },
-                    "additionalProperties": true
+                    "additionalProperties": false
                   }
                 },
-                "additionalProperties": true
+                "additionalProperties": false
               }
             ]
           }
@@ -251,7 +258,7 @@
                   "type": "boolean"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             },
             "name": {
               "type": "string"
@@ -353,15 +360,14 @@
                   "type": "string"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             },
             "events": {
               "type": "array",
-              "additionalItems": false,
-              "items": {}
+              "items": { "type": "object" }
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "created_at": {
           "type": "string"
@@ -377,7 +383,14 @@
         },
         "head_commit": {
           "type": "object",
-          "required": ["id", "tree_id", "message", "timestamp", "author", "committer"],
+          "required": [
+            "id",
+            "tree_id",
+            "message",
+            "timestamp",
+            "author",
+            "committer"
+          ],
           "properties": {
             "id": {
               "type": "string"
@@ -402,7 +415,7 @@
                   "type": "string"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             },
             "committer": {
               "type": "object",
@@ -415,18 +428,18 @@
                   "type": "string"
                 }
               },
-              "additionalProperties": true
+              "additionalProperties": false
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
     "repository": { "$ref": "$repository" },
-    "sender": { "$ref": "$sender" },
+    "sender": { "$ref": "$user" },
     "installation": { "$ref": "$installation" },
     "organization": { "$ref": "$organization" }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

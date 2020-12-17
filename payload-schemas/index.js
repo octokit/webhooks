@@ -1,4 +1,4 @@
-const Ajv = require('ajv');
+const Ajv = require('ajv').default;
 const { readdirSync, lstatSync } = require('fs');
 const { resolve } = require('path');
 const ajv = new Ajv();
@@ -16,6 +16,9 @@ function requireSchema(dir, filename) {
 readdirSync(commonSchemaDir).forEach((filename) => requireSchema(commonSchemaDir, filename));
 readdirSync(schemaDir).forEach((filename) => requireSchema(schemaDir, filename));
 
-module.exports = function (schema, file) {
-  return ajv.validate(schema, file);
+module.exports = {
+  ajv,
+  validate: function (schema, file) {
+    return ajv.validate(schema, file);
+  },
 };

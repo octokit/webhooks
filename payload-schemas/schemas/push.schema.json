@@ -45,7 +45,7 @@
     },
     "commits": {
       "type": "array",
-      "additionalItems": false,
+
       "items": {}
     },
     "head_commit": {
@@ -68,7 +68,13 @@
       "additionalProperties": false
     },
     "sender": {
-      "$ref": "$sender"
+      "$ref": "$user"
+    },
+    "installation": {
+      "$ref": "$installation"
+    },
+    "organization": {
+      "$ref": "$organization"
     }
   },
   "additionalProperties": false

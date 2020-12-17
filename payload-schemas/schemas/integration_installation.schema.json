@@ -190,7 +190,6 @@
         },
         "events": {
           "type": "array",
-          "additionalItems": false,
           "items": {}
         },
         "created_at": {
@@ -207,7 +206,7 @@
     },
     "repositories": {
       "type": "array",
-      "additionalItems": false,
+
       "items": {
         "anyOf": [
           {
@@ -236,7 +235,7 @@
       }
     },
     "sender": {
-      "$ref": "$sender"
+      "$ref": "$user"
     }
   },
   "additionalProperties": false

@@ -9,7 +9,7 @@
       "type": "string",
       "enum": ["revoked"]
     },
-    "sender": { "$ref": "$sender" }
+    "sender": { "$ref": "$user" }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

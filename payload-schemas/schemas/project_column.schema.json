@@ -11,7 +11,16 @@
     },
     "project_column": {
       "type": "object",
-      "required": ["url", "project_url", "cards_url", "id", "node_id", "name", "created_at", "updated_at"],
+      "required": [
+        "url",
+        "project_url",
+        "cards_url",
+        "id",
+        "node_id",
+        "name",
+        "created_at",
+        "updated_at"
+      ],
       "properties": {
         "url": {
           "type": "string"
@@ -38,13 +47,13 @@
           "type": "string"
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
     "repository": {
       "$ref": "$repository"
     },
     "sender": {
-      "$ref": "$sender"
+      "$ref": "$user"
     },
     "installation": {
       "$ref": "$installation"
@@ -53,5 +62,5 @@
       "$ref": "$organization"
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

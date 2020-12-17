@@ -132,7 +132,7 @@
               "type": "boolean"
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "open_issues": {
           "type": "integer"
@@ -156,13 +156,13 @@
           "oneOf": [{ "type": "null" }, { "type": "string" }]
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
     "repository": {
       "$ref": "$repository"
     },
     "sender": {
-      "$ref": "$sender"
+      "$ref": "$user"
     },
     "installation": {
       "$ref": "$installation"
@@ -171,5 +171,5 @@
       "$ref": "$organization"
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

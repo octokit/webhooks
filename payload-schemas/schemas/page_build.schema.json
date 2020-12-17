@@ -10,7 +10,16 @@
     },
     "build": {
       "type": "object",
-      "required": ["url", "status", "error", "pusher", "commit", "duration", "created_at", "updated_at"],
+      "required": [
+        "url",
+        "status",
+        "error",
+        "pusher",
+        "commit",
+        "duration",
+        "created_at",
+        "updated_at"
+      ],
       "properties": {
         "url": {
           "type": "string"
@@ -26,7 +35,7 @@
               "type": "null"
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "pusher": {
           "type": "object",
@@ -106,7 +115,7 @@
               "type": "boolean"
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "commit": {
           "type": "string"
@@ -121,13 +130,13 @@
           "type": "string"
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
     "repository": {
       "$ref": "$repository"
     },
     "sender": {
-      "$ref": "$sender"
+      "$ref": "$user"
     },
     "installation": {
       "$ref": "$installation"
@@ -136,5 +145,5 @@
       "$ref": "$organization"
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

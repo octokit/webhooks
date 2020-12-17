@@ -336,22 +336,18 @@
         },
         "assignees": {
           "type": "array",
-          "additionalItems": false,
           "items": {}
         },
         "requested_reviewers": {
           "type": "array",
-          "additionalItems": false,
           "items": {}
         },
         "requested_teams": {
           "type": "array",
-          "additionalItems": false,
           "items": {}
         },
         "labels": {
           "type": "array",
-          "additionalItems": false,
           "items": {}
         },
         "milestone": {
@@ -1320,7 +1316,16 @@
         },
         "_links": {
           "type": "object",
-          "required": ["self", "html", "issue", "comments", "review_comments", "review_comment", "commits", "statuses"],
+          "required": [
+            "self",
+            "html",
+            "issue",
+            "comments",
+            "review_comments",
+            "review_comment",
+            "commits",
+            "statuses"
+          ],
           "properties": {
             "self": {
               "type": "object",
@@ -1414,8 +1419,14 @@
     "repository": {
       "$ref": "$repository"
     },
+    "installation": {
+      "$ref": "$installation"
+    },
+    "organization": {
+      "$ref": "$organization"
+    },
     "sender": {
-      "$ref": "$sender"
+      "$ref": "$user"
     }
   },
   "additionalProperties": false

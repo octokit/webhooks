@@ -58,7 +58,15 @@
             { "type": "null" },
             {
               "type": ["string"],
-              "enum": ["success", "failure", "neutral", "cancelled", "timed_out", "action_required", "stale"]
+              "enum": [
+                "success",
+                "failure",
+                "neutral",
+                "cancelled",
+                "timed_out",
+                "action_required",
+                "stale"
+              ]
             }
           ]
         },
@@ -70,7 +78,12 @@
         },
         "output": {
           "type": "object",
-          "required": ["summary", "text", "annotations_count", "annotations_url"],
+          "required": [
+            "summary",
+            "text",
+            "annotations_count",
+            "annotations_url"
+          ],
           "properties": {
             "title": {
               "oneOf": [{ "type": "null" }, { "type": "string" }]
@@ -235,6 +248,9 @@
                 "id": {
                   "type": "integer"
                 },
+                "slug": {
+                  "type": "string"
+                },
                 "node_id": {
                   "type": "string"
                 },
@@ -338,27 +354,6 @@
                 },
                 "permissions": {
                   "type": "object",
-                  "required": [
-                    "administration",
-                    "checks",
-                    "contents",
-                    "deployments",
-                    "issues",
-                    "members",
-                    "metadata",
-                    "organization_administration",
-                    "organization_hooks",
-                    "organization_plan",
-                    "organization_projects",
-                    "organization_user_blocking",
-                    "pages",
-                    "pull_requests",
-                    "repository_hooks",
-                    "repository_projects",
-                    "statuses",
-                    "team_discussions",
-                    "vulnerability_alerts"
-                  ],
                   "properties": {
                     "administration": {
                       "type": "string"
@@ -452,6 +447,9 @@
           "properties": {
             "id": {
               "type": "integer"
+            },
+            "slug": {
+              "type": "string"
             },
             "node_id": {
               "type": "string"
@@ -556,27 +554,6 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "administration",
-                "checks",
-                "contents",
-                "deployments",
-                "issues",
-                "members",
-                "metadata",
-                "organization_administration",
-                "organization_hooks",
-                "organization_plan",
-                "organization_projects",
-                "organization_user_blocking",
-                "pages",
-                "pull_requests",
-                "repository_hooks",
-                "repository_projects",
-                "statuses",
-                "team_discussions",
-                "vulnerability_alerts"
-              ],
               "properties": {
                 "administration": {
                   "type": "string"
@@ -729,8 +706,16 @@
       },
       "additionalProperties": false
     },
+    "requested_action": {
+      "type": ["object", "null"],
+      "properties": {
+        "identifier": {
+          "type": "string"
+        }
+      }
+    },
     "repository": { "$ref": "$repository" },
-    "sender": { "$ref": "$sender" },
+    "sender": { "$ref": "$user" },
     "installation": { "$ref": "$installation" },
     "organization": { "$ref": "$organization" }
   },

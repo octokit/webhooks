@@ -7,7 +7,15 @@
   "properties": {
     "action": {
       "type": "string",
-      "enum": ["published", "unpublished", "created", "edited", "deleted", "prereleased", "released"]
+      "enum": [
+        "published",
+        "unpublished",
+        "created",
+        "edited",
+        "deleted",
+        "prereleased",
+        "released"
+      ]
     },
     "release": {
       "type": "object",
@@ -140,7 +148,7 @@
               "type": "boolean"
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "prerelease": {
           "type": "boolean"
@@ -153,7 +161,6 @@
         },
         "assets": {
           "type": "array",
-          "additionalItems": false,
           "items": {}
         },
         "tarball_url": {
@@ -166,13 +173,13 @@
           "type": "null"
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
     "repository": {
       "$ref": "$repository"
     },
     "sender": {
-      "$ref": "$sender"
+      "$ref": "$user"
     },
     "installation": {
       "$ref": "$installation"
@@ -181,5 +188,5 @@
       "$ref": "$organization"
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

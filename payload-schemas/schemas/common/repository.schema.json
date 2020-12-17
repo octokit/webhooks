@@ -365,7 +365,30 @@
       "type": "integer"
     },
     "license": {
-      "oneOf": [{ "type": "null" }, { "type": "string" }]
+      "oneOf": [
+        { "type": "null" },
+        { "type": "string" },
+        {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "spdx_id": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "node_id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
     },
     "forks": {
       "type": "integer"

@@ -7,7 +7,13 @@
   "properties": {
     "action": {
       "type": "string",
-      "enum": ["deleted", "renamed", "member_added", "member_removed", "member_invited"]
+      "enum": [
+        "deleted",
+        "renamed",
+        "member_added",
+        "member_removed",
+        "member_invited"
+      ]
     },
     "membership": {
       "type": "object",
@@ -103,13 +109,13 @@
               "type": "boolean"
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
     "sender": {
-      "$ref": "$sender"
+      "$ref": "$user"
     },
     "installation": {
       "$ref": "$installation"
@@ -118,5 +124,5 @@
       "$ref": "$organization"
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

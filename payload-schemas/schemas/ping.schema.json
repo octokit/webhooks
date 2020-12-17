@@ -3,7 +3,7 @@
   "$id": "ping",
 
   "type": "object",
-  "required": ["zen", "hook_id", "hook", "repository", "sender"],
+  "required": ["zen", "hook_id", "hook", "sender"],
   "properties": {
     "zen": {
       "type": "string"
@@ -23,9 +23,7 @@
         "updated_at",
         "created_at",
         "url",
-        "test_url",
-        "ping_url",
-        "last_response"
+        "ping_url"
       ],
       "properties": {
         "type": {
@@ -42,7 +40,6 @@
         },
         "events": {
           "type": "array",
-          "additionalItems": false,
           "items": {
             "anyOf": [
               {
@@ -58,6 +55,9 @@
             "content_type": {
               "type": "string"
             },
+            "secret": {
+              "type": "string"
+            },
             "url": {
               "type": "string"
             },
@@ -65,7 +65,7 @@
               "type": "string"
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "updated_at": {
           "type": "string"
@@ -96,20 +96,20 @@
               "type": "null"
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
     "repository": {
       "$ref": "$repository"
     },
     "sender": {
-      "$ref": "$sender"
+      "$ref": "$user"
     },
     "organization": {
       "$ref": "$organization"
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

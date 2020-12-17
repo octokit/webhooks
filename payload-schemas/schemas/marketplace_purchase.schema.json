@@ -178,7 +178,7 @@
             },
             "bullets": {
               "type": "array",
-              "additionalItems": false,
+
               "items": {
                 "anyOf": [{ "type": "string" }]
               }
@@ -274,7 +274,7 @@
             },
             "bullets": {
               "type": "array",
-              "additionalItems": false,
+
               "items": {
                 "anyOf": [
                   {

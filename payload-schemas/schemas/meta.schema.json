@@ -14,7 +14,16 @@
     },
     "hook": {
       "type": "object",
-      "required": ["type", "id", "name", "active", "events", "config", "updated_at", "created_at"],
+      "required": [
+        "type",
+        "id",
+        "name",
+        "active",
+        "events",
+        "config",
+        "updated_at",
+        "created_at"
+      ],
       "properties": {
         "type": {
           "type": "string"
@@ -30,7 +39,6 @@
         },
         "events": {
           "type": "array",
-          "additionalItems": false,
           "items": {
             "anyOf": [
               {
@@ -53,7 +61,7 @@
               "type": "string"
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "updated_at": {
           "type": "string"
@@ -62,7 +70,7 @@
           "type": "string"
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
     "repository": {
       "type": "object",
@@ -231,7 +239,7 @@
               "type": "boolean"
             }
           },
-          "additionalProperties": true
+          "additionalProperties": false
         },
         "private": {
           "type": "boolean"
@@ -435,7 +443,7 @@
           "type": "string"
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
     "sender": {
       "type": "object",
@@ -515,8 +523,8 @@
           "type": "boolean"
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

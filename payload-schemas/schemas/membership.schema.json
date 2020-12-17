@@ -90,9 +90,9 @@
           "type": "boolean"
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
-    "sender": { "$ref": "$sender" },
+    "sender": { "$ref": "$user" },
     "team": {
       "type": "object",
       "required": [
@@ -143,9 +143,10 @@
           "type": "string"
         }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
-    "organization": { "$ref": "$organization" }
+    "organization": { "$ref": "$organization" },
+    "installation": { "$ref": "$installation" }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }

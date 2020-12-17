@@ -3,7 +3,14 @@
   "$id": "workflow_dispatch",
 
   "type": "object",
-  "required": ["inputs", "ref", "repository", "organization", "sender", "workflow"],
+  "required": [
+    "inputs",
+    "ref",
+    "repository",
+    "organization",
+    "sender",
+    "workflow"
+  ],
   "properties": {
     "inputs": {
       "type": "object",
@@ -17,7 +24,7 @@
       "$ref": "$repository"
     },
     "sender": {
-      "$ref": "$sender"
+      "$ref": "$user"
     },
     "installation": {
       "$ref": "$installation"
