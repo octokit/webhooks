@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const { ajv, validate } = require('../payload-schemas');
+const fs = require("fs");
+const { ajv, validate } = require("../payload-schemas");
 
 let hasErrors = false;
 const payloads = `./payload-examples/api.github.com`;
 
 fs.readdirSync(payloads)
-  .filter((filename) => filename.endsWith('.json'))
+  .filter((filename) => filename.endsWith(".json"))
   .forEach((filename) => {
-    const [event, ...unused] = filename.split('.');
+    const [event, ...unused] = filename.split(".");
     const fileBuffer = fs.readFileSync(`${payloads}/${filename}`);
     const file = JSON.parse(fileBuffer.toString());
 
