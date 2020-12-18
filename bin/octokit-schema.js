@@ -7,7 +7,7 @@ async function run() {
     const index = require("../payload-schemas/schemas/index.json");
     let schema = await $RefParser.dereference(index);
     fs.writeFileSync(
-      "index.schema.json",
+      "schema.json",
       prettier.format(JSON.stringify(schema), { parser: "json" })
     );
   } catch (err) {

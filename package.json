@@ -36,7 +36,7 @@
   "files": [
     "index.d.ts",
     "index.json",
-    "index.schema.json"
+    "schema.json"
   ],
   "dependencies": {}
 }
