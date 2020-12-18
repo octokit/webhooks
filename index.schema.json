@@ -6,21 +6,11 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "check_run",
       "type": "object",
-      "required": [
-        "action",
-        "check_run",
-        "repository",
-        "sender"
-      ],
+      "required": ["action", "check_run", "repository", "sender"],
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "created",
-            "completed",
-            "rerequested",
-            "requested_action"
-          ]
+          "enum": ["created", "completed", "rerequested", "requested_action"]
         },
         "check_run": {
           "type": "object",
@@ -64,11 +54,7 @@
             },
             "status": {
               "type": "string",
-              "enum": [
-                "queued",
-                "in_progress",
-                "completed"
-              ]
+              "enum": ["queued", "in_progress", "completed"]
             },
             "conclusion": {
               "oneOf": [
@@ -76,9 +62,7 @@
                   "type": "null"
                 },
                 {
-                  "type": [
-                    "string"
-                  ],
+                  "type": ["string"],
                   "enum": [
                     "success",
                     "failure",
@@ -212,13 +196,7 @@
                     "anyOf": [
                       {
                         "type": "object",
-                        "required": [
-                          "url",
-                          "id",
-                          "number",
-                          "head",
-                          "base"
-                        ],
+                        "required": ["url", "id", "number", "head", "base"],
                         "properties": {
                           "url": {
                             "type": "string"
@@ -231,11 +209,7 @@
                           },
                           "head": {
                             "type": "object",
-                            "required": [
-                              "ref",
-                              "sha",
-                              "repo"
-                            ],
+                            "required": ["ref", "sha", "repo"],
                             "properties": {
                               "ref": {
                                 "type": "string"
@@ -245,11 +219,7 @@
                               },
                               "repo": {
                                 "type": "object",
-                                "required": [
-                                  "id",
-                                  "url",
-                                  "name"
-                                ],
+                                "required": ["id", "url", "name"],
                                 "properties": {
                                   "id": {
                                     "type": "integer"
@@ -268,11 +238,7 @@
                           },
                           "base": {
                             "type": "object",
-                            "required": [
-                              "ref",
-                              "sha",
-                              "repo"
-                            ],
+                            "required": ["ref", "sha", "repo"],
                             "properties": {
                               "ref": {
                                 "type": "string"
@@ -282,11 +248,7 @@
                               },
                               "repo": {
                                 "type": "object",
-                                "required": [
-                                  "id",
-                                  "url",
-                                  "name"
-                                ],
+                                "required": ["id", "url", "name"],
                                 "properties": {
                                   "id": {
                                     "type": "integer"
@@ -720,13 +682,7 @@
                 "anyOf": [
                   {
                     "type": "object",
-                    "required": [
-                      "url",
-                      "id",
-                      "number",
-                      "head",
-                      "base"
-                    ],
+                    "required": ["url", "id", "number", "head", "base"],
                     "properties": {
                       "url": {
                         "type": "string"
@@ -739,11 +695,7 @@
                       },
                       "head": {
                         "type": "object",
-                        "required": [
-                          "ref",
-                          "sha",
-                          "repo"
-                        ],
+                        "required": ["ref", "sha", "repo"],
                         "properties": {
                           "ref": {
                             "type": "string"
@@ -753,11 +705,7 @@
                           },
                           "repo": {
                             "type": "object",
-                            "required": [
-                              "id",
-                              "url",
-                              "name"
-                            ],
+                            "required": ["id", "url", "name"],
                             "properties": {
                               "id": {
                                 "type": "integer"
@@ -776,11 +724,7 @@
                       },
                       "base": {
                         "type": "object",
-                        "required": [
-                          "ref",
-                          "sha",
-                          "repo"
-                        ],
+                        "required": ["ref", "sha", "repo"],
                         "properties": {
                           "ref": {
                             "type": "string"
@@ -790,11 +734,7 @@
                           },
                           "repo": {
                             "type": "object",
-                            "required": [
-                              "id",
-                              "url",
-                              "name"
-                            ],
+                            "required": ["id", "url", "name"],
                             "properties": {
                               "id": {
                                 "type": "integer"
@@ -821,10 +761,7 @@
           "additionalProperties": false
         },
         "requested_action": {
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "identifier": {
               "type": "string"
@@ -1303,11 +1240,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -1409,10 +1342,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -1426,10 +1356,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -1444,10 +1371,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -1455,10 +1379,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -1466,10 +1387,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -1477,10 +1395,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -1488,10 +1403,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -1563,20 +1475,11 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "check_suite",
       "type": "object",
-      "required": [
-        "action",
-        "check_suite",
-        "repository",
-        "sender"
-      ],
+      "required": ["action", "check_suite", "repository", "sender"],
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "completed",
-            "requested",
-            "rerequested"
-          ]
+          "enum": ["completed", "requested", "rerequested"]
         },
         "check_suite": {
           "type": "object",
@@ -1618,12 +1521,7 @@
                 },
                 {
                   "type": "string",
-                  "enum": [
-                    "requested",
-                    "in_progress",
-                    "completed",
-                    "queued"
-                  ]
+                  "enum": ["requested", "in_progress", "completed", "queued"]
                 }
               ]
             },
@@ -1633,9 +1531,7 @@
                   "type": "null"
                 },
                 {
-                  "type": [
-                    "string"
-                  ],
+                  "type": ["string"],
                   "enum": [
                     "success",
                     "failure",
@@ -1663,13 +1559,7 @@
                 "anyOf": [
                   {
                     "type": "object",
-                    "required": [
-                      "url",
-                      "id",
-                      "number",
-                      "head",
-                      "base"
-                    ],
+                    "required": ["url", "id", "number", "head", "base"],
                     "properties": {
                       "url": {
                         "type": "string"
@@ -1682,11 +1572,7 @@
                       },
                       "head": {
                         "type": "object",
-                        "required": [
-                          "ref",
-                          "sha",
-                          "repo"
-                        ],
+                        "required": ["ref", "sha", "repo"],
                         "properties": {
                           "ref": {
                             "type": "string"
@@ -1696,11 +1582,7 @@
                           },
                           "repo": {
                             "type": "object",
-                            "required": [
-                              "id",
-                              "url",
-                              "name"
-                            ],
+                            "required": ["id", "url", "name"],
                             "properties": {
                               "id": {
                                 "type": "integer"
@@ -1719,11 +1601,7 @@
                       },
                       "base": {
                         "type": "object",
-                        "required": [
-                          "ref",
-                          "sha",
-                          "repo"
-                        ],
+                        "required": ["ref", "sha", "repo"],
                         "properties": {
                           "ref": {
                             "type": "string"
@@ -1733,11 +1611,7 @@
                           },
                           "repo": {
                             "type": "object",
-                            "required": [
-                              "id",
-                              "url",
-                              "name"
-                            ],
+                            "required": ["id", "url", "name"],
                             "properties": {
                               "id": {
                                 "type": "integer"
@@ -2010,10 +1884,7 @@
                 },
                 "author": {
                   "type": "object",
-                  "required": [
-                    "name",
-                    "email"
-                  ],
+                  "required": ["name", "email"],
                   "properties": {
                     "name": {
                       "type": "string"
@@ -2026,10 +1897,7 @@
                 },
                 "committer": {
                   "type": "object",
-                  "required": [
-                    "name",
-                    "email"
-                  ],
+                  "required": ["name", "email"],
                   "properties": {
                     "name": {
                       "type": "string"
@@ -2518,11 +2386,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -2624,10 +2488,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -2641,10 +2502,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -2659,10 +2517,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -2670,10 +2525,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -2681,10 +2533,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -2692,10 +2541,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -2703,10 +2549,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -2832,12 +2675,7 @@
                 "anyOf": [
                   {
                     "type": "object",
-                    "required": [
-                      "ref",
-                      "analysis_key",
-                      "environment",
-                      "state"
-                    ],
+                    "required": ["ref", "analysis_key", "environment", "state"],
                     "properties": {
                       "ref": {
                         "type": "string"
@@ -2871,11 +2709,7 @@
             },
             "rule": {
               "type": "object",
-              "required": [
-                "id",
-                "severity",
-                "description"
-              ],
+              "required": ["id", "severity", "description"],
               "properties": {
                 "id": {
                   "type": "string"
@@ -2891,10 +2725,7 @@
             },
             "tool": {
               "type": "object",
-              "required": [
-                "name",
-                "version"
-              ],
+              "required": ["name", "version"],
               "properties": {
                 "name": {
                   "type": "string"
@@ -3386,11 +3217,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -3492,10 +3319,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -3509,10 +3333,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -3527,10 +3348,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -3538,10 +3356,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -3549,10 +3364,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -3560,10 +3372,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -3571,10 +3380,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -3646,18 +3452,11 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "commit_comment",
       "type": "object",
-      "required": [
-        "action",
-        "comment",
-        "repository",
-        "sender"
-      ],
+      "required": ["action", "comment", "repository", "sender"],
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "created"
-          ]
+          "enum": ["created"]
         },
         "comment": {
           "type": "object",
@@ -4268,11 +4067,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -4374,10 +4169,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -4391,10 +4183,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -4409,10 +4198,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -4420,10 +4206,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -4431,10 +4214,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -4442,10 +4222,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -4453,10 +4230,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -4538,17 +4312,11 @@
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "created"
-          ]
+          "enum": ["created"]
         },
         "content_reference": {
           "type": "object",
-          "required": [
-            "id",
-            "node_id",
-            "reference"
-          ],
+          "required": ["id", "node_id", "reference"],
           "properties": {
             "id": {
               "type": "integer"
@@ -5034,11 +4802,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -5140,10 +4904,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -5157,10 +4918,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -5175,10 +4933,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -5186,10 +4941,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -5197,10 +4949,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -5208,10 +4957,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -5219,10 +4965,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -5791,11 +5534,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -5897,10 +5636,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -5914,10 +5650,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -5932,10 +5665,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -5943,10 +5673,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -5954,10 +5681,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -5965,10 +5689,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -5976,10 +5697,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -6051,13 +5769,7 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "delete",
       "type": "object",
-      "required": [
-        "ref",
-        "ref_type",
-        "pusher_type",
-        "repository",
-        "sender"
-      ],
+      "required": ["ref", "ref_type", "pusher_type", "repository", "sender"],
       "properties": {
         "ref": {
           "type": "string"
@@ -6540,11 +6252,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -6646,10 +6354,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -6663,10 +6368,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -6681,10 +6383,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -6692,10 +6391,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -6703,10 +6399,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -6714,10 +6407,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -6725,10 +6415,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -6800,19 +6487,11 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "deploy_key",
       "type": "object",
-      "required": [
-        "action",
-        "key",
-        "repository",
-        "sender"
-      ],
+      "required": ["action", "key", "repository", "sender"],
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "created",
-            "deleted"
-          ]
+          "enum": ["created", "deleted"]
         },
         "key": {
           "type": "object",
@@ -7322,11 +7001,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -7428,10 +7103,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -7445,10 +7117,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -7463,10 +7132,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -7474,10 +7140,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -7485,10 +7148,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -7496,10 +7156,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -7507,10 +7164,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -7582,18 +7236,11 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "deployment",
       "type": "object",
-      "required": [
-        "action",
-        "deployment",
-        "repository",
-        "sender"
-      ],
+      "required": ["action", "deployment", "repository", "sender"],
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "created"
-          ]
+          "enum": ["created"]
         },
         "deployment": {
           "type": "object",
@@ -8214,11 +7861,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -8320,10 +7963,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -8337,10 +7977,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -8355,10 +7992,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -8366,10 +8000,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -8377,10 +8008,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -8388,10 +8016,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -8399,10 +8024,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -8484,9 +8106,7 @@
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "created"
-          ]
+          "enum": ["created"]
         },
         "deployment_status": {
           "type": "object",
@@ -9240,11 +8860,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -9346,10 +8962,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -9363,10 +8976,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -9381,10 +8991,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -9392,10 +8999,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -9403,10 +9007,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -9414,10 +9015,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -9425,10 +9023,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -9500,11 +9095,7 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "fork",
       "type": "object",
-      "required": [
-        "forkee",
-        "repository",
-        "sender"
-      ],
+      "required": ["forkee", "repository", "sender"],
       "properties": {
         "forkee": {
           "type": "object",
@@ -10359,11 +9950,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -10465,10 +10052,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -10482,10 +10066,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -10500,10 +10081,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -10511,10 +10089,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -10522,10 +10097,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -10533,10 +10105,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -10544,10 +10113,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -10619,16 +10185,11 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "github_app_authorization",
       "type": "object",
-      "required": [
-        "action",
-        "sender"
-      ],
+      "required": ["action", "sender"],
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "revoked"
-          ]
+          "enum": ["revoked"]
         },
         "sender": {
           "$schema": "http://json-schema.org/draft-07/schema",
@@ -10719,11 +10280,7 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "gollum",
       "type": "object",
-      "required": [
-        "pages",
-        "repository",
-        "sender"
-      ],
+      "required": ["pages", "repository", "sender"],
       "properties": {
         "pages": {
           "type": "array",
@@ -10751,10 +10308,7 @@
                   },
                   "action": {
                     "type": "string",
-                    "enum": [
-                      "created",
-                      "edited"
-                    ]
+                    "enum": ["created", "edited"]
                   },
                   "sha": {
                     "type": "string"
@@ -11240,11 +10794,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -11346,10 +10896,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -11363,10 +10910,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -11381,10 +10925,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -11392,10 +10933,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -11403,10 +10941,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -11414,10 +10949,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -11425,10 +10957,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -11500,19 +11029,11 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "installation",
       "type": "object",
-      "required": [
-        "action",
-        "installation",
-        "repositories",
-        "sender"
-      ],
+      "required": ["action", "installation", "repositories", "sender"],
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "created",
-            "deleted"
-          ]
+          "enum": ["created", "deleted"]
         },
         "installation": {
           "type": "object",
@@ -11709,13 +11230,7 @@
             "anyOf": [
               {
                 "type": "object",
-                "required": [
-                  "id",
-                  "node_id",
-                  "name",
-                  "full_name",
-                  "private"
-                ],
+                "required": ["id", "node_id", "name", "full_name", "private"],
                 "properties": {
                   "id": {
                     "type": "integer"
@@ -11836,10 +11351,7 @@
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "added",
-            "removed"
-          ]
+          "enum": ["added", "removed"]
         },
         "installation": {
           "type": "object",
@@ -12039,13 +11551,7 @@
             "anyOf": [
               {
                 "type": "object",
-                "required": [
-                  "id",
-                  "node_id",
-                  "name",
-                  "full_name",
-                  "private"
-                ],
+                "required": ["id", "node_id", "name", "full_name", "private"],
                 "properties": {
                   "id": {
                     "type": "integer"
@@ -12159,21 +11665,11 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "issue_comment",
       "type": "object",
-      "required": [
-        "action",
-        "issue",
-        "comment",
-        "repository",
-        "sender"
-      ],
+      "required": ["action", "issue", "comment", "repository", "sender"],
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "created",
-            "edited",
-            "deleted"
-          ]
+          "enum": ["created", "edited", "deleted"]
         },
         "changes": {
           "type": "object",
@@ -13305,11 +12801,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -13411,10 +12903,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -13428,10 +12917,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -13446,10 +12932,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -13457,10 +12940,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -13468,10 +12948,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -13479,10 +12956,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -13490,10 +12964,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -13565,12 +13036,7 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "issues",
       "type": "object",
-      "required": [
-        "action",
-        "issue",
-        "repository",
-        "sender"
-      ],
+      "required": ["action", "issue", "repository", "sender"],
       "properties": {
         "action": {
           "type": "string",
@@ -14821,11 +14287,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -14927,10 +14389,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -14944,10 +14403,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -14962,10 +14418,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -14973,10 +14426,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -14984,10 +14434,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -14995,10 +14442,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -15006,10 +14450,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -15081,31 +14522,15 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "label",
       "type": "object",
-      "required": [
-        "action",
-        "label",
-        "repository",
-        "sender"
-      ],
+      "required": ["action", "label", "repository", "sender"],
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "created",
-            "edited",
-            "deleted"
-          ]
+          "enum": ["created", "edited", "deleted"]
         },
         "label": {
           "type": "object",
-          "required": [
-            "id",
-            "node_id",
-            "url",
-            "name",
-            "color",
-            "default"
-          ],
+          "required": ["id", "node_id", "url", "name", "color", "default"],
           "properties": {
             "id": {
               "type": "integer"
@@ -15604,11 +15029,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -15710,10 +15131,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -15727,10 +15145,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -15745,10 +15160,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -15756,10 +15168,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -15767,10 +15176,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -15778,10 +15184,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -15789,10 +15192,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -15873,11 +15273,7 @@
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "cancelled",
-            "changed",
-            "purchased"
-          ]
+          "enum": ["cancelled", "changed", "purchased"]
         },
         "effective_date": {
           "type": "string"
@@ -15976,12 +15372,7 @@
           "properties": {
             "account": {
               "type": "object",
-              "required": [
-                "type",
-                "id",
-                "login",
-                "organization_billing_email"
-              ],
+              "required": ["type", "id", "login", "organization_billing_email"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -16087,12 +15478,7 @@
           "properties": {
             "account": {
               "type": "object",
-              "required": [
-                "type",
-                "id",
-                "login",
-                "organization_billing_email"
-              ],
+              "required": ["type", "id", "login", "organization_billing_email"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -16192,20 +15578,11 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "member",
       "type": "object",
-      "required": [
-        "action",
-        "member",
-        "repository",
-        "sender"
-      ],
+      "required": ["action", "member", "repository", "sender"],
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "added",
-            "removed",
-            "edited"
-          ]
+          "enum": ["added", "removed", "edited"]
         },
         "member": {
           "type": "object",
@@ -16762,11 +16139,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -16786,10 +16159,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -16900,10 +16270,7 @@
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "added",
-            "removed"
-          ]
+          "enum": ["added", "removed"]
         },
         "scope": {
           "type": "string"
@@ -17125,10 +16492,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -17143,10 +16507,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -17154,10 +16515,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -17165,10 +16523,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -17176,10 +16531,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -17187,10 +16539,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -17258,10 +16607,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -17279,19 +16625,11 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "meta",
       "type": "object",
-      "required": [
-        "action",
-        "hook_id",
-        "hook",
-        "repository",
-        "sender"
-      ],
+      "required": ["action", "hook_id", "hook", "repository", "sender"],
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "deleted"
-          ]
+          "enum": ["deleted"]
         },
         "hook_id": {
           "type": "integer"
@@ -17333,11 +16671,7 @@
             },
             "config": {
               "type": "object",
-              "required": [
-                "content_type",
-                "insecure_ssl",
-                "url"
-              ],
+              "required": ["content_type", "insecure_ssl", "url"],
               "properties": {
                 "content_type": {
                   "type": "string"
@@ -17820,22 +17154,11 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "milestone",
       "type": "object",
-      "required": [
-        "action",
-        "milestone",
-        "repository",
-        "sender"
-      ],
+      "required": ["action", "milestone", "repository", "sender"],
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "created",
-            "closed",
-            "opened",
-            "edited",
-            "deleted"
-          ]
+          "enum": ["created", "closed", "opened", "edited", "deleted"]
         },
         "milestone": {
           "type": "object",
@@ -18465,11 +17788,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -18571,10 +17890,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -18588,10 +17904,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -18606,10 +17919,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -18617,10 +17927,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -18628,10 +17935,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -18639,10 +17943,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -18650,10 +17951,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -18725,19 +18023,11 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "org_block",
       "type": "object",
-      "required": [
-        "action",
-        "blocked_user",
-        "organization",
-        "sender"
-      ],
+      "required": ["action", "blocked_user", "organization", "sender"],
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "blocked",
-            "unblocked"
-          ]
+          "enum": ["blocked", "unblocked"]
         },
         "blocked_user": {
           "type": "object",
@@ -18904,10 +18194,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -18921,10 +18208,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -18939,10 +18223,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -18950,10 +18231,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -18961,10 +18239,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -18972,10 +18247,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -18983,10 +18255,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -19058,12 +18327,7 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "organization",
       "type": "object",
-      "required": [
-        "action",
-        "membership",
-        "organization",
-        "sender"
-      ],
+      "required": ["action", "membership", "organization", "sender"],
       "properties": {
         "action": {
           "type": "string",
@@ -19077,13 +18341,7 @@
         },
         "membership": {
           "type": "object",
-          "required": [
-            "url",
-            "state",
-            "role",
-            "organization_url",
-            "user"
-          ],
+          "required": ["url", "state", "role", "organization_url", "user"],
           "properties": {
             "url": {
               "type": "string"
@@ -19265,10 +18523,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -19282,10 +18537,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -19300,10 +18552,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -19311,10 +18560,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -19322,10 +18568,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -19333,10 +18576,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -19344,10 +18584,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -19419,19 +18656,11 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "package",
       "type": "object",
-      "required": [
-        "action",
-        "package",
-        "repository",
-        "sender"
-      ],
+      "required": ["action", "package", "repository", "sender"],
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "published",
-            "updated"
-          ]
+          "enum": ["published", "updated"]
         },
         "package": {
           "type": "object",
@@ -19891,13 +19120,7 @@
             },
             "registry": {
               "type": "object",
-              "required": [
-                "about_url",
-                "name",
-                "type",
-                "url",
-                "vendor"
-              ],
+              "required": ["about_url", "name", "type", "url", "vendor"],
               "properties": {
                 "about_url": {
                   "type": "string"
@@ -20392,11 +19615,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -20498,10 +19717,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -20516,10 +19732,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -20527,10 +19740,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -20538,10 +19748,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -20549,10 +19756,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -20560,10 +19764,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -20635,12 +19836,7 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "page_build",
       "type": "object",
-      "required": [
-        "id",
-        "build",
-        "repository",
-        "sender"
-      ],
+      "required": ["id", "build", "repository", "sender"],
       "properties": {
         "id": {
           "type": "integer"
@@ -20666,9 +19862,7 @@
             },
             "error": {
               "type": "object",
-              "required": [
-                "message"
-              ],
+              "required": ["message"],
               "properties": {
                 "message": {
                   "type": "null"
@@ -21243,11 +20437,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -21349,10 +20539,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -21366,10 +20553,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -21384,10 +20568,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -21395,10 +20576,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -21406,10 +20584,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -21417,10 +20592,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -21428,10 +20600,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -21503,12 +20672,7 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "ping",
       "type": "object",
-      "required": [
-        "zen",
-        "hook_id",
-        "hook",
-        "sender"
-      ],
+      "required": ["zen", "hook_id", "hook", "sender"],
       "properties": {
         "zen": {
           "type": "string"
@@ -21555,11 +20719,7 @@
             },
             "config": {
               "type": "object",
-              "required": [
-                "content_type",
-                "url",
-                "insecure_ssl"
-              ],
+              "required": ["content_type", "url", "insecure_ssl"],
               "properties": {
                 "content_type": {
                   "type": "string"
@@ -21593,11 +20753,7 @@
             },
             "last_response": {
               "type": "object",
-              "required": [
-                "code",
-                "status",
-                "message"
-              ],
+              "required": ["code", "status", "message"],
               "properties": {
                 "code": {
                   "type": "null"
@@ -22086,11 +21242,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -22192,10 +21344,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -22210,10 +21359,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -22221,10 +21367,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -22232,10 +21375,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -22243,10 +21383,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -22254,10 +21391,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -22329,22 +21463,11 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "project",
       "type": "object",
-      "required": [
-        "action",
-        "project",
-        "repository",
-        "sender"
-      ],
+      "required": ["action", "project", "repository", "sender"],
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "created",
-            "edited",
-            "closed",
-            "reopened",
-            "deleted"
-          ]
+          "enum": ["created", "edited", "closed", "reopened", "deleted"]
         },
         "project": {
           "type": "object",
@@ -22955,11 +22078,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -23061,10 +22180,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -23078,10 +22194,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -23096,10 +22209,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -23107,10 +22217,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -23118,10 +22225,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -23129,10 +22233,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -23140,10 +22241,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -23215,22 +22313,11 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "project_card",
       "type": "object",
-      "required": [
-        "action",
-        "project_card",
-        "repository",
-        "sender"
-      ],
+      "required": ["action", "project_card", "repository", "sender"],
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "created",
-            "edited",
-            "moved",
-            "converted",
-            "deleted"
-          ]
+          "enum": ["created", "edited", "moved", "converted", "deleted"]
         },
         "project_card": {
           "type": "object",
@@ -23821,10 +22908,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -23839,10 +22923,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -23850,10 +22931,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -23861,10 +22939,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -23872,10 +22947,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -23883,10 +22955,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -23954,10 +23023,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -23975,21 +23041,11 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "project_column",
       "type": "object",
-      "required": [
-        "action",
-        "project_column",
-        "repository",
-        "sender"
-      ],
+      "required": ["action", "project_column", "repository", "sender"],
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "created",
-            "edited",
-            "moved",
-            "deleted"
-          ]
+          "enum": ["created", "edited", "moved", "deleted"]
         },
         "project_column": {
           "type": "object",
@@ -24503,11 +23559,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -24609,10 +23661,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -24626,10 +23675,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -24644,10 +23690,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -24655,10 +23698,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -24666,10 +23706,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -24677,10 +23714,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -24688,10 +23722,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -24763,10 +23794,7 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "public",
       "type": "object",
-      "required": [
-        "repository",
-        "sender"
-      ],
+      "required": ["repository", "sender"],
       "properties": {
         "repository": {
           "$schema": "http://json-schema.org/draft-07/schema",
@@ -25240,11 +24268,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -25346,10 +24370,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -25363,10 +24384,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -25381,10 +24399,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -25392,10 +24407,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -25403,10 +24415,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -25414,10 +24423,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -25425,10 +24431,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -26093,13 +25096,7 @@
             },
             "head": {
               "type": "object",
-              "required": [
-                "label",
-                "ref",
-                "sha",
-                "user",
-                "repo"
-              ],
+              "required": ["label", "ref", "sha", "user", "repo"],
               "properties": {
                 "label": {
                   "type": "string"
@@ -26579,13 +25576,7 @@
             },
             "base": {
               "type": "object",
-              "required": [
-                "label",
-                "ref",
-                "sha",
-                "user",
-                "repo"
-              ],
+              "required": ["label", "ref", "sha", "user", "repo"],
               "properties": {
                 "label": {
                   "type": "string"
@@ -27078,9 +26069,7 @@
               "properties": {
                 "self": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -27090,9 +26079,7 @@
                 },
                 "html": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -27102,9 +26089,7 @@
                 },
                 "issue": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -27114,9 +26099,7 @@
                 },
                 "comments": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -27126,9 +26109,7 @@
                 },
                 "review_comments": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -27138,9 +26119,7 @@
                 },
                 "review_comment": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -27150,9 +26129,7 @@
                 },
                 "commits": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -27162,9 +26139,7 @@
                 },
                 "statuses": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -27236,14 +26211,7 @@
         },
         "label": {
           "type": "object",
-          "required": [
-            "id",
-            "node_id",
-            "url",
-            "name",
-            "color",
-            "default"
-          ],
+          "required": ["id", "node_id", "url", "name", "color", "default"],
           "properties": {
             "id": {
               "type": "integer"
@@ -27818,11 +26786,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -27842,10 +26806,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -27859,10 +26820,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -27877,10 +26835,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -27888,10 +26843,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -27899,10 +26851,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -27910,10 +26859,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -27921,10 +26867,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -28078,19 +27021,11 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "pull_request_review",
       "type": "object",
-      "required": [
-        "action",
-        "review",
-        "pull_request",
-        "repository",
-        "sender"
-      ],
+      "required": ["action", "review", "pull_request", "repository", "sender"],
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "submitted"
-          ]
+          "enum": ["submitted"]
         },
         "review": {
           "type": "object",
@@ -28217,16 +27152,11 @@
             },
             "_links": {
               "type": "object",
-              "required": [
-                "html",
-                "pull_request"
-              ],
+              "required": ["html", "pull_request"],
               "properties": {
                 "html": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -28236,9 +27166,7 @@
                 },
                 "pull_request": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -28460,13 +27388,7 @@
             },
             "head": {
               "type": "object",
-              "required": [
-                "label",
-                "ref",
-                "sha",
-                "user",
-                "repo"
-              ],
+              "required": ["label", "ref", "sha", "user", "repo"],
               "properties": {
                 "label": {
                   "type": "string"
@@ -28939,13 +27861,7 @@
             },
             "base": {
               "type": "object",
-              "required": [
-                "label",
-                "ref",
-                "sha",
-                "user",
-                "repo"
-              ],
+              "required": ["label", "ref", "sha", "user", "repo"],
               "properties": {
                 "label": {
                   "type": "string"
@@ -29431,9 +28347,7 @@
               "properties": {
                 "self": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -29443,9 +28357,7 @@
                 },
                 "html": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -29455,9 +28367,7 @@
                 },
                 "issue": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -29467,9 +28377,7 @@
                 },
                 "comments": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -29479,9 +28387,7 @@
                 },
                 "review_comments": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -29491,9 +28397,7 @@
                 },
                 "review_comment": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -29503,9 +28407,7 @@
                 },
                 "commits": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -29515,9 +28417,7 @@
                 },
                 "statuses": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -30006,11 +28906,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -30030,10 +28926,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -30047,10 +28940,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -30065,10 +28955,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -30076,10 +28963,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -30087,10 +28971,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -30098,10 +28979,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -30109,10 +28987,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -30266,19 +29141,11 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "pull_request_review_comment",
       "type": "object",
-      "required": [
-        "action",
-        "comment",
-        "pull_request",
-        "repository",
-        "sender"
-      ],
+      "required": ["action", "comment", "pull_request", "repository", "sender"],
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "created"
-          ]
+          "enum": ["created"]
         },
         "comment": {
           "type": "object",
@@ -30433,17 +29300,11 @@
             },
             "_links": {
               "type": "object",
-              "required": [
-                "self",
-                "html",
-                "pull_request"
-              ],
+              "required": ["self", "html", "pull_request"],
               "properties": {
                 "self": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -30453,9 +29314,7 @@
                 },
                 "html": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -30465,9 +29324,7 @@
                 },
                 "pull_request": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -30689,13 +29546,7 @@
             },
             "head": {
               "type": "object",
-              "required": [
-                "label",
-                "ref",
-                "sha",
-                "user",
-                "repo"
-              ],
+              "required": ["label", "ref", "sha", "user", "repo"],
               "properties": {
                 "label": {
                   "type": "string"
@@ -31168,13 +30019,7 @@
             },
             "base": {
               "type": "object",
-              "required": [
-                "label",
-                "ref",
-                "sha",
-                "user",
-                "repo"
-              ],
+              "required": ["label", "ref", "sha", "user", "repo"],
               "properties": {
                 "label": {
                   "type": "string"
@@ -31660,9 +30505,7 @@
               "properties": {
                 "self": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -31672,9 +30515,7 @@
                 },
                 "html": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -31684,9 +30525,7 @@
                 },
                 "issue": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -31696,9 +30535,7 @@
                 },
                 "comments": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -31708,9 +30545,7 @@
                 },
                 "review_comments": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -31720,9 +30555,7 @@
                 },
                 "review_comment": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -31732,9 +30565,7 @@
                 },
                 "commits": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -31744,9 +30575,7 @@
                 },
                 "statuses": {
                   "type": "object",
-                  "required": [
-                    "href"
-                  ],
+                  "required": ["href"],
                   "properties": {
                     "href": {
                       "type": "string"
@@ -32235,11 +31064,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -32259,10 +31084,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -32276,10 +31098,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -32294,10 +31113,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -32305,10 +31121,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -32316,10 +31129,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -32327,10 +31137,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -32338,10 +31145,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -33014,11 +31818,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -33037,10 +31837,7 @@
         },
         "pusher": {
           "type": "object",
-          "required": [
-            "name",
-            "email"
-          ],
+          "required": ["name", "email"],
           "properties": {
             "name": {
               "type": "string"
@@ -33136,10 +31933,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -33153,10 +31947,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -33171,10 +31962,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -33182,10 +31970,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -33193,10 +31978,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -33204,10 +31986,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -33215,10 +31994,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -33290,12 +32066,7 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "release",
       "type": "object",
-      "required": [
-        "action",
-        "release",
-        "repository",
-        "sender"
-      ],
+      "required": ["action", "release", "repository", "sender"],
       "properties": {
         "action": {
           "type": "string",
@@ -33939,11 +32710,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -34045,10 +32812,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -34062,10 +32826,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -34080,10 +32841,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -34091,10 +32849,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -34102,10 +32857,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -34113,10 +32865,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -34124,10 +32873,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -34199,11 +32945,7 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "repository",
       "type": "object",
-      "required": [
-        "action",
-        "repository",
-        "sender"
-      ],
+      "required": ["action", "repository", "sender"],
       "properties": {
         "action": {
           "type": "string",
@@ -34691,11 +33433,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -34797,10 +33535,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -34814,10 +33549,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -34832,10 +33564,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -34843,10 +33572,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -34854,10 +33580,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -34865,10 +33588,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -34876,10 +33596,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -35444,11 +34161,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -35550,10 +34263,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -35567,10 +34277,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -35585,10 +34292,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -35596,10 +34300,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -35607,10 +34308,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -35618,10 +34316,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -35629,10 +34324,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -35704,20 +34396,11 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "repository_import",
       "type": "object",
-      "required": [
-        "status",
-        "repository",
-        "organization",
-        "sender"
-      ],
+      "required": ["status", "repository", "organization", "sender"],
       "properties": {
         "status": {
           "type": "string",
-          "enum": [
-            "success",
-            "cancelled",
-            "failure"
-          ]
+          "enum": ["success", "cancelled", "failure"]
         },
         "repository": {
           "$schema": "http://json-schema.org/draft-07/schema",
@@ -36191,11 +34874,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -36297,10 +34976,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -36314,10 +34990,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -36332,10 +35005,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -36343,10 +35013,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -36354,10 +35021,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -36365,10 +35029,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -36376,10 +35037,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -36451,18 +35109,11 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "repository_vulnerability_alert",
       "type": "object",
-      "required": [
-        "action",
-        "alert"
-      ],
+      "required": ["action", "alert"],
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "create",
-            "dismiss",
-            "resolve"
-          ]
+          "enum": ["create", "dismiss", "resolve"]
         },
         "alert": {
           "type": "object",
@@ -37062,11 +35713,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -37168,10 +35815,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -37186,10 +35830,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -37197,10 +35838,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -37208,10 +35846,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -37219,10 +35854,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -37230,10 +35862,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -37305,18 +35934,11 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "security_advisory",
       "type": "object",
-      "required": [
-        "action",
-        "security_advisory"
-      ],
+      "required": ["action", "security_advisory"],
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "published",
-            "updated",
-            "performed"
-          ]
+          "enum": ["published", "updated", "performed"]
         },
         "security_advisory": {
           "type": "object",
@@ -37351,10 +35973,7 @@
                 "anyOf": [
                   {
                     "type": "object",
-                    "required": [
-                      "value",
-                      "type"
-                    ],
+                    "required": ["value", "type"],
                     "properties": {
                       "value": {
                         "type": "string"
@@ -37374,9 +35993,7 @@
                 "anyOf": [
                   {
                     "type": "object",
-                    "required": [
-                      "url"
-                    ],
+                    "required": ["url"],
                     "properties": {
                       "url": {
                         "type": "string"
@@ -37411,10 +36028,7 @@
                     "properties": {
                       "package": {
                         "type": "object",
-                        "required": [
-                          "ecosystem",
-                          "name"
-                        ],
+                        "required": ["ecosystem", "name"],
                         "properties": {
                           "ecosystem": {
                             "type": "string"
@@ -37433,9 +36047,7 @@
                       },
                       "first_patched_version": {
                         "type": "object",
-                        "required": [
-                          "identifier"
-                        ],
+                        "required": ["identifier"],
                         "properties": {
                           "identifier": {
                             "type": "string"
@@ -37459,11 +36071,7 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "sponsorship",
       "type": "object",
-      "required": [
-        "action",
-        "sponsorship",
-        "sender"
-      ],
+      "required": ["action", "sponsorship", "sender"],
       "properties": {
         "action": {
           "type": "string",
@@ -37696,15 +36304,11 @@
         },
         "changes": {
           "type": "object",
-          "required": [
-            "tier"
-          ],
+          "required": ["tier"],
           "properties": {
             "tier": {
               "type": "object",
-              "required": [
-                "from"
-              ],
+              "required": ["from"],
               "properties": {
                 "from": {
                   "type": "object",
@@ -37833,19 +36437,11 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "star",
       "type": "object",
-      "required": [
-        "action",
-        "starred_at",
-        "repository",
-        "sender"
-      ],
+      "required": ["action", "starred_at", "repository", "sender"],
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "created",
-            "deleted"
-          ]
+          "enum": ["created", "deleted"]
         },
         "starred_at": {
           "oneOf": [
@@ -38329,11 +36925,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -38435,10 +37027,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -38453,10 +37042,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -38464,10 +37050,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -38475,10 +37058,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -38486,10 +37066,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -38497,10 +37074,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -38608,12 +37182,7 @@
         },
         "state": {
           "type": "string",
-          "enum": [
-            "pending",
-            "success",
-            "failure",
-            "error"
-          ]
+          "enum": ["pending", "success", "failure", "error"]
         },
         "commit": {
           "type": "object",
@@ -38649,11 +37218,7 @@
               "properties": {
                 "author": {
                   "type": "object",
-                  "required": [
-                    "name",
-                    "email",
-                    "date"
-                  ],
+                  "required": ["name", "email", "date"],
                   "properties": {
                     "name": {
                       "type": "string"
@@ -38669,11 +37234,7 @@
                 },
                 "committer": {
                   "type": "object",
-                  "required": [
-                    "name",
-                    "email",
-                    "date"
-                  ],
+                  "required": ["name", "email", "date"],
                   "properties": {
                     "name": {
                       "type": "string"
@@ -38692,10 +37253,7 @@
                 },
                 "tree": {
                   "type": "object",
-                  "required": [
-                    "sha",
-                    "url"
-                  ],
+                  "required": ["sha", "url"],
                   "properties": {
                     "sha": {
                       "type": "string"
@@ -38714,12 +37272,7 @@
                 },
                 "verification": {
                   "type": "object",
-                  "required": [
-                    "verified",
-                    "reason",
-                    "signature",
-                    "payload"
-                  ],
+                  "required": ["verified", "reason", "signature", "payload"],
                   "properties": {
                     "verified": {
                       "type": "boolean"
@@ -38921,21 +37474,14 @@
             "anyOf": [
               {
                 "type": "object",
-                "required": [
-                  "name",
-                  "commit",
-                  "protected"
-                ],
+                "required": ["name", "commit", "protected"],
                 "properties": {
                   "name": {
                     "type": "string"
                   },
                   "commit": {
                     "type": "object",
-                    "required": [
-                      "sha",
-                      "url"
-                    ],
+                    "required": ["sha", "url"],
                     "properties": {
                       "sha": {
                         "type": "string"
@@ -39433,11 +37979,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -39539,10 +38081,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -39556,10 +38095,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -39574,10 +38110,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -39585,10 +38118,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -39596,10 +38126,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -39607,10 +38134,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -39618,10 +38142,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -39693,12 +38214,7 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "team",
       "type": "object",
-      "required": [
-        "action",
-        "team",
-        "organization",
-        "sender"
-      ],
+      "required": ["action", "team", "organization", "sender"],
       "properties": {
         "action": {
           "type": "string",
@@ -40246,11 +38762,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -40352,10 +38864,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -40370,10 +38879,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -40381,10 +38887,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -40392,10 +38895,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -40403,10 +38903,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -40414,10 +38911,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -40489,12 +38983,7 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "team_add",
       "type": "object",
-      "required": [
-        "team",
-        "repository",
-        "organization",
-        "sender"
-      ],
+      "required": ["team", "repository", "organization", "sender"],
       "properties": {
         "team": {
           "type": "object",
@@ -41020,11 +39509,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -41126,10 +39611,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -41143,10 +39625,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -41161,10 +39640,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -41172,10 +39648,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -41183,10 +39656,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -41194,10 +39664,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -41205,10 +39672,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -41280,17 +39744,11 @@
       "$schema": "http://json-schema.org/draft-07/schema",
       "$id": "watch",
       "type": "object",
-      "required": [
-        "action",
-        "repository",
-        "sender"
-      ],
+      "required": ["action", "repository", "sender"],
       "properties": {
         "action": {
           "type": "string",
-          "enum": [
-            "started"
-          ]
+          "enum": ["started"]
         },
         "repository": {
           "$schema": "http://json-schema.org/draft-07/schema",
@@ -41764,11 +40222,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -41870,10 +40324,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -41887,10 +40338,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -41905,10 +40353,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -41916,10 +40361,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -41927,10 +40369,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -41938,10 +40377,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -41949,10 +40385,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -42513,11 +40946,7 @@
             },
             "permissions": {
               "type": "object",
-              "required": [
-                "pull",
-                "push",
-                "admin"
-              ],
+              "required": ["pull", "push", "admin"],
               "properties": {
                 "pull": {
                   "type": "boolean"
@@ -42619,10 +41048,7 @@
         "installation": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/installation.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "id": {
               "type": "integer"
@@ -42636,10 +41062,7 @@
         "organization": {
           "$schema": "http://json-schema.org/draft-07/schema",
           "$id": "common/organization.schema.json",
-          "type": [
-            "object",
-            "null"
-          ],
+          "type": ["object", "null"],
           "properties": {
             "login": {
               "type": "string"
@@ -42654,10 +41077,7 @@
               "type": "string"
             },
             "company": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -42665,10 +41085,7 @@
               }
             },
             "blog": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -42676,10 +41093,7 @@
               }
             },
             "location": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -42687,10 +41101,7 @@
               }
             },
             "email": {
-              "type": [
-                "object",
-                "null"
-              ],
+              "type": ["object", "null"],
               "properties": {
                 "type": {
                   "type": "string"
@@ -42698,10 +41109,7 @@
               }
             },
             "twitter_username": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "is_verified": {
               "type": "boolean"
@@ -43056,13 +41464,7 @@
             },
             "license": {
               "type": "object",
-              "required": [
-                "key",
-                "name",
-                "node_id",
-                "spdx_id",
-                "url"
-              ],
+              "required": ["key", "name", "node_id", "spdx_id", "url"],
               "properties": {
                 "key": {
                   "type": "string"
@@ -43413,10 +41815,7 @@
               "type": "string"
             },
             "conclusion": {
-              "type": [
-                "string",
-                "null"
-              ]
+              "type": ["string", "null"]
             },
             "created_at": {
               "type": "string"
@@ -43440,10 +41839,7 @@
               "properties": {
                 "author": {
                   "type": "object",
-                  "required": [
-                    "email",
-                    "name"
-                  ],
+                  "required": ["email", "name"],
                   "properties": {
                     "email": {
                       "type": "string"
@@ -43456,10 +41852,7 @@
                 },
                 "committer": {
                   "type": "object",
-                  "required": [
-                    "email",
-                    "name"
-                  ],
+                  "required": ["email", "name"],
                   "properties": {
                     "email": {
                       "type": "string"
