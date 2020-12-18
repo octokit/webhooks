@@ -21,16 +21,8 @@
     },
     "client_payload": {
       "type": "object",
-      "required": ["unit", "integration"],
-      "properties": {
-        "unit": {
-          "type": "boolean"
-        },
-        "integration": {
-          "type": "boolean"
-        }
-      },
-      "additionalProperties": false
+      "properties": {},
+      "additionalProperties": true
     },
     "repository": {
       "$ref": "$repository"

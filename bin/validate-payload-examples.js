@@ -10,8 +10,7 @@ fs.readdirSync(payloads)
   .filter((filename) => filename.endsWith(".json"))
   .forEach((filename) => {
     const [event] = filename.split(".");
-    const fileBuffer = fs.readFileSync(`${payloads}/${filename}`);
-    const file = JSON.parse(fileBuffer.toString());
+    const file = require(`../${payloads}/${filename}`);
 
     try {
       const validationResult = validate(event, file);
