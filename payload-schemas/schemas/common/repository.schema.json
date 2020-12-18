@@ -420,6 +420,12 @@
         },
         "admin": {
           "type": "boolean"
+        },
+        "maintain": {
+          "type": "boolean"
+        },
+        "triage": {
+          "type": "boolean"
         }
       },
       "additionalProperties": false

@@ -16,6 +16,7 @@ fs.readdirSync(payloads)
       const validationResult = validate(event, file);
       if (!validationResult) {
         console.error(`❌ Payload '${filename}' does not match schema`);
+        console.error(ajv.errors);
         hasErrors = true;
       } else {
         console.log(`✅ Payload '${filename}' matches schema`);
