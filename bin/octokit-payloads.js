@@ -9,7 +9,7 @@ const payloads = `./payload-examples/api.github.com`;
 fs.readdirSync(payloads)
   .filter((filename) => filename.endsWith(".json"))
   .forEach((filename) => {
-    const [event, ...unused] = filename.split(".");
+    const [event] = filename.split(".");
     const fileBuffer = fs.readFileSync(`${payloads}/${filename}`);
     const file = JSON.parse(fileBuffer.toString());
 
