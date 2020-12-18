@@ -90,13 +90,13 @@
       "additionalProperties": false
     },
     "sender": {
-      "$ref": "$user"
+      "$ref": "common/user.schema.json"
     },
     "installation": {
-      "$ref": "$installation"
+      "$ref": "common/installation.schema.json"
     },
     "organization": {
-      "$ref": "$organization"
+      "$ref": "common/organization.schema.json"
     }
   },
   "additionalProperties": false

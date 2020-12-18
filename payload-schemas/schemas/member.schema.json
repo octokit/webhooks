@@ -92,9 +92,9 @@
     "changes": {
       "type": "object"
     },
-    "repository": { "$ref": "$repository" },
-    "installation": { "$ref": "$installation" },
-    "sender": { "$ref": "$user" }
+    "repository": { "$ref": "common/repository.schema.json" },
+    "installation": { "$ref": "common/installation.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" }
   },
   "additionalProperties": false
 }

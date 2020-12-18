@@ -21,16 +21,16 @@
       "type": "string"
     },
     "repository": {
-      "$ref": "$repository"
+      "$ref": "common/repository.schema.json"
     },
     "sender": {
-      "$ref": "$user"
+      "$ref": "common/user.schema.json"
     },
     "installation": {
-      "$ref": "$installation"
+      "$ref": "common/installation.schema.json"
     },
     "organization": {
-      "$ref": "$organization"
+      "$ref": "common/organization.schema.json"
     },
     "workflow": {
       "type": "string"

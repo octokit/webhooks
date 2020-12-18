@@ -281,7 +281,7 @@
       "additionalProperties": false
     },
     "sender": {
-      "$ref": "$user"
+      "$ref": "common/user.schema.json"
     }
   },
   "additionalProperties": false

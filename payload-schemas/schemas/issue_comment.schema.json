@@ -667,10 +667,10 @@
       },
       "additionalProperties": false
     },
-    "repository": { "$ref": "$repository" },
-    "sender": { "$ref": "$user" },
-    "installation": { "$ref": "$installation" },
-    "organization": { "$ref": "$organization" }
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
   },
   "additionalProperties": false
 }

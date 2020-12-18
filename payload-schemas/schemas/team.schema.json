@@ -74,13 +74,13 @@
       "additionalProperties": false
     },
     "repository": {
-      "$ref": "$repository"
+      "$ref": "common/repository.schema.json"
     },
     "sender": {
-      "$ref": "$user"
+      "$ref": "common/user.schema.json"
     },
     "organization": {
-      "$ref": "$organization"
+      "$ref": "common/organization.schema.json"
     }
   },
   "additionalProperties": false

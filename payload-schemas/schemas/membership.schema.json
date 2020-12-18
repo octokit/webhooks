@@ -92,7 +92,7 @@
       },
       "additionalProperties": false
     },
-    "sender": { "$ref": "$user" },
+    "sender": { "$ref": "common/user.schema.json" },
     "team": {
       "type": "object",
       "required": [
@@ -145,8 +145,8 @@
       },
       "additionalProperties": false
     },
-    "organization": { "$ref": "$organization" },
-    "installation": { "$ref": "$installation" }
+    "organization": { "$ref": "common/organization.schema.json" },
+    "installation": { "$ref": "common/installation.schema.json" }
   },
   "additionalProperties": false
 }

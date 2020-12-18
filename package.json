@@ -7,18 +7,22 @@
   "description": "machine-readable, always up-to-date GitHub Webhooks specifications",
   "main": "index.json",
   "devDependencies": {
+    "@apidevtools/json-schema-ref-parser": "^9.0.6",
     "@octokit/request": "^5.0.0",
     "ajv": "^7.0.0",
     "cheerio": "^1.0.0-rc.2",
     "execa": "^5.0.0",
     "fs-extra": "^9.0.0",
     "json-diff": "^0.5.3",
+    "prettier": "^2.0.5",
     "semantic-release": "^17.0.0",
     "turndown": "^7.0.0",
     "yargs": "^16.0.0"
   },
   "scripts": {
-    "build": "node bin/octokit-webhooks.js check --cached",
+    "build": "npm run build:schema && npm run build:webhooks",
+    "build:schema": "node bin/octokit-schema.js",
+    "build:webhooks": "node bin/octokit-webhooks.js check --cached",
     "pretest": "npm run -s lint",
     "test": "npm run build && npm run validate && node test.js",
     "lint": "prettier --check '{bin,lib}/*.js' '*.{js,md}' 'payload-examples/**/*.json' 'payload-schemas/*.js' *.md package.json index.json",
@@ -31,9 +35,8 @@
   "license": "MIT",
   "files": [
     "index.d.ts",
-    "index.json"
+    "index.json",
+    "index.schema.json"
   ],
-  "dependencies": {
-    "prettier": "^2.0.5"
-  }
+  "dependencies": {}
 }

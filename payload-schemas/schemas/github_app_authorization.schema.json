@@ -9,7 +9,7 @@
       "type": "string",
       "enum": ["revoked"]
     },
-    "sender": { "$ref": "$user" }
+    "sender": { "$ref": "common/user.schema.json" }
   },
   "additionalProperties": false
 }
