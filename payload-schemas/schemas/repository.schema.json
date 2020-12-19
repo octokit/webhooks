@@ -19,6 +19,11 @@
         "privatized"
       ]
     },
+    "changes": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": true
+    },
     "repository": {
       "$ref": "common/repository.schema.json"
     },
