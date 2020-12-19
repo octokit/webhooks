@@ -225,6 +225,13 @@ Example webhook definition
 }
 ```
 
+## Download webhook definitions and webhook payloads schema
+
+You can download the latest `index.json` and `schema.json` files from [unpkg](https://unpkg.com/browse/@octokit/webhooks-definitions@3.24.0/)
+
+- [`index.json`](https://unpkg.com/@octokit/webhooks-definitions/index.json)
+- [`schema.json`](https://unpkg.com/@octokit/webhooks-definitions/schema.json)
+
 ## Usage as Node module
 
 To get an array of all webhook definition objects, require the `index.json` file
