@@ -51,6 +51,7 @@
         "updated_at",
         "closed_at",
         "author_association",
+        "active_lock_reason",
         "body"
       ],
       "properties": {
@@ -549,6 +550,9 @@
         },
         "author_association": {
           "type": "string"
+        },
+        "active_lock_reason": {
+          "oneOf": [{ "type": "null" }, { "type": "string", "enum": ["resolved", "off-topic", "too heated", "spam"] }]
         },
         "pull_request": {
           "type": "object",
