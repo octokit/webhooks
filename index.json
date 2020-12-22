@@ -41428,7 +41428,8 @@
           "received_events_url": "https://api.github.com/users/Codertocat/received_events",
           "type": "User",
           "site_admin": false
-        }
+        },
+        "avatar_url": "https://avatars2.githubusercontent.com/oa/39145?v=4"
       },
       {
         "id": 6805126730,
@@ -41656,7 +41657,8 @@
         "installation": {
           "id": 1,
           "node_id": "MDIzOkludGVncmF0aW9uSW5zdGFsbGF0aW9uMQ=="
-        }
+        },
+        "avatar_url": "https://avatars2.githubusercontent.com/oa/39145?v=4"
       }
     ]
   },
