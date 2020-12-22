@@ -39368,8 +39368,8 @@
       {
         "action": "edited",
         "changes": {
-          "default_branch": {
-            "from": "main"
+          "description": {
+            "from": "My Repo"
           }
         },
         "repository": {
@@ -39504,8 +39504,8 @@
       {
         "action": "edited",
         "changes": {
-          "description": {
-            "from": "My Repo"
+          "default_branch": {
+            "from": "main"
           }
         },
         "repository": {
