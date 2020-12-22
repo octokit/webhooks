@@ -17369,6 +17369,7 @@
           "node_id": "MDU6TGFiZWwxMzYyOTM3MDI2",
           "url": "https://api.github.com/repos/Codertocat/Hello-World/labels/:bug:%20Bugfix",
           "name": ":bug: Bugfix",
+          "description": "Fixes a bug",
           "color": "cb1f00",
           "default": false
         },
@@ -17494,6 +17495,7 @@
           "node_id": "MDU6TGFiZWwxMzYyOTM3MDI2",
           "url": "https://api.github.com/repos/Codertocat/Hello-World/labels/:bug:%20Bugfix",
           "name": ":bug: Bugfix",
+          "description": "Fixes a bug",
           "color": "cb1f00",
           "default": false
         },
@@ -17623,6 +17625,7 @@
           "node_id": "MDU6TGFiZWwxMzYyOTM3MDI2",
           "url": "https://api.github.com/repos/Codertocat/Hello-World/labels/:bug:%20Bugfix",
           "name": ":bug: Bugfix",
+          "description": "Fixes a bug",
           "color": "cceeaa",
           "default": false
         },
@@ -17748,6 +17751,7 @@
           "node_id": "MDU6TGFiZWwxMzYyOTM3MDI2",
           "url": "https://api.github.com/repos/Codertocat/Hello-World/labels/:bug:%20Bugfix",
           "name": ":bug: Bugfix",
+          "description": "Fixes a bug",
           "color": "cceeaa",
           "default": false
         },
