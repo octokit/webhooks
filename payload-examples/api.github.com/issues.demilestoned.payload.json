@@ -72,6 +72,7 @@
     "updated_at": "2019-05-15T15:20:35Z",
     "closed_at": null,
     "author_association": "OWNER",
+    "active_lock_reason": null,
     "pull_request": {
       "url": "https://api.github.com/repos/Codertocat/Hello-World/pulls/2",
       "html_url": "https://github.com/Codertocat/Hello-World/pull/2",
