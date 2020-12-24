@@ -20,9 +20,9 @@
     "yargs": "^16.0.0"
   },
   "scripts": {
-    "build": "npm run build:schema && npm run build:webhooks",
+    "build": "node bin/octokit-webhooks.js check --cached",
     "build:schema": "node bin/octokit-schema.js",
-    "build:webhooks": "node bin/octokit-webhooks.js check --cached",
+    "build:webhooks": "node bin/octokit-webhooks.js update",
     "pretest": "npm run -s lint",
     "test": "npm run build && npm run validate && node test.js",
     "lint": "prettier --check '{bin,lib}/*.js' '*.{js,md}' 'payload-examples/**/*.json' 'payload-schemas/*.js' *.md package.json index.json",
