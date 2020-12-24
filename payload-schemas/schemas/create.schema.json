@@ -3,15 +3,7 @@
   "$id": "create",
 
   "type": "object",
-  "required": [
-    "ref",
-    "ref_type",
-    "master_branch",
-    "description",
-    "pusher_type",
-    "repository",
-    "sender"
-  ],
+  "required": ["ref", "ref_type", "master_branch", "description", "pusher_type", "repository", "sender"],
   "properties": {
     "ref": {
       "type": "string"
@@ -23,7 +15,7 @@
       "type": "string"
     },
     "description": {
-      "type": "null"
+      "oneOf": [{ "type": "string" }, { "type": "null" }]
     },
     "pusher_type": {
       "type": "string"

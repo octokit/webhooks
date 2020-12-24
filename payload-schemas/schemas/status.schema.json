@@ -28,14 +28,17 @@
     "name": {
       "type": "string"
     },
+    "avatar_url": {
+      "oneOf": [{"type": "null"}, {"type": "string"}]
+    },
     "target_url": {
-      "type": "null"
+      "oneOf": [{"type": "null"}, {"type": "string"}]
     },
     "context": {
       "type": "string"
     },
     "description": {
-      "type": "null"
+      "oneOf": [{"type": "null"}, {"type": "string"}]
     },
     "state": {
       "type": "string",

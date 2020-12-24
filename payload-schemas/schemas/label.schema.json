@@ -30,6 +30,9 @@
         },
         "default": {
           "type": "boolean"
+        },
+        "description": {
+          "oneOf": [{ "type": "string" }, { "type": "null" }]
         }
       },
       "additionalProperties": false
