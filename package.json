@@ -24,6 +24,7 @@
     "lint": "prettier --check '{bin,lib}/*.js' '*.{js,md}' 'payload-examples/**/*.json' *.md package.json index.json",
     "lint:fix": "prettier --write '{bin,lib}/*.js' '*.{js,md}' 'payload-examples/**/*.json' *.md package.json index.json"
   },
+  "prettier": {},
   "repository": "https://github.com/octokit/webhooks",
   "keywords": [],
   "author": "Gregor Martynus (https://github.com/gr2m)",
