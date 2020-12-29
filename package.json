@@ -13,6 +13,7 @@
     "execa": "^5.0.0",
     "fs-extra": "^9.0.0",
     "json-diff": "^0.5.3",
+    "prettier": "^2.0.5",
     "semantic-release": "^17.0.0",
     "turndown": "^7.0.0",
     "yargs": "^16.0.0"
@@ -32,8 +33,5 @@
   "files": [
     "index.d.ts",
     "index.json"
-  ],
-  "dependencies": {
-    "prettier": "^2.0.5"
-  }
+  ]
 }
