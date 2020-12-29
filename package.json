@@ -29,6 +29,7 @@
     "lint:fix": "prettier --write '{bin,lib}/*.js' '*.{js,md}' 'payload-examples/**/*.json' 'payload-schemas/*.js' *.md package.json index.json",
     "validate": "node bin/validate-payload-examples.js"
   },
+  "prettier": {},
   "repository": "https://github.com/octokit/webhooks",
   "keywords": [],
   "author": "Gregor Martynus (https://github.com/gr2m)",
