@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "star",
+
+  "type": "object",
+  "required": ["action", "starred_at", "repository", "sender"],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["created", "deleted"]
+    },
+    "starred_at": {
+      "oneOf": [{ "type": "null" }, { "type": "string" }]
+    },
+    "repository": {
+      "$ref": "common/repository.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    },
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    }
+  },
+  "additionalProperties": false
+}

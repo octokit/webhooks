@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "github_app_authorization",
+
+  "type": "object",
+  "required": ["action", "sender"],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["revoked"]
+    },
+    "sender": { "$ref": "common/user.schema.json" }
+  },
+  "additionalProperties": false
+}

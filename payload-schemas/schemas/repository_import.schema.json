@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "repository_import",
+
+  "type": "object",
+  "required": ["status", "repository", "organization", "sender"],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["success", "cancelled", "failure"]
+    },
+    "repository": {
+      "$ref": "common/repository.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    },
+    "installation": {
+      "$ref": "common/installation.schema.json"
+    },
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    }
+  },
+  "additionalProperties": false
+}

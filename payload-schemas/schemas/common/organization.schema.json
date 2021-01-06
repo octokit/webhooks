@@ -1,0 +1,129 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/organization.schema.json",
+  "type": ["object", "null"],
+  "required": [
+    "login",
+    "id",
+    "node_id",
+    "url",
+    "repos_url",
+    "events_url",
+    "hooks_url",
+    "issues_url",
+    "members_url",
+    "public_members_url",
+    "avatar_url",
+    "description"
+  ],
+  "properties": {
+    "login": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "type": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "company": {
+      "type": ["object", "null"],
+      "properties": {
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "blog": {
+      "type": ["object", "null"],
+      "properties": {
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "location": {
+      "type": ["object", "null"],
+      "properties": {
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "email": {
+      "type": ["object", "null"],
+      "properties": {
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "twitter_username": {
+      "type": ["string", "null"]
+    },
+    "is_verified": {
+      "type": "boolean"
+    },
+    "has_organization_projects": {
+      "type": "boolean"
+    },
+    "has_repository_projects": {
+      "type": "boolean"
+    },
+    "public_repos": {
+      "type": "integer"
+    },
+    "public_gists": {
+      "type": "integer"
+    },
+    "followers": {
+      "type": "integer"
+    },
+    "following": {
+      "type": "integer"
+    },
+    "node_id": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "html_url": {
+      "type": "string"
+    },
+    "repos_url": {
+      "type": "string"
+    },
+    "events_url": {
+      "type": "string"
+    },
+    "hooks_url": {
+      "type": "string"
+    },
+    "issues_url": {
+      "type": "string"
+    },
+    "members_url": {
+      "type": "string"
+    },
+    "public_members_url": {
+      "type": "string"
+    },
+    "avatar_url": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
