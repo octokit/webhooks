@@ -145,7 +145,10 @@
       "$ref": "common/user.schema.json"
     },
     "organization": {
-      "$ref": "common/organization.schema.json"
+      "oneOf": [
+        { "$ref": "common/organization.schema.json" },
+        { "type": "null" }
+      ]
     },
     "installation": {
       "oneOf": [

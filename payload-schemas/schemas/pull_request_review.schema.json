@@ -1426,7 +1426,10 @@
       ]
     },
     "organization": {
-      "$ref": "common/organization.schema.json"
+      "oneOf": [
+        { "$ref": "common/organization.schema.json" },
+        { "type": "null" }
+      ]
     },
     "sender": {
       "$ref": "common/user.schema.json"

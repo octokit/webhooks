@@ -722,7 +722,12 @@
         { "type": "null" }
       ]
     },
-    "organization": { "$ref": "common/organization.schema.json" }
+    "organization": {
+      "oneOf": [
+        { "$ref": "common/organization.schema.json" },
+        { "type": "null" }
+      ]
+    }
   },
   "additionalProperties": false
 }

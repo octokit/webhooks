@@ -124,7 +124,10 @@
       ]
     },
     "organization": {
-      "$ref": "common/organization.schema.json"
+      "oneOf": [
+        { "$ref": "common/organization.schema.json" },
+        { "type": "null" }
+      ]
     }
   },
   "additionalProperties": false
