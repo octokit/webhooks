@@ -2,6 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "common/installation.schema.json",
   "type": ["object", "null"],
+  "required": ["id", "node_id"],
   "properties": {
     "id": {
       "type": "integer"
