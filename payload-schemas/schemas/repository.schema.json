@@ -21,8 +21,39 @@
     },
     "changes": {
       "type": "object",
-      "properties": {},
-      "additionalProperties": true
+      "properties": {
+        "description": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "string"
+            }
+          }
+        },
+        "default_branch": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "string"
+            }
+          }
+        },
+        "owner": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "$ref": "common/user.schema.json"
+                }
+              }
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "additionalProperties": false
     },
     "repository": {
       "$ref": "common/repository.schema.json"
