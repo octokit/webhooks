@@ -146,7 +146,12 @@
       "additionalProperties": false
     },
     "organization": { "$ref": "common/organization.schema.json" },
-    "installation": { "$ref": "common/installation.schema.json" }
+    "installation": {
+      "oneOf": [
+        { "$ref": "common/installation.schema.json" },
+        { "type": "null" }
+      ]
+    }
   },
   "additionalProperties": false
 }
