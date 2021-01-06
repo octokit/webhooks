@@ -8,7 +8,6 @@
     "number",
     "pull_request",
     "repository",
-    "installation",
     "sender"
   ],
   "properties": {
@@ -18,6 +17,7 @@
         "opened",
         "edited",
         "closed",
+        "converted_to_draft",
         "assigned",
         "unassigned",
         "review_requested",
