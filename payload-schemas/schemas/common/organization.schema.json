@@ -23,68 +23,6 @@
     "id": {
       "type": "integer"
     },
-    "type": {
-      "type": "string"
-    },
-    "name": {
-      "type": "string"
-    },
-    "company": {
-      "type": ["object", "null"],
-      "properties": {
-        "type": {
-          "type": "string"
-        }
-      }
-    },
-    "blog": {
-      "type": ["object", "null"],
-      "properties": {
-        "type": {
-          "type": "string"
-        }
-      }
-    },
-    "location": {
-      "type": ["object", "null"],
-      "properties": {
-        "type": {
-          "type": "string"
-        }
-      }
-    },
-    "email": {
-      "type": ["object", "null"],
-      "properties": {
-        "type": {
-          "type": "string"
-        }
-      }
-    },
-    "twitter_username": {
-      "type": ["string", "null"]
-    },
-    "is_verified": {
-      "type": "boolean"
-    },
-    "has_organization_projects": {
-      "type": "boolean"
-    },
-    "has_repository_projects": {
-      "type": "boolean"
-    },
-    "public_repos": {
-      "type": "integer"
-    },
-    "public_gists": {
-      "type": "integer"
-    },
-    "followers": {
-      "type": "integer"
-    },
-    "following": {
-      "type": "integer"
-    },
     "node_id": {
       "type": "string"
     },
@@ -116,12 +54,6 @@
       "type": "string"
     },
     "description": {
-      "type": "string"
-    },
-    "created_at": {
-      "type": "string"
-    },
-    "updated_at": {
       "type": "string"
     }
   },
