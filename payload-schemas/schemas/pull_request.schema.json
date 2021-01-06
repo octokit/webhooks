@@ -3,13 +3,7 @@
   "$id": "pull_request",
 
   "type": "object",
-  "required": [
-    "action",
-    "number",
-    "pull_request",
-    "repository",
-    "sender"
-  ],
+  "required": ["action", "number", "pull_request", "repository", "sender"],
   "properties": {
     "action": {
       "type": "string",
@@ -1616,7 +1610,13 @@
           "type": "string"
         },
         "active_lock_reason": {
-          "oneOf": [{ "type": "null" }, { "type": "string", "enum": ["resolved", "off-topic", "too heated", "spam"] }]
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "string",
+              "enum": ["resolved", "off-topic", "too heated", "spam"]
+            }
+          ]
         },
         "draft": {
           "type": "boolean"

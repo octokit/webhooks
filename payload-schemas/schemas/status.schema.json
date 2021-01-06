@@ -29,16 +29,16 @@
       "type": "string"
     },
     "avatar_url": {
-      "oneOf": [{"type": "null"}, {"type": "string"}]
+      "oneOf": [{ "type": "null" }, { "type": "string" }]
     },
     "target_url": {
-      "oneOf": [{"type": "null"}, {"type": "string"}]
+      "oneOf": [{ "type": "null" }, { "type": "string" }]
     },
     "context": {
       "type": "string"
     },
     "description": {
-      "oneOf": [{"type": "null"}, {"type": "string"}]
+      "oneOf": [{ "type": "null" }, { "type": "string" }]
     },
     "state": {
       "type": "string",

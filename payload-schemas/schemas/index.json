@@ -36,13 +36,17 @@
     { "$ref": "payload-schemas/schemas/public.schema.json" },
     { "$ref": "payload-schemas/schemas/pull_request.schema.json" },
     { "$ref": "payload-schemas/schemas/pull_request_review.schema.json" },
-    { "$ref": "payload-schemas/schemas/pull_request_review_comment.schema.json" },
+    {
+      "$ref": "payload-schemas/schemas/pull_request_review_comment.schema.json"
+    },
     { "$ref": "payload-schemas/schemas/push.schema.json" },
     { "$ref": "payload-schemas/schemas/release.schema.json" },
     { "$ref": "payload-schemas/schemas/repository.schema.json" },
     { "$ref": "payload-schemas/schemas/repository_dispatch.schema.json" },
     { "$ref": "payload-schemas/schemas/repository_import.schema.json" },
-    { "$ref": "payload-schemas/schemas/repository_vulnerability_alert.schema.json" },
+    {
+      "$ref": "payload-schemas/schemas/repository_vulnerability_alert.schema.json"
+    },
     { "$ref": "payload-schemas/schemas/security_advisory.schema.json" },
     { "$ref": "payload-schemas/schemas/sponsorship.schema.json" },
     { "$ref": "payload-schemas/schemas/star.schema.json" },
