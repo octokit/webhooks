@@ -297,8 +297,18 @@
     },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
-    "installation": { "$ref": "common/installation.schema.json" },
-    "organization": { "$ref": "common/organization.schema.json" }
+    "installation": {
+      "oneOf": [
+        { "$ref": "common/installation.schema.json" },
+        { "type": "null" }
+      ]
+    },
+    "organization": {
+      "oneOf": [
+        { "$ref": "common/organization.schema.json" },
+        { "type": "null" }
+      ]
+    }
   },
   "additionalProperties": false
 }
