@@ -429,6 +429,9 @@
         }
       },
       "additionalProperties": false
+    },
+    "public": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false
