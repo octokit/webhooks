@@ -1,0 +1,283 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "installation$new_permissions_accepted",
+  "type": "object",
+  "required": ["action", "installation", "sender"],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["new_permissions_accepted"]
+    },
+    "installation": {
+      "type": "object",
+      "required": [
+        "id",
+        "account",
+        "repository_selection",
+        "access_tokens_url",
+        "repositories_url",
+        "html_url",
+        "app_id",
+        "target_id",
+        "target_type",
+        "permissions",
+        "events",
+        "created_at",
+        "updated_at",
+        "single_file_name"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "account": {
+          "type": "object",
+          "required": [
+            "login",
+            "id",
+            "node_id",
+            "avatar_url",
+            "gravatar_id",
+            "url",
+            "html_url",
+            "followers_url",
+            "following_url",
+            "gists_url",
+            "starred_url",
+            "subscriptions_url",
+            "organizations_url",
+            "repos_url",
+            "events_url",
+            "received_events_url",
+            "type",
+            "site_admin"
+          ],
+          "properties": {
+            "login": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            },
+            "node_id": {
+              "type": "string"
+            },
+            "avatar_url": {
+              "type": "string"
+            },
+            "gravatar_id": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "html_url": {
+              "type": "string"
+            },
+            "followers_url": {
+              "type": "string"
+            },
+            "following_url": {
+              "type": "string"
+            },
+            "gists_url": {
+              "type": "string"
+            },
+            "starred_url": {
+              "type": "string"
+            },
+            "subscriptions_url": {
+              "type": "string"
+            },
+            "organizations_url": {
+              "type": "string"
+            },
+            "repos_url": {
+              "type": "string"
+            },
+            "events_url": {
+              "type": "string"
+            },
+            "received_events_url": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "site_admin": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        "repository_selection": {
+          "type": "string",
+          "enum": ["all", "selected"]
+        },
+        "access_tokens_url": {
+          "type": "string"
+        },
+        "repositories_url": {
+          "type": "string"
+        },
+        "html_url": {
+          "type": "string"
+        },
+        "app_id": {
+          "type": "integer"
+        },
+        "app_slug": {
+          "type": "string"
+        },
+        "target_id": {
+          "type": "integer"
+        },
+        "target_type": {
+          "type": "string",
+          "enum": ["User", "Organization"]
+        },
+        "permissions": {
+          "type": "object",
+          "required": [],
+          "properties": {
+            "administration": {
+              "type": "string"
+            },
+            "checks": {
+              "type": "string",
+              "enum": ["read", "write"]
+            },
+            "contents": {
+              "type": "string",
+              "enum": ["read", "write"]
+            },
+            "deployments": {
+              "type": "string",
+              "enum": ["read", "write"]
+            },
+            "issues": {
+              "type": "string",
+              "enum": ["read", "write"]
+            },
+            "pages": {
+              "type": "string",
+              "enum": ["read", "write"]
+            },
+            "pull_requests": {
+              "type": "string",
+              "enum": ["read", "write"]
+            },
+            "repository_hooks": {
+              "type": "string",
+              "enum": ["read", "write"]
+            },
+            "repository_projects": {
+              "type": "string",
+              "enum": ["read", "write"]
+            },
+            "statuses": {
+              "type": "string",
+              "enum": ["read", "write"]
+            },
+            "metadata": {
+              "type": "string",
+              "enum": ["read", "write"]
+            },
+            "vulnerability_alerts": {
+              "type": "string",
+              "enum": ["read", "write"]
+            }
+          },
+          "additionalProperties": false
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "created_at": {
+          "type": "integer"
+        },
+        "updated_at": {
+          "type": "integer"
+        },
+        "single_file_name": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "has_multiple_single_files": {
+          "type": "boolean"
+        },
+        "single_file_paths": {
+          "type": "array",
+          "items": {}
+        },
+        "suspended_by": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "suspended_at": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "repositories": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "required": ["id", "node_id", "name", "full_name", "private"],
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "node_id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "full_name": {
+                "type": "string"
+              },
+              "private": {
+                "type": "boolean"
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      }
+    },
+    "requester": {
+      "type": "null"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    }
+  },
+  "additionalProperties": false,
+  "title": "installation new_permissions_accepted event"
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "org_block$unblocked",
+  "type": "object",
+  "required": ["action", "blocked_user", "organization", "sender"],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["unblocked"]
+    },
+    "blocked_user": {
+      "$ref": "common/user.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    },
+    "installation": {
+      "$ref": "common/installation.schema.json"
+    },
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    }
+  },
+  "additionalProperties": false,
+  "title": "org_block unblocked event"
+}

@@ -1,0 +1,310 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "marketplace_purchase$purchased",
+  "type": "object",
+  "required": ["action", "effective_date", "sender", "marketplace_purchase"],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["purchased"]
+    },
+    "effective_date": {
+      "type": "string"
+    },
+    "sender": {
+      "type": "object",
+      "required": [
+        "login",
+        "id",
+        "avatar_url",
+        "gravatar_id",
+        "url",
+        "html_url",
+        "followers_url",
+        "following_url",
+        "gists_url",
+        "starred_url",
+        "subscriptions_url",
+        "organizations_url",
+        "repos_url",
+        "events_url",
+        "received_events_url",
+        "type",
+        "site_admin",
+        "email"
+      ],
+      "properties": {
+        "login": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "avatar_url": {
+          "type": "string"
+        },
+        "gravatar_id": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "html_url": {
+          "type": "string"
+        },
+        "followers_url": {
+          "type": "string"
+        },
+        "following_url": {
+          "type": "string"
+        },
+        "gists_url": {
+          "type": "string"
+        },
+        "starred_url": {
+          "type": "string"
+        },
+        "subscriptions_url": {
+          "type": "string"
+        },
+        "organizations_url": {
+          "type": "string"
+        },
+        "repos_url": {
+          "type": "string"
+        },
+        "events_url": {
+          "type": "string"
+        },
+        "received_events_url": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "site_admin": {
+          "type": "boolean"
+        },
+        "email": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "marketplace_purchase": {
+      "type": "object",
+      "required": [
+        "account",
+        "billing_cycle",
+        "unit_count",
+        "on_free_trial",
+        "free_trial_ends_on",
+        "next_billing_date",
+        "plan"
+      ],
+      "properties": {
+        "account": {
+          "type": "object",
+          "required": ["type", "id", "login", "organization_billing_email"],
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            },
+            "login": {
+              "type": "string"
+            },
+            "organization_billing_email": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "billing_cycle": {
+          "type": "string"
+        },
+        "unit_count": {
+          "type": "integer"
+        },
+        "on_free_trial": {
+          "type": "boolean"
+        },
+        "free_trial_ends_on": {
+          "type": "null"
+        },
+        "next_billing_date": {
+          "type": "string"
+        },
+        "plan": {
+          "type": "object",
+          "required": [
+            "id",
+            "name",
+            "description",
+            "monthly_price_in_cents",
+            "yearly_price_in_cents",
+            "price_model",
+            "has_free_trial",
+            "unit_name",
+            "bullets"
+          ],
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "monthly_price_in_cents": {
+              "type": "integer"
+            },
+            "yearly_price_in_cents": {
+              "type": "integer"
+            },
+            "price_model": {
+              "type": "string"
+            },
+            "has_free_trial": {
+              "type": "boolean"
+            },
+            "unit_name": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "bullets": {
+              "type": "array",
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  }
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "previous_marketplace_purchase": {
+      "type": "object",
+      "required": [
+        "account",
+        "billing_cycle",
+        "unit_count",
+        "on_free_trial",
+        "free_trial_ends_on",
+        "plan"
+      ],
+      "properties": {
+        "account": {
+          "type": "object",
+          "required": ["type", "id", "login", "organization_billing_email"],
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            },
+            "login": {
+              "type": "string"
+            },
+            "organization_billing_email": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "billing_cycle": {
+          "type": "string"
+        },
+        "unit_count": {
+          "type": "integer"
+        },
+        "on_free_trial": {
+          "type": "boolean"
+        },
+        "free_trial_ends_on": {
+          "type": "null"
+        },
+        "next_billing_date": {
+          "type": "string"
+        },
+        "plan": {
+          "type": "object",
+          "required": [
+            "id",
+            "name",
+            "description",
+            "monthly_price_in_cents",
+            "yearly_price_in_cents",
+            "price_model",
+            "has_free_trial",
+            "unit_name",
+            "bullets"
+          ],
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "monthly_price_in_cents": {
+              "type": "integer"
+            },
+            "yearly_price_in_cents": {
+              "type": "integer"
+            },
+            "price_model": {
+              "type": "string"
+            },
+            "has_free_trial": {
+              "type": "boolean"
+            },
+            "unit_name": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "bullets": {
+              "type": "array",
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  }
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "title": "marketplace_purchase purchased event"
+}

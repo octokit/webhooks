@@ -122,10 +122,24 @@
           "type": "integer"
         },
         "name": {
-          "oneOf": [{ "type": "null" }, { "type": "string" }]
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
         },
         "email": {
-          "oneOf": [{ "type": "null" }, { "type": "string" }]
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
         },
         "node_id": {
           "type": "string"
@@ -182,7 +196,14 @@
       "type": "string"
     },
     "description": {
-      "oneOf": [{ "type": "null" }, { "type": "string" }]
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string"
+        }
+      ]
     },
     "fork": {
       "type": "boolean"
@@ -299,13 +320,27 @@
       "type": "string"
     },
     "created_at": {
-      "oneOf": [{ "type": "integer" }, { "type": "string" }]
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "string"
+        }
+      ]
     },
     "updated_at": {
       "type": "string"
     },
     "pushed_at": {
-      "oneOf": [{ "type": "integer" }, { "type": "string" }]
+      "oneOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "string"
+        }
+      ]
     },
     "git_url": {
       "type": "string"
@@ -320,7 +355,14 @@
       "type": "string"
     },
     "homepage": {
-      "oneOf": [{ "type": "null" }, { "type": "string" }]
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string"
+        }
+      ]
     },
     "size": {
       "type": "integer"
@@ -332,7 +374,14 @@
       "type": "integer"
     },
     "language": {
-      "oneOf": [{ "type": "null" }, { "type": "string" }]
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string"
+        }
+      ]
     },
     "has_issues": {
       "type": "boolean"
@@ -353,7 +402,14 @@
       "type": "integer"
     },
     "mirror_url": {
-      "oneOf": [{ "type": "null" }, { "type": "string" }]
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string"
+        }
+      ]
     },
     "archived": {
       "type": "boolean"
@@ -366,8 +422,12 @@
     },
     "license": {
       "oneOf": [
-        { "type": "null" },
-        { "type": "string" },
+        {
+          "type": "null"
+        },
+        {
+          "type": "string"
+        },
         {
           "type": "object",
           "properties": {
@@ -405,10 +465,18 @@
     "default_branch": {
       "type": "string"
     },
-    "allow_squash_merge": { "type": "boolean" },
-    "allow_merge_commit": { "type": "boolean" },
-    "allow_rebase_merge": { "type": "boolean" },
-    "delete_branch_on_merge": { "type": "boolean" },
+    "allow_squash_merge": {
+      "type": "boolean"
+    },
+    "allow_merge_commit": {
+      "type": "boolean"
+    },
+    "allow_rebase_merge": {
+      "type": "boolean"
+    },
+    "delete_branch_on_merge": {
+      "type": "boolean"
+    },
     "master_branch": {
       "type": "string"
     },
@@ -438,5 +506,6 @@
       "type": "boolean"
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "title": "Repository"
 }

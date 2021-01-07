@@ -11,5 +11,6 @@
       "type": "string"
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "title": "Installation"
 }

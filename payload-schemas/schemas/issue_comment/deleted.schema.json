@@ -1,0 +1,306 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "issue_comment$deleted",
+  "type": "object",
+  "required": ["action", "issue", "comment", "repository", "sender"],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["deleted"]
+    },
+    "changes": {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "issue": {
+      "type": "object",
+      "required": [
+        "url",
+        "repository_url",
+        "labels_url",
+        "comments_url",
+        "events_url",
+        "html_url",
+        "id",
+        "node_id",
+        "number",
+        "title",
+        "user",
+        "labels",
+        "state",
+        "locked",
+        "assignee",
+        "assignees",
+        "milestone",
+        "comments",
+        "created_at",
+        "updated_at",
+        "closed_at",
+        "author_association",
+        "body"
+      ],
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "repository_url": {
+          "type": "string"
+        },
+        "labels_url": {
+          "type": "string"
+        },
+        "comments_url": {
+          "type": "string"
+        },
+        "events_url": {
+          "type": "string"
+        },
+        "html_url": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "number": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "user": {
+          "$ref": "common/user.schema.json"
+        },
+        "labels": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "required": [
+                  "id",
+                  "node_id",
+                  "url",
+                  "name",
+                  "color",
+                  "default"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "node_id": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "color": {
+                    "type": "string"
+                  },
+                  "default": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              }
+            ]
+          }
+        },
+        "state": {
+          "type": "string"
+        },
+        "locked": {
+          "type": "boolean"
+        },
+        "assignee": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "common/user.schema.json"
+            }
+          ]
+        },
+        "assignees": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "common/user.schema.json"
+              }
+            ]
+          }
+        },
+        "milestone": {
+          "type": "object",
+          "required": [
+            "url",
+            "html_url",
+            "labels_url",
+            "id",
+            "node_id",
+            "number",
+            "title",
+            "description",
+            "creator",
+            "open_issues",
+            "closed_issues",
+            "state",
+            "created_at",
+            "updated_at",
+            "due_on",
+            "closed_at"
+          ],
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "html_url": {
+              "type": "string"
+            },
+            "labels_url": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            },
+            "node_id": {
+              "type": "string"
+            },
+            "number": {
+              "type": "integer"
+            },
+            "title": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "creator": {
+              "$ref": "common/user.schema.json"
+            },
+            "open_issues": {
+              "type": "integer"
+            },
+            "closed_issues": {
+              "type": "integer"
+            },
+            "state": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            },
+            "due_on": {
+              "type": "string"
+            },
+            "closed_at": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "comments": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "closed_at": {
+          "type": "null"
+        },
+        "author_association": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "comment": {
+      "type": "object",
+      "required": [
+        "url",
+        "html_url",
+        "issue_url",
+        "id",
+        "node_id",
+        "user",
+        "created_at",
+        "updated_at",
+        "author_association",
+        "body"
+      ],
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "html_url": {
+          "type": "string"
+        },
+        "issue_url": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "user": {
+          "$ref": "common/user.schema.json"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "author_association": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "repository": {
+      "$ref": "common/repository.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    },
+    "installation": {
+      "$ref": "common/installation.schema.json"
+    },
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    }
+  },
+  "additionalProperties": false,
+  "title": "issue_comment deleted event"
+}

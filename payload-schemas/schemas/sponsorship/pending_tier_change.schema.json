@@ -1,0 +1,127 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "sponsorship$pending_tier_change",
+  "type": "object",
+  "required": ["action", "sponsorship", "sender"],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["pending_tier_change"]
+    },
+    "sponsorship": {
+      "type": "object",
+      "required": [
+        "node_id",
+        "created_at",
+        "sponsorable",
+        "sponsor",
+        "privacy_level",
+        "tier"
+      ],
+      "properties": {
+        "node_id": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "sponsorable": {
+          "$ref": "common/user.schema.json"
+        },
+        "sponsor": {
+          "$ref": "common/user.schema.json"
+        },
+        "privacy_level": {
+          "type": "string"
+        },
+        "tier": {
+          "type": "object",
+          "required": [
+            "node_id",
+            "created_at",
+            "description",
+            "monthly_price_in_cents",
+            "monthly_price_in_dollars",
+            "name"
+          ],
+          "properties": {
+            "node_id": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "monthly_price_in_cents": {
+              "type": "integer"
+            },
+            "monthly_price_in_dollars": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "effective_date": {
+      "type": "string"
+    },
+    "changes": {
+      "type": "object",
+      "required": ["tier"],
+      "properties": {
+        "tier": {
+          "type": "object",
+          "required": ["from"],
+          "properties": {
+            "from": {
+              "type": "object",
+              "required": [
+                "node_id",
+                "created_at",
+                "description",
+                "monthly_price_in_cents",
+                "monthly_price_in_dollars",
+                "name"
+              ],
+              "properties": {
+                "node_id": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "monthly_price_in_cents": {
+                  "type": "integer"
+                },
+                "monthly_price_in_dollars": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    }
+  },
+  "additionalProperties": false,
+  "title": "sponsorship pending_tier_change event"
+}

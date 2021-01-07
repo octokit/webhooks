@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "workflow_dispatch$event",
+  "type": "object",
+  "required": [
+    "inputs",
+    "ref",
+    "repository",
+    "organization",
+    "sender",
+    "workflow"
+  ],
+  "properties": {
+    "inputs": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": true
+    },
+    "ref": {
+      "type": "string"
+    },
+    "repository": {
+      "$ref": "common/repository.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    },
+    "installation": {
+      "$ref": "common/installation.schema.json"
+    },
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    },
+    "workflow": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "title": "workflow_dispatch event"
+}

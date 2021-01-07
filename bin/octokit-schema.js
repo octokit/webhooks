@@ -4,6 +4,8 @@ const path = require("path");
 const prettier = require("prettier");
 const $RefParser = require("@apidevtools/json-schema-ref-parser");
 
+const pathToWebhookSchemas = "payload-schemas/schemas";
+
 const removeExtension = (fileName, ext) => {
   assert.ok(fileName.endsWith(ext), `"${fileName}" does not end with "${ext}"`);
 
@@ -11,16 +13,26 @@ const removeExtension = (fileName, ext) => {
 };
 
 const buildCommonSchemasDefinitionSchema = () => {
-  const commonSchemas = fs.readdirSync("payload-schemas/schemas/common");
+  const commonSchemas = fs.readdirSync(`${pathToWebhookSchemas}/common`);
   const definitions = {};
 
   commonSchemas.forEach((schema) => {
     definitions[removeExtension(schema, ".schema.json")] = {
-      $ref: `payload-schemas/schemas/common/${schema}`,
+      $ref: `${pathToWebhookSchemas}/common/${schema}`,
     };
   });
 
   return definitions;
+};
+
+const listEvents = () => {
+  const directoryEntities = fs.readdirSync(pathToWebhookSchemas, {
+    withFileTypes: true,
+  });
+
+  return directoryEntities
+    .filter((entity) => entity.isDirectory() && entity.name !== "common")
+    .map((entity) => entity.name);
 };
 
 const combineEventSchemas = () => {
@@ -31,21 +43,53 @@ const combineEventSchemas = () => {
     oneOf: [],
   };
 
-  const schemas = fs
-    .readdirSync("payload-schemas/schemas")
-    .filter((name) => name !== "common" && name !== "index.json");
+  const events = listEvents();
 
-  schemas.forEach((schemaName) => {
-    const schema = require(`../payload-schemas/schemas/${schemaName}`);
-    const eventName = `${removeExtension(schemaName, ".schema.json")}_event`;
+  events.forEach((event) => {
+    const schemas = fs.readdirSync(`${pathToWebhookSchemas}/${event}`);
+    const eventName = `${event}_event`;
+
+    if (schemas.length === 1 && schemas[0] === "event.schema.json") {
+      // schemas without any actions are just called "event"
+      const schema = require(`../${pathToWebhookSchemas}/${event}/event.schema.json`);
+      const eventName = schema.$id;
+
+      eventSchema.definitions = {
+        ...eventSchema.definitions,
+        ...schema.definitions,
+        [eventName]: schema,
+      };
+
+      delete schema.definitions;
+
+      eventSchema.oneOf.push({ $ref: `#/definitions/${eventName}` });
+
+      return eventSchema;
+    }
+
+    const eventActions = schemas.map((schemaName) => {
+      const schema = require(`../${pathToWebhookSchemas}/${event}/${schemaName}`);
+      const actionEventName = schema.$id;
+
+      eventSchema.definitions = {
+        ...eventSchema.definitions,
+        ...schema.definitions,
+        [actionEventName]: schema,
+      };
+
+      delete schema.definitions;
+
+      return actionEventName;
+    });
 
     eventSchema.definitions = {
       ...eventSchema.definitions,
-      ...schema.definitions,
-      [eventName]: schema,
+      [eventName]: {
+        oneOf: eventActions.map((eventAction) => ({
+          $ref: `#/definitions/${eventAction}`,
+        })),
+      },
     };
-
-    delete schema.definitions;
 
     eventSchema.oneOf.push({ $ref: `#/definitions/${eventName}` });
   });

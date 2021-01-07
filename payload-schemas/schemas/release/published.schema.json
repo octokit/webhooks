@@ -1,0 +1,107 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "release$published",
+  "type": "object",
+  "required": ["action", "release", "repository", "sender"],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["published"]
+    },
+    "release": {
+      "type": "object",
+      "required": [
+        "url",
+        "assets_url",
+        "upload_url",
+        "html_url",
+        "id",
+        "node_id",
+        "tag_name",
+        "target_commitish",
+        "name",
+        "draft",
+        "author",
+        "prerelease",
+        "created_at",
+        "published_at",
+        "assets",
+        "tarball_url",
+        "zipball_url",
+        "body"
+      ],
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "assets_url": {
+          "type": "string"
+        },
+        "upload_url": {
+          "type": "string"
+        },
+        "html_url": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "tag_name": {
+          "type": "string"
+        },
+        "target_commitish": {
+          "type": "string"
+        },
+        "name": {
+          "type": "null"
+        },
+        "draft": {
+          "type": "boolean"
+        },
+        "author": {
+          "$ref": "common/user.schema.json"
+        },
+        "prerelease": {
+          "type": "boolean"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "published_at": {
+          "type": "string"
+        },
+        "assets": {
+          "type": "array",
+          "items": {}
+        },
+        "tarball_url": {
+          "type": "string"
+        },
+        "zipball_url": {
+          "type": "string"
+        },
+        "body": {
+          "type": "null"
+        }
+      },
+      "additionalProperties": false
+    },
+    "repository": {
+      "$ref": "common/repository.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    },
+    "installation": {
+      "$ref": "common/installation.schema.json"
+    },
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    }
+  },
+  "additionalProperties": false,
+  "title": "release published event"
+}
