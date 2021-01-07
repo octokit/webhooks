@@ -118,16 +118,10 @@
       "$ref": "common/user.schema.json"
     },
     "installation": {
-      "oneOf": [
-        { "$ref": "common/installation.schema.json" },
-        { "type": "null" }
-      ]
+      "$ref": "common/installation.schema.json"
     },
     "organization": {
-      "oneOf": [
-        { "$ref": "common/organization.schema.json" },
-        { "type": "null" }
-      ]
+      "$ref": "common/organization.schema.json"
     }
   },
   "additionalProperties": false

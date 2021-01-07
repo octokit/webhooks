@@ -93,12 +93,7 @@
       "type": "object"
     },
     "repository": { "$ref": "common/repository.schema.json" },
-    "installation": {
-      "oneOf": [
-        { "$ref": "common/installation.schema.json" },
-        { "type": "null" }
-      ]
-    },
+    "installation": { "$ref": "common/installation.schema.json" },
     "sender": { "$ref": "common/user.schema.json" }
   },
   "additionalProperties": false
