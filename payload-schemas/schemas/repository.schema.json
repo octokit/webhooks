@@ -51,6 +51,14 @@
             }
           }
         },
+        "homepage": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "string"
+            }
+          }
+        },
         "additionalProperties": false
       },
       "additionalProperties": false
