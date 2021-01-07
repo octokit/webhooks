@@ -75,7 +75,7 @@
       "$ref": "common/repository.schema.json"
     },
     "sender": {
-      "$ref": "common/user.json"
+      "$ref": "common/user.schema.json"
     },
     "workflow": {
       "type": "object",
