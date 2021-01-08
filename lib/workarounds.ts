@@ -1,6 +1,10 @@
-module.exports = workarounds;
+import { Webhook } from ".";
 
-function workarounds(webhooks) {
+export type WorkableWebhook =
+  | ({ name: "repository_dispatch" } & Webhook<{ client_payload: object }>)
+  | ({ name: "workflow_dispatch" } & Webhook<{ inputs: object }>);
+
+export const applyWorkarounds = (webhooks: WorkableWebhook[]): void => {
   webhooks.forEach((webhook) => {
     if (webhook.name === "repository_dispatch") {
       webhook.examples.forEach((example) => {
@@ -14,4 +18,4 @@ function workarounds(webhooks) {
       });
     }
   });
-}
+};

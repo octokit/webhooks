@@ -1,27 +1,25 @@
-const {
-  ensureDir,
-  pathExists,
-  readFile,
-  readJson,
-  writeFile,
-} = require("fs-extra");
-const { resolve: resolvePath, dirname } = require("path");
+import { ensureDir, pathExists, readFile, readJson, writeFile } from "fs-extra";
+import { dirname, resolve as resolvePath } from "path";
 
 const CACHE_DIR = resolvePath(__dirname, "..", "cache");
 
-const cache = {
-  exists(path) {
+const toCachePath = (path: string) => resolvePath(CACHE_DIR, `./${path}`);
+
+export const cache = {
+  async exists(path: string): Promise<boolean> {
     return pathExists(toCachePath(path));
   },
-  read(path) {
+  async read(path: string): Promise<string> {
     return readFile(toCachePath(path), "utf8");
   },
-  async write(path, data) {
+  async write(path: string, data: string): Promise<void> {
     const cachePath = toCachePath(path);
+
     await ensureDir(dirname(cachePath));
+
     return writeFile(cachePath, data);
   },
-  writeHtml(path, data) {
+  async writeHtml(path: string, data: string): Promise<void> {
     return cache.write(path, data);
   },
   readJson(path) {
@@ -31,9 +29,3 @@ const cache = {
     return cache.write(path, JSON.stringify(data, null, 2) + "\n");
   },
 };
-
-function toCachePath(path) {
-  return resolvePath(CACHE_DIR, `./${path}`);
-}
-
-module.exports = cache;
