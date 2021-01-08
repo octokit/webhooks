@@ -9,8 +9,12 @@ const WEBHOOKS_DOCS_URL =
 export const getHtml = async (state: State): Promise<string> => {
   const cacheFilePath = "webhook-events-and-payloads.html";
 
-  if (state.cached && (await cache.exists(cacheFilePath))) {
-    return cache.read(cacheFilePath);
+  try {
+    if (state.cached) {
+      return cache.read(cacheFilePath);
+    }
+  } catch {
+    // if we can't read from the cache, continue and fetch from the source
   }
 
   console.log(`⌛  fetching ${WEBHOOKS_DOCS_URL}`);
@@ -21,10 +25,7 @@ export const getHtml = async (state: State): Promise<string> => {
   // get only the HTML we care about to avoid unnecessary cache updates
   const html = $("#article-contents").parent().html() ?? "";
 
-  await cache.writeHtml(
-    cacheFilePath,
-    prettier.format(html, { parser: "html" })
-  );
+  await cache.write(cacheFilePath, prettier.format(html, { parser: "html" }));
 
   return html;
 };
