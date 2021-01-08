@@ -72,7 +72,8 @@
       "type": "string"
     },
     "type": {
-      "type": "string"
+      "type": "string",
+      "enum": ["Bot", "User", "Organization"]
     },
     "site_admin": {
       "type": "boolean"

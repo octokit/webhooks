@@ -2,6 +2,7 @@
 
 const fs = require("fs");
 const { ajv, validate } = require("../payload-schemas");
+const { MissingRefError } = require("ajv/dist/compile/error_classes");
 
 let hasErrors = false;
 const payloads = `./payload-examples/api.github.com`;
