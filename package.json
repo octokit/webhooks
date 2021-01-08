@@ -10,11 +10,14 @@
   "files": [
     "index.d.ts",
     "index.json",
+    "schema.d.ts",
     "schema.json"
   ],
   "scripts": {
     "build": "ts-node -T bin/octokit-webhooks.ts check --cached",
+    "build:all": "npm run -s build:webhooks && npm run -s build:schema && npm run -s build:types",
     "build:schema": "ts-node -T bin/octokit-schema.ts",
+    "build:types": "ts-node -T bin/octokit-types.ts",
     "build:webhooks": "ts-node -T bin/octokit-webhooks.ts update",
     "lint": "prettier --check '{bin,lib}/*.ts' '*.{ts,md}' '{payload-examples,payload-schemas}/**/*.json' 'payload-schemas/*.ts' *.md package.json index.json",
     "lint:fix": "prettier --write '{bin,lib}/*.ts' '*.{ts,md}' '{payload-examples,payload-schemas}/**/*.json' 'payload-schemas/*.ts' *.md package.json index.json",
@@ -33,6 +36,7 @@
     "@types/cheerio": "^0.22.23",
     "@types/json-diff": "^0.5.0",
     "@types/json-schema": "^7.0.6",
+    "@types/lodash": "^4.14.167",
     "@types/node": "^14.14.20",
     "@types/prettier": "^2.1.6",
     "@types/turndown": "^5.0.0",
@@ -40,6 +44,7 @@
     "ajv": "^7.0.0",
     "cheerio": "^1.0.0-rc.2",
     "json-diff": "^0.5.3",
+    "json-schema-to-typescript": "^10.1.2",
     "prettier": "^2.0.5",
     "semantic-release": "^17.0.0",
     "ts-node": "^9.1.1",
