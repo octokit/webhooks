@@ -49,7 +49,7 @@
       "items": {}
     },
     "head_commit": {
-      "type": "null"
+      "oneOf": [{ "type": "null" }, { "type": "string" }]
     },
     "repository": {
       "$ref": "common/repository.schema.json"

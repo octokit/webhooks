@@ -138,13 +138,14 @@
                   "type": "boolean"
                 },
                 "reason": {
-                  "type": "string"
+                  "type": "string",
+                  "enum": ["unsigned", "valid", "invalid"]
                 },
                 "signature": {
-                  "type": "string"
+                  "oneOf": [{ "type": "string" }, { "type": "null" }]
                 },
                 "payload": {
-                  "type": "string"
+                  "oneOf": [{ "type": "string" }, { "type": "null" }]
                 }
               },
               "additionalProperties": false

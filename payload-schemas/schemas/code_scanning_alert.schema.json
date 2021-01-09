@@ -84,10 +84,10 @@
           "type": "null"
         },
         "dismissed_at": {
-          "type": "null"
+          "oneOf": [{ "type": "null" }, { "type": "string" }]
         },
         "dismissed_reason": {
-          "type": "null"
+          "oneOf": [{ "type": "null" }, { "type": "string" }]
         },
         "rule": {
           "type": "object",

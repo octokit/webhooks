@@ -32,87 +32,10 @@
           "type": "string"
         },
         "user": {
-          "type": "object",
-          "required": [
-            "login",
-            "id",
-            "node_id",
-            "avatar_url",
-            "gravatar_id",
-            "url",
-            "html_url",
-            "followers_url",
-            "following_url",
-            "gists_url",
-            "starred_url",
-            "subscriptions_url",
-            "organizations_url",
-            "repos_url",
-            "events_url",
-            "received_events_url",
-            "type",
-            "site_admin"
-          ],
-          "properties": {
-            "login": {
-              "type": "string"
-            },
-            "id": {
-              "type": "integer"
-            },
-            "node_id": {
-              "type": "string"
-            },
-            "avatar_url": {
-              "type": "string"
-            },
-            "gravatar_id": {
-              "type": "string"
-            },
-            "url": {
-              "type": "string"
-            },
-            "html_url": {
-              "type": "string"
-            },
-            "followers_url": {
-              "type": "string"
-            },
-            "following_url": {
-              "type": "string"
-            },
-            "gists_url": {
-              "type": "string"
-            },
-            "starred_url": {
-              "type": "string"
-            },
-            "subscriptions_url": {
-              "type": "string"
-            },
-            "organizations_url": {
-              "type": "string"
-            },
-            "repos_url": {
-              "type": "string"
-            },
-            "events_url": {
-              "type": "string"
-            },
-            "received_events_url": {
-              "type": "string"
-            },
-            "type": {
-              "type": "string"
-            },
-            "site_admin": {
-              "type": "boolean"
-            }
-          },
-          "additionalProperties": false
+          "$ref": "common/user.schema.json"
         },
         "body": {
-          "type": "null"
+          "oneOf": [{ "type": "null" }, { "type": "string" }]
         },
         "commit_id": {
           "type": "string"
@@ -234,84 +157,7 @@
           "type": "string"
         },
         "user": {
-          "type": "object",
-          "required": [
-            "login",
-            "id",
-            "node_id",
-            "avatar_url",
-            "gravatar_id",
-            "url",
-            "html_url",
-            "followers_url",
-            "following_url",
-            "gists_url",
-            "starred_url",
-            "subscriptions_url",
-            "organizations_url",
-            "repos_url",
-            "events_url",
-            "received_events_url",
-            "type",
-            "site_admin"
-          ],
-          "properties": {
-            "login": {
-              "type": "string"
-            },
-            "id": {
-              "type": "integer"
-            },
-            "node_id": {
-              "type": "string"
-            },
-            "avatar_url": {
-              "type": "string"
-            },
-            "gravatar_id": {
-              "type": "string"
-            },
-            "url": {
-              "type": "string"
-            },
-            "html_url": {
-              "type": "string"
-            },
-            "followers_url": {
-              "type": "string"
-            },
-            "following_url": {
-              "type": "string"
-            },
-            "gists_url": {
-              "type": "string"
-            },
-            "starred_url": {
-              "type": "string"
-            },
-            "subscriptions_url": {
-              "type": "string"
-            },
-            "organizations_url": {
-              "type": "string"
-            },
-            "repos_url": {
-              "type": "string"
-            },
-            "events_url": {
-              "type": "string"
-            },
-            "received_events_url": {
-              "type": "string"
-            },
-            "type": {
-              "type": "string"
-            },
-            "site_admin": {
-              "type": "boolean"
-            }
-          },
-          "additionalProperties": false
+          "$ref": "common/user.schema.json"
         },
         "body": {
           "type": "string"
@@ -323,20 +169,22 @@
           "type": "string"
         },
         "closed_at": {
-          "type": "null"
+          "oneOf": [{ "type": "null" }, { "type": "string" }]
         },
         "merged_at": {
-          "type": "null"
+          "oneOf": [{ "type": "null" }, { "type": "string" }]
         },
         "merge_commit_sha": {
-          "type": "string"
+          "oneOf": [{ "type": "null" }, { "type": "string" }]
         },
         "assignee": {
-          "type": "null"
+          "oneOf": [{ "type": "null" }, { "$ref": "common/user.schema.json" }]
         },
         "assignees": {
           "type": "array",
-          "items": {}
+          "items": {
+            "$ref": "common/user.schema.json"
+          }
         },
         "requested_reviewers": {
           "type": "array",
@@ -351,7 +199,81 @@
           "items": {}
         },
         "milestone": {
-          "type": "null"
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "required": [
+                "url",
+                "html_url",
+                "labels_url",
+                "id",
+                "node_id",
+                "number",
+                "title",
+                "description",
+                "creator",
+                "open_issues",
+                "closed_issues",
+                "state",
+                "created_at",
+                "updated_at",
+                "due_on",
+                "closed_at"
+              ],
+              "properties": {
+                "url": {
+                  "type": "string"
+                },
+                "html_url": {
+                  "type": "string"
+                },
+                "labels_url": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "integer"
+                },
+                "node_id": {
+                  "type": "string"
+                },
+                "number": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "creator": {
+                  "$ref": "common/user.schema.json"
+                },
+                "open_issues": {
+                  "type": "integer"
+                },
+                "closed_issues": {
+                  "type": "integer"
+                },
+                "state": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "updated_at": {
+                  "type": "string"
+                },
+                "due_on": {
+                  "type": "string"
+                },
+                "closed_at": {
+                  "oneOf": [{ "type": "null" }, { "type": "string" }]
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
         },
         "commits_url": {
           "type": "string"
