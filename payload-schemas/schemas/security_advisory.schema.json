@@ -80,7 +80,7 @@
           "type": "string"
         },
         "withdrawn_at": {
-          "type": "null"
+          "oneOf": [{ "type": "null" }, { "type": "string" }]
         },
         "vulnerabilities": {
           "type": "array",
