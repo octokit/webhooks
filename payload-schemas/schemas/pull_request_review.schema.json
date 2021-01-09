@@ -169,16 +169,16 @@
           "type": "string"
         },
         "closed_at": {
-          "type": "null"
+          "oneOf": [{ "type": "null" }, { "type": "string" }]
         },
         "merged_at": {
-          "type": "null"
+          "oneOf": [{ "type": "null" }, { "type": "string" }]
         },
         "merge_commit_sha": {
-          "type": "string"
+          "oneOf": [{ "type": "null" }, { "type": "string" }]
         },
         "assignee": {
-          "type": "null"
+          "oneOf": [{ "type": "null" }, { "$ref": "common/user.schema.json" }]
         },
         "assignees": {
           "type": "array",
@@ -199,7 +199,81 @@
           "items": {}
         },
         "milestone": {
-          "type": "null"
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "required": [
+                "url",
+                "html_url",
+                "labels_url",
+                "id",
+                "node_id",
+                "number",
+                "title",
+                "description",
+                "creator",
+                "open_issues",
+                "closed_issues",
+                "state",
+                "created_at",
+                "updated_at",
+                "due_on",
+                "closed_at"
+              ],
+              "properties": {
+                "url": {
+                  "type": "string"
+                },
+                "html_url": {
+                  "type": "string"
+                },
+                "labels_url": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "integer"
+                },
+                "node_id": {
+                  "type": "string"
+                },
+                "number": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "creator": {
+                  "$ref": "common/user.schema.json"
+                },
+                "open_issues": {
+                  "type": "integer"
+                },
+                "closed_issues": {
+                  "type": "integer"
+                },
+                "state": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "updated_at": {
+                  "type": "string"
+                },
+                "due_on": {
+                  "type": "string"
+                },
+                "closed_at": {
+                  "oneOf": [{ "type": "null" }, { "type": "string" }]
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
         },
         "commits_url": {
           "type": "string"

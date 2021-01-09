@@ -75,6 +75,9 @@
         },
         "repository_url": {
           "type": "string"
+        },
+        "performed_via_github_app": {
+          "type": "null"
         }
       },
       "additionalProperties": false

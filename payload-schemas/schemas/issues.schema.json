@@ -223,7 +223,7 @@
           "type": "string"
         },
         "closed_at": {
-          "type": "null"
+          "oneOf": [{ "type": "null" }, { "type": "string" }]
         },
         "author_association": {
           "type": "string"
@@ -300,7 +300,12 @@
       }
     },
     "assignee": {
-      "$ref": "common/user.schema.json"
+      "oneOf": [
+        { "type": "null" },
+        {
+          "$ref": "common/user.schema.json"
+        }
+      ]
     },
     "assignees": {
       "type": "array",

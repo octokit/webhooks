@@ -205,25 +205,25 @@
           "type": "string"
         },
         "closed_at": {
-          "type": "null"
+          "oneOf": [{ "type": "null" }, { "type": "string" }]
         },
         "merged_at": {
-          "type": "null"
+          "oneOf": [{ "type": "null" }, { "type": "string" }]
         },
         "merge_commit_sha": {
-          "type": "string"
+          "oneOf": [{ "type": "null" }, { "type": "string" }]
         },
         "assignee": {
-          "type": "null"
+          "oneOf": [{ "type": "null" }, { "$ref": "common/user.schema.json" }]
         },
         "assignees": {
           "type": "array",
-
-          "items": {}
+          "items": {
+            "$ref": "common/user.schema.json"
+          }
         },
         "requested_reviewers": {
           "type": "array",
-
           "items": {}
         },
         "requested_teams": {

@@ -111,7 +111,7 @@
           "type": "string"
         },
         "conclusion": {
-          "type": ["string", "null"]
+          "oneOf": [{ "type": "null" }, { "type": "string" }]
         },
         "created_at": {
           "type": "string"
@@ -603,6 +603,9 @@
         }
       },
       "additionalProperties": false
+    },
+    "installation": {
+      "$ref": "common/installation.schema.json"
     }
   },
   "additionalProperties": false

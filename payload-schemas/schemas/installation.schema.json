@@ -252,6 +252,9 @@
         ]
       }
     },
+    "requester": {
+      "type": "null"
+    },
     "sender": {
       "$ref": "common/user.schema.json"
     }
