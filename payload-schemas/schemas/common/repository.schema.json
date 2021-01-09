@@ -405,6 +405,10 @@
     "default_branch": {
       "type": "string"
     },
+    "allow_squash_merge": { "type": "boolean" },
+    "allow_merge_commit": { "type": "boolean" },
+    "allow_rebase_merge": { "type": "boolean" },
+    "delete_branch_on_merge": { "type": "boolean" },
     "master_branch": {
       "type": "string"
     },

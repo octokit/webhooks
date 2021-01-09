@@ -115,14 +115,19 @@
                     "type": "string"
                   },
                   "first_patched_version": {
-                    "type": "object",
-                    "required": ["identifier"],
-                    "properties": {
-                      "identifier": {
-                        "type": "string"
-                      }
-                    },
-                    "additionalProperties": false
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "required": ["identifier"],
+                        "properties": {
+                          "identifier": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      { "type": "null" }
+                    ]
                   }
                 },
                 "additionalProperties": false

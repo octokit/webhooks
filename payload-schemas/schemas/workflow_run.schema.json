@@ -16,60 +16,7 @@
       "type": "string"
     },
     "organization": {
-      "type": "object",
-      "required": [
-        "avatar_url",
-        "description",
-        "events_url",
-        "hooks_url",
-        "id",
-        "issues_url",
-        "login",
-        "members_url",
-        "node_id",
-        "public_members_url",
-        "repos_url",
-        "url"
-      ],
-      "properties": {
-        "avatar_url": {
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        },
-        "events_url": {
-          "type": "string"
-        },
-        "hooks_url": {
-          "type": "string"
-        },
-        "id": {
-          "type": "integer"
-        },
-        "issues_url": {
-          "type": "string"
-        },
-        "login": {
-          "type": "string"
-        },
-        "members_url": {
-          "type": "string"
-        },
-        "node_id": {
-          "type": "string"
-        },
-        "public_members_url": {
-          "type": "string"
-        },
-        "repos_url": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        }
-      },
-      "additionalProperties": false
+      "$ref": "common/organization.schema.json"
     },
     "repository": {
       "$ref": "common/repository.schema.json"
