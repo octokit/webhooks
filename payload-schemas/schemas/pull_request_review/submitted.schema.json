@@ -102,7 +102,7 @@
         "patch_url": { "type": "string" },
         "issue_url": { "type": "string" },
         "number": { "type": "integer" },
-        "state": { "type": "string" },
+        "state": { "type": "string", "enum": ["open", "closed"] },
         "locked": { "type": "boolean" },
         "title": { "type": "string" },
         "user": { "$ref": "common/user.schema.json" },

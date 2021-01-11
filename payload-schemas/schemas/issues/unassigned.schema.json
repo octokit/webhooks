@@ -68,7 +68,7 @@
             ]
           }
         },
-        "state": { "type": "string" },
+        "state": { "type": "string", "enum": ["open", "closed"] },
         "locked": { "type": "boolean" },
         "assignee": {
           "oneOf": [{ "type": "null" }, { "$ref": "common/user.schema.json" }]
