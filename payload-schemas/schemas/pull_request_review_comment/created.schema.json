@@ -44,7 +44,10 @@
         "updated_at": { "type": "string" },
         "html_url": { "type": "string" },
         "pull_request_url": { "type": "string" },
-        "author_association": { "type": "string" },
+        "author_association": {
+          "type": "string",
+          "enum": ["OWNER", "MEMBER", "NONE"]
+        },
         "_links": {
           "type": "object",
           "required": ["self", "html", "pull_request"],
@@ -281,7 +284,10 @@
           },
           "additionalProperties": false
         },
-        "author_association": { "type": "string" }
+        "author_association": {
+          "type": "string",
+          "enum": ["OWNER", "MEMBER", "NONE"]
+        }
       },
       "additionalProperties": false
     },

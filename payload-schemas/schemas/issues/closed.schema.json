@@ -126,7 +126,10 @@
         "created_at": { "type": "string" },
         "updated_at": { "type": "string" },
         "closed_at": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
-        "author_association": { "type": "string" },
+        "author_association": {
+          "type": "string",
+          "enum": ["OWNER", "MEMBER", "NONE"]
+        },
         "active_lock_reason": {
           "oneOf": [
             { "type": "null" },

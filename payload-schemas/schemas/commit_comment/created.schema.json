@@ -34,7 +34,10 @@
         "commit_id": { "type": "string" },
         "created_at": { "type": "string" },
         "updated_at": { "type": "string" },
-        "author_association": { "type": "string" },
+        "author_association": {
+          "type": "string",
+          "enum": ["OWNER", "MEMBER", "NONE"]
+        },
         "body": { "type": "string" }
       },
       "additionalProperties": false

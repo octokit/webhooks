@@ -133,7 +133,10 @@
         "created_at": { "type": "string" },
         "updated_at": { "type": "string" },
         "closed_at": { "type": "null" },
-        "author_association": { "type": "string" },
+        "author_association": {
+          "type": "string",
+          "enum": ["OWNER", "MEMBER", "NONE"]
+        },
         "body": { "type": "string" }
       },
       "additionalProperties": false
@@ -161,7 +164,10 @@
         "user": { "$ref": "common/user.schema.json" },
         "created_at": { "type": "string" },
         "updated_at": { "type": "string" },
-        "author_association": { "type": "string" },
+        "author_association": {
+          "type": "string",
+          "enum": ["OWNER", "MEMBER", "NONE"]
+        },
         "body": { "type": "string" }
       },
       "additionalProperties": false

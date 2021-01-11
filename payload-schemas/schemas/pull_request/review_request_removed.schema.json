@@ -231,7 +231,10 @@
           },
           "additionalProperties": false
         },
-        "author_association": { "type": "string" },
+        "author_association": {
+          "type": "string",
+          "enum": ["OWNER", "MEMBER", "NONE"]
+        },
         "active_lock_reason": {
           "oneOf": [
             { "type": "null" },
