@@ -4,10 +4,7 @@
   "type": "object",
   "required": ["action", "sponsorship", "sender"],
   "properties": {
-    "action": {
-      "type": "string",
-      "enum": ["edited"]
-    },
+    "action": { "type": "string", "enum": ["edited"] },
     "sponsorship": {
       "type": "object",
       "required": [
@@ -19,21 +16,11 @@
         "tier"
       ],
       "properties": {
-        "node_id": {
-          "type": "string"
-        },
-        "created_at": {
-          "type": "string"
-        },
-        "sponsorable": {
-          "$ref": "common/user.schema.json"
-        },
-        "sponsor": {
-          "$ref": "common/user.schema.json"
-        },
-        "privacy_level": {
-          "type": "string"
-        },
+        "node_id": { "type": "string" },
+        "created_at": { "type": "string" },
+        "sponsorable": { "$ref": "common/user.schema.json" },
+        "sponsor": { "$ref": "common/user.schema.json" },
+        "privacy_level": { "type": "string" },
         "tier": {
           "type": "object",
           "required": [
@@ -45,33 +32,19 @@
             "name"
           ],
           "properties": {
-            "node_id": {
-              "type": "string"
-            },
-            "created_at": {
-              "type": "string"
-            },
-            "description": {
-              "type": "string"
-            },
-            "monthly_price_in_cents": {
-              "type": "integer"
-            },
-            "monthly_price_in_dollars": {
-              "type": "integer"
-            },
-            "name": {
-              "type": "string"
-            }
+            "node_id": { "type": "string" },
+            "created_at": { "type": "string" },
+            "description": { "type": "string" },
+            "monthly_price_in_cents": { "type": "integer" },
+            "monthly_price_in_dollars": { "type": "integer" },
+            "name": { "type": "string" }
           },
           "additionalProperties": false
         }
       },
       "additionalProperties": false
     },
-    "effective_date": {
-      "type": "string"
-    },
+    "effective_date": { "type": "string" },
     "changes": {
       "type": "object",
       "required": ["tier"],
@@ -91,24 +64,12 @@
                 "name"
               ],
               "properties": {
-                "node_id": {
-                  "type": "string"
-                },
-                "created_at": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "monthly_price_in_cents": {
-                  "type": "integer"
-                },
-                "monthly_price_in_dollars": {
-                  "type": "integer"
-                },
-                "name": {
-                  "type": "string"
-                }
+                "node_id": { "type": "string" },
+                "created_at": { "type": "string" },
+                "description": { "type": "string" },
+                "monthly_price_in_cents": { "type": "integer" },
+                "monthly_price_in_dollars": { "type": "integer" },
+                "name": { "type": "string" }
               },
               "additionalProperties": false
             }
@@ -118,9 +79,7 @@
       },
       "additionalProperties": false
     },
-    "sender": {
-      "$ref": "common/user.schema.json"
-    }
+    "sender": { "$ref": "common/user.schema.json" }
   },
   "additionalProperties": false,
   "title": "sponsorship edited event"

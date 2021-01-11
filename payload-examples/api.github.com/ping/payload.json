@@ -17,11 +17,7 @@
     "url": "https://api.github.com/repos/Octocoders/Hello-World/hooks/109948940",
     "test_url": "https://api.github.com/repos/Octocoders/Hello-World/hooks/109948940/test",
     "ping_url": "https://api.github.com/repos/Octocoders/Hello-World/hooks/109948940/pings",
-    "last_response": {
-      "code": null,
-      "status": "unused",
-      "message": null
-    }
+    "last_response": { "code": null, "status": "unused", "message": null }
   },
   "repository": {
     "id": 186853261,

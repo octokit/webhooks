@@ -1,9 +1,7 @@
 {
   "action": "edited",
   "changes": {
-    "body": {
-      "from": "You are totally right! I'll get this fixed right away."
-    }
+    "body": { "from": "You are totally right! I'll get this fixed right away." }
   },
   "issue": {
     "url": "https://api.github.com/repos/Codertocat/Hello-World/issues/1",

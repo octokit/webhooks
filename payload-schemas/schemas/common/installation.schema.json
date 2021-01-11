@@ -4,12 +4,8 @@
   "type": "object",
   "required": ["id", "node_id"],
   "properties": {
-    "id": {
-      "type": "integer"
-    },
-    "node_id": {
-      "type": "string"
-    }
+    "id": { "type": "integer" },
+    "node_id": { "type": "string" }
   },
   "additionalProperties": false,
   "title": "Installation"

@@ -22,10 +22,7 @@
       "severity": "note",
       "description": "Add the frozen_string_literal comment to the top of files to help transition to frozen string literals by default."
     },
-    "tool": {
-      "name": "Rubocop",
-      "version": null
-    }
+    "tool": { "name": "Rubocop", "version": null }
   },
   "ref": "refs/heads/master",
   "commit_oid": "d6e4c75c141dbacecc279b721b8b9393d5405795",

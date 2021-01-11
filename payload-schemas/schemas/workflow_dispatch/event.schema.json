@@ -16,24 +16,12 @@
       "properties": {},
       "additionalProperties": true
     },
-    "ref": {
-      "type": "string"
-    },
-    "repository": {
-      "$ref": "common/repository.schema.json"
-    },
-    "sender": {
-      "$ref": "common/user.schema.json"
-    },
-    "installation": {
-      "$ref": "common/installation.schema.json"
-    },
-    "organization": {
-      "$ref": "common/organization.schema.json"
-    },
-    "workflow": {
-      "type": "string"
-    }
+    "ref": { "type": "string" },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" },
+    "workflow": { "type": "string" }
   },
   "additionalProperties": false,
   "title": "workflow_dispatch event"

@@ -4,61 +4,26 @@
   "type": "object",
   "required": ["action", "label", "repository", "sender"],
   "properties": {
-    "action": {
-      "type": "string",
-      "enum": ["created"]
-    },
+    "action": { "type": "string", "enum": ["created"] },
     "label": {
       "type": "object",
       "required": ["id", "node_id", "url", "name", "color", "default"],
       "properties": {
-        "id": {
-          "type": "integer"
-        },
-        "node_id": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "color": {
-          "type": "string"
-        },
-        "default": {
-          "type": "boolean"
-        },
-        "description": {
-          "oneOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        }
+        "id": { "type": "integer" },
+        "node_id": { "type": "string" },
+        "url": { "type": "string" },
+        "name": { "type": "string" },
+        "color": { "type": "string" },
+        "default": { "type": "boolean" },
+        "description": { "oneOf": [{ "type": "string" }, { "type": "null" }] }
       },
       "additionalProperties": false
     },
-    "changes": {
-      "type": "object",
-      "properties": {}
-    },
-    "repository": {
-      "$ref": "common/repository.schema.json"
-    },
-    "sender": {
-      "$ref": "common/user.schema.json"
-    },
-    "installation": {
-      "$ref": "common/installation.schema.json"
-    },
-    "organization": {
-      "$ref": "common/organization.schema.json"
-    }
+    "changes": { "type": "object", "properties": {} },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
   },
   "additionalProperties": false,
   "title": "label created event"

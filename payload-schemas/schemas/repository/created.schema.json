@@ -4,66 +4,39 @@
   "type": "object",
   "required": ["action", "repository", "sender"],
   "properties": {
-    "action": {
-      "type": "string",
-      "enum": ["created"]
-    },
+    "action": { "type": "string", "enum": ["created"] },
     "changes": {
       "type": "object",
       "properties": {
         "description": {
           "type": "object",
-          "properties": {
-            "from": {
-              "type": "string"
-            }
-          }
+          "properties": { "from": { "type": "string" } }
         },
         "default_branch": {
           "type": "object",
-          "properties": {
-            "from": {
-              "type": "string"
-            }
-          }
+          "properties": { "from": { "type": "string" } }
         },
         "owner": {
           "type": "object",
           "properties": {
             "from": {
               "type": "object",
-              "properties": {
-                "user": {
-                  "$ref": "common/user.schema.json"
-                }
-              }
+              "properties": { "user": { "$ref": "common/user.schema.json" } }
             }
           }
         },
         "homepage": {
           "type": "object",
-          "properties": {
-            "from": {
-              "type": "string"
-            }
-          }
+          "properties": { "from": { "type": "string" } }
         },
         "additionalProperties": false
       },
       "additionalProperties": false
     },
-    "repository": {
-      "$ref": "common/repository.schema.json"
-    },
-    "sender": {
-      "$ref": "common/user.schema.json"
-    },
-    "installation": {
-      "$ref": "common/installation.schema.json"
-    },
-    "organization": {
-      "$ref": "common/organization.schema.json"
-    }
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
   },
   "additionalProperties": false,
   "title": "repository created event"

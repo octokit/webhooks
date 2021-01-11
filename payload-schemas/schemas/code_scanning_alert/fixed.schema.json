@@ -11,10 +11,7 @@
     "organization"
   ],
   "properties": {
-    "action": {
-      "type": "string",
-      "enum": ["fixed"]
-    },
+    "action": { "type": "string", "enum": ["fixed"] },
     "alert": {
       "type": "object",
       "required": [
@@ -31,18 +28,10 @@
         "tool"
       ],
       "properties": {
-        "number": {
-          "type": "integer"
-        },
-        "created_at": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        },
-        "html_url": {
-          "type": "string"
-        },
+        "number": { "type": "integer" },
+        "created_at": { "type": "string" },
+        "url": { "type": "string" },
+        "html_url": { "type": "string" },
         "instances": {
           "type": "array",
           "items": {
@@ -51,63 +40,29 @@
                 "type": "object",
                 "required": ["ref", "analysis_key", "environment", "state"],
                 "properties": {
-                  "ref": {
-                    "type": "string"
-                  },
-                  "analysis_key": {
-                    "type": "string"
-                  },
-                  "environment": {
-                    "type": "string"
-                  },
-                  "state": {
-                    "type": "string"
-                  }
+                  "ref": { "type": "string" },
+                  "analysis_key": { "type": "string" },
+                  "environment": { "type": "string" },
+                  "state": { "type": "string" }
                 },
                 "additionalProperties": false
               }
             ]
           }
         },
-        "state": {
-          "type": "string"
-        },
-        "dismissed_by": {
-          "type": "null"
-        },
-        "dismissed_at": {
-          "oneOf": [
-            {
-              "type": "null"
-            },
-            {
-              "type": "string"
-            }
-          ]
-        },
+        "state": { "type": "string" },
+        "dismissed_by": { "type": "null" },
+        "dismissed_at": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
         "dismissed_reason": {
-          "oneOf": [
-            {
-              "type": "null"
-            },
-            {
-              "type": "string"
-            }
-          ]
+          "oneOf": [{ "type": "null" }, { "type": "string" }]
         },
         "rule": {
           "type": "object",
           "required": ["id", "severity", "description"],
           "properties": {
-            "id": {
-              "type": "string"
-            },
-            "severity": {
-              "type": "string"
-            },
-            "description": {
-              "type": "string"
-            }
+            "id": { "type": "string" },
+            "severity": { "type": "string" },
+            "description": { "type": "string" }
           },
           "additionalProperties": false
         },
@@ -115,36 +70,20 @@
           "type": "object",
           "required": ["name", "version"],
           "properties": {
-            "name": {
-              "type": "string"
-            },
-            "version": {
-              "type": "null"
-            }
+            "name": { "type": "string" },
+            "version": { "type": "null" }
           },
           "additionalProperties": false
         }
       },
       "additionalProperties": false
     },
-    "ref": {
-      "type": "string"
-    },
-    "commit_oid": {
-      "type": "string"
-    },
-    "repository": {
-      "$ref": "common/repository.schema.json"
-    },
-    "sender": {
-      "$ref": "common/user.schema.json"
-    },
-    "installation": {
-      "$ref": "common/installation.schema.json"
-    },
-    "organization": {
-      "$ref": "common/organization.schema.json"
-    }
+    "ref": { "type": "string" },
+    "commit_oid": { "type": "string" },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
   },
   "additionalProperties": false,
   "title": "code_scanning_alert fixed event"

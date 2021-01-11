@@ -322,9 +322,7 @@
       "self": {
         "href": "https://api.github.com/repos/Codertocat/Hello-World/pulls/2"
       },
-      "html": {
-        "href": "https://github.com/Codertocat/Hello-World/pull/2"
-      },
+      "html": { "href": "https://github.com/Codertocat/Hello-World/pull/2" },
       "issue": {
         "href": "https://api.github.com/repos/Codertocat/Hello-World/issues/2"
       },

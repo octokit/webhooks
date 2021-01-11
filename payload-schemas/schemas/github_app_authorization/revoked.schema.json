@@ -4,13 +4,8 @@
   "type": "object",
   "required": ["action", "sender"],
   "properties": {
-    "action": {
-      "type": "string",
-      "enum": ["revoked"]
-    },
-    "sender": {
-      "$ref": "common/user.schema.json"
-    }
+    "action": { "type": "string", "enum": ["revoked"] },
+    "sender": { "$ref": "common/user.schema.json" }
   },
   "additionalProperties": false,
   "title": "github_app_authorization revoked event"

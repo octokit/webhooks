@@ -4,13 +4,8 @@
   "type": "object",
   "required": ["action", "effective_date", "sender", "marketplace_purchase"],
   "properties": {
-    "action": {
-      "type": "string",
-      "enum": ["cancelled"]
-    },
-    "effective_date": {
-      "type": "string"
-    },
+    "action": { "type": "string", "enum": ["cancelled"] },
+    "effective_date": { "type": "string" },
     "sender": {
       "type": "object",
       "required": [
@@ -34,60 +29,24 @@
         "email"
       ],
       "properties": {
-        "login": {
-          "type": "string"
-        },
-        "id": {
-          "type": "integer"
-        },
-        "avatar_url": {
-          "type": "string"
-        },
-        "gravatar_id": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        },
-        "html_url": {
-          "type": "string"
-        },
-        "followers_url": {
-          "type": "string"
-        },
-        "following_url": {
-          "type": "string"
-        },
-        "gists_url": {
-          "type": "string"
-        },
-        "starred_url": {
-          "type": "string"
-        },
-        "subscriptions_url": {
-          "type": "string"
-        },
-        "organizations_url": {
-          "type": "string"
-        },
-        "repos_url": {
-          "type": "string"
-        },
-        "events_url": {
-          "type": "string"
-        },
-        "received_events_url": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        },
-        "site_admin": {
-          "type": "boolean"
-        },
-        "email": {
-          "type": "string"
-        }
+        "login": { "type": "string" },
+        "id": { "type": "integer" },
+        "avatar_url": { "type": "string" },
+        "gravatar_id": { "type": "string" },
+        "url": { "type": "string" },
+        "html_url": { "type": "string" },
+        "followers_url": { "type": "string" },
+        "following_url": { "type": "string" },
+        "gists_url": { "type": "string" },
+        "starred_url": { "type": "string" },
+        "subscriptions_url": { "type": "string" },
+        "organizations_url": { "type": "string" },
+        "repos_url": { "type": "string" },
+        "events_url": { "type": "string" },
+        "received_events_url": { "type": "string" },
+        "type": { "type": "string" },
+        "site_admin": { "type": "boolean" },
+        "email": { "type": "string" }
       },
       "additionalProperties": false
     },
@@ -107,36 +66,18 @@
           "type": "object",
           "required": ["type", "id", "login", "organization_billing_email"],
           "properties": {
-            "type": {
-              "type": "string"
-            },
-            "id": {
-              "type": "integer"
-            },
-            "login": {
-              "type": "string"
-            },
-            "organization_billing_email": {
-              "type": "string"
-            }
+            "type": { "type": "string" },
+            "id": { "type": "integer" },
+            "login": { "type": "string" },
+            "organization_billing_email": { "type": "string" }
           },
           "additionalProperties": false
         },
-        "billing_cycle": {
-          "type": "string"
-        },
-        "unit_count": {
-          "type": "integer"
-        },
-        "on_free_trial": {
-          "type": "boolean"
-        },
-        "free_trial_ends_on": {
-          "type": "null"
-        },
-        "next_billing_date": {
-          "type": "string"
-        },
+        "billing_cycle": { "type": "string" },
+        "unit_count": { "type": "integer" },
+        "on_free_trial": { "type": "boolean" },
+        "free_trial_ends_on": { "type": "null" },
+        "next_billing_date": { "type": "string" },
         "plan": {
           "type": "object",
           "required": [
@@ -151,46 +92,19 @@
             "bullets"
           ],
           "properties": {
-            "id": {
-              "type": "integer"
-            },
-            "name": {
-              "type": "string"
-            },
-            "description": {
-              "type": "string"
-            },
-            "monthly_price_in_cents": {
-              "type": "integer"
-            },
-            "yearly_price_in_cents": {
-              "type": "integer"
-            },
-            "price_model": {
-              "type": "string"
-            },
-            "has_free_trial": {
-              "type": "boolean"
-            },
+            "id": { "type": "integer" },
+            "name": { "type": "string" },
+            "description": { "type": "string" },
+            "monthly_price_in_cents": { "type": "integer" },
+            "yearly_price_in_cents": { "type": "integer" },
+            "price_model": { "type": "string" },
+            "has_free_trial": { "type": "boolean" },
             "unit_name": {
-              "anyOf": [
-                {
-                  "type": "null"
-                },
-                {
-                  "type": "string"
-                }
-              ]
+              "anyOf": [{ "type": "null" }, { "type": "string" }]
             },
             "bullets": {
               "type": "array",
-              "items": {
-                "anyOf": [
-                  {
-                    "type": "string"
-                  }
-                ]
-              }
+              "items": { "anyOf": [{ "type": "string" }] }
             }
           },
           "additionalProperties": false
@@ -213,36 +127,18 @@
           "type": "object",
           "required": ["type", "id", "login", "organization_billing_email"],
           "properties": {
-            "type": {
-              "type": "string"
-            },
-            "id": {
-              "type": "integer"
-            },
-            "login": {
-              "type": "string"
-            },
-            "organization_billing_email": {
-              "type": "string"
-            }
+            "type": { "type": "string" },
+            "id": { "type": "integer" },
+            "login": { "type": "string" },
+            "organization_billing_email": { "type": "string" }
           },
           "additionalProperties": false
         },
-        "billing_cycle": {
-          "type": "string"
-        },
-        "unit_count": {
-          "type": "integer"
-        },
-        "on_free_trial": {
-          "type": "boolean"
-        },
-        "free_trial_ends_on": {
-          "type": "null"
-        },
-        "next_billing_date": {
-          "type": "string"
-        },
+        "billing_cycle": { "type": "string" },
+        "unit_count": { "type": "integer" },
+        "on_free_trial": { "type": "boolean" },
+        "free_trial_ends_on": { "type": "null" },
+        "next_billing_date": { "type": "string" },
         "plan": {
           "type": "object",
           "required": [
@@ -257,46 +153,19 @@
             "bullets"
           ],
           "properties": {
-            "id": {
-              "type": "integer"
-            },
-            "name": {
-              "type": "string"
-            },
-            "description": {
-              "type": "string"
-            },
-            "monthly_price_in_cents": {
-              "type": "integer"
-            },
-            "yearly_price_in_cents": {
-              "type": "integer"
-            },
-            "price_model": {
-              "type": "string"
-            },
-            "has_free_trial": {
-              "type": "boolean"
-            },
+            "id": { "type": "integer" },
+            "name": { "type": "string" },
+            "description": { "type": "string" },
+            "monthly_price_in_cents": { "type": "integer" },
+            "yearly_price_in_cents": { "type": "integer" },
+            "price_model": { "type": "string" },
+            "has_free_trial": { "type": "boolean" },
             "unit_name": {
-              "anyOf": [
-                {
-                  "type": "null"
-                },
-                {
-                  "type": "string"
-                }
-              ]
+              "anyOf": [{ "type": "null" }, { "type": "string" }]
             },
             "bullets": {
               "type": "array",
-              "items": {
-                "anyOf": [
-                  {
-                    "type": "string"
-                  }
-                ]
-              }
+              "items": { "anyOf": [{ "type": "string" }] }
             }
           },
           "additionalProperties": false

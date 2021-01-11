@@ -19,43 +19,22 @@
               "html_url"
             ],
             "properties": {
-              "page_name": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "summary": {
-                "type": "null"
-              },
-              "action": {
-                "type": "string",
-                "enum": ["created", "edited"]
-              },
-              "sha": {
-                "type": "string"
-              },
-              "html_url": {
-                "type": "string"
-              }
+              "page_name": { "type": "string" },
+              "title": { "type": "string" },
+              "summary": { "type": "null" },
+              "action": { "type": "string", "enum": ["created", "edited"] },
+              "sha": { "type": "string" },
+              "html_url": { "type": "string" }
             },
             "additionalProperties": false
           }
         ]
       }
     },
-    "repository": {
-      "$ref": "common/repository.schema.json"
-    },
-    "sender": {
-      "$ref": "common/user.schema.json"
-    },
-    "installation": {
-      "$ref": "common/installation.schema.json"
-    },
-    "organization": {
-      "$ref": "common/organization.schema.json"
-    }
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
   },
   "additionalProperties": false,
   "title": "gollum event"

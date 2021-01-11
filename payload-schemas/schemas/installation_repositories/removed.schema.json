@@ -11,10 +11,7 @@
     "sender"
   ],
   "properties": {
-    "action": {
-      "type": "string",
-      "enum": ["removed"]
-    },
+    "action": { "type": "string", "enum": ["removed"] },
     "installation": {
       "type": "object",
       "required": [
@@ -34,9 +31,7 @@
         "single_file_name"
       ],
       "properties": {
-        "id": {
-          "type": "integer"
-        },
+        "id": { "type": "integer" },
         "account": {
           "type": "object",
           "required": [
@@ -60,153 +55,63 @@
             "site_admin"
           ],
           "properties": {
-            "login": {
-              "type": "string"
-            },
-            "id": {
-              "type": "integer"
-            },
-            "node_id": {
-              "type": "string"
-            },
-            "avatar_url": {
-              "type": "string"
-            },
-            "gravatar_id": {
-              "type": "string"
-            },
-            "url": {
-              "type": "string"
-            },
-            "html_url": {
-              "type": "string"
-            },
-            "followers_url": {
-              "type": "string"
-            },
-            "following_url": {
-              "type": "string"
-            },
-            "gists_url": {
-              "type": "string"
-            },
-            "starred_url": {
-              "type": "string"
-            },
-            "subscriptions_url": {
-              "type": "string"
-            },
-            "organizations_url": {
-              "type": "string"
-            },
-            "repos_url": {
-              "type": "string"
-            },
-            "events_url": {
-              "type": "string"
-            },
-            "received_events_url": {
-              "type": "string"
-            },
-            "type": {
-              "type": "string"
-            },
-            "site_admin": {
-              "type": "boolean"
-            }
+            "login": { "type": "string" },
+            "id": { "type": "integer" },
+            "node_id": { "type": "string" },
+            "avatar_url": { "type": "string" },
+            "gravatar_id": { "type": "string" },
+            "url": { "type": "string" },
+            "html_url": { "type": "string" },
+            "followers_url": { "type": "string" },
+            "following_url": { "type": "string" },
+            "gists_url": { "type": "string" },
+            "starred_url": { "type": "string" },
+            "subscriptions_url": { "type": "string" },
+            "organizations_url": { "type": "string" },
+            "repos_url": { "type": "string" },
+            "events_url": { "type": "string" },
+            "received_events_url": { "type": "string" },
+            "type": { "type": "string" },
+            "site_admin": { "type": "boolean" }
           },
           "additionalProperties": false
         },
-        "repository_selection": {
-          "type": "string"
-        },
-        "access_tokens_url": {
-          "type": "string"
-        },
-        "repositories_url": {
-          "type": "string"
-        },
-        "html_url": {
-          "type": "string"
-        },
-        "app_id": {
-          "type": "integer"
-        },
-        "target_id": {
-          "type": "integer"
-        },
-        "target_type": {
-          "type": "string"
-        },
+        "repository_selection": { "type": "string" },
+        "access_tokens_url": { "type": "string" },
+        "repositories_url": { "type": "string" },
+        "html_url": { "type": "string" },
+        "app_id": { "type": "integer" },
+        "target_id": { "type": "integer" },
+        "target_type": { "type": "string" },
         "permissions": {
           "type": "object",
           "required": [],
           "properties": {
-            "administration": {
-              "type": "string"
-            },
-            "statuses": {
-              "type": "string"
-            },
-            "repository_projects": {
-              "type": "string"
-            },
-            "repository_hooks": {
-              "type": "string"
-            },
-            "pull_requests": {
-              "type": "string"
-            },
-            "pages": {
-              "type": "string"
-            },
-            "issues": {
-              "type": "string"
-            },
-            "deployments": {
-              "type": "string"
-            },
-            "contents": {
-              "type": "string"
-            },
-            "checks": {
-              "type": "string"
-            },
-            "metadata": {
-              "type": "string"
-            },
-            "vulnerability_alerts": {
-              "type": "string"
-            }
+            "administration": { "type": "string" },
+            "statuses": { "type": "string" },
+            "repository_projects": { "type": "string" },
+            "repository_hooks": { "type": "string" },
+            "pull_requests": { "type": "string" },
+            "pages": { "type": "string" },
+            "issues": { "type": "string" },
+            "deployments": { "type": "string" },
+            "contents": { "type": "string" },
+            "checks": { "type": "string" },
+            "metadata": { "type": "string" },
+            "vulnerability_alerts": { "type": "string" }
           },
           "additionalProperties": false
         },
-        "events": {
-          "type": "array",
-          "items": {}
-        },
-        "created_at": {
-          "type": "integer"
-        },
-        "updated_at": {
-          "type": "integer"
-        },
+        "events": { "type": "array", "items": {} },
+        "created_at": { "type": "integer" },
+        "updated_at": { "type": "integer" },
         "single_file_name": {
-          "oneOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "oneOf": [{ "type": "string" }, { "type": "null" }]
         }
       },
       "additionalProperties": false
     },
-    "repository_selection": {
-      "type": "string"
-    },
+    "repository_selection": { "type": "string" },
     "repositories_added": {
       "type": "array",
       "items": {
@@ -215,34 +120,19 @@
             "type": "object",
             "required": ["id", "node_id", "name", "full_name", "private"],
             "properties": {
-              "id": {
-                "type": "integer"
-              },
-              "node_id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "full_name": {
-                "type": "string"
-              },
-              "private": {
-                "type": "boolean"
-              }
+              "id": { "type": "integer" },
+              "node_id": { "type": "string" },
+              "name": { "type": "string" },
+              "full_name": { "type": "string" },
+              "private": { "type": "boolean" }
             },
             "additionalProperties": false
           }
         ]
       }
     },
-    "repositories_removed": {
-      "type": "array",
-      "items": {}
-    },
-    "sender": {
-      "$ref": "common/user.schema.json"
-    }
+    "repositories_removed": { "type": "array", "items": {} },
+    "sender": { "$ref": "common/user.schema.json" }
   },
   "additionalProperties": false,
   "title": "installation_repositories removed event"

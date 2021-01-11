@@ -4,9 +4,7 @@
   "type": "object",
   "required": ["id", "build", "repository", "sender"],
   "properties": {
-    "id": {
-      "type": "integer"
-    },
+    "id": { "type": "integer" },
     "build": {
       "type": "object",
       "required": [
@@ -20,52 +18,26 @@
         "updated_at"
       ],
       "properties": {
-        "url": {
-          "type": "string"
-        },
-        "status": {
-          "type": "string"
-        },
+        "url": { "type": "string" },
+        "status": { "type": "string" },
         "error": {
           "type": "object",
           "required": ["message"],
-          "properties": {
-            "message": {
-              "type": "null"
-            }
-          },
+          "properties": { "message": { "type": "null" } },
           "additionalProperties": false
         },
-        "pusher": {
-          "$ref": "common/user.schema.json"
-        },
-        "commit": {
-          "type": "string"
-        },
-        "duration": {
-          "type": "integer"
-        },
-        "created_at": {
-          "type": "string"
-        },
-        "updated_at": {
-          "type": "string"
-        }
+        "pusher": { "$ref": "common/user.schema.json" },
+        "commit": { "type": "string" },
+        "duration": { "type": "integer" },
+        "created_at": { "type": "string" },
+        "updated_at": { "type": "string" }
       },
       "additionalProperties": false
     },
-    "repository": {
-      "$ref": "common/repository.schema.json"
-    },
-    "sender": {
-      "$ref": "common/user.schema.json"
-    },
-    "installation": {
-      "$ref": "common/installation.schema.json"
-    },
-    "organization": {
-      "$ref": "common/organization.schema.json"
-    }
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
   },
   "additionalProperties": false,
   "title": "page_build event"

@@ -4,25 +4,12 @@
   "type": "object",
   "required": ["action", "member", "repository", "sender"],
   "properties": {
-    "action": {
-      "type": "string",
-      "enum": ["edited"]
-    },
-    "member": {
-      "$ref": "common/user.schema.json"
-    },
-    "changes": {
-      "type": "object"
-    },
-    "repository": {
-      "$ref": "common/repository.schema.json"
-    },
-    "installation": {
-      "$ref": "common/installation.schema.json"
-    },
-    "sender": {
-      "$ref": "common/user.schema.json"
-    }
+    "action": { "type": "string", "enum": ["edited"] },
+    "member": { "$ref": "common/user.schema.json" },
+    "changes": { "type": "object" },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "installation": { "$ref": "common/installation.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" }
   },
   "additionalProperties": false,
   "title": "member edited event"

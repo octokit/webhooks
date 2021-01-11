@@ -12,29 +12,17 @@
     "installation"
   ],
   "properties": {
-    "action": {
-      "type": "string"
-    },
-    "branch": {
-      "type": "string"
-    },
+    "action": { "type": "string" },
+    "branch": { "type": "string" },
     "client_payload": {
       "type": "object",
       "properties": {},
       "additionalProperties": true
     },
-    "repository": {
-      "$ref": "common/repository.schema.json"
-    },
-    "sender": {
-      "$ref": "common/user.schema.json"
-    },
-    "installation": {
-      "$ref": "common/installation.schema.json"
-    },
-    "organization": {
-      "$ref": "common/organization.schema.json"
-    }
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
   },
   "additionalProperties": false,
   "title": "repository_dispatch event"

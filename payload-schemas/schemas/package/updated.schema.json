@@ -4,10 +4,7 @@
   "type": "object",
   "required": ["action", "package", "repository", "sender"],
   "properties": {
-    "action": {
-      "type": "string",
-      "enum": ["updated"]
-    },
+    "action": { "type": "string", "enum": ["updated"] },
     "package": {
       "type": "object",
       "required": [
@@ -22,27 +19,13 @@
         "registry"
       ],
       "properties": {
-        "id": {
-          "type": "integer"
-        },
-        "name": {
-          "type": "string"
-        },
-        "package_type": {
-          "type": "string"
-        },
-        "html_url": {
-          "type": "string"
-        },
-        "created_at": {
-          "type": "string"
-        },
-        "updated_at": {
-          "type": "string"
-        },
-        "owner": {
-          "$ref": "common/user.schema.json"
-        },
+        "id": { "type": "integer" },
+        "name": { "type": "string" },
+        "package_type": { "type": "string" },
+        "html_url": { "type": "string" },
+        "created_at": { "type": "string" },
+        "updated_at": { "type": "string" },
+        "owner": { "$ref": "common/user.schema.json" },
         "package_version": {
           "type": "object",
           "required": [
@@ -67,21 +50,11 @@
             "installation_command"
           ],
           "properties": {
-            "id": {
-              "type": "integer"
-            },
-            "version": {
-              "type": "string"
-            },
-            "summary": {
-              "type": "string"
-            },
-            "body": {
-              "type": "string"
-            },
-            "body_html": {
-              "type": "string"
-            },
+            "id": { "type": "integer" },
+            "version": { "type": "string" },
+            "summary": { "type": "string" },
+            "body": { "type": "string" },
+            "body_html": { "type": "string" },
             "release": {
               "type": "object",
               "required": [
@@ -98,73 +71,30 @@
                 "published_at"
               ],
               "properties": {
-                "url": {
-                  "type": "string"
-                },
-                "html_url": {
-                  "type": "string"
-                },
-                "id": {
-                  "type": "integer"
-                },
-                "tag_name": {
-                  "type": "string"
-                },
-                "target_commitish": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "draft": {
-                  "type": "boolean"
-                },
-                "author": {
-                  "$ref": "common/user.schema.json"
-                },
-                "prerelease": {
-                  "type": "boolean"
-                },
-                "created_at": {
-                  "type": "string"
-                },
-                "published_at": {
-                  "type": "string"
-                }
+                "url": { "type": "string" },
+                "html_url": { "type": "string" },
+                "id": { "type": "integer" },
+                "tag_name": { "type": "string" },
+                "target_commitish": { "type": "string" },
+                "name": { "type": "string" },
+                "draft": { "type": "boolean" },
+                "author": { "$ref": "common/user.schema.json" },
+                "prerelease": { "type": "boolean" },
+                "created_at": { "type": "string" },
+                "published_at": { "type": "string" }
               },
               "additionalProperties": false
             },
-            "manifest": {
-              "type": "string"
-            },
-            "html_url": {
-              "type": "string"
-            },
-            "tag_name": {
-              "type": "string"
-            },
-            "target_commitish": {
-              "type": "string"
-            },
-            "target_oid": {
-              "type": "string"
-            },
-            "draft": {
-              "type": "boolean"
-            },
-            "prerelease": {
-              "type": "boolean"
-            },
-            "created_at": {
-              "type": "string"
-            },
-            "updated_at": {
-              "type": "string"
-            },
-            "metadata": {
-              "type": "array",
-              "items": {}
-            },
+            "manifest": { "type": "string" },
+            "html_url": { "type": "string" },
+            "tag_name": { "type": "string" },
+            "target_commitish": { "type": "string" },
+            "target_oid": { "type": "string" },
+            "draft": { "type": "boolean" },
+            "prerelease": { "type": "boolean" },
+            "created_at": { "type": "string" },
+            "updated_at": { "type": "string" },
+            "metadata": { "type": "array", "items": {} },
             "package_files": {
               "type": "array",
               "items": {
@@ -185,51 +115,25 @@
                       "updated_at"
                     ],
                     "properties": {
-                      "download_url": {
-                        "type": "string"
-                      },
-                      "id": {
-                        "type": "integer"
-                      },
-                      "name": {
-                        "type": "string"
-                      },
-                      "sha256": {
-                        "type": "string"
-                      },
-                      "sha1": {
-                        "type": "string"
-                      },
-                      "md5": {
-                        "type": "string"
-                      },
-                      "content_type": {
-                        "type": "string"
-                      },
-                      "state": {
-                        "type": "string"
-                      },
-                      "size": {
-                        "type": "integer"
-                      },
-                      "created_at": {
-                        "type": "string"
-                      },
-                      "updated_at": {
-                        "type": "string"
-                      }
+                      "download_url": { "type": "string" },
+                      "id": { "type": "integer" },
+                      "name": { "type": "string" },
+                      "sha256": { "type": "string" },
+                      "sha1": { "type": "string" },
+                      "md5": { "type": "string" },
+                      "content_type": { "type": "string" },
+                      "state": { "type": "string" },
+                      "size": { "type": "integer" },
+                      "created_at": { "type": "string" },
+                      "updated_at": { "type": "string" }
                     },
                     "additionalProperties": false
                   }
                 ]
               }
             },
-            "author": {
-              "$ref": "common/user.schema.json"
-            },
-            "installation_command": {
-              "type": "string"
-            }
+            "author": { "$ref": "common/user.schema.json" },
+            "installation_command": { "type": "string" }
           },
           "additionalProperties": false
         },
@@ -237,36 +141,20 @@
           "type": "object",
           "required": ["about_url", "name", "type", "url", "vendor"],
           "properties": {
-            "about_url": {
-              "type": "string"
-            },
-            "name": {
-              "type": "string"
-            },
-            "type": {
-              "type": "string"
-            },
-            "url": {
-              "type": "string"
-            },
-            "vendor": {
-              "type": "string"
-            }
+            "about_url": { "type": "string" },
+            "name": { "type": "string" },
+            "type": { "type": "string" },
+            "url": { "type": "string" },
+            "vendor": { "type": "string" }
           },
           "additionalProperties": false
         }
       },
       "additionalProperties": false
     },
-    "repository": {
-      "$ref": "common/repository.schema.json"
-    },
-    "sender": {
-      "$ref": "common/user.schema.json"
-    },
-    "organization": {
-      "$ref": "common/organization.schema.json"
-    }
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
   },
   "additionalProperties": false,
   "title": "package updated event"

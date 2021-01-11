@@ -106,11 +106,7 @@
     "open_issues": 0,
     "watchers": 0,
     "default_branch": "master",
-    "permissions": {
-      "pull": true,
-      "push": false,
-      "admin": false
-    }
+    "permissions": { "pull": true, "push": false, "admin": false }
   },
   "organization": {
     "login": "Octocoders",

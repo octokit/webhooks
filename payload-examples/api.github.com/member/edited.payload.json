@@ -20,11 +20,7 @@
     "type": "User",
     "site_admin": false
   },
-  "changes": {
-    "permission": {
-      "from": "write"
-    }
-  },
+  "changes": { "permission": { "from": "write" } },
   "repository": {
     "id": 135493233,
     "node_id": "MDEwOlJlcG9zaXRvcnkxMzU0OTMyMzM=",

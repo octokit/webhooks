@@ -4,10 +4,7 @@
   "type": "object",
   "required": ["action", "project_column", "repository", "sender"],
   "properties": {
-    "action": {
-      "type": "string",
-      "enum": ["moved"]
-    },
+    "action": { "type": "string", "enum": ["moved"] },
     "project_column": {
       "type": "object",
       "required": [
@@ -21,45 +18,21 @@
         "updated_at"
       ],
       "properties": {
-        "url": {
-          "type": "string"
-        },
-        "project_url": {
-          "type": "string"
-        },
-        "cards_url": {
-          "type": "string"
-        },
-        "id": {
-          "type": "integer"
-        },
-        "node_id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "created_at": {
-          "type": "string"
-        },
-        "updated_at": {
-          "type": "string"
-        }
+        "url": { "type": "string" },
+        "project_url": { "type": "string" },
+        "cards_url": { "type": "string" },
+        "id": { "type": "integer" },
+        "node_id": { "type": "string" },
+        "name": { "type": "string" },
+        "created_at": { "type": "string" },
+        "updated_at": { "type": "string" }
       },
       "additionalProperties": false
     },
-    "repository": {
-      "$ref": "common/repository.schema.json"
-    },
-    "sender": {
-      "$ref": "common/user.schema.json"
-    },
-    "installation": {
-      "$ref": "common/installation.schema.json"
-    },
-    "organization": {
-      "$ref": "common/organization.schema.json"
-    }
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
   },
   "additionalProperties": false,
   "title": "project_column moved event"

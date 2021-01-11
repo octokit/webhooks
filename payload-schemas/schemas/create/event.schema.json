@@ -12,40 +12,15 @@
     "sender"
   ],
   "properties": {
-    "ref": {
-      "type": "string"
-    },
-    "ref_type": {
-      "type": "string"
-    },
-    "master_branch": {
-      "type": "string"
-    },
-    "description": {
-      "oneOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ]
-    },
-    "pusher_type": {
-      "type": "string"
-    },
-    "repository": {
-      "$ref": "common/repository.schema.json"
-    },
-    "sender": {
-      "$ref": "common/user.schema.json"
-    },
-    "installation": {
-      "$ref": "common/installation.schema.json"
-    },
-    "organization": {
-      "$ref": "common/organization.schema.json"
-    }
+    "ref": { "type": "string" },
+    "ref_type": { "type": "string" },
+    "master_branch": { "type": "string" },
+    "description": { "oneOf": [{ "type": "string" }, { "type": "null" }] },
+    "pusher_type": { "type": "string" },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
   },
   "additionalProperties": false,
   "title": "create event"
