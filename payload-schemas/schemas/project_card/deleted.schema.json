@@ -21,7 +21,8 @@
         "archived",
         "creator",
         "created_at",
-        "updated_at"
+        "updated_at",
+        "content_url"
       ],
       "properties": {
         "url": {
@@ -55,6 +56,9 @@
           "type": "string"
         },
         "updated_at": {
+          "type": "string"
+        },
+        "content_url": {
           "type": "string"
         }
       },
