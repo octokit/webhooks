@@ -38,7 +38,7 @@
     "updated_at": "2019-05-15T15:21:18Z",
     "closed_at": null,
     "merged_at": null,
-    "merge_commit_sha": "c4295bd74fb0f4fda03689c3df3f2803b658fd85",
+    "merge_commit_sha": null,
     "assignee": null,
     "assignees": [
       {
