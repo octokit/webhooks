@@ -15,7 +15,7 @@ jobs:
           node-version: 12.x
       - run: git checkout webhooks-update || true
       - run: npm ci
-      - run: bin/octokit-webhooks.ts update
+      - run: npm run build:webhooks
       - uses: gr2m/create-or-update-pull-request-action@v1.x
         env:
           GITHUB_TOKEN: ${{ secrets.OCTOKITBOT_PAT }}
