@@ -18,69 +18,29 @@
     "sender"
   ],
   "properties": {
-    "ref": {
-      "type": "string"
-    },
-    "before": {
-      "type": "string"
-    },
-    "after": {
-      "type": "string"
-    },
-    "created": {
-      "type": "boolean"
-    },
-    "deleted": {
-      "type": "boolean"
-    },
-    "forced": {
-      "type": "boolean"
-    },
-    "base_ref": {
-      "type": "null"
-    },
-    "compare": {
-      "type": "string"
-    },
-    "commits": {
-      "type": "array",
-      "items": {}
-    },
-    "head_commit": {
-      "oneOf": [
-        {
-          "type": "null"
-        },
-        {
-          "type": "string"
-        }
-      ]
-    },
-    "repository": {
-      "$ref": "common/repository.schema.json"
-    },
+    "ref": { "type": "string" },
+    "before": { "type": "string" },
+    "after": { "type": "string" },
+    "created": { "type": "boolean" },
+    "deleted": { "type": "boolean" },
+    "forced": { "type": "boolean" },
+    "base_ref": { "type": "null" },
+    "compare": { "type": "string" },
+    "commits": { "type": "array", "items": {} },
+    "head_commit": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
+    "repository": { "$ref": "common/repository.schema.json" },
     "pusher": {
       "type": "object",
       "required": ["name", "email"],
       "properties": {
-        "name": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        }
+        "name": { "type": "string" },
+        "email": { "type": "string" }
       },
       "additionalProperties": false
     },
-    "sender": {
-      "$ref": "common/user.schema.json"
-    },
-    "installation": {
-      "$ref": "common/installation.schema.json"
-    },
-    "organization": {
-      "$ref": "common/organization.schema.json"
-    }
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
   },
   "additionalProperties": false,
   "title": "push event"

@@ -4,10 +4,7 @@
   "type": "object",
   "required": ["action", "security_advisory"],
   "properties": {
-    "action": {
-      "type": "string",
-      "enum": ["performed"]
-    },
+    "action": { "type": "string", "enum": ["performed"] },
     "security_advisory": {
       "type": "object",
       "required": [
@@ -23,18 +20,10 @@
         "vulnerabilities"
       ],
       "properties": {
-        "ghsa_id": {
-          "type": "string"
-        },
-        "summary": {
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        },
-        "severity": {
-          "type": "string"
-        },
+        "ghsa_id": { "type": "string" },
+        "summary": { "type": "string" },
+        "description": { "type": "string" },
+        "severity": { "type": "string" },
         "identifiers": {
           "type": "array",
           "items": {
@@ -43,12 +32,8 @@
                 "type": "object",
                 "required": ["value", "type"],
                 "properties": {
-                  "value": {
-                    "type": "string"
-                  },
-                  "type": {
-                    "type": "string"
-                  }
+                  "value": { "type": "string" },
+                  "type": { "type": "string" }
                 },
                 "additionalProperties": false
               }
@@ -62,32 +47,15 @@
               {
                 "type": "object",
                 "required": ["url"],
-                "properties": {
-                  "url": {
-                    "type": "string"
-                  }
-                },
+                "properties": { "url": { "type": "string" } },
                 "additionalProperties": false
               }
             ]
           }
         },
-        "published_at": {
-          "type": "string"
-        },
-        "updated_at": {
-          "type": "string"
-        },
-        "withdrawn_at": {
-          "oneOf": [
-            {
-              "type": "null"
-            },
-            {
-              "type": "string"
-            }
-          ]
-        },
+        "published_at": { "type": "string" },
+        "updated_at": { "type": "string" },
+        "withdrawn_at": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
         "vulnerabilities": {
           "type": "array",
           "items": {
@@ -105,36 +73,22 @@
                     "type": "object",
                     "required": ["ecosystem", "name"],
                     "properties": {
-                      "ecosystem": {
-                        "type": "string"
-                      },
-                      "name": {
-                        "type": "string"
-                      }
+                      "ecosystem": { "type": "string" },
+                      "name": { "type": "string" }
                     },
                     "additionalProperties": false
                   },
-                  "severity": {
-                    "type": "string"
-                  },
-                  "vulnerable_version_range": {
-                    "type": "string"
-                  },
+                  "severity": { "type": "string" },
+                  "vulnerable_version_range": { "type": "string" },
                   "first_patched_version": {
                     "oneOf": [
                       {
                         "type": "object",
                         "required": ["identifier"],
-                        "properties": {
-                          "identifier": {
-                            "type": "string"
-                          }
-                        },
+                        "properties": { "identifier": { "type": "string" } },
                         "additionalProperties": false
                       },
-                      {
-                        "type": "null"
-                      }
+                      { "type": "null" }
                     ]
                   }
                 },

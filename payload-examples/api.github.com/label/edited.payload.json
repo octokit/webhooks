@@ -9,11 +9,7 @@
     "color": "cceeaa",
     "default": false
   },
-  "changes": {
-    "color": {
-      "from": "cb1f00"
-    }
-  },
+  "changes": { "color": { "from": "cb1f00" } },
   "repository": {
     "id": 186853002,
     "node_id": "MDEwOlJlcG9zaXRvcnkxODY4NTMwMDI=",

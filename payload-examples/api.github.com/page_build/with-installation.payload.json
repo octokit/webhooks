@@ -3,9 +3,7 @@
   "build": {
     "url": "https://api.github.com/repos/Codertocat/Hello-World/pages/builds/130514899",
     "status": "built",
-    "error": {
-      "message": null
-    },
+    "error": { "message": null },
     "pusher": {
       "login": "Codertocat",
       "id": 21031067,

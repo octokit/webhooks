@@ -1,10 +1,6 @@
 {
   "action": "edited",
-  "changes": {
-    "description": {
-      "from": "My Repo"
-    }
-  },
+  "changes": { "description": { "from": "My Repo" } },
   "repository": {
     "id": 186853261,
     "node_id": "MDEwOlJlcG9zaXRvcnkxODY4NTMyNjE=",

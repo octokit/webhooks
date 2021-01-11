@@ -1,7 +1,5 @@
 {
-  "inputs": {
-    "name": "Mona the Octocat"
-  },
+  "inputs": { "name": "Mona the Octocat" },
   "ref": "refs/heads/master",
   "repository": {
     "id": 17273051,

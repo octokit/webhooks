@@ -6,32 +6,19 @@
     "description": "All versions of `harp` are vulnerable to Unauthorized File Access. If a symlink in the project's base directory points to a file outside of the directory, the file is served. This could allow an attacker to access sensitive files on the server.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative module until a fix is made available.",
     "severity": "moderate",
     "identifiers": [
-      {
-        "value": "GHSA-6fmm-47qc-p4m4",
-        "type": "GHSA"
-      },
-      {
-        "value": "CVE-2019-5438",
-        "type": "CVE"
-      }
+      { "value": "GHSA-6fmm-47qc-p4m4", "type": "GHSA" },
+      { "value": "CVE-2019-5438", "type": "CVE" }
     ],
     "references": [
-      {
-        "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-5438"
-      },
-      {
-        "url": "https://github.com/advisories/GHSA-6fmm-47qc-p4m4"
-      }
+      { "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-5438" },
+      { "url": "https://github.com/advisories/GHSA-6fmm-47qc-p4m4" }
     ],
     "published_at": "2019-06-13T16:12:26Z",
     "updated_at": "2021-01-08T21:27:28Z",
     "withdrawn_at": null,
     "vulnerabilities": [
       {
-        "package": {
-          "ecosystem": "npm",
-          "name": "harp"
-        },
+        "package": { "ecosystem": "npm", "name": "harp" },
         "severity": "moderate",
         "vulnerable_version_range": "<= 0.29.0",
         "first_patched_version": null

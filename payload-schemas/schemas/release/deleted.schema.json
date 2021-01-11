@@ -4,10 +4,7 @@
   "type": "object",
   "required": ["action", "release", "repository", "sender"],
   "properties": {
-    "action": {
-      "type": "string",
-      "enum": ["deleted"]
-    },
+    "action": { "type": "string", "enum": ["deleted"] },
     "release": {
       "type": "object",
       "required": [
@@ -31,76 +28,31 @@
         "body"
       ],
       "properties": {
-        "url": {
-          "type": "string"
-        },
-        "assets_url": {
-          "type": "string"
-        },
-        "upload_url": {
-          "type": "string"
-        },
-        "html_url": {
-          "type": "string"
-        },
-        "id": {
-          "type": "integer"
-        },
-        "node_id": {
-          "type": "string"
-        },
-        "tag_name": {
-          "type": "string"
-        },
-        "target_commitish": {
-          "type": "string"
-        },
-        "name": {
-          "type": "null"
-        },
-        "draft": {
-          "type": "boolean"
-        },
-        "author": {
-          "$ref": "common/user.schema.json"
-        },
-        "prerelease": {
-          "type": "boolean"
-        },
-        "created_at": {
-          "type": "string"
-        },
-        "published_at": {
-          "type": "string"
-        },
-        "assets": {
-          "type": "array",
-          "items": {}
-        },
-        "tarball_url": {
-          "type": "string"
-        },
-        "zipball_url": {
-          "type": "string"
-        },
-        "body": {
-          "type": "null"
-        }
+        "url": { "type": "string" },
+        "assets_url": { "type": "string" },
+        "upload_url": { "type": "string" },
+        "html_url": { "type": "string" },
+        "id": { "type": "integer" },
+        "node_id": { "type": "string" },
+        "tag_name": { "type": "string" },
+        "target_commitish": { "type": "string" },
+        "name": { "type": "null" },
+        "draft": { "type": "boolean" },
+        "author": { "$ref": "common/user.schema.json" },
+        "prerelease": { "type": "boolean" },
+        "created_at": { "type": "string" },
+        "published_at": { "type": "string" },
+        "assets": { "type": "array", "items": {} },
+        "tarball_url": { "type": "string" },
+        "zipball_url": { "type": "string" },
+        "body": { "type": "null" }
       },
       "additionalProperties": false
     },
-    "repository": {
-      "$ref": "common/repository.schema.json"
-    },
-    "sender": {
-      "$ref": "common/user.schema.json"
-    },
-    "installation": {
-      "$ref": "common/installation.schema.json"
-    },
-    "organization": {
-      "$ref": "common/organization.schema.json"
-    }
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
   },
   "additionalProperties": false,
   "title": "release deleted event"

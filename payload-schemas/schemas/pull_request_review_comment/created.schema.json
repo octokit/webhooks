@@ -4,10 +4,7 @@
   "type": "object",
   "required": ["action", "comment", "pull_request", "repository", "sender"],
   "properties": {
-    "action": {
-      "type": "string",
-      "enum": ["created"]
-    },
+    "action": { "type": "string", "enum": ["created"] },
     "comment": {
       "type": "object",
       "required": [
@@ -31,57 +28,23 @@
         "_links"
       ],
       "properties": {
-        "url": {
-          "type": "string"
-        },
-        "pull_request_review_id": {
-          "type": "integer"
-        },
-        "id": {
-          "type": "integer"
-        },
-        "node_id": {
-          "type": "string"
-        },
-        "diff_hunk": {
-          "type": "string"
-        },
-        "path": {
-          "type": "string"
-        },
-        "position": {
-          "type": "integer"
-        },
-        "original_position": {
-          "type": "integer"
-        },
-        "commit_id": {
-          "type": "string"
-        },
-        "original_commit_id": {
-          "type": "string"
-        },
-        "user": {
-          "$ref": "common/user.schema.json"
-        },
-        "body": {
-          "type": "string"
-        },
-        "created_at": {
-          "type": "string"
-        },
-        "updated_at": {
-          "type": "string"
-        },
-        "html_url": {
-          "type": "string"
-        },
-        "pull_request_url": {
-          "type": "string"
-        },
-        "author_association": {
-          "type": "string"
-        },
+        "url": { "type": "string" },
+        "pull_request_review_id": { "type": "integer" },
+        "id": { "type": "integer" },
+        "node_id": { "type": "string" },
+        "diff_hunk": { "type": "string" },
+        "path": { "type": "string" },
+        "position": { "type": "integer" },
+        "original_position": { "type": "integer" },
+        "commit_id": { "type": "string" },
+        "original_commit_id": { "type": "string" },
+        "user": { "$ref": "common/user.schema.json" },
+        "body": { "type": "string" },
+        "created_at": { "type": "string" },
+        "updated_at": { "type": "string" },
+        "html_url": { "type": "string" },
+        "pull_request_url": { "type": "string" },
+        "author_association": { "type": "string" },
         "_links": {
           "type": "object",
           "required": ["self", "html", "pull_request"],
@@ -89,31 +52,19 @@
             "self": {
               "type": "object",
               "required": ["href"],
-              "properties": {
-                "href": {
-                  "type": "string"
-                }
-              },
+              "properties": { "href": { "type": "string" } },
               "additionalProperties": false
             },
             "html": {
               "type": "object",
               "required": ["href"],
-              "properties": {
-                "href": {
-                  "type": "string"
-                }
-              },
+              "properties": { "href": { "type": "string" } },
               "additionalProperties": false
             },
             "pull_request": {
               "type": "object",
               "required": ["href"],
-              "properties": {
-                "href": {
-                  "type": "string"
-                }
-              },
+              "properties": { "href": { "type": "string" } },
               "additionalProperties": false
             }
           },
@@ -160,114 +111,39 @@
         "author_association"
       ],
       "properties": {
-        "url": {
-          "type": "string"
-        },
-        "id": {
-          "type": "integer"
-        },
-        "node_id": {
-          "type": "string"
-        },
-        "html_url": {
-          "type": "string"
-        },
-        "diff_url": {
-          "type": "string"
-        },
-        "patch_url": {
-          "type": "string"
-        },
-        "issue_url": {
-          "type": "string"
-        },
-        "number": {
-          "type": "integer"
-        },
-        "state": {
-          "type": "string"
-        },
-        "locked": {
-          "type": "boolean"
-        },
-        "title": {
-          "type": "string"
-        },
-        "user": {
-          "$ref": "common/user.schema.json"
-        },
-        "body": {
-          "type": "string"
-        },
-        "created_at": {
-          "type": "string"
-        },
-        "updated_at": {
-          "type": "string"
-        },
-        "closed_at": {
-          "oneOf": [
-            {
-              "type": "null"
-            },
-            {
-              "type": "string"
-            }
-          ]
-        },
-        "merged_at": {
-          "oneOf": [
-            {
-              "type": "null"
-            },
-            {
-              "type": "string"
-            }
-          ]
-        },
+        "url": { "type": "string" },
+        "id": { "type": "integer" },
+        "node_id": { "type": "string" },
+        "html_url": { "type": "string" },
+        "diff_url": { "type": "string" },
+        "patch_url": { "type": "string" },
+        "issue_url": { "type": "string" },
+        "number": { "type": "integer" },
+        "state": { "type": "string" },
+        "locked": { "type": "boolean" },
+        "title": { "type": "string" },
+        "user": { "$ref": "common/user.schema.json" },
+        "body": { "type": "string" },
+        "created_at": { "type": "string" },
+        "updated_at": { "type": "string" },
+        "closed_at": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
+        "merged_at": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
         "merge_commit_sha": {
-          "oneOf": [
-            {
-              "type": "null"
-            },
-            {
-              "type": "string"
-            }
-          ]
+          "oneOf": [{ "type": "null" }, { "type": "string" }]
         },
         "assignee": {
-          "oneOf": [
-            {
-              "type": "null"
-            },
-            {
-              "$ref": "common/user.schema.json"
-            }
-          ]
+          "oneOf": [{ "type": "null" }, { "$ref": "common/user.schema.json" }]
         },
         "assignees": {
           "type": "array",
-          "items": {
-            "$ref": "common/user.schema.json"
-          }
+          "items": { "$ref": "common/user.schema.json" }
         },
-        "requested_reviewers": {
-          "type": "array",
-          "items": {}
-        },
-        "requested_teams": {
-          "type": "array",
-          "items": {}
-        },
-        "labels": {
-          "type": "array",
-          "items": {}
-        },
+        "requested_reviewers": { "type": "array", "items": {} },
+        "requested_teams": { "type": "array", "items": {} },
+        "labels": { "type": "array", "items": {} },
         "milestone": {
           "oneOf": [
-            {
-              "type": "null"
-            },
+            { "type": "null" },
             {
               "type": "object",
               "required": [
@@ -289,100 +165,43 @@
                 "closed_at"
               ],
               "properties": {
-                "url": {
-                  "type": "string"
-                },
-                "html_url": {
-                  "type": "string"
-                },
-                "labels_url": {
-                  "type": "string"
-                },
-                "id": {
-                  "type": "integer"
-                },
-                "node_id": {
-                  "type": "string"
-                },
-                "number": {
-                  "type": "integer"
-                },
-                "title": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "creator": {
-                  "$ref": "common/user.schema.json"
-                },
-                "open_issues": {
-                  "type": "integer"
-                },
-                "closed_issues": {
-                  "type": "integer"
-                },
-                "state": {
-                  "type": "string"
-                },
-                "created_at": {
-                  "type": "string"
-                },
-                "updated_at": {
-                  "type": "string"
-                },
-                "due_on": {
-                  "type": "string"
-                },
+                "url": { "type": "string" },
+                "html_url": { "type": "string" },
+                "labels_url": { "type": "string" },
+                "id": { "type": "integer" },
+                "node_id": { "type": "string" },
+                "number": { "type": "integer" },
+                "title": { "type": "string" },
+                "description": { "type": "string" },
+                "creator": { "$ref": "common/user.schema.json" },
+                "open_issues": { "type": "integer" },
+                "closed_issues": { "type": "integer" },
+                "state": { "type": "string" },
+                "created_at": { "type": "string" },
+                "updated_at": { "type": "string" },
+                "due_on": { "type": "string" },
                 "closed_at": {
-                  "oneOf": [
-                    {
-                      "type": "null"
-                    },
-                    {
-                      "type": "string"
-                    }
-                  ]
+                  "oneOf": [{ "type": "null" }, { "type": "string" }]
                 }
               },
               "additionalProperties": false
             }
           ]
         },
-        "commits_url": {
-          "type": "string"
-        },
-        "review_comments_url": {
-          "type": "string"
-        },
-        "review_comment_url": {
-          "type": "string"
-        },
-        "comments_url": {
-          "type": "string"
-        },
-        "statuses_url": {
-          "type": "string"
-        },
+        "commits_url": { "type": "string" },
+        "review_comments_url": { "type": "string" },
+        "review_comment_url": { "type": "string" },
+        "comments_url": { "type": "string" },
+        "statuses_url": { "type": "string" },
         "head": {
           "type": "object",
           "required": ["label", "ref", "sha", "user", "repo"],
           "properties": {
-            "label": {
-              "type": "string"
-            },
-            "ref": {
-              "type": "string"
-            },
-            "sha": {
-              "type": "string"
-            },
-            "user": {
-              "$ref": "common/user.schema.json"
-            },
-            "repo": {
-              "$ref": "common/repository.schema.json"
-            }
+            "label": { "type": "string" },
+            "ref": { "type": "string" },
+            "sha": { "type": "string" },
+            "user": { "$ref": "common/user.schema.json" },
+            "repo": { "$ref": "common/repository.schema.json" }
           },
           "additionalProperties": false
         },
@@ -390,21 +209,11 @@
           "type": "object",
           "required": ["label", "ref", "sha", "user", "repo"],
           "properties": {
-            "label": {
-              "type": "string"
-            },
-            "ref": {
-              "type": "string"
-            },
-            "sha": {
-              "type": "string"
-            },
-            "user": {
-              "$ref": "common/user.schema.json"
-            },
-            "repo": {
-              "$ref": "common/repository.schema.json"
-            }
+            "label": { "type": "string" },
+            "ref": { "type": "string" },
+            "sha": { "type": "string" },
+            "user": { "$ref": "common/user.schema.json" },
+            "repo": { "$ref": "common/repository.schema.json" }
           },
           "additionalProperties": false
         },
@@ -424,104 +233,62 @@
             "self": {
               "type": "object",
               "required": ["href"],
-              "properties": {
-                "href": {
-                  "type": "string"
-                }
-              },
+              "properties": { "href": { "type": "string" } },
               "additionalProperties": false
             },
             "html": {
               "type": "object",
               "required": ["href"],
-              "properties": {
-                "href": {
-                  "type": "string"
-                }
-              },
+              "properties": { "href": { "type": "string" } },
               "additionalProperties": false
             },
             "issue": {
               "type": "object",
               "required": ["href"],
-              "properties": {
-                "href": {
-                  "type": "string"
-                }
-              },
+              "properties": { "href": { "type": "string" } },
               "additionalProperties": false
             },
             "comments": {
               "type": "object",
               "required": ["href"],
-              "properties": {
-                "href": {
-                  "type": "string"
-                }
-              },
+              "properties": { "href": { "type": "string" } },
               "additionalProperties": false
             },
             "review_comments": {
               "type": "object",
               "required": ["href"],
-              "properties": {
-                "href": {
-                  "type": "string"
-                }
-              },
+              "properties": { "href": { "type": "string" } },
               "additionalProperties": false
             },
             "review_comment": {
               "type": "object",
               "required": ["href"],
-              "properties": {
-                "href": {
-                  "type": "string"
-                }
-              },
+              "properties": { "href": { "type": "string" } },
               "additionalProperties": false
             },
             "commits": {
               "type": "object",
               "required": ["href"],
-              "properties": {
-                "href": {
-                  "type": "string"
-                }
-              },
+              "properties": { "href": { "type": "string" } },
               "additionalProperties": false
             },
             "statuses": {
               "type": "object",
               "required": ["href"],
-              "properties": {
-                "href": {
-                  "type": "string"
-                }
-              },
+              "properties": { "href": { "type": "string" } },
               "additionalProperties": false
             }
           },
           "additionalProperties": false
         },
-        "author_association": {
-          "type": "string"
-        }
+        "author_association": { "type": "string" }
       },
       "additionalProperties": false
     },
-    "repository": {
-      "$ref": "common/repository.schema.json"
-    },
-    "installation": {
-      "$ref": "common/installation.schema.json"
-    },
-    "organization": {
-      "$ref": "common/organization.schema.json"
-    },
-    "sender": {
-      "$ref": "common/user.schema.json"
-    }
+    "repository": { "$ref": "common/repository.schema.json" },
+    "installation": { "$ref": "common/installation.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" }
   },
   "additionalProperties": false,
   "title": "pull_request_review_comment created event"

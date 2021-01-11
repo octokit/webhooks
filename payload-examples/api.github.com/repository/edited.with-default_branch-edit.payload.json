@@ -1,10 +1,6 @@
 {
   "action": "edited",
-  "changes": {
-    "default_branch": {
-      "from": "main"
-    }
-  },
+  "changes": { "default_branch": { "from": "main" } },
   "repository": {
     "id": 186853261,
     "node_id": "MDEwOlJlcG9zaXRvcnkxODY4NTMyNjE=",

@@ -1,10 +1,7 @@
 {
   "action": "on-demand-test",
   "branch": "master",
-  "client_payload": {
-    "unit": false,
-    "integration": true
-  },
+  "client_payload": { "unit": false, "integration": true },
   "repository": {
     "id": 17273051,
     "node_id": "MDEwOlJlcG9zaXRvcnkxNzI3MzA1MQ==",

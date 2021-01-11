@@ -4,10 +4,7 @@
   "type": "object",
   "required": ["action", "key", "repository", "sender"],
   "properties": {
-    "action": {
-      "type": "string",
-      "enum": ["created"]
-    },
+    "action": { "type": "string", "enum": ["created"] },
     "key": {
       "type": "object",
       "required": [
@@ -20,42 +17,20 @@
         "read_only"
       ],
       "properties": {
-        "id": {
-          "type": "integer"
-        },
-        "key": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        },
-        "title": {
-          "type": "string"
-        },
-        "verified": {
-          "type": "boolean"
-        },
-        "created_at": {
-          "type": "string"
-        },
-        "read_only": {
-          "type": "boolean"
-        }
+        "id": { "type": "integer" },
+        "key": { "type": "string" },
+        "url": { "type": "string" },
+        "title": { "type": "string" },
+        "verified": { "type": "boolean" },
+        "created_at": { "type": "string" },
+        "read_only": { "type": "boolean" }
       },
       "additionalProperties": false
     },
-    "repository": {
-      "$ref": "common/repository.schema.json"
-    },
-    "sender": {
-      "$ref": "common/user.schema.json"
-    },
-    "installation": {
-      "$ref": "common/installation.schema.json"
-    },
-    "organization": {
-      "$ref": "common/organization.schema.json"
-    }
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
   },
   "additionalProperties": false,
   "title": "deploy_key created event"
