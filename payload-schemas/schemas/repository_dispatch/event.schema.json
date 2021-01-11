@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "repository_dispatch$event",
+  "type": "object",
+  "required": [
+    "action",
+    "branch",
+    "client_payload",
+    "repository",
+    "organization",
+    "sender",
+    "installation"
+  ],
+  "properties": {
+    "action": {
+      "type": "string"
+    },
+    "branch": {
+      "type": "string"
+    },
+    "client_payload": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": true
+    },
+    "repository": {
+      "$ref": "common/repository.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    },
+    "installation": {
+      "$ref": "common/installation.schema.json"
+    },
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    }
+  },
+  "additionalProperties": false,
+  "title": "repository_dispatch event"
+}

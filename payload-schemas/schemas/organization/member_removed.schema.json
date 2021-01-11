@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "organization$member_removed",
+  "type": "object",
+  "required": ["action", "membership", "organization", "sender"],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["member_removed"]
+    },
+    "membership": {
+      "type": "object",
+      "required": ["url", "state", "role", "organization_url", "user"],
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "organization_url": {
+          "type": "string"
+        },
+        "user": {
+          "$ref": "common/user.schema.json"
+        }
+      },
+      "additionalProperties": false
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    },
+    "installation": {
+      "$ref": "common/installation.schema.json"
+    },
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    }
+  },
+  "additionalProperties": false,
+  "title": "organization member_removed event"
+}

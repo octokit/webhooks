@@ -1,0 +1,677 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "check_run$requested_action",
+  "type": "object",
+  "required": ["action", "check_run", "repository", "sender"],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["requested_action"]
+    },
+    "check_run": {
+      "type": "object",
+      "required": [
+        "id",
+        "head_sha",
+        "external_id",
+        "url",
+        "html_url",
+        "status",
+        "conclusion",
+        "started_at",
+        "completed_at",
+        "output",
+        "name",
+        "check_suite",
+        "app",
+        "pull_requests"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "head_sha": {
+          "type": "string"
+        },
+        "external_id": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "html_url": {
+          "type": "string"
+        },
+        "details_url": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["queued", "in_progress", "completed"]
+        },
+        "conclusion": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "enum": [
+                "success",
+                "failure",
+                "neutral",
+                "cancelled",
+                "timed_out",
+                "action_required",
+                "stale"
+              ]
+            }
+          ]
+        },
+        "started_at": {
+          "type": "string"
+        },
+        "completed_at": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "output": {
+          "type": "object",
+          "required": [
+            "summary",
+            "text",
+            "annotations_count",
+            "annotations_url"
+          ],
+          "properties": {
+            "title": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "summary": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "text": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "annotations_count": {
+              "type": "integer"
+            },
+            "annotations_url": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "name": {
+          "type": "string"
+        },
+        "check_suite": {
+          "type": "object",
+          "required": [
+            "id",
+            "head_branch",
+            "head_sha",
+            "status",
+            "conclusion",
+            "url",
+            "before",
+            "after",
+            "pull_requests",
+            "app",
+            "created_at",
+            "updated_at"
+          ],
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "node_id": {
+              "type": "string"
+            },
+            "head_branch": {
+              "type": "string"
+            },
+            "head_sha": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "conclusion": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "type": "string"
+            },
+            "before": {
+              "type": "string"
+            },
+            "after": {
+              "type": "string"
+            },
+            "pull_requests": {
+              "type": "array",
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "required": ["url", "id", "number", "head", "base"],
+                    "properties": {
+                      "url": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "integer"
+                      },
+                      "number": {
+                        "type": "integer"
+                      },
+                      "head": {
+                        "type": "object",
+                        "required": ["ref", "sha", "repo"],
+                        "properties": {
+                          "ref": {
+                            "type": "string"
+                          },
+                          "sha": {
+                            "type": "string"
+                          },
+                          "repo": {
+                            "type": "object",
+                            "required": ["id", "url", "name"],
+                            "properties": {
+                              "id": {
+                                "type": "integer"
+                              },
+                              "url": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "base": {
+                        "type": "object",
+                        "required": ["ref", "sha", "repo"],
+                        "properties": {
+                          "ref": {
+                            "type": "string"
+                          },
+                          "sha": {
+                            "type": "string"
+                          },
+                          "repo": {
+                            "type": "object",
+                            "required": ["id", "url", "name"],
+                            "properties": {
+                              "id": {
+                                "type": "integer"
+                              },
+                              "url": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            },
+            "app": {
+              "type": "object",
+              "required": [
+                "id",
+                "node_id",
+                "owner",
+                "name",
+                "description",
+                "external_url",
+                "html_url",
+                "created_at",
+                "updated_at"
+              ],
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "slug": {
+                  "type": "string"
+                },
+                "node_id": {
+                  "type": "string"
+                },
+                "owner": {
+                  "$ref": "common/user.schema.json"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "external_url": {
+                  "type": "string"
+                },
+                "html_url": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "updated_at": {
+                  "type": "string"
+                },
+                "permissions": {
+                  "type": "object",
+                  "properties": {
+                    "administration": {
+                      "type": "string",
+                      "enum": ["read", "write"]
+                    },
+                    "actions": {
+                      "type": "string",
+                      "enum": ["read", "write"]
+                    },
+                    "checks": {
+                      "type": "string",
+                      "enum": ["read", "write"]
+                    },
+                    "contents": {
+                      "type": "string",
+                      "enum": ["read", "write"]
+                    },
+                    "deployments": {
+                      "type": "string",
+                      "enum": ["read", "write"]
+                    },
+                    "issues": {
+                      "type": "string",
+                      "enum": ["read", "write"]
+                    },
+                    "members": {
+                      "type": "string",
+                      "enum": ["read", "write"]
+                    },
+                    "metadata": {
+                      "type": "string",
+                      "enum": ["read", "write"]
+                    },
+                    "organization_administration": {
+                      "type": "string",
+                      "enum": ["read", "write"]
+                    },
+                    "organization_hooks": {
+                      "type": "string",
+                      "enum": ["read", "write"]
+                    },
+                    "organization_plan": {
+                      "type": "string",
+                      "enum": ["read", "write"]
+                    },
+                    "organization_projects": {
+                      "type": "string",
+                      "enum": ["read", "write"]
+                    },
+                    "organization_user_blocking": {
+                      "type": "string",
+                      "enum": ["read", "write"]
+                    },
+                    "pages": {
+                      "type": "string",
+                      "enum": ["read", "write"]
+                    },
+                    "pull_requests": {
+                      "type": "string",
+                      "enum": ["read", "write"]
+                    },
+                    "repository_hooks": {
+                      "type": "string",
+                      "enum": ["read", "write"]
+                    },
+                    "repository_projects": {
+                      "type": "string",
+                      "enum": ["read", "write"]
+                    },
+                    "statuses": {
+                      "type": "string",
+                      "enum": ["read", "write"]
+                    },
+                    "team_discussions": {
+                      "type": "string",
+                      "enum": ["read", "write"]
+                    },
+                    "vulnerability_alerts": {
+                      "type": "string",
+                      "enum": ["read", "write"]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "events": {
+                  "type": "array",
+                  "items": {}
+                }
+              },
+              "additionalProperties": false
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "app": {
+          "type": "object",
+          "required": [
+            "id",
+            "node_id",
+            "owner",
+            "name",
+            "description",
+            "external_url",
+            "html_url",
+            "created_at",
+            "updated_at"
+          ],
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "slug": {
+              "type": "string"
+            },
+            "node_id": {
+              "type": "string"
+            },
+            "owner": {
+              "$ref": "common/user.schema.json"
+            },
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "external_url": {
+              "type": "string"
+            },
+            "html_url": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            },
+            "permissions": {
+              "type": "object",
+              "properties": {
+                "administration": {
+                  "type": "string",
+                  "enum": ["read", "write"]
+                },
+                "checks": {
+                  "type": "string",
+                  "enum": ["read", "write"]
+                },
+                "contents": {
+                  "type": "string",
+                  "enum": ["read", "write"]
+                },
+                "deployments": {
+                  "type": "string",
+                  "enum": ["read", "write"]
+                },
+                "issues": {
+                  "type": "string",
+                  "enum": ["read", "write"]
+                },
+                "members": {
+                  "type": "string",
+                  "enum": ["read", "write"]
+                },
+                "metadata": {
+                  "type": "string",
+                  "enum": ["read", "write"]
+                },
+                "organization_administration": {
+                  "type": "string",
+                  "enum": ["read", "write"]
+                },
+                "organization_hooks": {
+                  "type": "string",
+                  "enum": ["read", "write"]
+                },
+                "organization_plan": {
+                  "type": "string",
+                  "enum": ["read", "write"]
+                },
+                "organization_projects": {
+                  "type": "string",
+                  "enum": ["read", "write"]
+                },
+                "organization_user_blocking": {
+                  "type": "string",
+                  "enum": ["read", "write"]
+                },
+                "pages": {
+                  "type": "string",
+                  "enum": ["read", "write"]
+                },
+                "pull_requests": {
+                  "type": "string",
+                  "enum": ["read", "write"]
+                },
+                "repository_hooks": {
+                  "type": "string",
+                  "enum": ["read", "write"]
+                },
+                "repository_projects": {
+                  "type": "string",
+                  "enum": ["read", "write"]
+                },
+                "statuses": {
+                  "type": "string",
+                  "enum": ["read", "write"]
+                },
+                "team_discussions": {
+                  "type": "string",
+                  "enum": ["read", "write"]
+                },
+                "vulnerability_alerts": {
+                  "type": "string",
+                  "enum": ["read", "write"]
+                }
+              },
+              "additionalProperties": false
+            },
+            "events": {
+              "type": "array",
+              "items": {}
+            }
+          },
+          "additionalProperties": false
+        },
+        "pull_requests": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "required": ["url", "id", "number", "head", "base"],
+                "properties": {
+                  "url": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "integer"
+                  },
+                  "number": {
+                    "type": "integer"
+                  },
+                  "head": {
+                    "type": "object",
+                    "required": ["ref", "sha", "repo"],
+                    "properties": {
+                      "ref": {
+                        "type": "string"
+                      },
+                      "sha": {
+                        "type": "string"
+                      },
+                      "repo": {
+                        "type": "object",
+                        "required": ["id", "url", "name"],
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "url": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "base": {
+                    "type": "object",
+                    "required": ["ref", "sha", "repo"],
+                    "properties": {
+                      "ref": {
+                        "type": "string"
+                      },
+                      "sha": {
+                        "type": "string"
+                      },
+                      "repo": {
+                        "type": "object",
+                        "required": ["id", "url", "name"],
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "url": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              }
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "requested_action": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "identifier": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "repository": {
+      "$ref": "common/repository.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    },
+    "installation": {
+      "$ref": "common/installation.schema.json"
+    },
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    }
+  },
+  "additionalProperties": false,
+  "title": "check_run requested_action event"
+}

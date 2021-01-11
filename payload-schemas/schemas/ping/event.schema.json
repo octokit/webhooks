@@ -1,0 +1,115 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "ping$event",
+  "type": "object",
+  "required": ["zen", "hook_id", "hook", "sender"],
+  "properties": {
+    "zen": {
+      "type": "string"
+    },
+    "hook_id": {
+      "type": "integer"
+    },
+    "hook": {
+      "type": "object",
+      "required": [
+        "type",
+        "id",
+        "name",
+        "active",
+        "events",
+        "config",
+        "updated_at",
+        "created_at",
+        "url",
+        "ping_url"
+      ],
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "config": {
+          "type": "object",
+          "required": ["content_type", "url", "insecure_ssl"],
+          "properties": {
+            "content_type": {
+              "type": "string"
+            },
+            "secret": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "insecure_ssl": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "test_url": {
+          "type": "string"
+        },
+        "ping_url": {
+          "type": "string"
+        },
+        "last_response": {
+          "type": "object",
+          "required": ["code", "status", "message"],
+          "properties": {
+            "code": {
+              "type": "null"
+            },
+            "status": {
+              "type": "string"
+            },
+            "message": {
+              "type": "null"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "repository": {
+      "$ref": "common/repository.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    },
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    }
+  },
+  "additionalProperties": false,
+  "title": "ping event"
+}

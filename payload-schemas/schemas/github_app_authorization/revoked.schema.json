@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "github_app_authorization$revoked",
+  "type": "object",
+  "required": ["action", "sender"],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["revoked"]
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    }
+  },
+  "additionalProperties": false,
+  "title": "github_app_authorization revoked event"
+}

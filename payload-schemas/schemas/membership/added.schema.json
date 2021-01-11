@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "membership$added",
+  "type": "object",
+  "required": ["action", "scope", "member", "sender", "team", "organization"],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["added"]
+    },
+    "scope": {
+      "type": "string"
+    },
+    "member": {
+      "$ref": "common/user.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    },
+    "team": {
+      "type": "object",
+      "required": [
+        "name",
+        "id",
+        "node_id",
+        "slug",
+        "description",
+        "privacy",
+        "url",
+        "html_url",
+        "members_url",
+        "repositories_url",
+        "permission"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "privacy": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "html_url": {
+          "type": "string"
+        },
+        "members_url": {
+          "type": "string"
+        },
+        "repositories_url": {
+          "type": "string"
+        },
+        "permission": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    },
+    "installation": {
+      "$ref": "common/installation.schema.json"
+    }
+  },
+  "additionalProperties": false,
+  "title": "membership added event"
+}

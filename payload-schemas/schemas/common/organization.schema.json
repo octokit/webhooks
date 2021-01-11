@@ -57,5 +57,6 @@
       "type": "string"
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "title": "Organization"
 }

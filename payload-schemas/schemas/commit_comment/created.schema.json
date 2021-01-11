@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "commit_comment$created",
+  "type": "object",
+  "required": ["action", "comment", "repository", "sender"],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["created"]
+    },
+    "comment": {
+      "type": "object",
+      "required": [
+        "url",
+        "html_url",
+        "id",
+        "node_id",
+        "user",
+        "position",
+        "line",
+        "path",
+        "commit_id",
+        "created_at",
+        "updated_at",
+        "author_association",
+        "body"
+      ],
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "html_url": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "user": {
+          "$ref": "common/user.schema.json"
+        },
+        "position": {
+          "type": "null"
+        },
+        "line": {
+          "type": "null"
+        },
+        "path": {
+          "type": "null"
+        },
+        "commit_id": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "author_association": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "repository": {
+      "$ref": "common/repository.schema.json"
+    },
+    "sender": {
+      "$ref": "common/user.schema.json"
+    },
+    "installation": {
+      "$ref": "common/installation.schema.json"
+    },
+    "organization": {
+      "$ref": "common/organization.schema.json"
+    }
+  },
+  "additionalProperties": false,
+  "title": "commit_comment created event"
+}
