@@ -123,7 +123,33 @@
         },
         "requested_reviewers": { "type": "array", "items": {} },
         "requested_teams": { "type": "array", "items": {} },
-        "labels": { "type": "array", "items": {} },
+        "labels": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "required": [
+                  "id",
+                  "node_id",
+                  "url",
+                  "name",
+                  "color",
+                  "default"
+                ],
+                "properties": {
+                  "id": { "type": "integer" },
+                  "node_id": { "type": "string" },
+                  "url": { "type": "string" },
+                  "name": { "type": "string" },
+                  "color": { "type": "string" },
+                  "default": { "type": "boolean" }
+                },
+                "additionalProperties": false
+              }
+            ]
+          }
+        },
         "milestone": {
           "oneOf": [
             { "type": "null" },
