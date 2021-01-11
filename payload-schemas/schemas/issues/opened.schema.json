@@ -125,7 +125,7 @@
         "comments": { "type": "integer" },
         "created_at": { "type": "string" },
         "updated_at": { "type": "string" },
-        "closed_at": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
+        "closed_at": { "type": "null" },
         "author_association": {
           "type": "string",
           "enum": ["OWNER", "MEMBER", "NONE"]

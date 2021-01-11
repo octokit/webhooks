@@ -36,7 +36,7 @@
     "body": "This is a pretty simple change that we need to pull into master.",
     "created_at": "2019-05-15T15:20:33Z",
     "updated_at": "2019-05-15T15:21:18Z",
-    "closed_at": "2019-05-15T15:21:18Z",
+    "closed_at": null,
     "merged_at": null,
     "merge_commit_sha": "c4295bd74fb0f4fda03689c3df3f2803b658fd85",
     "assignee": null,

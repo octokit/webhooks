@@ -73,7 +73,7 @@
         "body": { "type": "string" },
         "created_at": { "type": "string" },
         "updated_at": { "type": "string" },
-        "closed_at": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
+        "closed_at": { "type": "string" },
         "merged_at": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
         "merge_commit_sha": {
           "oneOf": [{ "type": "null" }, { "type": "string" }]
