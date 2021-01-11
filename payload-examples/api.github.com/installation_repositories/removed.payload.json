@@ -44,6 +44,7 @@
   "repositories_removed": [
     {
       "id": 1296269,
+      "node_id": "MDEwOlJlcG9zaXRvcnkxODY4NTMwMDI=",
       "name": "Hello-World",
       "full_name": "octocat/Hello-World",
       "private": false
