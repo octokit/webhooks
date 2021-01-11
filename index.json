@@ -14259,7 +14259,7 @@
           "updated_at": "2019-05-15T15:20:27Z",
           "closed_at": null,
           "author_association": "OWNER",
-          "active_lock_reason": null,
+          "active_lock_reason": "spam",
           "body": "It looks like you accidently spelled 'commit' with two 't's."
         },
         "repository": {
@@ -14451,7 +14451,7 @@
           "updated_at": "2019-05-15T15:20:27Z",
           "closed_at": null,
           "author_association": "OWNER",
-          "active_lock_reason": null,
+          "active_lock_reason": "spam",
           "body": "It looks like you accidently spelled 'commit' with two 't's."
         },
         "repository": {
@@ -29560,7 +29560,7 @@
             }
           },
           "author_association": "OWNER",
-          "active_lock_reason": null,
+          "active_lock_reason": "off-topic",
           "draft": false,
           "merged": false,
           "mergeable": true,
@@ -30062,7 +30062,7 @@
             }
           },
           "author_association": "OWNER",
-          "active_lock_reason": null,
+          "active_lock_reason": "off-topic",
           "draft": false,
           "merged": false,
           "mergeable": true,

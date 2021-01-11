@@ -257,18 +257,11 @@
           },
           "additionalProperties": false
         },
-        "active_lock_reason": {
-          "oneOf": [
-            { "type": "null" },
-            {
-              "type": "string",
-              "enum": ["resolved", "off-topic", "too heated", "spam"]
-            }
-          ]
         "author_association": {
           "type": "string",
           "enum": ["OWNER", "MEMBER", "NONE"]
         },
+        "active_lock_reason": { "type": "null" },
         "draft": { "type": "boolean" },
         "merged": { "type": "boolean" },
         "mergeable": { "oneOf": [{ "type": "null" }, { "type": "boolean" }] },

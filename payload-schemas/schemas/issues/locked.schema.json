@@ -131,13 +131,8 @@
           "enum": ["OWNER", "MEMBER", "NONE"]
         },
         "active_lock_reason": {
-          "oneOf": [
-            { "type": "null" },
-            {
-              "type": "string",
-              "enum": ["resolved", "off-topic", "too heated", "spam"]
-            }
-          ]
+          "type": "string",
+          "enum": ["resolved", "off-topic", "too heated", "spam"]
         },
         "performed_via_github_app": { "type": "null" },
         "pull_request": {

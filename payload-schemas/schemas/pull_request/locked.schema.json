@@ -262,13 +262,8 @@
           "enum": ["OWNER", "MEMBER", "NONE"]
         },
         "active_lock_reason": {
-          "oneOf": [
-            { "type": "null" },
-            {
-              "type": "string",
-              "enum": ["resolved", "off-topic", "too heated", "spam"]
-            }
-          ]
+          "type": "string",
+          "enum": ["resolved", "off-topic", "too heated", "spam"]
         },
         "draft": { "type": "boolean" },
         "merged": { "type": "boolean" },
