@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es2019",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "lib": [ "es2020" ],
+    "rootDir": "./",
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "useDefineForClassFields": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "esModuleInterop": true
+  },
+  "exclude": ["cache", "coverage", "node_modules"],
+  "include": ["**/*.js", "**/*.ts"]
+}

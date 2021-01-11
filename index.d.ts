@@ -1,8 +1,8 @@
 type WebhookExample = {
-  [key: string]: any
-}
+  [key: string]: any;
+};
 export type WebhookDefinition = {
   name: string;
   actions: string[];
   examples: WebhookExample[];
-}
+};

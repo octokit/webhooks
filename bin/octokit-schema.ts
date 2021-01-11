@@ -1,20 +1,23 @@
-const { strict: assert } = require("assert");
-const fs = require("fs");
-const path = require("path");
-const prettier = require("prettier");
-const $RefParser = require("@apidevtools/json-schema-ref-parser");
+#!/usr/bin/env ts-node-transpile-only
+
+import $RefParser from "@apidevtools/json-schema-ref-parser";
+import { strict as assert } from "assert";
+import fs from "fs";
+import { JSONSchema7 } from "json-schema";
+import path from "path";
+import { format } from "prettier";
 
 const pathToWebhookSchemas = "payload-schemas/schemas";
 
-const removeExtension = (fileName, ext) => {
+const removeExtension = (fileName: string, ext: string): string => {
   assert.ok(fileName.endsWith(ext), `"${fileName}" does not end with "${ext}"`);
 
   return fileName.substring(0, fileName.length - ext.length);
 };
 
-const buildCommonSchemasDefinitionSchema = () => {
+const buildCommonSchemasDefinitionSchema = (): Record<string, JSONSchema7> => {
   const commonSchemas = fs.readdirSync(`${pathToWebhookSchemas}/common`);
-  const definitions = {};
+  const definitions: Record<string, JSONSchema7> = {};
 
   commonSchemas.forEach((schema) => {
     definitions[removeExtension(schema, ".schema.json")] = {
@@ -35,8 +38,11 @@ const listEvents = () => {
     .map((entity) => entity.name);
 };
 
+type EventSchema = JSONSchema7 &
+  Required<Pick<JSONSchema7, "$id" | "oneOf" | "definitions">>;
+
 const combineEventSchemas = () => {
-  const eventSchema = {
+  const eventSchema: EventSchema = {
     $id: "webhooks",
     $schema: "http://json-schema.org/draft-07/schema#",
     definitions: {},
@@ -47,12 +53,13 @@ const combineEventSchemas = () => {
 
   events.forEach((event) => {
     const schemas = fs.readdirSync(`${pathToWebhookSchemas}/${event}`);
-    const eventName = `${event}_event`;
 
     if (schemas.length === 1 && schemas[0] === "event.schema.json") {
       // schemas without any actions are just called "event"
-      const schema = require(`../${pathToWebhookSchemas}/${event}/event.schema.json`);
+      const schema = require(`../${pathToWebhookSchemas}/${event}/event.schema.json`) as JSONSchema7;
       const eventName = schema.$id;
+
+      assert.ok(eventName, `${event}/event.schema.json does not have an $id`);
 
       eventSchema.definitions = {
         ...eventSchema.definitions,
@@ -64,12 +71,14 @@ const combineEventSchemas = () => {
 
       eventSchema.oneOf.push({ $ref: `#/definitions/${eventName}` });
 
-      return eventSchema;
+      return;
     }
 
     const eventActions = schemas.map((schemaName) => {
-      const schema = require(`../${pathToWebhookSchemas}/${event}/${schemaName}`);
+      const schema = require(`../${pathToWebhookSchemas}/${event}/${schemaName}`) as JSONSchema7;
       const actionEventName = schema.$id;
+
+      assert.ok(actionEventName, `${event}/${schemaName} does not have an $id`);
 
       eventSchema.definitions = {
         ...eventSchema.definitions,
@@ -81,6 +90,8 @@ const combineEventSchemas = () => {
 
       return actionEventName;
     });
+
+    const eventName = `${event}_event`;
 
     eventSchema.definitions = {
       ...eventSchema.definitions,
@@ -99,10 +110,10 @@ const combineEventSchemas = () => {
 
 async function run() {
   try {
-    const schema = combineEventSchemas();
-    const commonSchemaDefinitions = await $RefParser.dereference(
+    const schema: EventSchema = combineEventSchemas();
+    const commonSchemaDefinitions = (await $RefParser.dereference(
       buildCommonSchemasDefinitionSchema()
-    );
+    )) as Record<string, JSONSchema7>;
 
     schema.definitions = {
       ...schema.definitions,
@@ -111,8 +122,8 @@ async function run() {
 
     fs.writeFileSync(
       "schema.json",
-      prettier.format(
-        JSON.stringify(schema, (key, value) => {
+      format(
+        JSON.stringify(schema, (key, value: unknown) => {
           if (
             typeof value === "string" &&
             value.startsWith("common/") &&

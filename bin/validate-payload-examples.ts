@@ -1,20 +1,20 @@
-#!/usr/bin/env node
+#!/usr/bin/env ts-node-transpile-only
 
-const fs = require("fs");
-const { ajv, validate } = require("../payload-schemas");
-const { MissingRefError } = require("ajv/dist/compile/error_classes");
+import fs from "fs";
+import { ajv, validate } from "../payload-schemas";
 
-let hasErrors = false;
+let hasErrors = false as boolean;
 const payloads = `./payload-examples/api.github.com`;
 
 fs.readdirSync(payloads).forEach((event) => {
   fs.readdirSync(`${payloads}/${event}`)
     .filter((filename) => filename.endsWith(".json"))
     .forEach((filename) => {
-      const file = require(`../${payloads}/${event}/${filename}`);
+      const file = require(`../${payloads}/${event}/${filename}`) as unknown;
 
       try {
         const validationResult = validate(event, file);
+
         if (!validationResult) {
           console.error(
             `❌ Payload '${event}/${filename}' does not match schema`

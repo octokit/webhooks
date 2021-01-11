@@ -7,10 +7,10 @@ jobs:
   update_prettier:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
-          version: 12
+          node-version: 12.x
       - run: npm ci
       - run: "npm run lint:fix"
       - uses: gr2m/create-or-update-pull-request-action@v1.x

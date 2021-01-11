@@ -13,4 +13,4 @@ E.g.
 - `create/payload.json`
 - `create/with-description.payload.json`
 
-After making any changes to example payloads, run `node bin/octokit-webhooks.js update --cached` to update the exported `index.json` file
+After making any changes to example payloads, run `npm run build:webhooks -- --cached` to update the exported `index.json` file

@@ -1,11 +1,16 @@
-const Ajv = require("ajv").default;
-const { readdirSync } = require("fs");
-const { resolve } = require("path");
-const ajv = new Ajv();
+import Ajv from "ajv";
+import { readdirSync } from "fs";
+import { resolve } from "path";
+
+export const ajv = new Ajv();
 
 const schemaDir = resolve(__dirname, "schemas");
 
-const requireSchema = (event, filename, keyName = `${event}/${filename}`) => {
+const requireSchema = (
+  event: string,
+  filename: string,
+  keyName = `${event}/${filename}`
+) => {
   const schemaPath = `${schemaDir}/${event}/${filename}`;
 
   ajv.addSchema(require(schemaPath), keyName);
@@ -31,9 +36,5 @@ readdirSync(schemaDir)
     );
   });
 
-module.exports = {
-  ajv,
-  validate: function (schema, file) {
-    return ajv.validate(schema, file);
-  },
-};
+export const validate = (schema: string, file: unknown): boolean =>
+  ajv.validate(schema, file);
