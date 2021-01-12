@@ -5,15 +5,6 @@
   "required": ["action", "issue", "comment", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["deleted"] },
-    "changes": {
-      "type": "object",
-      "properties": {
-        "body": {
-          "type": "object",
-          "properties": { "from": { "type": "string" } }
-        }
-      }
-    },
     "issue": {
       "type": "object",
       "required": [

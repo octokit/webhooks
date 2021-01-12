@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "repository$edited",
   "type": "object",
-  "required": ["action", "repository", "sender"],
+  "required": ["action", "changes", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["edited"] },
     "changes": {
@@ -15,15 +15,6 @@
         "default_branch": {
           "type": "object",
           "properties": { "from": { "type": "string" } }
-        },
-        "owner": {
-          "type": "object",
-          "properties": {
-            "from": {
-              "type": "object",
-              "properties": { "user": { "$ref": "common/user.schema.json" } }
-            }
-          }
         },
         "homepage": {
           "type": "object",

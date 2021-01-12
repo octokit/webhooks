@@ -2,10 +2,32 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "pull_request$edited",
   "type": "object",
-  "required": ["action", "number", "pull_request", "repository", "sender"],
+  "required": [
+    "action",
+    "changes",
+    "number",
+    "pull_request",
+    "repository",
+    "sender"
+  ],
   "properties": {
     "action": { "type": "string", "enum": ["edited"] },
     "number": { "type": "integer" },
+    "changes": {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "object",
+          "required": ["from"],
+          "properties": { "from": { "type": "string" } }
+        },
+        "title": {
+          "type": "object",
+          "required": ["from"],
+          "properties": { "from": { "type": "string" } }
+        }
+      }
+    },
     "pull_request": {
       "type": "object",
       "required": [

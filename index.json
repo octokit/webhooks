@@ -18475,7 +18475,7 @@
           "site_admin": false
         },
         "changes": {
-          "permission": {
+          "old_permission": {
             "from": "write"
           }
         },

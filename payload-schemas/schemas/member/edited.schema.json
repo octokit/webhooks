@@ -2,11 +2,25 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "member$edited",
   "type": "object",
-  "required": ["action", "member", "repository", "sender"],
+  "required": ["action", "changes", "member", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["edited"] },
     "member": { "$ref": "common/user.schema.json" },
-    "changes": { "type": "object" },
+    "changes": {
+      "type": "object",
+      "required": ["old_permission"],
+      "properties": {
+        "old_permission": {
+          "type": "object",
+          "required": ["from"],
+          "properties": {
+            "from": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
     "repository": { "$ref": "common/repository.schema.json" },
     "installation": { "$ref": "common/installation.schema.json" },
     "sender": { "$ref": "common/user.schema.json" }

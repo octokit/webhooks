@@ -6,7 +6,6 @@
   "properties": {
     "action": { "type": "string", "enum": ["added"] },
     "member": { "$ref": "common/user.schema.json" },
-    "changes": { "type": "object" },
     "repository": { "$ref": "common/repository.schema.json" },
     "installation": { "$ref": "common/installation.schema.json" },
     "sender": { "$ref": "common/user.schema.json" }

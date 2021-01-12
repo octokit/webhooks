@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "issues$edited",
   "type": "object",
-  "required": ["action", "issue", "repository", "sender"],
+  "required": ["action", "changes", "issue", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["edited"] },
     "issue": {
@@ -169,6 +169,12 @@
       "properties": {
         "body": {
           "type": "object",
+          "required": ["from"],
+          "properties": { "from": { "type": "string" } }
+        },
+        "title": {
+          "type": "object",
+          "required": ["from"],
           "properties": { "from": { "type": "string" } }
         }
       }

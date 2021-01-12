@@ -2,20 +2,12 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "repository$transferred",
   "type": "object",
-  "required": ["action", "repository", "sender"],
+  "required": ["action", "changes", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["transferred"] },
     "changes": {
       "type": "object",
       "properties": {
-        "description": {
-          "type": "object",
-          "properties": { "from": { "type": "string" } }
-        },
-        "default_branch": {
-          "type": "object",
-          "properties": { "from": { "type": "string" } }
-        },
         "owner": {
           "type": "object",
           "properties": {
@@ -24,10 +16,6 @@
               "properties": { "user": { "$ref": "common/user.schema.json" } }
             }
           }
-        },
-        "homepage": {
-          "type": "object",
-          "properties": { "from": { "type": "string" } }
         },
         "additionalProperties": false
       },

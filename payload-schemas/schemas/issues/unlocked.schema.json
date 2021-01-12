@@ -156,15 +156,6 @@
         "default": { "type": "boolean" }
       }
     },
-    "changes": {
-      "type": "object",
-      "properties": {
-        "body": {
-          "type": "object",
-          "properties": { "from": { "type": "string" } }
-        }
-      }
-    },
     "assignee": {
       "oneOf": [{ "type": "null" }, { "$ref": "common/user.schema.json" }]
     },

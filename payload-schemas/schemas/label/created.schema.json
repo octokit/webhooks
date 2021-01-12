@@ -19,7 +19,6 @@
       },
       "additionalProperties": false
     },
-    "changes": { "type": "object", "properties": {} },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation.schema.json" },

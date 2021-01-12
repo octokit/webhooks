@@ -2,9 +2,41 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "milestone$edited",
   "type": "object",
-  "required": ["action", "milestone", "repository", "sender"],
+  "required": ["action", "changes", "milestone", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["edited"] },
+    "changes": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "object",
+          "required": ["from"],
+          "properties": {
+            "from": {
+              "type": "string"
+            }
+          }
+        },
+        "due_on": {
+          "type": "object",
+          "required": ["from"],
+          "properties": {
+            "from": {
+              "type": "string"
+            }
+          }
+        },
+        "title": {
+          "type": "object",
+          "required": ["from"],
+          "properties": {
+            "from": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
     "milestone": {
       "type": "object",
       "required": [
