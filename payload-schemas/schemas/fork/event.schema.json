@@ -4,7 +4,15 @@
   "type": "object",
   "required": ["forkee", "repository", "sender"],
   "properties": {
-    "forkee": { "$ref": "common/repository.schema.json" },
+    "forkee": {
+      "allOf": [
+        { "$ref": "common/repository.schema.json" },
+        {
+          "type": "object",
+          "properties": { "fork": { "type": "boolean", "enum": [true] } }
+        }
+      ]
+    },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation.schema.json" },

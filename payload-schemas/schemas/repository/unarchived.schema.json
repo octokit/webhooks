@@ -5,7 +5,15 @@
   "required": ["action", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["unarchived"] },
-    "repository": { "$ref": "common/repository.schema.json" },
+    "repository": {
+      "allOf": [
+        { "$ref": "common/repository.schema.json" },
+        {
+          "type": "object",
+          "properties": { "public": { "type": "boolean", "enum": [false] } }
+        }
+      ]
+    },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation.schema.json" },
     "organization": { "$ref": "common/organization.schema.json" }

@@ -4,7 +4,15 @@
   "type": "object",
   "required": ["repository", "sender"],
   "properties": {
-    "repository": { "$ref": "common/repository.schema.json" },
+    "repository": {
+      "allOf": [
+        { "$ref": "common/repository.schema.json" },
+        {
+          "type": "object",
+          "properties": { "private": { "type": "boolean", "enum": [false] } }
+        }
+      ]
+    },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation.schema.json" },
     "organization": { "$ref": "common/organization.schema.json" }
