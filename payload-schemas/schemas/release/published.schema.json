@@ -45,7 +45,7 @@
         "assets": { "type": "array", "items": {} },
         "tarball_url": { "type": "string" },
         "zipball_url": { "type": "string" },
-        "body": { "type": "null" }
+        "body": { "oneOf": [{ "type": "null" }, { "type": "string" }] }
       },
       "additionalProperties": false
     },
