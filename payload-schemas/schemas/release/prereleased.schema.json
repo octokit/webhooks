@@ -39,7 +39,7 @@
         "name": { "type": "null" },
         "draft": { "type": "boolean" },
         "author": { "$ref": "common/user.schema.json" },
-        "prerelease": { "type": "boolean" },
+        "prerelease": { "type": "boolean", "enum": [true] },
         "created_at": { "type": "string" },
         "published_at": { "type": "string" },
         "assets": { "type": "array", "items": {} },

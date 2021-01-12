@@ -268,7 +268,7 @@
             }
           ]
         },
-        "draft": { "type": "boolean" },
+        "draft": { "type": "boolean", "enum": [false] },
         "merged": { "type": "boolean" },
         "mergeable": { "oneOf": [{ "type": "null" }, { "type": "boolean" }] },
         "rebaseable": { "oneOf": [{ "type": "null" }, { "type": "boolean" }] },

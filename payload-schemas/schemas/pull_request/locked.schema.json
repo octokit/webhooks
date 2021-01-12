@@ -67,7 +67,7 @@
         "issue_url": { "type": "string" },
         "number": { "type": "integer" },
         "state": { "type": "string", "enum": ["open", "closed"] },
-        "locked": { "type": "boolean" },
+        "locked": { "type": "boolean", "enum": [true] },
         "title": { "type": "string" },
         "user": { "$ref": "common/user.schema.json" },
         "body": { "type": "string" },
