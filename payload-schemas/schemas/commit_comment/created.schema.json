@@ -36,7 +36,16 @@
         "updated_at": { "type": "string" },
         "author_association": {
           "type": "string",
-          "enum": ["OWNER", "MEMBER", "NONE"]
+          "enum": [
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER"
+          ]
         },
         "body": { "type": "string" }
       },

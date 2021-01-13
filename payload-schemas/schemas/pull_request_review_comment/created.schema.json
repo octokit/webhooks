@@ -46,7 +46,16 @@
         "pull_request_url": { "type": "string" },
         "author_association": {
           "type": "string",
-          "enum": ["OWNER", "MEMBER", "NONE"]
+          "enum": [
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER"
+          ]
         },
         "_links": {
           "type": "object",
@@ -312,7 +321,16 @@
         },
         "author_association": {
           "type": "string",
-          "enum": ["OWNER", "MEMBER", "NONE"]
+          "enum": [
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER"
+          ]
         }
       },
       "additionalProperties": false

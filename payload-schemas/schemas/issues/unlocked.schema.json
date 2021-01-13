@@ -128,7 +128,16 @@
         "closed_at": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
         "author_association": {
           "type": "string",
-          "enum": ["OWNER", "MEMBER", "NONE"]
+          "enum": [
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER"
+          ]
         },
         "active_lock_reason": { "type": "null" },
         "performed_via_github_app": { "type": "null" },
