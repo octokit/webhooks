@@ -47,9 +47,9 @@
                 "from": {
                   "type": "object",
                   "properties": {
-                    "admin": { "type":"boolean" },
-                    "pull": { "type":"boolean" },
-                    "push": { "type":"boolean" }
+                    "admin": { "type": "boolean" },
+                    "pull": { "type": "boolean" },
+                    "push": { "type": "boolean" }
                   }
                 }
               }
