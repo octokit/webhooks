@@ -1,5 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "secret_scanning_alert$resolved",
   "type": "object",
   "required": ["action", "alert", "repository", "sender"],
   "properties": {
@@ -33,5 +34,6 @@
     "installation": { "$ref": "common/installation.schema.json" },
     "sender": { "$ref": "common/user.schema.json" }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "title": "secret_scanning_alert resolved event"
 }
