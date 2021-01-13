@@ -7,9 +7,11 @@
     "action": { "type": "string", "enum": ["transferred"] },
     "changes": {
       "type": "object",
+      "required": ["owner"],
       "properties": {
         "owner": {
           "type": "object",
+          "required": ["from"],
           "properties": {
             "from": {
               "type": "object",

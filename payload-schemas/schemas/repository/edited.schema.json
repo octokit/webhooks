@@ -10,14 +10,17 @@
       "properties": {
         "description": {
           "type": "object",
+          "required": ["from"],
           "properties": { "from": { "type": "string" } }
         },
         "default_branch": {
           "type": "object",
+          "required": ["from"],
           "properties": { "from": { "type": "string" } }
         },
         "homepage": {
           "type": "object",
+          "required": ["from"],
           "properties": { "from": { "type": "string" } }
         },
         "additionalProperties": false

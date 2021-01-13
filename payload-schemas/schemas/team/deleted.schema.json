@@ -5,11 +5,6 @@
   "required": ["action", "team", "organization", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["deleted"] },
-    "changes": {
-      "type": "object",
-      "required": [],
-      "additionalProperties": false
-    },
     "team": {
       "type": "object",
       "required": [
