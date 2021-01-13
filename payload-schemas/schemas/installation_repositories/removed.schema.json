@@ -76,7 +76,10 @@
           },
           "additionalProperties": false
         },
-        "repository_selection": { "type": "string" },
+        "repository_selection": {
+          "type": "string",
+          "enum": ["all", "selected"]
+        },
         "access_tokens_url": { "type": "string" },
         "repositories_url": { "type": "string" },
         "html_url": { "type": "string" },
@@ -87,18 +90,24 @@
           "type": "object",
           "required": [],
           "properties": {
-            "administration": { "type": "string" },
-            "statuses": { "type": "string" },
-            "repository_projects": { "type": "string" },
-            "repository_hooks": { "type": "string" },
-            "pull_requests": { "type": "string" },
-            "pages": { "type": "string" },
-            "issues": { "type": "string" },
-            "deployments": { "type": "string" },
-            "contents": { "type": "string" },
-            "checks": { "type": "string" },
-            "metadata": { "type": "string" },
-            "vulnerability_alerts": { "type": "string" }
+            "administration": { "type": "string", "enum": ["read", "write"] },
+            "statuses": { "type": "string", "enum": ["read", "write"] },
+            "repository_projects": {
+              "type": "string",
+              "enum": ["read", "write"]
+            },
+            "repository_hooks": { "type": "string", "enum": ["read", "write"] },
+            "pull_requests": { "type": "string", "enum": ["read", "write"] },
+            "pages": { "type": "string", "enum": ["read", "write"] },
+            "issues": { "type": "string", "enum": ["read", "write"] },
+            "deployments": { "type": "string", "enum": ["read", "write"] },
+            "contents": { "type": "string", "enum": ["read", "write"] },
+            "checks": { "type": "string", "enum": ["read", "write"] },
+            "metadata": { "type": "string", "enum": ["read", "write"] },
+            "vulnerability_alerts": {
+              "type": "string",
+              "enum": ["read", "write"]
+            }
           },
           "additionalProperties": false
         },

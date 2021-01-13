@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "sponsorship$edited",
   "type": "object",
-  "required": ["action", "sponsorship", "sender"],
+  "required": ["action", "changes", "sponsorship", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["edited"] },
     "sponsorship": {
@@ -44,37 +44,15 @@
       },
       "additionalProperties": false
     },
-    "effective_date": { "type": "string" },
     "changes": {
       "type": "object",
-      "required": ["tier"],
       "properties": {
-        "tier": {
+        "privacy_level": {
           "type": "object",
           "required": ["from"],
           "properties": {
-            "from": {
-              "type": "object",
-              "required": [
-                "node_id",
-                "created_at",
-                "description",
-                "monthly_price_in_cents",
-                "monthly_price_in_dollars",
-                "name"
-              ],
-              "properties": {
-                "node_id": { "type": "string" },
-                "created_at": { "type": "string" },
-                "description": { "type": "string" },
-                "monthly_price_in_cents": { "type": "integer" },
-                "monthly_price_in_dollars": { "type": "integer" },
-                "name": { "type": "string" }
-              },
-              "additionalProperties": false
-            }
-          },
-          "additionalProperties": false
+            "from": { "type": "string" }
+          }
         }
       },
       "additionalProperties": false

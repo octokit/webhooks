@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "issues$edited",
   "type": "object",
-  "required": ["action", "issue", "repository", "sender"],
+  "required": ["action", "changes", "issue", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["edited"] },
     "issue": {
@@ -68,7 +68,7 @@
             ]
           }
         },
-        "state": { "type": "string" },
+        "state": { "type": "string", "enum": ["open", "closed"] },
         "locked": { "type": "boolean" },
         "assignee": {
           "oneOf": [{ "type": "null" }, { "$ref": "common/user.schema.json" }]
@@ -126,7 +126,19 @@
         "created_at": { "type": "string" },
         "updated_at": { "type": "string" },
         "closed_at": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
-        "author_association": { "type": "string" },
+        "author_association": {
+          "type": "string",
+          "enum": [
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER"
+          ]
+        },
         "active_lock_reason": {
           "oneOf": [
             { "type": "null" },
@@ -166,6 +178,12 @@
       "properties": {
         "body": {
           "type": "object",
+          "required": ["from"],
+          "properties": { "from": { "type": "string" } }
+        },
+        "title": {
+          "type": "object",
+          "required": ["from"],
           "properties": { "from": { "type": "string" } }
         }
       }

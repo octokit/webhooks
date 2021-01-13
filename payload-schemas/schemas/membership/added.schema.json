@@ -5,7 +5,7 @@
   "required": ["action", "scope", "member", "sender", "team", "organization"],
   "properties": {
     "action": { "type": "string", "enum": ["added"] },
-    "scope": { "type": "string" },
+    "scope": { "type": "string", "enum": ["team"] },
     "member": { "$ref": "common/user.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "team": {

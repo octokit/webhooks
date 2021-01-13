@@ -5,15 +5,6 @@
   "required": ["action", "issue", "comment", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["created"] },
-    "changes": {
-      "type": "object",
-      "properties": {
-        "body": {
-          "type": "object",
-          "properties": { "from": { "type": "string" } }
-        }
-      }
-    },
     "issue": {
       "type": "object",
       "required": [
@@ -39,6 +30,7 @@
         "updated_at",
         "closed_at",
         "author_association",
+        "active_lock_reason",
         "body"
       ],
       "properties": {
@@ -80,7 +72,7 @@
             ]
           }
         },
-        "state": { "type": "string" },
+        "state": { "type": "string", "enum": ["open", "closed"] },
         "locked": { "type": "boolean" },
         "assignee": {
           "oneOf": [{ "type": "null" }, { "$ref": "common/user.schema.json" }]
@@ -133,7 +125,28 @@
         "created_at": { "type": "string" },
         "updated_at": { "type": "string" },
         "closed_at": { "type": "null" },
-        "author_association": { "type": "string" },
+        "author_association": {
+          "type": "string",
+          "enum": [
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER"
+          ]
+        },
+        "active_lock_reason": {
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "string",
+              "enum": ["resolved", "off-topic", "too heated", "spam"]
+            }
+          ]
+        },
         "body": { "type": "string" }
       },
       "additionalProperties": false
@@ -161,7 +174,19 @@
         "user": { "$ref": "common/user.schema.json" },
         "created_at": { "type": "string" },
         "updated_at": { "type": "string" },
-        "author_association": { "type": "string" },
+        "author_association": {
+          "type": "string",
+          "enum": [
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER"
+          ]
+        },
         "body": { "type": "string" }
       },
       "additionalProperties": false

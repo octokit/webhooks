@@ -68,8 +68,8 @@
             ]
           }
         },
-        "state": { "type": "string" },
-        "locked": { "type": "boolean" },
+        "state": { "type": "string", "enum": ["open", "closed"] },
+        "locked": { "type": "boolean", "enum": [true] },
         "assignee": {
           "oneOf": [{ "type": "null" }, { "$ref": "common/user.schema.json" }]
         },
@@ -126,15 +126,22 @@
         "created_at": { "type": "string" },
         "updated_at": { "type": "string" },
         "closed_at": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
-        "author_association": { "type": "string" },
-        "active_lock_reason": {
-          "oneOf": [
-            { "type": "null" },
-            {
-              "type": "string",
-              "enum": ["resolved", "off-topic", "too heated", "spam"]
-            }
+        "author_association": {
+          "type": "string",
+          "enum": [
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER"
           ]
+        },
+        "active_lock_reason": {
+          "type": "string",
+          "enum": ["resolved", "off-topic", "too heated", "spam"]
         },
         "performed_via_github_app": { "type": "null" },
         "pull_request": {
@@ -159,15 +166,6 @@
         "name": { "type": "string" },
         "color": { "type": "string" },
         "default": { "type": "boolean" }
-      }
-    },
-    "changes": {
-      "type": "object",
-      "properties": {
-        "body": {
-          "type": "object",
-          "properties": { "from": { "type": "string" } }
-        }
       }
     },
     "assignee": {

@@ -66,18 +66,16 @@
         "patch_url": { "type": "string" },
         "issue_url": { "type": "string" },
         "number": { "type": "integer" },
-        "state": { "type": "string" },
+        "state": { "type": "string", "enum": ["open"] },
         "locked": { "type": "boolean" },
         "title": { "type": "string" },
         "user": { "$ref": "common/user.schema.json" },
         "body": { "type": "string" },
         "created_at": { "type": "string" },
         "updated_at": { "type": "string" },
-        "closed_at": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
-        "merged_at": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
-        "merge_commit_sha": {
-          "oneOf": [{ "type": "null" }, { "type": "string" }]
-        },
+        "closed_at": { "type": "null" },
+        "merged_at": { "type": "null" },
+        "merge_commit_sha": { "type": "null" },
         "assignee": {
           "oneOf": [{ "type": "null" }, { "$ref": "common/user.schema.json" }]
         },
@@ -90,7 +88,33 @@
           "items": { "$ref": "common/user.schema.json" }
         },
         "requested_teams": { "type": "array", "items": {} },
-        "labels": { "type": "array", "items": {} },
+        "labels": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "required": [
+                  "id",
+                  "node_id",
+                  "url",
+                  "name",
+                  "color",
+                  "default"
+                ],
+                "properties": {
+                  "id": { "type": "integer" },
+                  "node_id": { "type": "string" },
+                  "url": { "type": "string" },
+                  "name": { "type": "string" },
+                  "color": { "type": "string" },
+                  "default": { "type": "boolean" }
+                },
+                "additionalProperties": false
+              }
+            ]
+          }
+        },
         "milestone": {
           "oneOf": [
             { "type": "null" },
@@ -231,7 +255,19 @@
           },
           "additionalProperties": false
         },
-        "author_association": { "type": "string" },
+        "author_association": {
+          "type": "string",
+          "enum": [
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER"
+          ]
+        },
         "active_lock_reason": {
           "oneOf": [
             { "type": "null" },

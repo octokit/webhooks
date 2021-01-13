@@ -5,35 +5,15 @@
   "required": ["action", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["publicized"] },
-    "changes": {
-      "type": "object",
-      "properties": {
-        "description": {
+    "repository": {
+      "allOf": [
+        { "$ref": "common/repository.schema.json" },
+        {
           "type": "object",
-          "properties": { "from": { "type": "string" } }
-        },
-        "default_branch": {
-          "type": "object",
-          "properties": { "from": { "type": "string" } }
-        },
-        "owner": {
-          "type": "object",
-          "properties": {
-            "from": {
-              "type": "object",
-              "properties": { "user": { "$ref": "common/user.schema.json" } }
-            }
-          }
-        },
-        "homepage": {
-          "type": "object",
-          "properties": { "from": { "type": "string" } }
-        },
-        "additionalProperties": false
-      },
-      "additionalProperties": false
+          "properties": { "public": { "type": "boolean", "enum": [true] } }
+        }
+      ]
     },
-    "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation.schema.json" },
     "organization": { "$ref": "common/organization.schema.json" }

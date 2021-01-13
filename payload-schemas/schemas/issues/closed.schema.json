@@ -68,7 +68,7 @@
             ]
           }
         },
-        "state": { "type": "string" },
+        "state": { "type": "string", "enum": ["closed"] },
         "locked": { "type": "boolean" },
         "assignee": {
           "oneOf": [{ "type": "null" }, { "$ref": "common/user.schema.json" }]
@@ -125,8 +125,20 @@
         "comments": { "type": "integer" },
         "created_at": { "type": "string" },
         "updated_at": { "type": "string" },
-        "closed_at": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
-        "author_association": { "type": "string" },
+        "closed_at": { "type": "string" },
+        "author_association": {
+          "type": "string",
+          "enum": [
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER"
+          ]
+        },
         "active_lock_reason": {
           "oneOf": [
             { "type": "null" },
@@ -159,15 +171,6 @@
         "name": { "type": "string" },
         "color": { "type": "string" },
         "default": { "type": "boolean" }
-      }
-    },
-    "changes": {
-      "type": "object",
-      "properties": {
-        "body": {
-          "type": "object",
-          "properties": { "from": { "type": "string" } }
-        }
       }
     },
     "assignee": {

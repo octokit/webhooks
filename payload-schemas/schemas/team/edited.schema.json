@@ -2,12 +2,61 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "team$edited",
   "type": "object",
-  "required": ["action", "team", "organization", "sender"],
+  "required": ["action", "changes", "team", "organization", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["edited"] },
     "changes": {
       "type": "object",
       "required": [],
+      "properties": {
+        "description": {
+          "type": "object",
+          "required": ["from"],
+          "properties": {
+            "from": {
+              "type": "string"
+            }
+          }
+        },
+        "name": {
+          "type": "object",
+          "required": ["from"],
+          "properties": {
+            "from": {
+              "type": "string"
+            }
+          }
+        },
+        "privacy": {
+          "type": "object",
+          "required": ["from"],
+          "properties": {
+            "from": {
+              "type": "string"
+            }
+          }
+        },
+        "repository": {
+          "type": "object",
+          "required": ["permissions"],
+          "properties": {
+            "permissions": {
+              "type": "object",
+              "required": ["from"],
+              "properties": {
+                "from": {
+                  "type": "object",
+                  "properties": {
+                    "admin": { "type": "boolean" },
+                    "pull": { "type": "boolean" },
+                    "push": { "type": "boolean" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "additionalProperties": false
     },
     "team": {

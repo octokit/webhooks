@@ -5,7 +5,7 @@
   "required": ["action", "starred_at", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["deleted"] },
-    "starred_at": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
+    "starred_at": { "type": "null" },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "organization": { "$ref": "common/organization.schema.json" }

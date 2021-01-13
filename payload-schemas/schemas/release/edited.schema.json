@@ -2,9 +2,28 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "release$edited",
   "type": "object",
-  "required": ["action", "release", "repository", "sender"],
+  "required": ["action", "changes", "release", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["edited"] },
+    "changes": {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "object",
+          "required": ["from"],
+          "properties": {
+            "from": { "type": "string" }
+          }
+        },
+        "name": {
+          "type": "object",
+          "required": ["from"],
+          "properties": {
+            "from": { "type": "string" }
+          }
+        }
+      }
+    },
     "release": {
       "type": "object",
       "required": [
@@ -42,10 +61,49 @@
         "prerelease": { "type": "boolean" },
         "created_at": { "type": "string" },
         "published_at": { "type": "string" },
-        "assets": { "type": "array", "items": {} },
+        "assets": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "required": [
+                  "url",
+                  "browser_download_url",
+                  "id",
+                  "node_id",
+                  "name",
+                  "label",
+                  "state",
+                  "content_type",
+                  "size",
+                  "download_count",
+                  "created_at",
+                  "updated_at",
+                  "creator"
+                ],
+                "properties": {
+                  "url": { "type": "string" },
+                  "browser_download_url": { "type": "string" },
+                  "id": { "type": "integer" },
+                  "node_id": { "type": "string" },
+                  "name": { "type": "string" },
+                  "label": { "type": "string" },
+                  "state": { "type": "string" },
+                  "content_type": { "type": "string" },
+                  "size": { "type": "integer" },
+                  "download_count": { "type": "integer" },
+                  "created_at": { "type": "string" },
+                  "updated_at": { "type": "string" },
+                  "uploader": { "$ref": "common/user.schema.json" }
+                }
+              }
+            ]
+          }
+        },
         "tarball_url": { "type": "string" },
         "zipball_url": { "type": "string" },
-        "body": { "type": "null" }
+        "body": { "oneOf": [{ "type": "null" }, { "type": "string" }] }
       },
       "additionalProperties": false
     },

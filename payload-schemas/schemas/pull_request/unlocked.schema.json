@@ -66,8 +66,8 @@
         "patch_url": { "type": "string" },
         "issue_url": { "type": "string" },
         "number": { "type": "integer" },
-        "state": { "type": "string" },
-        "locked": { "type": "boolean" },
+        "state": { "type": "string", "enum": ["open", "closed"] },
+        "locked": { "type": "boolean", "enum": [false] },
         "title": { "type": "string" },
         "user": { "$ref": "common/user.schema.json" },
         "body": { "type": "string" },
@@ -90,7 +90,33 @@
           "items": { "$ref": "common/user.schema.json" }
         },
         "requested_teams": { "type": "array", "items": {} },
-        "labels": { "type": "array", "items": {} },
+        "labels": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "required": [
+                  "id",
+                  "node_id",
+                  "url",
+                  "name",
+                  "color",
+                  "default"
+                ],
+                "properties": {
+                  "id": { "type": "integer" },
+                  "node_id": { "type": "string" },
+                  "url": { "type": "string" },
+                  "name": { "type": "string" },
+                  "color": { "type": "string" },
+                  "default": { "type": "boolean" }
+                },
+                "additionalProperties": false
+              }
+            ]
+          }
+        },
         "milestone": {
           "oneOf": [
             { "type": "null" },
@@ -231,16 +257,20 @@
           },
           "additionalProperties": false
         },
-        "author_association": { "type": "string" },
-        "active_lock_reason": {
-          "oneOf": [
-            { "type": "null" },
-            {
-              "type": "string",
-              "enum": ["resolved", "off-topic", "too heated", "spam"]
-            }
+        "author_association": {
+          "type": "string",
+          "enum": [
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER"
           ]
         },
+        "active_lock_reason": { "type": "null" },
         "draft": { "type": "boolean" },
         "merged": { "type": "boolean" },
         "mergeable": { "oneOf": [{ "type": "null" }, { "type": "boolean" }] },

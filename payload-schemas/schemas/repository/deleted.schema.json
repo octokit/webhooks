@@ -5,34 +5,6 @@
   "required": ["action", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["deleted"] },
-    "changes": {
-      "type": "object",
-      "properties": {
-        "description": {
-          "type": "object",
-          "properties": { "from": { "type": "string" } }
-        },
-        "default_branch": {
-          "type": "object",
-          "properties": { "from": { "type": "string" } }
-        },
-        "owner": {
-          "type": "object",
-          "properties": {
-            "from": {
-              "type": "object",
-              "properties": { "user": { "$ref": "common/user.schema.json" } }
-            }
-          }
-        },
-        "homepage": {
-          "type": "object",
-          "properties": { "from": { "type": "string" } }
-        },
-        "additionalProperties": false
-      },
-      "additionalProperties": false
-    },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation.schema.json" },

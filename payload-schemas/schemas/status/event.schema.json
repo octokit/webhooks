@@ -96,7 +96,21 @@
                 "verified": { "type": "boolean" },
                 "reason": {
                   "type": "string",
-                  "enum": ["unsigned", "valid", "invalid"]
+                  "enum": [
+                    "expired_key",
+                    "not_signing_key",
+                    "gpgverify_error",
+                    "gpgverify_unavailable",
+                    "unsigned",
+                    "unknown_signature_type",
+                    "no_user",
+                    "unverified_email",
+                    "bad_email",
+                    "unknown_key",
+                    "malformed_signature",
+                    "invalid",
+                    "valid"
+                  ]
                 },
                 "signature": {
                   "oneOf": [{ "type": "string" }, { "type": "null" }]

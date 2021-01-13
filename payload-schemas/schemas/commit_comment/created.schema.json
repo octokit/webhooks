@@ -34,7 +34,19 @@
         "commit_id": { "type": "string" },
         "created_at": { "type": "string" },
         "updated_at": { "type": "string" },
-        "author_association": { "type": "string" },
+        "author_association": {
+          "type": "string",
+          "enum": [
+            "COLLABORATOR",
+            "CONTRIBUTOR",
+            "FIRST_TIMER",
+            "FIRST_TIME_CONTRIBUTOR",
+            "MANNEQUIN",
+            "MEMBER",
+            "NONE",
+            "OWNER"
+          ]
+        },
         "body": { "type": "string" }
       },
       "additionalProperties": false

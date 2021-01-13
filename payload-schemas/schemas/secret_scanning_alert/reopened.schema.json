@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "secret_scanning_alert$reopened",
+  "type": "object",
+  "required": ["action", "alert", "repository", "sender"],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["reopened"]
+    },
+    "alert": {
+      "type": "object",
+      "required": [
+        "number",
+        "secret_type",
+        "resolution",
+        "resolved_by",
+        "resolved_at"
+      ],
+      "properties": {
+        "number": { "type": "integer" },
+        "secret_type": { "type": "string" },
+        "resolution": { "type": "null" },
+        "resolved_by": { "type": "null" },
+        "resolved_at": { "type": "null" }
+      },
+      "additionalProperties": false
+    },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" },
+    "installation": { "$ref": "common/installation.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" }
+  },
+  "additionalProperties": false,
+  "title": "secret_scanning_alert reopened event"
+}
