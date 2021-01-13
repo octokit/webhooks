@@ -44,7 +44,6 @@
       },
       "additionalProperties": false
     },
-    "effective_date": { "type": "string" },
     "changes": {
       "type": "object",
       "properties": {

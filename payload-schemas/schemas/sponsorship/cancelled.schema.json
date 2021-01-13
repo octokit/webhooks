@@ -44,7 +44,6 @@
       },
       "additionalProperties": false
     },
-    "effective_date": { "type": "string" },
     "sender": { "$ref": "common/user.schema.json" }
   },
   "additionalProperties": false,
