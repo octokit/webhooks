@@ -80,8 +80,14 @@ fs.readdirSync(payloads).forEach((event) => {
             return value;
           }
 
-          if (value.type && Array.isArray(value.type)) {
-            value.type = standardizeTypeProperty(value.type);
+          if (value.type) {
+            if (Array.isArray(value.type)) {
+              value.type = standardizeTypeProperty(value.type);
+            }
+
+            if (ensureArray(value.type).includes("object")) {
+              value.additionalProperties ||= false;
+            }
           }
 
           if (value.anyOf) {

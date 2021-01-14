@@ -19,7 +19,11 @@
       },
       "additionalProperties": false
     },
-    "changes": { "type": "object", "properties": {} },
+    "changes": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation.schema.json" },

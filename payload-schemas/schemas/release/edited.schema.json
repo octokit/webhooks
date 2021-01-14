@@ -93,7 +93,8 @@
               "created_at": { "type": "string" },
               "updated_at": { "type": "string" },
               "uploader": { "$ref": "common/user.schema.json" }
-            }
+            },
+            "additionalProperties": false
           }
         },
         "tarball_url": { "type": "string" },
