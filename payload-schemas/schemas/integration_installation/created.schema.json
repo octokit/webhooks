@@ -118,7 +118,7 @@
     "repositories": {
       "type": "array",
       "items": {
-        "anyOf": [
+        "oneOf": [
           {
             "type": "object",
             "required": ["id", "node_id", "name", "full_name", "private"],

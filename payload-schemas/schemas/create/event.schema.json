@@ -13,10 +13,7 @@
   ],
   "properties": {
     "ref": { "type": "string" },
-    "ref_type": {
-      "type": "string",
-      "enum": ["tag", "branch"]
-    },
+    "ref_type": { "type": "string", "enum": ["tag", "branch"] },
     "master_branch": { "type": "string" },
     "description": { "oneOf": [{ "type": "string" }, { "type": "null" }] },
     "pusher_type": { "type": "string" },

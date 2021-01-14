@@ -120,14 +120,11 @@
       },
       "additionalProperties": false
     },
-    "repository_selection": {
-      "type": "string",
-      "enum": ["all", "selected"]
-    },
+    "repository_selection": { "type": "string", "enum": ["all", "selected"] },
     "repositories_added": {
       "type": "array",
       "items": {
-        "anyOf": [
+        "oneOf": [
           {
             "type": "object",
             "required": ["id", "node_id", "name", "full_name", "private"],

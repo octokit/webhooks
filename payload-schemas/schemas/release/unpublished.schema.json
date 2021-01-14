@@ -45,7 +45,7 @@
         "assets": {
           "type": "array",
           "items": {
-            "anyOf": [
+            "oneOf": [
               {
                 "type": "object",
                 "required": [

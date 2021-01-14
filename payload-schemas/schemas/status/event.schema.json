@@ -222,7 +222,7 @@
     "branches": {
       "type": "array",
       "items": {
-        "anyOf": [
+        "oneOf": [
           {
             "type": "object",
             "required": ["name", "commit", "protected"],

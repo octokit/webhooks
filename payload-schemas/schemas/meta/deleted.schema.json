@@ -25,7 +25,7 @@
         "active": { "type": "boolean" },
         "events": {
           "type": "array",
-          "items": { "anyOf": [{ "type": "string" }] }
+          "items": { "oneOf": [{ "type": "string" }] }
         },
         "config": {
           "type": "object",

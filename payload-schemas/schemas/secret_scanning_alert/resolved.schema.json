@@ -4,10 +4,7 @@
   "type": "object",
   "required": ["action", "alert", "repository", "sender"],
   "properties": {
-    "action": {
-      "type": "string",
-      "enum": ["resolved"]
-    },
+    "action": { "type": "string", "enum": ["resolved"] },
     "alert": {
       "type": "object",
       "required": [

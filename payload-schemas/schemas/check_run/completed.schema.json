@@ -105,7 +105,7 @@
             "pull_requests": {
               "type": "array",
               "items": {
-                "anyOf": [
+                "oneOf": [
                   {
                     "type": "object",
                     "required": ["url", "id", "number", "head", "base"],
@@ -345,7 +345,7 @@
         "pull_requests": {
           "type": "array",
           "items": {
-            "anyOf": [
+            "oneOf": [
               {
                 "type": "object",
                 "required": ["url", "id", "number", "head", "base"],

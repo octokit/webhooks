@@ -18,9 +18,7 @@
         "body": {
           "type": "object",
           "required": ["from"],
-          "properties": {
-            "from": { "type": "string" }
-          },
+          "properties": { "from": { "type": "string" } },
           "additionalProperties": false
         }
       },
@@ -176,7 +174,7 @@
         "labels": {
           "type": "array",
           "items": {
-            "anyOf": [
+            "oneOf": [
               {
                 "type": "object",
                 "required": [
