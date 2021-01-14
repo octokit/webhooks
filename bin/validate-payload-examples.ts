@@ -6,6 +6,8 @@ import { ajv, validate } from "../payload-schemas";
 let hasErrors = false as boolean;
 const payloads = `./payload-examples/api.github.com`;
 
+const continueOnError = process.argv.includes("--continue-on-error");
+
 fs.readdirSync(payloads).forEach((event) => {
   fs.readdirSync(`${payloads}/${event}`)
     .filter((filename) => filename.endsWith(".json"))
@@ -25,7 +27,13 @@ fs.readdirSync(payloads).forEach((event) => {
           console.log(`✅ Payload '${event}/${filename}' matches schema`);
         }
       } catch (err) {
-        console.error(`Missing schema for event '${event}'`);
+        if (!continueOnError) {
+          throw err;
+        }
+
+        console.error(
+          `💥 Payload '${event}/${filename}' errored: ${err.message}`
+        );
         hasErrors = true;
       }
     });
