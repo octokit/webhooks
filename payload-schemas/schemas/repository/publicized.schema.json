@@ -86,7 +86,7 @@
         "node_id": { "type": "string" },
         "name": { "type": "string" },
         "full_name": { "type": "string" },
-        "private": { "type": "boolean" },
+        "private": { "type": "boolean", "enum": [false] },
         "owner": { "$ref": "common/user.schema.json" },
         "html_url": { "type": "string" },
         "description": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
@@ -191,8 +191,7 @@
             "triage": { "type": "boolean" }
           },
           "additionalProperties": false
-        },
-        "public": { "type": "boolean", "enum": [true] }
+        }
       },
       "additionalProperties": false
     },
