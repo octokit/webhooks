@@ -78,7 +78,8 @@
         "forks",
         "open_issues",
         "watchers",
-        "default_branch"
+        "default_branch",
+        "public"
       ],
       "properties": {
         "id": { "type": "integer" },
