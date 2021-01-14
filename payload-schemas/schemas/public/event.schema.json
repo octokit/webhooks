@@ -157,7 +157,7 @@
             { "type": "string" },
             {
               "type": "object",
-              "required": ["key","name","spdx_id","url","node_id"],
+              "required": ["key", "name", "spdx_id", "url", "node_id"],
               "properties": {
                 "key": { "type": "string" },
                 "name": { "type": "string" },
