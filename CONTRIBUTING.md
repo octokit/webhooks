@@ -22,6 +22,16 @@ npm run build:webhooks -- --cached
 
 When you send a pull request, make sure that the `index.json` file is up-to-date with the changes in the `payload-examples/api.github.com/` folder, otherwise the tests will fail.
 
+## Updating types
+
+The [`schema.d.ts` file](https://github.com/octokit/webhooks/blob/master/schema.d.ts) is generated, please do not edit it.
+Instead, make changes to the schemas in the [`payload-schemas/schemas/` folder](https://github.com/octokit/webhooks/tree/master/payload-schemas/schemas), then generate the schema and update the types with the following commands:
+
+```shell
+npm run build:schema
+npm run build:types
+```
+
 ## Merging the Pull Request & releasing a new version
 
 Releases are automated using [semantic-release](https://github.com/semantic-release/semantic-release).
