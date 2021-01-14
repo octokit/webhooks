@@ -114,9 +114,7 @@
         "events": { "type": "array", "items": {} },
         "created_at": { "type": "integer" },
         "updated_at": { "type": "integer" },
-        "single_file_name": {
-          "oneOf": [{ "type": "string" }, { "type": "null" }]
-        }
+        "single_file_name": { "type": ["string", "null"] }
       },
       "additionalProperties": false
     },

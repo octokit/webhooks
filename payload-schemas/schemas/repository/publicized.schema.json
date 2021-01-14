@@ -89,7 +89,7 @@
         "private": { "type": "boolean", "enum": [false] },
         "owner": { "$ref": "common/user.schema.json" },
         "html_url": { "type": "string" },
-        "description": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
+        "description": { "type": ["null", "string"] },
         "fork": { "type": "boolean" },
         "url": { "type": "string" },
         "forks_url": { "type": "string" },
@@ -128,34 +128,30 @@
         "labels_url": { "type": "string" },
         "releases_url": { "type": "string" },
         "deployments_url": { "type": "string" },
-        "created_at": {
-          "oneOf": [{ "type": "integer" }, { "type": "string" }]
-        },
+        "created_at": { "type": ["integer", "string"] },
         "updated_at": { "type": "string" },
-        "pushed_at": { "oneOf": [{ "type": "integer" }, { "type": "string" }] },
+        "pushed_at": { "type": ["integer", "string"] },
         "git_url": { "type": "string" },
         "ssh_url": { "type": "string" },
         "clone_url": { "type": "string" },
         "svn_url": { "type": "string" },
-        "homepage": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
+        "homepage": { "type": ["null", "string"] },
         "size": { "type": "integer" },
         "stargazers_count": { "type": "integer" },
         "watchers_count": { "type": "integer" },
-        "language": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
+        "language": { "type": ["null", "string"] },
         "has_issues": { "type": "boolean" },
         "has_projects": { "type": "boolean" },
         "has_downloads": { "type": "boolean" },
         "has_wiki": { "type": "boolean" },
         "has_pages": { "type": "boolean" },
         "forks_count": { "type": "integer" },
-        "mirror_url": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
+        "mirror_url": { "type": ["null", "string"] },
         "archived": { "type": "boolean" },
         "disabled": { "type": "boolean" },
         "open_issues_count": { "type": "integer" },
         "license": {
           "oneOf": [
-            { "type": "null" },
-            { "type": "string" },
             {
               "type": "object",
               "required": ["key", "name", "spdx_id", "url", "node_id"],
@@ -167,7 +163,8 @@
                 "node_id": { "type": "string" }
               },
               "additionalProperties": false
-            }
+            },
+            { "type": ["null", "string"] }
           ]
         },
         "forks": { "type": "integer" },

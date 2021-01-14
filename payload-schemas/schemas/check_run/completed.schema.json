@@ -37,7 +37,6 @@
         },
         "conclusion": {
           "oneOf": [
-            { "type": "null" },
             {
               "type": "string",
               "enum": [
@@ -49,11 +48,12 @@
                 "action_required",
                 "stale"
               ]
-            }
+            },
+            { "type": ["null"] }
           ]
         },
         "started_at": { "type": "string" },
-        "completed_at": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
+        "completed_at": { "type": ["null", "string"] },
         "output": {
           "type": "object",
           "required": [
@@ -63,9 +63,9 @@
             "annotations_url"
           ],
           "properties": {
-            "title": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
-            "summary": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
-            "text": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
+            "title": { "type": ["null", "string"] },
+            "summary": { "type": ["null", "string"] },
+            "text": { "type": ["null", "string"] },
             "annotations_count": { "type": "integer" },
             "annotations_url": { "type": "string" }
           },
@@ -91,14 +91,10 @@
           "properties": {
             "id": { "type": "integer" },
             "node_id": { "type": "string" },
-            "head_branch": {
-              "oneOf": [{ "type": "null" }, { "type": "string" }]
-            },
+            "head_branch": { "type": ["null", "string"] },
             "head_sha": { "type": "string" },
             "status": { "type": "string" },
-            "conclusion": {
-              "oneOf": [{ "type": "null" }, { "type": "string" }]
-            },
+            "conclusion": { "type": ["null", "string"] },
             "url": { "type": "string" },
             "before": { "type": "string" },
             "after": { "type": "string" },
@@ -172,9 +168,7 @@
                 "node_id": { "type": "string" },
                 "owner": { "$ref": "common/user.schema.json" },
                 "name": { "type": "string" },
-                "description": {
-                  "oneOf": [{ "type": "null" }, { "type": "string" }]
-                },
+                "description": { "type": ["null", "string"] },
                 "external_url": { "type": "string" },
                 "html_url": { "type": "string" },
                 "created_at": { "type": "string" },
@@ -269,9 +263,7 @@
             "node_id": { "type": "string" },
             "owner": { "$ref": "common/user.schema.json" },
             "name": { "type": "string" },
-            "description": {
-              "oneOf": [{ "type": "null" }, { "type": "string" }]
-            },
+            "description": { "type": ["null", "string"] },
             "external_url": { "type": "string" },
             "html_url": { "type": "string" },
             "created_at": { "type": "string" },
@@ -394,12 +386,12 @@
     },
     "requested_action": {
       "oneOf": [
-        { "type": "null" },
         {
           "type": "object",
           "properties": { "identifier": { "type": "string" } },
           "additionalProperties": false
-        }
+        },
+        { "type": ["null"] }
       ]
     },
     "repository": { "$ref": "common/repository.schema.json" },

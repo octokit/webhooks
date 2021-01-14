@@ -108,9 +108,7 @@
         "events": { "type": "array", "items": { "type": "string" } },
         "created_at": { "type": "integer" },
         "updated_at": { "type": "integer" },
-        "single_file_name": {
-          "oneOf": [{ "type": "null" }, { "type": "string" }]
-        },
+        "single_file_name": { "type": ["null", "string"] },
         "has_multiple_single_files": { "type": "boolean" },
         "single_file_paths": { "type": "array", "items": {} },
         "suspended_by": { "type": "null" },
