@@ -3,8 +3,9 @@
 import fs from "fs";
 import { ajv, validate } from "../payload-schemas";
 
-let hasErrors = false as boolean;
 const payloads = `./payload-examples/api.github.com`;
+
+const continueOnError = process.argv.includes("--continue-on-error");
 
 fs.readdirSync(payloads).forEach((event) => {
   fs.readdirSync(`${payloads}/${event}`)
@@ -20,17 +21,19 @@ fs.readdirSync(payloads).forEach((event) => {
             `❌ Payload '${event}/${filename}' does not match schema`
           );
           console.error(ajv.errors);
-          hasErrors = true;
+          process.exitCode = 1;
         } else {
           console.log(`✅ Payload '${event}/${filename}' matches schema`);
         }
       } catch (err) {
-        console.error(`Missing schema for event '${event}'`);
-        hasErrors = true;
+        if (!continueOnError) {
+          throw err;
+        }
+
+        console.error(
+          `💥 Payload '${event}/${filename}' errored: ${err.message}`
+        );
+        process.exitCode = 1;
       }
     });
 });
-
-if (hasErrors) {
-  process.exit(1);
-}
