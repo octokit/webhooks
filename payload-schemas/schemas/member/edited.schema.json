@@ -17,9 +17,11 @@
             "from": {
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     },
     "repository": { "$ref": "common/repository.schema.json" },
     "installation": { "$ref": "common/installation.schema.json" },

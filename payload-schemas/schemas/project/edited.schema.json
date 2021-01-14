@@ -13,16 +13,19 @@
           "required": ["from"],
           "properties": {
             "from": { "type": "string" }
-          }
+          },
+          "additionalProperties": false
         },
         "body": {
           "type": "object",
           "required": ["from"],
           "properties": {
             "from": { "type": "string" }
-          }
+          },
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     },
     "project": {
       "type": "object",

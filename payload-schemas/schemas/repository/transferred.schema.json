@@ -15,11 +15,12 @@
           "properties": {
             "from": {
               "type": "object",
-              "properties": { "user": { "$ref": "common/user.schema.json" } }
+              "properties": { "user": { "$ref": "common/user.schema.json" } },
+              "additionalProperties": false
             }
-          }
-        },
-        "additionalProperties": false
+          },
+          "additionalProperties": false
+        }
       },
       "additionalProperties": false
     },
