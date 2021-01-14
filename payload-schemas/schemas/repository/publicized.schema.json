@@ -128,9 +128,11 @@
         "labels_url": { "type": "string" },
         "releases_url": { "type": "string" },
         "deployments_url": { "type": "string" },
-        "created_at": { "type": ["string", "integer"] },
+        "created_at": {
+          "oneOf": [{ "type": "integer" }, { "type": "string" }]
+        },
         "updated_at": { "type": "string" },
-        "pushed_at": { "type": ["string", "integer"] },
+        "pushed_at": { "oneOf": [{ "type": "integer" }, { "type": "string" }] },
         "git_url": { "type": "string" },
         "ssh_url": { "type": "string" },
         "clone_url": { "type": "string" },
