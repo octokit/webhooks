@@ -167,7 +167,7 @@
     },
     "assignees": {
       "type": "array",
-      "items": [{ "$ref": "common/user.schema.json" }]
+      "items": { "$ref": "common/user.schema.json" }
     },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
