@@ -31,29 +31,20 @@
         "head_branch": { "type": ["string", "null"] },
         "head_sha": { "type": "string" },
         "status": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": ["requested", "in_progress", "completed", "queued"]
-            },
-            { "type": "null" }
-          ]
+          "type": ["string", "null"],
+          "enum": ["requested", "in_progress", "completed", "queued", null]
         },
         "conclusion": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "success",
-                "failure",
-                "neutral",
-                "cancelled",
-                "timed_out",
-                "action_required",
-                "stale"
-              ]
-            },
-            { "type": "null" }
+          "type": ["string", "null"],
+          "enum": [
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "timed_out",
+            "action_required",
+            "stale",
+            null
           ]
         },
         "url": { "type": "string" },

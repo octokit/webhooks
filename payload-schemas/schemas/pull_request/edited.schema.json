@@ -130,49 +130,44 @@
           }
         },
         "milestone": {
-          "oneOf": [
-            {
-              "type": "object",
-              "required": [
-                "url",
-                "html_url",
-                "labels_url",
-                "id",
-                "node_id",
-                "number",
-                "title",
-                "description",
-                "creator",
-                "open_issues",
-                "closed_issues",
-                "state",
-                "created_at",
-                "updated_at",
-                "due_on",
-                "closed_at"
-              ],
-              "properties": {
-                "url": { "type": "string" },
-                "html_url": { "type": "string" },
-                "labels_url": { "type": "string" },
-                "id": { "type": "integer" },
-                "node_id": { "type": "string" },
-                "number": { "type": "integer" },
-                "title": { "type": "string" },
-                "description": { "type": "string" },
-                "creator": { "$ref": "common/user.schema.json" },
-                "open_issues": { "type": "integer" },
-                "closed_issues": { "type": "integer" },
-                "state": { "type": "string" },
-                "created_at": { "type": "string" },
-                "updated_at": { "type": "string" },
-                "due_on": { "type": "string" },
-                "closed_at": { "type": ["string", "null"] }
-              },
-              "additionalProperties": false
-            },
-            { "type": "null" }
-          ]
+          "type": ["object", "null"],
+          "required": [
+            "url",
+            "html_url",
+            "labels_url",
+            "id",
+            "node_id",
+            "number",
+            "title",
+            "description",
+            "creator",
+            "open_issues",
+            "closed_issues",
+            "state",
+            "created_at",
+            "updated_at",
+            "due_on",
+            "closed_at"
+          ],
+          "properties": {
+            "url": { "type": "string" },
+            "html_url": { "type": "string" },
+            "labels_url": { "type": "string" },
+            "id": { "type": "integer" },
+            "node_id": { "type": "string" },
+            "number": { "type": "integer" },
+            "title": { "type": "string" },
+            "description": { "type": "string" },
+            "creator": { "$ref": "common/user.schema.json" },
+            "open_issues": { "type": "integer" },
+            "closed_issues": { "type": "integer" },
+            "state": { "type": "string" },
+            "created_at": { "type": "string" },
+            "updated_at": { "type": "string" },
+            "due_on": { "type": "string" },
+            "closed_at": { "type": ["string", "null"] }
+          },
+          "additionalProperties": false
         },
         "commits_url": { "type": "string" },
         "review_comments_url": { "type": "string" },
@@ -281,13 +276,8 @@
           ]
         },
         "active_lock_reason": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": ["resolved", "off-topic", "too heated", "spam"]
-            },
-            { "type": "null" }
-          ]
+          "type": ["string", "null"],
+          "enum": ["resolved", "off-topic", "too heated", "spam", null]
         },
         "draft": { "type": "boolean" },
         "merged": { "type": "boolean" },

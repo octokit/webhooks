@@ -78,57 +78,52 @@
       }
     },
     "head_commit": {
-      "oneOf": [
-        {
+      "type": ["object", "null"],
+      "required": [
+        "id",
+        "tree_id",
+        "distinct",
+        "message",
+        "timestamp",
+        "url",
+        "author",
+        "committer",
+        "added",
+        "removed",
+        "modified"
+      ],
+      "properties": {
+        "id": { "type": "string" },
+        "tree_id": { "type": "string" },
+        "distinct": { "type": "boolean" },
+        "message": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "url": { "type": "string" },
+        "author": {
           "type": "object",
-          "required": [
-            "id",
-            "tree_id",
-            "distinct",
-            "message",
-            "timestamp",
-            "url",
-            "author",
-            "committer",
-            "added",
-            "removed",
-            "modified"
-          ],
+          "required": ["name", "email", "username"],
           "properties": {
-            "id": { "type": "string" },
-            "tree_id": { "type": "string" },
-            "distinct": { "type": "boolean" },
-            "message": { "type": "string" },
-            "timestamp": { "type": "string" },
-            "url": { "type": "string" },
-            "author": {
-              "type": "object",
-              "required": ["name", "email", "username"],
-              "properties": {
-                "name": { "type": "string" },
-                "email": { "type": "string" },
-                "username": { "type": "string" }
-              },
-              "additionalProperties": false
-            },
-            "committer": {
-              "type": "object",
-              "required": ["name", "email", "username"],
-              "properties": {
-                "name": { "type": "string" },
-                "email": { "type": "string" },
-                "username": { "type": "string" }
-              },
-              "additionalProperties": false
-            },
-            "added": { "type": "array", "items": { "type": "string" } },
-            "removed": { "type": "array", "items": { "type": "string" } },
-            "modified": { "type": "array", "items": { "type": "string" } }
+            "name": { "type": "string" },
+            "email": { "type": "string" },
+            "username": { "type": "string" }
           },
           "additionalProperties": false
         },
-        { "type": "null" }
-      ]
+        "committer": {
+          "type": "object",
+          "required": ["name", "email", "username"],
+          "properties": {
+            "name": { "type": "string" },
+            "email": { "type": "string" },
+            "username": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "added": { "type": "array", "items": { "type": "string" } },
+        "removed": { "type": "array", "items": { "type": "string" } },
+        "modified": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
     },
     "repository": { "$ref": "common/repository.schema.json" },
     "pusher": {
