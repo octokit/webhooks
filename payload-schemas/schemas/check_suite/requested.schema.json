@@ -207,7 +207,10 @@
               },
               "additionalProperties": false
             },
-            "events": { "type": "array", "items": { "type": "object" } }
+            "events": {
+              "type": "array",
+              "items": { "type": "object", "additionalProperties": false }
+            }
           },
           "additionalProperties": false
         },

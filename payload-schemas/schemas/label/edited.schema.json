@@ -19,7 +19,24 @@
       },
       "additionalProperties": false
     },
-    "changes": { "type": "object", "properties": {} },
+    "changes": {
+      "type": "object",
+      "properties": {
+        "color": {
+          "type": "object",
+          "required": ["from"],
+          "properties": { "from": { "type": "string" } },
+          "additionalProperties": false
+        },
+        "name": {
+          "type": "object",
+          "required": ["from"],
+          "properties": { "from": { "type": "string" } },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation.schema.json" },

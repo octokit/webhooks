@@ -132,7 +132,8 @@
             "html_url": { "type": "string" },
             "diff_url": { "type": "string" },
             "patch_url": { "type": "string" }
-          }
+          },
+          "additionalProperties": false
         },
         "body": { "type": "string" }
       },
@@ -147,7 +148,8 @@
         "name": { "type": "string" },
         "color": { "type": "string" },
         "default": { "type": "boolean" }
-      }
+      },
+      "additionalProperties": false
     },
     "assignee": {
       "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": "null" }]

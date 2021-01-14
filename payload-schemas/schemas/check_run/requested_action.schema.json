@@ -382,7 +382,8 @@
     },
     "requested_action": {
       "type": ["object", "null"],
-      "properties": { "identifier": { "type": "string" } }
+      "properties": { "identifier": { "type": "string" } },
+      "additionalProperties": false
     },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
