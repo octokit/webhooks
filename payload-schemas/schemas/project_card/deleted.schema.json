@@ -4,10 +4,7 @@
   "type": "object",
   "required": ["action", "project_card", "repository", "sender"],
   "properties": {
-    "action": {
-      "type": "string",
-      "enum": ["deleted"]
-    },
+    "action": { "type": "string", "enum": ["deleted"] },
     "project_card": {
       "type": "object",
       "required": [
@@ -25,57 +22,25 @@
         "content_url"
       ],
       "properties": {
-        "url": {
-          "type": "string"
-        },
-        "project_url": {
-          "type": "string"
-        },
-        "column_url": {
-          "type": "string"
-        },
-        "column_id": {
-          "type": "integer"
-        },
-        "id": {
-          "type": "integer"
-        },
-        "node_id": {
-          "type": "string"
-        },
-        "note": {
-          "type": "string"
-        },
-        "archived": {
-          "type": "boolean"
-        },
-        "creator": {
-          "$ref": "common/user.schema.json"
-        },
-        "created_at": {
-          "type": "string"
-        },
-        "updated_at": {
-          "type": "string"
-        },
-        "content_url": {
-          "type": "string"
-        }
+        "url": { "type": "string" },
+        "project_url": { "type": "string" },
+        "column_url": { "type": "string" },
+        "column_id": { "type": "integer" },
+        "id": { "type": "integer" },
+        "node_id": { "type": "string" },
+        "note": { "type": "string" },
+        "archived": { "type": "boolean" },
+        "creator": { "$ref": "common/user.schema.json" },
+        "created_at": { "type": "string" },
+        "updated_at": { "type": "string" },
+        "content_url": { "type": "string" }
       },
       "additionalProperties": false
     },
-    "repository": {
-      "$ref": "common/repository.schema.json"
-    },
-    "sender": {
-      "$ref": "common/user.schema.json"
-    },
-    "organization": {
-      "$ref": "common/organization.schema.json"
-    },
-    "installation": {
-      "$ref": "common/installation.schema.json"
-    }
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" },
+    "installation": { "$ref": "common/installation.schema.json" }
   },
   "additionalProperties": false,
   "title": "project_card deleted event"

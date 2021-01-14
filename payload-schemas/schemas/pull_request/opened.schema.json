@@ -81,7 +81,7 @@
         },
         "assignees": {
           "type": "array",
-          "items": { "anyOf": [{ "$ref": "common/user.schema.json" }] }
+          "items": { "oneOf": [{ "$ref": "common/user.schema.json" }] }
         },
         "requested_reviewers": {
           "type": "array",
@@ -91,7 +91,7 @@
         "labels": {
           "type": "array",
           "items": {
-            "anyOf": [
+            "oneOf": [
               {
                 "type": "object",
                 "required": [
@@ -268,9 +268,7 @@
             "OWNER"
           ]
         },
-        "active_lock_reason": {
-          "type": "null"
-        },
+        "active_lock_reason": { "type": "null" },
         "draft": { "type": "boolean" },
         "merged": { "type": "boolean" },
         "mergeable": { "oneOf": [{ "type": "null" }, { "type": "boolean" }] },

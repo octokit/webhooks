@@ -27,7 +27,7 @@
         "identifiers": {
           "type": "array",
           "items": {
-            "anyOf": [
+            "oneOf": [
               {
                 "type": "object",
                 "required": ["value", "type"],
@@ -43,7 +43,7 @@
         "references": {
           "type": "array",
           "items": {
-            "anyOf": [
+            "oneOf": [
               {
                 "type": "object",
                 "required": ["url"],
@@ -59,7 +59,7 @@
         "vulnerabilities": {
           "type": "array",
           "items": {
-            "anyOf": [
+            "oneOf": [
               {
                 "type": "object",
                 "required": [

@@ -29,7 +29,7 @@
     "commits": {
       "type": "array",
       "items": {
-        "anyOf": [
+        "oneOf": [
           {
             "type": "object",
             "required": [
@@ -74,21 +74,15 @@
               },
               "added": {
                 "type": "array",
-                "items": {
-                  "anyOf": [{ "type": "string" }]
-                }
+                "items": { "oneOf": [{ "type": "string" }] }
               },
               "removed": {
                 "type": "array",
-                "items": {
-                  "anyOf": [{ "type": "string" }]
-                }
+                "items": { "oneOf": [{ "type": "string" }] }
               },
               "modified": {
                 "type": "array",
-                "items": {
-                  "anyOf": [{ "type": "string" }]
-                }
+                "items": { "oneOf": [{ "type": "string" }] }
               }
             },
             "additionalProperties": false
@@ -143,21 +137,15 @@
             },
             "added": {
               "type": "array",
-              "items": {
-                "anyOf": [{ "type": "string" }]
-              }
+              "items": { "oneOf": [{ "type": "string" }] }
             },
             "removed": {
               "type": "array",
-              "items": {
-                "anyOf": [{ "type": "string" }]
-              }
+              "items": { "oneOf": [{ "type": "string" }] }
             },
             "modified": {
               "type": "array",
-              "items": {
-                "anyOf": [{ "type": "string" }]
-              }
+              "items": { "oneOf": [{ "type": "string" }] }
             }
           },
           "additionalProperties": false

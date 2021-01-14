@@ -11,31 +11,19 @@
         "description": {
           "type": "object",
           "required": ["from"],
-          "properties": {
-            "from": {
-              "type": "string"
-            }
-          },
+          "properties": { "from": { "type": "string" } },
           "additionalProperties": false
         },
         "due_on": {
           "type": "object",
           "required": ["from"],
-          "properties": {
-            "from": {
-              "type": "string"
-            }
-          },
+          "properties": { "from": { "type": "string" } },
           "additionalProperties": false
         },
         "title": {
           "type": "object",
           "required": ["from"],
-          "properties": {
-            "from": {
-              "type": "string"
-            }
-          },
+          "properties": { "from": { "type": "string" } },
           "additionalProperties": false
         }
       },

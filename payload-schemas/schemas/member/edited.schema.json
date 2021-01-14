@@ -13,11 +13,7 @@
         "old_permission": {
           "type": "object",
           "required": ["from"],
-          "properties": {
-            "from": {
-              "type": "string"
-            }
-          },
+          "properties": { "from": { "type": "string" } },
           "additionalProperties": false
         }
       },

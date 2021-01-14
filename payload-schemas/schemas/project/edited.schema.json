@@ -11,17 +11,13 @@
         "name": {
           "type": "object",
           "required": ["from"],
-          "properties": {
-            "from": { "type": "string" }
-          },
+          "properties": { "from": { "type": "string" } },
           "additionalProperties": false
         },
         "body": {
           "type": "object",
           "required": ["from"],
-          "properties": {
-            "from": { "type": "string" }
-          },
+          "properties": { "from": { "type": "string" } },
           "additionalProperties": false
         }
       },
