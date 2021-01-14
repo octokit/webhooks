@@ -86,7 +86,7 @@
         "node_id": { "type": "string" },
         "name": { "type": "string" },
         "full_name": { "type": "string" },
-        "private": { "type": "boolean" },
+        "private": { "type": "boolean", "enum": [true] },
         "owner": { "$ref": "common/user.schema.json" },
         "html_url": { "type": "string" },
         "description": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
@@ -158,13 +158,15 @@
             { "type": "string" },
             {
               "type": "object",
+              "required": ["key", "name", "spdx_id", "url", "node_id"],
               "properties": {
                 "key": { "type": "string" },
                 "name": { "type": "string" },
                 "spdx_id": { "type": "string" },
                 "url": { "type": "string" },
                 "node_id": { "type": "string" }
-              }
+              },
+              "additionalProperties": false
             }
           ]
         },
@@ -189,8 +191,7 @@
             "triage": { "type": "boolean" }
           },
           "additionalProperties": false
-        },
-        "public": { "type": "boolean", "enum": [false] }
+        }
       },
       "additionalProperties": false
     },
