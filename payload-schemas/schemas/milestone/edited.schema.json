@@ -65,7 +65,7 @@
         "created_at": { "type": "string" },
         "updated_at": { "type": "string" },
         "due_on": { "type": "string" },
-        "closed_at": { "type": ["null", "string"] }
+        "closed_at": { "type": ["string", "null"] }
       },
       "additionalProperties": false
     },

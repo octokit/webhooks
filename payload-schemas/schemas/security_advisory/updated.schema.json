@@ -47,7 +47,7 @@
         },
         "published_at": { "type": "string" },
         "updated_at": { "type": "string" },
-        "withdrawn_at": { "type": ["null", "string"] },
+        "withdrawn_at": { "type": ["string", "null"] },
         "vulnerabilities": {
           "type": "array",
           "items": {
@@ -78,7 +78,7 @@
                     "properties": { "identifier": { "type": "string" } },
                     "additionalProperties": false
                   },
-                  { "type": ["null"] }
+                  { "type": "null" }
                 ]
               }
             },

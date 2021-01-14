@@ -48,8 +48,8 @@
         },
         "state": { "type": "string" },
         "dismissed_by": { "type": "null" },
-        "dismissed_at": { "type": ["null", "string"] },
-        "dismissed_reason": { "type": ["null", "string"] },
+        "dismissed_at": { "type": ["string", "null"] },
+        "dismissed_reason": { "type": ["string", "null"] },
         "rule": {
           "type": "object",
           "required": ["id", "severity", "description"],

@@ -49,11 +49,11 @@
                 "stale"
               ]
             },
-            { "type": ["null"] }
+            { "type": "null" }
           ]
         },
         "started_at": { "type": "string" },
-        "completed_at": { "type": ["null", "string"] },
+        "completed_at": { "type": ["string", "null"] },
         "output": {
           "type": "object",
           "required": [
@@ -63,9 +63,9 @@
             "annotations_url"
           ],
           "properties": {
-            "title": { "type": ["null", "string"] },
-            "summary": { "type": ["null", "string"] },
-            "text": { "type": ["null", "string"] },
+            "title": { "type": ["string", "null"] },
+            "summary": { "type": ["string", "null"] },
+            "text": { "type": ["string", "null"] },
             "annotations_count": { "type": "integer" },
             "annotations_url": { "type": "string" }
           },
@@ -91,10 +91,10 @@
           "properties": {
             "id": { "type": "integer" },
             "node_id": { "type": "string" },
-            "head_branch": { "type": ["null", "string"] },
+            "head_branch": { "type": ["string", "null"] },
             "head_sha": { "type": "string" },
             "status": { "type": "string" },
-            "conclusion": { "type": ["null", "string"] },
+            "conclusion": { "type": ["string", "null"] },
             "url": { "type": "string" },
             "before": { "type": "string" },
             "after": { "type": "string" },
@@ -168,7 +168,7 @@
                 "node_id": { "type": "string" },
                 "owner": { "$ref": "common/user.schema.json" },
                 "name": { "type": "string" },
-                "description": { "type": ["null", "string"] },
+                "description": { "type": ["string", "null"] },
                 "external_url": { "type": "string" },
                 "html_url": { "type": "string" },
                 "created_at": { "type": "string" },
@@ -263,7 +263,7 @@
             "node_id": { "type": "string" },
             "owner": { "$ref": "common/user.schema.json" },
             "name": { "type": "string" },
-            "description": { "type": ["null", "string"] },
+            "description": { "type": ["string", "null"] },
             "external_url": { "type": "string" },
             "html_url": { "type": "string" },
             "created_at": { "type": "string" },
@@ -391,7 +391,7 @@
           "properties": { "identifier": { "type": "string" } },
           "additionalProperties": false
         },
-        { "type": ["null"] }
+        { "type": "null" }
       ]
     },
     "repository": { "$ref": "common/repository.schema.json" },

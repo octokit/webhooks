@@ -60,7 +60,7 @@
         "state": { "type": "string", "enum": ["open", "closed"] },
         "locked": { "type": "boolean", "enum": [false] },
         "assignee": {
-          "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": ["null"] }]
+          "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": "null" }]
         },
         "assignees": {
           "type": "array",
@@ -108,13 +108,13 @@
               },
               "additionalProperties": false
             },
-            { "type": ["null"] }
+            { "type": "null" }
           ]
         },
         "comments": { "type": "integer" },
         "created_at": { "type": "string" },
         "updated_at": { "type": "string" },
-        "closed_at": { "type": ["null", "string"] },
+        "closed_at": { "type": ["string", "null"] },
         "author_association": {
           "type": "string",
           "enum": [
@@ -155,7 +155,7 @@
       }
     },
     "assignee": {
-      "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": ["null"] }]
+      "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": "null" }]
     },
     "assignees": {
       "type": "array",
