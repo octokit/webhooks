@@ -341,5 +341,5 @@
     "sender": { "$ref": "common/user.schema.json" }
   },
   "additionalProperties": false,
-  "title": "pull_request_review_comment created event"
+  "title": "pull_request_review_comment deleted event"
 }
