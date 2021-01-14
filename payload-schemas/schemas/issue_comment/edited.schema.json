@@ -140,13 +140,8 @@
           ]
         },
         "active_lock_reason": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": ["resolved", "off-topic", "too heated", "spam"]
-            },
-            { "type": "null" }
-          ]
+          "type": ["string", "null"],
+          "enum": ["resolved", "off-topic", "too heated", "spam", null]
         },
         "body": { "type": "string" }
       },

@@ -71,15 +71,10 @@
               "severity": { "type": "string" },
               "vulnerable_version_range": { "type": "string" },
               "first_patched_version": {
-                "oneOf": [
-                  {
-                    "type": "object",
-                    "required": ["identifier"],
-                    "properties": { "identifier": { "type": "string" } },
-                    "additionalProperties": false
-                  },
-                  { "type": "null" }
-                ]
+                "type": ["object", "null"],
+                "required": ["identifier"],
+                "properties": { "identifier": { "type": "string" } },
+                "additionalProperties": false
               }
             },
             "additionalProperties": false

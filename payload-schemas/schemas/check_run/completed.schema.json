@@ -36,20 +36,16 @@
           "enum": ["queued", "in_progress", "completed"]
         },
         "conclusion": {
-          "oneOf": [
-            {
-              "type": "string",
-              "enum": [
-                "success",
-                "failure",
-                "neutral",
-                "cancelled",
-                "timed_out",
-                "action_required",
-                "stale"
-              ]
-            },
-            { "type": "null" }
+          "type": ["string", "null"],
+          "enum": [
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "timed_out",
+            "action_required",
+            "stale",
+            null
           ]
         },
         "started_at": { "type": "string" },
@@ -385,14 +381,9 @@
       "additionalProperties": false
     },
     "requested_action": {
-      "oneOf": [
-        {
-          "type": "object",
-          "properties": { "identifier": { "type": "string" } },
-          "additionalProperties": false
-        },
-        { "type": "null" }
-      ]
+      "type": ["object", "null"],
+      "properties": { "identifier": { "type": "string" } },
+      "additionalProperties": false
     },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },

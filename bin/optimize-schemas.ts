@@ -2,7 +2,11 @@
 
 import { strict as assert } from "assert";
 import fs from "fs";
-import { JSONSchema7, JSONSchema7TypeName } from "json-schema";
+import {
+  JSONSchema7,
+  JSONSchema7Definition,
+  JSONSchema7TypeName,
+} from "json-schema";
 import { format } from "prettier";
 
 const JSONSchema7TypeNameOrder = [
@@ -17,6 +21,9 @@ const JSONSchema7TypeNameOrder = [
 
 const payloads = "payload-schemas/schemas";
 
+const ensureArray = <T>(arr: T | T[]): T[] =>
+  Array.isArray(arr) ? arr : [arr];
+
 const isJsonSchemaObject = (object: unknown): object is JSONSchema7 =>
   typeof object === "object" && object !== null && !Array.isArray(object);
 
@@ -28,6 +35,36 @@ const standardizeTypeProperty = (
   }
 
   return JSONSchema7TypeNameOrder.filter((type) => types.includes(type));
+};
+
+const isNullType = (
+  object: JSONSchema7Definition
+): object is { type: "null" | ["null"] } & JSONSchema7 => {
+  if (typeof object === "boolean") {
+    return false;
+  }
+
+  if (Array.isArray(object.type)) {
+    return object.type.length === 1 && object.type[0] === "null";
+  }
+
+  return object.type === "null";
+};
+
+const addNullToObject = (object: JSONSchema7) => {
+  assert.ok(object.type, `object schema is missing type`);
+
+  object.type = ensureArray(object.type).concat("null");
+
+  if (object.const) {
+    object.enum = [object.const];
+
+    delete object.const;
+  }
+
+  if (object.enum) {
+    object.enum.push(null);
+  }
 };
 
 fs.readdirSync(payloads).forEach((event) => {
@@ -56,6 +93,24 @@ fs.readdirSync(payloads).forEach((event) => {
           }
 
           if (value.oneOf) {
+            // { "type": "null" } & { ... } can be combined as "type" supports an array
+            if (value.oneOf.some(isNullType)) {
+              const [notNullType] = value.oneOf.filter(
+                (object) => !isNullType(object)
+              );
+
+              assert.ok(
+                typeof notNullType !== "boolean",
+                "unexpected boolean in oneOf"
+              );
+
+              if (!notNullType.$ref) {
+                addNullToObject(notNullType);
+
+                return notNullType;
+              }
+            }
+
             // "oneOf" is redundant if it's only got one schema
             if (value.oneOf.length === 1) {
               return value.oneOf[0];
