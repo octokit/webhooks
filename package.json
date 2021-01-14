@@ -21,7 +21,7 @@
     "octokit-schema": "ts-node -T bin/octokit-schema.ts",
     "octokit-webhooks": "ts-node -T bin/octokit-webhooks.ts",
     "pretest": "npm run -s lint",
-    "test": "npm run build && npm run validate && ts-node -T test.ts",
+    "test": "npm run build && npm run validate -- --continue-on-error && ts-node -T test.ts",
     "typecheck": "tsc -p . --noEmit",
     "validate": "ts-node -T bin/validate-payload-examples.ts"
   },

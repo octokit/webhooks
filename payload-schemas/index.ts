@@ -2,7 +2,11 @@ import Ajv from "ajv";
 import { readdirSync } from "fs";
 import { resolve } from "path";
 
-export const ajv = new Ajv();
+export const ajv = new Ajv({
+  strict: true,
+  strictTypes: true,
+  strictTuples: true,
+});
 
 const schemaDir = resolve(__dirname, "schemas");
 
