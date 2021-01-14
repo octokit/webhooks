@@ -87,7 +87,7 @@
         "name": { "type": "string" },
         "full_name": { "type": "string" },
         "private": { "type": "boolean" },
-        "owner": {"$ref": "common/user.schema.json"},
+        "owner": { "$ref": "common/user.schema.json" },
         "html_url": { "type": "string" },
         "description": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
         "fork": { "type": "boolean" },
