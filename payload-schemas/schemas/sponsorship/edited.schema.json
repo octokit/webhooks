@@ -52,7 +52,8 @@
           "required": ["from"],
           "properties": {
             "from": { "type": "string" }
-          }
+          },
+          "additionalProperties": false
         }
       },
       "additionalProperties": false

@@ -15,7 +15,8 @@
             "from": {
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "due_on": {
           "type": "object",
@@ -24,7 +25,8 @@
             "from": {
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "title": {
           "type": "object",
@@ -33,9 +35,11 @@
             "from": {
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     },
     "milestone": {
       "type": "object",

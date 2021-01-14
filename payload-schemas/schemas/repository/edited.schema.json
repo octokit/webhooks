@@ -11,19 +11,21 @@
         "description": {
           "type": "object",
           "required": ["from"],
-          "properties": { "from": { "type": "string" } }
+          "properties": { "from": { "type": "string" } },
+          "additionalProperties": false
         },
         "default_branch": {
           "type": "object",
           "required": ["from"],
-          "properties": { "from": { "type": "string" } }
+          "properties": { "from": { "type": "string" } },
+          "additionalProperties": false
         },
         "homepage": {
           "type": "object",
           "required": ["from"],
-          "properties": { "from": { "type": "string" } }
-        },
-        "additionalProperties": false
+          "properties": { "from": { "type": "string" } },
+          "additionalProperties": false
+        }
       },
       "additionalProperties": false
     },

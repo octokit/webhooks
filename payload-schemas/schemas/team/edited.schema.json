@@ -16,7 +16,8 @@
             "from": {
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "name": {
           "type": "object",
@@ -25,7 +26,8 @@
             "from": {
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "privacy": {
           "type": "object",
@@ -34,7 +36,8 @@
             "from": {
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "repository": {
           "type": "object",
@@ -50,11 +53,14 @@
                     "admin": { "type": "boolean" },
                     "pull": { "type": "boolean" },
                     "push": { "type": "boolean" }
-                  }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             }
-          }
+          },
+          "additionalProperties": false
         }
       },
       "additionalProperties": false
