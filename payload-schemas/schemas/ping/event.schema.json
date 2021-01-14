@@ -25,10 +25,7 @@
         "id": { "type": "integer" },
         "name": { "type": "string" },
         "active": { "type": "boolean" },
-        "events": {
-          "type": "array",
-          "items": { "oneOf": [{ "type": "string" }] }
-        },
+        "events": { "type": "array", "items": { "type": "string" } },
         "config": {
           "type": "object",
           "required": ["content_type", "url", "insecure_ssl"],

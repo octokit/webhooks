@@ -29,65 +29,52 @@
     "commits": {
       "type": "array",
       "items": {
-        "oneOf": [
-          {
+        "type": "object",
+        "required": [
+          "id",
+          "tree_id",
+          "distinct",
+          "message",
+          "timestamp",
+          "url",
+          "author",
+          "committer",
+          "added",
+          "removed",
+          "modified"
+        ],
+        "properties": {
+          "id": { "type": "string" },
+          "tree_id": { "type": "string" },
+          "distinct": { "type": "boolean" },
+          "message": { "type": "string" },
+          "timestamp": { "type": "string" },
+          "url": { "type": "string" },
+          "author": {
             "type": "object",
-            "required": [
-              "id",
-              "tree_id",
-              "distinct",
-              "message",
-              "timestamp",
-              "url",
-              "author",
-              "committer",
-              "added",
-              "removed",
-              "modified"
-            ],
+            "required": ["name", "email", "username"],
             "properties": {
-              "id": { "type": "string" },
-              "tree_id": { "type": "string" },
-              "distinct": { "type": "boolean" },
-              "message": { "type": "string" },
-              "timestamp": { "type": "string" },
-              "url": { "type": "string" },
-              "author": {
-                "type": "object",
-                "required": ["name", "email", "username"],
-                "properties": {
-                  "name": { "type": "string" },
-                  "email": { "type": "string" },
-                  "username": { "type": "string" }
-                },
-                "additionalProperties": false
-              },
-              "committer": {
-                "type": "object",
-                "required": ["name", "email", "username"],
-                "properties": {
-                  "name": { "type": "string" },
-                  "email": { "type": "string" },
-                  "username": { "type": "string" }
-                },
-                "additionalProperties": false
-              },
-              "added": {
-                "type": "array",
-                "items": { "oneOf": [{ "type": "string" }] }
-              },
-              "removed": {
-                "type": "array",
-                "items": { "oneOf": [{ "type": "string" }] }
-              },
-              "modified": {
-                "type": "array",
-                "items": { "oneOf": [{ "type": "string" }] }
-              }
+              "name": { "type": "string" },
+              "email": { "type": "string" },
+              "username": { "type": "string" }
             },
             "additionalProperties": false
-          }
-        ]
+          },
+          "committer": {
+            "type": "object",
+            "required": ["name", "email", "username"],
+            "properties": {
+              "name": { "type": "string" },
+              "email": { "type": "string" },
+              "username": { "type": "string" }
+            },
+            "additionalProperties": false
+          },
+          "added": { "type": "array", "items": { "type": "string" } },
+          "removed": { "type": "array", "items": { "type": "string" } },
+          "modified": { "type": "array", "items": { "type": "string" } }
+        },
+        "additionalProperties": false
       }
     },
     "head_commit": {
@@ -135,18 +122,9 @@
               },
               "additionalProperties": false
             },
-            "added": {
-              "type": "array",
-              "items": { "oneOf": [{ "type": "string" }] }
-            },
-            "removed": {
-              "type": "array",
-              "items": { "oneOf": [{ "type": "string" }] }
-            },
-            "modified": {
-              "type": "array",
-              "items": { "oneOf": [{ "type": "string" }] }
-            }
+            "added": { "type": "array", "items": { "type": "string" } },
+            "removed": { "type": "array", "items": { "type": "string" } },
+            "modified": { "type": "array", "items": { "type": "string" } }
           },
           "additionalProperties": false
         }

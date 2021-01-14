@@ -102,10 +102,7 @@
             "unit_name": {
               "oneOf": [{ "type": "null" }, { "type": "string" }]
             },
-            "bullets": {
-              "type": "array",
-              "items": { "oneOf": [{ "type": "string" }] }
-            }
+            "bullets": { "type": "array", "items": { "type": "string" } }
           },
           "additionalProperties": false
         }
@@ -163,10 +160,7 @@
             "unit_name": {
               "oneOf": [{ "type": "null" }, { "type": "string" }]
             },
-            "bullets": {
-              "type": "array",
-              "items": { "oneOf": [{ "type": "string" }] }
-            }
+            "bullets": { "type": "array", "items": { "type": "string" } }
           },
           "additionalProperties": false
         }

@@ -121,20 +121,16 @@
     "repositories": {
       "type": "array",
       "items": {
-        "oneOf": [
-          {
-            "type": "object",
-            "required": ["id", "node_id", "name", "full_name", "private"],
-            "properties": {
-              "id": { "type": "integer" },
-              "node_id": { "type": "string" },
-              "name": { "type": "string" },
-              "full_name": { "type": "string" },
-              "private": { "type": "boolean" }
-            },
-            "additionalProperties": false
-          }
-        ]
+        "type": "object",
+        "required": ["id", "node_id", "name", "full_name", "private"],
+        "properties": {
+          "id": { "type": "integer" },
+          "node_id": { "type": "string" },
+          "name": { "type": "string" },
+          "full_name": { "type": "string" },
+          "private": { "type": "boolean" }
+        },
+        "additionalProperties": false
       }
     },
     "requester": { "type": "null" },

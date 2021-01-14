@@ -174,28 +174,17 @@
         "labels": {
           "type": "array",
           "items": {
-            "oneOf": [
-              {
-                "type": "object",
-                "required": [
-                  "id",
-                  "node_id",
-                  "url",
-                  "name",
-                  "color",
-                  "default"
-                ],
-                "properties": {
-                  "id": { "type": "integer" },
-                  "node_id": { "type": "string" },
-                  "url": { "type": "string" },
-                  "name": { "type": "string" },
-                  "color": { "type": "string" },
-                  "default": { "type": "boolean" }
-                },
-                "additionalProperties": false
-              }
-            ]
+            "type": "object",
+            "required": ["id", "node_id", "url", "name", "color", "default"],
+            "properties": {
+              "id": { "type": "integer" },
+              "node_id": { "type": "string" },
+              "url": { "type": "string" },
+              "name": { "type": "string" },
+              "color": { "type": "string" },
+              "default": { "type": "boolean" }
+            },
+            "additionalProperties": false
           }
         },
         "milestone": {

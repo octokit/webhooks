@@ -35,19 +35,15 @@
         "instances": {
           "type": "array",
           "items": {
-            "oneOf": [
-              {
-                "type": "object",
-                "required": ["ref", "analysis_key", "environment", "state"],
-                "properties": {
-                  "ref": { "type": "string" },
-                  "analysis_key": { "type": "string" },
-                  "environment": { "type": "string" },
-                  "state": { "type": "string" }
-                },
-                "additionalProperties": false
-              }
-            ]
+            "type": "object",
+            "required": ["ref", "analysis_key", "environment", "state"],
+            "properties": {
+              "ref": { "type": "string" },
+              "analysis_key": { "type": "string" },
+              "environment": { "type": "string" },
+              "state": { "type": "string" }
+            },
+            "additionalProperties": false
           }
         },
         "state": { "type": "string" },

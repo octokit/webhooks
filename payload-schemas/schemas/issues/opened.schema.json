@@ -44,28 +44,17 @@
         "labels": {
           "type": "array",
           "items": {
-            "oneOf": [
-              {
-                "type": "object",
-                "required": [
-                  "id",
-                  "node_id",
-                  "url",
-                  "name",
-                  "color",
-                  "default"
-                ],
-                "properties": {
-                  "id": { "type": "integer" },
-                  "node_id": { "type": "string" },
-                  "url": { "type": "string" },
-                  "name": { "type": "string" },
-                  "color": { "type": "string" },
-                  "default": { "type": "boolean" }
-                },
-                "additionalProperties": false
-              }
-            ]
+            "type": "object",
+            "required": ["id", "node_id", "url", "name", "color", "default"],
+            "properties": {
+              "id": { "type": "integer" },
+              "node_id": { "type": "string" },
+              "url": { "type": "string" },
+              "name": { "type": "string" },
+              "color": { "type": "string" },
+              "default": { "type": "boolean" }
+            },
+            "additionalProperties": false
           }
         },
         "state": { "type": "string", "enum": ["open"] },
@@ -75,7 +64,7 @@
         },
         "assignees": {
           "type": "array",
-          "items": { "oneOf": [{ "$ref": "common/user.schema.json" }] }
+          "items": { "$ref": "common/user.schema.json" }
         },
         "milestone": {
           "oneOf": [
