@@ -21,10 +21,10 @@
     "id": { "type": "integer" },
     "sha": { "type": "string" },
     "name": { "type": "string" },
-    "avatar_url": { "type": ["null", "string"] },
-    "target_url": { "type": ["null", "string"] },
+    "avatar_url": { "type": ["string", "null"] },
+    "target_url": { "type": ["string", "null"] },
     "context": { "type": "string" },
-    "description": { "type": ["null", "string"] },
+    "description": { "type": ["string", "null"] },
     "state": {
       "type": "string",
       "enum": ["pending", "success", "failure", "error"]

@@ -127,7 +127,7 @@
           },
           "additionalProperties": false
         },
-        { "type": ["null"] }
+        { "type": "null" }
       ]
     },
     "repository": { "$ref": "common/repository.schema.json" },

@@ -36,7 +36,7 @@
               "type": "string",
               "enum": ["requested", "in_progress", "completed", "queued"]
             },
-            { "type": ["null"] }
+            { "type": "null" }
           ]
         },
         "conclusion": {
@@ -53,7 +53,7 @@
                 "stale"
               ]
             },
-            { "type": ["null"] }
+            { "type": "null" }
           ]
         },
         "url": { "type": "string" },

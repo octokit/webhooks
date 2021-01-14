@@ -60,7 +60,7 @@
         "state": { "type": "string", "enum": ["closed"] },
         "locked": { "type": "boolean" },
         "assignee": {
-          "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": ["null"] }]
+          "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": "null" }]
         },
         "assignees": {
           "type": "array",
@@ -108,7 +108,7 @@
               },
               "additionalProperties": false
             },
-            { "type": ["null"] }
+            { "type": "null" }
           ]
         },
         "comments": { "type": "integer" },
@@ -134,7 +134,7 @@
               "type": "string",
               "enum": ["resolved", "off-topic", "too heated", "spam"]
             },
-            { "type": ["null"] }
+            { "type": "null" }
           ]
         },
         "performed_via_github_app": { "type": "null" },
@@ -163,7 +163,7 @@
       }
     },
     "assignee": {
-      "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": ["null"] }]
+      "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": "null" }]
     },
     "assignees": {
       "type": "array",

@@ -73,11 +73,11 @@
         "body": { "type": "string" },
         "created_at": { "type": "string" },
         "updated_at": { "type": "string" },
-        "closed_at": { "type": ["null", "string"] },
-        "merged_at": { "type": ["null", "string"] },
-        "merge_commit_sha": { "type": ["null", "string"] },
+        "closed_at": { "type": ["string", "null"] },
+        "merged_at": { "type": ["string", "null"] },
+        "merge_commit_sha": { "type": ["string", "null"] },
         "assignee": {
-          "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": ["null"] }]
+          "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": "null" }]
         },
         "assignees": {
           "type": "array",
@@ -142,11 +142,11 @@
                 "created_at": { "type": "string" },
                 "updated_at": { "type": "string" },
                 "due_on": { "type": "string" },
-                "closed_at": { "type": ["null", "string"] }
+                "closed_at": { "type": ["string", "null"] }
               },
               "additionalProperties": false
             },
-            { "type": ["null"] }
+            { "type": "null" }
           ]
         },
         "commits_url": { "type": "string" },
@@ -261,8 +261,8 @@
         },
         "draft": { "type": "boolean" },
         "merged": { "type": "boolean" },
-        "mergeable": { "type": ["null", "boolean"] },
-        "rebaseable": { "type": ["null", "boolean"] },
+        "mergeable": { "type": ["boolean", "null"] },
+        "rebaseable": { "type": ["boolean", "null"] },
         "mergeable_state": { "type": "string" },
         "merged_by": { "type": "null" },
         "comments": { "type": "integer" },

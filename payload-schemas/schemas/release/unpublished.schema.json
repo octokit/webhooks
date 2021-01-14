@@ -80,7 +80,7 @@
         },
         "tarball_url": { "type": "string" },
         "zipball_url": { "type": "string" },
-        "body": { "type": ["null", "string"] }
+        "body": { "type": ["string", "null"] }
       },
       "additionalProperties": false
     },

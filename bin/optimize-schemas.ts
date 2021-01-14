@@ -9,6 +9,16 @@ import {
 } from "json-schema";
 import { format } from "prettier";
 
+const JSONSchema7TypeNameOrder = [
+  "string",
+  "number",
+  "integer",
+  "boolean",
+  "object",
+  "array",
+  "null",
+] as const;
+
 const payloads = "payload-schemas/schemas";
 
 const isJustType = (
@@ -27,6 +37,16 @@ const ensureArray = <T>(arr: T | T[]): T[] =>
 const isJsonSchemaObject = (object: unknown): object is JSONSchema7 =>
   typeof object === "object" && object !== null && !Array.isArray(object);
 
+const standardizeTypeProperty = (
+  types: JSONSchema7TypeName[]
+): JSONSchema7TypeName | JSONSchema7TypeName[] => {
+  if (types.length === 1) {
+    return types[0];
+  }
+
+  return JSONSchema7TypeNameOrder.filter((type) => types.includes(type));
+};
+
 const mergeSimpleTypes = (
   objects: JSONSchema7Definition[]
 ): JSONSchema7Definition[] => {
@@ -42,7 +62,7 @@ const mergeSimpleTypes = (
 
       return true;
     })
-    .concat({ type: Array.from(simpleTypes) });
+    .concat({ type: standardizeTypeProperty(Array.from(simpleTypes)) });
 };
 
 fs.readdirSync(payloads).forEach((event) => {
@@ -56,6 +76,10 @@ fs.readdirSync(payloads).forEach((event) => {
         JSON.stringify(contents, (key, value: unknown | JSONSchema7) => {
           if (!isJsonSchemaObject(value)) {
             return value;
+          }
+
+          if (value.type && Array.isArray(value.type)) {
+            value.type = standardizeTypeProperty(value.type);
           }
 
           if (value.anyOf) {
