@@ -25,7 +25,7 @@
         "id": { "type": "integer" },
         "node_id": { "type": "string" },
         "slug": { "type": "string" },
-        "description": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
+        "description": { "type": ["null", "string"] },
         "privacy": { "type": "string" },
         "url": { "type": "string" },
         "html_url": { "type": "string" },

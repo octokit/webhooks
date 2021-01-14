@@ -79,7 +79,6 @@
     },
     "head_commit": {
       "oneOf": [
-        { "type": "null" },
         {
           "type": "object",
           "required": [
@@ -127,7 +126,8 @@
             "modified": { "type": "array", "items": { "type": "string" } }
           },
           "additionalProperties": false
-        }
+        },
+        { "type": ["null"] }
       ]
     },
     "repository": { "$ref": "common/repository.schema.json" },

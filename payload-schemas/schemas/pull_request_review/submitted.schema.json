@@ -24,7 +24,7 @@
         "id": { "type": "integer" },
         "node_id": { "type": "string" },
         "user": { "$ref": "common/user.schema.json" },
-        "body": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
+        "body": { "type": ["null", "string"] },
         "commit_id": { "type": "string" },
         "submitted_at": { "type": "string" },
         "state": { "type": "string" },
@@ -118,13 +118,11 @@
         "body": { "type": "string" },
         "created_at": { "type": "string" },
         "updated_at": { "type": "string" },
-        "closed_at": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
-        "merged_at": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
-        "merge_commit_sha": {
-          "oneOf": [{ "type": "null" }, { "type": "string" }]
-        },
+        "closed_at": { "type": ["null", "string"] },
+        "merged_at": { "type": ["null", "string"] },
+        "merge_commit_sha": { "type": ["null", "string"] },
         "assignee": {
-          "oneOf": [{ "type": "null" }, { "$ref": "common/user.schema.json" }]
+          "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": ["null"] }]
         },
         "assignees": {
           "type": "array",
@@ -150,7 +148,6 @@
         },
         "milestone": {
           "oneOf": [
-            { "type": "null" },
             {
               "type": "object",
               "required": [
@@ -187,12 +184,11 @@
                 "created_at": { "type": "string" },
                 "updated_at": { "type": "string" },
                 "due_on": { "type": "string" },
-                "closed_at": {
-                  "oneOf": [{ "type": "null" }, { "type": "string" }]
-                }
+                "closed_at": { "type": ["null", "string"] }
               },
               "additionalProperties": false
-            }
+            },
+            { "type": ["null"] }
           ]
         },
         "commits_url": { "type": "string" },

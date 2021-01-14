@@ -76,7 +76,7 @@
         "state": { "type": "string", "enum": ["open", "closed"] },
         "locked": { "type": "boolean" },
         "assignee": {
-          "oneOf": [{ "type": "null" }, { "$ref": "common/user.schema.json" }]
+          "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": ["null"] }]
         },
         "assignees": {
           "type": "array",
@@ -141,11 +141,11 @@
         },
         "active_lock_reason": {
           "oneOf": [
-            { "type": "null" },
             {
               "type": "string",
               "enum": ["resolved", "off-topic", "too heated", "spam"]
-            }
+            },
+            { "type": ["null"] }
           ]
         },
         "body": { "type": "string" }

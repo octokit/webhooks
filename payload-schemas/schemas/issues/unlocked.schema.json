@@ -60,7 +60,7 @@
         "state": { "type": "string", "enum": ["open", "closed"] },
         "locked": { "type": "boolean", "enum": [false] },
         "assignee": {
-          "oneOf": [{ "type": "null" }, { "$ref": "common/user.schema.json" }]
+          "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": ["null"] }]
         },
         "assignees": {
           "type": "array",
@@ -68,7 +68,6 @@
         },
         "milestone": {
           "oneOf": [
-            { "type": "null" },
             {
               "type": "object",
               "required": [
@@ -108,13 +107,14 @@
                 "closed_at": { "type": "string" }
               },
               "additionalProperties": false
-            }
+            },
+            { "type": ["null"] }
           ]
         },
         "comments": { "type": "integer" },
         "created_at": { "type": "string" },
         "updated_at": { "type": "string" },
-        "closed_at": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
+        "closed_at": { "type": ["null", "string"] },
         "author_association": {
           "type": "string",
           "enum": [
@@ -155,7 +155,7 @@
       }
     },
     "assignee": {
-      "oneOf": [{ "type": "null" }, { "$ref": "common/user.schema.json" }]
+      "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": ["null"] }]
     },
     "assignees": {
       "type": "array",

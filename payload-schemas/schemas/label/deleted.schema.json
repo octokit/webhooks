@@ -15,7 +15,7 @@
         "name": { "type": "string" },
         "color": { "type": "string" },
         "default": { "type": "boolean" },
-        "description": { "oneOf": [{ "type": "string" }, { "type": "null" }] }
+        "description": { "type": ["string", "null"] }
       },
       "additionalProperties": false
     },

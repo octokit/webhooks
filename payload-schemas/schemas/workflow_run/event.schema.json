@@ -75,7 +75,7 @@
         "artifacts_url": { "type": "string" },
         "cancel_url": { "type": "string" },
         "check_suite_url": { "type": "string" },
-        "conclusion": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
+        "conclusion": { "type": ["null", "string"] },
         "created_at": { "type": "string" },
         "event": { "type": "string" },
         "head_branch": { "type": "string" },

@@ -28,20 +28,19 @@
       "properties": {
         "id": { "type": "integer" },
         "node_id": { "type": "string" },
-        "head_branch": { "oneOf": [{ "type": "string" }, { "type": "null" }] },
+        "head_branch": { "type": ["string", "null"] },
         "head_sha": { "type": "string" },
         "status": {
           "oneOf": [
-            { "type": "null" },
             {
               "type": "string",
               "enum": ["requested", "in_progress", "completed", "queued"]
-            }
+            },
+            { "type": ["null"] }
           ]
         },
         "conclusion": {
           "oneOf": [
-            { "type": "null" },
             {
               "type": "string",
               "enum": [
@@ -53,7 +52,8 @@
                 "action_required",
                 "stale"
               ]
-            }
+            },
+            { "type": ["null"] }
           ]
         },
         "url": { "type": "string" },

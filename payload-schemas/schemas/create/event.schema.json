@@ -15,7 +15,7 @@
     "ref": { "type": "string" },
     "ref_type": { "type": "string", "enum": ["tag", "branch"] },
     "master_branch": { "type": "string" },
-    "description": { "oneOf": [{ "type": "string" }, { "type": "null" }] },
+    "description": { "type": ["string", "null"] },
     "pusher_type": { "type": "string" },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },

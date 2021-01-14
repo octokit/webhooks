@@ -99,9 +99,7 @@
             "yearly_price_in_cents": { "type": "integer" },
             "price_model": { "type": "string" },
             "has_free_trial": { "type": "boolean" },
-            "unit_name": {
-              "oneOf": [{ "type": "null" }, { "type": "string" }]
-            },
+            "unit_name": { "type": ["null", "string"] },
             "bullets": { "type": "array", "items": { "type": "string" } }
           },
           "additionalProperties": false
@@ -157,9 +155,7 @@
             "yearly_price_in_cents": { "type": "integer" },
             "price_model": { "type": "string" },
             "has_free_trial": { "type": "boolean" },
-            "unit_name": {
-              "oneOf": [{ "type": "null" }, { "type": "string" }]
-            },
+            "unit_name": { "type": ["null", "string"] },
             "bullets": { "type": "array", "items": { "type": "string" } }
           },
           "additionalProperties": false
