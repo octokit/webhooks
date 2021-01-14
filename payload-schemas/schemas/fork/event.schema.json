@@ -9,7 +9,9 @@
         { "$ref": "common/repository.schema.json" },
         {
           "type": "object",
-          "properties": { "fork": { "type": "boolean", "enum": [true] } }
+          "required": ["fork"],
+          "properties": { "fork": { "type": "boolean", "enum": [true] } },
+          "additionalProperties": false
         }
       ]
     },

@@ -10,7 +10,9 @@
         { "$ref": "common/repository.schema.json" },
         {
           "type": "object",
-          "properties": { "archived": { "type": "boolean", "enum": [true] } }
+          "required": ["archived"],
+          "properties": { "archived": { "type": "boolean", "enum": [true] } },
+          "additionalProperties": false
         }
       ]
     },

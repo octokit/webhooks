@@ -9,7 +9,9 @@
         { "$ref": "common/repository.schema.json" },
         {
           "type": "object",
-          "properties": { "private": { "type": "boolean", "enum": [false] } }
+          "required": ["private"],
+          "properties": { "private": { "type": "boolean", "enum": [false] } },
+          "additionalProperties": false
         }
       ]
     },
