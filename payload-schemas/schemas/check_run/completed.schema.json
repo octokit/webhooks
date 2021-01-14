@@ -397,7 +397,8 @@
         { "type": "null" },
         {
           "type": "object",
-          "properties": { "identifier": { "type": "string" } }
+          "properties": { "identifier": { "type": "string" } },
+          "additionalProperties": false
         }
       ]
     },
