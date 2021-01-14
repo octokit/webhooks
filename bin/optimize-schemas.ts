@@ -31,6 +31,11 @@ fs.readdirSync(payloads).forEach((event) => {
             delete value.anyOf;
           }
 
+          // "oneOf" is redundant if it's only got one schema
+          if (value.oneOf && value.oneOf.length === 1) {
+            return value.oneOf[0];
+          }
+
           return value;
         }),
         { parser: "json" }

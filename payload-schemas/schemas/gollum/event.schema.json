@@ -7,28 +7,24 @@
     "pages": {
       "type": "array",
       "items": {
-        "oneOf": [
-          {
-            "type": "object",
-            "required": [
-              "page_name",
-              "title",
-              "summary",
-              "action",
-              "sha",
-              "html_url"
-            ],
-            "properties": {
-              "page_name": { "type": "string" },
-              "title": { "type": "string" },
-              "summary": { "type": "null" },
-              "action": { "type": "string", "enum": ["created", "edited"] },
-              "sha": { "type": "string" },
-              "html_url": { "type": "string" }
-            },
-            "additionalProperties": false
-          }
-        ]
+        "type": "object",
+        "required": [
+          "page_name",
+          "title",
+          "summary",
+          "action",
+          "sha",
+          "html_url"
+        ],
+        "properties": {
+          "page_name": { "type": "string" },
+          "title": { "type": "string" },
+          "summary": { "type": "null" },
+          "action": { "type": "string", "enum": ["created", "edited"] },
+          "sha": { "type": "string" },
+          "html_url": { "type": "string" }
+        },
+        "additionalProperties": false
       }
     },
     "repository": { "$ref": "common/repository.schema.json" },

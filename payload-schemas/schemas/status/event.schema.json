@@ -222,26 +222,22 @@
     "branches": {
       "type": "array",
       "items": {
-        "oneOf": [
-          {
+        "type": "object",
+        "required": ["name", "commit", "protected"],
+        "properties": {
+          "name": { "type": "string" },
+          "commit": {
             "type": "object",
-            "required": ["name", "commit", "protected"],
+            "required": ["sha", "url"],
             "properties": {
-              "name": { "type": "string" },
-              "commit": {
-                "type": "object",
-                "required": ["sha", "url"],
-                "properties": {
-                  "sha": { "type": "string" },
-                  "url": { "type": "string" }
-                },
-                "additionalProperties": false
-              },
-              "protected": { "type": "boolean" }
+              "sha": { "type": "string" },
+              "url": { "type": "string" }
             },
             "additionalProperties": false
-          }
-        ]
+          },
+          "protected": { "type": "boolean" }
+        },
+        "additionalProperties": false
       }
     },
     "created_at": { "type": "string" },

@@ -98,38 +98,34 @@
             "package_files": {
               "type": "array",
               "items": {
-                "oneOf": [
-                  {
-                    "type": "object",
-                    "required": [
-                      "download_url",
-                      "id",
-                      "name",
-                      "sha256",
-                      "sha1",
-                      "md5",
-                      "content_type",
-                      "state",
-                      "size",
-                      "created_at",
-                      "updated_at"
-                    ],
-                    "properties": {
-                      "download_url": { "type": "string" },
-                      "id": { "type": "integer" },
-                      "name": { "type": "string" },
-                      "sha256": { "type": "string" },
-                      "sha1": { "type": "string" },
-                      "md5": { "type": "string" },
-                      "content_type": { "type": "string" },
-                      "state": { "type": "string" },
-                      "size": { "type": "integer" },
-                      "created_at": { "type": "string" },
-                      "updated_at": { "type": "string" }
-                    },
-                    "additionalProperties": false
-                  }
-                ]
+                "type": "object",
+                "required": [
+                  "download_url",
+                  "id",
+                  "name",
+                  "sha256",
+                  "sha1",
+                  "md5",
+                  "content_type",
+                  "state",
+                  "size",
+                  "created_at",
+                  "updated_at"
+                ],
+                "properties": {
+                  "download_url": { "type": "string" },
+                  "id": { "type": "integer" },
+                  "name": { "type": "string" },
+                  "sha256": { "type": "string" },
+                  "sha1": { "type": "string" },
+                  "md5": { "type": "string" },
+                  "content_type": { "type": "string" },
+                  "state": { "type": "string" },
+                  "size": { "type": "integer" },
+                  "created_at": { "type": "string" },
+                  "updated_at": { "type": "string" }
+                },
+                "additionalProperties": false
               }
             },
             "author": { "$ref": "common/user.schema.json" },

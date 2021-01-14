@@ -27,30 +27,22 @@
         "identifiers": {
           "type": "array",
           "items": {
-            "oneOf": [
-              {
-                "type": "object",
-                "required": ["value", "type"],
-                "properties": {
-                  "value": { "type": "string" },
-                  "type": { "type": "string" }
-                },
-                "additionalProperties": false
-              }
-            ]
+            "type": "object",
+            "required": ["value", "type"],
+            "properties": {
+              "value": { "type": "string" },
+              "type": { "type": "string" }
+            },
+            "additionalProperties": false
           }
         },
         "references": {
           "type": "array",
           "items": {
-            "oneOf": [
-              {
-                "type": "object",
-                "required": ["url"],
-                "properties": { "url": { "type": "string" } },
-                "additionalProperties": false
-              }
-            ]
+            "type": "object",
+            "required": ["url"],
+            "properties": { "url": { "type": "string" } },
+            "additionalProperties": false
           }
         },
         "published_at": { "type": "string" },
@@ -59,42 +51,38 @@
         "vulnerabilities": {
           "type": "array",
           "items": {
-            "oneOf": [
-              {
+            "type": "object",
+            "required": [
+              "package",
+              "severity",
+              "vulnerable_version_range",
+              "first_patched_version"
+            ],
+            "properties": {
+              "package": {
                 "type": "object",
-                "required": [
-                  "package",
-                  "severity",
-                  "vulnerable_version_range",
-                  "first_patched_version"
-                ],
+                "required": ["ecosystem", "name"],
                 "properties": {
-                  "package": {
-                    "type": "object",
-                    "required": ["ecosystem", "name"],
-                    "properties": {
-                      "ecosystem": { "type": "string" },
-                      "name": { "type": "string" }
-                    },
-                    "additionalProperties": false
-                  },
-                  "severity": { "type": "string" },
-                  "vulnerable_version_range": { "type": "string" },
-                  "first_patched_version": {
-                    "oneOf": [
-                      {
-                        "type": "object",
-                        "required": ["identifier"],
-                        "properties": { "identifier": { "type": "string" } },
-                        "additionalProperties": false
-                      },
-                      { "type": "null" }
-                    ]
-                  }
+                  "ecosystem": { "type": "string" },
+                  "name": { "type": "string" }
                 },
                 "additionalProperties": false
+              },
+              "severity": { "type": "string" },
+              "vulnerable_version_range": { "type": "string" },
+              "first_patched_version": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "required": ["identifier"],
+                    "properties": { "identifier": { "type": "string" } },
+                    "additionalProperties": false
+                  },
+                  { "type": "null" }
+                ]
               }
-            ]
+            },
+            "additionalProperties": false
           }
         }
       },
