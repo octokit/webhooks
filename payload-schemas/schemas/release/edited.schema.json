@@ -62,40 +62,7 @@
         "published_at": { "type": "string" },
         "assets": {
           "type": "array",
-          "items": {
-            "type": "object",
-            "required": [
-              "url",
-              "browser_download_url",
-              "id",
-              "node_id",
-              "name",
-              "label",
-              "state",
-              "content_type",
-              "size",
-              "download_count",
-              "created_at",
-              "updated_at",
-              "creator"
-            ],
-            "properties": {
-              "url": { "type": "string" },
-              "browser_download_url": { "type": "string" },
-              "id": { "type": "integer" },
-              "node_id": { "type": "string" },
-              "name": { "type": "string" },
-              "label": { "type": "string" },
-              "state": { "type": "string" },
-              "content_type": { "type": "string" },
-              "size": { "type": "integer" },
-              "download_count": { "type": "integer" },
-              "created_at": { "type": "string" },
-              "updated_at": { "type": "string" },
-              "uploader": { "$ref": "common/user.schema.json" }
-            },
-            "additionalProperties": false
-          }
+          "items": { "$ref": "common/asset.schema.json" }
         },
         "tarball_url": { "type": "string" },
         "zipball_url": { "type": "string" },

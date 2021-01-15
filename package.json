@@ -31,7 +31,6 @@
   "prettier": {},
   "dependencies": {},
   "devDependencies": {
-    "@apidevtools/json-schema-ref-parser": "^9.0.6",
     "@octokit/request": "^5.0.0",
     "@types/cheerio": "^0.22.23",
     "@types/json-diff": "^0.5.0",

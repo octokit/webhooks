@@ -1,6 +1,5 @@
 #!/usr/bin/env ts-node-transpile-only
 
-import $RefParser from "@apidevtools/json-schema-ref-parser";
 import { strict as assert } from "assert";
 import fs from "fs";
 import { JSONSchema7 } from "json-schema";
@@ -20,9 +19,9 @@ const buildCommonSchemasDefinitionSchema = (): Record<string, JSONSchema7> => {
   const definitions: Record<string, JSONSchema7> = {};
 
   commonSchemas.forEach((schema) => {
-    definitions[removeExtension(schema, ".schema.json")] = {
-      $ref: `${pathToWebhookSchemas}/common/${schema}`,
-    };
+    definitions[
+      removeExtension(schema, ".schema.json")
+    ] = require(`../${pathToWebhookSchemas}/common/${schema}`);
   });
 
   return definitions;
@@ -111,9 +110,10 @@ const combineEventSchemas = () => {
 async function run() {
   try {
     const schema: EventSchema = combineEventSchemas();
-    const commonSchemaDefinitions = (await $RefParser.dereference(
-      buildCommonSchemasDefinitionSchema()
-    )) as Record<string, JSONSchema7>;
+    const commonSchemaDefinitions = buildCommonSchemasDefinitionSchema() as Record<
+      string,
+      JSONSchema7
+    >;
 
     schema.definitions = {
       ...schema.definitions,
@@ -124,11 +124,7 @@ async function run() {
       "schema.json",
       format(
         JSON.stringify(schema, (key, value: unknown) => {
-          if (
-            typeof value === "string" &&
-            value.startsWith("common/") &&
-            value.endsWith(".schema.json")
-          ) {
+          if (typeof value === "string" && value.endsWith(".schema.json")) {
             const { base } = path.parse(value);
 
             return `#/definitions/${removeExtension(base, ".schema.json")}`;
