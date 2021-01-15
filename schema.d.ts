@@ -8092,21 +8092,7 @@ export interface ReleaseCreatedEvent {
     prerelease: boolean;
     created_at: string;
     published_at: string;
-    assets: {
-      url: string;
-      browser_download_url: string;
-      id: number;
-      node_id: string;
-      name: string;
-      label: string;
-      state: string;
-      content_type: string;
-      size: number;
-      download_count: number;
-      created_at: string;
-      updated_at: string;
-      uploader?: User;
-    }[];
+    assets: Asset[];
     tarball_url: string;
     zipball_url: string;
     body: string | null;
@@ -8115,6 +8101,21 @@ export interface ReleaseCreatedEvent {
   sender: User;
   installation?: Installation;
   organization?: Organization;
+}
+export interface Asset {
+  url: string;
+  browser_download_url: string;
+  id: number;
+  node_id: string;
+  name: string;
+  label: string;
+  state: string;
+  content_type: string;
+  size: number;
+  download_count: number;
+  created_at: string;
+  updated_at: string;
+  uploader?: User;
 }
 export interface ReleaseDeletedEvent {
   action: "deleted";
@@ -8133,21 +8134,7 @@ export interface ReleaseDeletedEvent {
     prerelease: boolean;
     created_at: string;
     published_at: string;
-    assets: {
-      url: string;
-      browser_download_url: string;
-      id: number;
-      node_id: string;
-      name: string;
-      label: string;
-      state: string;
-      content_type: string;
-      size: number;
-      download_count: number;
-      created_at: string;
-      updated_at: string;
-      uploader?: User;
-    }[];
+    assets: Asset[];
     tarball_url: string;
     zipball_url: string;
     body: string | null;
@@ -8182,21 +8169,7 @@ export interface ReleaseEditedEvent {
     prerelease: boolean;
     created_at: string;
     published_at: string;
-    assets: {
-      url: string;
-      browser_download_url: string;
-      id: number;
-      node_id: string;
-      name: string;
-      label: string;
-      state: string;
-      content_type: string;
-      size: number;
-      download_count: number;
-      created_at: string;
-      updated_at: string;
-      uploader?: User;
-    }[];
+    assets: Asset[];
     tarball_url: string;
     zipball_url: string;
     body: string | null;
@@ -8223,21 +8196,7 @@ export interface ReleasePrereleasedEvent {
     prerelease: true;
     created_at: string;
     published_at: string;
-    assets: {
-      url: string;
-      browser_download_url: string;
-      id: number;
-      node_id: string;
-      name: string;
-      label: string;
-      state: string;
-      content_type: string;
-      size: number;
-      download_count: number;
-      created_at: string;
-      updated_at: string;
-      uploader?: User;
-    }[];
+    assets: Asset[];
     tarball_url: string;
     zipball_url: string;
     body: string | null;
@@ -8264,21 +8223,7 @@ export interface ReleasePublishedEvent {
     prerelease: boolean;
     created_at: string;
     published_at: string;
-    assets: {
-      url: string;
-      browser_download_url: string;
-      id: number;
-      node_id: string;
-      name: string;
-      label: string;
-      state: string;
-      content_type: string;
-      size: number;
-      download_count: number;
-      created_at: string;
-      updated_at: string;
-      uploader?: User;
-    }[];
+    assets: Asset[];
     tarball_url: string;
     zipball_url: string;
     body: string | null;
@@ -8305,21 +8250,7 @@ export interface ReleaseReleasedEvent {
     prerelease: boolean;
     created_at: string;
     published_at: string;
-    assets: {
-      url: string;
-      browser_download_url: string;
-      id: number;
-      node_id: string;
-      name: string;
-      label: string;
-      state: string;
-      content_type: string;
-      size: number;
-      download_count: number;
-      created_at: string;
-      updated_at: string;
-      uploader?: User;
-    }[];
+    assets: Asset[];
     tarball_url: string;
     zipball_url: string;
     body: string | null;
@@ -8346,21 +8277,7 @@ export interface ReleaseUnpublishedEvent {
     prerelease: boolean;
     created_at: string;
     published_at: string;
-    assets: {
-      url: string;
-      browser_download_url: string;
-      id: number;
-      node_id: string;
-      name: string;
-      label: string;
-      state: string;
-      content_type: string;
-      size: number;
-      download_count: number;
-      created_at: string;
-      updated_at: string;
-      uploader?: User;
-    }[];
+    assets: Asset[];
     tarball_url: string;
     zipball_url: string;
     body: string | null;
