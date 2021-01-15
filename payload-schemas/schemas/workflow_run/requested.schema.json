@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "workflow_run$event",
+  "$id": "workflow_run$requested",
   "type": "object",
   "required": [
     "action",
@@ -11,7 +11,7 @@
     "workflow_run"
   ],
   "properties": {
-    "action": { "type": "string" },
+    "action": { "type": "string", "enum": ["requested"] },
     "organization": { "$ref": "common/organization.schema.json" },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
@@ -335,5 +335,5 @@
     "installation": { "$ref": "common/installation.schema.json" }
   },
   "additionalProperties": false,
-  "title": "workflow_run event"
+  "title": "workflow_run requested event"
 }
