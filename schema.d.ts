@@ -272,20 +272,12 @@ export interface CheckRunCompletedEvent {
         head: {
           ref: string;
           sha: string;
-          repo: {
-            id: number;
-            url: string;
-            name: string;
-          };
+          repo: RepoRef;
         };
         base: {
           ref: string;
           sha: string;
-          repo: {
-            id: number;
-            url: string;
-            name: string;
-          };
+          repo: RepoRef;
         };
       }[];
       app: {
@@ -367,20 +359,12 @@ export interface CheckRunCompletedEvent {
       head: {
         ref: string;
         sha: string;
-        repo: {
-          id: number;
-          url: string;
-          name: string;
-        };
+        repo: RepoRef;
       };
       base: {
         ref: string;
         sha: string;
-        repo: {
-          id: number;
-          url: string;
-          name: string;
-        };
+        repo: RepoRef;
       };
     }[];
   };
@@ -391,6 +375,11 @@ export interface CheckRunCompletedEvent {
   sender: User;
   installation?: Installation;
   organization?: Organization;
+}
+export interface RepoRef {
+  id: number;
+  url: string;
+  name: string;
 }
 export interface User {
   login: string;
@@ -594,20 +583,12 @@ export interface CheckRunCreatedEvent {
         head: {
           ref: string;
           sha: string;
-          repo: {
-            id: number;
-            url: string;
-            name: string;
-          };
+          repo: RepoRef;
         };
         base: {
           ref: string;
           sha: string;
-          repo: {
-            id: number;
-            url: string;
-            name: string;
-          };
+          repo: RepoRef;
         };
       }[];
       app: {
@@ -689,20 +670,12 @@ export interface CheckRunCreatedEvent {
       head: {
         ref: string;
         sha: string;
-        repo: {
-          id: number;
-          url: string;
-          name: string;
-        };
+        repo: RepoRef;
       };
       base: {
         ref: string;
         sha: string;
-        repo: {
-          id: number;
-          url: string;
-          name: string;
-        };
+        repo: RepoRef;
       };
     }[];
   };
@@ -761,20 +734,12 @@ export interface CheckRunRequestedActionEvent {
         head: {
           ref: string;
           sha: string;
-          repo: {
-            id: number;
-            url: string;
-            name: string;
-          };
+          repo: RepoRef;
         };
         base: {
           ref: string;
           sha: string;
-          repo: {
-            id: number;
-            url: string;
-            name: string;
-          };
+          repo: RepoRef;
         };
       }[];
       app: {
@@ -856,20 +821,12 @@ export interface CheckRunRequestedActionEvent {
       head: {
         ref: string;
         sha: string;
-        repo: {
-          id: number;
-          url: string;
-          name: string;
-        };
+        repo: RepoRef;
       };
       base: {
         ref: string;
         sha: string;
-        repo: {
-          id: number;
-          url: string;
-          name: string;
-        };
+        repo: RepoRef;
       };
     }[];
   };
@@ -928,20 +885,12 @@ export interface CheckRunRerequestedEvent {
         head: {
           ref: string;
           sha: string;
-          repo: {
-            id: number;
-            url: string;
-            name: string;
-          };
+          repo: RepoRef;
         };
         base: {
           ref: string;
           sha: string;
-          repo: {
-            id: number;
-            url: string;
-            name: string;
-          };
+          repo: RepoRef;
         };
       }[];
       app: {
@@ -1023,20 +972,12 @@ export interface CheckRunRerequestedEvent {
       head: {
         ref: string;
         sha: string;
-        repo: {
-          id: number;
-          url: string;
-          name: string;
-        };
+        repo: RepoRef;
       };
       base: {
         ref: string;
         sha: string;
-        repo: {
-          id: number;
-          url: string;
-          name: string;
-        };
+        repo: RepoRef;
       };
     }[];
   };
@@ -1075,20 +1016,12 @@ export interface CheckSuiteCompletedEvent {
       head: {
         ref: string;
         sha: string;
-        repo: {
-          id: number;
-          url: string;
-          name: string;
-        };
+        repo: RepoRef;
       };
       base: {
         ref: string;
         sha: string;
-        repo: {
-          id: number;
-          url: string;
-          name: string;
-        };
+        repo: RepoRef;
       };
     }[];
     app: {
@@ -1177,20 +1110,12 @@ export interface CheckSuiteRequestedEvent {
       head: {
         ref: string;
         sha: string;
-        repo: {
-          id: number;
-          url: string;
-          name: string;
-        };
+        repo: RepoRef;
       };
       base: {
         ref: string;
         sha: string;
-        repo: {
-          id: number;
-          url: string;
-          name: string;
-        };
+        repo: RepoRef;
       };
     }[];
     app: {
@@ -1279,20 +1204,12 @@ export interface CheckSuiteRerequestedEvent {
       head: {
         ref: string;
         sha: string;
-        repo: {
-          id: number;
-          url: string;
-          name: string;
-        };
+        repo: RepoRef;
       };
       base: {
         ref: string;
         sha: string;
-        repo: {
-          id: number;
-          url: string;
-          name: string;
-        };
+        repo: RepoRef;
       };
     }[];
     app: {

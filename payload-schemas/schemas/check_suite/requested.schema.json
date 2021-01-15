@@ -65,16 +65,7 @@
                 "properties": {
                   "ref": { "type": "string" },
                   "sha": { "type": "string" },
-                  "repo": {
-                    "type": "object",
-                    "required": ["id", "url", "name"],
-                    "properties": {
-                      "id": { "type": "integer" },
-                      "url": { "type": "string" },
-                      "name": { "type": "string" }
-                    },
-                    "additionalProperties": false
-                  }
+                  "repo": { "$ref": "common/repo-ref.schema.json" }
                 },
                 "additionalProperties": false
               },
@@ -84,16 +75,7 @@
                 "properties": {
                   "ref": { "type": "string" },
                   "sha": { "type": "string" },
-                  "repo": {
-                    "type": "object",
-                    "required": ["id", "url", "name"],
-                    "properties": {
-                      "id": { "type": "integer" },
-                      "url": { "type": "string" },
-                      "name": { "type": "string" }
-                    },
-                    "additionalProperties": false
-                  }
+                  "repo": { "$ref": "common/repo-ref.schema.json" }
                 },
                 "additionalProperties": false
               }
