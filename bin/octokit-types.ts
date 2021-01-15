@@ -53,8 +53,11 @@ const run = async () => {
   const ts = [
     await compileFromFile("./schema.json", { format: false }),
     buildEventPayloadMap(schema),
+    "",
     "export type WebhookEvent = Schema;",
-  ].join("\n\n");
+    "export type WebhookEventMap = EventPayloadMap;",
+    "export type WebhookEventName = keyof EventPayloadMap;",
+  ].join("\n");
 
   await fs.writeFile("./schema.d.ts", format(ts, { parser: "typescript" }));
 };

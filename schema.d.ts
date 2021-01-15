@@ -9738,3 +9738,5 @@ export interface EventPayloadMap {
 }
 
 export type WebhookEvent = Schema;
+export type WebhookEventMap = EventPayloadMap;
+export type WebhookEventName = keyof EventPayloadMap;
