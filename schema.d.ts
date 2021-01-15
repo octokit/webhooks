@@ -9680,6 +9680,7 @@ export interface WorkflowRunRequestedEvent {
   };
   installation?: Installation;
 }
+
 export interface EventPayloadMap {
   check_run: CheckRunEvent;
   check_suite: CheckSuiteEvent;
@@ -9735,3 +9736,5 @@ export interface EventPayloadMap {
   workflow_dispatch: WorkflowDispatchEvent;
   workflow_run: WorkflowRunEvent;
 }
+
+export type WebhookEvent = Schema;

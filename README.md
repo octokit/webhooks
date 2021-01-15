@@ -259,7 +259,16 @@ import SCHEMA from "@octokit/webhooks-definitions/schema.json";
 This package ships with types for the webhook events generated from the respective json schemas, which you can use like so:
 
 ```typescript
-import { IssuesOpenedEvent } from "@octokit/webhooks-definitions/schema";
+import {
+  WebhookEvent,
+  IssuesOpenedEvent,
+} from "@octokit/webhooks-definitions/schema";
+
+const handleWebhookEvent = (event: WebhookEvent) => {
+  if ("action" in event && event.action === "completed") {
+    console.log(`${event.sender.login} completed something!`);
+  }
+};
 
 const handleIssuesOpenedEvent = (event: IssuesOpenedEvent) => {
   console.log(
