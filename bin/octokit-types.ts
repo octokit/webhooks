@@ -44,22 +44,17 @@ const buildEventPayloadMap = (schema: Schema): string => {
   return ["export interface EventPayloadMap {", ...properties, "}"].join("\n");
 };
 
-const addEventPayloadMap = (ts: string, schema: Schema): string => {
-  const payloadMap = buildEventPayloadMap(schema);
-
-  return `${ts}${payloadMap}`;
-};
-
 const getSchema = async () =>
   JSON.parse(await fs.readFile("./schema.json", "utf-8")) as Schema;
 
 const run = async () => {
   const schema = await getSchema();
 
-  const ts = addEventPayloadMap(
+  const ts = [
     await compileFromFile("./schema.json", { format: false }),
-    schema
-  );
+    buildEventPayloadMap(schema),
+    "export type WebhookEvent = Schema;",
+  ].join("\n\n");
 
   await fs.writeFile("./schema.d.ts", format(ts, { parser: "typescript" }));
 };
