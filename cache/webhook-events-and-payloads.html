@@ -240,7 +240,7 @@
     You can create webhooks that subscribe to the events listed on this page.
     Each webhook event includes a description of the webhook properties and an
     example payload. For more information, see &quot;<a
-      href="/en/free-pro-team@latest/webhooks/creating"
+      href="/en/webhooks/creating"
       >Creating webhooks</a
     >.&quot;
   </p>
@@ -284,8 +284,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred. Webhook payloads contain the
@@ -298,8 +297,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -313,7 +311,7 @@
           The GitHub App installation. Webhook payloads contain the
           <code>installation</code> property when the event is configured for
           and sent to a GitHub App. For more information, see &quot;<a
-            href="/en/free-pro-team@latest/apps/building-github-apps"
+            href="/en/apps/building-github-apps"
             >Building GitHub App</a
           >.&quot;
         </td>
@@ -323,10 +321,9 @@
   <p>
     The unique properties for a webhook event are the same properties
     you&apos;ll find in the <code>payload</code> property when using the
-    <a href="/en/free-pro-team@latest/rest/reference/activity#events"
-      >Events API</a
-    >. One exception is the <a href="#push"><code>push</code> event</a>. The
-    unique properties of the <code>push</code> event webhook payload and the
+    <a href="/en/rest/reference/activity#events">Events API</a>. One exception
+    is the <a href="#push"><code>push</code> event</a>. The unique properties of
+    the <code>push</code> event webhook payload and the
     <code>payload</code> property in the Events API differ. The webhook payload
     contains more detailed information.
   </p>
@@ -375,8 +372,7 @@
         <td><code>X-Hub-Signature</code></td>
         <td>
           This header is sent if the webhook is configured with a
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#create-hook-config-params"
+          <a href="/en/rest/reference/repos#create-hook-config-params"
             ><code>secret</code></a
           >. This is the HMAC hex digest of the request body, and is generated
           using the SHA-1 hash function and the <code>secret</code> as the HMAC
@@ -389,8 +385,7 @@
         <td><code>X-Hub-Signature-256</code></td>
         <td>
           This header is sent if the webhook is configured with a
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#create-hook-config-params"
+          <a href="/en/rest/reference/repos#create-hook-config-params"
             ><code>secret</code></a
           >. This is the HMAC hex digest of the request body, and is generated
           using the SHA-256 hash function and the <code>secret</code> as the
@@ -444,9 +439,8 @@
   <p>
     Check run activity has occurred. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
-    see the &quot;<a href="/en/free-pro-team@latest/rest/reference/checks#runs"
-      >check runs</a
-    >&quot; REST API.
+    see the &quot;<a href="/en/rest/reference/checks#runs">check runs</a>&quot;
+    REST API.
   </p>
   <div
     class="extended-markdown note border rounded-1 mb-4 p-3 border-blue bg-blue-light f5"
@@ -509,12 +503,11 @@
             <li>
               <code>rerequested</code> - Someone requested to re-run your check
               run from the pull request UI. See &quot;<a
-                href="/en/free-pro-team@latest/articles/about-status-checks#checks"
+                href="/en/articles/about-status-checks#checks"
                 >About status checks</a
               >&quot; for more details about the GitHub UI. When you receive a
               <code>rerequested</code> action, you&apos;ll need to
-              <a
-                href="/en/free-pro-team@latest/rest/reference/checks#create-a-check-run"
+              <a href="/en/rest/reference/checks#create-a-check-run"
                 >create a new check run</a
               >. Only the GitHub App that someone requests to re-run the check
               will receive the <code>rerequested</code> payload.
@@ -525,7 +518,7 @@
               perform an action will receive the
               <code>requested_action</code> payload. To learn more about check
               runs and requested actions, see &quot;<a
-                href="/en/free-pro-team@latest/rest/reference/checks#check-runs-and-requested-actions"
+                href="/en/rest/reference/checks#check-runs-and-requested-actions"
                 >Check runs and requested actions</a
               >.&quot;
             </li>
@@ -536,11 +529,7 @@
         <td><code>check_run</code></td>
         <td><code>object</code></td>
         <td>
-          The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/checks#get-a-check-run"
-            >check_run</a
-          >.
+          The <a href="/en/rest/reference/checks#get-a-check-run">check_run</a>.
         </td>
       </tr>
       <tr>
@@ -599,8 +588,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -611,8 +599,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -950,9 +937,7 @@
   <p>
     Check suite activity has occurred. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
-    see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/checks#suites"
-      >check suites</a
+    see the &quot;<a href="/en/rest/reference/checks#suites">check suites</a
     >&quot; REST API.
   </p>
   <div
@@ -1015,8 +1000,7 @@
               <code>requested</code> - Occurs when new code is pushed to the
               app&apos;s repository. When you receive the
               <code>requested</code> action events, you&apos;ll need to
-              <a
-                href="/en/free-pro-team@latest/rest/reference/checks#create-a-check-run"
+              <a href="/en/rest/reference/checks#create-a-check-run"
                 >create a new check run</a
               >.
             </li>
@@ -1024,11 +1008,9 @@
               <code>rerequested</code> - Occurs when someone requests to re-run
               the entire check suite from the pull request UI. When you receive
               the <code>rerequested</code> action events, you&apos;ll need to
-              <a
-                href="/en/free-pro-team@latest/rest/reference/checks#create-a-check-run"
+              <a href="/en/rest/reference/checks#create-a-check-run"
                 >create a new check run</a
-              >. See &quot;<a
-                href="/en/free-pro-team@latest/articles/about-status-checks#checks"
+              >. See &quot;<a href="/en/articles/about-status-checks#checks"
                 >About status checks</a
               >&quot; for more details about the GitHub UI.
             </li>
@@ -1038,12 +1020,7 @@
       <tr>
         <td><code>check_suite</code></td>
         <td><code>object</code></td>
-        <td>
-          The
-          <a href="/en/free-pro-team@latest/rest/reference/checks#suites"
-            >check_suite</a
-          >.
-        </td>
+        <td>The <a href="/en/rest/reference/checks#suites">check_suite</a>.</td>
       </tr>
       <tr>
         <td><code>check_suite[head_branch]</code></td>
@@ -1097,8 +1074,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -1109,8 +1085,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -1369,7 +1344,7 @@
     Activity related to code scanning alerts in a repository. The type of
     activity is specified in the action property of the payload object. For more
     information, see &#x201C;<a
-      href="/en/free-pro-team@latest/github/finding-security-vulnerabilities-and-errors-in-your-code/about-code-scanning"
+      href="/en/github/finding-security-vulnerabilities-and-errors-in-your-code/about-code-scanning"
       >About code scanning</a
     >.&#x201D;
   </p>
@@ -1432,8 +1407,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -1444,8 +1418,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -1623,9 +1596,7 @@
   <p>
     A commit comment is created. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
-    see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/repos#comments"
-      >commit comment</a
+    see the &quot;<a href="/en/rest/reference/repos#comments">commit comment</a
     >&quot; REST API.
   </p>
   <h4 id="availability-3"><a href="#availability-3">Availability</a></h4>
@@ -1657,8 +1628,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-commit-comment"
+          <a href="/en/rest/reference/repos#get-a-commit-comment"
             >commit comment</a
           >
           resource.
@@ -1669,8 +1639,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -1681,8 +1650,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -1869,7 +1837,7 @@
     A new content reference is <code>created</code>. A new content reference is
     created when the body or comment of an issue or pull request includes a URL
     that matches a configured content reference domain. For more information,
-    see &quot;<a href="/en/free-pro-team@latest/apps/using-content-attachments"
+    see &quot;<a href="/en/apps/using-content-attachments"
       >Using content attachments</a
     >&quot; to learn more about content references and attachments.
   </p>
@@ -1880,7 +1848,7 @@
     subdomain trigger this event. If you register a domain
     (<code>https://example.com</code>) then URLs for domain and all subdomains
     trigger this event. See &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/apps#create-a-content-attachment"
+      href="/en/rest/reference/apps#create-a-content-attachment"
       >Create a content attachment</a
     >&quot; to create a new content attachment.
   </p>
@@ -2023,7 +1991,7 @@
   <h3 id="create"><a href="#create">create</a></h3>
   <p>
     A Git branch or tag is created. For more information, see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/git"
+      href="/en/rest/reference/git"
       >Git data</a
     >&quot; REST API.
   </p>
@@ -2059,7 +2027,7 @@
         <td><code>string</code></td>
         <td>
           The
-          <a href="/en/free-pro-team@latest/rest/reference/git#get-a-reference"
+          <a href="/en/rest/reference/git#get-a-reference"
             ><code>git ref</code></a
           >
           resource.
@@ -2091,8 +2059,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -2103,8 +2070,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -2257,7 +2223,7 @@
   <h3 id="delete"><a href="#delete">delete</a></h3>
   <p>
     A Git branch or tag is deleted. For more information, see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/git"
+      href="/en/rest/reference/git"
       >Git data</a
     >&quot; REST API.
   </p>
@@ -2293,7 +2259,7 @@
         <td><code>string</code></td>
         <td>
           The
-          <a href="/en/free-pro-team@latest/rest/reference/git#get-a-reference"
+          <a href="/en/rest/reference/git#get-a-reference"
             ><code>git ref</code></a
           >
           resource.
@@ -2312,8 +2278,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -2324,8 +2289,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -2477,8 +2441,7 @@
   <p>
     A deploy key is added or removed from a repository. The type of activity is
     specified in the <code>action</code> property of the payload object. For
-    more information, see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/repos#keys"
+    more information, see the &quot;<a href="/en/rest/reference/repos#keys"
       >Deploy keys</a
     >&quot; REST API.
   </p>
@@ -2513,8 +2476,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-deploy-key"
+          <a href="/en/rest/reference/repos#get-a-deploy-key"
             ><code>deploy key</code></a
           >
           resource.
@@ -2525,8 +2487,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -2537,8 +2498,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -2687,8 +2647,7 @@
   <p>
     A deployment is created. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
-    see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/repos#list-deployments"
+    see the &quot;<a href="/en/rest/reference/repos#list-deployments"
       >deployment</a
     >&quot; REST API.
   </p>
@@ -2721,10 +2680,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#list-deployments"
-            >deployment</a
-          >.
+          <a href="/en/rest/reference/repos#list-deployments">deployment</a>.
         </td>
       </tr>
       <tr>
@@ -2732,8 +2688,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -2744,8 +2699,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -2933,8 +2887,7 @@
   <p>
     A deployment is created. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
-    see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/repos#list-deployment-statuses"
+    see the &quot;<a href="/en/rest/reference/repos#list-deployment-statuses"
       >deployment statuses</a
     >&quot; REST API.
   </p>
@@ -2967,8 +2920,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#list-deployment-statuses"
+          <a href="/en/rest/reference/repos#list-deployment-statuses"
             >deployment status</a
           >.
         </td>
@@ -2996,10 +2948,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#list-deployments"
-            >deployment</a
-          >
+          <a href="/en/rest/reference/repos#list-deployments">deployment</a>
           that this status is associated with.
         </td>
       </tr>
@@ -3008,8 +2957,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -3020,8 +2968,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -3239,7 +3186,7 @@
   <h3 id="fork"><a href="#fork">fork</a></h3>
   <p>
     A user forks a repository. For more information, see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/repos#forks"
+      href="/en/rest/reference/repos#forks"
       >forks</a
     >&quot; REST API.
   </p>
@@ -3267,8 +3214,7 @@
         <td><code>object</code></td>
         <td>
           The created
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           resource.
@@ -3279,8 +3225,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -3291,8 +3236,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -3551,7 +3495,7 @@
     receive the <code>401 Bad Credentials</code> error. For details about
     user-to-server requests, which require GitHub App authorization, see
     &quot;<a
-      href="/en/free-pro-team@latest/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps"
+      href="/en/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps"
       >Identifying and authorizing users for GitHub Apps</a
     >.&quot;
   </p>
@@ -3616,7 +3560,7 @@
   <h3 id="gollum"><a href="#gollum">gollum</a></h3>
   <p>
     A wiki page is created or updated. For more information, see the &quot;<a
-      href="/en/free-pro-team@latest/github/building-a-strong-community/about-wikis"
+      href="/en/github/building-a-strong-community/about-wikis"
       >About wikis</a
     >&quot;.
   </p>
@@ -3677,8 +3621,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -3689,8 +3632,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -3849,8 +3791,7 @@
   <p>
     Activity related to a GitHub App installation. The type of activity is
     specified in the <code>action</code> property of the payload object. For
-    more information, see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/apps"
+    more information, see the &quot;<a href="/en/rest/reference/apps"
       >GitHub App installation</a
     >&quot; REST API.
   </p>
@@ -3870,11 +3811,10 @@
       in beta and subject to change. Before you can suspend a GitHub App, the
       app owner must enable suspending installations for the app by opting-in to
       the beta. To opt-in to the suspending installations beta feature, see
-      &quot;<a
-        href="/en/free-pro-team@latest/developers/apps/activating-beta-features-for-apps"
+      &quot;<a href="/en/developers/apps/activating-beta-features-for-apps"
         >Activating beta features for apps</a
       >.&quot; For more information, see &quot;<a
-        href="/en/free-pro-team@latest/apps/managing-github-apps/suspending-a-github-app-installation"
+        href="/en/apps/managing-github-apps/suspending-a-github-app-installation"
         >Suspending a GitHub App installation</a
       >.&quot;
     </p>
@@ -4026,7 +3966,7 @@
     Activity related to repositories being added to a GitHub App installation.
     The type of activity is specified in the <code>action</code> property of the
     payload object. For more information, see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/apps"
+      href="/en/rest/reference/apps"
       >GitHub App installation</a
     >&quot; REST API.
   </p>
@@ -4190,8 +4130,7 @@
   <p>
     Activity related to an issue comment. The type of activity is specified in
     the <code>action</code> property of the payload object. For more
-    information, see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/issues#comments"
+    information, see the &quot;<a href="/en/rest/reference/issues#comments"
       >issue comments</a
     >&quot; REST API.
   </p>
@@ -4241,20 +4180,15 @@
         <td><code>issue</code></td>
         <td><code>object</code></td>
         <td>
-          The
-          <a href="/en/free-pro-team@latest/rest/reference/issues">issue</a> the
-          comment belongs to.
+          The <a href="/en/rest/reference/issues">issue</a> the comment belongs
+          to.
         </td>
       </tr>
       <tr>
         <td><code>comment</code></td>
         <td><code>object</code></td>
         <td>
-          The
-          <a href="/en/free-pro-team@latest/rest/reference/issues#comments"
-            >comment</a
-          >
-          itself.
+          The <a href="/en/rest/reference/issues#comments">comment</a> itself.
         </td>
       </tr>
       <tr>
@@ -4262,8 +4196,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -4274,8 +4207,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -4585,10 +4517,8 @@
   <p>
     Activity related to an issue. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
-    see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/issues#comments"
-      >issues</a
-    >&quot; REST API.
+    see the &quot;<a href="/en/rest/reference/issues#comments">issues</a>&quot;
+    REST API.
   </p>
   <h4 id="availability-15"><a href="#availability-15">Availability</a></h4>
   <ul>
@@ -4625,11 +4555,7 @@
       <tr>
         <td><code>issue</code></td>
         <td><code>object</code></td>
-        <td>
-          The
-          <a href="/en/free-pro-team@latest/rest/reference/issues">issue</a>
-          itself.
-        </td>
+        <td>The <a href="/en/rest/reference/issues">issue</a> itself.</td>
       </tr>
       <tr>
         <td><code>changes</code></td>
@@ -4669,8 +4595,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -4681,8 +4606,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -4964,10 +4888,8 @@
   <p>
     Activity related to an issue. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
-    see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/issues#labels"
-      >labels</a
-    >&quot; REST API.
+    see the &quot;<a href="/en/rest/reference/issues#labels">labels</a>&quot;
+    REST API.
   </p>
   <h4 id="availability-16"><a href="#availability-16">Availability</a></h4>
   <ul>
@@ -5027,8 +4949,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -5039,8 +4960,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -5200,8 +5120,7 @@
   <p>
     Activity related to a GitHub Marketplace purchase. The type of activity is
     specified in the <code>action</code> property of the payload object. For
-    more information, see the &quot;<a
-      href="/en/free-pro-team@latest/marketplace"
+    more information, see the &quot;<a href="/en/marketplace"
       >GitHub Marketplace</a
     >.&quot;
   </p>
@@ -5268,7 +5187,7 @@
     For a detailed description of this payload and the payload for each type of
     <code>action</code>, see
     <a
-      href="/en/free-pro-team@latest/marketplace/integrating-with-the-github-marketplace-api/github-marketplace-webhook-events"
+      href="/en/marketplace/integrating-with-the-github-marketplace-api/github-marketplace-webhook-events"
       >GitHub Marketplace webhook events</a
     >.
   </p>
@@ -5337,7 +5256,7 @@
     Activity related to repository collaborators. The type of activity is
     specified in the <code>action</code> property of the payload object. For
     more information, see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/repos#collaborators"
+      href="/en/rest/reference/repos#collaborators"
       >collaborators</a
     >&quot; REST API.
   </p>
@@ -5383,11 +5302,7 @@
       <tr>
         <td><code>member</code></td>
         <td><code>object</code></td>
-        <td>
-          The
-          <a href="/en/free-pro-team@latest/rest/reference/users">user</a> that
-          was added.
-        </td>
+        <td>The <a href="/en/rest/reference/users">user</a> that was added.</td>
       </tr>
       <tr>
         <td><code>changes</code></td>
@@ -5410,8 +5325,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -5422,8 +5336,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -5593,8 +5506,7 @@
   <p>
     Activity related to team membership. The type of activity is specified in
     the <code>action</code> property of the payload object. For more
-    information, see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/teams#members"
+    information, see the &quot;<a href="/en/rest/reference/teams#members"
       >team members</a
     >&quot; REST API.
   </p>
@@ -5635,18 +5547,15 @@
         <td><code>member</code></td>
         <td><code>object</code></td>
         <td>
-          The
-          <a href="/en/free-pro-team@latest/rest/reference/users">user</a> that
-          was added or removed.
+          The <a href="/en/rest/reference/users">user</a> that was added or
+          removed.
         </td>
       </tr>
       <tr>
         <td><code>team</code></td>
         <td><code>object</code></td>
         <td>
-          The
-          <a href="/en/free-pro-team@latest/rest/reference/teams">team</a> for
-          the membership.
+          The <a href="/en/rest/reference/teams">team</a> for the membership.
         </td>
       </tr>
       <tr>
@@ -5654,8 +5563,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -5804,8 +5712,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -5816,8 +5723,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -5974,9 +5880,7 @@
   <p>
     Activity related to milestones. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
-    see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/issues#milestones"
-      >milestones</a
+    see the &quot;<a href="/en/rest/reference/issues#milestones">milestones</a
     >&quot; REST API.
   </p>
   <h4 id="availability-21"><a href="#availability-21">Availability</a></h4>
@@ -6048,8 +5952,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -6060,8 +5963,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -6248,8 +6150,7 @@
   <p>
     Activity related to an organization and its members. The type of activity is
     specified in the <code>action</code> property of the payload object. For
-    more information, see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/orgs"
+    more information, see the &quot;<a href="/en/rest/reference/orgs"
       >organizations</a
     >&quot; REST API.
   </p>
@@ -6305,8 +6206,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -6403,7 +6303,7 @@
     Activity related to people being blocked in an organization. The type of
     activity is specified in the <code>action</code> property of the payload
     object. For more information, see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/orgs#blocking"
+      href="/en/rest/reference/orgs#blocking"
       >blocking organization users</a
     >&quot; REST API.
   </p>
@@ -6445,8 +6345,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -6537,7 +6436,7 @@
     Activity related to GitHub Packages. The type of activity is specified in
     the <code>action</code> property of the payload object. For more
     information, see &quot;<a
-      href="/en/free-pro-team@latest/github/managing-packages-with-github-packages"
+      href="/en/github/managing-packages-with-github-packages"
       >Managing packages with GitHub Packages</a
     >&quot; to learn more about GitHub Packages.
   </p>
@@ -6577,8 +6476,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -6589,8 +6487,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -6883,8 +6780,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#list-github-pages-builds"
+          <a href="/en/rest/reference/repos#list-github-pages-builds"
             >List GitHub Pages builds</a
           >
           itself.
@@ -6895,8 +6791,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -6907,8 +6802,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -7090,8 +6984,7 @@
     When you create a new webhook, we&apos;ll send you a simple
     <code>ping</code> event to let you know you&apos;ve set up the webhook
     correctly. This event isn&apos;t stored so it isn&apos;t retrievable via the
-    <a
-      href="/en/free-pro-team@latest/rest/reference/activity#ping-a-repository-webhook"
+    <a href="/en/rest/reference/activity#ping-a-repository-webhook"
       >Events API</a
     >
     endpoint.
@@ -7133,8 +7026,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository-webhook"
+          <a href="/en/rest/reference/repos#get-a-repository-webhook"
             >webhook configuration</a
           >.
         </td>
@@ -7147,7 +7039,7 @@
           <strong>webhook URL</strong> you specified during registration. The
           event contains the <code>app_id</code>, which is required for
           <a
-            href="/en/free-pro-team@latest/apps/building-integrations/setting-up-and-registering-github-apps/about-authentication-options-for-github-apps"
+            href="/en/apps/building-integrations/setting-up-and-registering-github-apps/about-authentication-options-for-github-apps"
             >authenticating</a
           >
           an app.
@@ -7158,8 +7050,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -7170,8 +7061,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -7337,9 +7227,7 @@
   <p>
     Activity related to project cards. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
-    see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/projects#cards"
-      >project cards</a
+    see the &quot;<a href="/en/rest/reference/projects#cards">project cards</a
     >&quot; REST API.
   </p>
   <h4 id="availability-27"><a href="#availability-27">Availability</a></h4>
@@ -7403,10 +7291,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a href="/en/free-pro-team@latest/rest/reference/projects#cards"
-            >project card</a
-          >
-          itself.
+          <a href="/en/rest/reference/projects#cards">project card</a> itself.
         </td>
       </tr>
       <tr>
@@ -7414,8 +7299,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -7426,8 +7310,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -7610,7 +7493,7 @@
     Activity related to columns in a project board. The type of activity is
     specified in the <code>action</code> property of the payload object. For
     more information, see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/projects#columns"
+      href="/en/rest/reference/projects#columns"
       >project columns</a
     >&quot; REST API.
   </p>
@@ -7675,9 +7558,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a href="/en/free-pro-team@latest/rest/reference/projects#columns"
-            >project column</a
-          >
+          <a href="/en/rest/reference/projects#columns">project column</a>
           itself.
         </td>
       </tr>
@@ -7686,8 +7567,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -7698,8 +7578,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -7859,9 +7738,8 @@
   <p>
     Activity related to project boards. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
-    see the &quot;<a href="/en/free-pro-team@latest/rest/reference/projects"
-      >projects</a
-    >&quot; REST API.
+    see the &quot;<a href="/en/rest/reference/projects">projects</a>&quot; REST
+    API.
   </p>
   <h4 id="availability-29"><a href="#availability-29">Availability</a></h4>
   <ul>
@@ -7920,19 +7798,14 @@
       <tr>
         <td><code>project</code></td>
         <td><code>object</code></td>
-        <td>
-          The
-          <a href="/en/free-pro-team@latest/rest/reference/projects">project</a>
-          itself.
-        </td>
+        <td>The <a href="/en/rest/reference/projects">project</a> itself.</td>
       </tr>
       <tr>
         <td><code>repository</code></td>
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -7943,8 +7816,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -8153,8 +8025,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -8165,8 +8036,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -8315,9 +8185,8 @@
   <p>
     Activity related to pull requests. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
-    see the &quot;<a href="/en/free-pro-team@latest/rest/reference/pulls"
-      >pull requests</a
-    >&quot; REST API.
+    see the &quot;<a href="/en/rest/reference/pulls">pull requests</a>&quot;
+    REST API.
   </p>
   <h4 id="availability-31"><a href="#availability-31">Availability</a></h4>
   <ul>
@@ -8386,21 +8255,14 @@
       <tr>
         <td><code>pull_request</code></td>
         <td><code>object</code></td>
-        <td>
-          The
-          <a href="/en/free-pro-team@latest/rest/reference/pulls"
-            >pull request</a
-          >
-          itself.
-        </td>
+        <td>The <a href="/en/rest/reference/pulls">pull request</a> itself.</td>
       </tr>
       <tr>
         <td><code>repository</code></td>
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -8411,8 +8273,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -8906,8 +8767,7 @@
   <p>
     Activity related to pull request reviews. The type of activity is specified
     in the <code>action</code> property of the payload object. For more
-    information, see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/pulls#reviews"
+    information, see the &quot;<a href="/en/rest/reference/pulls#reviews"
       >pull request reviews</a
     >&quot; REST API.
   </p>
@@ -8949,11 +8809,8 @@
         <td><code>pull_request</code></td>
         <td><code>object</code></td>
         <td>
-          The
-          <a href="/en/free-pro-team@latest/rest/reference/pulls"
-            >pull request</a
-          >
-          the review pertains to.
+          The <a href="/en/rest/reference/pulls">pull request</a> the review
+          pertains to.
         </td>
       </tr>
       <tr>
@@ -8974,8 +8831,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -8986,8 +8842,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -9502,8 +9357,7 @@
     Activity related to pull request review comments in the pull request&apos;s
     unified diff. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
-    see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/pulls#comments"
+    see the &quot;<a href="/en/rest/reference/pulls#comments"
       >pull request review comments</a
     >&quot; REST API.
   </p>
@@ -9553,22 +9407,15 @@
         <td><code>pull_request</code></td>
         <td><code>object</code></td>
         <td>
-          The
-          <a href="/en/free-pro-team@latest/rest/reference/pulls"
-            >pull request</a
-          >
-          the comment belongs to.
+          The <a href="/en/rest/reference/pulls">pull request</a> the comment
+          belongs to.
         </td>
       </tr>
       <tr>
         <td><code>comment</code></td>
         <td><code>object</code></td>
         <td>
-          The
-          <a href="/en/free-pro-team@latest/rest/reference/pulls#comments"
-            >comment</a
-          >
-          itself.
+          The <a href="/en/rest/reference/pulls#comments">comment</a> itself.
         </td>
       </tr>
       <tr>
@@ -9576,8 +9423,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -9588,8 +9434,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -10153,10 +9998,8 @@
         <td><code>string</code></td>
         <td>
           The full
-          <a href="/en/free-pro-team@latest/rest/reference/git#refs"
-            ><code>git ref</code></a
-          >
-          that was pushed. Example: <code>refs/heads/main</code>.
+          <a href="/en/rest/reference/git#refs"><code>git ref</code></a> that
+          was pushed. Example: <code>refs/heads/main</code>.
         </td>
       </tr>
       <tr>
@@ -10179,11 +10022,9 @@
         <td>
           An array of commit objects describing the pushed commits. (The array
           includes a maximum of 20 commits. If necessary, you can use the
-          <a href="/en/free-pro-team@latest/rest/reference/repos#commits"
-            >Commits API</a
-          >
-          to fetch additional commits. This limit is applied to timeline events
-          only and isn&apos;t applied to webhook deliveries.)
+          <a href="/en/rest/reference/repos#commits">Commits API</a> to fetch
+          additional commits. This limit is applied to timeline events only and
+          isn&apos;t applied to webhook deliveries.)
         </td>
       </tr>
       <tr>
@@ -10253,8 +10094,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -10265,8 +10105,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -10433,10 +10272,8 @@
   <p>
     Activity related to a release. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
-    see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/repos#releases"
-      >releases</a
-    >&quot; REST API.
+    see the &quot;<a href="/en/rest/reference/repos#releases">releases</a>&quot;
+    REST API.
   </p>
   <h4 id="availability-35"><a href="#availability-35">Availability</a></h4>
   <ul>
@@ -10511,10 +10348,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a href="/en/free-pro-team@latest/rest/reference/repos/#get-a-release"
-            >release</a
-          >
-          object.
+          <a href="/en/rest/reference/repos/#get-a-release">release</a> object.
         </td>
       </tr>
       <tr>
@@ -10522,8 +10356,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -10534,8 +10367,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -10725,8 +10557,7 @@
   </h3>
   <p>
     This event occurs when a GitHub App sends a <code>POST</code> request to the
-    &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/repos#create-a-repository-dispatch-event"
+    &quot;<a href="/en/rest/reference/repos#create-a-repository-dispatch-event"
       >Create a repository dispatch event</a
     >&quot; endpoint.
   </p>
@@ -10886,9 +10717,8 @@
   <p>
     Activity related to a repository. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
-    see the &quot;<a href="/en/free-pro-team@latest/rest/reference/repos"
-      >repositories</a
-    >&quot; REST API.
+    see the &quot;<a href="/en/rest/reference/repos">repositories</a>&quot; REST
+    API.
   </p>
   <h4 id="availability-37"><a href="#availability-37">Availability</a></h4>
   <ul>
@@ -10939,8 +10769,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -10951,8 +10780,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -11105,18 +10933,16 @@
     Activity related to a repository being imported to GitHub. The type of
     activity is specified in the <code>action</code> property of the payload
     object. For more information, see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/migrations#source-imports"
+      href="/en/rest/reference/migrations#source-imports"
       >source imports</a
     >&quot; REST API. To receive this event for a personal repository, you must
     create an empty repository prior to the import. This event can be triggered
     using either the
-    <a
-      href="/en/free-pro-team@latest/articles/importing-a-repository-with-github-importer"
+    <a href="/en/articles/importing-a-repository-with-github-importer"
       >GitHub Importer</a
     >
     or the
-    <a href="/en/free-pro-team@latest/rest/reference/migrations#source-imports"
-      >Source imports API</a
+    <a href="/en/rest/reference/migrations#source-imports">Source imports API</a
     >.
   </p>
   <h4 id="availability-38"><a href="#availability-38">Availability</a></h4>
@@ -11150,8 +10976,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -11162,8 +10987,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -11320,7 +11144,7 @@
     Activity related to security vulnerability alerts in a repository. The type
     of activity is specified in the <code>action</code> property of the payload
     object. For more information, see the &quot;<a
-      href="/en/free-pro-team@latest/github/managing-security-vulnerabilities/about-security-alerts-for-vulnerable-dependencies"
+      href="/en/github/managing-security-vulnerabilities/about-security-alerts-for-vulnerable-dependencies"
       >About security alerts for vulnerable dependencies</a
     >&quot;.
   </p>
@@ -11360,8 +11184,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -11372,8 +11195,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -11525,7 +11347,7 @@
     Activity related to secret scanning alerts in a repository. The type of
     activity is specified in the action property of the payload object. For more
     information, see &#x201C;<a
-      href="/en/free-pro-team@latest/github/administering-a-repository/about-secret-scanning"
+      href="/en/github/administering-a-repository/about-secret-scanning"
       >About secret scanning</a
     >.&#x201D;
   </p>
@@ -11568,8 +11390,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -11580,8 +11401,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -11761,7 +11581,7 @@
     information about security-related vulnerabilities in software on GitHub.
     The security advisory dataset also powers the GitHub security alerts, see
     &quot;<a
-      href="/en/free-pro-team@latest/articles/about-security-alerts-for-vulnerable-dependencies"
+      href="/en/articles/about-security-alerts-for-vulnerable-dependencies"
       >About security alerts for vulnerable dependencies</a
     >.&quot;
   </p>
@@ -11863,14 +11683,14 @@
     Activity related to a sponsorship listing. The type of activity is specified
     in the <code>action</code> property of the payload object. For more
     information, see &quot;<a
-      href="/en/free-pro-team@latest/github/supporting-the-open-source-community-with-github-sponsors/about-github-sponsors"
+      href="/en/github/supporting-the-open-source-community-with-github-sponsors/about-github-sponsors"
       >About GitHub Sponsors</a
     >&quot;.
   </p>
   <p>
     You can only create a sponsorship webhook on GitHub. For more information,
     see &quot;<a
-      href="/en/free-pro-team@latest/github/supporting-the-open-source-community-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account"
+      href="/en/github/supporting-the-open-source-community-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account"
       >Configuring webhooks for events in your sponsored account</a
     >&quot;.
   </p>
@@ -11918,7 +11738,7 @@
           <code>pending_tier_change</code> will include the original tier before
           the change or pending change. For more information, see the
           <a
-            href="/en/free-pro-team@latest/webhooks/event-payloads#webhook-payload-example-when-someone-downgrades-a-sponsorship"
+            href="/en/webhooks/event-payloads#webhook-payload-example-when-someone-downgrades-a-sponsorship"
             >pending tier change payload</a
           >.
         </td>
@@ -12124,7 +11944,7 @@
     Activity related to a repository being starred. The type of activity is
     specified in the <code>action</code> property of the payload object. For
     more information, see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/activity#starring"
+      href="/en/rest/reference/activity#starring"
       >starring</a
     >&quot; REST API.
   </p>
@@ -12169,8 +11989,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -12181,8 +12000,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -12324,8 +12142,7 @@
   <p>
     When the status of a Git commit changes. The type of activity is specified
     in the <code>action</code> property of the payload object. For more
-    information, see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/repos#statuses"
+    information, see the &quot;<a href="/en/rest/reference/repos#statuses"
       >statuses</a
     >&quot; REST API.
   </p>
@@ -12390,8 +12207,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -12402,8 +12218,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -12660,9 +12475,7 @@
   <p>
     Activity related to an organization&apos;s team. The type of activity is
     specified in the <code>action</code> property of the payload object. For
-    more information, see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/teams"
-      >teams</a
+    more information, see the &quot;<a href="/en/rest/reference/teams">teams</a
     >&quot; REST API.
   </p>
   <h4 id="availability-45"><a href="#availability-45">Availability</a></h4>
@@ -12770,8 +12583,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -12943,8 +12755,7 @@
   <h3 id="team_add"><a href="#team_add">team_add</a></h3>
   <p>
     When a
-    <a
-      href="/en/free-pro-team@latest/rest/reference/teams#add-or-update-team-repository-permissions"
+    <a href="/en/rest/reference/teams#add-or-update-team-repository-permissions"
       >repository is added to a team</a
     >.
   </p>
@@ -12971,10 +12782,9 @@
         <td><code>team</code></td>
         <td><code>object</code></td>
         <td>
-          The
-          <a href="/en/free-pro-team@latest/rest/reference/teams">team</a> that
-          was modified. <strong>Note:</strong> Older events may not include this
-          in the payload.
+          The <a href="/en/rest/reference/teams">team</a> that was modified.
+          <strong>Note:</strong> Older events may not include this in the
+          payload.
         </td>
       </tr>
       <tr>
@@ -12982,8 +12792,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -12994,8 +12803,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -13171,17 +12979,14 @@
   <p>
     When someone stars a repository. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
-    see the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/activity#starring"
-      >starring</a
+    see the &quot;<a href="/en/rest/reference/activity#starring">starring</a
     >&quot; REST API.
   </p>
   <p>
     The event&#x2019;s actor is the
-    <a href="/en/free-pro-team@latest/rest/reference/users">user</a> who starred
-    a repository, and the event&#x2019;s repository is the
-    <a href="/en/free-pro-team@latest/rest/reference/repos">repository</a> that
-    was starred.
+    <a href="/en/rest/reference/users">user</a> who starred a repository, and
+    the event&#x2019;s repository is the
+    <a href="/en/rest/reference/repos">repository</a> that was starred.
   </p>
   <h4 id="availability-47"><a href="#availability-47">Availability</a></h4>
   <ul>
@@ -13215,8 +13020,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.
@@ -13227,8 +13031,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -13380,10 +13183,10 @@
   <p>
     This event occurs when someone triggers a workflow run on GitHub or sends a
     <code>POST</code> request to the &quot;<a
-      href="/en/free-pro-team@latest/rest/reference/actions/#create-a-workflow-dispatch-event"
+      href="/en/rest/reference/actions/#create-a-workflow-dispatch-event"
       >Create a workflow dispatch event</a
     >&quot; endpoint. For more information, see &quot;<a
-      href="/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows#workflow_dispatch"
+      href="/en/actions/reference/events-that-trigger-workflows#workflow_dispatch"
       >Events that trigger workflows</a
     >.&quot;
   </p>
@@ -13538,7 +13341,7 @@
   <p>
     When a GitHub Actions workflow run is requested or completed. For more
     information, see &quot;<a
-      href="/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows#workflow_run"
+      href="/en/actions/reference/events-that-trigger-workflows#workflow_run"
       >Events that trigger workflows</a
     >.&quot;
   </p>
@@ -13575,8 +13378,7 @@
         <td><code>object</code></td>
         <td>
           Webhook payloads contain the
-          <a
-            href="/en/free-pro-team@latest/rest/reference/orgs#get-an-organization"
+          <a href="/en/rest/reference/orgs#get-an-organization"
             ><code>organization</code></a
           >
           object when the webhook is configured for an organization or the event
@@ -13588,8 +13390,7 @@
         <td><code>object</code></td>
         <td>
           The
-          <a
-            href="/en/free-pro-team@latest/rest/reference/repos#get-a-repository"
+          <a href="/en/rest/reference/repos#get-a-repository"
             ><code>repository</code></a
           >
           where the event occurred.

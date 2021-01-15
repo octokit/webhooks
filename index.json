@@ -1,7 +1,7 @@
 [
   {
     "name": "check_run",
-    "description": "Check run activity has occurred. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[check runs](/en/free-pro-team@latest/rest/reference/checks#runs)\" REST API.",
+    "description": "Check run activity has occurred. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[check runs](/en/rest/reference/checks#runs)\" REST API.",
     "actions": ["completed", "created", "requested_action", "rerequested"],
     "examples": [
       {
@@ -2327,7 +2327,7 @@
   },
   {
     "name": "check_suite",
-    "description": "Check suite activity has occurred. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[check suites](/en/free-pro-team@latest/rest/reference/checks#suites)\" REST API.",
+    "description": "Check suite activity has occurred. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[check suites](/en/rest/reference/checks#suites)\" REST API.",
     "actions": ["completed", "requested", "rerequested"],
     "examples": [
       {
@@ -3905,7 +3905,7 @@
   },
   {
     "name": "code_scanning_alert",
-    "description": "Activity related to code scanning alerts in a repository. The type of activity is specified in the action property of the payload object. For more information, see “[About code scanning](/en/free-pro-team@latest/github/finding-security-vulnerabilities-and-errors-in-your-code/about-code-scanning).”",
+    "description": "Activity related to code scanning alerts in a repository. The type of activity is specified in the action property of the payload object. For more information, see “[About code scanning](/en/github/finding-security-vulnerabilities-and-errors-in-your-code/about-code-scanning).”",
     "actions": [
       "appeared_in_branch",
       "closed_by_user",
@@ -4343,7 +4343,7 @@
   },
   {
     "name": "commit_comment",
-    "description": "A commit comment is created. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[commit comment](/en/free-pro-team@latest/rest/reference/repos#comments)\" REST API.",
+    "description": "A commit comment is created. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[commit comment](/en/rest/reference/repos#comments)\" REST API.",
     "actions": ["created"],
     "examples": [
       {
@@ -4986,7 +4986,7 @@
   },
   {
     "name": "content_reference",
-    "description": "A new content reference is `created`. A new content reference is created when the body or comment of an issue or pull request includes a URL that matches a configured content reference domain. For more information, see \"[Using content attachments](/en/free-pro-team@latest/apps/using-content-attachments)\" to learn more about content references and attachments.\n\nWebhook events are triggered based on the specificity of the domain you register. For example, if you register a subdomain (`https://subdomain.example.com`) then only URLs for the subdomain trigger this event. If you register a domain (`https://example.com`) then URLs for domain and all subdomains trigger this event. See \"[Create a content attachment](/en/free-pro-team@latest/rest/reference/apps#create-a-content-attachment)\" to create a new content attachment.\n\nOnly GitHub Apps can receive this event. GitHub Apps must have the `content_references` `write` permission to subscribe to this event.",
+    "description": "A new content reference is `created`. A new content reference is created when the body or comment of an issue or pull request includes a URL that matches a configured content reference domain. For more information, see \"[Using content attachments](/en/apps/using-content-attachments)\" to learn more about content references and attachments.\n\nWebhook events are triggered based on the specificity of the domain you register. For example, if you register a subdomain (`https://subdomain.example.com`) then only URLs for the subdomain trigger this event. If you register a domain (`https://example.com`) then URLs for domain and all subdomains trigger this event. See \"[Create a content attachment](/en/rest/reference/apps#create-a-content-attachment)\" to create a new content attachment.\n\nOnly GitHub Apps can receive this event. GitHub Apps must have the `content_references` `write` permission to subscribe to this event.",
     "actions": ["created"],
     "examples": [
       {
@@ -5243,7 +5243,7 @@
   },
   {
     "name": "create",
-    "description": "A Git branch or tag is created. For more information, see the \"[Git data](/en/free-pro-team@latest/rest/reference/git)\" REST API.",
+    "description": "A Git branch or tag is created. For more information, see the \"[Git data](/en/rest/reference/git)\" REST API.",
     "actions": [],
     "examples": [
       {
@@ -5873,7 +5873,7 @@
   },
   {
     "name": "delete",
-    "description": "A Git branch or tag is deleted. For more information, see the \"[Git data](/en/free-pro-team@latest/rest/reference/git)\" REST API.",
+    "description": "A Git branch or tag is deleted. For more information, see the \"[Git data](/en/rest/reference/git)\" REST API.",
     "actions": [],
     "examples": [
       {
@@ -6374,7 +6374,7 @@
   },
   {
     "name": "deploy_key",
-    "description": "A deploy key is added or removed from a repository. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[Deploy keys](/en/free-pro-team@latest/rest/reference/repos#keys)\" REST API.",
+    "description": "A deploy key is added or removed from a repository. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[Deploy keys](/en/rest/reference/repos#keys)\" REST API.",
     "actions": ["created", "deleted"],
     "examples": [
       {
@@ -6631,7 +6631,7 @@
   },
   {
     "name": "deployment",
-    "description": "A deployment is created. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[deployment](/en/free-pro-team@latest/rest/reference/repos#list-deployments)\" REST API.",
+    "description": "A deployment is created. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[deployment](/en/rest/reference/repos#list-deployments)\" REST API.",
     "actions": ["created"],
     "examples": [
       {
@@ -7101,7 +7101,7 @@
   },
   {
     "name": "deployment_status",
-    "description": "A deployment is created. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[deployment statuses](/en/free-pro-team@latest/rest/reference/repos#list-deployment-statuses)\" REST API.",
+    "description": "A deployment is created. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[deployment statuses](/en/rest/reference/repos#list-deployment-statuses)\" REST API.",
     "actions": ["created"],
     "examples": [
       {
@@ -7670,7 +7670,7 @@
   },
   {
     "name": "fork",
-    "description": "A user forks a repository. For more information, see the \"[forks](/en/free-pro-team@latest/rest/reference/repos#forks)\" REST API.",
+    "description": "A user forks a repository. For more information, see the \"[forks](/en/rest/reference/repos#forks)\" REST API.",
     "actions": [],
     "examples": [
       {
@@ -8314,7 +8314,7 @@
   },
   {
     "name": "github_app_authorization",
-    "description": "When someone revokes their authorization of a GitHub App, this event occurs. A GitHub App receives this webhook by default and cannot unsubscribe from this event.\n\nAnyone can revoke their authorization of a GitHub App from their [GitHub account settings page](https://github.com/settings/apps/authorizations). Revoking the authorization of a GitHub App does not uninstall the GitHub App. You should program your GitHub App so that when it receives this webhook, it stops calling the API on behalf of the person who revoked the token. If your GitHub App continues to use a revoked access token, it will receive the `401 Bad Credentials` error. For details about user-to-server requests, which require GitHub App authorization, see \"[Identifying and authorizing users for GitHub Apps](/en/free-pro-team@latest/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps).\"",
+    "description": "When someone revokes their authorization of a GitHub App, this event occurs. A GitHub App receives this webhook by default and cannot unsubscribe from this event.\n\nAnyone can revoke their authorization of a GitHub App from their [GitHub account settings page](https://github.com/settings/apps/authorizations). Revoking the authorization of a GitHub App does not uninstall the GitHub App. You should program your GitHub App so that when it receives this webhook, it stops calling the API on behalf of the person who revoked the token. If your GitHub App continues to use a revoked access token, it will receive the `401 Bad Credentials` error. For details about user-to-server requests, which require GitHub App authorization, see \"[Identifying and authorizing users for GitHub Apps](/en/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps).\"",
     "actions": ["revoked"],
     "examples": [
       {
@@ -8367,7 +8367,7 @@
   },
   {
     "name": "gollum",
-    "description": "A wiki page is created or updated. For more information, see the \"[About wikis](/en/free-pro-team@latest/github/building-a-strong-community/about-wikis)\".",
+    "description": "A wiki page is created or updated. For more information, see the \"[About wikis](/en/github/building-a-strong-community/about-wikis)\".",
     "actions": [],
     "examples": [
       {
@@ -8756,7 +8756,7 @@
   },
   {
     "name": "installation",
-    "description": "Activity related to a GitHub App installation. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[GitHub App installation](/en/free-pro-team@latest/rest/reference/apps)\" REST API.",
+    "description": "Activity related to a GitHub App installation. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[GitHub App installation](/en/rest/reference/apps)\" REST API.",
     "actions": [
       "created",
       "deleted",
@@ -9112,7 +9112,7 @@
   },
   {
     "name": "installation_repositories",
-    "description": "Activity related to repositories being added to a GitHub App installation. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[GitHub App installation](/en/free-pro-team@latest/rest/reference/apps)\" REST API.",
+    "description": "Activity related to repositories being added to a GitHub App installation. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[GitHub App installation](/en/rest/reference/apps)\" REST API.",
     "actions": ["added", "removed"],
     "examples": [
       {
@@ -9356,7 +9356,7 @@
   },
   {
     "name": "issue_comment",
-    "description": "Activity related to an issue comment. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[issue comments](/en/free-pro-team@latest/rest/reference/issues#comments)\" REST API.",
+    "description": "Activity related to an issue comment. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[issue comments](/en/rest/reference/issues#comments)\" REST API.",
     "actions": ["created", "deleted", "edited"],
     "examples": [
       {
@@ -11656,7 +11656,7 @@
   },
   {
     "name": "issues",
-    "description": "Activity related to an issue. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[issues](/en/free-pro-team@latest/rest/reference/issues#comments)\" REST API.",
+    "description": "Activity related to an issue. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[issues](/en/rest/reference/issues#comments)\" REST API.",
     "actions": [
       "assigned",
       "closed",
@@ -17160,7 +17160,7 @@
   },
   {
     "name": "label",
-    "description": "Activity related to an issue. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[labels](/en/free-pro-team@latest/rest/reference/issues#labels)\" REST API.",
+    "description": "Activity related to an issue. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[labels](/en/rest/reference/issues#labels)\" REST API.",
     "actions": ["created", "deleted", "edited"],
     "examples": [
       {
@@ -17805,7 +17805,7 @@
   },
   {
     "name": "marketplace_purchase",
-    "description": "Activity related to a GitHub Marketplace purchase. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[GitHub Marketplace](/en/free-pro-team@latest/marketplace).\"",
+    "description": "Activity related to a GitHub Marketplace purchase. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[GitHub Marketplace](/en/marketplace).\"",
     "actions": [
       "cancelled",
       "changed",
@@ -18034,7 +18034,7 @@
   },
   {
     "name": "member",
-    "description": "Activity related to repository collaborators. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[collaborators](/en/free-pro-team@latest/rest/reference/repos#collaborators)\" REST API.",
+    "description": "Activity related to repository collaborators. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[collaborators](/en/rest/reference/repos#collaborators)\" REST API.",
     "actions": ["added", "edited", "removed"],
     "examples": [
       {
@@ -18597,7 +18597,7 @@
   },
   {
     "name": "membership",
-    "description": "Activity related to team membership. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[team members](/en/free-pro-team@latest/rest/reference/teams#members)\" REST API.",
+    "description": "Activity related to team membership. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[team members](/en/rest/reference/teams#members)\" REST API.",
     "actions": ["added", "removed"],
     "examples": [
       {
@@ -19161,7 +19161,7 @@
   },
   {
     "name": "milestone",
-    "description": "Activity related to milestones. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[milestones](/en/free-pro-team@latest/rest/reference/issues#milestones)\" REST API.",
+    "description": "Activity related to milestones. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[milestones](/en/rest/reference/issues#milestones)\" REST API.",
     "actions": ["closed", "created", "deleted", "edited", "opened"],
     "examples": [
       {
@@ -19942,7 +19942,7 @@
   },
   {
     "name": "organization",
-    "description": "Activity related to an organization and its members. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[organizations](/en/free-pro-team@latest/rest/reference/orgs)\" REST API.",
+    "description": "Activity related to an organization and its members. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[organizations](/en/rest/reference/orgs)\" REST API.",
     "actions": [
       "deleted",
       "member_added",
@@ -20148,7 +20148,7 @@
   },
   {
     "name": "org_block",
-    "description": "Activity related to people being blocked in an organization. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[blocking organization users](/en/free-pro-team@latest/rest/reference/orgs#blocking)\" REST API.",
+    "description": "Activity related to people being blocked in an organization. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[blocking organization users](/en/rest/reference/orgs#blocking)\" REST API.",
     "actions": ["blocked", "unblocked"],
     "examples": [
       {
@@ -20387,7 +20387,7 @@
   },
   {
     "name": "package",
-    "description": "Activity related to GitHub Packages. The type of activity is specified in the `action` property of the payload object. For more information, see \"[Managing packages with GitHub Packages](/en/free-pro-team@latest/github/managing-packages-with-github-packages)\" to learn more about GitHub Packages.",
+    "description": "Activity related to GitHub Packages. The type of activity is specified in the `action` property of the payload object. For more information, see \"[Managing packages with GitHub Packages](/en/github/managing-packages-with-github-packages)\" to learn more about GitHub Packages.",
     "actions": ["published", "updated"],
     "examples": [
       {
@@ -21323,7 +21323,7 @@
   },
   {
     "name": "ping",
-    "description": "When you create a new webhook, we'll send you a simple `ping` event to let you know you've set up the webhook correctly. This event isn't stored so it isn't retrievable via the [Events API](/en/free-pro-team@latest/rest/reference/activity#ping-a-repository-webhook) endpoint.",
+    "description": "When you create a new webhook, we'll send you a simple `ping` event to let you know you've set up the webhook correctly. This event isn't stored so it isn't retrievable via the [Events API](/en/rest/reference/activity#ping-a-repository-webhook) endpoint.",
     "actions": [],
     "examples": [
       {
@@ -21680,7 +21680,7 @@
   },
   {
     "name": "project_card",
-    "description": "Activity related to project cards. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[project cards](/en/free-pro-team@latest/rest/reference/projects#cards)\" REST API.",
+    "description": "Activity related to project cards. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[project cards](/en/rest/reference/projects#cards)\" REST API.",
     "actions": ["converted", "created", "deleted", "edited", "moved"],
     "examples": [
       {
@@ -22772,7 +22772,7 @@
   },
   {
     "name": "project_column",
-    "description": "Activity related to columns in a project board. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[project columns](/en/free-pro-team@latest/rest/reference/projects#columns)\" REST API.",
+    "description": "Activity related to columns in a project board. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[project columns](/en/rest/reference/projects#columns)\" REST API.",
     "actions": ["created", "deleted", "edited", "moved"],
     "examples": [
       {
@@ -23164,7 +23164,7 @@
   },
   {
     "name": "project",
-    "description": "Activity related to project boards. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[projects](/en/free-pro-team@latest/rest/reference/projects)\" REST API.",
+    "description": "Activity related to project boards. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[projects](/en/rest/reference/projects)\" REST API.",
     "actions": ["closed", "created", "deleted", "edited", "reopened"],
     "examples": [
       {
@@ -23987,7 +23987,7 @@
   },
   {
     "name": "pull_request",
-    "description": "Activity related to pull requests. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[pull requests](/en/free-pro-team@latest/rest/reference/pulls)\" REST API.",
+    "description": "Activity related to pull requests. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[pull requests](/en/rest/reference/pulls)\" REST API.",
     "actions": [
       "assigned",
       "closed",
@@ -36857,7 +36857,7 @@
   },
   {
     "name": "pull_request_review",
-    "description": "Activity related to pull request reviews. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[pull request reviews](/en/free-pro-team@latest/rest/reference/pulls#reviews)\" REST API.",
+    "description": "Activity related to pull request reviews. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[pull request reviews](/en/rest/reference/pulls#reviews)\" REST API.",
     "actions": ["dismissed", "edited", "submitted"],
     "examples": [
       {
@@ -38409,7 +38409,7 @@
   },
   {
     "name": "pull_request_review_comment",
-    "description": "Activity related to pull request review comments in the pull request's unified diff. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[pull request review comments](/en/free-pro-team@latest/rest/reference/pulls#comments)\" REST API.",
+    "description": "Activity related to pull request review comments in the pull request's unified diff. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[pull request review comments](/en/rest/reference/pulls#comments)\" REST API.",
     "actions": ["created", "deleted", "edited"],
     "examples": [
       {
@@ -41629,7 +41629,7 @@
   },
   {
     "name": "release",
-    "description": "Activity related to a release. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[releases](/en/free-pro-team@latest/rest/reference/repos#releases)\" REST API.",
+    "description": "Activity related to a release. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[releases](/en/rest/reference/repos#releases)\" REST API.",
     "actions": [
       "created",
       "deleted",
@@ -42272,7 +42272,7 @@
   },
   {
     "name": "repository_dispatch",
-    "description": "This event occurs when a GitHub App sends a `POST` request to the \"[Create a repository dispatch event](/en/free-pro-team@latest/rest/reference/repos#create-a-repository-dispatch-event)\" endpoint.",
+    "description": "This event occurs when a GitHub App sends a `POST` request to the \"[Create a repository dispatch event](/en/rest/reference/repos#create-a-repository-dispatch-event)\" endpoint.",
     "actions": ["on-demand-test"],
     "examples": [
       {
@@ -42551,7 +42551,7 @@
   },
   {
     "name": "repository",
-    "description": "Activity related to a repository. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[repositories](/en/free-pro-team@latest/rest/reference/repos)\" REST API.",
+    "description": "Activity related to a repository. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[repositories](/en/rest/reference/repos)\" REST API.",
     "actions": [
       "archived",
       "created",
@@ -44166,7 +44166,7 @@
   },
   {
     "name": "repository_import",
-    "description": "Activity related to a repository being imported to GitHub. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[source imports](/en/free-pro-team@latest/rest/reference/migrations#source-imports)\" REST API. To receive this event for a personal repository, you must create an empty repository prior to the import. This event can be triggered using either the [GitHub Importer](/en/free-pro-team@latest/articles/importing-a-repository-with-github-importer) or the [Source imports API](/en/free-pro-team@latest/rest/reference/migrations#source-imports).",
+    "description": "Activity related to a repository being imported to GitHub. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[source imports](/en/rest/reference/migrations#source-imports)\" REST API. To receive this event for a personal repository, you must create an empty repository prior to the import. This event can be triggered using either the [GitHub Importer](/en/articles/importing-a-repository-with-github-importer) or the [Source imports API](/en/rest/reference/migrations#source-imports).",
     "actions": [],
     "examples": [
       {
@@ -44433,7 +44433,7 @@
   },
   {
     "name": "repository_vulnerability_alert",
-    "description": "Activity related to security vulnerability alerts in a repository. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[About security alerts for vulnerable dependencies](/en/free-pro-team@latest/github/managing-security-vulnerabilities/about-security-alerts-for-vulnerable-dependencies)\".",
+    "description": "Activity related to security vulnerability alerts in a repository. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[About security alerts for vulnerable dependencies](/en/github/managing-security-vulnerabilities/about-security-alerts-for-vulnerable-dependencies)\".",
     "actions": ["create", "dismiss", "resolve"],
     "examples": [
       {
@@ -45103,7 +45103,7 @@
   },
   {
     "name": "secret_scanning_alert",
-    "description": "Activity related to secret scanning alerts in a repository. The type of activity is specified in the action property of the payload object. For more information, see “[About secret scanning](/en/free-pro-team@latest/github/administering-a-repository/about-secret-scanning).”",
+    "description": "Activity related to secret scanning alerts in a repository. The type of activity is specified in the action property of the payload object. For more information, see “[About secret scanning](/en/github/administering-a-repository/about-secret-scanning).”",
     "actions": ["created", "reopened", "resolved"],
     "examples": [
       {
@@ -45386,7 +45386,7 @@
   },
   {
     "name": "security_advisory",
-    "description": "Activity related to a security advisory. A security advisory provides information about security-related vulnerabilities in software on GitHub. The security advisory dataset also powers the GitHub security alerts, see \"[About security alerts for vulnerable dependencies](/en/free-pro-team@latest/articles/about-security-alerts-for-vulnerable-dependencies).\"",
+    "description": "Activity related to a security advisory. A security advisory provides information about security-related vulnerabilities in software on GitHub. The security advisory dataset also powers the GitHub security alerts, see \"[About security alerts for vulnerable dependencies](/en/articles/about-security-alerts-for-vulnerable-dependencies).\"",
     "actions": ["performed", "published", "updated"],
     "examples": [
       {
@@ -45536,7 +45536,7 @@
   },
   {
     "name": "sponsorship",
-    "description": "Activity related to a sponsorship listing. The type of activity is specified in the `action` property of the payload object. For more information, see \"[About GitHub Sponsors](/en/free-pro-team@latest/github/supporting-the-open-source-community-with-github-sponsors/about-github-sponsors)\".\n\nYou can only create a sponsorship webhook on GitHub. For more information, see \"[Configuring webhooks for events in your sponsored account](/en/free-pro-team@latest/github/supporting-the-open-source-community-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)\".",
+    "description": "Activity related to a sponsorship listing. The type of activity is specified in the `action` property of the payload object. For more information, see \"[About GitHub Sponsors](/en/github/supporting-the-open-source-community-with-github-sponsors/about-github-sponsors)\".\n\nYou can only create a sponsorship webhook on GitHub. For more information, see \"[Configuring webhooks for events in your sponsored account](/en/github/supporting-the-open-source-community-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)\".",
     "actions": [
       "cancelled",
       "created",
@@ -45880,7 +45880,7 @@
   },
   {
     "name": "star",
-    "description": "Activity related to a repository being starred. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[starring](/en/free-pro-team@latest/rest/reference/activity#starring)\" REST API.",
+    "description": "Activity related to a repository being starred. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[starring](/en/rest/reference/activity#starring)\" REST API.",
     "actions": ["created", "deleted"],
     "examples": [
       {
@@ -46241,7 +46241,7 @@
   },
   {
     "name": "status",
-    "description": "When the status of a Git commit changes. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[statuses](/en/free-pro-team@latest/rest/reference/repos#statuses)\" REST API.",
+    "description": "When the status of a Git commit changes. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[statuses](/en/rest/reference/repos#statuses)\" REST API.",
     "actions": [],
     "examples": [
       {
@@ -46926,7 +46926,7 @@
   },
   {
     "name": "team",
-    "description": "Activity related to an organization's team. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[teams](/en/free-pro-team@latest/rest/reference/teams)\" REST API.",
+    "description": "Activity related to an organization's team. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[teams](/en/rest/reference/teams)\" REST API.",
     "actions": [
       "added_to_repository",
       "created",
@@ -47539,7 +47539,7 @@
   },
   {
     "name": "team_add",
-    "description": "When a [repository is added to a team](/en/free-pro-team@latest/rest/reference/teams#add-or-update-team-repository-permissions).",
+    "description": "When a [repository is added to a team](/en/rest/reference/teams#add-or-update-team-repository-permissions).",
     "actions": [],
     "examples": [
       {
@@ -47979,7 +47979,7 @@
   },
   {
     "name": "watch",
-    "description": "When someone stars a repository. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[starring](/en/free-pro-team@latest/rest/reference/activity#starring)\" REST API.\n\nThe event’s actor is the [user](/en/free-pro-team@latest/rest/reference/users) who starred a repository, and the event’s repository is the [repository](/en/free-pro-team@latest/rest/reference/repos) that was starred.",
+    "description": "When someone stars a repository. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[starring](/en/rest/reference/activity#starring)\" REST API.\n\nThe event’s actor is the [user](/en/rest/reference/users) who starred a repository, and the event’s repository is the [repository](/en/rest/reference/repos) that was starred.",
     "actions": ["started"],
     "examples": [
       {
@@ -48341,7 +48341,7 @@
   },
   {
     "name": "workflow_dispatch",
-    "description": "This event occurs when someone triggers a workflow run on GitHub or sends a `POST` request to the \"[Create a workflow dispatch event](/en/free-pro-team@latest/rest/reference/actions/#create-a-workflow-dispatch-event)\" endpoint. For more information, see \"[Events that trigger workflows](/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows#workflow_dispatch).\"",
+    "description": "This event occurs when someone triggers a workflow run on GitHub or sends a `POST` request to the \"[Create a workflow dispatch event](/en/rest/reference/actions/#create-a-workflow-dispatch-event)\" endpoint. For more information, see \"[Events that trigger workflows](/en/actions/reference/events-that-trigger-workflows#workflow_dispatch).\"",
     "actions": [],
     "examples": [
       {
@@ -48612,7 +48612,7 @@
   },
   {
     "name": "workflow_run",
-    "description": "When a GitHub Actions workflow run is requested or completed. For more information, see \"[Events that trigger workflows](/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows#workflow_run).\"",
+    "description": "When a GitHub Actions workflow run is requested or completed. For more information, see \"[Events that trigger workflows](/en/actions/reference/events-that-trigger-workflows#workflow_run).\"",
     "actions": ["action", "completed", "requested"],
     "examples": [
       {
