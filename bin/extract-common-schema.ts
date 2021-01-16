@@ -188,3 +188,5 @@ if (Array.isArray(commonSchema.type) && commonSchema.type.includes("null")) {
 }
 
 writeNewCommonSchema(fileName, commonSchema);
+
+console.log(`wrote extracted schema to ${fileName}`);

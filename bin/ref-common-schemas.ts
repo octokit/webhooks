@@ -101,6 +101,8 @@ const splitIntoObjectAndNull = (
   return [newObject, { type: "null" }];
 };
 
+let count = 0;
+
 fs.readdirSync(pathToSchemas).forEach((eventName) => {
   if (eventName === "common") {
     return; // "common" is not an event
@@ -127,6 +129,8 @@ fs.readdirSync(pathToSchemas).forEach((eventName) => {
                 return { oneOf: [commonRef, nullType] };
               }
 
+              count += 1;
+
               return commonRef;
             }
           }
@@ -138,3 +142,7 @@ fs.readdirSync(pathToSchemas).forEach((eventName) => {
     );
   });
 });
+
+console.log(
+  `replaced ${count} ${count === 1 ? "property" : "properties"} with $ref`
+);
