@@ -7,7 +7,22 @@ import { format } from "prettier";
 
 const pathToSchemas = "payload-schemas/schemas";
 
-const [interfacePropertyPath, interfaceName] = process.argv.slice(2);
+const parseArgv = (argv: string[]): [args: string[], flags: string[]] => {
+  const flags: string[] = [];
+  const args: string[] = [];
+
+  argv.forEach((arg) => {
+    arg.startsWith("--") ? flags.push(arg) : args.push(arg);
+  });
+
+  return [args, flags];
+};
+
+const [[interfacePropertyPath, interfaceName], flags] = parseArgv(
+  process.argv.slice(2)
+);
+
+const overwriteIfExists = flags.includes("--overwrite");
 
 assert.ok(
   interfacePropertyPath,
@@ -104,7 +119,7 @@ const writeNewCommonSchema = (name: string, schema: JSONSchema7) => {
       }),
       { parser: "json" }
     ),
-    { flag: "wx" }
+    { flag: overwriteIfExists ? "w" : "wx" }
   );
 };
 
