@@ -284,78 +284,11 @@ export interface CheckRunCompletedEvent {
           repo: RepoRef;
         };
       }[];
-      app: {
-        id: number;
-        slug?: string;
-        node_id: string;
-        owner: User;
-        name: string;
-        description: string | null;
-        external_url: string;
-        html_url: string;
-        created_at: string;
-        updated_at: string;
-        permissions?: {
-          administration?: "read" | "write";
-          actions?: "read" | "write";
-          checks?: "read" | "write";
-          contents?: "read" | "write";
-          deployments?: "read" | "write";
-          issues?: "read" | "write";
-          members?: "read" | "write";
-          metadata?: "read" | "write";
-          organization_administration?: "read" | "write";
-          organization_hooks?: "read" | "write";
-          organization_plan?: "read" | "write";
-          organization_projects?: "read" | "write";
-          organization_user_blocking?: "read" | "write";
-          pages?: "read" | "write";
-          pull_requests?: "read" | "write";
-          repository_hooks?: "read" | "write";
-          repository_projects?: "read" | "write";
-          statuses?: "read" | "write";
-          team_discussions?: "read" | "write";
-          vulnerability_alerts?: "read" | "write";
-        };
-        events?: string[];
-      };
+      app: App;
       created_at: string;
       updated_at: string;
     };
-    app: {
-      id: number;
-      slug?: string;
-      node_id: string;
-      owner: User;
-      name: string;
-      description: string | null;
-      external_url: string;
-      html_url: string;
-      created_at: string;
-      updated_at: string;
-      permissions?: {
-        administration?: "read" | "write";
-        checks?: "read" | "write";
-        contents?: "read" | "write";
-        deployments?: "read" | "write";
-        issues?: "read" | "write";
-        members?: "read" | "write";
-        metadata?: "read" | "write";
-        organization_administration?: "read" | "write";
-        organization_hooks?: "read" | "write";
-        organization_plan?: "read" | "write";
-        organization_projects?: "read" | "write";
-        organization_user_blocking?: "read" | "write";
-        pages?: "read" | "write";
-        pull_requests?: "read" | "write";
-        repository_hooks?: "read" | "write";
-        repository_projects?: "read" | "write";
-        statuses?: "read" | "write";
-        team_discussions?: "read" | "write";
-        vulnerability_alerts?: "read" | "write";
-      };
-      events?: string[];
-    };
+    app: App;
     pull_requests: {
       url: string;
       id: number;
@@ -384,6 +317,41 @@ export interface RepoRef {
   id: number;
   url: string;
   name: string;
+}
+export interface App {
+  id: number;
+  slug?: string;
+  node_id: string;
+  owner: User;
+  name: string;
+  description: string | null;
+  external_url: string;
+  html_url: string;
+  created_at: string;
+  updated_at: string;
+  permissions?: {
+    administration?: "read" | "write";
+    actions?: "read" | "write";
+    checks?: "read" | "write";
+    contents?: "read" | "write";
+    deployments?: "read" | "write";
+    issues?: "read" | "write";
+    members?: "read" | "write";
+    metadata?: "read" | "write";
+    organization_administration?: "read" | "write";
+    organization_hooks?: "read" | "write";
+    organization_plan?: "read" | "write";
+    organization_projects?: "read" | "write";
+    organization_user_blocking?: "read" | "write";
+    pages?: "read" | "write";
+    pull_requests?: "read" | "write";
+    repository_hooks?: "read" | "write";
+    repository_projects?: "read" | "write";
+    statuses?: "read" | "write";
+    team_discussions?: "read" | "write";
+    vulnerability_alerts?: "read" | "write";
+  };
+  events?: string[];
 }
 export interface User {
   login: string;
@@ -623,41 +591,6 @@ export interface CheckRunCreatedEvent {
   sender: User;
   installation?: Installation;
   organization?: Organization;
-}
-export interface App {
-  id: number;
-  slug?: string;
-  node_id: string;
-  owner: User;
-  name: string;
-  description: string | null;
-  external_url: string;
-  html_url: string;
-  created_at: string;
-  updated_at: string;
-  permissions?: {
-    administration?: "read" | "write";
-    actions?: "read" | "write";
-    checks?: "read" | "write";
-    contents?: "read" | "write";
-    deployments?: "read" | "write";
-    issues?: "read" | "write";
-    members?: "read" | "write";
-    metadata?: "read" | "write";
-    organization_administration?: "read" | "write";
-    organization_hooks?: "read" | "write";
-    organization_plan?: "read" | "write";
-    organization_projects?: "read" | "write";
-    organization_user_blocking?: "read" | "write";
-    pages?: "read" | "write";
-    pull_requests?: "read" | "write";
-    repository_hooks?: "read" | "write";
-    repository_projects?: "read" | "write";
-    statuses?: "read" | "write";
-    team_discussions?: "read" | "write";
-    vulnerability_alerts?: "read" | "write";
-  };
-  events?: string[];
 }
 export interface CheckRunRequestedActionEvent {
   action: "requested_action";
