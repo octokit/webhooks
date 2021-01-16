@@ -970,9 +970,8 @@ export interface CodeScanningAlertAppearedInBranchEvent {
   ref: string;
   commit_oid: string;
   repository: Repository;
-  sender?: User;
   installation?: Installation;
-  organization: Organization;
+  organization?: Organization;
 }
 export interface CodeScanningAlertClosedByUserEvent {
   action: "closed_by_user";
@@ -1004,9 +1003,9 @@ export interface CodeScanningAlertClosedByUserEvent {
   ref: string;
   commit_oid: string;
   repository: Repository;
-  sender?: User;
+  sender: User;
   installation?: Installation;
-  organization: Organization;
+  organization?: Organization;
 }
 export interface CodeScanningAlertCreatedEvent {
   action: "created";
@@ -1038,9 +1037,8 @@ export interface CodeScanningAlertCreatedEvent {
   ref: string;
   commit_oid: string;
   repository: Repository;
-  sender?: User;
   installation?: Installation;
-  organization: Organization;
+  organization?: Organization;
 }
 export interface CodeScanningAlertFixedEvent {
   action: "fixed";
@@ -1072,9 +1070,8 @@ export interface CodeScanningAlertFixedEvent {
   ref: string;
   commit_oid: string;
   repository: Repository;
-  sender?: User;
   installation?: Installation;
-  organization: Organization;
+  organization?: Organization;
 }
 export interface CodeScanningAlertReopenedEvent {
   action: "reopened";
@@ -1106,9 +1103,8 @@ export interface CodeScanningAlertReopenedEvent {
   ref: string;
   commit_oid: string;
   repository: Repository;
-  sender?: User;
   installation?: Installation;
-  organization: Organization;
+  organization?: Organization;
 }
 export interface CodeScanningAlertReopenedByUserEvent {
   action: "reopened_by_user";
@@ -1140,9 +1136,9 @@ export interface CodeScanningAlertReopenedByUserEvent {
   ref: string;
   commit_oid: string;
   repository: Repository;
-  sender?: User;
+  sender: User;
   installation?: Installation;
-  organization: Organization;
+  organization?: Organization;
 }
 export interface CommitCommentCreatedEvent {
   action: "created";
@@ -9016,12 +9012,12 @@ export interface WorkflowDispatchEvent {
   repository: Repository;
   sender: User;
   installation?: Installation;
-  organization: Organization;
+  organization?: Organization;
   workflow: string;
 }
 export interface WorkflowRunCompletedEvent {
   action: "completed";
-  organization: Organization;
+  organization?: Organization;
   repository: Repository;
   sender: User;
   workflow: {
@@ -9173,7 +9169,7 @@ export interface WorkflowRunCompletedEvent {
 }
 export interface WorkflowRunRequestedEvent {
   action: "requested";
-  organization: Organization;
+  organization?: Organization;
   repository: Repository;
   sender: User;
   workflow: {

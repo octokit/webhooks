@@ -2,14 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "code_scanning_alert$closed_by_user",
   "type": "object",
-  "required": [
-    "action",
-    "alert",
-    "ref",
-    "commit_oid",
-    "repository",
-    "organization"
-  ],
+  "required": ["action", "alert", "ref", "commit_oid", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["closed_by_user"] },
     "alert": {
