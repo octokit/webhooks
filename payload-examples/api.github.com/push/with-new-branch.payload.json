@@ -151,9 +151,7 @@
         "email": "21031067+Codertocat@users.noreply.github.com",
         "username": "Codertocat"
       },
-      "added": [
-        "README.md"
-      ],
+      "added": ["README.md"],
       "removed": [],
       "modified": []
     }
@@ -175,9 +173,7 @@
       "email": "21031067+Codertocat@users.noreply.github.com",
       "username": "Codertocat"
     },
-    "added": [
-      "README.md"
-    ],
+    "added": ["README.md"],
     "removed": [],
     "modified": []
   }
