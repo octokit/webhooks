@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/app.schema.json",
+  "type": "object",
+  "required": [
+    "id",
+    "node_id",
+    "owner",
+    "name",
+    "description",
+    "external_url",
+    "html_url",
+    "created_at",
+    "updated_at"
+  ],
+  "properties": {
+    "id": { "type": "integer" },
+    "slug": { "type": "string" },
+    "node_id": { "type": "string" },
+    "owner": { "$ref": "user.schema.json" },
+    "name": { "type": "string" },
+    "description": { "type": ["string", "null"] },
+    "external_url": { "type": "string" },
+    "html_url": { "type": "string" },
+    "created_at": { "type": "string" },
+    "updated_at": { "type": "string" },
+    "permissions": {
+      "type": "object",
+      "properties": {
+        "administration": {
+          "type": "string",
+          "enum": ["read", "write"]
+        },
+        "actions": { "type": "string", "enum": ["read", "write"] },
+        "checks": { "type": "string", "enum": ["read", "write"] },
+        "contents": { "type": "string", "enum": ["read", "write"] },
+        "deployments": {
+          "type": "string",
+          "enum": ["read", "write"]
+        },
+        "issues": { "type": "string", "enum": ["read", "write"] },
+        "members": { "type": "string", "enum": ["read", "write"] },
+        "metadata": { "type": "string", "enum": ["read", "write"] },
+        "organization_administration": {
+          "type": "string",
+          "enum": ["read", "write"]
+        },
+        "organization_hooks": {
+          "type": "string",
+          "enum": ["read", "write"]
+        },
+        "organization_plan": {
+          "type": "string",
+          "enum": ["read", "write"]
+        },
+        "organization_projects": {
+          "type": "string",
+          "enum": ["read", "write"]
+        },
+        "organization_user_blocking": {
+          "type": "string",
+          "enum": ["read", "write"]
+        },
+        "pages": { "type": "string", "enum": ["read", "write"] },
+        "pull_requests": {
+          "type": "string",
+          "enum": ["read", "write"]
+        },
+        "repository_hooks": {
+          "type": "string",
+          "enum": ["read", "write"]
+        },
+        "repository_projects": {
+          "type": "string",
+          "enum": ["read", "write"]
+        },
+        "statuses": { "type": "string", "enum": ["read", "write"] },
+        "team_discussions": {
+          "type": "string",
+          "enum": ["read", "write"]
+        },
+        "vulnerability_alerts": {
+          "type": "string",
+          "enum": ["read", "write"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "events": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false,
+  "title": "App"
+}
