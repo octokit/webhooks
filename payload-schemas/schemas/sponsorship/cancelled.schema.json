@@ -21,26 +21,7 @@
         "sponsorable": { "$ref": "common/user.schema.json" },
         "sponsor": { "$ref": "common/user.schema.json" },
         "privacy_level": { "type": "string" },
-        "tier": {
-          "type": "object",
-          "required": [
-            "node_id",
-            "created_at",
-            "description",
-            "monthly_price_in_cents",
-            "monthly_price_in_dollars",
-            "name"
-          ],
-          "properties": {
-            "node_id": { "type": "string" },
-            "created_at": { "type": "string" },
-            "description": { "type": "string" },
-            "monthly_price_in_cents": { "type": "integer" },
-            "monthly_price_in_dollars": { "type": "integer" },
-            "name": { "type": "string" }
-          },
-          "additionalProperties": false
-        }
+        "tier": { "$ref": "common/sponsorship-tier.schema.json" }
       },
       "additionalProperties": false
     },
