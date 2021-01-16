@@ -317,7 +317,7 @@ export interface CheckRunCompletedEvent {
           team_discussions?: "read" | "write";
           vulnerability_alerts?: "read" | "write";
         };
-        events?: unknown[];
+        events?: string[];
       };
       created_at: string;
       updated_at: string;
@@ -354,7 +354,7 @@ export interface CheckRunCompletedEvent {
         team_discussions?: "read" | "write";
         vulnerability_alerts?: "read" | "write";
       };
-      events?: unknown[];
+      events?: string[];
     };
     pull_requests: {
       url: string;
@@ -628,7 +628,7 @@ export interface CheckRunCreatedEvent {
           team_discussions?: "read" | "write";
           vulnerability_alerts?: "read" | "write";
         };
-        events?: unknown[];
+        events?: string[];
       };
       created_at: string;
       updated_at: string;
@@ -665,7 +665,7 @@ export interface CheckRunCreatedEvent {
         team_discussions?: "read" | "write";
         vulnerability_alerts?: "read" | "write";
       };
-      events?: unknown[];
+      events?: string[];
     };
     pull_requests: {
       url: string;
@@ -779,7 +779,7 @@ export interface CheckRunRequestedActionEvent {
           team_discussions?: "read" | "write";
           vulnerability_alerts?: "read" | "write";
         };
-        events?: unknown[];
+        events?: string[];
       };
       created_at: string;
       updated_at: string;
@@ -816,7 +816,7 @@ export interface CheckRunRequestedActionEvent {
         team_discussions?: "read" | "write";
         vulnerability_alerts?: "read" | "write";
       };
-      events?: unknown[];
+      events?: string[];
     };
     pull_requests: {
       url: string;
@@ -930,7 +930,7 @@ export interface CheckRunRerequestedEvent {
           team_discussions?: "read" | "write";
           vulnerability_alerts?: "read" | "write";
         };
-        events?: unknown[];
+        events?: string[];
       };
       created_at: string;
       updated_at: string;
@@ -967,7 +967,7 @@ export interface CheckRunRerequestedEvent {
         team_discussions?: "read" | "write";
         vulnerability_alerts?: "read" | "write";
       };
-      events?: unknown[];
+      events?: string[];
     };
     pull_requests: {
       url: string;
@@ -1061,7 +1061,7 @@ export interface CheckSuiteCompletedEvent {
         team_discussions: "read" | "write";
         vulnerability_alerts: "read" | "write";
       };
-      events: {}[];
+      events: string[];
     };
     created_at: string;
     updated_at: string;
@@ -1155,7 +1155,7 @@ export interface CheckSuiteRequestedEvent {
         team_discussions: "read" | "write";
         vulnerability_alerts: "read" | "write";
       };
-      events: {}[];
+      events: string[];
     };
     created_at: string;
     updated_at: string;
@@ -1249,7 +1249,7 @@ export interface CheckSuiteRerequestedEvent {
         team_discussions: "read" | "write";
         vulnerability_alerts: "read" | "write";
       };
-      events: {}[];
+      events: string[];
     };
     created_at: string;
     updated_at: string;
@@ -1828,7 +1828,7 @@ export interface InstallationCreatedEvent {
     updated_at: number;
     single_file_name: string | null;
     has_multiple_single_files?: boolean;
-    single_file_paths?: unknown[];
+    single_file_paths?: string[];
     suspended_by?: string | null;
     suspended_at?: string | null;
   };
@@ -1893,7 +1893,7 @@ export interface InstallationDeletedEvent {
     updated_at: number;
     single_file_name: string | null;
     has_multiple_single_files?: boolean;
-    single_file_paths?: unknown[];
+    single_file_paths?: string[];
     suspended_by?: string | null;
     suspended_at?: string | null;
   };
@@ -1958,7 +1958,7 @@ export interface InstallationNewPermissionsAcceptedEvent {
     updated_at: number;
     single_file_name: string | null;
     has_multiple_single_files?: boolean;
-    single_file_paths?: unknown[];
+    single_file_paths?: string[];
     suspended_by?: string | null;
     suspended_at?: string | null;
   };
@@ -2023,7 +2023,7 @@ export interface InstallationSuspendedEvent {
     updated_at: number;
     single_file_name: string | null;
     has_multiple_single_files?: boolean;
-    single_file_paths?: unknown[];
+    single_file_paths?: string[];
     suspended_by?: string;
     suspended_at?: string;
   };
@@ -2088,7 +2088,7 @@ export interface InstallationUnsuspendedEvent {
     updated_at: number;
     single_file_name: string | null;
     has_multiple_single_files?: boolean;
-    single_file_paths?: unknown[];
+    single_file_paths?: string[];
     suspended_by?: null;
     suspended_at?: null;
   };
@@ -2147,7 +2147,7 @@ export interface InstallationRepositoriesAddedEvent {
       metadata?: "read" | "write";
       vulnerability_alerts?: "read" | "write";
     };
-    events: unknown[];
+    events: string[];
     created_at: number;
     updated_at: number;
     single_file_name: string | null;
@@ -2160,7 +2160,7 @@ export interface InstallationRepositoriesAddedEvent {
     full_name: string;
     private: boolean;
   }[];
-  repositories_removed: unknown[];
+  repositories_removed: [];
   sender: User;
 }
 export interface InstallationRepositoriesRemovedEvent {
@@ -2208,20 +2208,20 @@ export interface InstallationRepositoriesRemovedEvent {
       metadata?: "read" | "write";
       vulnerability_alerts?: "read" | "write";
     };
-    events: unknown[];
+    events: string[];
     created_at: number;
     updated_at: number;
     single_file_name: string | null;
   };
   repository_selection: string;
-  repositories_added: {
+  repositories_added: [];
+  repositories_removed: {
     id: number;
     node_id: string;
     name: string;
     full_name: string;
     private: boolean;
   }[];
-  repositories_removed: unknown[];
   sender: User;
 }
 export interface IntegrationInstallationCreatedEvent {
@@ -2269,7 +2269,7 @@ export interface IntegrationInstallationCreatedEvent {
       metadata: string;
       vulnerability_alerts: string;
     };
-    events: unknown[];
+    events: string[];
     created_at: number;
     updated_at: number;
     single_file_name: null;
@@ -2328,7 +2328,7 @@ export interface IntegrationInstallationRepositoriesAddedEvent {
       metadata: string;
       vulnerability_alerts: string;
     };
-    events: unknown[];
+    events: string[];
     created_at: number;
     updated_at: number;
     single_file_name: null;
@@ -2341,7 +2341,7 @@ export interface IntegrationInstallationRepositoriesAddedEvent {
     full_name: string;
     private: boolean;
   }[];
-  repositories_removed: unknown[];
+  repositories_removed: [];
   sender: User;
 }
 export interface IssueCommentCreatedEvent {
