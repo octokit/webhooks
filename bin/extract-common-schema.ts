@@ -143,6 +143,13 @@ const rawSchema = segments.reduce<JSONSchema7>(
   { type: "object", properties: schemas }
 );
 
+if (
+  rawSchema.$ref ||
+  rawSchema.oneOf?.some((object) => typeof object !== "boolean" && object.$ref)
+) {
+  throw new Error("schema is already a ref");
+}
+
 const fileName = interfaceName.replace(/(?!^)([A-Z])/gu, "-$1").toLowerCase();
 const title = interfaceName.replace(/(?!^)([A-Z])/gu, " $1");
 
