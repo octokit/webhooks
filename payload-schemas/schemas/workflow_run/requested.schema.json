@@ -2,14 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "workflow_run$requested",
   "type": "object",
-  "required": [
-    "action",
-    "organization",
-    "repository",
-    "sender",
-    "workflow",
-    "workflow_run"
-  ],
+  "required": ["action", "repository", "sender", "workflow", "workflow_run"],
   "properties": {
     "action": { "type": "string", "enum": ["requested"] },
     "organization": { "$ref": "common/organization.schema.json" },
