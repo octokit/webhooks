@@ -8963,16 +8963,17 @@ export interface SponsorshipCancelledEvent {
     sponsorable: User;
     sponsor: User;
     privacy_level: string;
-    tier: {
-      node_id: string;
-      created_at: string;
-      description: string;
-      monthly_price_in_cents: number;
-      monthly_price_in_dollars: number;
-      name: string;
-    };
+    tier: SponsorshipTier;
   };
   sender: User;
+}
+export interface SponsorshipTier {
+  node_id: string;
+  created_at: string;
+  description: string;
+  monthly_price_in_cents: number;
+  monthly_price_in_dollars: number;
+  name: string;
 }
 export interface SponsorshipCreatedEvent {
   action: "created";
@@ -8982,14 +8983,7 @@ export interface SponsorshipCreatedEvent {
     sponsorable: User;
     sponsor: User;
     privacy_level: string;
-    tier: {
-      node_id: string;
-      created_at: string;
-      description: string;
-      monthly_price_in_cents: number;
-      monthly_price_in_dollars: number;
-      name: string;
-    };
+    tier: SponsorshipTier;
   };
   sender: User;
 }
@@ -9001,14 +8995,7 @@ export interface SponsorshipEditedEvent {
     sponsorable: User;
     sponsor: User;
     privacy_level: string;
-    tier: {
-      node_id: string;
-      created_at: string;
-      description: string;
-      monthly_price_in_cents: number;
-      monthly_price_in_dollars: number;
-      name: string;
-    };
+    tier: SponsorshipTier;
   };
   changes: {
     privacy_level?: {
@@ -9025,14 +9012,7 @@ export interface SponsorshipPendingCancellationEvent {
     sponsorable: User;
     sponsor: User;
     privacy_level: string;
-    tier: {
-      node_id: string;
-      created_at: string;
-      description: string;
-      monthly_price_in_cents: number;
-      monthly_price_in_dollars: number;
-      name: string;
-    };
+    tier: SponsorshipTier;
   };
   effective_date?: string;
   sender: User;
@@ -9045,26 +9025,12 @@ export interface SponsorshipPendingTierChangeEvent {
     sponsorable: User;
     sponsor: User;
     privacy_level: string;
-    tier: {
-      node_id: string;
-      created_at: string;
-      description: string;
-      monthly_price_in_cents: number;
-      monthly_price_in_dollars: number;
-      name: string;
-    };
+    tier: SponsorshipTier;
   };
   effective_date?: string;
   changes: {
     tier: {
-      from: {
-        node_id: string;
-        created_at: string;
-        description: string;
-        monthly_price_in_cents: number;
-        monthly_price_in_dollars: number;
-        name: string;
-      };
+      from: SponsorshipTier;
     };
   };
   sender: User;
@@ -9077,25 +9043,11 @@ export interface SponsorshipTierChangedEvent {
     sponsorable: User;
     sponsor: User;
     privacy_level: string;
-    tier: {
-      node_id: string;
-      created_at: string;
-      description: string;
-      monthly_price_in_cents: number;
-      monthly_price_in_dollars: number;
-      name: string;
-    };
+    tier: SponsorshipTier;
   };
   changes: {
     tier: {
-      from: {
-        node_id: string;
-        created_at: string;
-        description: string;
-        monthly_price_in_cents: number;
-        monthly_price_in_dollars: number;
-        name: string;
-      };
+      from: SponsorshipTier;
     };
   };
   sender: User;

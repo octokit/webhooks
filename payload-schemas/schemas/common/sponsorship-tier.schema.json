@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/sponsorship-tier.schema.json",
+  "required": [
+    "node_id",
+    "created_at",
+    "description",
+    "monthly_price_in_cents",
+    "monthly_price_in_dollars",
+    "name"
+  ],
+  "type": "object",
+  "properties": {
+    "node_id": { "type": "string" },
+    "created_at": { "type": "string" },
+    "description": { "type": "string" },
+    "monthly_price_in_cents": { "type": "integer" },
+    "monthly_price_in_dollars": { "type": "integer" },
+    "name": { "type": "string" }
+  },
+  "additionalProperties": false,
+  "title": "Sponsorship Tier"
+}
