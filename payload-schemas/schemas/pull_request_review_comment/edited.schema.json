@@ -167,8 +167,19 @@
           "type": "array",
           "items": { "$ref": "common/user.schema.json" }
         },
-        "requested_reviewers": { "type": "array", "items": {} },
-        "requested_teams": { "type": "array", "items": {} },
+        "requested_reviewers": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              { "$ref": "common/user.schema.json" },
+              { "$ref": "common/team.schema.json" }
+            ]
+          }
+        },
+        "requested_teams": {
+          "type": "array",
+          "items": { "$ref": "common/team.schema.json" }
+        },
         "labels": {
           "type": "array",
           "items": {
