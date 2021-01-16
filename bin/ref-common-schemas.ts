@@ -28,6 +28,15 @@ const normalizeSchema = (schema: JSONSchema7): JSONSchema7 => {
           return undefined;
         }
 
+        if (
+          key === "$ref" &&
+          typeof value === "string" &&
+          !value.startsWith("common/") &&
+          value.endsWith(".schema.json")
+        ) {
+          return `common/${value}`;
+        }
+
         if (key === "type") {
           return ensureArray(value);
         }
