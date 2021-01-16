@@ -157,4 +157,12 @@ const commonSchema: CommonSchema = {
   title,
 };
 
+if (Array.isArray(commonSchema.type) && commonSchema.type.includes("null")) {
+  commonSchema.type = commonSchema.type.filter((type) => type !== "null");
+
+  if (commonSchema.type.length === 1) {
+    commonSchema.type = commonSchema.type[0];
+  }
+}
+
 writeNewCommonSchema(fileName, commonSchema);
