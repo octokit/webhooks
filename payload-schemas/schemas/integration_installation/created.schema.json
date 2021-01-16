@@ -108,7 +108,7 @@
           },
           "additionalProperties": false
         },
-        "events": { "type": "array", "items": {} },
+        "events": { "type": "array", "items": { "type": "string" } },
         "created_at": { "type": "integer" },
         "updated_at": { "type": "integer" },
         "single_file_name": { "type": "null" }
