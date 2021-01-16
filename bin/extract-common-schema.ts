@@ -7,7 +7,22 @@ import { format } from "prettier";
 
 const pathToSchemas = "payload-schemas/schemas";
 
-const [interfacePropertyPath, interfaceName] = process.argv.slice(2);
+const parseArgv = (argv: string[]): [args: string[], flags: string[]] => {
+  const flags: string[] = [];
+  const args: string[] = [];
+
+  argv.forEach((arg) => {
+    arg.startsWith("--") ? flags.push(arg) : args.push(arg);
+  });
+
+  return [args, flags];
+};
+
+const [[interfacePropertyPath, interfaceName], flags] = parseArgv(
+  process.argv.slice(2)
+);
+
+const overwriteIfExists = flags.includes("--overwrite");
 
 assert.ok(
   interfacePropertyPath,
@@ -104,7 +119,7 @@ const writeNewCommonSchema = (name: string, schema: JSONSchema7) => {
       }),
       { parser: "json" }
     ),
-    { flag: "wx" }
+    { flag: overwriteIfExists ? "w" : "wx" }
   );
 };
 
@@ -143,6 +158,13 @@ const rawSchema = segments.reduce<JSONSchema7>(
   { type: "object", properties: schemas }
 );
 
+if (
+  rawSchema.$ref ||
+  rawSchema.oneOf?.some((object) => typeof object !== "boolean" && object.$ref)
+) {
+  throw new Error("schema is already a ref");
+}
+
 const fileName = interfaceName.replace(/(?!^)([A-Z])/gu, "-$1").toLowerCase();
 const title = interfaceName.replace(/(?!^)([A-Z])/gu, " $1");
 
@@ -166,3 +188,5 @@ if (Array.isArray(commonSchema.type) && commonSchema.type.includes("null")) {
 }
 
 writeNewCommonSchema(fileName, commonSchema);
+
+console.log(`wrote extracted schema to ${fileName}`);
