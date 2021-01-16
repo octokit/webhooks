@@ -111,7 +111,7 @@
           },
           "additionalProperties": false
         },
-        "events": { "type": "array", "items": {} },
+        "events": { "type": "array", "items": { "type": "string" } },
         "created_at": { "type": "integer" },
         "updated_at": { "type": "integer" },
         "single_file_name": { "type": ["string", "null"] }
@@ -134,7 +134,22 @@
         "additionalProperties": false
       }
     },
-    "repositories_removed": { "type": "array", "items": {} },
+    "repositories_removed": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "node_id", "name", "full_name", "private"],
+        "properties": {
+          "id": { "type": "integer" },
+          "node_id": { "type": "string" },
+          "name": { "type": "string" },
+          "full_name": { "type": "string" },
+          "private": { "type": "boolean" }
+        },
+        "additionalProperties": false
+      },
+      "maxItems": 0
+    },
     "sender": { "$ref": "common/user.schema.json" }
   },
   "additionalProperties": false,

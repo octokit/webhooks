@@ -189,10 +189,7 @@
               },
               "additionalProperties": false
             },
-            "events": {
-              "type": "array",
-              "items": { "type": "object", "additionalProperties": false }
-            }
+            "events": { "type": "array", "items": { "type": "string" } }
           },
           "additionalProperties": false
         },
