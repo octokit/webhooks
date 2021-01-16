@@ -5092,8 +5092,8 @@ export interface PullRequestAssignedEvent {
     merge_commit_sha: string | null;
     assignee: User | null;
     assignees: User[];
-    requested_reviewers: User[];
-    requested_teams: unknown[];
+    requested_reviewers: (User | Team)[];
+    requested_teams: Team[];
     labels: {
       id: number;
       node_id: string;
@@ -5222,6 +5222,32 @@ export interface PullRequestAssignedEvent {
   organization?: Organization;
   sender: User;
 }
+export interface Team {
+  name: string;
+  id: number;
+  node_id: string;
+  slug: string;
+  description: string;
+  privacy: "open" | "closed";
+  url: string;
+  html_url: string;
+  members_url: string;
+  repositories_url: string;
+  permission: string;
+  parent?: {
+    name: string;
+    id: number;
+    node_id: string;
+    slug: string;
+    description: string;
+    privacy: string;
+    url: string;
+    html_url: string;
+    members_url: string;
+    repositories_url: string;
+    permission: string;
+  };
+}
 export interface PullRequestClosedEvent {
   action: "closed";
   number: number;
@@ -5246,8 +5272,8 @@ export interface PullRequestClosedEvent {
     merge_commit_sha: string | null;
     assignee: User | null;
     assignees: User[];
-    requested_reviewers: User[];
-    requested_teams: unknown[];
+    requested_reviewers: (User | Team)[];
+    requested_teams: Team[];
     labels: {
       id: number;
       node_id: string;
@@ -5400,8 +5426,8 @@ export interface PullRequestConvertedToDraftEvent {
     merge_commit_sha: null;
     assignee: User | null;
     assignees: User[];
-    requested_reviewers: User[];
-    requested_teams: unknown[];
+    requested_reviewers: (User | Team)[];
+    requested_teams: Team[];
     labels: {
       id: number;
       node_id: string;
@@ -5562,8 +5588,8 @@ export interface PullRequestEditedEvent {
     merge_commit_sha: string | null;
     assignee: User | null;
     assignees: User[];
-    requested_reviewers: User[];
-    requested_teams: unknown[];
+    requested_reviewers: (User | Team)[];
+    requested_teams: Team[];
     labels: {
       id: number;
       node_id: string;
@@ -5716,8 +5742,8 @@ export interface PullRequestLabeledEvent {
     merge_commit_sha: string | null;
     assignee: User | null;
     assignees: User[];
-    requested_reviewers: User[];
-    requested_teams: unknown[];
+    requested_reviewers: (User | Team)[];
+    requested_teams: Team[];
     labels: {
       id: number;
       node_id: string;
@@ -5870,8 +5896,8 @@ export interface PullRequestLockedEvent {
     merge_commit_sha: string | null;
     assignee: User | null;
     assignees: User[];
-    requested_reviewers: User[];
-    requested_teams: unknown[];
+    requested_reviewers: (User | Team)[];
+    requested_teams: Team[];
     labels: {
       id: number;
       node_id: string;
@@ -6024,8 +6050,8 @@ export interface PullRequestOpenedEvent {
     merge_commit_sha: null;
     assignee: User | null;
     assignees: User[];
-    requested_reviewers: User[];
-    requested_teams: unknown[];
+    requested_reviewers: (User | Team)[];
+    requested_teams: Team[];
     labels: {
       id: number;
       node_id: string;
@@ -6178,8 +6204,8 @@ export interface PullRequestReadyForReviewEvent {
     merge_commit_sha: null;
     assignee: User | null;
     assignees: User[];
-    requested_reviewers: User[];
-    requested_teams: unknown[];
+    requested_reviewers: (User | Team)[];
+    requested_teams: Team[];
     labels: {
       id: number;
       node_id: string;
@@ -6332,8 +6358,8 @@ export interface PullRequestReopenedEvent {
     merge_commit_sha: null;
     assignee: User | null;
     assignees: User[];
-    requested_reviewers: User[];
-    requested_teams: unknown[];
+    requested_reviewers: (User | Team)[];
+    requested_teams: Team[];
     labels: {
       id: number;
       node_id: string;
@@ -6486,8 +6512,8 @@ export interface PullRequestReviewRequestRemovedEvent {
     merge_commit_sha: string | null;
     assignee: User | null;
     assignees: User[];
-    requested_reviewers: User[];
-    requested_teams: unknown[];
+    requested_reviewers: (User | Team)[];
+    requested_teams: Team[];
     labels: {
       id: number;
       node_id: string;
@@ -6640,8 +6666,8 @@ export interface PullRequestReviewRequestedEvent {
     merge_commit_sha: string | null;
     assignee: User | null;
     assignees: User[];
-    requested_reviewers: User[];
-    requested_teams: unknown[];
+    requested_reviewers: (User | Team)[];
+    requested_teams: Team[];
     labels: {
       id: number;
       node_id: string;
@@ -6794,8 +6820,8 @@ export interface PullRequestSynchronizeEvent {
     merge_commit_sha: string | null;
     assignee: User | null;
     assignees: User[];
-    requested_reviewers: User[];
-    requested_teams: unknown[];
+    requested_reviewers: (User | Team)[];
+    requested_teams: Team[];
     labels: {
       id: number;
       node_id: string;
@@ -6948,8 +6974,8 @@ export interface PullRequestUnassignedEvent {
     merge_commit_sha: string | null;
     assignee: User | null;
     assignees: User[];
-    requested_reviewers: User[];
-    requested_teams: unknown[];
+    requested_reviewers: (User | Team)[];
+    requested_teams: Team[];
     labels: {
       id: number;
       node_id: string;
@@ -7102,8 +7128,8 @@ export interface PullRequestUnlabeledEvent {
     merge_commit_sha: string | null;
     assignee: User | null;
     assignees: User[];
-    requested_reviewers: User[];
-    requested_teams: unknown[];
+    requested_reviewers: (User | Team)[];
+    requested_teams: Team[];
     labels: {
       id: number;
       node_id: string;
@@ -7256,8 +7282,8 @@ export interface PullRequestUnlockedEvent {
     merge_commit_sha: string | null;
     assignee: User | null;
     assignees: User[];
-    requested_reviewers: User[];
-    requested_teams: unknown[];
+    requested_reviewers: (User | Team)[];
+    requested_teams: Team[];
     labels: {
       id: number;
       node_id: string;
@@ -7437,8 +7463,8 @@ export interface PullRequestReviewSubmittedEvent {
     merge_commit_sha: string | null;
     assignee: User | null;
     assignees: User[];
-    requested_reviewers: unknown[];
-    requested_teams: unknown[];
+    requested_reviewers: (User | Team)[];
+    requested_teams: Team[];
     labels: {
       id: number;
       node_id: string;
@@ -7624,8 +7650,8 @@ export interface PullRequestReviewCommentCreatedEvent {
     merge_commit_sha: string | null;
     assignee: User | null;
     assignees: User[];
-    requested_reviewers: unknown[];
-    requested_teams: unknown[];
+    requested_reviewers: (User | Team)[];
+    requested_teams: Team[];
     labels: {
       id: number;
       node_id: string;
@@ -7773,8 +7799,8 @@ export interface PullRequestReviewCommentDeletedEvent {
     merge_commit_sha: string | null;
     assignee: User | null;
     assignees: User[];
-    requested_reviewers: unknown[];
-    requested_teams: unknown[];
+    requested_reviewers: (User | Team)[];
+    requested_teams: Team[];
     labels: {
       id: number;
       node_id: string;
@@ -7927,8 +7953,8 @@ export interface PullRequestReviewCommentEditedEvent {
     merge_commit_sha: string | null;
     assignee: User | null;
     assignees: User[];
-    requested_reviewers: unknown[];
-    requested_teams: unknown[];
+    requested_reviewers: (User | Team)[];
+    requested_teams: Team[];
     labels: {
       id: number;
       node_id: string;
