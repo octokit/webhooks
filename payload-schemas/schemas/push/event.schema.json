@@ -126,15 +126,7 @@
       "additionalProperties": false
     },
     "repository": { "$ref": "common/repository.schema.json" },
-    "pusher": {
-      "type": "object",
-      "required": ["name", "email"],
-      "properties": {
-        "name": { "type": "string" },
-        "email": { "type": "string" }
-      },
-      "additionalProperties": false
-    },
+    "pusher": { "$ref": "common/committer.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation.schema.json" },
     "organization": { "$ref": "common/organization.schema.json" }
