@@ -805,20 +805,18 @@ export interface CheckSuiteCompletedEvent {
       tree_id: string;
       message: string;
       timestamp: string;
-      author: {
-        name: string;
-        email: string;
-      };
-      committer: {
-        name: string;
-        email: string;
-      };
+      author: Committer;
+      committer: Committer;
     };
   };
   repository: Repository;
   sender: User;
   installation?: Installation;
   organization?: Organization;
+}
+export interface Committer {
+  email: string;
+  name: string;
 }
 export interface CheckSuiteRequestedEvent {
   action: "requested";
@@ -865,14 +863,8 @@ export interface CheckSuiteRequestedEvent {
       tree_id: string;
       message: string;
       timestamp: string;
-      author: {
-        name: string;
-        email: string;
-      };
-      committer: {
-        name: string;
-        email: string;
-      };
+      author: Committer;
+      committer: Committer;
     };
   };
   repository: Repository;
@@ -925,14 +917,8 @@ export interface CheckSuiteRerequestedEvent {
       tree_id: string;
       message: string;
       timestamp: string;
-      author: {
-        name: string;
-        email: string;
-      };
-      committer: {
-        name: string;
-        email: string;
-      };
+      author: Committer;
+      committer: Committer;
     };
   };
   repository: Repository;
@@ -7754,10 +7740,7 @@ export interface PushEvent {
     modified: string[];
   } | null;
   repository: Repository;
-  pusher: {
-    name: string;
-    email: string;
-  };
+  pusher: Committer;
   sender: User;
   installation?: Installation;
   organization?: Organization;
@@ -9041,14 +9024,8 @@ export interface WorkflowRunCompletedEvent {
     event: string;
     head_branch: string;
     head_commit: {
-      author: {
-        email: string;
-        name: string;
-      };
-      committer: {
-        email: string;
-        name: string;
-      };
+      author: Committer;
+      committer: Committer;
       id: string;
       message: string;
       timestamp: string;
@@ -9193,14 +9170,8 @@ export interface WorkflowRunRequestedEvent {
     event: string;
     head_branch: string;
     head_commit: {
-      author: {
-        email: string;
-        name: string;
-      };
-      committer: {
-        email: string;
-        name: string;
-      };
+      author: Committer;
+      committer: Committer;
       id: string;
       message: string;
       timestamp: string;

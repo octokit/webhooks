@@ -83,24 +83,8 @@
             "tree_id"
           ],
           "properties": {
-            "author": {
-              "type": "object",
-              "required": ["email", "name"],
-              "properties": {
-                "email": { "type": "string" },
-                "name": { "type": "string" }
-              },
-              "additionalProperties": false
-            },
-            "committer": {
-              "type": "object",
-              "required": ["email", "name"],
-              "properties": {
-                "email": { "type": "string" },
-                "name": { "type": "string" }
-              },
-              "additionalProperties": false
-            },
+            "author": { "$ref": "common/committer.schema.json" },
+            "committer": { "$ref": "common/committer.schema.json" },
             "id": { "type": "string" },
             "message": { "type": "string" },
             "timestamp": { "type": "string" },
