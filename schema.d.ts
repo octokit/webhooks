@@ -1634,7 +1634,7 @@ export interface InstallationNewPermissionsAcceptedEvent {
   sender: User;
 }
 export interface InstallationSuspendedEvent {
-  action: "suspended";
+  action: "suspend";
   installation: {
     id: number;
     account: {
@@ -1699,7 +1699,7 @@ export interface InstallationSuspendedEvent {
   sender: User;
 }
 export interface InstallationUnsuspendedEvent {
-  action: "unsuspended";
+  action: "unsuspend";
   installation: {
     id: number;
     account: {
