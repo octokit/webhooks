@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/label.schema.json",
+  "type": "object",
+  "required": ["id", "node_id", "url", "name", "color", "default"],
+  "properties": {
+    "id": { "type": "integer" },
+    "node_id": { "type": "string" },
+    "url": { "type": "string" },
+    "name": { "type": "string" },
+    "color": { "type": "string" },
+    "default": { "type": "boolean" }
+  },
+  "additionalProperties": false,
+  "title": "Label"
+}

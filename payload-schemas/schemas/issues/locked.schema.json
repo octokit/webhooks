@@ -43,19 +43,7 @@
         "user": { "$ref": "common/user.schema.json" },
         "labels": {
           "type": "array",
-          "items": {
-            "type": "object",
-            "required": ["id", "node_id", "url", "name", "color", "default"],
-            "properties": {
-              "id": { "type": "integer" },
-              "node_id": { "type": "string" },
-              "url": { "type": "string" },
-              "name": { "type": "string" },
-              "color": { "type": "string" },
-              "default": { "type": "boolean" }
-            },
-            "additionalProperties": false
-          }
+          "items": { "$ref": "common/label.schema.json" }
         },
         "state": { "type": "string", "enum": ["open", "closed"] },
         "locked": { "type": "boolean", "enum": [true] },
@@ -142,18 +130,7 @@
       },
       "additionalProperties": false
     },
-    "label": {
-      "type": "object",
-      "properties": {
-        "id": { "type": "integer" },
-        "node_id": { "type": "string" },
-        "url": { "type": "string" },
-        "name": { "type": "string" },
-        "color": { "type": "string" },
-        "default": { "type": "boolean" }
-      },
-      "additionalProperties": false
-    },
+    "label": { "$ref": "common/label.schema.json" },
     "assignee": {
       "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": "null" }]
     },
