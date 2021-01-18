@@ -92,6 +92,7 @@
         "requested_teams",
         "labels",
         "milestone",
+        "draft",
         "commits_url",
         "review_comments_url",
         "review_comment_url",
@@ -100,7 +101,8 @@
         "head",
         "base",
         "_links",
-        "author_association"
+        "author_association",
+        "active_lock_reason"
       ],
       "properties": {
         "url": { "type": "string" },
@@ -197,6 +199,7 @@
           },
           "additionalProperties": false
         },
+        "draft": { "type": "boolean" },
         "commits_url": { "type": "string" },
         "review_comments_url": { "type": "string" },
         "review_comment_url": { "type": "string" },
@@ -388,6 +391,10 @@
             "NONE",
             "OWNER"
           ]
+        },
+        "active_lock_reason": {
+          "type": ["string", "null"],
+          "enum": ["resolved", "off-topic", "too heated", "spam", null]
         }
       },
       "additionalProperties": false
