@@ -264,11 +264,18 @@ export interface CheckRunCompletedEvent {
       node_id?: string;
       head_branch: string | null;
       head_sha: string;
-      status: string;
-      conclusion: string | null;
+      status: "completed";
+      conclusion:
+        | "success"
+        | "failure"
+        | "neutral"
+        | "cancelled"
+        | "timed_out"
+        | "action_required"
+        | "stale";
       url: string;
-      before: string;
-      after: string;
+      before: string | null;
+      after: string | null;
       pull_requests: {
         url: string;
         id: number;
@@ -344,6 +351,7 @@ export interface App {
     organization_projects?: "read" | "write";
     organization_user_blocking?: "read" | "write";
     pages?: "read" | "write";
+    packages?: "read" | "write";
     pull_requests?: "read" | "write";
     repository_hooks?: "read" | "write";
     repository_projects?: "read" | "write";
@@ -467,7 +475,7 @@ export interface Repository {
     key: string;
     name: string;
     spdx_id: string;
-    url: string;
+    url: string | null;
     node_id: string;
   } | null;
   forks: number;
@@ -506,7 +514,7 @@ export interface Organization {
   members_url: string;
   public_members_url: string;
   avatar_url: string;
-  description: string;
+  description: string | null;
 }
 export interface CheckRunCreatedEvent {
   action: "created";
@@ -518,18 +526,10 @@ export interface CheckRunCreatedEvent {
     url: string;
     html_url: string;
     details_url?: string;
-    status: "queued" | "in_progress" | "completed";
-    conclusion:
-      | "success"
-      | "failure"
-      | "neutral"
-      | "cancelled"
-      | "timed_out"
-      | "action_required"
-      | "stale"
-      | null;
+    status: "queued" | "in_progress";
+    conclusion: null;
     started_at: string;
-    completed_at: string | null;
+    completed_at: null;
     output: {
       title?: string | null;
       summary: string | null;
@@ -544,10 +544,10 @@ export interface CheckRunCreatedEvent {
       head_branch: string | null;
       head_sha: string;
       status: string;
-      conclusion: string | null;
+      conclusion: null;
       url: string;
-      before: string;
-      after: string;
+      before: string | null;
+      after: string | null;
       pull_requests: {
         url: string;
         id: number;
@@ -627,11 +627,19 @@ export interface CheckRunRequestedActionEvent {
       node_id?: string;
       head_branch: string | null;
       head_sha: string;
-      status: string;
-      conclusion: string | null;
+      status: "queued" | "in_progress" | "completed";
+      conclusion:
+        | "success"
+        | "failure"
+        | "neutral"
+        | "cancelled"
+        | "timed_out"
+        | "action_required"
+        | "stale"
+        | null;
       url: string;
-      before: string;
-      after: string;
+      before: string | null;
+      after: string | null;
       pull_requests: {
         url: string;
         id: number;
@@ -711,11 +719,19 @@ export interface CheckRunRerequestedEvent {
       node_id?: string;
       head_branch: string | null;
       head_sha: string;
-      status: string;
-      conclusion: string | null;
+      status: "queued" | "in_progress" | "completed";
+      conclusion:
+        | "success"
+        | "failure"
+        | "neutral"
+        | "cancelled"
+        | "timed_out"
+        | "action_required"
+        | "stale"
+        | null;
       url: string;
-      before: string;
-      after: string;
+      before: string | null;
+      after: string | null;
       pull_requests: {
         url: string;
         id: number;
@@ -7275,6 +7291,13 @@ export interface PullRequestReviewCommentCreatedEvent {
         href: string;
       };
     };
+    start_line?: null;
+    original_start_line?: null;
+    start_side?: null;
+    line?: null;
+    original_line?: number;
+    side?: "RIGHT";
+    in_reply_to_id?: number;
   };
   pull_request: {
     url: string;
