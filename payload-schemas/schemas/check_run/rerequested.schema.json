@@ -89,7 +89,10 @@
             "node_id": { "type": "string" },
             "head_branch": { "type": ["string", "null"] },
             "head_sha": { "type": "string" },
-            "status": { "type": "string", "enum": ["queued", "in_progress", "completed"] },
+            "status": {
+              "type": "string",
+              "enum": ["queued", "in_progress", "completed"]
+            },
             "conclusion": {
               "type": ["string", "null"],
               "enum": [
