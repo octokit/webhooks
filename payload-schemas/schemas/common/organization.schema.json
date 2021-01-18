@@ -29,7 +29,7 @@
     "members_url": { "type": "string" },
     "public_members_url": { "type": "string" },
     "avatar_url": { "type": "string" },
-    "description": { "type": "string" }
+    "description": { "type": ["string", "null"] }
   },
   "additionalProperties": false,
   "title": "Organization"

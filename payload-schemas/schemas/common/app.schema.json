@@ -62,6 +62,7 @@
           "enum": ["read", "write"]
         },
         "pages": { "type": "string", "enum": ["read", "write"] },
+        "packages": { "type": "string", "enum": ["read", "write"] },
         "pull_requests": {
           "type": "string",
           "enum": ["read", "write"]

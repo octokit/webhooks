@@ -81,7 +81,14 @@
             }
           },
           "additionalProperties": false
-        }
+        },
+        "start_line": { "type": "null" },
+        "original_start_line": { "type": "null" },
+        "start_side": { "type": "null" },
+        "line": { "type": "null" },
+        "original_line": { "type": "integer" },
+        "side": { "type": "string", "enum": ["RIGHT"] },
+        "in_reply_to_id": { "type": "integer" }
       },
       "additionalProperties": false
     },

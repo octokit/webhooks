@@ -89,11 +89,22 @@
             "node_id": { "type": "string" },
             "head_branch": { "type": ["string", "null"] },
             "head_sha": { "type": "string" },
-            "status": { "type": "string" },
-            "conclusion": { "type": ["string", "null"] },
+            "status": { "type": "string", "enum": ["completed"] },
+            "conclusion": {
+              "type": ["string"],
+              "enum": [
+                "success",
+                "failure",
+                "neutral",
+                "cancelled",
+                "timed_out",
+                "action_required",
+                "stale"
+              ]
+            },
             "url": { "type": "string" },
-            "before": { "type": "string" },
-            "after": { "type": "string" },
+            "before": { "type": ["string", "null"] },
+            "after": { "type": ["string", "null"] },
             "pull_requests": {
               "type": "array",
               "items": {
