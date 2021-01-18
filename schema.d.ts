@@ -1139,9 +1139,9 @@ export interface CommitCommentCreatedEvent {
     id: number;
     node_id: string;
     user: User;
-    position: null;
-    line: null;
-    path: null;
+    position: number | null;
+    line: number | null;
+    path: string | null;
     commit_id: string;
     created_at: string;
     updated_at: string;
