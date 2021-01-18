@@ -33,23 +33,11 @@
         "details_url": { "type": "string" },
         "status": {
           "type": "string",
-          "enum": ["queued", "in_progress", "completed"]
+          "enum": ["queued", "in_progress"]
         },
-        "conclusion": {
-          "type": ["string", "null"],
-          "enum": [
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "timed_out",
-            "action_required",
-            "stale",
-            null
-          ]
-        },
+        "conclusion": { "type": "null" },
         "started_at": { "type": "string" },
-        "completed_at": { "type": ["string", "null"] },
+        "completed_at": { "type": "null" },
         "output": {
           "type": "object",
           "required": [
