@@ -78,7 +78,7 @@
             "head_branch": { "type": ["string", "null"] },
             "head_sha": { "type": "string" },
             "status": { "type": "string" },
-            "conclusion": { "type": ["string", "null"] },
+            "conclusion": { "type": ["null"] },
             "url": { "type": "string" },
             "before": { "type": ["string", "null"] },
             "after": { "type": ["string", "null"] },
