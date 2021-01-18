@@ -16,7 +16,7 @@
     "node_id": { "type": "string" },
     "url": { "type": "string" },
     "name": { "type": "string" },
-    "description": { "type": "string" },
+    "description": { "type": ["string", "null"] },
     "color": { "type": "string" },
     "default": { "type": "boolean" }
   },
