@@ -40,15 +40,15 @@ const normalizeSchema = (schema: JSONSchema7): JSONSchema7 => {
           return `common/${value}`;
         }
 
-        if (key === "type") {
-          return ensureArray(value);
-        }
-
         if (Array.isArray(value)) {
           return [...value].sort();
         }
 
         if (isJsonSchemaObject(value)) {
+          if (value.type) {
+            value.type = ensureArray(value.type);
+          }
+
           if (value.const !== undefined) {
             value.enum = [value.const];
           }
