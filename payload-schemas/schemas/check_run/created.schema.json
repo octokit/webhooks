@@ -92,8 +92,8 @@
             "status": { "type": "string" },
             "conclusion": { "type": ["string", "null"] },
             "url": { "type": "string" },
-            "before": { "type": "string" },
-            "after": { "type": "string" },
+            "before": { "type": ["string", "null"] },
+            "after": { "type": ["string", "null"] },
             "pull_requests": {
               "type": "array",
               "items": {
