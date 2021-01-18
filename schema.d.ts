@@ -7650,6 +7650,7 @@ export interface PullRequestReviewSubmittedEvent {
       due_on: string;
       closed_at: string | null;
     } | null;
+    draft: boolean;
     commits_url: string;
     review_comments_url: string;
     review_comment_url: string;
@@ -7742,6 +7743,7 @@ export interface PullRequestReviewSubmittedEvent {
       | "MEMBER"
       | "NONE"
       | "OWNER";
+    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
   };
   repository: Repository;
   installation?: Installation;
