@@ -14,6 +14,9 @@ const metaProperties = [
   "description",
 ];
 
+const cloneObject = <TObject extends object>(object: TObject): TObject =>
+  JSON.parse(JSON.stringify(object)) as TObject;
+
 const isJsonSchemaObject = (object: unknown): object is JSONSchema7 =>
   typeof object === "object" && object !== null && !Array.isArray(object);
 
@@ -23,7 +26,7 @@ const ensureArray = <T>(arr: T | T[]): T[] =>
 const normalizeSchema = (schema: JSONSchema7): JSONSchema7 => {
   try {
     return JSON.parse(
-      JSON.stringify(schema, (key, value: unknown) => {
+      JSON.stringify(cloneObject(schema), (key, value: unknown) => {
         if (metaProperties.includes(key)) {
           return undefined;
         }
@@ -37,15 +40,15 @@ const normalizeSchema = (schema: JSONSchema7): JSONSchema7 => {
           return `common/${value}`;
         }
 
-        if (key === "type") {
-          return ensureArray(value);
-        }
-
         if (Array.isArray(value)) {
           return [...value].sort();
         }
 
         if (isJsonSchemaObject(value)) {
+          if (value.type) {
+            value.type = ensureArray(value.type);
+          }
+
           if (value.const !== undefined) {
             value.enum = [value.const];
           }
