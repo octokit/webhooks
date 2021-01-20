@@ -1836,14 +1836,7 @@ export interface IssueCommentCreatedEvent {
     number: number;
     title: string;
     user: User;
-    labels: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels: Label[];
     state: "open" | "closed";
     locked: boolean;
     assignee: User | null;
@@ -1914,6 +1907,15 @@ export interface IssueCommentCreatedEvent {
   installation?: Installation;
   organization?: Organization;
 }
+export interface Label {
+  id: number;
+  node_id: string;
+  url: string;
+  name: string;
+  description: string | null;
+  color: string;
+  default: boolean;
+}
 export interface IssueCommentDeletedEvent {
   action: "deleted";
   issue: {
@@ -1928,14 +1930,7 @@ export interface IssueCommentDeletedEvent {
     number: number;
     title: string;
     user: User;
-    labels: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels: Label[];
     state: "open" | "closed";
     locked: boolean;
     assignee: User | null;
@@ -2025,14 +2020,7 @@ export interface IssueCommentEditedEvent {
     number: number;
     title: string;
     user: User;
-    labels: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels: Label[];
     state: "open" | "closed";
     locked: boolean;
     assignee: User | null;
@@ -2117,14 +2105,7 @@ export interface IssuesAssignedEvent {
     number: number;
     title: string;
     user: User;
-    labels?: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels?: Label[];
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2170,14 +2151,7 @@ export interface IssuesAssignedEvent {
     };
     body: string;
   };
-  label?: {
-    id?: number;
-    node_id?: string;
-    url?: string;
-    name?: string;
-    color?: string;
-    default?: boolean;
-  };
+  label?: Label;
   assignee?: User | null;
   assignees?: User[];
   repository: Repository;
@@ -2199,14 +2173,7 @@ export interface IssuesClosedEvent {
     number: number;
     title: string;
     user: User;
-    labels?: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels?: Label[];
     state?: "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2252,14 +2219,7 @@ export interface IssuesClosedEvent {
     };
     body: string;
   };
-  label?: {
-    id?: number;
-    node_id?: string;
-    url?: string;
-    name?: string;
-    color?: string;
-    default?: boolean;
-  };
+  label?: Label;
   assignee?: User | null;
   assignees?: User[];
   repository: Repository;
@@ -2281,14 +2241,7 @@ export interface IssuesDeletedEvent {
     number: number;
     title: string;
     user: User;
-    labels?: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels?: Label[];
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2334,14 +2287,7 @@ export interface IssuesDeletedEvent {
     };
     body: string;
   };
-  label?: {
-    id?: number;
-    node_id?: string;
-    url?: string;
-    name?: string;
-    color?: string;
-    default?: boolean;
-  };
+  label?: Label;
   assignee?: User | null;
   assignees?: User[];
   repository: Repository;
@@ -2363,14 +2309,7 @@ export interface IssuesDemilestonedEvent {
     number: number;
     title: string;
     user: User;
-    labels?: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels?: Label[];
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2416,14 +2355,7 @@ export interface IssuesDemilestonedEvent {
     };
     body: string;
   };
-  label?: {
-    id?: number;
-    node_id?: string;
-    url?: string;
-    name?: string;
-    color?: string;
-    default?: boolean;
-  };
+  label?: Label;
   assignee?: User | null;
   assignees?: User[];
   repository: Repository;
@@ -2445,14 +2377,7 @@ export interface IssuesEditedEvent {
     number: number;
     title: string;
     user: User;
-    labels?: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels?: Label[];
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2498,14 +2423,7 @@ export interface IssuesEditedEvent {
     };
     body: string;
   };
-  label?: {
-    id?: number;
-    node_id?: string;
-    url?: string;
-    name?: string;
-    color?: string;
-    default?: boolean;
-  };
+  label?: Label;
   changes: {
     body?: {
       from: string;
@@ -2535,14 +2453,7 @@ export interface IssuesLabeledEvent {
     number: number;
     title: string;
     user: User;
-    labels?: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels?: Label[];
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2588,14 +2499,7 @@ export interface IssuesLabeledEvent {
     };
     body: string;
   };
-  label?: {
-    id?: number;
-    node_id?: string;
-    url?: string;
-    name?: string;
-    color?: string;
-    default?: boolean;
-  };
+  label?: Label;
   assignee?: User | null;
   assignees?: User[];
   repository: Repository;
@@ -2617,14 +2521,7 @@ export interface IssuesLockedEvent {
     number: number;
     title: string;
     user: User;
-    labels?: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels?: Label[];
     state?: "open" | "closed";
     locked?: true;
     assignee?: User | null;
@@ -2670,14 +2567,7 @@ export interface IssuesLockedEvent {
     };
     body: string;
   };
-  label?: {
-    id?: number;
-    node_id?: string;
-    url?: string;
-    name?: string;
-    color?: string;
-    default?: boolean;
-  };
+  label?: Label;
   assignee?: User | null;
   assignees?: User[];
   repository: Repository;
@@ -2699,14 +2589,7 @@ export interface IssuesMilestonedEvent {
     number: number;
     title: string;
     user: User;
-    labels?: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels?: Label[];
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2752,14 +2635,7 @@ export interface IssuesMilestonedEvent {
     };
     body: string;
   };
-  label?: {
-    id?: number;
-    node_id?: string;
-    url?: string;
-    name?: string;
-    color?: string;
-    default?: boolean;
-  };
+  label?: Label;
   assignee?: User | null;
   assignees?: User[];
   repository: Repository;
@@ -2781,14 +2657,7 @@ export interface IssuesOpenedEvent {
     number: number;
     title: string;
     user: User;
-    labels?: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels?: Label[];
     state?: "open";
     locked?: boolean;
     assignee?: User | null;
@@ -2834,14 +2703,7 @@ export interface IssuesOpenedEvent {
     };
     body: string;
   };
-  label?: {
-    id?: number;
-    node_id?: string;
-    url?: string;
-    name?: string;
-    color?: string;
-    default?: boolean;
-  };
+  label?: Label;
   assignee?: User | null;
   assignees?: User[];
   repository: Repository;
@@ -2863,14 +2725,7 @@ export interface IssuesPinnedEvent {
     number: number;
     title: string;
     user: User;
-    labels?: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels?: Label[];
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2916,14 +2771,7 @@ export interface IssuesPinnedEvent {
     };
     body: string;
   };
-  label?: {
-    id?: number;
-    node_id?: string;
-    url?: string;
-    name?: string;
-    color?: string;
-    default?: boolean;
-  };
+  label?: Label;
   assignee?: User | null;
   assignees?: User[];
   repository: Repository;
@@ -2945,14 +2793,7 @@ export interface IssuesReopenedEvent {
     number: number;
     title: string;
     user: User;
-    labels?: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels?: Label[];
     state?: "open";
     locked?: boolean;
     assignee?: User | null;
@@ -2998,14 +2839,7 @@ export interface IssuesReopenedEvent {
     };
     body: string;
   };
-  label?: {
-    id?: number;
-    node_id?: string;
-    url?: string;
-    name?: string;
-    color?: string;
-    default?: boolean;
-  };
+  label?: Label;
   assignee?: User | null;
   assignees?: User[];
   repository: Repository;
@@ -3027,14 +2861,7 @@ export interface IssuesTransferredEvent {
     number: number;
     title: string;
     user: User;
-    labels?: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels?: Label[];
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -3080,14 +2907,7 @@ export interface IssuesTransferredEvent {
     };
     body: string;
   };
-  label?: {
-    id?: number;
-    node_id?: string;
-    url?: string;
-    name?: string;
-    color?: string;
-    default?: boolean;
-  };
+  label?: Label;
   assignee?: User | null;
   assignees?: User[];
   repository: Repository;
@@ -3109,14 +2929,7 @@ export interface IssuesUnassignedEvent {
     number: number;
     title: string;
     user: User;
-    labels?: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels?: Label[];
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -3162,14 +2975,7 @@ export interface IssuesUnassignedEvent {
     };
     body: string;
   };
-  label?: {
-    id?: number;
-    node_id?: string;
-    url?: string;
-    name?: string;
-    color?: string;
-    default?: boolean;
-  };
+  label?: Label;
   assignee?: User | null;
   assignees?: User[];
   repository: Repository;
@@ -3191,14 +2997,7 @@ export interface IssuesUnlabeledEvent {
     number: number;
     title: string;
     user: User;
-    labels?: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels?: Label[];
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -3244,14 +3043,7 @@ export interface IssuesUnlabeledEvent {
     };
     body: string;
   };
-  label?: {
-    id?: number;
-    node_id?: string;
-    url?: string;
-    name?: string;
-    color?: string;
-    default?: boolean;
-  };
+  label?: Label;
   assignee?: User | null;
   assignees?: User[];
   repository: Repository;
@@ -3273,14 +3065,7 @@ export interface IssuesUnlockedEvent {
     number: number;
     title: string;
     user: User;
-    labels?: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels?: Label[];
     state?: "open" | "closed";
     locked?: false;
     assignee?: User | null;
@@ -3326,14 +3111,7 @@ export interface IssuesUnlockedEvent {
     };
     body: string;
   };
-  label?: {
-    id?: number;
-    node_id?: string;
-    url?: string;
-    name?: string;
-    color?: string;
-    default?: boolean;
-  };
+  label?: Label;
   assignee?: User | null;
   assignees?: User[];
   repository: Repository;
@@ -3355,14 +3133,7 @@ export interface IssuesUnpinnedEvent {
     number: number;
     title: string;
     user: User;
-    labels?: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels?: Label[];
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -3408,14 +3179,7 @@ export interface IssuesUnpinnedEvent {
     };
     body: string;
   };
-  label?: {
-    id?: number;
-    node_id?: string;
-    url?: string;
-    name?: string;
-    color?: string;
-    default?: boolean;
-  };
+  label?: Label;
   assignee?: User | null;
   assignees?: User[];
   repository: Repository;
@@ -3425,15 +3189,7 @@ export interface IssuesUnpinnedEvent {
 }
 export interface LabelCreatedEvent {
   action: "created";
-  label: {
-    id: number;
-    node_id: string;
-    url: string;
-    name: string;
-    color: string;
-    default: boolean;
-    description?: string | null;
-  };
+  label: Label;
   repository: Repository;
   sender: User;
   installation?: Installation;
@@ -3441,15 +3197,7 @@ export interface LabelCreatedEvent {
 }
 export interface LabelDeletedEvent {
   action: "deleted";
-  label: {
-    id: number;
-    node_id: string;
-    url: string;
-    name: string;
-    color: string;
-    default: boolean;
-    description?: string | null;
-  };
+  label: Label;
   repository: Repository;
   sender: User;
   installation?: Installation;
@@ -3457,15 +3205,7 @@ export interface LabelDeletedEvent {
 }
 export interface LabelEditedEvent {
   action: "edited";
-  label: {
-    id: number;
-    node_id: string;
-    url: string;
-    name: string;
-    color: string;
-    default: boolean;
-    description?: string | null;
-  };
+  label: Label;
   changes?: {
     color?: {
       from: string;
@@ -4739,14 +4479,7 @@ export interface PullRequestAssignedEvent {
     assignees: User[];
     requested_reviewers: (User | Team)[];
     requested_teams: Team[];
-    labels: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels: Label[];
     milestone: {
       url: string;
       html_url: string;
@@ -4834,14 +4567,7 @@ export interface PullRequestAssignedEvent {
     deletions: number;
     changed_files: number;
   };
-  label?: {
-    id: number;
-    node_id: string;
-    url: string;
-    name: string;
-    color: string;
-    default: boolean;
-  };
+  label?: Label;
   assignee?: User;
   repository: Repository;
   installation?: Installation;
@@ -4874,14 +4600,7 @@ export interface PullRequestClosedEvent {
     assignees: User[];
     requested_reviewers: (User | Team)[];
     requested_teams: Team[];
-    labels: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels: Label[];
     milestone: {
       url: string;
       html_url: string;
@@ -4969,14 +4688,7 @@ export interface PullRequestClosedEvent {
     deletions: number;
     changed_files: number;
   };
-  label?: {
-    id: number;
-    node_id: string;
-    url: string;
-    name: string;
-    color: string;
-    default: boolean;
-  };
+  label?: Label;
   assignee?: User;
   repository: Repository;
   installation?: Installation;
@@ -5009,14 +4721,7 @@ export interface PullRequestConvertedToDraftEvent {
     assignees: User[];
     requested_reviewers: (User | Team)[];
     requested_teams: Team[];
-    labels: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels: Label[];
     milestone: {
       url: string;
       html_url: string;
@@ -5104,14 +4809,7 @@ export interface PullRequestConvertedToDraftEvent {
     deletions: number;
     changed_files: number;
   };
-  label?: {
-    id: number;
-    node_id: string;
-    url: string;
-    name: string;
-    color: string;
-    default: boolean;
-  };
+  label?: Label;
   assignee?: User;
   repository: Repository;
   installation?: Installation;
@@ -5152,14 +4850,7 @@ export interface PullRequestEditedEvent {
     assignees: User[];
     requested_reviewers: (User | Team)[];
     requested_teams: Team[];
-    labels: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels: Label[];
     milestone: {
       url: string;
       html_url: string;
@@ -5247,14 +4938,7 @@ export interface PullRequestEditedEvent {
     deletions: number;
     changed_files: number;
   };
-  label?: {
-    id: number;
-    node_id: string;
-    url: string;
-    name: string;
-    color: string;
-    default: boolean;
-  };
+  label?: Label;
   assignee?: User;
   repository: Repository;
   installation?: Installation;
@@ -5287,14 +4971,7 @@ export interface PullRequestLabeledEvent {
     assignees: User[];
     requested_reviewers: (User | Team)[];
     requested_teams: Team[];
-    labels: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels: Label[];
     milestone: {
       url: string;
       html_url: string;
@@ -5382,14 +5059,7 @@ export interface PullRequestLabeledEvent {
     deletions: number;
     changed_files: number;
   };
-  label?: {
-    id: number;
-    node_id: string;
-    url: string;
-    name: string;
-    color: string;
-    default: boolean;
-  };
+  label?: Label;
   assignee?: User;
   repository: Repository;
   installation?: Installation;
@@ -5422,14 +5092,7 @@ export interface PullRequestLockedEvent {
     assignees: User[];
     requested_reviewers: (User | Team)[];
     requested_teams: Team[];
-    labels: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels: Label[];
     milestone: {
       url: string;
       html_url: string;
@@ -5517,14 +5180,7 @@ export interface PullRequestLockedEvent {
     deletions: number;
     changed_files: number;
   };
-  label?: {
-    id: number;
-    node_id: string;
-    url: string;
-    name: string;
-    color: string;
-    default: boolean;
-  };
+  label?: Label;
   assignee?: User;
   repository: Repository;
   installation?: Installation;
@@ -5557,14 +5213,7 @@ export interface PullRequestOpenedEvent {
     assignees: User[];
     requested_reviewers: (User | Team)[];
     requested_teams: Team[];
-    labels: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels: Label[];
     milestone: {
       url: string;
       html_url: string;
@@ -5652,14 +5301,7 @@ export interface PullRequestOpenedEvent {
     deletions: number;
     changed_files: number;
   };
-  label?: {
-    id: number;
-    node_id: string;
-    url: string;
-    name: string;
-    color: string;
-    default: boolean;
-  };
+  label?: Label;
   assignee?: User;
   repository: Repository;
   installation?: Installation;
@@ -5692,14 +5334,7 @@ export interface PullRequestReadyForReviewEvent {
     assignees: User[];
     requested_reviewers: (User | Team)[];
     requested_teams: Team[];
-    labels: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels: Label[];
     milestone: {
       url: string;
       html_url: string;
@@ -5787,14 +5422,7 @@ export interface PullRequestReadyForReviewEvent {
     deletions: number;
     changed_files: number;
   };
-  label?: {
-    id: number;
-    node_id: string;
-    url: string;
-    name: string;
-    color: string;
-    default: boolean;
-  };
+  label?: Label;
   assignee?: User;
   repository: Repository;
   installation?: Installation;
@@ -5827,14 +5455,7 @@ export interface PullRequestReopenedEvent {
     assignees: User[];
     requested_reviewers: (User | Team)[];
     requested_teams: Team[];
-    labels: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels: Label[];
     milestone: {
       url: string;
       html_url: string;
@@ -5922,14 +5543,7 @@ export interface PullRequestReopenedEvent {
     deletions: number;
     changed_files: number;
   };
-  label?: {
-    id: number;
-    node_id: string;
-    url: string;
-    name: string;
-    color: string;
-    default: boolean;
-  };
+  label?: Label;
   assignee?: User;
   repository: Repository;
   installation?: Installation;
@@ -5962,14 +5576,7 @@ export interface PullRequestReviewRequestRemovedEvent {
     assignees: User[];
     requested_reviewers: (User | Team)[];
     requested_teams: Team[];
-    labels: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels: Label[];
     milestone: {
       url: string;
       html_url: string;
@@ -6057,14 +5664,7 @@ export interface PullRequestReviewRequestRemovedEvent {
     deletions: number;
     changed_files: number;
   };
-  label?: {
-    id: number;
-    node_id: string;
-    url: string;
-    name: string;
-    color: string;
-    default: boolean;
-  };
+  label?: Label;
   assignee?: User;
   repository: Repository;
   installation?: Installation;
@@ -6097,14 +5697,7 @@ export interface PullRequestReviewRequestedEvent {
     assignees: User[];
     requested_reviewers: (User | Team)[];
     requested_teams: Team[];
-    labels: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels: Label[];
     milestone: {
       url: string;
       html_url: string;
@@ -6192,14 +5785,7 @@ export interface PullRequestReviewRequestedEvent {
     deletions: number;
     changed_files: number;
   };
-  label?: {
-    id: number;
-    node_id: string;
-    url: string;
-    name: string;
-    color: string;
-    default: boolean;
-  };
+  label?: Label;
   assignee?: User;
   repository: Repository;
   installation?: Installation;
@@ -6232,14 +5818,7 @@ export interface PullRequestSynchronizeEvent {
     assignees: User[];
     requested_reviewers: (User | Team)[];
     requested_teams: Team[];
-    labels: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels: Label[];
     milestone: {
       url: string;
       html_url: string;
@@ -6327,14 +5906,7 @@ export interface PullRequestSynchronizeEvent {
     deletions: number;
     changed_files: number;
   };
-  label?: {
-    id: number;
-    node_id: string;
-    url: string;
-    name: string;
-    color: string;
-    default: boolean;
-  };
+  label?: Label;
   assignee?: User;
   repository: Repository;
   installation?: Installation;
@@ -6367,14 +5939,7 @@ export interface PullRequestUnassignedEvent {
     assignees: User[];
     requested_reviewers: (User | Team)[];
     requested_teams: Team[];
-    labels: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels: Label[];
     milestone: {
       url: string;
       html_url: string;
@@ -6462,14 +6027,7 @@ export interface PullRequestUnassignedEvent {
     deletions: number;
     changed_files: number;
   };
-  label?: {
-    id: number;
-    node_id: string;
-    url: string;
-    name: string;
-    color: string;
-    default: boolean;
-  };
+  label?: Label;
   assignee?: User;
   repository: Repository;
   installation?: Installation;
@@ -6502,14 +6060,7 @@ export interface PullRequestUnlabeledEvent {
     assignees: User[];
     requested_reviewers: (User | Team)[];
     requested_teams: Team[];
-    labels: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels: Label[];
     milestone: {
       url: string;
       html_url: string;
@@ -6597,14 +6148,7 @@ export interface PullRequestUnlabeledEvent {
     deletions: number;
     changed_files: number;
   };
-  label?: {
-    id: number;
-    node_id: string;
-    url: string;
-    name: string;
-    color: string;
-    default: boolean;
-  };
+  label?: Label;
   assignee?: User;
   repository: Repository;
   installation?: Installation;
@@ -6637,14 +6181,7 @@ export interface PullRequestUnlockedEvent {
     assignees: User[];
     requested_reviewers: (User | Team)[];
     requested_teams: Team[];
-    labels: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels: Label[];
     milestone: {
       url: string;
       html_url: string;
@@ -6732,14 +6269,7 @@ export interface PullRequestUnlockedEvent {
     deletions: number;
     changed_files: number;
   };
-  label?: {
-    id: number;
-    node_id: string;
-    url: string;
-    name: string;
-    color: string;
-    default: boolean;
-  };
+  label?: Label;
   assignee?: User;
   repository: Repository;
   installation?: Installation;
@@ -6799,14 +6329,7 @@ export interface PullRequestReviewDismissedEvent {
     assignees: User[];
     requested_reviewers: (User | Team)[];
     requested_teams: Team[];
-    labels: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels: Label[];
     milestone: {
       url: string;
       html_url: string;
@@ -6945,14 +6468,7 @@ export interface PullRequestReviewEditedEvent {
     assignees: User[];
     requested_reviewers: (User | Team)[];
     requested_teams: Team[];
-    labels: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels: Label[];
     milestone: {
       url: string;
       html_url: string;
@@ -7086,14 +6602,7 @@ export interface PullRequestReviewSubmittedEvent {
     assignees: User[];
     requested_reviewers: (User | Team)[];
     requested_teams: Team[];
-    labels: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels: Label[];
     milestone: {
       url: string;
       html_url: string;
@@ -7244,14 +6753,7 @@ export interface PullRequestReviewCommentCreatedEvent {
     assignees: User[];
     requested_reviewers: (User | Team)[];
     requested_teams: Team[];
-    labels: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels: Label[];
     milestone: {
       url: string;
       html_url: string;
@@ -7393,14 +6895,7 @@ export interface PullRequestReviewCommentDeletedEvent {
     assignees: User[];
     requested_reviewers: (User | Team)[];
     requested_teams: Team[];
-    labels: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels: Label[];
     milestone: {
       url: string;
       html_url: string;
@@ -7547,14 +7042,7 @@ export interface PullRequestReviewCommentEditedEvent {
     assignees: User[];
     requested_reviewers: (User | Team)[];
     requested_teams: Team[];
-    labels: {
-      id: number;
-      node_id: string;
-      url: string;
-      name: string;
-      color: string;
-      default: boolean;
-    }[];
+    labels: Label[];
     milestone: {
       url: string;
       html_url: string;
