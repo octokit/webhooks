@@ -143,7 +143,19 @@
           "type": ["string", "null"],
           "enum": ["resolved", "off-topic", "too heated", "spam", null]
         },
-        "body": { "type": "string" }
+        "pull_request": {
+          "type": "object",
+          "required": ["url", "html_url", "diff_url", "patch_url"],
+          "properties": {
+            "url": { "type": "string" },
+            "html_url": { "type": "string" },
+            "diff_url": { "type": "string" },
+            "patch_url": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "body": { "type": "string" },
+        "performed_via_github_app": { "type": "null" }
       },
       "additionalProperties": false
     },
