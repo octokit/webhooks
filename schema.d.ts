@@ -21,8 +21,6 @@ export type Schema =
   | GollumEvent
   | InstallationEvent
   | InstallationRepositoriesEvent
-  | IntegrationInstallationEvent
-  | IntegrationInstallationRepositoriesEvent
   | IssueCommentEvent
   | IssuesEvent
   | LabelEvent
@@ -90,8 +88,6 @@ export type InstallationEvent =
 export type InstallationRepositoriesEvent =
   | InstallationRepositoriesAddedEvent
   | InstallationRepositoriesRemovedEvent;
-export type IntegrationInstallationEvent = IntegrationInstallationCreatedEvent;
-export type IntegrationInstallationRepositoriesEvent = IntegrationInstallationRepositoriesAddedEvent;
 export type IssueCommentEvent =
   | IssueCommentCreatedEvent
   | IssueCommentDeletedEvent
@@ -1738,88 +1734,6 @@ export interface InstallationRepositoriesRemovedEvent {
     full_name: string;
     private: boolean;
   }[];
-  sender: User;
-}
-export interface IntegrationInstallationCreatedEvent {
-  action: "created";
-  installation: {
-    id: number;
-    account: User;
-    repository_selection: string;
-    access_tokens_url: string;
-    repositories_url: string;
-    html_url: string;
-    app_id: number;
-    target_id: number;
-    target_type: string;
-    permissions: {
-      administration: string;
-      checks: string;
-      contents: string;
-      deployments: string;
-      issues: string;
-      pages: string;
-      pull_requests: string;
-      repository_hooks: string;
-      repository_projects: string;
-      statuses: string;
-      metadata: string;
-      vulnerability_alerts: string;
-    };
-    events: string[];
-    created_at: number;
-    updated_at: number;
-    single_file_name: null;
-  };
-  repositories: {
-    id: number;
-    node_id: string;
-    name: string;
-    full_name: string;
-    private: boolean;
-  }[];
-  sender: User;
-}
-export interface IntegrationInstallationRepositoriesAddedEvent {
-  action: "added";
-  installation: {
-    id: number;
-    account: User;
-    repository_selection: string;
-    access_tokens_url: string;
-    repositories_url: string;
-    html_url: string;
-    app_id: number;
-    target_id: number;
-    target_type: string;
-    permissions: {
-      administration: string;
-      statuses: string;
-      repository_projects: string;
-      repository_hooks: string;
-      pull_requests: string;
-      pages: string;
-      issues: string;
-      deployments: string;
-      contents: string;
-      checks: string;
-      metadata: string;
-      vulnerability_alerts: string;
-    };
-    events: string[];
-    created_at: number;
-    updated_at: number;
-    single_file_name: null;
-  };
-  repository_selection: string;
-  repositories_added: {
-    id: number;
-    node_id: string;
-    name: string;
-    full_name: string;
-    private: boolean;
-  }[];
-  repositories_removed: [];
   sender: User;
 }
 export interface IssueCommentCreatedEvent {
@@ -8636,8 +8550,6 @@ export interface EventPayloadMap {
   gollum: GollumEvent;
   installation: InstallationEvent;
   installation_repositories: InstallationRepositoriesEvent;
-  integration_installation: IntegrationInstallationEvent;
-  integration_installation_repositories: IntegrationInstallationRepositoriesEvent;
   issue_comment: IssueCommentEvent;
   issues: IssuesEvent;
   label: LabelEvent;
