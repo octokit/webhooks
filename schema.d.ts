@@ -1880,7 +1880,14 @@ export interface IssueCommentCreatedEvent {
       | "NONE"
       | "OWNER";
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
+    pull_request?: {
+      url: string;
+      html_url: string;
+      diff_url: string;
+      patch_url: string;
+    };
     body: string;
+    performed_via_github_app?: null;
   };
   comment: {
     url: string;
@@ -1965,7 +1972,14 @@ export interface IssueCommentDeletedEvent {
       | "NONE"
       | "OWNER";
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
+    pull_request?: {
+      url: string;
+      html_url: string;
+      diff_url: string;
+      patch_url: string;
+    };
     body: string;
+    performed_via_github_app?: null;
   };
   comment: {
     url: string;
@@ -2055,7 +2069,14 @@ export interface IssueCommentEditedEvent {
       | "NONE"
       | "OWNER";
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
+    pull_request?: {
+      url: string;
+      html_url: string;
+      diff_url: string;
+      patch_url: string;
+    };
     body: string;
+    performed_via_github_app?: null;
   };
   comment: {
     url: string;
@@ -3849,7 +3870,23 @@ export interface MembershipAddedEvent {
   scope: "team";
   member: User;
   sender: User;
-  team: {
+  team: Team;
+  organization: Organization;
+  installation?: Installation;
+}
+export interface Team {
+  name: string;
+  id: number;
+  node_id: string;
+  slug: string;
+  description: string | null;
+  privacy: "open" | "closed" | "secret";
+  url: string;
+  html_url: string;
+  members_url: string;
+  repositories_url: string;
+  permission: string;
+  parent?: {
     name: string;
     id: number;
     node_id: string;
@@ -3862,27 +3899,13 @@ export interface MembershipAddedEvent {
     repositories_url: string;
     permission: string;
   };
-  organization: Organization;
-  installation?: Installation;
 }
 export interface MembershipRemovedEvent {
   action: "removed";
   scope: "team";
   member: User;
   sender: User;
-  team: {
-    name: string;
-    id: number;
-    node_id: string;
-    slug: string;
-    description: string;
-    privacy: string;
-    url: string;
-    html_url: string;
-    members_url: string;
-    repositories_url: string;
-    permission: string;
-  };
+  team: Team;
   organization: Organization;
   installation?: Installation;
 }
@@ -4824,32 +4847,6 @@ export interface PullRequestAssignedEvent {
   installation?: Installation;
   organization?: Organization;
   sender: User;
-}
-export interface Team {
-  name: string;
-  id: number;
-  node_id: string;
-  slug: string;
-  description: string;
-  privacy: "open" | "closed";
-  url: string;
-  html_url: string;
-  members_url: string;
-  repositories_url: string;
-  permission: string;
-  parent?: {
-    name: string;
-    id: number;
-    node_id: string;
-    slug: string;
-    description: string;
-    privacy: string;
-    url: string;
-    html_url: string;
-    members_url: string;
-    repositories_url: string;
-    permission: string;
-  };
 }
 export interface PullRequestClosedEvent {
   action: "closed";
@@ -7981,7 +7978,7 @@ export interface RepositoryArchivedEvent {
           key: string;
           name: string;
           spdx_id: string;
-          url: string;
+          url: string | null;
           node_id: string;
         }
       | (string | null);
@@ -8115,7 +8112,7 @@ export interface RepositoryPrivatizedEvent {
           key: string;
           name: string;
           spdx_id: string;
-          url: string;
+          url: string | null;
           node_id: string;
         }
       | (string | null);
@@ -8217,7 +8214,7 @@ export interface RepositoryPublicizedEvent {
           key: string;
           name: string;
           spdx_id: string;
-          url: string;
+          url: string | null;
           node_id: string;
         }
       | (string | null);
@@ -8340,7 +8337,7 @@ export interface RepositoryUnarchivedEvent {
           key: string;
           name: string;
           spdx_id: string;
-          url: string;
+          url: string | null;
           node_id: string;
         }
       | (string | null);
@@ -8676,6 +8673,7 @@ export interface StarCreatedEvent {
   repository: Repository;
   sender: User;
   organization?: Organization;
+  installation?: Installation;
 }
 export interface StarDeletedEvent {
   action: "deleted";
@@ -8683,6 +8681,7 @@ export interface StarDeletedEvent {
   repository: Repository;
   sender: User;
   organization?: Organization;
+  installation?: Installation;
 }
 export interface StatusEvent {
   id: number;
@@ -8739,7 +8738,11 @@ export interface StatusEvent {
     comments_url: string;
     author: User;
     committer: User;
-    parents: unknown[];
+    parents: {
+      sha: string;
+      url: string;
+      html_url: string;
+    }[];
   };
   branches: {
     name: string;
@@ -8758,57 +8761,21 @@ export interface StatusEvent {
 }
 export interface TeamAddedToRepositoryEvent {
   action: "added_to_repository";
-  team: {
-    name: string;
-    id: number;
-    node_id: string;
-    slug: string;
-    description: string | null;
-    privacy: string;
-    url: string;
-    html_url: string;
-    members_url: string;
-    repositories_url: string;
-    permission: string;
-  };
+  team: Team;
   repository?: Repository;
   sender: User;
   organization: Organization;
 }
 export interface TeamCreatedEvent {
   action: "created";
-  team: {
-    name: string;
-    id: number;
-    node_id: string;
-    slug: string;
-    description: string | null;
-    privacy: string;
-    url: string;
-    html_url: string;
-    members_url: string;
-    repositories_url: string;
-    permission: string;
-  };
+  team: Team;
   repository?: Repository;
   sender: User;
   organization: Organization;
 }
 export interface TeamDeletedEvent {
   action: "deleted";
-  team: {
-    name: string;
-    id: number;
-    node_id: string;
-    slug: string;
-    description: string | null;
-    privacy: string;
-    url: string;
-    html_url: string;
-    members_url: string;
-    repositories_url: string;
-    permission: string;
-  };
+  team: Team;
   repository?: Repository;
   sender: User;
   organization: Organization;
@@ -8835,56 +8802,20 @@ export interface TeamEditedEvent {
       };
     };
   };
-  team: {
-    name: string;
-    id: number;
-    node_id: string;
-    slug: string;
-    description: string | null;
-    privacy: string;
-    url: string;
-    html_url: string;
-    members_url: string;
-    repositories_url: string;
-    permission: string;
-  };
+  team: Team;
   repository?: Repository;
   sender: User;
   organization: Organization;
 }
 export interface TeamRemovedFromRepositoryEvent {
   action: "removed_from_repository";
-  team: {
-    name: string;
-    id: number;
-    node_id: string;
-    slug: string;
-    description: string | null;
-    privacy: string;
-    url: string;
-    html_url: string;
-    members_url: string;
-    repositories_url: string;
-    permission: string;
-  };
+  team: Team;
   repository?: Repository;
   sender: User;
   organization: Organization;
 }
 export interface TeamAddEvent {
-  team: {
-    name: string;
-    id: number;
-    node_id: string;
-    slug: string;
-    description: string;
-    privacy: string;
-    url: string;
-    html_url: string;
-    members_url: string;
-    repositories_url: string;
-    permission: string;
-  };
+  team: Team;
   repository: Repository;
   sender: User;
   installation?: Installation;
