@@ -102,7 +102,9 @@
           "$ref": "common/author_association.schema.json"
         },
         "active_lock_reason": { "type": "null" },
-        "performed_via_github_app": { "type": "null" },
+        "performed_via_github_app": {
+          "oneOf": [{ "$ref": "common/app.schema.json" }, { "type": "null" }]
+        },
         "pull_request": {
           "type": "object",
           "properties": {

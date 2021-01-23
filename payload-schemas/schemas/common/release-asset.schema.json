@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "common/asset.schema.json",
+  "$id": "common/release-asset.schema.json",
   "description": "Data related to a release.",
   "type": "object",
   "required": [

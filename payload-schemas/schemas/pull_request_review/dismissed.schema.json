@@ -27,7 +27,7 @@
         "body": { "type": ["string", "null"] },
         "commit_id": { "type": "string" },
         "submitted_at": { "type": "string" },
-        "state": { "type": "string" },
+        "state": { "type": "string", "enum": ["dismissed"] },
         "html_url": { "type": "string" },
         "pull_request_url": { "type": "string" },
         "author_association": {

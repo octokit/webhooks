@@ -44,7 +44,7 @@
         "published_at": { "type": "string" },
         "assets": {
           "type": "array",
-          "items": { "$ref": "common/asset.schema.json" }
+          "items": { "$ref": "common/release-asset.schema.json" }
         },
         "tarball_url": { "type": "string" },
         "zipball_url": { "type": "string" },

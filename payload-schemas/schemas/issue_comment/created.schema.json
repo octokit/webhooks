@@ -34,7 +34,10 @@
         "body"
       ],
       "properties": {
-        "url": { "type": "string" },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
         "repository_url": { "type": "string" },
         "labels_url": { "type": "string" },
         "comments_url": { "type": "string" },
@@ -99,8 +102,8 @@
           "additionalProperties": false
         },
         "comments": { "type": "integer" },
-        "created_at": { "type": "string" },
-        "updated_at": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
         "closed_at": { "type": "null" },
         "author_association": {
           "$ref": "common/author_association.schema.json"
@@ -121,7 +124,9 @@
           "additionalProperties": false
         },
         "body": { "type": "string" },
-        "performed_via_github_app": { "type": "null" }
+        "performed_via_github_app": {
+          "oneOf": [{ "$ref": "common/app.schema.json" }, { "type": "null" }]
+        }
       },
       "additionalProperties": false
     },
@@ -140,18 +145,28 @@
         "body"
       ],
       "properties": {
-        "url": { "type": "string" },
-        "html_url": { "type": "string" },
-        "issue_url": { "type": "string" },
-        "id": { "type": "integer" },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL for the issue comment"
+        },
+        "html_url": { "type": "string", "format": "uri" },
+        "issue_url": { "type": "string", "format": "uri" },
+        "id": {
+          "type": "integer",
+          "description": "Unique identifier of the issue comment"
+        },
         "node_id": { "type": "string" },
         "user": { "$ref": "common/user.schema.json" },
-        "created_at": { "type": "string" },
-        "updated_at": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
         "author_association": {
           "$ref": "common/author_association.schema.json"
         },
-        "body": { "type": "string" }
+        "body": {
+          "type": "string",
+          "description": "Contents of the issue comment"
+        }
       },
       "additionalProperties": false
     },

@@ -105,7 +105,9 @@
           "type": ["string", "null"],
           "enum": ["resolved", "off-topic", "too heated", "spam", null]
         },
-        "performed_via_github_app": { "type": "null" },
+        "performed_via_github_app": {
+          "oneOf": [{ "$ref": "common/app.schema.json" }, { "type": "null" }]
+        },
         "pull_request": {
           "type": "object",
           "properties": {

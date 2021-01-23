@@ -58,21 +58,31 @@
         "changed_files"
       ],
       "properties": {
-        "url": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
         "id": { "type": "integer" },
         "node_id": { "type": "string" },
-        "html_url": { "type": "string" },
-        "diff_url": { "type": "string" },
-        "patch_url": { "type": "string" },
-        "issue_url": { "type": "string" },
-        "number": { "type": "integer" },
-        "state": { "type": "string", "enum": ["open", "closed"] },
+        "html_url": { "type": "string", "format": "uri" },
+        "diff_url": { "type": "string", "format": "uri" },
+        "patch_url": { "type": "string", "format": "uri" },
+        "issue_url": { "type": "string", "format": "uri" },
+        "number": {
+          "type": "integer",
+          "description": "Number uniquely identifying the pull request within its repository."
+        },
+        "state": {
+          "type": "string",
+          "enum": ["open", "closed"],
+          "description": "State of this Pull Request. Either `open` or `closed`."
+        },
         "locked": { "type": "boolean" },
-        "title": { "type": "string" },
+        "title": {
+          "type": "string",
+          "description": "The title of the pull request."
+        },
         "user": { "$ref": "common/user.schema.json" },
         "body": { "type": "string" },
-        "created_at": { "type": "string" },
-        "updated_at": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
         "closed_at": { "type": "null" },
         "merged_at": { "type": "null" },
         "merge_commit_sha": { "type": "null" },
@@ -240,7 +250,11 @@
           "type": ["string", "null"],
           "enum": ["resolved", "off-topic", "too heated", "spam", null]
         },
-        "draft": { "type": "boolean", "enum": [true] },
+        "draft": {
+          "type": "boolean",
+          "enum": [true],
+          "description": "Indicates whether or not the pull request is a draft."
+        },
         "merged": { "type": "boolean" },
         "mergeable": { "type": ["boolean", "null"] },
         "rebaseable": { "type": ["boolean", "null"] },
@@ -248,7 +262,10 @@
         "merged_by": { "type": "null" },
         "comments": { "type": "integer" },
         "review_comments": { "type": "integer" },
-        "maintainer_can_modify": { "type": "boolean" },
+        "maintainer_can_modify": {
+          "type": "boolean",
+          "description": "Indicates whether maintainers can modify the pull request."
+        },
         "commits": { "type": "integer" },
         "additions": { "type": "integer" },
         "deletions": { "type": "integer" },
