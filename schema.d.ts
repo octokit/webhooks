@@ -8537,6 +8537,7 @@ export interface EventPayloadMap {
   workflow_dispatch: WorkflowDispatchEvent;
   workflow_run: WorkflowRunEvent;
 }
+
 export type Asset = ReleaseAsset;
 export type WebhookEvent = Schema;
 export type WebhookEventMap = EventPayloadMap;

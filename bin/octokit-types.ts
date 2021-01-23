@@ -53,6 +53,7 @@ const run = async () => {
   const ts = [
     await compileFromFile("./schema.json", { format: false }),
     buildEventPayloadMap(schema),
+    "",
     "export type Asset = ReleaseAsset;",
     "export type WebhookEvent = Schema;",
     "export type WebhookEventMap = EventPayloadMap;",
