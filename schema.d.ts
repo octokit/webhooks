@@ -2039,17 +2039,26 @@ export interface IssuesAssignedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2111,17 +2120,26 @@ export interface IssuesClosedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2183,17 +2201,26 @@ export interface IssuesDeletedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2255,17 +2282,26 @@ export interface IssuesDemilestonedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2327,17 +2363,26 @@ export interface IssuesEditedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2407,17 +2452,26 @@ export interface IssuesLabeledEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2479,17 +2533,26 @@ export interface IssuesLockedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2551,17 +2614,26 @@ export interface IssuesMilestonedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2623,17 +2695,26 @@ export interface IssuesOpenedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2695,17 +2776,26 @@ export interface IssuesPinnedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2767,17 +2857,26 @@ export interface IssuesReopenedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2839,17 +2938,26 @@ export interface IssuesTransferredEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2911,17 +3019,26 @@ export interface IssuesUnassignedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2983,17 +3100,26 @@ export interface IssuesUnlabeledEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -3055,17 +3181,26 @@ export interface IssuesUnlockedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -3127,17 +3262,26 @@ export interface IssuesUnpinnedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -3682,22 +3826,34 @@ export interface MetaDeletedEvent {
 }
 export interface MilestoneClosedEvent {
   action: "closed";
+  /**
+   * A collection of related issues and pull requests.
+   */
   milestone: {
     url: string;
     html_url: string;
     labels_url: string;
     id: number;
     node_id: string;
+    /**
+     * The number of the milestone.
+     */
     number: number;
+    /**
+     * The title of the milestone.
+     */
     title: string;
-    description: string;
+    description: string | null;
     creator: User;
     open_issues: number;
     closed_issues: number;
-    state: string;
-    created_at: string;
-    updated_at: string;
-    due_on: string;
+    /**
+     * The state of the milestone.
+     */
+    state: "closed";
+    created_at: string | null;
+    updated_at: string | null;
+    due_on: string | null;
     closed_at: string | null;
   };
   repository: Repository;
@@ -3713,16 +3869,25 @@ export interface MilestoneCreatedEvent {
     labels_url: string;
     id: number;
     node_id: string;
+    /**
+     * The number of the milestone.
+     */
     number: number;
+    /**
+     * The title of the milestone.
+     */
     title: string;
-    description: string;
+    description: string | null;
     creator: User;
     open_issues: number;
     closed_issues: number;
-    state: string;
-    created_at: string;
-    updated_at: string;
-    due_on: string;
+    /**
+     * The state of the milestone.
+     */
+    state: "open";
+    created_at: string | null;
+    updated_at: string | null;
+    due_on: string | null;
     closed_at: string | null;
   };
   repository: Repository;
@@ -3738,16 +3903,25 @@ export interface MilestoneDeletedEvent {
     labels_url: string;
     id: number;
     node_id: string;
+    /**
+     * The number of the milestone.
+     */
     number: number;
+    /**
+     * The title of the milestone.
+     */
     title: string;
-    description: string;
+    description: string | null;
     creator: User;
     open_issues: number;
     closed_issues: number;
-    state: string;
-    created_at: string;
-    updated_at: string;
-    due_on: string;
+    /**
+     * The state of the milestone.
+     */
+    state: "open" | "closed";
+    created_at: string | null;
+    updated_at: string | null;
+    due_on: string | null;
     closed_at: string | null;
   };
   repository: Repository;
@@ -3774,16 +3948,25 @@ export interface MilestoneEditedEvent {
     labels_url: string;
     id: number;
     node_id: string;
+    /**
+     * The number of the milestone.
+     */
     number: number;
+    /**
+     * The title of the milestone.
+     */
     title: string;
-    description: string;
+    description: string | null;
     creator: User;
     open_issues: number;
     closed_issues: number;
-    state: string;
-    created_at: string;
-    updated_at: string;
-    due_on: string;
+    /**
+     * The state of the milestone.
+     */
+    state: "open" | "closed";
+    created_at: string | null;
+    updated_at: string | null;
+    due_on: string | null;
     closed_at: string | null;
   };
   repository: Repository;
@@ -3799,16 +3982,25 @@ export interface MilestoneOpenedEvent {
     labels_url: string;
     id: number;
     node_id: string;
+    /**
+     * The number of the milestone.
+     */
     number: number;
+    /**
+     * The title of the milestone.
+     */
     title: string;
-    description: string;
+    description: string | null;
     creator: User;
     open_issues: number;
     closed_issues: number;
-    state: string;
-    created_at: string;
-    updated_at: string;
-    due_on: string;
+    /**
+     * The state of the milestone.
+     */
+    state: "open";
+    created_at: string | null;
+    updated_at: string | null;
+    due_on: string | null;
     closed_at: string | null;
   };
   repository: Repository;
@@ -4551,16 +4743,25 @@ export interface PullRequestAssignedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     commits_url: string;
@@ -4679,16 +4880,25 @@ export interface PullRequestClosedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     commits_url: string;
@@ -4807,16 +5017,25 @@ export interface PullRequestConvertedToDraftEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     commits_url: string;
@@ -4934,16 +5153,25 @@ export interface PullRequestEditedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     commits_url: string;
@@ -5047,16 +5275,25 @@ export interface PullRequestLabeledEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     commits_url: string;
@@ -5160,16 +5397,25 @@ export interface PullRequestLockedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     commits_url: string;
@@ -5273,16 +5519,25 @@ export interface PullRequestOpenedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     commits_url: string;
@@ -5386,16 +5641,25 @@ export interface PullRequestReadyForReviewEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     commits_url: string;
@@ -5499,16 +5763,25 @@ export interface PullRequestReopenedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     commits_url: string;
@@ -5612,16 +5885,25 @@ export interface PullRequestReviewRequestRemovedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     commits_url: string;
@@ -5725,16 +6007,25 @@ export interface PullRequestReviewRequestedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     commits_url: string;
@@ -5838,16 +6129,25 @@ export interface PullRequestSynchronizeEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     commits_url: string;
@@ -5951,16 +6251,25 @@ export interface PullRequestUnassignedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     commits_url: string;
@@ -6064,16 +6373,25 @@ export interface PullRequestUnlabeledEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     commits_url: string;
@@ -6177,16 +6495,25 @@ export interface PullRequestUnlockedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     commits_url: string;
@@ -6309,16 +6636,25 @@ export interface PullRequestReviewDismissedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     draft: boolean;
@@ -6432,16 +6768,25 @@ export interface PullRequestReviewEditedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     draft: boolean;
@@ -6550,16 +6895,25 @@ export interface PullRequestReviewSubmittedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     draft: boolean;
@@ -6685,16 +7039,25 @@ export interface PullRequestReviewCommentCreatedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     commits_url: string;
@@ -6811,16 +7174,25 @@ export interface PullRequestReviewCommentDeletedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     commits_url: string;
@@ -6942,16 +7314,25 @@ export interface PullRequestReviewCommentEditedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     commits_url: string;
