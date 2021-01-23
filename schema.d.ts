@@ -386,7 +386,6 @@ export interface App {
     statuses?: "read" | "write";
     team_discussions?: "read" | "write";
     vulnerability_alerts?: "read" | "write";
-    [k: string]: "read" | "write";
   };
   /**
    * The list of events for the GitHub app

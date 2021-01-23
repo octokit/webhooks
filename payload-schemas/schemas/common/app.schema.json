@@ -108,7 +108,7 @@
           "enum": ["read", "write"]
         }
       },
-      "additionalProperties": { "type": "string", "enum": ["read", "write"] }
+      "additionalProperties": false
     },
     "events": {
       "description": "The list of events for the GitHub app",
