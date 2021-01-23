@@ -115,17 +115,7 @@
         "updated_at": { "type": "string" },
         "closed_at": { "type": "null" },
         "author_association": {
-          "type": "string",
-          "enum": [
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER"
-          ]
+          "$ref": "common/author_association.schema.json"
         },
         "active_lock_reason": {
           "type": ["string", "null"],
@@ -171,17 +161,7 @@
         "created_at": { "type": "string" },
         "updated_at": { "type": "string" },
         "author_association": {
-          "type": "string",
-          "enum": [
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER"
-          ]
+          "$ref": "common/author_association.schema.json"
         },
         "body": { "type": "string" }
       },
