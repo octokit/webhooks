@@ -338,17 +338,32 @@ export interface RepoRef {
   url: string;
   name: string;
 }
+/**
+ * GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+ */
 export interface App {
+  /**
+   * Unique identifier of the GitHub app
+   */
   id: number;
+  /**
+   * The slug name of the GitHub app
+   */
   slug?: string;
   node_id: string;
   owner: User;
+  /**
+   * The name of the GitHub app
+   */
   name: string;
   description: string | null;
   external_url: string;
   html_url: string;
   created_at: string;
   updated_at: string;
+  /**
+   * The set of permissions for the GitHub app
+   */
   permissions?: {
     administration?: "read" | "write";
     actions?: "read" | "write";
@@ -371,7 +386,11 @@ export interface App {
     statuses?: "read" | "write";
     team_discussions?: "read" | "write";
     vulnerability_alerts?: "read" | "write";
+    [k: string]: "read" | "write";
   };
+  /**
+   * The list of events for the GitHub app
+   */
   events?: string[];
 }
 export interface User {
@@ -394,11 +413,23 @@ export interface User {
   type: "Bot" | "User" | "Organization";
   site_admin: boolean;
 }
+/**
+ * A git repository
+ */
 export interface Repository {
+  /**
+   * Unique identifier of the repository
+   */
   id: number;
   node_id: string;
+  /**
+   * The name of the repository.
+   */
   name: string;
   full_name: string;
+  /**
+   * Whether the repository is private or public.
+   */
   private: boolean;
   owner: {
     login: string;
@@ -474,14 +505,32 @@ export interface Repository {
   stargazers_count: number;
   watchers_count: number;
   language: string | null;
+  /**
+   * Whether issues are enabled.
+   */
   has_issues: boolean;
+  /**
+   * Whether projects are enabled.
+   */
   has_projects: boolean;
+  /**
+   * Whether downloads are enabled.
+   */
   has_downloads: boolean;
+  /**
+   * Whether the wiki is enabled.
+   */
   has_wiki: boolean;
   has_pages: boolean;
   forks_count: number;
   mirror_url: string | null;
+  /**
+   * Whether the repository is archived.
+   */
   archived: boolean;
+  /**
+   * Returns whether or not this repository is disabled.
+   */
   disabled?: boolean;
   open_issues_count: number;
   license: {
@@ -495,10 +544,25 @@ export interface Repository {
   open_issues: number;
   watchers: number;
   stargazers?: number;
+  /**
+   * The default branch of the repository.
+   */
   default_branch: string;
+  /**
+   * Whether to allow squash merges for pull requests.
+   */
   allow_squash_merge?: boolean;
+  /**
+   * Whether to allow merge commits for pull requests.
+   */
   allow_merge_commit?: boolean;
+  /**
+   * Whether to allow rebase merges for pull requests.
+   */
   allow_rebase_merge?: boolean;
+  /**
+   * Whether to delete head branches when pull requests are merged
+   */
   delete_branch_on_merge?: boolean;
   master_branch?: string;
   permissions?: {
@@ -510,7 +574,13 @@ export interface Repository {
   };
   public?: boolean;
 }
+/**
+ * Installation
+ */
 export interface Installation {
+  /**
+   * The ID of the installation.
+   */
   id: number;
   node_id: string;
 }
@@ -843,9 +913,13 @@ export interface CheckSuiteCompletedEvent {
   installation?: Installation;
   organization?: Organization;
 }
+/**
+ * Metaproperties for Git author/committer information.
+ */
 export interface Committer {
-  email: string;
   name: string;
+  email: string;
+  date?: string;
 }
 export interface CheckSuiteRequestedEvent {
   action: "requested";
@@ -1809,12 +1883,24 @@ export interface IssueCommentCreatedEvent {
   installation?: Installation;
   organization?: Organization;
 }
+/**
+ * Color-coded labels help you categorize and filter your issues (just like labels in Gmail).
+ */
 export interface Label {
   id: number;
   node_id: string;
+  /**
+   * URL for the label
+   */
   url: string;
+  /**
+   * The name of the label.
+   */
   name: string;
   description: string | null;
+  /**
+   * 6-character hex code, without the leading #, identifying the color
+   */
   color: string;
   default: boolean;
 }
@@ -3356,31 +3442,64 @@ export interface MembershipAddedEvent {
   organization: Organization;
   installation?: Installation;
 }
+/**
+ * Groups of organization members that gives permissions on specified repositories.
+ */
 export interface Team {
+  /**
+   * Name of the team
+   */
   name: string;
+  /**
+   * Unique identifier of the team
+   */
   id: number;
   node_id: string;
   slug: string;
+  /**
+   * Description of the team
+   */
   description: string | null;
   privacy: "open" | "closed" | "secret";
+  /**
+   * URL for the team
+   */
   url: string;
   html_url: string;
   members_url: string;
   repositories_url: string;
+  /**
+   * Permission that the team will have for its repositories
+   */
   permission: string;
   parent?: {
+    /**
+     * Name of the team
+     */
     name: string;
+    /**
+     * Unique identifier of the team
+     */
     id: number;
     node_id: string;
     slug: string;
-    description: string;
-    privacy: string;
+    /**
+     * Description of the team
+     */
+    description: string | null;
+    privacy: "open" | "closed" | "secret";
+    /**
+     * URL for the team
+     */
     url: string;
     html_url: string;
     members_url: string;
     repositories_url: string;
+    /**
+     * Permission that the team will have for its repositories
+     */
     permission: string;
-  };
+  } | null;
 }
 export interface MembershipRemovedEvent {
   action: "removed";
@@ -4095,11 +4214,23 @@ export interface ProjectColumnMovedEvent {
   organization?: Organization;
 }
 export interface PublicEvent {
+  /**
+   * A git repository
+   */
   repository: {
+    /**
+     * Unique identifier of the repository
+     */
     id: number;
     node_id: string;
+    /**
+     * The name of the repository.
+     */
     name: string;
     full_name: string;
+    /**
+     * Whether the repository is private or public.
+     */
     private: false;
     owner: User;
     html_url: string;
@@ -4154,14 +4285,32 @@ export interface PublicEvent {
     stargazers_count: number;
     watchers_count: number;
     language: string | null;
+    /**
+     * Whether issues are enabled.
+     */
     has_issues: boolean;
+    /**
+     * Whether projects are enabled.
+     */
     has_projects: boolean;
+    /**
+     * Whether downloads are enabled.
+     */
     has_downloads: boolean;
+    /**
+     * Whether the wiki is enabled.
+     */
     has_wiki: boolean;
     has_pages: boolean;
     forks_count: number;
     mirror_url: string | null;
+    /**
+     * Whether the repository is archived.
+     */
     archived: boolean;
+    /**
+     * Returns whether or not this repository is disabled.
+     */
     disabled?: boolean;
     open_issues_count: number;
     license:
@@ -4169,7 +4318,7 @@ export interface PublicEvent {
           key: string;
           name: string;
           spdx_id: string;
-          url: string;
+          url: string | null;
           node_id: string;
         }
       | (string | null);
@@ -4177,10 +4326,25 @@ export interface PublicEvent {
     open_issues: number;
     watchers: number;
     stargazers?: number;
+    /**
+     * The default branch of the repository.
+     */
     default_branch: string;
+    /**
+     * Whether to allow squash merges for pull requests.
+     */
     allow_squash_merge?: boolean;
+    /**
+     * Whether to allow merge commits for pull requests.
+     */
     allow_merge_commit?: boolean;
+    /**
+     * Whether to allow rebase merges for pull requests.
+     */
     allow_rebase_merge?: boolean;
+    /**
+     * Whether to delete head branches when pull requests are merged
+     */
     delete_branch_on_merge?: boolean;
     master_branch?: string;
     permissions?: {
@@ -6721,7 +6885,7 @@ export interface ReleaseCreatedEvent {
     prerelease: boolean;
     created_at: string;
     published_at: string;
-    assets: Asset[];
+    assets: ReleaseAsset[];
     tarball_url: string;
     zipball_url: string;
     body: string | null;
@@ -6731,14 +6895,23 @@ export interface ReleaseCreatedEvent {
   installation?: Installation;
   organization?: Organization;
 }
-export interface Asset {
+/**
+ * Data related to a release.
+ */
+export interface ReleaseAsset {
   url: string;
   browser_download_url: string;
   id: number;
   node_id: string;
+  /**
+   * The file name of the asset.
+   */
   name: string;
   label: string;
-  state: string;
+  /**
+   * State of the release asset.
+   */
+  state: "uploaded";
   content_type: string;
   size: number;
   download_count: number;
@@ -6763,7 +6936,7 @@ export interface ReleaseDeletedEvent {
     prerelease: boolean;
     created_at: string;
     published_at: string;
-    assets: Asset[];
+    assets: ReleaseAsset[];
     tarball_url: string;
     zipball_url: string;
     body: string | null;
@@ -6798,7 +6971,7 @@ export interface ReleaseEditedEvent {
     prerelease: boolean;
     created_at: string;
     published_at: string;
-    assets: Asset[];
+    assets: ReleaseAsset[];
     tarball_url: string;
     zipball_url: string;
     body: string | null;
@@ -6825,7 +6998,7 @@ export interface ReleasePrereleasedEvent {
     prerelease: true;
     created_at: string;
     published_at: string;
-    assets: Asset[];
+    assets: ReleaseAsset[];
     tarball_url: string;
     zipball_url: string;
     body: string | null;
@@ -6852,7 +7025,7 @@ export interface ReleasePublishedEvent {
     prerelease: boolean;
     created_at: string;
     published_at: string;
-    assets: Asset[];
+    assets: ReleaseAsset[];
     tarball_url: string;
     zipball_url: string;
     body: string | null;
@@ -6879,7 +7052,7 @@ export interface ReleaseReleasedEvent {
     prerelease: boolean;
     created_at: string;
     published_at: string;
-    assets: Asset[];
+    assets: ReleaseAsset[];
     tarball_url: string;
     zipball_url: string;
     body: string | null;
@@ -6906,7 +7079,7 @@ export interface ReleaseUnpublishedEvent {
     prerelease: boolean;
     created_at: string;
     published_at: string;
-    assets: Asset[];
+    assets: ReleaseAsset[];
     tarball_url: string;
     zipball_url: string;
     body: string | null;
@@ -6918,11 +7091,23 @@ export interface ReleaseUnpublishedEvent {
 }
 export interface RepositoryArchivedEvent {
   action: "archived";
+  /**
+   * A git repository
+   */
   repository: {
+    /**
+     * Unique identifier of the repository
+     */
     id: number;
     node_id: string;
+    /**
+     * The name of the repository.
+     */
     name: string;
     full_name: string;
+    /**
+     * Whether the repository is private or public.
+     */
     private: boolean;
     owner: User;
     html_url: string;
@@ -6977,14 +7162,32 @@ export interface RepositoryArchivedEvent {
     stargazers_count: number;
     watchers_count: number;
     language: string | null;
+    /**
+     * Whether issues are enabled.
+     */
     has_issues: boolean;
+    /**
+     * Whether projects are enabled.
+     */
     has_projects: boolean;
+    /**
+     * Whether downloads are enabled.
+     */
     has_downloads: boolean;
+    /**
+     * Whether the wiki is enabled.
+     */
     has_wiki: boolean;
     has_pages: boolean;
     forks_count: number;
     mirror_url: string | null;
+    /**
+     * Whether the repository is archived.
+     */
     archived: true;
+    /**
+     * Returns whether or not this repository is disabled.
+     */
     disabled?: boolean;
     open_issues_count: number;
     license:
@@ -7000,10 +7203,25 @@ export interface RepositoryArchivedEvent {
     open_issues: number;
     watchers: number;
     stargazers?: number;
+    /**
+     * The default branch of the repository.
+     */
     default_branch: string;
+    /**
+     * Whether to allow squash merges for pull requests.
+     */
     allow_squash_merge?: boolean;
+    /**
+     * Whether to allow merge commits for pull requests.
+     */
     allow_merge_commit?: boolean;
+    /**
+     * Whether to allow rebase merges for pull requests.
+     */
     allow_rebase_merge?: boolean;
+    /**
+     * Whether to delete head branches when pull requests are merged
+     */
     delete_branch_on_merge?: boolean;
     master_branch?: string;
     permissions?: {
@@ -7052,11 +7270,23 @@ export interface RepositoryEditedEvent {
 }
 export interface RepositoryPrivatizedEvent {
   action: "privatized";
+  /**
+   * A git repository
+   */
   repository: {
+    /**
+     * Unique identifier of the repository
+     */
     id: number;
     node_id: string;
+    /**
+     * The name of the repository.
+     */
     name: string;
     full_name: string;
+    /**
+     * Whether the repository is private or public.
+     */
     private: true;
     owner: User;
     html_url: string;
@@ -7111,14 +7341,32 @@ export interface RepositoryPrivatizedEvent {
     stargazers_count: number;
     watchers_count: number;
     language: string | null;
+    /**
+     * Whether issues are enabled.
+     */
     has_issues: boolean;
+    /**
+     * Whether projects are enabled.
+     */
     has_projects: boolean;
+    /**
+     * Whether downloads are enabled.
+     */
     has_downloads: boolean;
+    /**
+     * Whether the wiki is enabled.
+     */
     has_wiki: boolean;
     has_pages: boolean;
     forks_count: number;
     mirror_url: string | null;
+    /**
+     * Whether the repository is archived.
+     */
     archived: boolean;
+    /**
+     * Returns whether or not this repository is disabled.
+     */
     disabled?: boolean;
     open_issues_count: number;
     license:
@@ -7134,10 +7382,25 @@ export interface RepositoryPrivatizedEvent {
     open_issues: number;
     watchers: number;
     stargazers?: number;
+    /**
+     * The default branch of the repository.
+     */
     default_branch: string;
+    /**
+     * Whether to allow squash merges for pull requests.
+     */
     allow_squash_merge?: boolean;
+    /**
+     * Whether to allow merge commits for pull requests.
+     */
     allow_merge_commit?: boolean;
+    /**
+     * Whether to allow rebase merges for pull requests.
+     */
     allow_rebase_merge?: boolean;
+    /**
+     * Whether to delete head branches when pull requests are merged
+     */
     delete_branch_on_merge?: boolean;
     master_branch?: string;
     permissions?: {
@@ -7154,11 +7417,23 @@ export interface RepositoryPrivatizedEvent {
 }
 export interface RepositoryPublicizedEvent {
   action: "publicized";
+  /**
+   * A git repository
+   */
   repository: {
+    /**
+     * Unique identifier of the repository
+     */
     id: number;
     node_id: string;
+    /**
+     * The name of the repository.
+     */
     name: string;
     full_name: string;
+    /**
+     * Whether the repository is private or public.
+     */
     private: false;
     owner: User;
     html_url: string;
@@ -7213,14 +7488,32 @@ export interface RepositoryPublicizedEvent {
     stargazers_count: number;
     watchers_count: number;
     language: string | null;
+    /**
+     * Whether issues are enabled.
+     */
     has_issues: boolean;
+    /**
+     * Whether projects are enabled.
+     */
     has_projects: boolean;
+    /**
+     * Whether downloads are enabled.
+     */
     has_downloads: boolean;
+    /**
+     * Whether the wiki is enabled.
+     */
     has_wiki: boolean;
     has_pages: boolean;
     forks_count: number;
     mirror_url: string | null;
+    /**
+     * Whether the repository is archived.
+     */
     archived: boolean;
+    /**
+     * Returns whether or not this repository is disabled.
+     */
     disabled?: boolean;
     open_issues_count: number;
     license:
@@ -7236,10 +7529,25 @@ export interface RepositoryPublicizedEvent {
     open_issues: number;
     watchers: number;
     stargazers?: number;
+    /**
+     * The default branch of the repository.
+     */
     default_branch: string;
+    /**
+     * Whether to allow squash merges for pull requests.
+     */
     allow_squash_merge?: boolean;
+    /**
+     * Whether to allow merge commits for pull requests.
+     */
     allow_merge_commit?: boolean;
+    /**
+     * Whether to allow rebase merges for pull requests.
+     */
     allow_rebase_merge?: boolean;
+    /**
+     * Whether to delete head branches when pull requests are merged
+     */
     delete_branch_on_merge?: boolean;
     master_branch?: string;
     permissions?: {
@@ -7277,11 +7585,23 @@ export interface RepositoryTransferredEvent {
 }
 export interface RepositoryUnarchivedEvent {
   action: "unarchived";
+  /**
+   * A git repository
+   */
   repository: {
+    /**
+     * Unique identifier of the repository
+     */
     id: number;
     node_id: string;
+    /**
+     * The name of the repository.
+     */
     name: string;
     full_name: string;
+    /**
+     * Whether the repository is private or public.
+     */
     private: boolean;
     owner: User;
     html_url: string;
@@ -7336,14 +7656,32 @@ export interface RepositoryUnarchivedEvent {
     stargazers_count: number;
     watchers_count: number;
     language: string | null;
+    /**
+     * Whether issues are enabled.
+     */
     has_issues: boolean;
+    /**
+     * Whether projects are enabled.
+     */
     has_projects: boolean;
+    /**
+     * Whether downloads are enabled.
+     */
     has_downloads: boolean;
+    /**
+     * Whether the wiki is enabled.
+     */
     has_wiki: boolean;
     has_pages: boolean;
     forks_count: number;
     mirror_url: string | null;
+    /**
+     * Whether the repository is archived.
+     */
     archived: false;
+    /**
+     * Returns whether or not this repository is disabled.
+     */
     disabled?: boolean;
     open_issues_count: number;
     license:
@@ -7359,10 +7697,25 @@ export interface RepositoryUnarchivedEvent {
     open_issues: number;
     watchers: number;
     stargazers?: number;
+    /**
+     * The default branch of the repository.
+     */
     default_branch: string;
+    /**
+     * Whether to allow squash merges for pull requests.
+     */
     allow_squash_merge?: boolean;
+    /**
+     * Whether to allow merge commits for pull requests.
+     */
     allow_merge_commit?: boolean;
+    /**
+     * Whether to allow rebase merges for pull requests.
+     */
     allow_rebase_merge?: boolean;
+    /**
+     * Whether to delete head branches when pull requests are merged
+     */
     delete_branch_on_merge?: boolean;
     master_branch?: string;
     permissions?: {
@@ -7964,6 +8317,9 @@ export interface WorkflowRunCompletedEvent {
       git_tags_url: string;
       hooks_url: string;
       html_url: string;
+      /**
+       * Unique identifier of the repository
+       */
       id: number;
       issue_comment_url: string;
       issue_events_url: string;
@@ -7973,10 +8329,16 @@ export interface WorkflowRunCompletedEvent {
       languages_url: string;
       merges_url: string;
       milestones_url: string;
+      /**
+       * The name of the repository.
+       */
       name: string;
       node_id: string;
       notifications_url: string;
       owner: User;
+      /**
+       * Whether the repository is private or public.
+       */
       private: boolean;
       pulls_url: string;
       releases_url: string;
@@ -8110,6 +8472,9 @@ export interface WorkflowRunRequestedEvent {
       git_tags_url: string;
       hooks_url: string;
       html_url: string;
+      /**
+       * Unique identifier of the repository
+       */
       id: number;
       issue_comment_url: string;
       issue_events_url: string;
@@ -8119,10 +8484,16 @@ export interface WorkflowRunRequestedEvent {
       languages_url: string;
       merges_url: string;
       milestones_url: string;
+      /**
+       * The name of the repository.
+       */
       name: string;
       node_id: string;
       notifications_url: string;
       owner: User;
+      /**
+       * Whether the repository is private or public.
+       */
       private: boolean;
       pulls_url: string;
       releases_url: string;
@@ -8199,7 +8570,7 @@ export interface EventPayloadMap {
   workflow_dispatch: WorkflowDispatchEvent;
   workflow_run: WorkflowRunEvent;
 }
-
+export type Asset = ReleaseAsset;
 export type WebhookEvent = Schema;
 export type WebhookEventMap = EventPayloadMap;
 export type WebhookEventName = keyof EventPayloadMap;
