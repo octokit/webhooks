@@ -28,26 +28,36 @@
         "body"
       ],
       "properties": {
-        "url": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
         "assets_url": { "type": "string" },
         "upload_url": { "type": "string" },
-        "html_url": { "type": "string" },
+        "html_url": { "type": "string", "format": "uri" },
         "id": { "type": "integer" },
         "node_id": { "type": "string" },
-        "tag_name": { "type": "string" },
-        "target_commitish": { "type": "string" },
+        "tag_name": { "type": "string", "description": "The name of the tag." },
+        "target_commitish": {
+          "type": "string",
+          "description": "Specifies the commitish value that determines where the Git tag is created from."
+        },
         "name": { "type": "null" },
-        "draft": { "type": "boolean" },
+        "draft": {
+          "type": "boolean",
+          "description": "true to create a draft (unpublished) release, false to create a published one."
+        },
         "author": { "$ref": "common/user.schema.json" },
-        "prerelease": { "type": "boolean", "enum": [true] },
-        "created_at": { "type": "string" },
-        "published_at": { "type": "string" },
+        "prerelease": {
+          "type": "boolean",
+          "enum": [true],
+          "description": "Whether the release is identified as a prerelease or a full release."
+        },
+        "created_at": { "type": ["string", "null"], "format": "date-time" },
+        "published_at": { "type": ["string", "null"], "format": "date-time" },
         "assets": {
           "type": "array",
           "items": { "$ref": "common/release-asset.schema.json" }
         },
-        "tarball_url": { "type": "string" },
-        "zipball_url": { "type": "string" },
+        "tarball_url": { "type": ["string", "null"], "format": "uri" },
+        "zipball_url": { "type": ["string", "null"], "format": "uri" },
         "body": { "type": ["string", "null"] }
       },
       "additionalProperties": false

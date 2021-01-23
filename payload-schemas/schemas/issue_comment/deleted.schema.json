@@ -34,22 +34,30 @@
         "body"
       ],
       "properties": {
-        "url": { "type": "string", "format": "uri" },
-        "repository_url": { "type": "string" },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL for the issue"
+        },
+        "repository_url": { "type": "string", "format": "uri" },
         "labels_url": { "type": "string" },
-        "comments_url": { "type": "string" },
-        "events_url": { "type": "string" },
-        "html_url": { "type": "string" },
+        "comments_url": { "type": "string", "format": "uri" },
+        "events_url": { "type": "string", "format": "uri" },
+        "html_url": { "type": "string", "format": "uri" },
         "id": { "type": "integer" },
         "node_id": { "type": "string" },
         "number": { "type": "integer" },
-        "title": { "type": "string" },
+        "title": { "type": "string", "description": "Title of the issue" },
         "user": { "$ref": "common/user.schema.json" },
         "labels": {
           "type": "array",
           "items": { "$ref": "common/label.schema.json" }
         },
-        "state": { "type": "string", "enum": ["open", "closed"] },
+        "state": {
+          "type": "string",
+          "enum": ["open", "closed"],
+          "description": "State of the issue; either 'open' or 'closed'"
+        },
         "locked": { "type": "boolean" },
         "assignee": {
           "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": "null" }]
@@ -113,14 +121,14 @@
           "type": "object",
           "required": ["url", "html_url", "diff_url", "patch_url"],
           "properties": {
-            "url": { "type": "string" },
-            "html_url": { "type": "string" },
-            "diff_url": { "type": "string" },
-            "patch_url": { "type": "string" }
+            "url": { "type": "string", "format": "uri" },
+            "html_url": { "type": "string", "format": "uri" },
+            "diff_url": { "type": "string", "format": "uri" },
+            "patch_url": { "type": "string", "format": "uri" }
           },
           "additionalProperties": false
         },
-        "body": { "type": "string" },
+        "body": { "type": "string", "description": "Contents of the issue" },
         "performed_via_github_app": {
           "oneOf": [{ "$ref": "common/app.schema.json" }, { "type": "null" }]
         }
