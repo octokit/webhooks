@@ -1712,6 +1712,9 @@ export interface InstallationRepositoriesRemovedEvent {
 export interface IssueCommentCreatedEvent {
   action: "created";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -1721,9 +1724,15 @@ export interface IssueCommentCreatedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state: "open" | "closed";
     locked: boolean;
     assignee: User | null;
@@ -1758,6 +1767,9 @@ export interface IssueCommentCreatedEvent {
       diff_url: string;
       patch_url: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
     performed_via_github_app?: App | null;
   };
@@ -1811,6 +1823,9 @@ export interface Label {
 export interface IssueCommentDeletedEvent {
   action: "deleted";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -1820,9 +1835,15 @@ export interface IssueCommentDeletedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state: "open" | "closed";
     locked: boolean;
     assignee: User | null;
@@ -1857,6 +1878,9 @@ export interface IssueCommentDeletedEvent {
       diff_url: string;
       patch_url: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
     performed_via_github_app?: App | null;
   };
@@ -1894,6 +1918,9 @@ export interface IssueCommentEditedEvent {
     };
   };
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -1903,9 +1930,15 @@ export interface IssueCommentEditedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state: "open" | "closed";
     locked: boolean;
     assignee: User | null;
@@ -1940,6 +1973,9 @@ export interface IssueCommentEditedEvent {
       diff_url: string;
       patch_url: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
     performed_via_github_app?: App | null;
   };
@@ -1972,6 +2008,9 @@ export interface IssueCommentEditedEvent {
 export interface IssuesAssignedEvent {
   action: "assigned";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -1981,9 +2020,15 @@ export interface IssuesAssignedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2019,6 +2064,9 @@ export interface IssuesAssignedEvent {
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2032,6 +2080,9 @@ export interface IssuesAssignedEvent {
 export interface IssuesClosedEvent {
   action: "closed";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2041,9 +2092,15 @@ export interface IssuesClosedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2079,6 +2136,9 @@ export interface IssuesClosedEvent {
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2092,6 +2152,9 @@ export interface IssuesClosedEvent {
 export interface IssuesDeletedEvent {
   action: "deleted";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2101,9 +2164,15 @@ export interface IssuesDeletedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2139,6 +2208,9 @@ export interface IssuesDeletedEvent {
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2152,6 +2224,9 @@ export interface IssuesDeletedEvent {
 export interface IssuesDemilestonedEvent {
   action: "demilestoned";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2161,9 +2236,15 @@ export interface IssuesDemilestonedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2199,6 +2280,9 @@ export interface IssuesDemilestonedEvent {
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2212,6 +2296,9 @@ export interface IssuesDemilestonedEvent {
 export interface IssuesEditedEvent {
   action: "edited";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2221,9 +2308,15 @@ export interface IssuesEditedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2259,6 +2352,9 @@ export interface IssuesEditedEvent {
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2280,6 +2376,9 @@ export interface IssuesEditedEvent {
 export interface IssuesLabeledEvent {
   action: "labeled";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2289,9 +2388,15 @@ export interface IssuesLabeledEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2327,6 +2432,9 @@ export interface IssuesLabeledEvent {
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2340,6 +2448,9 @@ export interface IssuesLabeledEvent {
 export interface IssuesLockedEvent {
   action: "locked";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2349,9 +2460,15 @@ export interface IssuesLockedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open" | "closed";
     locked?: true;
     assignee?: User | null;
@@ -2387,6 +2504,9 @@ export interface IssuesLockedEvent {
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2400,6 +2520,9 @@ export interface IssuesLockedEvent {
 export interface IssuesMilestonedEvent {
   action: "milestoned";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2409,9 +2532,15 @@ export interface IssuesMilestonedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2447,6 +2576,9 @@ export interface IssuesMilestonedEvent {
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2460,6 +2592,9 @@ export interface IssuesMilestonedEvent {
 export interface IssuesOpenedEvent {
   action: "opened";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2469,9 +2604,15 @@ export interface IssuesOpenedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open";
     locked?: boolean;
     assignee?: User | null;
@@ -2507,6 +2648,9 @@ export interface IssuesOpenedEvent {
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2520,6 +2664,9 @@ export interface IssuesOpenedEvent {
 export interface IssuesPinnedEvent {
   action: "pinned";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2529,9 +2676,15 @@ export interface IssuesPinnedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2567,6 +2720,9 @@ export interface IssuesPinnedEvent {
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2580,6 +2736,9 @@ export interface IssuesPinnedEvent {
 export interface IssuesReopenedEvent {
   action: "reopened";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2589,9 +2748,15 @@ export interface IssuesReopenedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open";
     locked?: boolean;
     assignee?: User | null;
@@ -2627,6 +2792,9 @@ export interface IssuesReopenedEvent {
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2640,6 +2808,9 @@ export interface IssuesReopenedEvent {
 export interface IssuesTransferredEvent {
   action: "transferred";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2649,9 +2820,15 @@ export interface IssuesTransferredEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2687,6 +2864,9 @@ export interface IssuesTransferredEvent {
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2700,6 +2880,9 @@ export interface IssuesTransferredEvent {
 export interface IssuesUnassignedEvent {
   action: "unassigned";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2709,9 +2892,15 @@ export interface IssuesUnassignedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2747,6 +2936,9 @@ export interface IssuesUnassignedEvent {
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2760,6 +2952,9 @@ export interface IssuesUnassignedEvent {
 export interface IssuesUnlabeledEvent {
   action: "unlabeled";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2769,9 +2964,15 @@ export interface IssuesUnlabeledEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2807,6 +3008,9 @@ export interface IssuesUnlabeledEvent {
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2820,6 +3024,9 @@ export interface IssuesUnlabeledEvent {
 export interface IssuesUnlockedEvent {
   action: "unlocked";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2829,9 +3036,15 @@ export interface IssuesUnlockedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open" | "closed";
     locked?: false;
     assignee?: User | null;
@@ -2867,6 +3080,9 @@ export interface IssuesUnlockedEvent {
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2880,6 +3096,9 @@ export interface IssuesUnlockedEvent {
 export interface IssuesUnpinnedEvent {
   action: "unpinned";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2889,9 +3108,15 @@ export interface IssuesUnpinnedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2927,6 +3152,9 @@ export interface IssuesUnpinnedEvent {
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -6844,17 +7072,29 @@ export interface ReleaseCreatedEvent {
     html_url: string;
     id: number;
     node_id: string;
+    /**
+     * The name of the tag.
+     */
     tag_name: string;
+    /**
+     * Specifies the commitish value that determines where the Git tag is created from.
+     */
     target_commitish: string;
     name: null;
+    /**
+     * true to create a draft (unpublished) release, false to create a published one.
+     */
     draft: boolean;
     author: User;
+    /**
+     * Whether the release is identified as a prerelease or a full release.
+     */
     prerelease: boolean;
-    created_at: string;
-    published_at: string;
+    created_at: string | null;
+    published_at: string | null;
     assets: ReleaseAsset[];
-    tarball_url: string;
-    zipball_url: string;
+    tarball_url: string | null;
+    zipball_url: string | null;
     body: string | null;
   };
   repository: Repository;
@@ -6895,17 +7135,29 @@ export interface ReleaseDeletedEvent {
     html_url: string;
     id: number;
     node_id: string;
+    /**
+     * The name of the tag.
+     */
     tag_name: string;
+    /**
+     * Specifies the commitish value that determines where the Git tag is created from.
+     */
     target_commitish: string;
     name: null;
+    /**
+     * true to create a draft (unpublished) release, false to create a published one.
+     */
     draft: boolean;
     author: User;
+    /**
+     * Whether the release is identified as a prerelease or a full release.
+     */
     prerelease: boolean;
-    created_at: string;
-    published_at: string;
+    created_at: string | null;
+    published_at: string | null;
     assets: ReleaseAsset[];
-    tarball_url: string;
-    zipball_url: string;
+    tarball_url: string | null;
+    zipball_url: string | null;
     body: string | null;
   };
   repository: Repository;
@@ -6930,17 +7182,29 @@ export interface ReleaseEditedEvent {
     html_url: string;
     id: number;
     node_id: string;
+    /**
+     * The name of the tag.
+     */
     tag_name: string;
+    /**
+     * Specifies the commitish value that determines where the Git tag is created from.
+     */
     target_commitish: string;
     name: null;
+    /**
+     * true to create a draft (unpublished) release, false to create a published one.
+     */
     draft: boolean;
     author: User;
+    /**
+     * Whether the release is identified as a prerelease or a full release.
+     */
     prerelease: boolean;
-    created_at: string;
-    published_at: string;
+    created_at: string | null;
+    published_at: string | null;
     assets: ReleaseAsset[];
-    tarball_url: string;
-    zipball_url: string;
+    tarball_url: string | null;
+    zipball_url: string | null;
     body: string | null;
   };
   repository: Repository;
@@ -6957,17 +7221,29 @@ export interface ReleasePrereleasedEvent {
     html_url: string;
     id: number;
     node_id: string;
+    /**
+     * The name of the tag.
+     */
     tag_name: string;
+    /**
+     * Specifies the commitish value that determines where the Git tag is created from.
+     */
     target_commitish: string;
     name: null;
+    /**
+     * true to create a draft (unpublished) release, false to create a published one.
+     */
     draft: boolean;
     author: User;
+    /**
+     * Whether the release is identified as a prerelease or a full release.
+     */
     prerelease: true;
-    created_at: string;
-    published_at: string;
+    created_at: string | null;
+    published_at: string | null;
     assets: ReleaseAsset[];
-    tarball_url: string;
-    zipball_url: string;
+    tarball_url: string | null;
+    zipball_url: string | null;
     body: string | null;
   };
   repository: Repository;
@@ -6984,17 +7260,29 @@ export interface ReleasePublishedEvent {
     html_url: string;
     id: number;
     node_id: string;
+    /**
+     * The name of the tag.
+     */
     tag_name: string;
+    /**
+     * Specifies the commitish value that determines where the Git tag is created from.
+     */
     target_commitish: string;
     name: null;
+    /**
+     * true to create a draft (unpublished) release, false to create a published one.
+     */
     draft: boolean;
     author: User;
+    /**
+     * Whether the release is identified as a prerelease or a full release.
+     */
     prerelease: boolean;
-    created_at: string;
-    published_at: string;
+    created_at: string | null;
+    published_at: string | null;
     assets: ReleaseAsset[];
-    tarball_url: string;
-    zipball_url: string;
+    tarball_url: string | null;
+    zipball_url: string | null;
     body: string | null;
   };
   repository: Repository;
@@ -7011,17 +7299,29 @@ export interface ReleaseReleasedEvent {
     html_url: string;
     id: number;
     node_id: string;
+    /**
+     * The name of the tag.
+     */
     tag_name: string;
+    /**
+     * Specifies the commitish value that determines where the Git tag is created from.
+     */
     target_commitish: string;
     name: null;
+    /**
+     * true to create a draft (unpublished) release, false to create a published one.
+     */
     draft: boolean;
     author: User;
+    /**
+     * Whether the release is identified as a prerelease or a full release.
+     */
     prerelease: boolean;
-    created_at: string;
-    published_at: string;
+    created_at: string | null;
+    published_at: string | null;
     assets: ReleaseAsset[];
-    tarball_url: string;
-    zipball_url: string;
+    tarball_url: string | null;
+    zipball_url: string | null;
     body: string | null;
   };
   repository: Repository;
@@ -7038,17 +7338,29 @@ export interface ReleaseUnpublishedEvent {
     html_url: string;
     id: number;
     node_id: string;
+    /**
+     * The name of the tag.
+     */
     tag_name: string;
+    /**
+     * Specifies the commitish value that determines where the Git tag is created from.
+     */
     target_commitish: string;
     name: null;
+    /**
+     * true to create a draft (unpublished) release, false to create a published one.
+     */
     draft: boolean;
     author: User;
+    /**
+     * Whether the release is identified as a prerelease or a full release.
+     */
     prerelease: boolean;
-    created_at: string;
-    published_at: string;
+    created_at: string | null;
+    published_at: string | null;
     assets: ReleaseAsset[];
-    tarball_url: string;
-    zipball_url: string;
+    tarball_url: string | null;
+    zipball_url: string | null;
     body: string | null;
   };
   repository: Repository;
