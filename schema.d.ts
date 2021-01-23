@@ -74,6 +74,9 @@ export type CodeScanningAlertEvent =
   | CodeScanningAlertReopenedEvent
   | CodeScanningAlertReopenedByUserEvent;
 export type CommitCommentEvent = CommitCommentCreatedEvent;
+/**
+ * How the author is associated with the repository.
+ */
 export type AuthorAssociation =
   | "COLLABORATOR"
   | "CONTRIBUTOR"
