@@ -35,17 +35,7 @@
         "created_at": { "type": "string" },
         "updated_at": { "type": "string" },
         "author_association": {
-          "type": "string",
-          "enum": [
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER"
-          ]
+          "$ref": "common/author_association.schema.json"
         },
         "body": { "type": "string" }
       },

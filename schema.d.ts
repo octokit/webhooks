@@ -74,6 +74,18 @@ export type CodeScanningAlertEvent =
   | CodeScanningAlertReopenedEvent
   | CodeScanningAlertReopenedByUserEvent;
 export type CommitCommentEvent = CommitCommentCreatedEvent;
+/**
+ * How the author is associated with the repository.
+ */
+export type AuthorAssociation =
+  | "COLLABORATOR"
+  | "CONTRIBUTOR"
+  | "FIRST_TIMER"
+  | "FIRST_TIME_CONTRIBUTOR"
+  | "MANNEQUIN"
+  | "MEMBER"
+  | "NONE"
+  | "OWNER";
 export type ContentReferenceEvent = ContentReferenceCreatedEvent;
 export type DeployKeyEvent = DeployKeyCreatedEvent | DeployKeyDeletedEvent;
 export type DeploymentEvent = DeploymentCreatedEvent;
@@ -1157,15 +1169,7 @@ export interface CommitCommentCreatedEvent {
     commit_id: string;
     created_at: string;
     updated_at: string;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     body: string;
   };
   repository: Repository;
@@ -1777,15 +1781,7 @@ export interface IssueCommentCreatedEvent {
     created_at: string;
     updated_at: string;
     closed_at: null;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     pull_request?: {
       url: string;
@@ -1805,15 +1801,7 @@ export interface IssueCommentCreatedEvent {
     user: User;
     created_at: string;
     updated_at: string;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     body: string;
   };
   repository: Repository;
@@ -1871,15 +1859,7 @@ export interface IssueCommentDeletedEvent {
     created_at: string;
     updated_at: string;
     closed_at: null;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     pull_request?: {
       url: string;
@@ -1899,15 +1879,7 @@ export interface IssueCommentDeletedEvent {
     user: User;
     created_at: string;
     updated_at: string;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     body: string;
   };
   repository: Repository;
@@ -1961,15 +1933,7 @@ export interface IssueCommentEditedEvent {
     created_at: string;
     updated_at: string;
     closed_at: null;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     pull_request?: {
       url: string;
@@ -1989,15 +1953,7 @@ export interface IssueCommentEditedEvent {
     user: User;
     created_at: string;
     updated_at: string;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     body: string;
   };
   repository: Repository;
@@ -2046,15 +2002,7 @@ export interface IssuesAssignedEvent {
     created_at: string;
     updated_at: string;
     closed_at: string | null;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     performed_via_github_app?: null;
     pull_request?: {
@@ -2114,15 +2062,7 @@ export interface IssuesClosedEvent {
     created_at: string;
     updated_at: string;
     closed_at: string;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     performed_via_github_app?: null;
     pull_request?: {
@@ -2182,15 +2122,7 @@ export interface IssuesDeletedEvent {
     created_at: string;
     updated_at: string;
     closed_at: string | null;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     performed_via_github_app?: null;
     pull_request?: {
@@ -2250,15 +2182,7 @@ export interface IssuesDemilestonedEvent {
     created_at: string;
     updated_at: string;
     closed_at: string | null;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     performed_via_github_app?: null;
     pull_request?: {
@@ -2318,15 +2242,7 @@ export interface IssuesEditedEvent {
     created_at: string;
     updated_at: string;
     closed_at: string | null;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     performed_via_github_app?: null;
     pull_request?: {
@@ -2394,15 +2310,7 @@ export interface IssuesLabeledEvent {
     created_at: string;
     updated_at: string;
     closed_at: string | null;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     performed_via_github_app?: null;
     pull_request?: {
@@ -2462,15 +2370,7 @@ export interface IssuesLockedEvent {
     created_at: string;
     updated_at: string;
     closed_at: string | null;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam";
     performed_via_github_app?: null;
     pull_request?: {
@@ -2530,15 +2430,7 @@ export interface IssuesMilestonedEvent {
     created_at: string;
     updated_at: string;
     closed_at: string | null;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     performed_via_github_app?: null;
     pull_request?: {
@@ -2598,15 +2490,7 @@ export interface IssuesOpenedEvent {
     created_at: string;
     updated_at: string;
     closed_at: null;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     performed_via_github_app?: null;
     pull_request?: {
@@ -2666,15 +2550,7 @@ export interface IssuesPinnedEvent {
     created_at: string;
     updated_at: string;
     closed_at: string | null;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     performed_via_github_app?: null;
     pull_request?: {
@@ -2734,15 +2610,7 @@ export interface IssuesReopenedEvent {
     created_at: string;
     updated_at: string;
     closed_at: string | null;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     performed_via_github_app?: null;
     pull_request?: {
@@ -2802,15 +2670,7 @@ export interface IssuesTransferredEvent {
     created_at: string;
     updated_at: string;
     closed_at: string | null;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     performed_via_github_app?: null;
     pull_request?: {
@@ -2870,15 +2730,7 @@ export interface IssuesUnassignedEvent {
     created_at: string;
     updated_at: string;
     closed_at: string | null;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     performed_via_github_app?: null;
     pull_request?: {
@@ -2938,15 +2790,7 @@ export interface IssuesUnlabeledEvent {
     created_at: string;
     updated_at: string;
     closed_at: string | null;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     performed_via_github_app?: null;
     pull_request?: {
@@ -3006,15 +2850,7 @@ export interface IssuesUnlockedEvent {
     created_at: string;
     updated_at: string;
     closed_at: string | null;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: null;
     performed_via_github_app?: null;
     pull_request?: {
@@ -3074,15 +2910,7 @@ export interface IssuesUnpinnedEvent {
     created_at: string;
     updated_at: string;
     closed_at: string | null;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     performed_via_github_app?: null;
     pull_request?: {
@@ -4457,15 +4285,7 @@ export interface PullRequestAssignedEvent {
         href: string;
       };
     };
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     draft: boolean;
     merged: boolean;
@@ -4578,15 +4398,7 @@ export interface PullRequestClosedEvent {
         href: string;
       };
     };
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     draft: boolean;
     merged: boolean;
@@ -4699,15 +4511,7 @@ export interface PullRequestConvertedToDraftEvent {
         href: string;
       };
     };
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     draft: true;
     merged: boolean;
@@ -4828,15 +4632,7 @@ export interface PullRequestEditedEvent {
         href: string;
       };
     };
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     draft: boolean;
     merged: boolean;
@@ -4949,15 +4745,7 @@ export interface PullRequestLabeledEvent {
         href: string;
       };
     };
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     draft: boolean;
     merged: boolean;
@@ -5070,15 +4858,7 @@ export interface PullRequestLockedEvent {
         href: string;
       };
     };
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam";
     draft: boolean;
     merged: boolean;
@@ -5191,15 +4971,7 @@ export interface PullRequestOpenedEvent {
         href: string;
       };
     };
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: null;
     draft: boolean;
     merged: boolean;
@@ -5312,15 +5084,7 @@ export interface PullRequestReadyForReviewEvent {
         href: string;
       };
     };
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     draft: false;
     merged: boolean;
@@ -5433,15 +5197,7 @@ export interface PullRequestReopenedEvent {
         href: string;
       };
     };
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     draft: boolean;
     merged: boolean;
@@ -5554,15 +5310,7 @@ export interface PullRequestReviewRequestRemovedEvent {
         href: string;
       };
     };
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     draft: boolean;
     merged: boolean;
@@ -5675,15 +5423,7 @@ export interface PullRequestReviewRequestedEvent {
         href: string;
       };
     };
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     draft: boolean;
     merged: boolean;
@@ -5796,15 +5536,7 @@ export interface PullRequestSynchronizeEvent {
         href: string;
       };
     };
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     draft: boolean;
     merged: boolean;
@@ -5917,15 +5649,7 @@ export interface PullRequestUnassignedEvent {
         href: string;
       };
     };
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     draft: boolean;
     merged: boolean;
@@ -6038,15 +5762,7 @@ export interface PullRequestUnlabeledEvent {
         href: string;
       };
     };
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
     draft: boolean;
     merged: boolean;
@@ -6159,15 +5875,7 @@ export interface PullRequestUnlockedEvent {
         href: string;
       };
     };
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: null;
     draft: boolean;
     merged: boolean;
@@ -6202,15 +5910,7 @@ export interface PullRequestReviewDismissedEvent {
     state: string;
     html_url: string;
     pull_request_url: string;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     _links: {
       html: {
         href: string;
@@ -6308,15 +6008,7 @@ export interface PullRequestReviewDismissedEvent {
         href: string;
       };
     };
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
   };
   repository: Repository;
@@ -6341,15 +6033,7 @@ export interface PullRequestReviewEditedEvent {
     state: string;
     html_url: string;
     pull_request_url: string;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     _links: {
       html: {
         href: string;
@@ -6447,15 +6131,7 @@ export interface PullRequestReviewEditedEvent {
         href: string;
       };
     };
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
   };
   repository: Repository;
@@ -6475,15 +6151,7 @@ export interface PullRequestReviewSubmittedEvent {
     state: string;
     html_url: string;
     pull_request_url: string;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     _links: {
       html: {
         href: string;
@@ -6581,15 +6249,7 @@ export interface PullRequestReviewSubmittedEvent {
         href: string;
       };
     };
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
   };
   repository: Repository;
@@ -6616,15 +6276,7 @@ export interface PullRequestReviewCommentCreatedEvent {
     updated_at: string;
     html_url: string;
     pull_request_url: string;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     _links: {
       self: {
         href: string;
@@ -6731,15 +6383,7 @@ export interface PullRequestReviewCommentCreatedEvent {
         href: string;
       };
     };
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
   };
   repository: Repository;
   installation?: Installation;
@@ -6765,15 +6409,7 @@ export interface PullRequestReviewCommentDeletedEvent {
     updated_at: string;
     html_url: string;
     pull_request_url: string;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     _links: {
       self: {
         href: string;
@@ -6873,15 +6509,7 @@ export interface PullRequestReviewCommentDeletedEvent {
         href: string;
       };
     };
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
   };
   repository: Repository;
   installation?: Installation;
@@ -6912,15 +6540,7 @@ export interface PullRequestReviewCommentEditedEvent {
     updated_at: string;
     html_url: string;
     pull_request_url: string;
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
     _links: {
       self: {
         href: string;
@@ -7020,15 +6640,7 @@ export interface PullRequestReviewCommentEditedEvent {
         href: string;
       };
     };
-    author_association:
-      | "COLLABORATOR"
-      | "CONTRIBUTOR"
-      | "FIRST_TIMER"
-      | "FIRST_TIME_CONTRIBUTOR"
-      | "MANNEQUIN"
-      | "MEMBER"
-      | "NONE"
-      | "OWNER";
+    author_association: AuthorAssociation;
   };
   repository: Repository;
   installation?: Installation;

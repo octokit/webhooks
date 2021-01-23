@@ -45,17 +45,7 @@
         "html_url": { "type": "string" },
         "pull_request_url": { "type": "string" },
         "author_association": {
-          "type": "string",
-          "enum": [
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER"
-          ]
+          "$ref": "common/author_association.schema.json"
         },
         "_links": {
           "type": "object",
@@ -306,17 +296,7 @@
           "additionalProperties": false
         },
         "author_association": {
-          "type": "string",
-          "enum": [
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER"
-          ]
+          "$ref": "common/author_association.schema.json"
         }
       },
       "additionalProperties": false

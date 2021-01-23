@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/author_association.schema.json",
+  "type": "string",
+  "description": "How the author is associated with the repository.",
+  "enum": [
+    "COLLABORATOR",
+    "CONTRIBUTOR",
+    "FIRST_TIMER",
+    "FIRST_TIME_CONTRIBUTOR",
+    "MANNEQUIN",
+    "MEMBER",
+    "NONE",
+    "OWNER"
+  ],
+  "title": "AuthorAssociation"
+}
