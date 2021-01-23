@@ -1,4 +1,5 @@
 import Ajv from "ajv";
+import addFormats from "ajv-formats";
 import { readdirSync } from "fs";
 import { resolve } from "path";
 
@@ -7,6 +8,8 @@ export const ajv = new Ajv({
   strictTypes: true,
   strictTuples: true,
 });
+
+addFormats(ajv);
 
 const schemaDir = resolve(__dirname, "schemas");
 
