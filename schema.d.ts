@@ -1332,7 +1332,7 @@ export interface DeploymentCreatedEvent {
     updated_at: string;
     statuses_url: string;
     repository_url: string;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
   };
   repository: Repository;
   sender: User;
@@ -1354,7 +1354,7 @@ export interface DeploymentStatusCreatedEvent {
     updated_at: string;
     deployment_url: string;
     repository_url: string;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
   };
   deployment: {
     url: string;
@@ -1501,91 +1501,91 @@ export interface GollumEvent {
 }
 export interface InstallationCreatedEvent {
   action: "created";
-  installation: {
-    id: number;
-    account: User;
-    repository_selection: "all" | "selected";
-    access_tokens_url: string;
-    repositories_url: string;
-    html_url: string;
-    app_id: number;
-    app_slug?: string;
-    target_id: number;
-    target_type: "User" | "Organization";
-    permissions: {
-      administration?: string;
-      checks?: "read" | "write";
-      contents?: "read" | "write";
-      deployments?: "read" | "write";
-      issues?: "read" | "write";
-      pages?: "read" | "write";
-      pull_requests?: "read" | "write";
-      repository_hooks?: "read" | "write";
-      repository_projects?: "read" | "write";
-      statuses?: "read" | "write";
-      metadata?: "read" | "write";
-      vulnerability_alerts?: "read" | "write";
-    };
-    events: string[];
-    created_at: number;
-    updated_at: number;
-    single_file_name: string | null;
-    has_multiple_single_files?: boolean;
-    single_file_paths?: string[];
-    suspended_by?: string | null;
-    suspended_at?: string | null;
-  };
+  installation: InstallationFull;
   repositories?: {
+    /**
+     * Unique identifier of the repository
+     */
     id: number;
     node_id: string;
+    /**
+     * The name of the repository.
+     */
     name: string;
     full_name: string;
+    /**
+     * Whether the repository is private or public.
+     */
     private: boolean;
   }[];
   requester?: null;
   sender: User;
 }
+/**
+ * Installation
+ */
+export interface InstallationFull {
+  /**
+   * The ID of the installation.
+   */
+  id: number;
+  account: User;
+  /**
+   * Describe whether all repositories have been selected or there's a selection involved
+   */
+  repository_selection: "all" | "selected";
+  access_tokens_url: string;
+  repositories_url: string;
+  html_url: string;
+  app_id: number;
+  app_slug?: string;
+  /**
+   * The ID of the user or organization this token is being scoped to.
+   */
+  target_id: number;
+  target_type: "User" | "Organization";
+  permissions: {
+    actions?: "read" | "write";
+    administration?: "read" | "write";
+    checks?: "read" | "write";
+    contents?: "read" | "write";
+    deployments?: "read" | "write";
+    issues?: "read" | "write";
+    organization_administration?: "read" | "write";
+    pages?: "read" | "write";
+    pull_requests?: "read" | "write";
+    repository_hooks?: "read" | "write";
+    repository_projects?: "read" | "write";
+    statuses?: "read" | "write";
+    metadata?: "read" | "write";
+    vulnerability_alerts?: "read" | "write";
+  };
+  events: string[];
+  created_at: string | number;
+  updated_at: string | number;
+  single_file_name: string | null;
+  has_multiple_single_files?: boolean;
+  single_file_paths?: string[];
+  suspended_by?: string | null;
+  suspended_at?: string | null;
+}
 export interface InstallationDeletedEvent {
   action: "deleted";
-  installation: {
-    id: number;
-    account: User;
-    repository_selection: "all" | "selected";
-    access_tokens_url: string;
-    repositories_url: string;
-    html_url: string;
-    app_id: number;
-    app_slug?: string;
-    target_id: number;
-    target_type: "User" | "Organization";
-    permissions: {
-      administration?: string;
-      checks?: "read" | "write";
-      contents?: "read" | "write";
-      deployments?: "read" | "write";
-      issues?: "read" | "write";
-      pages?: "read" | "write";
-      pull_requests?: "read" | "write";
-      repository_hooks?: "read" | "write";
-      repository_projects?: "read" | "write";
-      statuses?: "read" | "write";
-      metadata?: "read" | "write";
-      vulnerability_alerts?: "read" | "write";
-    };
-    events: string[];
-    created_at: number;
-    updated_at: number;
-    single_file_name: string | null;
-    has_multiple_single_files?: boolean;
-    single_file_paths?: string[];
-    suspended_by?: string | null;
-    suspended_at?: string | null;
-  };
+  installation: InstallationFull;
   repositories?: {
+    /**
+     * Unique identifier of the repository
+     */
     id: number;
     node_id: string;
+    /**
+     * The name of the repository.
+     */
     name: string;
     full_name: string;
+    /**
+     * Whether the repository is private or public.
+     */
     private: boolean;
   }[];
   requester?: null;
@@ -1593,45 +1593,21 @@ export interface InstallationDeletedEvent {
 }
 export interface InstallationNewPermissionsAcceptedEvent {
   action: "new_permissions_accepted";
-  installation: {
-    id: number;
-    account: User;
-    repository_selection: "all" | "selected";
-    access_tokens_url: string;
-    repositories_url: string;
-    html_url: string;
-    app_id: number;
-    app_slug?: string;
-    target_id: number;
-    target_type: "User" | "Organization";
-    permissions: {
-      administration?: string;
-      checks?: "read" | "write";
-      contents?: "read" | "write";
-      deployments?: "read" | "write";
-      issues?: "read" | "write";
-      pages?: "read" | "write";
-      pull_requests?: "read" | "write";
-      repository_hooks?: "read" | "write";
-      repository_projects?: "read" | "write";
-      statuses?: "read" | "write";
-      metadata?: "read" | "write";
-      vulnerability_alerts?: "read" | "write";
-    };
-    events: string[];
-    created_at: number;
-    updated_at: number;
-    single_file_name: string | null;
-    has_multiple_single_files?: boolean;
-    single_file_paths?: string[];
-    suspended_by?: string | null;
-    suspended_at?: string | null;
-  };
+  installation: InstallationFull;
   repositories?: {
+    /**
+     * Unique identifier of the repository
+     */
     id: number;
     node_id: string;
+    /**
+     * The name of the repository.
+     */
     name: string;
     full_name: string;
+    /**
+     * Whether the repository is private or public.
+     */
     private: boolean;
   }[];
   requester?: null;
@@ -1639,45 +1615,21 @@ export interface InstallationNewPermissionsAcceptedEvent {
 }
 export interface InstallationSuspendedEvent {
   action: "suspend";
-  installation: {
-    id: number;
-    account: User;
-    repository_selection: "all" | "selected";
-    access_tokens_url: string;
-    repositories_url: string;
-    html_url: string;
-    app_id: number;
-    app_slug?: string;
-    target_id: number;
-    target_type: "User" | "Organization";
-    permissions: {
-      administration?: string;
-      checks?: "read" | "write";
-      contents?: "read" | "write";
-      deployments?: "read" | "write";
-      issues?: "read" | "write";
-      pages?: "read" | "write";
-      pull_requests?: "read" | "write";
-      repository_hooks?: "read" | "write";
-      repository_projects?: "read" | "write";
-      statuses?: "read" | "write";
-      metadata?: "read" | "write";
-      vulnerability_alerts?: "read" | "write";
-    };
-    events: string[];
-    created_at: number;
-    updated_at: number;
-    single_file_name: string | null;
-    has_multiple_single_files?: boolean;
-    single_file_paths?: string[];
-    suspended_by?: string;
-    suspended_at?: string;
-  };
+  installation: InstallationFull;
   repositories?: {
+    /**
+     * Unique identifier of the repository
+     */
     id: number;
     node_id: string;
+    /**
+     * The name of the repository.
+     */
     name: string;
     full_name: string;
+    /**
+     * Whether the repository is private or public.
+     */
     private: boolean;
   }[];
   requester?: null;
@@ -1685,45 +1637,21 @@ export interface InstallationSuspendedEvent {
 }
 export interface InstallationUnsuspendedEvent {
   action: "unsuspend";
-  installation: {
-    id: number;
-    account: User;
-    repository_selection: "all" | "selected";
-    access_tokens_url: string;
-    repositories_url: string;
-    html_url: string;
-    app_id: number;
-    app_slug?: string;
-    target_id: number;
-    target_type: "User" | "Organization";
-    permissions: {
-      administration?: string;
-      checks?: "read" | "write";
-      contents?: "read" | "write";
-      deployments?: "read" | "write";
-      issues?: "read" | "write";
-      pages?: "read" | "write";
-      pull_requests?: "read" | "write";
-      repository_hooks?: "read" | "write";
-      repository_projects?: "read" | "write";
-      statuses?: "read" | "write";
-      metadata?: "read" | "write";
-      vulnerability_alerts?: "read" | "write";
-    };
-    events: string[];
-    created_at: number;
-    updated_at: number;
-    single_file_name: string | null;
-    has_multiple_single_files?: boolean;
-    single_file_paths?: string[];
-    suspended_by?: null;
-    suspended_at?: null;
-  };
+  installation: InstallationFull;
   repositories?: {
+    /**
+     * Unique identifier of the repository
+     */
     id: number;
     node_id: string;
+    /**
+     * The name of the repository.
+     */
     name: string;
     full_name: string;
+    /**
+     * Whether the repository is private or public.
+     */
     private: boolean;
   }[];
   requester?: null;
@@ -1731,41 +1659,25 @@ export interface InstallationUnsuspendedEvent {
 }
 export interface InstallationRepositoriesAddedEvent {
   action: "added";
-  installation: {
-    id: number;
-    account: User;
-    repository_selection: "all" | "selected";
-    access_tokens_url: string;
-    repositories_url: string;
-    html_url: string;
-    app_id: number;
-    target_id: number;
-    target_type: string;
-    permissions: {
-      administration?: "read" | "write";
-      statuses?: "read" | "write";
-      repository_projects?: "read" | "write";
-      repository_hooks?: "read" | "write";
-      pull_requests?: "read" | "write";
-      pages?: "read" | "write";
-      issues?: "read" | "write";
-      deployments?: "read" | "write";
-      contents?: "read" | "write";
-      checks?: "read" | "write";
-      metadata?: "read" | "write";
-      vulnerability_alerts?: "read" | "write";
-    };
-    events: string[];
-    created_at: number;
-    updated_at: number;
-    single_file_name: string | null;
-  };
+  installation: InstallationFull;
+  /**
+   * Describe whether all repositories have been selected or there's a selection involved
+   */
   repository_selection: "all" | "selected";
   repositories_added: {
+    /**
+     * Unique identifier of the repository
+     */
     id: number;
     node_id: string;
+    /**
+     * The name of the repository.
+     */
     name: string;
     full_name: string;
+    /**
+     * Whether the repository is private or public.
+     */
     private: boolean;
   }[];
   repositories_removed: [];
@@ -1773,42 +1685,26 @@ export interface InstallationRepositoriesAddedEvent {
 }
 export interface InstallationRepositoriesRemovedEvent {
   action: "removed";
-  installation: {
-    id: number;
-    account: User;
-    repository_selection: "all" | "selected";
-    access_tokens_url: string;
-    repositories_url: string;
-    html_url: string;
-    app_id: number;
-    target_id: number;
-    target_type: string;
-    permissions: {
-      administration?: "read" | "write";
-      statuses?: "read" | "write";
-      repository_projects?: "read" | "write";
-      repository_hooks?: "read" | "write";
-      pull_requests?: "read" | "write";
-      pages?: "read" | "write";
-      issues?: "read" | "write";
-      deployments?: "read" | "write";
-      contents?: "read" | "write";
-      checks?: "read" | "write";
-      metadata?: "read" | "write";
-      vulnerability_alerts?: "read" | "write";
-    };
-    events: string[];
-    created_at: number;
-    updated_at: number;
-    single_file_name: string | null;
-  };
-  repository_selection: string;
+  installation: InstallationFull;
+  /**
+   * Describe whether all repositories have been selected or there's a selection involved
+   */
+  repository_selection: "all" | "selected";
   repositories_added: [];
   repositories_removed: {
+    /**
+     * Unique identifier of the repository
+     */
     id: number;
     node_id: string;
+    /**
+     * The name of the repository.
+     */
     name: string;
     full_name: string;
+    /**
+     * Whether the repository is private or public.
+     */
     private: boolean;
   }[];
   sender: User;
@@ -1863,18 +1759,27 @@ export interface IssueCommentCreatedEvent {
       patch_url: string;
     };
     body: string;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
   };
   comment: {
+    /**
+     * URL for the issue comment
+     */
     url: string;
     html_url: string;
     issue_url: string;
+    /**
+     * Unique identifier of the issue comment
+     */
     id: number;
     node_id: string;
     user: User;
     created_at: string;
     updated_at: string;
     author_association: AuthorAssociation;
+    /**
+     * Contents of the issue comment
+     */
     body: string;
   };
   repository: Repository;
@@ -1953,18 +1858,27 @@ export interface IssueCommentDeletedEvent {
       patch_url: string;
     };
     body: string;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
   };
   comment: {
+    /**
+     * URL for the issue comment
+     */
     url: string;
     html_url: string;
     issue_url: string;
+    /**
+     * Unique identifier of the issue comment
+     */
     id: number;
     node_id: string;
     user: User;
     created_at: string;
     updated_at: string;
     author_association: AuthorAssociation;
+    /**
+     * Contents of the issue comment
+     */
     body: string;
   };
   repository: Repository;
@@ -2027,18 +1941,27 @@ export interface IssueCommentEditedEvent {
       patch_url: string;
     };
     body: string;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
   };
   comment: {
+    /**
+     * URL for the issue comment
+     */
     url: string;
     html_url: string;
     issue_url: string;
+    /**
+     * Unique identifier of the issue comment
+     */
     id: number;
     node_id: string;
     user: User;
     created_at: string;
     updated_at: string;
     author_association: AuthorAssociation;
+    /**
+     * Contents of the issue comment
+     */
     body: string;
   };
   repository: Repository;
@@ -2089,7 +2012,7 @@ export interface IssuesAssignedEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
@@ -2149,7 +2072,7 @@ export interface IssuesClosedEvent {
     closed_at: string;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
@@ -2209,7 +2132,7 @@ export interface IssuesDeletedEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
@@ -2269,7 +2192,7 @@ export interface IssuesDemilestonedEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
@@ -2329,7 +2252,7 @@ export interface IssuesEditedEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
@@ -2397,7 +2320,7 @@ export interface IssuesLabeledEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
@@ -2457,7 +2380,7 @@ export interface IssuesLockedEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam";
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
@@ -2517,7 +2440,7 @@ export interface IssuesMilestonedEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
@@ -2577,7 +2500,7 @@ export interface IssuesOpenedEvent {
     closed_at: null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
@@ -2637,7 +2560,7 @@ export interface IssuesPinnedEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
@@ -2697,7 +2620,7 @@ export interface IssuesReopenedEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
@@ -2757,7 +2680,7 @@ export interface IssuesTransferredEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
@@ -2817,7 +2740,7 @@ export interface IssuesUnassignedEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
@@ -2877,7 +2800,7 @@ export interface IssuesUnlabeledEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
@@ -2937,7 +2860,7 @@ export interface IssuesUnlockedEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
@@ -2997,7 +2920,7 @@ export interface IssuesUnpinnedEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
@@ -4369,9 +4292,18 @@ export interface PullRequestAssignedEvent {
     diff_url: string;
     patch_url: string;
     issue_url: string;
+    /**
+     * Number uniquely identifying the pull request within its repository.
+     */
     number: number;
+    /**
+     * State of this Pull Request. Either `open` or `closed`.
+     */
     state: "open" | "closed";
     locked: boolean;
+    /**
+     * The title of the pull request.
+     */
     title: string;
     user: User;
     body: string;
@@ -4450,14 +4382,20 @@ export interface PullRequestAssignedEvent {
     };
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
+    /**
+     * Indicates whether or not the pull request is a draft.
+     */
     draft: boolean;
-    merged: boolean;
+    merged: boolean | null;
     mergeable: boolean | null;
     rebaseable: boolean | null;
     mergeable_state: string;
-    merged_by: null;
+    merged_by: User | null;
     comments: number;
     review_comments: number;
+    /**
+     * Indicates whether maintainers can modify the pull request.
+     */
     maintainer_can_modify: boolean;
     commits: number;
     additions: number;
@@ -4482,9 +4420,18 @@ export interface PullRequestClosedEvent {
     diff_url: string;
     patch_url: string;
     issue_url: string;
+    /**
+     * Number uniquely identifying the pull request within its repository.
+     */
     number: number;
+    /**
+     * State of this Pull Request. Either `open` or `closed`.
+     */
     state: "closed";
     locked: boolean;
+    /**
+     * The title of the pull request.
+     */
     title: string;
     user: User;
     body: string;
@@ -4563,14 +4510,20 @@ export interface PullRequestClosedEvent {
     };
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
+    /**
+     * Indicates whether or not the pull request is a draft.
+     */
     draft: boolean;
     merged: boolean;
     mergeable: boolean | null;
     rebaseable: boolean | null;
     mergeable_state: string;
-    merged_by: null;
+    merged_by: User | null;
     comments: number;
     review_comments: number;
+    /**
+     * Indicates whether maintainers can modify the pull request.
+     */
     maintainer_can_modify: boolean;
     commits: number;
     additions: number;
@@ -4595,9 +4548,18 @@ export interface PullRequestConvertedToDraftEvent {
     diff_url: string;
     patch_url: string;
     issue_url: string;
+    /**
+     * Number uniquely identifying the pull request within its repository.
+     */
     number: number;
+    /**
+     * State of this Pull Request. Either `open` or `closed`.
+     */
     state: "open" | "closed";
     locked: boolean;
+    /**
+     * The title of the pull request.
+     */
     title: string;
     user: User;
     body: string;
@@ -4676,6 +4638,9 @@ export interface PullRequestConvertedToDraftEvent {
     };
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
+    /**
+     * Indicates whether or not the pull request is a draft.
+     */
     draft: true;
     merged: boolean;
     mergeable: boolean | null;
@@ -4684,6 +4649,9 @@ export interface PullRequestConvertedToDraftEvent {
     merged_by: null;
     comments: number;
     review_comments: number;
+    /**
+     * Indicates whether maintainers can modify the pull request.
+     */
     maintainer_can_modify: boolean;
     commits: number;
     additions: number;
@@ -6070,7 +6038,7 @@ export interface PullRequestReviewDismissedEvent {
     body: string | null;
     commit_id: string;
     submitted_at: string;
-    state: string;
+    state: "dismissed";
     html_url: string;
     pull_request_url: string;
     author_association: AuthorAssociation;
