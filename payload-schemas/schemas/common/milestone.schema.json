@@ -1,6 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "common/milestone.schema.json",
+  "description": "A collection of related issues and pull requests.",
   "required": [
     "url",
     "html_url",
@@ -40,8 +41,8 @@
       "enum": ["open", "closed"],
       "description": "The state of the milestone."
     },
-    "created_at": { "type": ["string", "null"], "format": "date-time" },
-    "updated_at": { "type": ["string", "null"], "format": "date-time" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
     "due_on": { "type": ["string", "null"], "format": "date-time" },
     "closed_at": { "type": ["string", "null"], "format": "date-time" }
   },

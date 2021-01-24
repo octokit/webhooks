@@ -2447,6 +2447,9 @@ export interface IssuesAssignedEvent {
   installation?: InstallationLite;
   organization?: Organization;
 }
+/**
+ * A collection of related issues and pull requests.
+ */
 export interface Milestone {
   url: string;
   html_url: string;
@@ -2469,8 +2472,8 @@ export interface Milestone {
    * The state of the milestone.
    */
   state: "open" | "closed";
-  created_at: string | null;
-  updated_at: string | null;
+  created_at: string;
+  updated_at: string;
   due_on: string | null;
   closed_at: string | null;
 }
