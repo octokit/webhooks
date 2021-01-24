@@ -48,10 +48,10 @@
           "enum": ["open"],
           "description": "The state of the milestone."
         },
-        "created_at": { "type": ["string", "null"], "format": "date-time" },
-        "updated_at": { "type": ["string", "null"], "format": "date-time" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
         "due_on": { "type": ["string", "null"], "format": "date-time" },
-        "closed_at": { "type": ["string", "null"], "format": "date-time" }
+        "closed_at": { "type": "null" }
       },
       "additionalProperties": false
     },

@@ -111,54 +111,10 @@
           "items": { "$ref": "common/label.schema.json" }
         },
         "milestone": {
-          "type": ["object", "null"],
-          "required": [
-            "url",
-            "html_url",
-            "labels_url",
-            "id",
-            "node_id",
-            "number",
-            "title",
-            "description",
-            "creator",
-            "open_issues",
-            "closed_issues",
-            "state",
-            "created_at",
-            "updated_at",
-            "due_on",
-            "closed_at"
-          ],
-          "properties": {
-            "url": { "type": "string", "format": "uri" },
-            "html_url": { "type": "string", "format": "uri" },
-            "labels_url": { "type": "string", "format": "uri" },
-            "id": { "type": "integer" },
-            "node_id": { "type": "string" },
-            "number": {
-              "type": "integer",
-              "description": "The number of the milestone."
-            },
-            "title": {
-              "type": "string",
-              "description": "The title of the milestone."
-            },
-            "description": { "type": ["string", "null"] },
-            "creator": { "$ref": "common/user.schema.json" },
-            "open_issues": { "type": "integer" },
-            "closed_issues": { "type": "integer" },
-            "state": {
-              "type": "string",
-              "enum": ["open", "closed"],
-              "description": "The state of the milestone."
-            },
-            "created_at": { "type": ["string", "null"], "format": "date-time" },
-            "updated_at": { "type": ["string", "null"], "format": "date-time" },
-            "due_on": { "type": ["string", "null"], "format": "date-time" },
-            "closed_at": { "type": ["string", "null"], "format": "date-time" }
-          },
-          "additionalProperties": false
+          "oneOf": [
+            { "$ref": "common/milestone.schema.json" },
+            { "type": "null" }
+          ]
         },
         "commits_url": { "type": "string" },
         "review_comments_url": { "type": "string" },
