@@ -41,15 +41,24 @@
         "_links"
       ],
       "properties": {
-        "id": { "type": "integer" },
+        "id": {
+          "type": "integer",
+          "description": "Unique identifier of the review"
+        },
         "node_id": { "type": "string" },
         "user": { "$ref": "common/user.schema.json" },
-        "body": { "type": ["string", "null"] },
-        "commit_id": { "type": "string" },
-        "submitted_at": { "type": "string" },
+        "body": {
+          "type": ["string", "null"],
+          "description": "The text of the review."
+        },
+        "commit_id": {
+          "type": "string",
+          "description": "A commit SHA for the review."
+        },
+        "submitted_at": { "type": "string", "format": "date-time" },
         "state": { "type": "string" },
-        "html_url": { "type": "string" },
-        "pull_request_url": { "type": "string" },
+        "html_url": { "type": "string", "format": "uri" },
+        "pull_request_url": { "type": "string", "format": "uri" },
         "author_association": {
           "$ref": "common/author_association.schema.json"
         },

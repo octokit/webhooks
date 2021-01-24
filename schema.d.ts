@@ -4215,13 +4215,16 @@ export interface PackageUpdatedEvent {
   sender: User;
   organization?: Organization;
 }
+/**
+ * Page Build
+ */
 export interface PageBuildEvent {
   id: number;
   build: {
     url: string;
     status: string;
     error: {
-      message: null;
+      message: string | null;
     };
     pusher: User;
     commit: string;
@@ -4273,10 +4276,19 @@ export interface ProjectClosedEvent {
     columns_url: string;
     id: number;
     node_id: string;
+    /**
+     * Name of the project
+     */
     name: string;
-    body: string;
+    /**
+     * Body of the project
+     */
+    body: string | null;
     number: number;
-    state: string;
+    /**
+     * State of the project; either 'open' or 'closed'
+     */
+    state: "open" | "closed";
     creator: User;
     created_at: string;
     updated_at: string;
@@ -4295,10 +4307,19 @@ export interface ProjectCreatedEvent {
     columns_url: string;
     id: number;
     node_id: string;
+    /**
+     * Name of the project
+     */
     name: string;
-    body: string;
+    /**
+     * Body of the project
+     */
+    body: string | null;
     number: number;
-    state: string;
+    /**
+     * State of the project; either 'open' or 'closed'
+     */
+    state: "open" | "closed";
     creator: User;
     created_at: string;
     updated_at: string;
@@ -4317,10 +4338,19 @@ export interface ProjectDeletedEvent {
     columns_url: string;
     id: number;
     node_id: string;
+    /**
+     * Name of the project
+     */
     name: string;
-    body: string;
+    /**
+     * Body of the project
+     */
+    body: string | null;
     number: number;
-    state: string;
+    /**
+     * State of the project; either 'open' or 'closed'
+     */
+    state: "open" | "closed";
     creator: User;
     created_at: string;
     updated_at: string;
@@ -4347,10 +4377,19 @@ export interface ProjectEditedEvent {
     columns_url: string;
     id: number;
     node_id: string;
+    /**
+     * Name of the project
+     */
     name: string;
-    body: string;
+    /**
+     * Body of the project
+     */
+    body: string | null;
     number: number;
-    state: string;
+    /**
+     * State of the project; either 'open' or 'closed'
+     */
+    state: "open" | "closed";
     creator: User;
     created_at: string;
     updated_at: string;
@@ -4369,10 +4408,19 @@ export interface ProjectReopenedEvent {
     columns_url: string;
     id: number;
     node_id: string;
+    /**
+     * Name of the project
+     */
     name: string;
-    body: string;
+    /**
+     * Body of the project
+     */
+    body: string | null;
     number: number;
-    state: string;
+    /**
+     * State of the project; either 'open' or 'closed'
+     */
+    state: "open" | "closed";
     creator: User;
     created_at: string;
     updated_at: string;
@@ -4389,9 +4437,15 @@ export interface ProjectCardConvertedEvent {
     project_url: string;
     column_url: string;
     column_id: number;
+    /**
+     * The project card's ID
+     */
     id: number;
     node_id: string;
     note: string;
+    /**
+     * Whether or not the card is archived
+     */
     archived: boolean;
     creator: User;
     created_at: string;
@@ -4410,9 +4464,15 @@ export interface ProjectCardCreatedEvent {
     project_url: string;
     column_url: string;
     column_id: number;
+    /**
+     * The project card's ID
+     */
     id: number;
     node_id: string;
     note: string;
+    /**
+     * Whether or not the card is archived
+     */
     archived: boolean;
     creator: User;
     created_at: string;
@@ -4431,9 +4491,15 @@ export interface ProjectCardDeletedEvent {
     project_url: string;
     column_url: string;
     column_id: number;
+    /**
+     * The project card's ID
+     */
     id: number;
     node_id: string;
     note: string;
+    /**
+     * Whether or not the card is archived
+     */
     archived: boolean;
     creator: User;
     created_at: string;
@@ -4452,9 +4518,15 @@ export interface ProjectCardEditedEvent {
     project_url: string;
     column_url: string;
     column_id: number;
+    /**
+     * The project card's ID
+     */
     id: number;
     node_id: string;
     note: string;
+    /**
+     * Whether or not the card is archived
+     */
     archived: boolean;
     creator: User;
     created_at: string;
@@ -4473,9 +4545,15 @@ export interface ProjectCardMovedEvent {
     project_url: string;
     column_url: string;
     column_id: number;
+    /**
+     * The project card's ID
+     */
     id: number;
     node_id: string;
     note: string;
+    /**
+     * Whether or not the card is archived
+     */
     archived: boolean;
     creator: User;
     created_at: string;
@@ -4493,8 +4571,14 @@ export interface ProjectColumnCreatedEvent {
     url: string;
     project_url: string;
     cards_url: string;
+    /**
+     * The unique identifier of the project column
+     */
     id: number;
     node_id: string;
+    /**
+     * Name of the project column
+     */
     name: string;
     created_at: string;
     updated_at: string;
@@ -4510,8 +4594,14 @@ export interface ProjectColumnDeletedEvent {
     url: string;
     project_url: string;
     cards_url: string;
+    /**
+     * The unique identifier of the project column
+     */
     id: number;
     node_id: string;
+    /**
+     * Name of the project column
+     */
     name: string;
     created_at: string;
     updated_at: string;
@@ -4527,8 +4617,14 @@ export interface ProjectColumnEditedEvent {
     url: string;
     project_url: string;
     cards_url: string;
+    /**
+     * The unique identifier of the project column
+     */
     id: number;
     node_id: string;
+    /**
+     * Name of the project column
+     */
     name: string;
     created_at: string;
     updated_at: string;
@@ -4544,8 +4640,14 @@ export interface ProjectColumnMovedEvent {
     url: string;
     project_url: string;
     cards_url: string;
+    /**
+     * The unique identifier of the project column
+     */
     id: number;
     node_id: string;
+    /**
+     * Name of the project column
+     */
     name: string;
     created_at: string;
     updated_at: string;
@@ -6587,10 +6689,19 @@ export interface PullRequestUnlockedEvent {
 export interface PullRequestReviewDismissedEvent {
   action: "dismissed";
   review: {
+    /**
+     * Unique identifier of the review
+     */
     id: number;
     node_id: string;
     user: User;
+    /**
+     * The text of the review.
+     */
     body: string | null;
+    /**
+     * A commit SHA for the review.
+     */
     commit_id: string;
     submitted_at: string;
     state: "dismissed";
@@ -6719,10 +6830,19 @@ export interface PullRequestReviewEditedEvent {
     };
   };
   review: {
+    /**
+     * Unique identifier of the review
+     */
     id: number;
     node_id: string;
     user: User;
+    /**
+     * The text of the review.
+     */
     body: string | null;
+    /**
+     * A commit SHA for the review.
+     */
     commit_id: string;
     submitted_at: string;
     state: string;
@@ -6846,10 +6966,19 @@ export interface PullRequestReviewEditedEvent {
 export interface PullRequestReviewSubmittedEvent {
   action: "submitted";
   review: {
+    /**
+     * Unique identifier of the review
+     */
     id: number;
     node_id: string;
     user: User;
+    /**
+     * The text of the review.
+     */
     body: string | null;
+    /**
+     * A commit SHA for the review.
+     */
     commit_id: string;
     submitted_at: string;
     state: string;
@@ -6973,21 +7102,60 @@ export interface PullRequestReviewSubmittedEvent {
 export interface PullRequestReviewCommentCreatedEvent {
   action: "created";
   comment: {
+    /**
+     * URL for the pull request review comment
+     */
     url: string;
+    /**
+     * The ID of the pull request review to which the comment belongs.
+     */
     pull_request_review_id: number;
+    /**
+     * The ID of the pull request review comment.
+     */
     id: number;
+    /**
+     * The node ID of the pull request review comment.
+     */
     node_id: string;
+    /**
+     * The diff of the line that the comment refers to.
+     */
     diff_hunk: string;
+    /**
+     * The relative path of the file to which the comment applies.
+     */
     path: string;
+    /**
+     * The line index in the diff to which the comment applies.
+     */
     position: number;
+    /**
+     * The index of the original line in the diff to which the comment applies.
+     */
     original_position: number;
+    /**
+     * The SHA of the commit to which the comment applies.
+     */
     commit_id: string;
+    /**
+     * The SHA of the original commit to which the comment applies.
+     */
     original_commit_id: string;
     user: User;
+    /**
+     * The text of the comment.
+     */
     body: string;
     created_at: string;
     updated_at: string;
+    /**
+     * HTML URL for the pull request review comment.
+     */
     html_url: string;
+    /**
+     * URL for the pull request that the review comment belongs to.
+     */
     pull_request_url: string;
     author_association: AuthorAssociation;
     _links: {
@@ -7001,12 +7169,33 @@ export interface PullRequestReviewCommentCreatedEvent {
         href: string;
       };
     };
-    start_line?: null;
-    original_start_line?: null;
-    start_side?: null;
-    line?: null;
+    /**
+     * The first line of the range for a multi-line comment.
+     */
+    start_line?: number | null;
+    /**
+     * The first line of the range for a multi-line comment.
+     */
+    original_start_line?: number | null;
+    /**
+     * The side of the first line of the range for a multi-line comment.
+     */
+    start_side?: ("LEFT" | "RIGHT") | null;
+    /**
+     * The line of the blob to which the comment applies. The last line of the range for a multi-line comment
+     */
+    line?: number;
+    /**
+     * The line of the blob to which the comment applies. The last line of the range for a multi-line comment
+     */
     original_line?: number;
-    side?: "RIGHT";
+    /**
+     * The side of the first line of the range for a multi-line comment.
+     */
+    side?: "LEFT" | "RIGHT";
+    /**
+     * The comment ID to reply to.
+     */
     in_reply_to_id?: number;
   };
   pull_request: {
@@ -7115,21 +7304,60 @@ export interface PullRequestReviewCommentCreatedEvent {
 export interface PullRequestReviewCommentDeletedEvent {
   action: "deleted";
   comment: {
+    /**
+     * URL for the pull request review comment
+     */
     url: string;
+    /**
+     * The ID of the pull request review to which the comment belongs.
+     */
     pull_request_review_id: number;
+    /**
+     * The ID of the pull request review comment.
+     */
     id: number;
+    /**
+     * The node ID of the pull request review comment.
+     */
     node_id: string;
+    /**
+     * The diff of the line that the comment refers to.
+     */
     diff_hunk: string;
+    /**
+     * The relative path of the file to which the comment applies.
+     */
     path: string;
+    /**
+     * The line index in the diff to which the comment applies.
+     */
     position: number;
+    /**
+     * The index of the original line in the diff to which the comment applies.
+     */
     original_position: number;
+    /**
+     * The SHA of the commit to which the comment applies.
+     */
     commit_id: string;
+    /**
+     * The SHA of the original commit to which the comment applies.
+     */
     original_commit_id: string;
     user: User;
+    /**
+     * The text of the comment.
+     */
     body: string;
     created_at: string;
     updated_at: string;
+    /**
+     * HTML URL for the pull request review comment.
+     */
     html_url: string;
+    /**
+     * URL for the pull request that the review comment belongs to.
+     */
     pull_request_url: string;
     author_association: AuthorAssociation;
     _links: {
@@ -7143,6 +7371,34 @@ export interface PullRequestReviewCommentDeletedEvent {
         href: string;
       };
     };
+    /**
+     * The first line of the range for a multi-line comment.
+     */
+    start_line?: number | null;
+    /**
+     * The first line of the range for a multi-line comment.
+     */
+    original_start_line?: number | null;
+    /**
+     * The side of the first line of the range for a multi-line comment.
+     */
+    start_side?: ("LEFT" | "RIGHT") | null;
+    /**
+     * The line of the blob to which the comment applies. The last line of the range for a multi-line comment
+     */
+    line?: number;
+    /**
+     * The line of the blob to which the comment applies. The last line of the range for a multi-line comment
+     */
+    original_line?: number;
+    /**
+     * The side of the first line of the range for a multi-line comment.
+     */
+    side?: "LEFT" | "RIGHT";
+    /**
+     * The comment ID to reply to.
+     */
+    in_reply_to_id?: number;
   };
   pull_request: {
     url: string;
@@ -7255,21 +7511,60 @@ export interface PullRequestReviewCommentEditedEvent {
     };
   };
   comment: {
+    /**
+     * URL for the pull request review comment
+     */
     url: string;
+    /**
+     * The ID of the pull request review to which the comment belongs.
+     */
     pull_request_review_id: number;
+    /**
+     * The ID of the pull request review comment.
+     */
     id: number;
+    /**
+     * The node ID of the pull request review comment.
+     */
     node_id: string;
+    /**
+     * The diff of the line that the comment refers to.
+     */
     diff_hunk: string;
+    /**
+     * The relative path of the file to which the comment applies.
+     */
     path: string;
+    /**
+     * The line index in the diff to which the comment applies.
+     */
     position: number;
+    /**
+     * The index of the original line in the diff to which the comment applies.
+     */
     original_position: number;
+    /**
+     * The SHA of the commit to which the comment applies.
+     */
     commit_id: string;
+    /**
+     * The SHA of the original commit to which the comment applies.
+     */
     original_commit_id: string;
     user: User;
+    /**
+     * The text of the comment.
+     */
     body: string;
     created_at: string;
     updated_at: string;
+    /**
+     * HTML URL for the pull request review comment.
+     */
     html_url: string;
+    /**
+     * URL for the pull request that the review comment belongs to.
+     */
     pull_request_url: string;
     author_association: AuthorAssociation;
     _links: {
@@ -7283,6 +7578,34 @@ export interface PullRequestReviewCommentEditedEvent {
         href: string;
       };
     };
+    /**
+     * The first line of the range for a multi-line comment.
+     */
+    start_line?: number | null;
+    /**
+     * The first line of the range for a multi-line comment.
+     */
+    original_start_line?: number | null;
+    /**
+     * The side of the first line of the range for a multi-line comment.
+     */
+    start_side?: ("LEFT" | "RIGHT") | null;
+    /**
+     * The line of the blob to which the comment applies. The last line of the range for a multi-line comment
+     */
+    line?: number;
+    /**
+     * The line of the blob to which the comment applies. The last line of the range for a multi-line comment
+     */
+    original_line?: number;
+    /**
+     * The side of the first line of the range for a multi-line comment.
+     */
+    side?: "LEFT" | "RIGHT";
+    /**
+     * The comment ID to reply to.
+     */
+    in_reply_to_id?: number;
   };
   pull_request: {
     url: string;
