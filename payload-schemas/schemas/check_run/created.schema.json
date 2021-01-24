@@ -24,20 +24,43 @@
         "pull_requests"
       ],
       "properties": {
-        "id": { "type": "integer" },
+        "id": { "type": "integer", "description": "The id of the check." },
         "node_id": { "type": "string" },
-        "head_sha": { "type": "string" },
+        "head_sha": {
+          "type": "string",
+          "description": "The SHA of the commit that is being checked."
+        },
         "external_id": { "type": "string" },
         "url": { "type": "string" },
         "html_url": { "type": "string" },
         "details_url": { "type": "string" },
         "status": {
           "type": "string",
-          "enum": ["queued", "in_progress"]
+          "enum": ["queued", "in_progress"],
+          "description": "The phase of the lifecycle that the check is currently in."
         },
-        "conclusion": { "type": "null" },
-        "started_at": { "type": "string" },
-        "completed_at": { "type": "null" },
+        "conclusion": {
+          "type": ["string", "null"],
+          "enum": [
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "timed_out",
+            "action_required",
+            "stale",
+            null
+          ],
+          "description": "The final conclusion of the check. Can be one of `success`, `failure`, `neutral`, `cancelled`, `skipped`, `timed_out`, or `action_required`. When the conclusion is `action_required`, additional details should be provided on the site specified by `details_url`."
+        },
+        "started_at": {
+          "type": "string",
+          "description": "The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`."
+        },
+        "completed_at": {
+          "type": ["string", "null"],
+          "description": "The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`."
+        },
         "output": {
           "type": "object",
           "required": [
@@ -55,7 +78,7 @@
           },
           "additionalProperties": false
         },
-        "name": { "type": "string" },
+        "name": { "type": "string", "description": "The name of the check." },
         "check_suite": {
           "type": "object",
           "required": [
@@ -76,9 +99,12 @@
             "id": { "type": "integer" },
             "node_id": { "type": "string" },
             "head_branch": { "type": ["string", "null"] },
-            "head_sha": { "type": "string" },
-            "status": { "type": "string" },
-            "conclusion": { "type": ["null"] },
+            "head_sha": {
+              "type": "string",
+              "description": "The SHA of the head commit that is being checked."
+            },
+            "status": { "type": "string", "enum": ["queued", "in_progress"] },
+            "conclusion": { "type": "null" },
             "url": { "type": "string" },
             "before": { "type": ["string", "null"] },
             "after": { "type": ["string", "null"] },
@@ -116,8 +142,8 @@
               }
             },
             "app": { "$ref": "common/app.schema.json" },
-            "created_at": { "type": "string" },
-            "updated_at": { "type": "string" }
+            "created_at": { "type": "string", "format": "date-time" },
+            "updated_at": { "type": "string", "format": "date-time" }
           },
           "additionalProperties": false
         },

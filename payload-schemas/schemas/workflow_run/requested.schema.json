@@ -72,26 +72,7 @@
         "created_at": { "type": "string" },
         "event": { "type": "string" },
         "head_branch": { "type": "string" },
-        "head_commit": {
-          "type": "object",
-          "required": [
-            "author",
-            "committer",
-            "id",
-            "message",
-            "timestamp",
-            "tree_id"
-          ],
-          "properties": {
-            "author": { "$ref": "common/committer.schema.json" },
-            "committer": { "$ref": "common/committer.schema.json" },
-            "id": { "type": "string" },
-            "message": { "type": "string" },
-            "timestamp": { "type": "string" },
-            "tree_id": { "type": "string" }
-          },
-          "additionalProperties": false
-        },
+        "head_commit": { "$ref": "common/commit-simple.schema.json" },
         "head_repository": {
           "type": "object",
           "required": [

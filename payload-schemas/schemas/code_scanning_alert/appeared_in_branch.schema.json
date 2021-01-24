@@ -21,35 +21,83 @@
         "tool"
       ],
       "properties": {
-        "number": { "type": "integer" },
-        "created_at": { "type": "string" },
-        "url": { "type": "string" },
-        "html_url": { "type": "string" },
+        "number": {
+          "type": "integer",
+          "description": "The code scanning alert number."
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`"
+        },
+        "url": { "type": "string", "format": "uri" },
+        "html_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "The GitHub URL of the alert resource."
+        },
         "instances": {
           "type": "array",
           "items": {
             "type": "object",
             "required": ["ref", "analysis_key", "environment", "state"],
             "properties": {
-              "ref": { "type": "string" },
-              "analysis_key": { "type": "string" },
-              "environment": { "type": "string" },
-              "state": { "type": "string" }
+              "ref": {
+                "type": "string",
+                "description": "The full Git reference, formatted as `refs/heads/<branch name>`."
+              },
+              "analysis_key": {
+                "type": "string",
+                "description": "Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name."
+              },
+              "environment": {
+                "type": "string",
+                "description": "Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed."
+              },
+              "state": {
+                "type": "string",
+                "description": "State of a code scanning alert.",
+                "enum": ["open", "dismissed", "fixed"]
+              }
             },
             "additionalProperties": false
           }
         },
-        "state": { "type": "string" },
-        "dismissed_by": { "type": "null" },
-        "dismissed_at": { "type": ["string", "null"] },
-        "dismissed_reason": { "type": ["string", "null"] },
+        "state": {
+          "type": "string",
+          "description": "State of a code scanning alert.",
+          "enum": ["open", "dismissed", "fixed"]
+        },
+        "dismissed_by": {
+          "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": "null" }]
+        },
+        "dismissed_at": {
+          "type": ["string", "null"],
+          "format": "date-time",
+          "description": "The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+        },
+        "dismissed_reason": {
+          "type": ["string", "null"],
+          "enum": ["false positive", "won't fix", "used in tests", null],
+          "description": "The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`."
+        },
         "rule": {
           "type": "object",
           "required": ["id", "severity", "description"],
           "properties": {
-            "id": { "type": "string" },
-            "severity": { "type": "string" },
-            "description": { "type": "string" }
+            "id": {
+              "type": "string",
+              "description": "A unique identifier for the rule used to detect the alert."
+            },
+            "severity": {
+              "type": ["string", "null"],
+              "enum": ["none", "note", "warning", "error", null],
+              "description": "The severity of the alert."
+            },
+            "description": {
+              "type": "string",
+              "description": "A short description of the rule used to detect the alert."
+            }
           },
           "additionalProperties": false
         },
@@ -57,15 +105,24 @@
           "type": "object",
           "required": ["name", "version"],
           "properties": {
-            "name": { "type": "string" },
-            "version": { "type": "null" }
+            "name": {
+              "type": "string",
+              "description": "The name of the tool used to generate the code scanning analysis alert."
+            },
+            "version": {
+              "type": ["string", "null"],
+              "description": "The version of the tool used to detect the alert."
+            }
           },
           "additionalProperties": false
         }
       },
       "additionalProperties": false
     },
-    "ref": { "type": "string" },
+    "ref": {
+      "type": "string",
+      "description": "The full Git reference, formatted as `refs/heads/<branch name>`."
+    },
     "commit_oid": { "type": "string" },
     "repository": { "$ref": "common/repository.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },

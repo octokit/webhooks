@@ -245,14 +245,26 @@ export type WorkflowRunEvent =
 export interface CheckRunCompletedEvent {
   action: "completed";
   check_run: {
+    /**
+     * The id of the check.
+     */
     id: number;
     node_id?: string;
+    /**
+     * The SHA of the commit that is being checked.
+     */
     head_sha: string;
     external_id: string;
     url: string;
     html_url: string;
     details_url?: string;
-    status: "queued" | "in_progress" | "completed";
+    /**
+     * The phase of the lifecycle that the check is currently in.
+     */
+    status: "completed";
+    /**
+     * The final conclusion of the check. Can be one of `success`, `failure`, `neutral`, `cancelled`, `skipped`, `timed_out`, or `action_required`. When the conclusion is `action_required`, additional details should be provided on the site specified by `details_url`.
+     */
     conclusion:
       | "success"
       | "failure"
@@ -262,8 +274,14 @@ export interface CheckRunCompletedEvent {
       | "action_required"
       | "stale"
       | null;
+    /**
+     * The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
     started_at: string;
-    completed_at: string | null;
+    /**
+     * The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
+    completed_at: string;
     output: {
       title?: string | null;
       summary: string | null;
@@ -271,11 +289,17 @@ export interface CheckRunCompletedEvent {
       annotations_count: number;
       annotations_url: string;
     };
+    /**
+     * The name of the check.
+     */
     name: string;
     check_suite: {
       id: number;
       node_id?: string;
       head_branch: string | null;
+      /**
+       * The SHA of the head commit that is being checked.
+       */
       head_sha: string;
       status: "completed";
       conclusion:
@@ -601,17 +625,43 @@ export interface Organization {
 export interface CheckRunCreatedEvent {
   action: "created";
   check_run: {
+    /**
+     * The id of the check.
+     */
     id: number;
     node_id?: string;
+    /**
+     * The SHA of the commit that is being checked.
+     */
     head_sha: string;
     external_id: string;
     url: string;
     html_url: string;
     details_url?: string;
+    /**
+     * The phase of the lifecycle that the check is currently in.
+     */
     status: "queued" | "in_progress";
-    conclusion: null;
+    /**
+     * The final conclusion of the check. Can be one of `success`, `failure`, `neutral`, `cancelled`, `skipped`, `timed_out`, or `action_required`. When the conclusion is `action_required`, additional details should be provided on the site specified by `details_url`.
+     */
+    conclusion:
+      | "success"
+      | "failure"
+      | "neutral"
+      | "cancelled"
+      | "timed_out"
+      | "action_required"
+      | "stale"
+      | null;
+    /**
+     * The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
     started_at: string;
-    completed_at: null;
+    /**
+     * The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
+    completed_at: string | null;
     output: {
       title?: string | null;
       summary: string | null;
@@ -619,13 +669,19 @@ export interface CheckRunCreatedEvent {
       annotations_count: number;
       annotations_url: string;
     };
+    /**
+     * The name of the check.
+     */
     name: string;
     check_suite: {
       id: number;
       node_id?: string;
       head_branch: string | null;
+      /**
+       * The SHA of the head commit that is being checked.
+       */
       head_sha: string;
-      status: string;
+      status: "queued" | "in_progress";
       conclusion: null;
       url: string;
       before: string | null;
@@ -677,14 +733,26 @@ export interface CheckRunCreatedEvent {
 export interface CheckRunRequestedActionEvent {
   action: "requested_action";
   check_run: {
+    /**
+     * The id of the check.
+     */
     id: number;
     node_id?: string;
+    /**
+     * The SHA of the commit that is being checked.
+     */
     head_sha: string;
     external_id: string;
     url: string;
     html_url: string;
     details_url?: string;
+    /**
+     * The phase of the lifecycle that the check is currently in.
+     */
     status: "queued" | "in_progress" | "completed";
+    /**
+     * The final conclusion of the check. Can be one of `success`, `failure`, `neutral`, `cancelled`, `skipped`, `timed_out`, or `action_required`. When the conclusion is `action_required`, additional details should be provided on the site specified by `details_url`.
+     */
     conclusion:
       | "success"
       | "failure"
@@ -694,7 +762,13 @@ export interface CheckRunRequestedActionEvent {
       | "action_required"
       | "stale"
       | null;
+    /**
+     * The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
     started_at: string;
+    /**
+     * The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
     completed_at: string | null;
     output: {
       title?: string | null;
@@ -703,11 +777,17 @@ export interface CheckRunRequestedActionEvent {
       annotations_count: number;
       annotations_url: string;
     };
+    /**
+     * The name of the check.
+     */
     name: string;
     check_suite: {
       id: number;
       node_id?: string;
       head_branch: string | null;
+      /**
+       * The SHA of the head commit that is being checked.
+       */
       head_sha: string;
       status: "queued" | "in_progress" | "completed";
       conclusion:
@@ -760,7 +840,7 @@ export interface CheckRunRequestedActionEvent {
   };
   requested_action?: {
     identifier?: string;
-  } | null;
+  };
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -769,14 +849,26 @@ export interface CheckRunRequestedActionEvent {
 export interface CheckRunRerequestedEvent {
   action: "rerequested";
   check_run: {
+    /**
+     * The id of the check.
+     */
     id: number;
     node_id?: string;
+    /**
+     * The SHA of the commit that is being checked.
+     */
     head_sha: string;
     external_id: string;
     url: string;
     html_url: string;
     details_url?: string;
-    status: "queued" | "in_progress" | "completed";
+    /**
+     * The phase of the lifecycle that the check is currently in.
+     */
+    status: "completed";
+    /**
+     * The final conclusion of the check. Can be one of `success`, `failure`, `neutral`, `cancelled`, `skipped`, `timed_out`, or `action_required`. When the conclusion is `action_required`, additional details should be provided on the site specified by `details_url`.
+     */
     conclusion:
       | "success"
       | "failure"
@@ -786,8 +878,14 @@ export interface CheckRunRerequestedEvent {
       | "action_required"
       | "stale"
       | null;
+    /**
+     * The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
     started_at: string;
-    completed_at: string | null;
+    /**
+     * The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
+    completed_at: string;
     output: {
       title?: string | null;
       summary: string | null;
@@ -795,13 +893,19 @@ export interface CheckRunRerequestedEvent {
       annotations_count: number;
       annotations_url: string;
     };
+    /**
+     * The name of the check.
+     */
     name: string;
     check_suite: {
       id: number;
       node_id?: string;
       head_branch: string | null;
+      /**
+       * The SHA of the head commit that is being checked.
+       */
       head_sha: string;
-      status: "queued" | "in_progress" | "completed";
+      status: "completed";
       conclusion:
         | "success"
         | "failure"
@@ -809,8 +913,7 @@ export interface CheckRunRerequestedEvent {
         | "cancelled"
         | "timed_out"
         | "action_required"
-        | "stale"
-        | null;
+        | "stale";
       url: string;
       before: string | null;
       after: string | null;
@@ -864,6 +967,9 @@ export interface CheckSuiteCompletedEvent {
     id: number;
     node_id: string;
     head_branch: string | null;
+    /**
+     * The SHA of the head commit that is being checked.
+     */
     head_sha: string;
     status: "requested" | "in_progress" | "completed" | "queued" | null;
     conclusion:
@@ -898,19 +1004,20 @@ export interface CheckSuiteCompletedEvent {
     updated_at: string;
     latest_check_runs_count: number;
     check_runs_url: string;
-    head_commit: {
-      id: string;
-      tree_id: string;
-      message: string;
-      timestamp: string;
-      author: Committer;
-      committer: Committer;
-    };
+    head_commit: SimpleCommit;
   };
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
+}
+export interface SimpleCommit {
+  id: string;
+  tree_id: string;
+  message: string;
+  timestamp: string;
+  author: Committer;
+  committer: Committer;
 }
 /**
  * Metaproperties for Git author/committer information.
@@ -926,6 +1033,9 @@ export interface CheckSuiteRequestedEvent {
     id: number;
     node_id: string;
     head_branch: string | null;
+    /**
+     * The SHA of the head commit that is being checked.
+     */
     head_sha: string;
     status: "requested" | "in_progress" | "completed" | "queued" | null;
     conclusion:
@@ -960,14 +1070,7 @@ export interface CheckSuiteRequestedEvent {
     updated_at: string;
     latest_check_runs_count: number;
     check_runs_url: string;
-    head_commit: {
-      id: string;
-      tree_id: string;
-      message: string;
-      timestamp: string;
-      author: Committer;
-      committer: Committer;
-    };
+    head_commit: SimpleCommit;
   };
   repository: Repository;
   sender: User;
@@ -980,6 +1083,9 @@ export interface CheckSuiteRerequestedEvent {
     id: number;
     node_id: string;
     head_branch: string | null;
+    /**
+     * The SHA of the head commit that is being checked.
+     */
     head_sha: string;
     status: "requested" | "in_progress" | "completed" | "queued" | null;
     conclusion:
@@ -1014,14 +1120,7 @@ export interface CheckSuiteRerequestedEvent {
     updated_at: string;
     latest_check_runs_count: number;
     check_runs_url: string;
-    head_commit: {
-      id: string;
-      tree_id: string;
-      message: string;
-      timestamp: string;
-      author: Committer;
-      committer: Committer;
-    };
+    head_commit: SimpleCommit;
   };
   repository: Repository;
   sender: User;
@@ -1031,30 +1130,78 @@ export interface CheckSuiteRerequestedEvent {
 export interface CodeScanningAlertAppearedInBranchEvent {
   action: "appeared_in_branch";
   alert: {
+    /**
+     * The code scanning alert number.
+     */
     number: number;
+    /**
+     * The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
+     */
     created_at: string;
     url: string;
+    /**
+     * The GitHub URL of the alert resource.
+     */
     html_url: string;
     instances: {
+      /**
+       * The full Git reference, formatted as `refs/heads/<branch name>`.
+       */
       ref: string;
+      /**
+       * Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
+       */
       analysis_key: string;
+      /**
+       * Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.
+       */
       environment: string;
-      state: string;
+      /**
+       * State of a code scanning alert.
+       */
+      state: "open" | "dismissed" | "fixed";
     }[];
-    state: string;
-    dismissed_by: null;
+    /**
+     * State of a code scanning alert.
+     */
+    state: "open" | "dismissed" | "fixed";
+    dismissed_by: User | null;
+    /**
+     * The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
     dismissed_at: string | null;
-    dismissed_reason: string | null;
+    /**
+     * The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`.
+     */
+    dismissed_reason: "false positive" | "won't fix" | "used in tests" | null;
     rule: {
+      /**
+       * A unique identifier for the rule used to detect the alert.
+       */
       id: string;
-      severity: string;
+      /**
+       * The severity of the alert.
+       */
+      severity: "none" | "note" | "warning" | "error" | null;
+      /**
+       * A short description of the rule used to detect the alert.
+       */
       description: string;
     };
     tool: {
+      /**
+       * The name of the tool used to generate the code scanning analysis alert.
+       */
       name: string;
-      version: null;
+      /**
+       * The version of the tool used to detect the alert.
+       */
+      version: string | null;
     };
   };
+  /**
+   * The full Git reference, formatted as `refs/heads/<branch name>`.
+   */
   ref: string;
   commit_oid: string;
   repository: Repository;
@@ -1064,30 +1211,78 @@ export interface CodeScanningAlertAppearedInBranchEvent {
 export interface CodeScanningAlertClosedByUserEvent {
   action: "closed_by_user";
   alert: {
+    /**
+     * The code scanning alert number.
+     */
     number: number;
+    /**
+     * The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
+     */
     created_at: string;
     url: string;
+    /**
+     * The GitHub URL of the alert resource.
+     */
     html_url: string;
     instances: {
+      /**
+       * The full Git reference, formatted as `refs/heads/<branch name>`.
+       */
       ref: string;
+      /**
+       * Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
+       */
       analysis_key: string;
+      /**
+       * Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.
+       */
       environment: string;
-      state: string;
+      /**
+       * State of a code scanning alert.
+       */
+      state: "dismissed";
     }[];
-    state: string;
-    dismissed_by: null;
-    dismissed_at: string | null;
-    dismissed_reason: string | null;
+    /**
+     * State of a code scanning alert.
+     */
+    state: "dismissed";
+    dismissed_by: User;
+    /**
+     * The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
+    dismissed_at: string;
+    /**
+     * The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`.
+     */
+    dismissed_reason: "false positive" | "won't fix" | "used in tests" | null;
     rule: {
+      /**
+       * A unique identifier for the rule used to detect the alert.
+       */
       id: string;
-      severity: string;
+      /**
+       * The severity of the alert.
+       */
+      severity: "none" | "note" | "warning" | "error" | null;
+      /**
+       * A short description of the rule used to detect the alert.
+       */
       description: string;
     };
     tool: {
+      /**
+       * The name of the tool used to generate the code scanning analysis alert.
+       */
       name: string;
-      version: null;
+      /**
+       * The version of the tool used to detect the alert.
+       */
+      version: string | null;
     };
   };
+  /**
+   * The full Git reference, formatted as `refs/heads/<branch name>`.
+   */
   ref: string;
   commit_oid: string;
   repository: Repository;
@@ -1098,30 +1293,78 @@ export interface CodeScanningAlertClosedByUserEvent {
 export interface CodeScanningAlertCreatedEvent {
   action: "created";
   alert: {
+    /**
+     * The code scanning alert number.
+     */
     number: number;
+    /**
+     * The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
+     */
     created_at: string;
     url: string;
+    /**
+     * The GitHub URL of the alert resource.
+     */
     html_url: string;
     instances: {
+      /**
+       * The full Git reference, formatted as `refs/heads/<branch name>`.
+       */
       ref: string;
+      /**
+       * Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
+       */
       analysis_key: string;
+      /**
+       * Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.
+       */
       environment: string;
-      state: string;
+      /**
+       * State of a code scanning alert.
+       */
+      state: "open" | "dismissed";
     }[];
-    state: string;
+    /**
+     * State of a code scanning alert.
+     */
+    state: "open" | "dismissed";
     dismissed_by: null;
-    dismissed_at: string | null;
-    dismissed_reason: string | null;
+    /**
+     * The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
+    dismissed_at: null;
+    /**
+     * The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`.
+     */
+    dismissed_reason: null;
     rule: {
+      /**
+       * A unique identifier for the rule used to detect the alert.
+       */
       id: string;
-      severity: string;
+      /**
+       * The severity of the alert.
+       */
+      severity: "none" | "note" | "warning" | "error" | null;
+      /**
+       * A short description of the rule used to detect the alert.
+       */
       description: string;
     };
     tool: {
+      /**
+       * The name of the tool used to generate the code scanning analysis alert.
+       */
       name: string;
-      version: null;
+      /**
+       * The version of the tool used to detect the alert.
+       */
+      version: string | null;
     };
   };
+  /**
+   * The full Git reference, formatted as `refs/heads/<branch name>`.
+   */
   ref: string;
   commit_oid: string;
   repository: Repository;
@@ -1131,30 +1374,78 @@ export interface CodeScanningAlertCreatedEvent {
 export interface CodeScanningAlertFixedEvent {
   action: "fixed";
   alert: {
+    /**
+     * The code scanning alert number.
+     */
     number: number;
+    /**
+     * The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
+     */
     created_at: string;
     url: string;
+    /**
+     * The GitHub URL of the alert resource.
+     */
     html_url: string;
     instances: {
+      /**
+       * The full Git reference, formatted as `refs/heads/<branch name>`.
+       */
       ref: string;
+      /**
+       * Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
+       */
       analysis_key: string;
+      /**
+       * Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.
+       */
       environment: string;
-      state: string;
+      /**
+       * State of a code scanning alert.
+       */
+      state: "open" | "dismissed" | "fixed";
     }[];
-    state: string;
-    dismissed_by: null;
+    /**
+     * State of a code scanning alert.
+     */
+    state: "fixed";
+    dismissed_by: User | null;
+    /**
+     * The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
     dismissed_at: string | null;
-    dismissed_reason: string | null;
+    /**
+     * The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`.
+     */
+    dismissed_reason: "false positive" | "won't fix" | "used in tests" | null;
     rule: {
+      /**
+       * A unique identifier for the rule used to detect the alert.
+       */
       id: string;
-      severity: string;
+      /**
+       * The severity of the alert.
+       */
+      severity: "none" | "note" | "warning" | "error" | null;
+      /**
+       * A short description of the rule used to detect the alert.
+       */
       description: string;
     };
     tool: {
+      /**
+       * The name of the tool used to generate the code scanning analysis alert.
+       */
       name: string;
-      version: null;
+      /**
+       * The version of the tool used to detect the alert.
+       */
+      version: string | null;
     };
   };
+  /**
+   * The full Git reference, formatted as `refs/heads/<branch name>`.
+   */
   ref: string;
   commit_oid: string;
   repository: Repository;
@@ -1164,30 +1455,78 @@ export interface CodeScanningAlertFixedEvent {
 export interface CodeScanningAlertReopenedEvent {
   action: "reopened";
   alert: {
+    /**
+     * The code scanning alert number.
+     */
     number: number;
+    /**
+     * The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
+     */
     created_at: string;
     url: string;
+    /**
+     * The GitHub URL of the alert resource.
+     */
     html_url: string;
     instances: {
+      /**
+       * The full Git reference, formatted as `refs/heads/<branch name>`.
+       */
       ref: string;
+      /**
+       * Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
+       */
       analysis_key: string;
+      /**
+       * Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.
+       */
       environment: string;
-      state: string;
+      /**
+       * State of a code scanning alert.
+       */
+      state: "open";
     }[];
-    state: string;
+    /**
+     * State of a code scanning alert.
+     */
+    state: "open" | "dismissed" | "fixed";
     dismissed_by: null;
-    dismissed_at: string | null;
-    dismissed_reason: string | null;
+    /**
+     * The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
+    dismissed_at: null;
+    /**
+     * The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`.
+     */
+    dismissed_reason: null;
     rule: {
+      /**
+       * A unique identifier for the rule used to detect the alert.
+       */
       id: string;
-      severity: string;
+      /**
+       * The severity of the alert.
+       */
+      severity: "none" | "note" | "warning" | "error" | null;
+      /**
+       * A short description of the rule used to detect the alert.
+       */
       description: string;
     };
     tool: {
+      /**
+       * The name of the tool used to generate the code scanning analysis alert.
+       */
       name: string;
-      version: null;
+      /**
+       * The version of the tool used to detect the alert.
+       */
+      version: string | null;
     };
   };
+  /**
+   * The full Git reference, formatted as `refs/heads/<branch name>`.
+   */
   ref: string;
   commit_oid: string;
   repository: Repository;
@@ -1197,30 +1536,78 @@ export interface CodeScanningAlertReopenedEvent {
 export interface CodeScanningAlertReopenedByUserEvent {
   action: "reopened_by_user";
   alert: {
+    /**
+     * The code scanning alert number.
+     */
     number: number;
+    /**
+     * The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
+     */
     created_at: string;
     url: string;
+    /**
+     * The GitHub URL of the alert resource.
+     */
     html_url: string;
     instances: {
+      /**
+       * The full Git reference, formatted as `refs/heads/<branch name>`.
+       */
       ref: string;
+      /**
+       * Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
+       */
       analysis_key: string;
+      /**
+       * Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.
+       */
       environment: string;
-      state: string;
+      /**
+       * State of a code scanning alert.
+       */
+      state: "open";
     }[];
-    state: string;
+    /**
+     * State of a code scanning alert.
+     */
+    state: "open";
     dismissed_by: null;
-    dismissed_at: string | null;
-    dismissed_reason: string | null;
+    /**
+     * The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
+    dismissed_at: null;
+    /**
+     * The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`.
+     */
+    dismissed_reason: null;
     rule: {
+      /**
+       * A unique identifier for the rule used to detect the alert.
+       */
       id: string;
-      severity: string;
+      /**
+       * The severity of the alert.
+       */
+      severity: "none" | "note" | "warning" | "error" | null;
+      /**
+       * A short description of the rule used to detect the alert.
+       */
       description: string;
     };
     tool: {
+      /**
+       * The name of the tool used to generate the code scanning analysis alert.
+       */
       name: string;
-      version: null;
+      /**
+       * The version of the tool used to detect the alert.
+       */
+      version: string | null;
     };
   };
+  /**
+   * The full Git reference, formatted as `refs/heads/<branch name>`.
+   */
   ref: string;
   commit_oid: string;
   repository: Repository;
@@ -4806,139 +5193,140 @@ export interface PublicEvent {
 export interface PullRequestAssignedEvent {
   action: "assigned";
   number: number;
-  pull_request: {
-    url: string;
-    id: number;
-    node_id: string;
-    html_url: string;
-    diff_url: string;
-    patch_url: string;
-    issue_url: string;
-    /**
-     * Number uniquely identifying the pull request within its repository.
-     */
-    number: number;
-    /**
-     * State of this Pull Request. Either `open` or `closed`.
-     */
-    state: "open" | "closed";
-    locked: boolean;
-    /**
-     * The title of the pull request.
-     */
-    title: string;
-    user: User;
-    body: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    merged_at: string | null;
-    merge_commit_sha: string | null;
-    assignee: User | null;
-    assignees: User[];
-    requested_reviewers: (User | Team)[];
-    requested_teams: Team[];
-    labels: Label[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      /**
-       * The number of the milestone.
-       */
-      number: number;
-      /**
-       * The title of the milestone.
-       */
-      title: string;
-      description: string | null;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      /**
-       * The state of the milestone.
-       */
-      state: "open" | "closed";
-      created_at: string | null;
-      updated_at: string | null;
-      due_on: string | null;
-      closed_at: string | null;
-    } | null;
-    commits_url: string;
-    review_comments_url: string;
-    review_comment_url: string;
-    comments_url: string;
-    statuses_url: string;
-    head: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    base: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
-    };
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    /**
-     * Indicates whether or not the pull request is a draft.
-     */
-    draft: boolean;
-    merged: boolean | null;
-    mergeable: boolean | null;
-    rebaseable: boolean | null;
-    mergeable_state: string;
-    merged_by: User | null;
-    comments: number;
-    review_comments: number;
-    /**
-     * Indicates whether maintainers can modify the pull request.
-     */
-    maintainer_can_modify: boolean;
-    commits: number;
-    additions: number;
-    deletions: number;
-    changed_files: number;
-  };
+  pull_request: PullRequest;
   label?: Label;
   assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
   sender: User;
+}
+export interface PullRequest {
+  url: string;
+  id: number;
+  node_id: string;
+  html_url: string;
+  diff_url: string;
+  patch_url: string;
+  issue_url: string;
+  /**
+   * Number uniquely identifying the pull request within its repository.
+   */
+  number: number;
+  /**
+   * State of this Pull Request. Either `open` or `closed`.
+   */
+  state: "open" | "closed";
+  locked: boolean;
+  /**
+   * The title of the pull request.
+   */
+  title: string;
+  user: User;
+  body: string;
+  created_at: string;
+  updated_at: string;
+  closed_at: string | null;
+  merged_at: string | null;
+  merge_commit_sha: string | null;
+  assignee: User | null;
+  assignees: User[];
+  requested_reviewers: (User | Team)[];
+  requested_teams: Team[];
+  labels: Label[];
+  milestone: {
+    url: string;
+    html_url: string;
+    labels_url: string;
+    id: number;
+    node_id: string;
+    /**
+     * The number of the milestone.
+     */
+    number: number;
+    /**
+     * The title of the milestone.
+     */
+    title: string;
+    description: string | null;
+    creator: User;
+    open_issues: number;
+    closed_issues: number;
+    /**
+     * The state of the milestone.
+     */
+    state: "open" | "closed";
+    created_at: string | null;
+    updated_at: string | null;
+    due_on: string | null;
+    closed_at: string | null;
+  } | null;
+  commits_url: string;
+  review_comments_url: string;
+  review_comment_url: string;
+  comments_url: string;
+  statuses_url: string;
+  head: {
+    label: string;
+    ref: string;
+    sha: string;
+    user: User;
+    repo: Repository;
+  };
+  base: {
+    label: string;
+    ref: string;
+    sha: string;
+    user: User;
+    repo: Repository;
+  };
+  _links: {
+    self: {
+      href: string;
+    };
+    html: {
+      href: string;
+    };
+    issue: {
+      href: string;
+    };
+    comments: {
+      href: string;
+    };
+    review_comments: {
+      href: string;
+    };
+    review_comment: {
+      href: string;
+    };
+    commits: {
+      href: string;
+    };
+    statuses: {
+      href: string;
+    };
+  };
+  author_association: AuthorAssociation;
+  active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
+  /**
+   * Indicates whether or not the pull request is a draft.
+   */
+  draft: boolean;
+  merged: boolean | null;
+  mergeable: boolean | null;
+  rebaseable: boolean | null;
+  mergeable_state: string;
+  merged_by: User | null;
+  comments: number;
+  review_comments: number;
+  /**
+   * Indicates whether maintainers can modify the pull request.
+   */
+  maintainer_can_modify: boolean;
+  commits: number;
+  additions: number;
+  deletions: number;
+  changed_files: number;
 }
 export interface PullRequestClosedEvent {
   action: "closed";
@@ -5225,118 +5613,7 @@ export interface PullRequestEditedEvent {
       from: string;
     };
   };
-  pull_request: {
-    url: string;
-    id: number;
-    node_id: string;
-    html_url: string;
-    diff_url: string;
-    patch_url: string;
-    issue_url: string;
-    number: number;
-    state: "open" | "closed";
-    locked: boolean;
-    title: string;
-    user: User;
-    body: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    merged_at: string | null;
-    merge_commit_sha: string | null;
-    assignee: User | null;
-    assignees: User[];
-    requested_reviewers: (User | Team)[];
-    requested_teams: Team[];
-    labels: Label[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      /**
-       * The number of the milestone.
-       */
-      number: number;
-      /**
-       * The title of the milestone.
-       */
-      title: string;
-      description: string | null;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      /**
-       * The state of the milestone.
-       */
-      state: "open" | "closed";
-      created_at: string | null;
-      updated_at: string | null;
-      due_on: string | null;
-      closed_at: string | null;
-    } | null;
-    commits_url: string;
-    review_comments_url: string;
-    review_comment_url: string;
-    comments_url: string;
-    statuses_url: string;
-    head: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    base: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
-    };
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    draft: boolean;
-    merged: boolean;
-    mergeable: boolean | null;
-    rebaseable: boolean | null;
-    mergeable_state: string;
-    merged_by: null;
-    comments: number;
-    review_comments: number;
-    maintainer_can_modify: boolean;
-    commits: number;
-    additions: number;
-    deletions: number;
-    changed_files: number;
-  };
+  pull_request: PullRequest;
   label?: Label;
   assignee?: User;
   repository: Repository;
@@ -5347,118 +5624,7 @@ export interface PullRequestEditedEvent {
 export interface PullRequestLabeledEvent {
   action: "labeled";
   number: number;
-  pull_request: {
-    url: string;
-    id: number;
-    node_id: string;
-    html_url: string;
-    diff_url: string;
-    patch_url: string;
-    issue_url: string;
-    number: number;
-    state: "open" | "closed";
-    locked: boolean;
-    title: string;
-    user: User;
-    body: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    merged_at: string | null;
-    merge_commit_sha: string | null;
-    assignee: User | null;
-    assignees: User[];
-    requested_reviewers: (User | Team)[];
-    requested_teams: Team[];
-    labels: Label[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      /**
-       * The number of the milestone.
-       */
-      number: number;
-      /**
-       * The title of the milestone.
-       */
-      title: string;
-      description: string | null;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      /**
-       * The state of the milestone.
-       */
-      state: "open" | "closed";
-      created_at: string | null;
-      updated_at: string | null;
-      due_on: string | null;
-      closed_at: string | null;
-    } | null;
-    commits_url: string;
-    review_comments_url: string;
-    review_comment_url: string;
-    comments_url: string;
-    statuses_url: string;
-    head: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    base: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
-    };
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    draft: boolean;
-    merged: boolean;
-    mergeable: boolean | null;
-    rebaseable: boolean | null;
-    mergeable_state: string;
-    merged_by: null;
-    comments: number;
-    review_comments: number;
-    maintainer_can_modify: boolean;
-    commits: number;
-    additions: number;
-    deletions: number;
-    changed_files: number;
-  };
+  pull_request: PullRequest;
   label?: Label;
   assignee?: User;
   repository: Repository;
@@ -5469,118 +5635,7 @@ export interface PullRequestLabeledEvent {
 export interface PullRequestLockedEvent {
   action: "locked";
   number: number;
-  pull_request: {
-    url: string;
-    id: number;
-    node_id: string;
-    html_url: string;
-    diff_url: string;
-    patch_url: string;
-    issue_url: string;
-    number: number;
-    state: "open" | "closed";
-    locked: true;
-    title: string;
-    user: User;
-    body: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    merged_at: string | null;
-    merge_commit_sha: string | null;
-    assignee: User | null;
-    assignees: User[];
-    requested_reviewers: (User | Team)[];
-    requested_teams: Team[];
-    labels: Label[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      /**
-       * The number of the milestone.
-       */
-      number: number;
-      /**
-       * The title of the milestone.
-       */
-      title: string;
-      description: string | null;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      /**
-       * The state of the milestone.
-       */
-      state: "open" | "closed";
-      created_at: string | null;
-      updated_at: string | null;
-      due_on: string | null;
-      closed_at: string | null;
-    } | null;
-    commits_url: string;
-    review_comments_url: string;
-    review_comment_url: string;
-    comments_url: string;
-    statuses_url: string;
-    head: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    base: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
-    };
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam";
-    draft: boolean;
-    merged: boolean;
-    mergeable: boolean | null;
-    rebaseable: boolean | null;
-    mergeable_state: string;
-    merged_by: null;
-    comments: number;
-    review_comments: number;
-    maintainer_can_modify: boolean;
-    commits: number;
-    additions: number;
-    deletions: number;
-    changed_files: number;
-  };
+  pull_request: PullRequest;
   label?: Label;
   assignee?: User;
   repository: Repository;
@@ -5957,118 +6012,7 @@ export interface PullRequestReopenedEvent {
 export interface PullRequestReviewRequestRemovedEvent {
   action: "review_request_removed";
   number: number;
-  pull_request: {
-    url: string;
-    id: number;
-    node_id: string;
-    html_url: string;
-    diff_url: string;
-    patch_url: string;
-    issue_url: string;
-    number: number;
-    state: "open" | "closed";
-    locked: boolean;
-    title: string;
-    user: User;
-    body: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    merged_at: string | null;
-    merge_commit_sha: string | null;
-    assignee: User | null;
-    assignees: User[];
-    requested_reviewers: (User | Team)[];
-    requested_teams: Team[];
-    labels: Label[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      /**
-       * The number of the milestone.
-       */
-      number: number;
-      /**
-       * The title of the milestone.
-       */
-      title: string;
-      description: string | null;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      /**
-       * The state of the milestone.
-       */
-      state: "open" | "closed";
-      created_at: string | null;
-      updated_at: string | null;
-      due_on: string | null;
-      closed_at: string | null;
-    } | null;
-    commits_url: string;
-    review_comments_url: string;
-    review_comment_url: string;
-    comments_url: string;
-    statuses_url: string;
-    head: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    base: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
-    };
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    draft: boolean;
-    merged: boolean;
-    mergeable: boolean | null;
-    rebaseable: boolean | null;
-    mergeable_state: string;
-    merged_by: null;
-    comments: number;
-    review_comments: number;
-    maintainer_can_modify: boolean;
-    commits: number;
-    additions: number;
-    deletions: number;
-    changed_files: number;
-  };
+  pull_request: PullRequest;
   label?: Label;
   assignee?: User;
   repository: Repository;
@@ -6079,118 +6023,7 @@ export interface PullRequestReviewRequestRemovedEvent {
 export interface PullRequestReviewRequestedEvent {
   action: "review_requested";
   number: number;
-  pull_request: {
-    url: string;
-    id: number;
-    node_id: string;
-    html_url: string;
-    diff_url: string;
-    patch_url: string;
-    issue_url: string;
-    number: number;
-    state: "open" | "closed";
-    locked: boolean;
-    title: string;
-    user: User;
-    body: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    merged_at: string | null;
-    merge_commit_sha: string | null;
-    assignee: User | null;
-    assignees: User[];
-    requested_reviewers: (User | Team)[];
-    requested_teams: Team[];
-    labels: Label[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      /**
-       * The number of the milestone.
-       */
-      number: number;
-      /**
-       * The title of the milestone.
-       */
-      title: string;
-      description: string | null;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      /**
-       * The state of the milestone.
-       */
-      state: "open" | "closed";
-      created_at: string | null;
-      updated_at: string | null;
-      due_on: string | null;
-      closed_at: string | null;
-    } | null;
-    commits_url: string;
-    review_comments_url: string;
-    review_comment_url: string;
-    comments_url: string;
-    statuses_url: string;
-    head: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    base: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
-    };
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    draft: boolean;
-    merged: boolean;
-    mergeable: boolean | null;
-    rebaseable: boolean | null;
-    mergeable_state: string;
-    merged_by: null;
-    comments: number;
-    review_comments: number;
-    maintainer_can_modify: boolean;
-    commits: number;
-    additions: number;
-    deletions: number;
-    changed_files: number;
-  };
+  pull_request: PullRequest;
   label?: Label;
   assignee?: User;
   repository: Repository;
@@ -6201,118 +6034,7 @@ export interface PullRequestReviewRequestedEvent {
 export interface PullRequestSynchronizeEvent {
   action: "synchronize";
   number: number;
-  pull_request: {
-    url: string;
-    id: number;
-    node_id: string;
-    html_url: string;
-    diff_url: string;
-    patch_url: string;
-    issue_url: string;
-    number: number;
-    state: "open" | "closed";
-    locked: boolean;
-    title: string;
-    user: User;
-    body: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    merged_at: string | null;
-    merge_commit_sha: string | null;
-    assignee: User | null;
-    assignees: User[];
-    requested_reviewers: (User | Team)[];
-    requested_teams: Team[];
-    labels: Label[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      /**
-       * The number of the milestone.
-       */
-      number: number;
-      /**
-       * The title of the milestone.
-       */
-      title: string;
-      description: string | null;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      /**
-       * The state of the milestone.
-       */
-      state: "open" | "closed";
-      created_at: string | null;
-      updated_at: string | null;
-      due_on: string | null;
-      closed_at: string | null;
-    } | null;
-    commits_url: string;
-    review_comments_url: string;
-    review_comment_url: string;
-    comments_url: string;
-    statuses_url: string;
-    head: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    base: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
-    };
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    draft: boolean;
-    merged: boolean;
-    mergeable: boolean | null;
-    rebaseable: boolean | null;
-    mergeable_state: string;
-    merged_by: null;
-    comments: number;
-    review_comments: number;
-    maintainer_can_modify: boolean;
-    commits: number;
-    additions: number;
-    deletions: number;
-    changed_files: number;
-  };
+  pull_request: PullRequest;
   label?: Label;
   assignee?: User;
   repository: Repository;
@@ -6323,118 +6045,7 @@ export interface PullRequestSynchronizeEvent {
 export interface PullRequestUnassignedEvent {
   action: "unassigned";
   number: number;
-  pull_request: {
-    url: string;
-    id: number;
-    node_id: string;
-    html_url: string;
-    diff_url: string;
-    patch_url: string;
-    issue_url: string;
-    number: number;
-    state: "open" | "closed";
-    locked: boolean;
-    title: string;
-    user: User;
-    body: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    merged_at: string | null;
-    merge_commit_sha: string | null;
-    assignee: User | null;
-    assignees: User[];
-    requested_reviewers: (User | Team)[];
-    requested_teams: Team[];
-    labels: Label[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      /**
-       * The number of the milestone.
-       */
-      number: number;
-      /**
-       * The title of the milestone.
-       */
-      title: string;
-      description: string | null;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      /**
-       * The state of the milestone.
-       */
-      state: "open" | "closed";
-      created_at: string | null;
-      updated_at: string | null;
-      due_on: string | null;
-      closed_at: string | null;
-    } | null;
-    commits_url: string;
-    review_comments_url: string;
-    review_comment_url: string;
-    comments_url: string;
-    statuses_url: string;
-    head: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    base: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
-    };
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    draft: boolean;
-    merged: boolean;
-    mergeable: boolean | null;
-    rebaseable: boolean | null;
-    mergeable_state: string;
-    merged_by: null;
-    comments: number;
-    review_comments: number;
-    maintainer_can_modify: boolean;
-    commits: number;
-    additions: number;
-    deletions: number;
-    changed_files: number;
-  };
+  pull_request: PullRequest;
   label?: Label;
   assignee?: User;
   repository: Repository;
@@ -6445,118 +6056,7 @@ export interface PullRequestUnassignedEvent {
 export interface PullRequestUnlabeledEvent {
   action: "unlabeled";
   number: number;
-  pull_request: {
-    url: string;
-    id: number;
-    node_id: string;
-    html_url: string;
-    diff_url: string;
-    patch_url: string;
-    issue_url: string;
-    number: number;
-    state: "open" | "closed";
-    locked: boolean;
-    title: string;
-    user: User;
-    body: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    merged_at: string | null;
-    merge_commit_sha: string | null;
-    assignee: User | null;
-    assignees: User[];
-    requested_reviewers: (User | Team)[];
-    requested_teams: Team[];
-    labels: Label[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      /**
-       * The number of the milestone.
-       */
-      number: number;
-      /**
-       * The title of the milestone.
-       */
-      title: string;
-      description: string | null;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      /**
-       * The state of the milestone.
-       */
-      state: "open" | "closed";
-      created_at: string | null;
-      updated_at: string | null;
-      due_on: string | null;
-      closed_at: string | null;
-    } | null;
-    commits_url: string;
-    review_comments_url: string;
-    review_comment_url: string;
-    comments_url: string;
-    statuses_url: string;
-    head: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    base: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
-    };
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    draft: boolean;
-    merged: boolean;
-    mergeable: boolean | null;
-    rebaseable: boolean | null;
-    mergeable_state: string;
-    merged_by: null;
-    comments: number;
-    review_comments: number;
-    maintainer_can_modify: boolean;
-    commits: number;
-    additions: number;
-    deletions: number;
-    changed_files: number;
-  };
+  pull_request: PullRequest;
   label?: Label;
   assignee?: User;
   repository: Repository;
@@ -6567,118 +6067,7 @@ export interface PullRequestUnlabeledEvent {
 export interface PullRequestUnlockedEvent {
   action: "unlocked";
   number: number;
-  pull_request: {
-    url: string;
-    id: number;
-    node_id: string;
-    html_url: string;
-    diff_url: string;
-    patch_url: string;
-    issue_url: string;
-    number: number;
-    state: "open" | "closed";
-    locked: false;
-    title: string;
-    user: User;
-    body: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    merged_at: string | null;
-    merge_commit_sha: string | null;
-    assignee: User | null;
-    assignees: User[];
-    requested_reviewers: (User | Team)[];
-    requested_teams: Team[];
-    labels: Label[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      /**
-       * The number of the milestone.
-       */
-      number: number;
-      /**
-       * The title of the milestone.
-       */
-      title: string;
-      description: string | null;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      /**
-       * The state of the milestone.
-       */
-      state: "open" | "closed";
-      created_at: string | null;
-      updated_at: string | null;
-      due_on: string | null;
-      closed_at: string | null;
-    } | null;
-    commits_url: string;
-    review_comments_url: string;
-    review_comment_url: string;
-    comments_url: string;
-    statuses_url: string;
-    head: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    base: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
-    };
-    author_association: AuthorAssociation;
-    active_lock_reason: null;
-    draft: boolean;
-    merged: boolean;
-    mergeable: boolean | null;
-    rebaseable: boolean | null;
-    mergeable_state: string;
-    merged_by: null;
-    comments: number;
-    review_comments: number;
-    maintainer_can_modify: boolean;
-    commits: number;
-    additions: number;
-    deletions: number;
-    changed_files: number;
-  };
+  pull_request: PullRequest;
   label?: Label;
   assignee?: User;
   repository: Repository;
@@ -6717,110 +6106,111 @@ export interface PullRequestReviewDismissedEvent {
       };
     };
   };
-  pull_request: {
-    url: string;
-    id: number;
-    node_id: string;
-    html_url: string;
-    diff_url: string;
-    patch_url: string;
-    issue_url: string;
-    number: number;
-    state: "open" | "closed";
-    locked: boolean;
-    title: string;
-    user: User;
-    body: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    merged_at: string | null;
-    merge_commit_sha: string | null;
-    assignee: User | null;
-    assignees: User[];
-    requested_reviewers: (User | Team)[];
-    requested_teams: Team[];
-    labels: Label[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      /**
-       * The number of the milestone.
-       */
-      number: number;
-      /**
-       * The title of the milestone.
-       */
-      title: string;
-      description: string | null;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      /**
-       * The state of the milestone.
-       */
-      state: "open" | "closed";
-      created_at: string | null;
-      updated_at: string | null;
-      due_on: string | null;
-      closed_at: string | null;
-    } | null;
-    draft: boolean;
-    commits_url: string;
-    review_comments_url: string;
-    review_comment_url: string;
-    comments_url: string;
-    statuses_url: string;
-    head: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    base: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
-    };
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-  };
+  pull_request: SimplePullRequest;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
   sender: User;
+}
+export interface SimplePullRequest {
+  url: string;
+  id: number;
+  node_id: string;
+  html_url: string;
+  diff_url: string;
+  patch_url: string;
+  issue_url: string;
+  number: number;
+  state: "open" | "closed";
+  locked: boolean;
+  title: string;
+  user: User;
+  body: string;
+  created_at: string;
+  updated_at: string;
+  closed_at: string | null;
+  merged_at: string | null;
+  merge_commit_sha: string | null;
+  assignee: User | null;
+  assignees: User[];
+  requested_reviewers: (User | Team)[];
+  requested_teams: Team[];
+  labels: Label[];
+  milestone: {
+    url: string;
+    html_url: string;
+    labels_url: string;
+    id: number;
+    node_id: string;
+    /**
+     * The number of the milestone.
+     */
+    number: number;
+    /**
+     * The title of the milestone.
+     */
+    title: string;
+    description: string | null;
+    creator: User;
+    open_issues: number;
+    closed_issues: number;
+    /**
+     * The state of the milestone.
+     */
+    state: "open" | "closed";
+    created_at: string | null;
+    updated_at: string | null;
+    due_on: string | null;
+    closed_at: string | null;
+  } | null;
+  draft: boolean;
+  commits_url: string;
+  review_comments_url: string;
+  review_comment_url: string;
+  comments_url: string;
+  statuses_url: string;
+  head: {
+    label: string;
+    ref: string;
+    sha: string;
+    user: User;
+    repo: Repository;
+  };
+  base: {
+    label: string;
+    ref: string;
+    sha: string;
+    user: User;
+    repo: Repository;
+  };
+  _links: {
+    self: {
+      href: string;
+    };
+    html: {
+      href: string;
+    };
+    issue: {
+      href: string;
+    };
+    comments: {
+      href: string;
+    };
+    review_comments: {
+      href: string;
+    };
+    review_comment: {
+      href: string;
+    };
+    commits: {
+      href: string;
+    };
+    statuses: {
+      href: string;
+    };
+  };
+  author_association: AuthorAssociation;
+  active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
 }
 export interface PullRequestReviewEditedEvent {
   action: "edited";
@@ -6858,106 +6248,7 @@ export interface PullRequestReviewEditedEvent {
       };
     };
   };
-  pull_request: {
-    url: string;
-    id: number;
-    node_id: string;
-    html_url: string;
-    diff_url: string;
-    patch_url: string;
-    issue_url: string;
-    number: number;
-    state: "open" | "closed";
-    locked: boolean;
-    title: string;
-    user: User;
-    body: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    merged_at: string | null;
-    merge_commit_sha: string | null;
-    assignee: User | null;
-    assignees: User[];
-    requested_reviewers: (User | Team)[];
-    requested_teams: Team[];
-    labels: Label[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      /**
-       * The number of the milestone.
-       */
-      number: number;
-      /**
-       * The title of the milestone.
-       */
-      title: string;
-      description: string | null;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      /**
-       * The state of the milestone.
-       */
-      state: "open" | "closed";
-      created_at: string | null;
-      updated_at: string | null;
-      due_on: string | null;
-      closed_at: string | null;
-    } | null;
-    draft: boolean;
-    commits_url: string;
-    review_comments_url: string;
-    review_comment_url: string;
-    comments_url: string;
-    statuses_url: string;
-    head: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    base: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
-    };
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-  };
+  pull_request: SimplePullRequest;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -6994,106 +6285,7 @@ export interface PullRequestReviewSubmittedEvent {
       };
     };
   };
-  pull_request: {
-    url: string;
-    id: number;
-    node_id: string;
-    html_url: string;
-    diff_url: string;
-    patch_url: string;
-    issue_url: string;
-    number: number;
-    state: "open" | "closed";
-    locked: boolean;
-    title: string;
-    user: User;
-    body: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    merged_at: string | null;
-    merge_commit_sha: string | null;
-    assignee: User | null;
-    assignees: User[];
-    requested_reviewers: (User | Team)[];
-    requested_teams: Team[];
-    labels: Label[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      /**
-       * The number of the milestone.
-       */
-      number: number;
-      /**
-       * The title of the milestone.
-       */
-      title: string;
-      description: string | null;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      /**
-       * The state of the milestone.
-       */
-      state: "open" | "closed";
-      created_at: string | null;
-      updated_at: string | null;
-      due_on: string | null;
-      closed_at: string | null;
-    } | null;
-    draft: boolean;
-    commits_url: string;
-    review_comments_url: string;
-    review_comment_url: string;
-    comments_url: string;
-    statuses_url: string;
-    head: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    base: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
-    };
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-  };
+  pull_request: SimplePullRequest;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -7719,53 +6911,34 @@ export interface PushEvent {
   forced: boolean;
   base_ref: null;
   compare: string;
-  commits: {
-    id: string;
-    tree_id: string;
-    distinct: boolean;
-    message: string;
-    timestamp: string;
-    url: string;
-    author: {
-      name: string;
-      email: string;
-      username: string;
-    };
-    committer: {
-      name: string;
-      email: string;
-      username: string;
-    };
-    added: string[];
-    removed: string[];
-    modified: string[];
-  }[];
-  head_commit: {
-    id: string;
-    tree_id: string;
-    distinct: boolean;
-    message: string;
-    timestamp: string;
-    url: string;
-    author: {
-      name: string;
-      email: string;
-      username: string;
-    };
-    committer: {
-      name: string;
-      email: string;
-      username: string;
-    };
-    added: string[];
-    removed: string[];
-    modified: string[];
-  } | null;
+  commits: Commit[];
+  head_commit: Commit | null;
   repository: Repository;
   pusher: Committer;
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
+}
+export interface Commit {
+  id: string;
+  tree_id: string;
+  distinct: boolean;
+  message: string;
+  timestamp: string;
+  url: string;
+  author: {
+    name: string;
+    email: string;
+    username: string;
+  };
+  committer: {
+    name: string;
+    email: string;
+    username: string;
+  };
+  added: string[];
+  removed: string[];
+  modified: string[];
 }
 export interface ReleaseCreatedEvent {
   action: "created";
@@ -9214,14 +8387,7 @@ export interface WorkflowRunCompletedEvent {
     created_at: string;
     event: string;
     head_branch: string;
-    head_commit: {
-      author: Committer;
-      committer: Committer;
-      id: string;
-      message: string;
-      timestamp: string;
-      tree_id: string;
-    };
+    head_commit: SimpleCommit;
     head_repository: {
       archive_url: string;
       assignees_url: string;
@@ -9369,14 +8535,7 @@ export interface WorkflowRunRequestedEvent {
     created_at: string;
     event: string;
     head_branch: string;
-    head_commit: {
-      author: Committer;
-      committer: Committer;
-      id: string;
-      message: string;
-      timestamp: string;
-      tree_id: string;
-    };
+    head_commit: SimpleCommit;
     head_repository: {
       archive_url: string;
       assignees_url: string;
