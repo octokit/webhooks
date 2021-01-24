@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/milestone.schema.json",
+  "description": "A collection of related issues and pull requests.",
+  "required": [
+    "url",
+    "html_url",
+    "labels_url",
+    "id",
+    "node_id",
+    "number",
+    "title",
+    "description",
+    "creator",
+    "open_issues",
+    "closed_issues",
+    "state",
+    "created_at",
+    "updated_at",
+    "due_on",
+    "closed_at"
+  ],
+  "type": "object",
+  "properties": {
+    "url": { "type": "string", "format": "uri" },
+    "html_url": { "type": "string", "format": "uri" },
+    "labels_url": { "type": "string", "format": "uri" },
+    "id": { "type": "integer" },
+    "node_id": { "type": "string" },
+    "number": {
+      "type": "integer",
+      "description": "The number of the milestone."
+    },
+    "title": { "type": "string", "description": "The title of the milestone." },
+    "description": { "type": ["string", "null"] },
+    "creator": { "$ref": "user.schema.json" },
+    "open_issues": { "type": "integer" },
+    "closed_issues": { "type": "integer" },
+    "state": {
+      "type": "string",
+      "enum": ["open", "closed"],
+      "description": "The state of the milestone."
+    },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "due_on": { "type": ["string", "null"], "format": "date-time" },
+    "closed_at": { "type": ["string", "null"], "format": "date-time" }
+  },
+  "additionalProperties": false,
+  "title": "Milestone"
+}
