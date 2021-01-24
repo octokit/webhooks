@@ -29,7 +29,10 @@
         "id": { "type": "integer" },
         "node_id": { "type": "string" },
         "head_branch": { "type": ["string", "null"] },
-        "head_sha": { "type": "string" },
+        "head_sha": {
+          "type": "string",
+          "description": "The SHA of the head commit that is being checked."
+        },
         "status": {
           "type": ["string", "null"],
           "enum": ["requested", "in_progress", "completed", "queued", null]
@@ -84,36 +87,17 @@
           }
         },
         "app": { "$ref": "common/app.schema.json" },
-        "created_at": { "type": "string" },
-        "updated_at": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
         "latest_check_runs_count": { "type": "integer" },
         "check_runs_url": { "type": "string" },
-        "head_commit": {
-          "type": "object",
-          "required": [
-            "id",
-            "tree_id",
-            "message",
-            "timestamp",
-            "author",
-            "committer"
-          ],
-          "properties": {
-            "id": { "type": "string" },
-            "tree_id": { "type": "string" },
-            "message": { "type": "string" },
-            "timestamp": { "type": "string" },
-            "author": { "$ref": "common/committer.schema.json" },
-            "committer": { "$ref": "common/committer.schema.json" }
-          },
-          "additionalProperties": false
-        }
+        "head_commit": { "$ref": "common/commit-simple.schema.json" }
       },
       "additionalProperties": false
     },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
-    "installation": { "$ref": "common/installation.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
     "organization": { "$ref": "common/organization.schema.json" }
   },
   "additionalProperties": false,

@@ -1,6 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "page_build$event",
+  "description": "Page Build",
   "type": "object",
   "required": ["id", "build", "repository", "sender"],
   "properties": {
@@ -23,7 +24,7 @@
         "error": {
           "type": "object",
           "required": ["message"],
-          "properties": { "message": { "type": "null" } },
+          "properties": { "message": { "type": ["string", "null"] } },
           "additionalProperties": false
         },
         "pusher": { "$ref": "common/user.schema.json" },
@@ -36,7 +37,7 @@
     },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
-    "installation": { "$ref": "common/installation.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
     "organization": { "$ref": "common/organization.schema.json" }
   },
   "additionalProperties": false,

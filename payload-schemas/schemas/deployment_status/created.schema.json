@@ -40,7 +40,9 @@
         "updated_at": { "type": "string" },
         "deployment_url": { "type": "string" },
         "repository_url": { "type": "string" },
-        "performed_via_github_app": { "type": "null" }
+        "performed_via_github_app": {
+          "oneOf": [{ "$ref": "common/app.schema.json" }, { "type": "null" }]
+        }
       },
       "additionalProperties": false
     },
@@ -88,7 +90,7 @@
     },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
-    "installation": { "$ref": "common/installation.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
     "organization": { "$ref": "common/organization.schema.json" }
   },
   "additionalProperties": false,

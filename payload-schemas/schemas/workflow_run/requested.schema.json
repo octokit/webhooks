@@ -72,26 +72,7 @@
         "created_at": { "type": "string" },
         "event": { "type": "string" },
         "head_branch": { "type": "string" },
-        "head_commit": {
-          "type": "object",
-          "required": [
-            "author",
-            "committer",
-            "id",
-            "message",
-            "timestamp",
-            "tree_id"
-          ],
-          "properties": {
-            "author": { "$ref": "common/committer.schema.json" },
-            "committer": { "$ref": "common/committer.schema.json" },
-            "id": { "type": "string" },
-            "message": { "type": "string" },
-            "timestamp": { "type": "string" },
-            "tree_id": { "type": "string" }
-          },
-          "additionalProperties": false
-        },
+        "head_commit": { "$ref": "common/commit-simple.schema.json" },
         "head_repository": {
           "type": "object",
           "required": [
@@ -271,8 +252,11 @@
             "git_refs_url": { "type": "string" },
             "git_tags_url": { "type": "string" },
             "hooks_url": { "type": "string" },
-            "html_url": { "type": "string" },
-            "id": { "type": "integer" },
+            "html_url": { "type": "string", "format": "uri" },
+            "id": {
+              "type": "integer",
+              "description": "Unique identifier of the repository"
+            },
             "issue_comment_url": { "type": "string" },
             "issue_events_url": { "type": "string" },
             "issues_url": { "type": "string" },
@@ -281,11 +265,17 @@
             "languages_url": { "type": "string" },
             "merges_url": { "type": "string" },
             "milestones_url": { "type": "string" },
-            "name": { "type": "string" },
+            "name": {
+              "type": "string",
+              "description": "The name of the repository."
+            },
             "node_id": { "type": "string" },
             "notifications_url": { "type": "string" },
             "owner": { "$ref": "common/user.schema.json" },
-            "private": { "type": "boolean" },
+            "private": {
+              "type": "boolean",
+              "description": "Whether the repository is private or public."
+            },
             "pulls_url": { "type": "string" },
             "releases_url": { "type": "string" },
             "stargazers_url": { "type": "string" },
@@ -295,7 +285,7 @@
             "tags_url": { "type": "string" },
             "teams_url": { "type": "string" },
             "trees_url": { "type": "string" },
-            "url": { "type": "string" }
+            "url": { "type": "string", "format": "uri" }
           },
           "additionalProperties": false
         },
@@ -309,7 +299,7 @@
       },
       "additionalProperties": false
     },
-    "installation": { "$ref": "common/installation.schema.json" }
+    "installation": { "$ref": "common/installation-lite.schema.json" }
   },
   "additionalProperties": false,
   "title": "workflow_run requested event"

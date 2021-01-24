@@ -20,7 +20,7 @@
       "additionalProperties": false
     },
     "repository": { "$ref": "common/repository.schema.json" },
-    "installation": { "$ref": "common/installation.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
     "sender": { "$ref": "common/user.schema.json" }
   },
   "additionalProperties": false,

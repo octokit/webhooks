@@ -74,7 +74,7 @@
     "ssh_url": "git@github.com:octo-org/octo-repo.git",
     "clone_url": "https://github.com/octo-org/octo-repo.git",
     "svn_url": "https://github.com/octo-org/octo-repo",
-    "homepage": "",
+    "homepage": "https://example.com",
     "size": 59,
     "stargazers_count": 0,
     "watchers_count": 0,

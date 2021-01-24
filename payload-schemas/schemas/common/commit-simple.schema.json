@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/commit-simple.schema.json",
+  "type": "object",
+  "required": ["id", "tree_id", "message", "timestamp", "author", "committer"],
+  "properties": {
+    "id": { "type": "string" },
+    "tree_id": { "type": "string" },
+    "message": { "type": "string" },
+    "timestamp": { "type": "string" },
+    "author": { "$ref": "committer.schema.json" },
+    "committer": { "$ref": "committer.schema.json" }
+  },
+  "additionalProperties": false,
+  "title": "SimpleCommit"
+}

@@ -30,22 +30,30 @@
         "body"
       ],
       "properties": {
-        "url": { "type": "string" },
-        "repository_url": { "type": "string" },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL for the issue"
+        },
+        "repository_url": { "type": "string", "format": "uri" },
         "labels_url": { "type": "string" },
-        "comments_url": { "type": "string" },
-        "events_url": { "type": "string" },
-        "html_url": { "type": "string" },
+        "comments_url": { "type": "string", "format": "uri" },
+        "events_url": { "type": "string", "format": "uri" },
+        "html_url": { "type": "string", "format": "uri" },
         "id": { "type": "integer" },
         "node_id": { "type": "string" },
         "number": { "type": "integer" },
-        "title": { "type": "string" },
+        "title": { "type": "string", "description": "Title of the issue" },
         "user": { "$ref": "common/user.schema.json" },
         "labels": {
           "type": "array",
           "items": { "$ref": "common/label.schema.json" }
         },
-        "state": { "type": "string", "enum": ["open"] },
+        "state": {
+          "type": "string",
+          "enum": ["open"],
+          "description": "State of the issue; either 'open' or 'closed'"
+        },
         "locked": { "type": "boolean" },
         "assignee": {
           "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": "null" }]
@@ -75,28 +83,38 @@
             "closed_at"
           ],
           "properties": {
-            "url": { "type": "string" },
-            "html_url": { "type": "string" },
-            "labels_url": { "type": "string" },
+            "url": { "type": "string", "format": "uri" },
+            "html_url": { "type": "string", "format": "uri" },
+            "labels_url": { "type": "string", "format": "uri" },
             "id": { "type": "integer" },
             "node_id": { "type": "string" },
-            "number": { "type": "integer" },
-            "title": { "type": "string" },
-            "description": { "type": "string" },
+            "number": {
+              "type": "integer",
+              "description": "The number of the milestone."
+            },
+            "title": {
+              "type": "string",
+              "description": "The title of the milestone."
+            },
+            "description": { "type": ["string", "null"] },
             "creator": { "$ref": "common/user.schema.json" },
             "open_issues": { "type": "integer" },
             "closed_issues": { "type": "integer" },
-            "state": { "type": "string" },
-            "created_at": { "type": "string" },
-            "updated_at": { "type": "string" },
-            "due_on": { "type": "string" },
-            "closed_at": { "type": "string" }
+            "state": {
+              "type": "string",
+              "enum": ["open", "closed"],
+              "description": "The state of the milestone."
+            },
+            "created_at": { "type": ["string", "null"], "format": "date-time" },
+            "updated_at": { "type": ["string", "null"], "format": "date-time" },
+            "due_on": { "type": ["string", "null"], "format": "date-time" },
+            "closed_at": { "type": ["string", "null"], "format": "date-time" }
           },
           "additionalProperties": false
         },
         "comments": { "type": "integer" },
-        "created_at": { "type": "string" },
-        "updated_at": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
         "closed_at": { "type": "null" },
         "author_association": {
           "$ref": "common/author_association.schema.json"
@@ -105,18 +123,20 @@
           "type": ["string", "null"],
           "enum": ["resolved", "off-topic", "too heated", "spam", null]
         },
-        "performed_via_github_app": { "type": "null" },
+        "performed_via_github_app": {
+          "oneOf": [{ "$ref": "common/app.schema.json" }, { "type": "null" }]
+        },
         "pull_request": {
           "type": "object",
           "properties": {
-            "url": { "type": "string" },
-            "html_url": { "type": "string" },
-            "diff_url": { "type": "string" },
-            "patch_url": { "type": "string" }
+            "url": { "type": "string", "format": "uri" },
+            "html_url": { "type": "string", "format": "uri" },
+            "diff_url": { "type": "string", "format": "uri" },
+            "patch_url": { "type": "string", "format": "uri" }
           },
           "additionalProperties": false
         },
-        "body": { "type": "string" }
+        "body": { "type": "string", "description": "Contents of the issue" }
       },
       "additionalProperties": false
     },
@@ -130,7 +150,7 @@
     },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
-    "installation": { "$ref": "common/installation.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
     "organization": { "$ref": "common/organization.schema.json" }
   },
   "additionalProperties": false,

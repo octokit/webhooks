@@ -1,9 +1,14 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "common/committer.schema.json",
+  "description": "Metaproperties for Git author/committer information.",
   "required": ["email", "name"],
   "type": "object",
-  "properties": { "email": { "type": "string" }, "name": { "type": "string" } },
+  "properties": {
+    "name": { "type": "string" },
+    "email": { "type": "string", "format": "email" },
+    "date": { "type": "string", "format": "date-time" }
+  },
   "additionalProperties": false,
   "title": "Committer"
 }

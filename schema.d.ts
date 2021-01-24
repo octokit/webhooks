@@ -245,14 +245,26 @@ export type WorkflowRunEvent =
 export interface CheckRunCompletedEvent {
   action: "completed";
   check_run: {
+    /**
+     * The id of the check.
+     */
     id: number;
     node_id?: string;
+    /**
+     * The SHA of the commit that is being checked.
+     */
     head_sha: string;
     external_id: string;
     url: string;
     html_url: string;
     details_url?: string;
-    status: "queued" | "in_progress" | "completed";
+    /**
+     * The phase of the lifecycle that the check is currently in.
+     */
+    status: "completed";
+    /**
+     * The final conclusion of the check. Can be one of `success`, `failure`, `neutral`, `cancelled`, `skipped`, `timed_out`, or `action_required`. When the conclusion is `action_required`, additional details should be provided on the site specified by `details_url`.
+     */
     conclusion:
       | "success"
       | "failure"
@@ -262,8 +274,14 @@ export interface CheckRunCompletedEvent {
       | "action_required"
       | "stale"
       | null;
+    /**
+     * The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
     started_at: string;
-    completed_at: string | null;
+    /**
+     * The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
+    completed_at: string;
     output: {
       title?: string | null;
       summary: string | null;
@@ -271,11 +289,17 @@ export interface CheckRunCompletedEvent {
       annotations_count: number;
       annotations_url: string;
     };
+    /**
+     * The name of the check.
+     */
     name: string;
     check_suite: {
       id: number;
       node_id?: string;
       head_branch: string | null;
+      /**
+       * The SHA of the head commit that is being checked.
+       */
       head_sha: string;
       status: "completed";
       conclusion:
@@ -330,7 +354,7 @@ export interface CheckRunCompletedEvent {
   } | null;
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface RepoRef {
@@ -338,17 +362,32 @@ export interface RepoRef {
   url: string;
   name: string;
 }
+/**
+ * GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+ */
 export interface App {
+  /**
+   * Unique identifier of the GitHub app
+   */
   id: number;
+  /**
+   * The slug name of the GitHub app
+   */
   slug?: string;
   node_id: string;
   owner: User;
+  /**
+   * The name of the GitHub app
+   */
   name: string;
   description: string | null;
   external_url: string;
   html_url: string;
   created_at: string;
   updated_at: string;
+  /**
+   * The set of permissions for the GitHub app
+   */
   permissions?: {
     administration?: "read" | "write";
     actions?: "read" | "write";
@@ -372,6 +411,9 @@ export interface App {
     team_discussions?: "read" | "write";
     vulnerability_alerts?: "read" | "write";
   };
+  /**
+   * The list of events for the GitHub app
+   */
   events?: string[];
 }
 export interface User {
@@ -394,11 +436,23 @@ export interface User {
   type: "Bot" | "User" | "Organization";
   site_admin: boolean;
 }
+/**
+ * A git repository
+ */
 export interface Repository {
+  /**
+   * Unique identifier of the repository
+   */
   id: number;
   node_id: string;
+  /**
+   * The name of the repository.
+   */
   name: string;
   full_name: string;
+  /**
+   * Whether the repository is private or public.
+   */
   private: boolean;
   owner: {
     login: string;
@@ -474,14 +528,32 @@ export interface Repository {
   stargazers_count: number;
   watchers_count: number;
   language: string | null;
+  /**
+   * Whether issues are enabled.
+   */
   has_issues: boolean;
+  /**
+   * Whether projects are enabled.
+   */
   has_projects: boolean;
+  /**
+   * Whether downloads are enabled.
+   */
   has_downloads: boolean;
+  /**
+   * Whether the wiki is enabled.
+   */
   has_wiki: boolean;
   has_pages: boolean;
   forks_count: number;
   mirror_url: string | null;
+  /**
+   * Whether the repository is archived.
+   */
   archived: boolean;
+  /**
+   * Returns whether or not this repository is disabled.
+   */
   disabled?: boolean;
   open_issues_count: number;
   license: {
@@ -495,10 +567,25 @@ export interface Repository {
   open_issues: number;
   watchers: number;
   stargazers?: number;
+  /**
+   * The default branch of the repository.
+   */
   default_branch: string;
+  /**
+   * Whether to allow squash merges for pull requests.
+   */
   allow_squash_merge?: boolean;
+  /**
+   * Whether to allow merge commits for pull requests.
+   */
   allow_merge_commit?: boolean;
+  /**
+   * Whether to allow rebase merges for pull requests.
+   */
   allow_rebase_merge?: boolean;
+  /**
+   * Whether to delete head branches when pull requests are merged
+   */
   delete_branch_on_merge?: boolean;
   master_branch?: string;
   permissions?: {
@@ -510,7 +597,13 @@ export interface Repository {
   };
   public?: boolean;
 }
-export interface Installation {
+/**
+ * Installation
+ */
+export interface InstallationLite {
+  /**
+   * The ID of the installation.
+   */
   id: number;
   node_id: string;
 }
@@ -532,17 +625,43 @@ export interface Organization {
 export interface CheckRunCreatedEvent {
   action: "created";
   check_run: {
+    /**
+     * The id of the check.
+     */
     id: number;
     node_id?: string;
+    /**
+     * The SHA of the commit that is being checked.
+     */
     head_sha: string;
     external_id: string;
     url: string;
     html_url: string;
     details_url?: string;
+    /**
+     * The phase of the lifecycle that the check is currently in.
+     */
     status: "queued" | "in_progress";
-    conclusion: null;
+    /**
+     * The final conclusion of the check. Can be one of `success`, `failure`, `neutral`, `cancelled`, `skipped`, `timed_out`, or `action_required`. When the conclusion is `action_required`, additional details should be provided on the site specified by `details_url`.
+     */
+    conclusion:
+      | "success"
+      | "failure"
+      | "neutral"
+      | "cancelled"
+      | "timed_out"
+      | "action_required"
+      | "stale"
+      | null;
+    /**
+     * The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
     started_at: string;
-    completed_at: null;
+    /**
+     * The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
+    completed_at: string | null;
     output: {
       title?: string | null;
       summary: string | null;
@@ -550,13 +669,19 @@ export interface CheckRunCreatedEvent {
       annotations_count: number;
       annotations_url: string;
     };
+    /**
+     * The name of the check.
+     */
     name: string;
     check_suite: {
       id: number;
       node_id?: string;
       head_branch: string | null;
+      /**
+       * The SHA of the head commit that is being checked.
+       */
       head_sha: string;
-      status: string;
+      status: "queued" | "in_progress";
       conclusion: null;
       url: string;
       before: string | null;
@@ -602,20 +727,32 @@ export interface CheckRunCreatedEvent {
   } | null;
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface CheckRunRequestedActionEvent {
   action: "requested_action";
   check_run: {
+    /**
+     * The id of the check.
+     */
     id: number;
     node_id?: string;
+    /**
+     * The SHA of the commit that is being checked.
+     */
     head_sha: string;
     external_id: string;
     url: string;
     html_url: string;
     details_url?: string;
+    /**
+     * The phase of the lifecycle that the check is currently in.
+     */
     status: "queued" | "in_progress" | "completed";
+    /**
+     * The final conclusion of the check. Can be one of `success`, `failure`, `neutral`, `cancelled`, `skipped`, `timed_out`, or `action_required`. When the conclusion is `action_required`, additional details should be provided on the site specified by `details_url`.
+     */
     conclusion:
       | "success"
       | "failure"
@@ -625,7 +762,13 @@ export interface CheckRunRequestedActionEvent {
       | "action_required"
       | "stale"
       | null;
+    /**
+     * The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
     started_at: string;
+    /**
+     * The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
     completed_at: string | null;
     output: {
       title?: string | null;
@@ -634,11 +777,17 @@ export interface CheckRunRequestedActionEvent {
       annotations_count: number;
       annotations_url: string;
     };
+    /**
+     * The name of the check.
+     */
     name: string;
     check_suite: {
       id: number;
       node_id?: string;
       head_branch: string | null;
+      /**
+       * The SHA of the head commit that is being checked.
+       */
       head_sha: string;
       status: "queued" | "in_progress" | "completed";
       conclusion:
@@ -691,23 +840,35 @@ export interface CheckRunRequestedActionEvent {
   };
   requested_action?: {
     identifier?: string;
-  } | null;
+  };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface CheckRunRerequestedEvent {
   action: "rerequested";
   check_run: {
+    /**
+     * The id of the check.
+     */
     id: number;
     node_id?: string;
+    /**
+     * The SHA of the commit that is being checked.
+     */
     head_sha: string;
     external_id: string;
     url: string;
     html_url: string;
     details_url?: string;
-    status: "queued" | "in_progress" | "completed";
+    /**
+     * The phase of the lifecycle that the check is currently in.
+     */
+    status: "completed";
+    /**
+     * The final conclusion of the check. Can be one of `success`, `failure`, `neutral`, `cancelled`, `skipped`, `timed_out`, or `action_required`. When the conclusion is `action_required`, additional details should be provided on the site specified by `details_url`.
+     */
     conclusion:
       | "success"
       | "failure"
@@ -717,8 +878,14 @@ export interface CheckRunRerequestedEvent {
       | "action_required"
       | "stale"
       | null;
+    /**
+     * The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
     started_at: string;
-    completed_at: string | null;
+    /**
+     * The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
+    completed_at: string;
     output: {
       title?: string | null;
       summary: string | null;
@@ -726,13 +893,19 @@ export interface CheckRunRerequestedEvent {
       annotations_count: number;
       annotations_url: string;
     };
+    /**
+     * The name of the check.
+     */
     name: string;
     check_suite: {
       id: number;
       node_id?: string;
       head_branch: string | null;
+      /**
+       * The SHA of the head commit that is being checked.
+       */
       head_sha: string;
-      status: "queued" | "in_progress" | "completed";
+      status: "completed";
       conclusion:
         | "success"
         | "failure"
@@ -740,8 +913,7 @@ export interface CheckRunRerequestedEvent {
         | "cancelled"
         | "timed_out"
         | "action_required"
-        | "stale"
-        | null;
+        | "stale";
       url: string;
       before: string | null;
       after: string | null;
@@ -786,7 +958,7 @@ export interface CheckRunRerequestedEvent {
   } | null;
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface CheckSuiteCompletedEvent {
@@ -795,6 +967,9 @@ export interface CheckSuiteCompletedEvent {
     id: number;
     node_id: string;
     head_branch: string | null;
+    /**
+     * The SHA of the head commit that is being checked.
+     */
     head_sha: string;
     status: "requested" | "in_progress" | "completed" | "queued" | null;
     conclusion:
@@ -829,23 +1004,28 @@ export interface CheckSuiteCompletedEvent {
     updated_at: string;
     latest_check_runs_count: number;
     check_runs_url: string;
-    head_commit: {
-      id: string;
-      tree_id: string;
-      message: string;
-      timestamp: string;
-      author: Committer;
-      committer: Committer;
-    };
+    head_commit: SimpleCommit;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
+export interface SimpleCommit {
+  id: string;
+  tree_id: string;
+  message: string;
+  timestamp: string;
+  author: Committer;
+  committer: Committer;
+}
+/**
+ * Metaproperties for Git author/committer information.
+ */
 export interface Committer {
-  email: string;
   name: string;
+  email: string;
+  date?: string;
 }
 export interface CheckSuiteRequestedEvent {
   action: "requested";
@@ -853,6 +1033,9 @@ export interface CheckSuiteRequestedEvent {
     id: number;
     node_id: string;
     head_branch: string | null;
+    /**
+     * The SHA of the head commit that is being checked.
+     */
     head_sha: string;
     status: "requested" | "in_progress" | "completed" | "queued" | null;
     conclusion:
@@ -887,18 +1070,11 @@ export interface CheckSuiteRequestedEvent {
     updated_at: string;
     latest_check_runs_count: number;
     check_runs_url: string;
-    head_commit: {
-      id: string;
-      tree_id: string;
-      message: string;
-      timestamp: string;
-      author: Committer;
-      committer: Committer;
-    };
+    head_commit: SimpleCommit;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface CheckSuiteRerequestedEvent {
@@ -907,6 +1083,9 @@ export interface CheckSuiteRerequestedEvent {
     id: number;
     node_id: string;
     head_branch: string | null;
+    /**
+     * The SHA of the head commit that is being checked.
+     */
     head_sha: string;
     status: "requested" | "in_progress" | "completed" | "queued" | null;
     conclusion:
@@ -941,218 +1120,499 @@ export interface CheckSuiteRerequestedEvent {
     updated_at: string;
     latest_check_runs_count: number;
     check_runs_url: string;
-    head_commit: {
-      id: string;
-      tree_id: string;
-      message: string;
-      timestamp: string;
-      author: Committer;
-      committer: Committer;
-    };
+    head_commit: SimpleCommit;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface CodeScanningAlertAppearedInBranchEvent {
   action: "appeared_in_branch";
   alert: {
+    /**
+     * The code scanning alert number.
+     */
     number: number;
+    /**
+     * The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
+     */
     created_at: string;
     url: string;
+    /**
+     * The GitHub URL of the alert resource.
+     */
     html_url: string;
     instances: {
+      /**
+       * The full Git reference, formatted as `refs/heads/<branch name>`.
+       */
       ref: string;
+      /**
+       * Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
+       */
       analysis_key: string;
+      /**
+       * Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.
+       */
       environment: string;
-      state: string;
+      /**
+       * State of a code scanning alert.
+       */
+      state: "open" | "dismissed" | "fixed";
     }[];
-    state: string;
-    dismissed_by: null;
+    /**
+     * State of a code scanning alert.
+     */
+    state: "open" | "dismissed" | "fixed";
+    dismissed_by: User | null;
+    /**
+     * The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
     dismissed_at: string | null;
-    dismissed_reason: string | null;
+    /**
+     * The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`.
+     */
+    dismissed_reason: "false positive" | "won't fix" | "used in tests" | null;
     rule: {
+      /**
+       * A unique identifier for the rule used to detect the alert.
+       */
       id: string;
-      severity: string;
+      /**
+       * The severity of the alert.
+       */
+      severity: "none" | "note" | "warning" | "error" | null;
+      /**
+       * A short description of the rule used to detect the alert.
+       */
       description: string;
     };
     tool: {
+      /**
+       * The name of the tool used to generate the code scanning analysis alert.
+       */
       name: string;
-      version: null;
+      /**
+       * The version of the tool used to detect the alert.
+       */
+      version: string | null;
     };
   };
+  /**
+   * The full Git reference, formatted as `refs/heads/<branch name>`.
+   */
   ref: string;
   commit_oid: string;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface CodeScanningAlertClosedByUserEvent {
   action: "closed_by_user";
   alert: {
+    /**
+     * The code scanning alert number.
+     */
     number: number;
+    /**
+     * The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
+     */
     created_at: string;
     url: string;
+    /**
+     * The GitHub URL of the alert resource.
+     */
     html_url: string;
     instances: {
+      /**
+       * The full Git reference, formatted as `refs/heads/<branch name>`.
+       */
       ref: string;
+      /**
+       * Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
+       */
       analysis_key: string;
+      /**
+       * Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.
+       */
       environment: string;
-      state: string;
+      /**
+       * State of a code scanning alert.
+       */
+      state: "dismissed";
     }[];
-    state: string;
-    dismissed_by: null;
-    dismissed_at: string | null;
-    dismissed_reason: string | null;
+    /**
+     * State of a code scanning alert.
+     */
+    state: "dismissed";
+    dismissed_by: User;
+    /**
+     * The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
+    dismissed_at: string;
+    /**
+     * The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`.
+     */
+    dismissed_reason: "false positive" | "won't fix" | "used in tests" | null;
     rule: {
+      /**
+       * A unique identifier for the rule used to detect the alert.
+       */
       id: string;
-      severity: string;
+      /**
+       * The severity of the alert.
+       */
+      severity: "none" | "note" | "warning" | "error" | null;
+      /**
+       * A short description of the rule used to detect the alert.
+       */
       description: string;
     };
     tool: {
+      /**
+       * The name of the tool used to generate the code scanning analysis alert.
+       */
       name: string;
-      version: null;
+      /**
+       * The version of the tool used to detect the alert.
+       */
+      version: string | null;
     };
   };
+  /**
+   * The full Git reference, formatted as `refs/heads/<branch name>`.
+   */
   ref: string;
   commit_oid: string;
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface CodeScanningAlertCreatedEvent {
   action: "created";
   alert: {
+    /**
+     * The code scanning alert number.
+     */
     number: number;
+    /**
+     * The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
+     */
     created_at: string;
     url: string;
+    /**
+     * The GitHub URL of the alert resource.
+     */
     html_url: string;
     instances: {
+      /**
+       * The full Git reference, formatted as `refs/heads/<branch name>`.
+       */
       ref: string;
+      /**
+       * Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
+       */
       analysis_key: string;
+      /**
+       * Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.
+       */
       environment: string;
-      state: string;
+      /**
+       * State of a code scanning alert.
+       */
+      state: "open" | "dismissed";
     }[];
-    state: string;
+    /**
+     * State of a code scanning alert.
+     */
+    state: "open" | "dismissed";
     dismissed_by: null;
-    dismissed_at: string | null;
-    dismissed_reason: string | null;
+    /**
+     * The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
+    dismissed_at: null;
+    /**
+     * The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`.
+     */
+    dismissed_reason: null;
     rule: {
+      /**
+       * A unique identifier for the rule used to detect the alert.
+       */
       id: string;
-      severity: string;
+      /**
+       * The severity of the alert.
+       */
+      severity: "none" | "note" | "warning" | "error" | null;
+      /**
+       * A short description of the rule used to detect the alert.
+       */
       description: string;
     };
     tool: {
+      /**
+       * The name of the tool used to generate the code scanning analysis alert.
+       */
       name: string;
-      version: null;
+      /**
+       * The version of the tool used to detect the alert.
+       */
+      version: string | null;
     };
   };
+  /**
+   * The full Git reference, formatted as `refs/heads/<branch name>`.
+   */
   ref: string;
   commit_oid: string;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface CodeScanningAlertFixedEvent {
   action: "fixed";
   alert: {
+    /**
+     * The code scanning alert number.
+     */
     number: number;
+    /**
+     * The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
+     */
     created_at: string;
     url: string;
+    /**
+     * The GitHub URL of the alert resource.
+     */
     html_url: string;
     instances: {
+      /**
+       * The full Git reference, formatted as `refs/heads/<branch name>`.
+       */
       ref: string;
+      /**
+       * Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
+       */
       analysis_key: string;
+      /**
+       * Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.
+       */
       environment: string;
-      state: string;
+      /**
+       * State of a code scanning alert.
+       */
+      state: "open" | "dismissed" | "fixed";
     }[];
-    state: string;
-    dismissed_by: null;
+    /**
+     * State of a code scanning alert.
+     */
+    state: "fixed";
+    dismissed_by: User | null;
+    /**
+     * The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
     dismissed_at: string | null;
-    dismissed_reason: string | null;
+    /**
+     * The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`.
+     */
+    dismissed_reason: "false positive" | "won't fix" | "used in tests" | null;
     rule: {
+      /**
+       * A unique identifier for the rule used to detect the alert.
+       */
       id: string;
-      severity: string;
+      /**
+       * The severity of the alert.
+       */
+      severity: "none" | "note" | "warning" | "error" | null;
+      /**
+       * A short description of the rule used to detect the alert.
+       */
       description: string;
     };
     tool: {
+      /**
+       * The name of the tool used to generate the code scanning analysis alert.
+       */
       name: string;
-      version: null;
+      /**
+       * The version of the tool used to detect the alert.
+       */
+      version: string | null;
     };
   };
+  /**
+   * The full Git reference, formatted as `refs/heads/<branch name>`.
+   */
   ref: string;
   commit_oid: string;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface CodeScanningAlertReopenedEvent {
   action: "reopened";
   alert: {
+    /**
+     * The code scanning alert number.
+     */
     number: number;
+    /**
+     * The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
+     */
     created_at: string;
     url: string;
+    /**
+     * The GitHub URL of the alert resource.
+     */
     html_url: string;
     instances: {
+      /**
+       * The full Git reference, formatted as `refs/heads/<branch name>`.
+       */
       ref: string;
+      /**
+       * Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
+       */
       analysis_key: string;
+      /**
+       * Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.
+       */
       environment: string;
-      state: string;
+      /**
+       * State of a code scanning alert.
+       */
+      state: "open";
     }[];
-    state: string;
+    /**
+     * State of a code scanning alert.
+     */
+    state: "open" | "dismissed" | "fixed";
     dismissed_by: null;
-    dismissed_at: string | null;
-    dismissed_reason: string | null;
+    /**
+     * The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
+    dismissed_at: null;
+    /**
+     * The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`.
+     */
+    dismissed_reason: null;
     rule: {
+      /**
+       * A unique identifier for the rule used to detect the alert.
+       */
       id: string;
-      severity: string;
+      /**
+       * The severity of the alert.
+       */
+      severity: "none" | "note" | "warning" | "error" | null;
+      /**
+       * A short description of the rule used to detect the alert.
+       */
       description: string;
     };
     tool: {
+      /**
+       * The name of the tool used to generate the code scanning analysis alert.
+       */
       name: string;
-      version: null;
+      /**
+       * The version of the tool used to detect the alert.
+       */
+      version: string | null;
     };
   };
+  /**
+   * The full Git reference, formatted as `refs/heads/<branch name>`.
+   */
   ref: string;
   commit_oid: string;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface CodeScanningAlertReopenedByUserEvent {
   action: "reopened_by_user";
   alert: {
+    /**
+     * The code scanning alert number.
+     */
     number: number;
+    /**
+     * The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
+     */
     created_at: string;
     url: string;
+    /**
+     * The GitHub URL of the alert resource.
+     */
     html_url: string;
     instances: {
+      /**
+       * The full Git reference, formatted as `refs/heads/<branch name>`.
+       */
       ref: string;
+      /**
+       * Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
+       */
       analysis_key: string;
+      /**
+       * Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.
+       */
       environment: string;
-      state: string;
+      /**
+       * State of a code scanning alert.
+       */
+      state: "open";
     }[];
-    state: string;
+    /**
+     * State of a code scanning alert.
+     */
+    state: "open";
     dismissed_by: null;
-    dismissed_at: string | null;
-    dismissed_reason: string | null;
+    /**
+     * The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
+    dismissed_at: null;
+    /**
+     * The reason for dismissing or closing the alert. Can be one of: `false positive`, `won't fix`, and `used in tests`.
+     */
+    dismissed_reason: null;
     rule: {
+      /**
+       * A unique identifier for the rule used to detect the alert.
+       */
       id: string;
-      severity: string;
+      /**
+       * The severity of the alert.
+       */
+      severity: "none" | "note" | "warning" | "error" | null;
+      /**
+       * A short description of the rule used to detect the alert.
+       */
       description: string;
     };
     tool: {
+      /**
+       * The name of the tool used to generate the code scanning analysis alert.
+       */
       name: string;
-      version: null;
+      /**
+       * The version of the tool used to detect the alert.
+       */
+      version: string | null;
     };
   };
+  /**
+   * The full Git reference, formatted as `refs/heads/<branch name>`.
+   */
   ref: string;
   commit_oid: string;
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface CommitCommentCreatedEvent {
@@ -1174,7 +1634,7 @@ export interface CommitCommentCreatedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ContentReferenceCreatedEvent {
@@ -1186,7 +1646,7 @@ export interface ContentReferenceCreatedEvent {
   };
   repository: Repository;
   sender: User;
-  installation: Installation;
+  installation: InstallationLite;
   organization?: Organization;
 }
 export interface CreateEvent {
@@ -1197,7 +1657,7 @@ export interface CreateEvent {
   pusher_type: string;
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface DeleteEvent {
@@ -1206,7 +1666,7 @@ export interface DeleteEvent {
   pusher_type: string;
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface DeployKeyCreatedEvent {
@@ -1222,7 +1682,7 @@ export interface DeployKeyCreatedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface DeployKeyDeletedEvent {
@@ -1238,7 +1698,7 @@ export interface DeployKeyDeletedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface DeploymentCreatedEvent {
@@ -1259,11 +1719,11 @@ export interface DeploymentCreatedEvent {
     updated_at: string;
     statuses_url: string;
     repository_url: string;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface DeploymentStatusCreatedEvent {
@@ -1281,7 +1741,7 @@ export interface DeploymentStatusCreatedEvent {
     updated_at: string;
     deployment_url: string;
     repository_url: string;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
   };
   deployment: {
     url: string;
@@ -1302,7 +1762,7 @@ export interface DeploymentStatusCreatedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ForkEvent {
@@ -1405,7 +1865,7 @@ export interface ForkEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface GithubAppAuthorizationRevokedEvent {
@@ -1423,96 +1883,96 @@ export interface GollumEvent {
   }[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface InstallationCreatedEvent {
   action: "created";
-  installation: {
-    id: number;
-    account: User;
-    repository_selection: "all" | "selected";
-    access_tokens_url: string;
-    repositories_url: string;
-    html_url: string;
-    app_id: number;
-    app_slug?: string;
-    target_id: number;
-    target_type: "User" | "Organization";
-    permissions: {
-      administration?: string;
-      checks?: "read" | "write";
-      contents?: "read" | "write";
-      deployments?: "read" | "write";
-      issues?: "read" | "write";
-      pages?: "read" | "write";
-      pull_requests?: "read" | "write";
-      repository_hooks?: "read" | "write";
-      repository_projects?: "read" | "write";
-      statuses?: "read" | "write";
-      metadata?: "read" | "write";
-      vulnerability_alerts?: "read" | "write";
-    };
-    events: string[];
-    created_at: number;
-    updated_at: number;
-    single_file_name: string | null;
-    has_multiple_single_files?: boolean;
-    single_file_paths?: string[];
-    suspended_by?: string | null;
-    suspended_at?: string | null;
-  };
+  installation: Installation;
   repositories?: {
+    /**
+     * Unique identifier of the repository
+     */
     id: number;
     node_id: string;
+    /**
+     * The name of the repository.
+     */
     name: string;
     full_name: string;
+    /**
+     * Whether the repository is private or public.
+     */
     private: boolean;
   }[];
   requester?: null;
   sender: User;
 }
+/**
+ * Installation
+ */
+export interface Installation {
+  /**
+   * The ID of the installation.
+   */
+  id: number;
+  account: User;
+  /**
+   * Describe whether all repositories have been selected or there's a selection involved
+   */
+  repository_selection: "all" | "selected";
+  access_tokens_url: string;
+  repositories_url: string;
+  html_url: string;
+  app_id: number;
+  app_slug?: string;
+  /**
+   * The ID of the user or organization this token is being scoped to.
+   */
+  target_id: number;
+  target_type: "User" | "Organization";
+  permissions: {
+    actions?: "read" | "write";
+    administration?: "read" | "write";
+    checks?: "read" | "write";
+    contents?: "read" | "write";
+    deployments?: "read" | "write";
+    issues?: "read" | "write";
+    organization_administration?: "read" | "write";
+    pages?: "read" | "write";
+    pull_requests?: "read" | "write";
+    repository_hooks?: "read" | "write";
+    repository_projects?: "read" | "write";
+    statuses?: "read" | "write";
+    metadata?: "read" | "write";
+    vulnerability_alerts?: "read" | "write";
+  };
+  events: string[];
+  created_at: string | number;
+  updated_at: string | number;
+  single_file_name: string | null;
+  has_multiple_single_files?: boolean;
+  single_file_paths?: string[];
+  suspended_by?: string | null;
+  suspended_at?: string | null;
+}
 export interface InstallationDeletedEvent {
   action: "deleted";
-  installation: {
-    id: number;
-    account: User;
-    repository_selection: "all" | "selected";
-    access_tokens_url: string;
-    repositories_url: string;
-    html_url: string;
-    app_id: number;
-    app_slug?: string;
-    target_id: number;
-    target_type: "User" | "Organization";
-    permissions: {
-      administration?: string;
-      checks?: "read" | "write";
-      contents?: "read" | "write";
-      deployments?: "read" | "write";
-      issues?: "read" | "write";
-      pages?: "read" | "write";
-      pull_requests?: "read" | "write";
-      repository_hooks?: "read" | "write";
-      repository_projects?: "read" | "write";
-      statuses?: "read" | "write";
-      metadata?: "read" | "write";
-      vulnerability_alerts?: "read" | "write";
-    };
-    events: string[];
-    created_at: number;
-    updated_at: number;
-    single_file_name: string | null;
-    has_multiple_single_files?: boolean;
-    single_file_paths?: string[];
-    suspended_by?: string | null;
-    suspended_at?: string | null;
-  };
+  installation: Installation;
   repositories?: {
+    /**
+     * Unique identifier of the repository
+     */
     id: number;
     node_id: string;
+    /**
+     * The name of the repository.
+     */
     name: string;
     full_name: string;
+    /**
+     * Whether the repository is private or public.
+     */
     private: boolean;
   }[];
   requester?: null;
@@ -1520,45 +1980,21 @@ export interface InstallationDeletedEvent {
 }
 export interface InstallationNewPermissionsAcceptedEvent {
   action: "new_permissions_accepted";
-  installation: {
-    id: number;
-    account: User;
-    repository_selection: "all" | "selected";
-    access_tokens_url: string;
-    repositories_url: string;
-    html_url: string;
-    app_id: number;
-    app_slug?: string;
-    target_id: number;
-    target_type: "User" | "Organization";
-    permissions: {
-      administration?: string;
-      checks?: "read" | "write";
-      contents?: "read" | "write";
-      deployments?: "read" | "write";
-      issues?: "read" | "write";
-      pages?: "read" | "write";
-      pull_requests?: "read" | "write";
-      repository_hooks?: "read" | "write";
-      repository_projects?: "read" | "write";
-      statuses?: "read" | "write";
-      metadata?: "read" | "write";
-      vulnerability_alerts?: "read" | "write";
-    };
-    events: string[];
-    created_at: number;
-    updated_at: number;
-    single_file_name: string | null;
-    has_multiple_single_files?: boolean;
-    single_file_paths?: string[];
-    suspended_by?: string | null;
-    suspended_at?: string | null;
-  };
+  installation: Installation;
   repositories?: {
+    /**
+     * Unique identifier of the repository
+     */
     id: number;
     node_id: string;
+    /**
+     * The name of the repository.
+     */
     name: string;
     full_name: string;
+    /**
+     * Whether the repository is private or public.
+     */
     private: boolean;
   }[];
   requester?: null;
@@ -1566,45 +2002,21 @@ export interface InstallationNewPermissionsAcceptedEvent {
 }
 export interface InstallationSuspendedEvent {
   action: "suspend";
-  installation: {
-    id: number;
-    account: User;
-    repository_selection: "all" | "selected";
-    access_tokens_url: string;
-    repositories_url: string;
-    html_url: string;
-    app_id: number;
-    app_slug?: string;
-    target_id: number;
-    target_type: "User" | "Organization";
-    permissions: {
-      administration?: string;
-      checks?: "read" | "write";
-      contents?: "read" | "write";
-      deployments?: "read" | "write";
-      issues?: "read" | "write";
-      pages?: "read" | "write";
-      pull_requests?: "read" | "write";
-      repository_hooks?: "read" | "write";
-      repository_projects?: "read" | "write";
-      statuses?: "read" | "write";
-      metadata?: "read" | "write";
-      vulnerability_alerts?: "read" | "write";
-    };
-    events: string[];
-    created_at: number;
-    updated_at: number;
-    single_file_name: string | null;
-    has_multiple_single_files?: boolean;
-    single_file_paths?: string[];
-    suspended_by?: string;
-    suspended_at?: string;
-  };
+  installation: Installation;
   repositories?: {
+    /**
+     * Unique identifier of the repository
+     */
     id: number;
     node_id: string;
+    /**
+     * The name of the repository.
+     */
     name: string;
     full_name: string;
+    /**
+     * Whether the repository is private or public.
+     */
     private: boolean;
   }[];
   requester?: null;
@@ -1612,45 +2024,21 @@ export interface InstallationSuspendedEvent {
 }
 export interface InstallationUnsuspendedEvent {
   action: "unsuspend";
-  installation: {
-    id: number;
-    account: User;
-    repository_selection: "all" | "selected";
-    access_tokens_url: string;
-    repositories_url: string;
-    html_url: string;
-    app_id: number;
-    app_slug?: string;
-    target_id: number;
-    target_type: "User" | "Organization";
-    permissions: {
-      administration?: string;
-      checks?: "read" | "write";
-      contents?: "read" | "write";
-      deployments?: "read" | "write";
-      issues?: "read" | "write";
-      pages?: "read" | "write";
-      pull_requests?: "read" | "write";
-      repository_hooks?: "read" | "write";
-      repository_projects?: "read" | "write";
-      statuses?: "read" | "write";
-      metadata?: "read" | "write";
-      vulnerability_alerts?: "read" | "write";
-    };
-    events: string[];
-    created_at: number;
-    updated_at: number;
-    single_file_name: string | null;
-    has_multiple_single_files?: boolean;
-    single_file_paths?: string[];
-    suspended_by?: null;
-    suspended_at?: null;
-  };
+  installation: Installation;
   repositories?: {
+    /**
+     * Unique identifier of the repository
+     */
     id: number;
     node_id: string;
+    /**
+     * The name of the repository.
+     */
     name: string;
     full_name: string;
+    /**
+     * Whether the repository is private or public.
+     */
     private: boolean;
   }[];
   requester?: null;
@@ -1658,41 +2046,25 @@ export interface InstallationUnsuspendedEvent {
 }
 export interface InstallationRepositoriesAddedEvent {
   action: "added";
-  installation: {
-    id: number;
-    account: User;
-    repository_selection: "all" | "selected";
-    access_tokens_url: string;
-    repositories_url: string;
-    html_url: string;
-    app_id: number;
-    target_id: number;
-    target_type: string;
-    permissions: {
-      administration?: "read" | "write";
-      statuses?: "read" | "write";
-      repository_projects?: "read" | "write";
-      repository_hooks?: "read" | "write";
-      pull_requests?: "read" | "write";
-      pages?: "read" | "write";
-      issues?: "read" | "write";
-      deployments?: "read" | "write";
-      contents?: "read" | "write";
-      checks?: "read" | "write";
-      metadata?: "read" | "write";
-      vulnerability_alerts?: "read" | "write";
-    };
-    events: string[];
-    created_at: number;
-    updated_at: number;
-    single_file_name: string | null;
-  };
+  installation: Installation;
+  /**
+   * Describe whether all repositories have been selected or there's a selection involved
+   */
   repository_selection: "all" | "selected";
   repositories_added: {
+    /**
+     * Unique identifier of the repository
+     */
     id: number;
     node_id: string;
+    /**
+     * The name of the repository.
+     */
     name: string;
     full_name: string;
+    /**
+     * Whether the repository is private or public.
+     */
     private: boolean;
   }[];
   repositories_removed: [];
@@ -1700,42 +2072,26 @@ export interface InstallationRepositoriesAddedEvent {
 }
 export interface InstallationRepositoriesRemovedEvent {
   action: "removed";
-  installation: {
-    id: number;
-    account: User;
-    repository_selection: "all" | "selected";
-    access_tokens_url: string;
-    repositories_url: string;
-    html_url: string;
-    app_id: number;
-    target_id: number;
-    target_type: string;
-    permissions: {
-      administration?: "read" | "write";
-      statuses?: "read" | "write";
-      repository_projects?: "read" | "write";
-      repository_hooks?: "read" | "write";
-      pull_requests?: "read" | "write";
-      pages?: "read" | "write";
-      issues?: "read" | "write";
-      deployments?: "read" | "write";
-      contents?: "read" | "write";
-      checks?: "read" | "write";
-      metadata?: "read" | "write";
-      vulnerability_alerts?: "read" | "write";
-    };
-    events: string[];
-    created_at: number;
-    updated_at: number;
-    single_file_name: string | null;
-  };
-  repository_selection: string;
+  installation: Installation;
+  /**
+   * Describe whether all repositories have been selected or there's a selection involved
+   */
+  repository_selection: "all" | "selected";
   repositories_added: [];
   repositories_removed: {
+    /**
+     * Unique identifier of the repository
+     */
     id: number;
     node_id: string;
+    /**
+     * The name of the repository.
+     */
     name: string;
     full_name: string;
+    /**
+     * Whether the repository is private or public.
+     */
     private: boolean;
   }[];
   sender: User;
@@ -1743,6 +2099,9 @@ export interface InstallationRepositoriesRemovedEvent {
 export interface IssueCommentCreatedEvent {
   action: "created";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -1752,9 +2111,15 @@ export interface IssueCommentCreatedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state: "open" | "closed";
     locked: boolean;
     assignee: User | null;
@@ -1789,38 +2154,65 @@ export interface IssueCommentCreatedEvent {
       diff_url: string;
       patch_url: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
   };
   comment: {
+    /**
+     * URL for the issue comment
+     */
     url: string;
     html_url: string;
     issue_url: string;
+    /**
+     * Unique identifier of the issue comment
+     */
     id: number;
     node_id: string;
     user: User;
     created_at: string;
     updated_at: string;
     author_association: AuthorAssociation;
+    /**
+     * Contents of the issue comment
+     */
     body: string;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
+/**
+ * Color-coded labels help you categorize and filter your issues (just like labels in Gmail).
+ */
 export interface Label {
   id: number;
   node_id: string;
+  /**
+   * URL for the label
+   */
   url: string;
+  /**
+   * The name of the label.
+   */
   name: string;
   description: string | null;
+  /**
+   * 6-character hex code, without the leading #, identifying the color
+   */
   color: string;
   default: boolean;
 }
 export interface IssueCommentDeletedEvent {
   action: "deleted";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -1830,9 +2222,15 @@ export interface IssueCommentDeletedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state: "open" | "closed";
     locked: boolean;
     assignee: User | null;
@@ -1867,24 +2265,36 @@ export interface IssueCommentDeletedEvent {
       diff_url: string;
       patch_url: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
   };
   comment: {
+    /**
+     * URL for the issue comment
+     */
     url: string;
     html_url: string;
     issue_url: string;
+    /**
+     * Unique identifier of the issue comment
+     */
     id: number;
     node_id: string;
     user: User;
     created_at: string;
     updated_at: string;
     author_association: AuthorAssociation;
+    /**
+     * Contents of the issue comment
+     */
     body: string;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssueCommentEditedEvent {
@@ -1895,6 +2305,9 @@ export interface IssueCommentEditedEvent {
     };
   };
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -1904,9 +2317,15 @@ export interface IssueCommentEditedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state: "open" | "closed";
     locked: boolean;
     assignee: User | null;
@@ -1941,29 +2360,44 @@ export interface IssueCommentEditedEvent {
       diff_url: string;
       patch_url: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
   };
   comment: {
+    /**
+     * URL for the issue comment
+     */
     url: string;
     html_url: string;
     issue_url: string;
+    /**
+     * Unique identifier of the issue comment
+     */
     id: number;
     node_id: string;
     user: User;
     created_at: string;
     updated_at: string;
     author_association: AuthorAssociation;
+    /**
+     * Contents of the issue comment
+     */
     body: string;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesAssignedEvent {
   action: "assigned";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -1973,9 +2407,15 @@ export interface IssuesAssignedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -1986,17 +2426,26 @@ export interface IssuesAssignedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2004,13 +2453,16 @@ export interface IssuesAssignedEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2018,12 +2470,15 @@ export interface IssuesAssignedEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesClosedEvent {
   action: "closed";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2033,9 +2488,15 @@ export interface IssuesClosedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2046,17 +2507,26 @@ export interface IssuesClosedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2064,13 +2534,16 @@ export interface IssuesClosedEvent {
     closed_at: string;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2078,12 +2551,15 @@ export interface IssuesClosedEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesDeletedEvent {
   action: "deleted";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2093,9 +2569,15 @@ export interface IssuesDeletedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2106,17 +2588,26 @@ export interface IssuesDeletedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2124,13 +2615,16 @@ export interface IssuesDeletedEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2138,12 +2632,15 @@ export interface IssuesDeletedEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesDemilestonedEvent {
   action: "demilestoned";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2153,9 +2650,15 @@ export interface IssuesDemilestonedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2166,17 +2669,26 @@ export interface IssuesDemilestonedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2184,13 +2696,16 @@ export interface IssuesDemilestonedEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2198,12 +2713,15 @@ export interface IssuesDemilestonedEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesEditedEvent {
   action: "edited";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2213,9 +2731,15 @@ export interface IssuesEditedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2226,17 +2750,26 @@ export interface IssuesEditedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2244,13 +2777,16 @@ export interface IssuesEditedEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2266,12 +2802,15 @@ export interface IssuesEditedEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesLabeledEvent {
   action: "labeled";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2281,9 +2820,15 @@ export interface IssuesLabeledEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2294,17 +2839,26 @@ export interface IssuesLabeledEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2312,13 +2866,16 @@ export interface IssuesLabeledEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2326,12 +2883,15 @@ export interface IssuesLabeledEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesLockedEvent {
   action: "locked";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2341,9 +2901,15 @@ export interface IssuesLockedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open" | "closed";
     locked?: true;
     assignee?: User | null;
@@ -2354,17 +2920,26 @@ export interface IssuesLockedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2372,13 +2947,16 @@ export interface IssuesLockedEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam";
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2386,12 +2964,15 @@ export interface IssuesLockedEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesMilestonedEvent {
   action: "milestoned";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2401,9 +2982,15 @@ export interface IssuesMilestonedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2414,17 +3001,26 @@ export interface IssuesMilestonedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2432,13 +3028,16 @@ export interface IssuesMilestonedEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2446,12 +3045,15 @@ export interface IssuesMilestonedEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesOpenedEvent {
   action: "opened";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2461,9 +3063,15 @@ export interface IssuesOpenedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open";
     locked?: boolean;
     assignee?: User | null;
@@ -2474,17 +3082,26 @@ export interface IssuesOpenedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2492,13 +3109,16 @@ export interface IssuesOpenedEvent {
     closed_at: null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2506,12 +3126,15 @@ export interface IssuesOpenedEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesPinnedEvent {
   action: "pinned";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2521,9 +3144,15 @@ export interface IssuesPinnedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2534,17 +3163,26 @@ export interface IssuesPinnedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2552,13 +3190,16 @@ export interface IssuesPinnedEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2566,12 +3207,15 @@ export interface IssuesPinnedEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesReopenedEvent {
   action: "reopened";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2581,9 +3225,15 @@ export interface IssuesReopenedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open";
     locked?: boolean;
     assignee?: User | null;
@@ -2594,17 +3244,26 @@ export interface IssuesReopenedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2612,13 +3271,16 @@ export interface IssuesReopenedEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2626,12 +3288,15 @@ export interface IssuesReopenedEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesTransferredEvent {
   action: "transferred";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2641,9 +3306,15 @@ export interface IssuesTransferredEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2654,17 +3325,26 @@ export interface IssuesTransferredEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2672,13 +3352,16 @@ export interface IssuesTransferredEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2686,12 +3369,15 @@ export interface IssuesTransferredEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesUnassignedEvent {
   action: "unassigned";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2701,9 +3387,15 @@ export interface IssuesUnassignedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2714,17 +3406,26 @@ export interface IssuesUnassignedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2732,13 +3433,16 @@ export interface IssuesUnassignedEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2746,12 +3450,15 @@ export interface IssuesUnassignedEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesUnlabeledEvent {
   action: "unlabeled";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2761,9 +3468,15 @@ export interface IssuesUnlabeledEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2774,17 +3487,26 @@ export interface IssuesUnlabeledEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2792,13 +3514,16 @@ export interface IssuesUnlabeledEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2806,12 +3531,15 @@ export interface IssuesUnlabeledEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesUnlockedEvent {
   action: "unlocked";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2821,9 +3549,15 @@ export interface IssuesUnlockedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open" | "closed";
     locked?: false;
     assignee?: User | null;
@@ -2834,17 +3568,26 @@ export interface IssuesUnlockedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2852,13 +3595,16 @@ export interface IssuesUnlockedEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2866,12 +3612,15 @@ export interface IssuesUnlockedEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesUnpinnedEvent {
   action: "unpinned";
   issue: {
+    /**
+     * URL for the issue
+     */
     url: string;
     repository_url: string;
     labels_url: string;
@@ -2881,9 +3630,15 @@ export interface IssuesUnpinnedEvent {
     id: number;
     node_id: string;
     number: number;
+    /**
+     * Title of the issue
+     */
     title: string;
     user: User;
     labels?: Label[];
+    /**
+     * State of the issue; either 'open' or 'closed'
+     */
     state?: "open" | "closed";
     locked?: boolean;
     assignee?: User | null;
@@ -2894,17 +3649,26 @@ export interface IssuesUnpinnedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
+      closed_at: string | null;
     } | null;
     comments: number;
     created_at: string;
@@ -2912,13 +3676,16 @@ export interface IssuesUnpinnedEvent {
     closed_at: string | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: null;
+    performed_via_github_app?: App | null;
     pull_request?: {
       url?: string;
       html_url?: string;
       diff_url?: string;
       patch_url?: string;
     };
+    /**
+     * Contents of the issue
+     */
     body: string;
   };
   label?: Label;
@@ -2926,7 +3693,7 @@ export interface IssuesUnpinnedEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface LabelCreatedEvent {
@@ -2934,7 +3701,7 @@ export interface LabelCreatedEvent {
   label: Label;
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface LabelDeletedEvent {
@@ -2942,7 +3709,7 @@ export interface LabelDeletedEvent {
   label: Label;
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface LabelEditedEvent {
@@ -2958,7 +3725,7 @@ export interface LabelEditedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface MarketplacePurchaseCancelledEvent {
@@ -3325,7 +4092,7 @@ export interface MemberAddedEvent {
   action: "added";
   member: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   sender: User;
 }
 export interface MemberEditedEvent {
@@ -3337,14 +4104,14 @@ export interface MemberEditedEvent {
     };
   };
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   sender: User;
 }
 export interface MemberRemovedEvent {
   action: "removed";
   member: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   sender: User;
 }
 export interface MembershipAddedEvent {
@@ -3354,33 +4121,66 @@ export interface MembershipAddedEvent {
   sender: User;
   team: Team;
   organization: Organization;
-  installation?: Installation;
+  installation?: InstallationLite;
 }
+/**
+ * Groups of organization members that gives permissions on specified repositories.
+ */
 export interface Team {
+  /**
+   * Name of the team
+   */
   name: string;
+  /**
+   * Unique identifier of the team
+   */
   id: number;
   node_id: string;
   slug: string;
+  /**
+   * Description of the team
+   */
   description: string | null;
   privacy: "open" | "closed" | "secret";
+  /**
+   * URL for the team
+   */
   url: string;
   html_url: string;
   members_url: string;
   repositories_url: string;
+  /**
+   * Permission that the team will have for its repositories
+   */
   permission: string;
   parent?: {
+    /**
+     * Name of the team
+     */
     name: string;
+    /**
+     * Unique identifier of the team
+     */
     id: number;
     node_id: string;
     slug: string;
-    description: string;
-    privacy: string;
+    /**
+     * Description of the team
+     */
+    description: string | null;
+    privacy: "open" | "closed" | "secret";
+    /**
+     * URL for the team
+     */
     url: string;
     html_url: string;
     members_url: string;
     repositories_url: string;
+    /**
+     * Permission that the team will have for its repositories
+     */
     permission: string;
-  };
+  } | null;
 }
 export interface MembershipRemovedEvent {
   action: "removed";
@@ -3389,7 +4189,7 @@ export interface MembershipRemovedEvent {
   sender: User;
   team: Team;
   organization: Organization;
-  installation?: Installation;
+  installation?: InstallationLite;
 }
 export interface MetaDeletedEvent {
   action: "deleted";
@@ -3413,27 +4213,39 @@ export interface MetaDeletedEvent {
 }
 export interface MilestoneClosedEvent {
   action: "closed";
+  /**
+   * A collection of related issues and pull requests.
+   */
   milestone: {
     url: string;
     html_url: string;
     labels_url: string;
     id: number;
     node_id: string;
+    /**
+     * The number of the milestone.
+     */
     number: number;
+    /**
+     * The title of the milestone.
+     */
     title: string;
-    description: string;
+    description: string | null;
     creator: User;
     open_issues: number;
     closed_issues: number;
-    state: string;
-    created_at: string;
-    updated_at: string;
-    due_on: string;
+    /**
+     * The state of the milestone.
+     */
+    state: "closed";
+    created_at: string | null;
+    updated_at: string | null;
+    due_on: string | null;
     closed_at: string | null;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface MilestoneCreatedEvent {
@@ -3444,21 +4256,30 @@ export interface MilestoneCreatedEvent {
     labels_url: string;
     id: number;
     node_id: string;
+    /**
+     * The number of the milestone.
+     */
     number: number;
+    /**
+     * The title of the milestone.
+     */
     title: string;
-    description: string;
+    description: string | null;
     creator: User;
     open_issues: number;
     closed_issues: number;
-    state: string;
-    created_at: string;
-    updated_at: string;
-    due_on: string;
+    /**
+     * The state of the milestone.
+     */
+    state: "open";
+    created_at: string | null;
+    updated_at: string | null;
+    due_on: string | null;
     closed_at: string | null;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface MilestoneDeletedEvent {
@@ -3469,21 +4290,30 @@ export interface MilestoneDeletedEvent {
     labels_url: string;
     id: number;
     node_id: string;
+    /**
+     * The number of the milestone.
+     */
     number: number;
+    /**
+     * The title of the milestone.
+     */
     title: string;
-    description: string;
+    description: string | null;
     creator: User;
     open_issues: number;
     closed_issues: number;
-    state: string;
-    created_at: string;
-    updated_at: string;
-    due_on: string;
+    /**
+     * The state of the milestone.
+     */
+    state: "open" | "closed";
+    created_at: string | null;
+    updated_at: string | null;
+    due_on: string | null;
     closed_at: string | null;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface MilestoneEditedEvent {
@@ -3505,21 +4335,30 @@ export interface MilestoneEditedEvent {
     labels_url: string;
     id: number;
     node_id: string;
+    /**
+     * The number of the milestone.
+     */
     number: number;
+    /**
+     * The title of the milestone.
+     */
     title: string;
-    description: string;
+    description: string | null;
     creator: User;
     open_issues: number;
     closed_issues: number;
-    state: string;
-    created_at: string;
-    updated_at: string;
-    due_on: string;
+    /**
+     * The state of the milestone.
+     */
+    state: "open" | "closed";
+    created_at: string | null;
+    updated_at: string | null;
+    due_on: string | null;
     closed_at: string | null;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface MilestoneOpenedEvent {
@@ -3530,35 +4369,44 @@ export interface MilestoneOpenedEvent {
     labels_url: string;
     id: number;
     node_id: string;
+    /**
+     * The number of the milestone.
+     */
     number: number;
+    /**
+     * The title of the milestone.
+     */
     title: string;
-    description: string;
+    description: string | null;
     creator: User;
     open_issues: number;
     closed_issues: number;
-    state: string;
-    created_at: string;
-    updated_at: string;
-    due_on: string;
+    /**
+     * The state of the milestone.
+     */
+    state: "open";
+    created_at: string | null;
+    updated_at: string | null;
+    due_on: string | null;
     closed_at: string | null;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface OrgBlockBlockedEvent {
   action: "blocked";
   blocked_user: User;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization: Organization;
 }
 export interface OrgBlockUnblockedEvent {
   action: "unblocked";
   blocked_user: User;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization: Organization;
 }
 export interface OrganizationDeletedEvent {
@@ -3571,7 +4419,7 @@ export interface OrganizationDeletedEvent {
     user: User;
   };
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization: Organization;
 }
 export interface OrganizationMemberAddedEvent {
@@ -3584,14 +4432,14 @@ export interface OrganizationMemberAddedEvent {
     user: User;
   };
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization: Organization;
 }
 export interface OrganizationMemberInvitedEvent {
   action: "member_invited";
   invitation: {};
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization: Organization;
 }
 export interface OrganizationMemberRemovedEvent {
@@ -3604,7 +4452,7 @@ export interface OrganizationMemberRemovedEvent {
     user: User;
   };
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization: Organization;
 }
 export interface OrganizationRenamedEvent {
@@ -3617,7 +4465,7 @@ export interface OrganizationRenamedEvent {
     user: User;
   };
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization: Organization;
 }
 export interface PackagePublishedEvent {
@@ -3754,13 +4602,16 @@ export interface PackageUpdatedEvent {
   sender: User;
   organization?: Organization;
 }
+/**
+ * Page Build
+ */
 export interface PageBuildEvent {
   id: number;
   build: {
     url: string;
     status: string;
     error: {
-      message: null;
+      message: string | null;
     };
     pusher: User;
     commit: string;
@@ -3770,7 +4621,7 @@ export interface PageBuildEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface PingEvent {
@@ -3812,17 +4663,26 @@ export interface ProjectClosedEvent {
     columns_url: string;
     id: number;
     node_id: string;
+    /**
+     * Name of the project
+     */
     name: string;
-    body: string;
+    /**
+     * Body of the project
+     */
+    body: string | null;
     number: number;
-    state: string;
+    /**
+     * State of the project; either 'open' or 'closed'
+     */
+    state: "open" | "closed";
     creator: User;
     created_at: string;
     updated_at: string;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ProjectCreatedEvent {
@@ -3834,17 +4694,26 @@ export interface ProjectCreatedEvent {
     columns_url: string;
     id: number;
     node_id: string;
+    /**
+     * Name of the project
+     */
     name: string;
-    body: string;
+    /**
+     * Body of the project
+     */
+    body: string | null;
     number: number;
-    state: string;
+    /**
+     * State of the project; either 'open' or 'closed'
+     */
+    state: "open" | "closed";
     creator: User;
     created_at: string;
     updated_at: string;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ProjectDeletedEvent {
@@ -3856,17 +4725,26 @@ export interface ProjectDeletedEvent {
     columns_url: string;
     id: number;
     node_id: string;
+    /**
+     * Name of the project
+     */
     name: string;
-    body: string;
+    /**
+     * Body of the project
+     */
+    body: string | null;
     number: number;
-    state: string;
+    /**
+     * State of the project; either 'open' or 'closed'
+     */
+    state: "open" | "closed";
     creator: User;
     created_at: string;
     updated_at: string;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ProjectEditedEvent {
@@ -3886,17 +4764,26 @@ export interface ProjectEditedEvent {
     columns_url: string;
     id: number;
     node_id: string;
+    /**
+     * Name of the project
+     */
     name: string;
-    body: string;
+    /**
+     * Body of the project
+     */
+    body: string | null;
     number: number;
-    state: string;
+    /**
+     * State of the project; either 'open' or 'closed'
+     */
+    state: "open" | "closed";
     creator: User;
     created_at: string;
     updated_at: string;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ProjectReopenedEvent {
@@ -3908,17 +4795,26 @@ export interface ProjectReopenedEvent {
     columns_url: string;
     id: number;
     node_id: string;
+    /**
+     * Name of the project
+     */
     name: string;
-    body: string;
+    /**
+     * Body of the project
+     */
+    body: string | null;
     number: number;
-    state: string;
+    /**
+     * State of the project; either 'open' or 'closed'
+     */
+    state: "open" | "closed";
     creator: User;
     created_at: string;
     updated_at: string;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ProjectCardConvertedEvent {
@@ -3928,9 +4824,15 @@ export interface ProjectCardConvertedEvent {
     project_url: string;
     column_url: string;
     column_id: number;
+    /**
+     * The project card's ID
+     */
     id: number;
     node_id: string;
     note: string;
+    /**
+     * Whether or not the card is archived
+     */
     archived: boolean;
     creator: User;
     created_at: string;
@@ -3940,7 +4842,7 @@ export interface ProjectCardConvertedEvent {
   repository: Repository;
   sender: User;
   organization?: Organization;
-  installation?: Installation;
+  installation?: InstallationLite;
 }
 export interface ProjectCardCreatedEvent {
   action: "created";
@@ -3949,9 +4851,15 @@ export interface ProjectCardCreatedEvent {
     project_url: string;
     column_url: string;
     column_id: number;
+    /**
+     * The project card's ID
+     */
     id: number;
     node_id: string;
     note: string;
+    /**
+     * Whether or not the card is archived
+     */
     archived: boolean;
     creator: User;
     created_at: string;
@@ -3961,7 +4869,7 @@ export interface ProjectCardCreatedEvent {
   repository: Repository;
   sender: User;
   organization?: Organization;
-  installation?: Installation;
+  installation?: InstallationLite;
 }
 export interface ProjectCardDeletedEvent {
   action: "deleted";
@@ -3970,9 +4878,15 @@ export interface ProjectCardDeletedEvent {
     project_url: string;
     column_url: string;
     column_id: number;
+    /**
+     * The project card's ID
+     */
     id: number;
     node_id: string;
     note: string;
+    /**
+     * Whether or not the card is archived
+     */
     archived: boolean;
     creator: User;
     created_at: string;
@@ -3982,7 +4896,7 @@ export interface ProjectCardDeletedEvent {
   repository: Repository;
   sender: User;
   organization?: Organization;
-  installation?: Installation;
+  installation?: InstallationLite;
 }
 export interface ProjectCardEditedEvent {
   action: "edited";
@@ -3991,9 +4905,15 @@ export interface ProjectCardEditedEvent {
     project_url: string;
     column_url: string;
     column_id: number;
+    /**
+     * The project card's ID
+     */
     id: number;
     node_id: string;
     note: string;
+    /**
+     * Whether or not the card is archived
+     */
     archived: boolean;
     creator: User;
     created_at: string;
@@ -4003,7 +4923,7 @@ export interface ProjectCardEditedEvent {
   repository: Repository;
   sender: User;
   organization?: Organization;
-  installation?: Installation;
+  installation?: InstallationLite;
 }
 export interface ProjectCardMovedEvent {
   action: "moved";
@@ -4012,9 +4932,15 @@ export interface ProjectCardMovedEvent {
     project_url: string;
     column_url: string;
     column_id: number;
+    /**
+     * The project card's ID
+     */
     id: number;
     node_id: string;
     note: string;
+    /**
+     * Whether or not the card is archived
+     */
     archived: boolean;
     creator: User;
     created_at: string;
@@ -4024,7 +4950,7 @@ export interface ProjectCardMovedEvent {
   repository: Repository;
   sender: User;
   organization?: Organization;
-  installation?: Installation;
+  installation?: InstallationLite;
 }
 export interface ProjectColumnCreatedEvent {
   action: "created";
@@ -4032,15 +4958,21 @@ export interface ProjectColumnCreatedEvent {
     url: string;
     project_url: string;
     cards_url: string;
+    /**
+     * The unique identifier of the project column
+     */
     id: number;
     node_id: string;
+    /**
+     * Name of the project column
+     */
     name: string;
     created_at: string;
     updated_at: string;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ProjectColumnDeletedEvent {
@@ -4049,15 +4981,21 @@ export interface ProjectColumnDeletedEvent {
     url: string;
     project_url: string;
     cards_url: string;
+    /**
+     * The unique identifier of the project column
+     */
     id: number;
     node_id: string;
+    /**
+     * Name of the project column
+     */
     name: string;
     created_at: string;
     updated_at: string;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ProjectColumnEditedEvent {
@@ -4066,15 +5004,21 @@ export interface ProjectColumnEditedEvent {
     url: string;
     project_url: string;
     cards_url: string;
+    /**
+     * The unique identifier of the project column
+     */
     id: number;
     node_id: string;
+    /**
+     * Name of the project column
+     */
     name: string;
     created_at: string;
     updated_at: string;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ProjectColumnMovedEvent {
@@ -4083,23 +5027,41 @@ export interface ProjectColumnMovedEvent {
     url: string;
     project_url: string;
     cards_url: string;
+    /**
+     * The unique identifier of the project column
+     */
     id: number;
     node_id: string;
+    /**
+     * Name of the project column
+     */
     name: string;
     created_at: string;
     updated_at: string;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface PublicEvent {
+  /**
+   * A git repository
+   */
   repository: {
+    /**
+     * Unique identifier of the repository
+     */
     id: number;
     node_id: string;
+    /**
+     * The name of the repository.
+     */
     name: string;
     full_name: string;
+    /**
+     * Whether the repository is private or public.
+     */
     private: false;
     owner: User;
     html_url: string;
@@ -4154,14 +5116,32 @@ export interface PublicEvent {
     stargazers_count: number;
     watchers_count: number;
     language: string | null;
+    /**
+     * Whether issues are enabled.
+     */
     has_issues: boolean;
+    /**
+     * Whether projects are enabled.
+     */
     has_projects: boolean;
+    /**
+     * Whether downloads are enabled.
+     */
     has_downloads: boolean;
+    /**
+     * Whether the wiki is enabled.
+     */
     has_wiki: boolean;
     has_pages: boolean;
     forks_count: number;
     mirror_url: string | null;
+    /**
+     * Whether the repository is archived.
+     */
     archived: boolean;
+    /**
+     * Returns whether or not this repository is disabled.
+     */
     disabled?: boolean;
     open_issues_count: number;
     license:
@@ -4169,7 +5149,7 @@ export interface PublicEvent {
           key: string;
           name: string;
           spdx_id: string;
-          url: string;
+          url: string | null;
           node_id: string;
         }
       | (string | null);
@@ -4177,10 +5157,25 @@ export interface PublicEvent {
     open_issues: number;
     watchers: number;
     stargazers?: number;
+    /**
+     * The default branch of the repository.
+     */
     default_branch: string;
+    /**
+     * Whether to allow squash merges for pull requests.
+     */
     allow_squash_merge?: boolean;
+    /**
+     * Whether to allow merge commits for pull requests.
+     */
     allow_merge_commit?: boolean;
+    /**
+     * Whether to allow rebase merges for pull requests.
+     */
     allow_rebase_merge?: boolean;
+    /**
+     * Whether to delete head branches when pull requests are merged
+     */
     delete_branch_on_merge?: boolean;
     master_branch?: string;
     permissions?: {
@@ -4192,121 +5187,146 @@ export interface PublicEvent {
     };
   };
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface PullRequestAssignedEvent {
   action: "assigned";
   number: number;
-  pull_request: {
-    url: string;
-    id: number;
-    node_id: string;
-    html_url: string;
-    diff_url: string;
-    patch_url: string;
-    issue_url: string;
-    number: number;
-    state: "open" | "closed";
-    locked: boolean;
-    title: string;
-    user: User;
-    body: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    merged_at: string | null;
-    merge_commit_sha: string | null;
-    assignee: User | null;
-    assignees: User[];
-    requested_reviewers: (User | Team)[];
-    requested_teams: Team[];
-    labels: Label[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      number: number;
-      title: string;
-      description: string;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string | null;
-    } | null;
-    commits_url: string;
-    review_comments_url: string;
-    review_comment_url: string;
-    comments_url: string;
-    statuses_url: string;
-    head: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    base: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
-    };
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    draft: boolean;
-    merged: boolean;
-    mergeable: boolean | null;
-    rebaseable: boolean | null;
-    mergeable_state: string;
-    merged_by: null;
-    comments: number;
-    review_comments: number;
-    maintainer_can_modify: boolean;
-    commits: number;
-    additions: number;
-    deletions: number;
-    changed_files: number;
-  };
+  pull_request: PullRequest;
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
+}
+export interface PullRequest {
+  url: string;
+  id: number;
+  node_id: string;
+  html_url: string;
+  diff_url: string;
+  patch_url: string;
+  issue_url: string;
+  /**
+   * Number uniquely identifying the pull request within its repository.
+   */
+  number: number;
+  /**
+   * State of this Pull Request. Either `open` or `closed`.
+   */
+  state: "open" | "closed";
+  locked: boolean;
+  /**
+   * The title of the pull request.
+   */
+  title: string;
+  user: User;
+  body: string;
+  created_at: string;
+  updated_at: string;
+  closed_at: string | null;
+  merged_at: string | null;
+  merge_commit_sha: string | null;
+  assignee: User | null;
+  assignees: User[];
+  requested_reviewers: (User | Team)[];
+  requested_teams: Team[];
+  labels: Label[];
+  milestone: {
+    url: string;
+    html_url: string;
+    labels_url: string;
+    id: number;
+    node_id: string;
+    /**
+     * The number of the milestone.
+     */
+    number: number;
+    /**
+     * The title of the milestone.
+     */
+    title: string;
+    description: string | null;
+    creator: User;
+    open_issues: number;
+    closed_issues: number;
+    /**
+     * The state of the milestone.
+     */
+    state: "open" | "closed";
+    created_at: string | null;
+    updated_at: string | null;
+    due_on: string | null;
+    closed_at: string | null;
+  } | null;
+  commits_url: string;
+  review_comments_url: string;
+  review_comment_url: string;
+  comments_url: string;
+  statuses_url: string;
+  head: {
+    label: string;
+    ref: string;
+    sha: string;
+    user: User;
+    repo: Repository;
+  };
+  base: {
+    label: string;
+    ref: string;
+    sha: string;
+    user: User;
+    repo: Repository;
+  };
+  _links: {
+    self: {
+      href: string;
+    };
+    html: {
+      href: string;
+    };
+    issue: {
+      href: string;
+    };
+    comments: {
+      href: string;
+    };
+    review_comments: {
+      href: string;
+    };
+    review_comment: {
+      href: string;
+    };
+    commits: {
+      href: string;
+    };
+    statuses: {
+      href: string;
+    };
+  };
+  author_association: AuthorAssociation;
+  active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
+  /**
+   * Indicates whether or not the pull request is a draft.
+   */
+  draft: boolean;
+  merged: boolean | null;
+  mergeable: boolean | null;
+  rebaseable: boolean | null;
+  mergeable_state: string;
+  merged_by: User | null;
+  comments: number;
+  review_comments: number;
+  /**
+   * Indicates whether maintainers can modify the pull request.
+   */
+  maintainer_can_modify: boolean;
+  commits: number;
+  additions: number;
+  deletions: number;
+  changed_files: number;
 }
 export interface PullRequestClosedEvent {
   action: "closed";
@@ -4319,9 +5339,18 @@ export interface PullRequestClosedEvent {
     diff_url: string;
     patch_url: string;
     issue_url: string;
+    /**
+     * Number uniquely identifying the pull request within its repository.
+     */
     number: number;
+    /**
+     * State of this Pull Request. Either `open` or `closed`.
+     */
     state: "closed";
     locked: boolean;
+    /**
+     * The title of the pull request.
+     */
     title: string;
     user: User;
     body: string;
@@ -4341,16 +5370,25 @@ export interface PullRequestClosedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     commits_url: string;
@@ -4400,14 +5438,20 @@ export interface PullRequestClosedEvent {
     };
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
+    /**
+     * Indicates whether or not the pull request is a draft.
+     */
     draft: boolean;
     merged: boolean;
     mergeable: boolean | null;
     rebaseable: boolean | null;
     mergeable_state: string;
-    merged_by: null;
+    merged_by: User | null;
     comments: number;
     review_comments: number;
+    /**
+     * Indicates whether maintainers can modify the pull request.
+     */
     maintainer_can_modify: boolean;
     commits: number;
     additions: number;
@@ -4417,7 +5461,7 @@ export interface PullRequestClosedEvent {
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -4432,9 +5476,18 @@ export interface PullRequestConvertedToDraftEvent {
     diff_url: string;
     patch_url: string;
     issue_url: string;
+    /**
+     * Number uniquely identifying the pull request within its repository.
+     */
     number: number;
+    /**
+     * State of this Pull Request. Either `open` or `closed`.
+     */
     state: "open" | "closed";
     locked: boolean;
+    /**
+     * The title of the pull request.
+     */
     title: string;
     user: User;
     body: string;
@@ -4454,16 +5507,25 @@ export interface PullRequestConvertedToDraftEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     commits_url: string;
@@ -4513,6 +5575,9 @@ export interface PullRequestConvertedToDraftEvent {
     };
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
+    /**
+     * Indicates whether or not the pull request is a draft.
+     */
     draft: true;
     merged: boolean;
     mergeable: boolean | null;
@@ -4521,6 +5586,9 @@ export interface PullRequestConvertedToDraftEvent {
     merged_by: null;
     comments: number;
     review_comments: number;
+    /**
+     * Indicates whether maintainers can modify the pull request.
+     */
     maintainer_can_modify: boolean;
     commits: number;
     additions: number;
@@ -4530,7 +5598,7 @@ export interface PullRequestConvertedToDraftEvent {
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -4545,339 +5613,33 @@ export interface PullRequestEditedEvent {
       from: string;
     };
   };
-  pull_request: {
-    url: string;
-    id: number;
-    node_id: string;
-    html_url: string;
-    diff_url: string;
-    patch_url: string;
-    issue_url: string;
-    number: number;
-    state: "open" | "closed";
-    locked: boolean;
-    title: string;
-    user: User;
-    body: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    merged_at: string | null;
-    merge_commit_sha: string | null;
-    assignee: User | null;
-    assignees: User[];
-    requested_reviewers: (User | Team)[];
-    requested_teams: Team[];
-    labels: Label[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      number: number;
-      title: string;
-      description: string;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string | null;
-    } | null;
-    commits_url: string;
-    review_comments_url: string;
-    review_comment_url: string;
-    comments_url: string;
-    statuses_url: string;
-    head: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    base: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
-    };
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    draft: boolean;
-    merged: boolean;
-    mergeable: boolean | null;
-    rebaseable: boolean | null;
-    mergeable_state: string;
-    merged_by: null;
-    comments: number;
-    review_comments: number;
-    maintainer_can_modify: boolean;
-    commits: number;
-    additions: number;
-    deletions: number;
-    changed_files: number;
-  };
+  pull_request: PullRequest;
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
 export interface PullRequestLabeledEvent {
   action: "labeled";
   number: number;
-  pull_request: {
-    url: string;
-    id: number;
-    node_id: string;
-    html_url: string;
-    diff_url: string;
-    patch_url: string;
-    issue_url: string;
-    number: number;
-    state: "open" | "closed";
-    locked: boolean;
-    title: string;
-    user: User;
-    body: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    merged_at: string | null;
-    merge_commit_sha: string | null;
-    assignee: User | null;
-    assignees: User[];
-    requested_reviewers: (User | Team)[];
-    requested_teams: Team[];
-    labels: Label[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      number: number;
-      title: string;
-      description: string;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string | null;
-    } | null;
-    commits_url: string;
-    review_comments_url: string;
-    review_comment_url: string;
-    comments_url: string;
-    statuses_url: string;
-    head: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    base: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
-    };
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    draft: boolean;
-    merged: boolean;
-    mergeable: boolean | null;
-    rebaseable: boolean | null;
-    mergeable_state: string;
-    merged_by: null;
-    comments: number;
-    review_comments: number;
-    maintainer_can_modify: boolean;
-    commits: number;
-    additions: number;
-    deletions: number;
-    changed_files: number;
-  };
+  pull_request: PullRequest;
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
 export interface PullRequestLockedEvent {
   action: "locked";
   number: number;
-  pull_request: {
-    url: string;
-    id: number;
-    node_id: string;
-    html_url: string;
-    diff_url: string;
-    patch_url: string;
-    issue_url: string;
-    number: number;
-    state: "open" | "closed";
-    locked: true;
-    title: string;
-    user: User;
-    body: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    merged_at: string | null;
-    merge_commit_sha: string | null;
-    assignee: User | null;
-    assignees: User[];
-    requested_reviewers: (User | Team)[];
-    requested_teams: Team[];
-    labels: Label[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      number: number;
-      title: string;
-      description: string;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string | null;
-    } | null;
-    commits_url: string;
-    review_comments_url: string;
-    review_comment_url: string;
-    comments_url: string;
-    statuses_url: string;
-    head: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    base: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
-    };
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam";
-    draft: boolean;
-    merged: boolean;
-    mergeable: boolean | null;
-    rebaseable: boolean | null;
-    mergeable_state: string;
-    merged_by: null;
-    comments: number;
-    review_comments: number;
-    maintainer_can_modify: boolean;
-    commits: number;
-    additions: number;
-    deletions: number;
-    changed_files: number;
-  };
+  pull_request: PullRequest;
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -4914,16 +5676,25 @@ export interface PullRequestOpenedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     commits_url: string;
@@ -4990,7 +5761,7 @@ export interface PullRequestOpenedEvent {
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -5027,16 +5798,25 @@ export interface PullRequestReadyForReviewEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     commits_url: string;
@@ -5103,7 +5883,7 @@ export interface PullRequestReadyForReviewEvent {
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -5140,16 +5920,25 @@ export interface PullRequestReopenedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     commits_url: string;
@@ -5216,698 +6005,95 @@ export interface PullRequestReopenedEvent {
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
 export interface PullRequestReviewRequestRemovedEvent {
   action: "review_request_removed";
   number: number;
-  pull_request: {
-    url: string;
-    id: number;
-    node_id: string;
-    html_url: string;
-    diff_url: string;
-    patch_url: string;
-    issue_url: string;
-    number: number;
-    state: "open" | "closed";
-    locked: boolean;
-    title: string;
-    user: User;
-    body: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    merged_at: string | null;
-    merge_commit_sha: string | null;
-    assignee: User | null;
-    assignees: User[];
-    requested_reviewers: (User | Team)[];
-    requested_teams: Team[];
-    labels: Label[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      number: number;
-      title: string;
-      description: string;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string | null;
-    } | null;
-    commits_url: string;
-    review_comments_url: string;
-    review_comment_url: string;
-    comments_url: string;
-    statuses_url: string;
-    head: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    base: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
-    };
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    draft: boolean;
-    merged: boolean;
-    mergeable: boolean | null;
-    rebaseable: boolean | null;
-    mergeable_state: string;
-    merged_by: null;
-    comments: number;
-    review_comments: number;
-    maintainer_can_modify: boolean;
-    commits: number;
-    additions: number;
-    deletions: number;
-    changed_files: number;
-  };
+  pull_request: PullRequest;
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
 export interface PullRequestReviewRequestedEvent {
   action: "review_requested";
   number: number;
-  pull_request: {
-    url: string;
-    id: number;
-    node_id: string;
-    html_url: string;
-    diff_url: string;
-    patch_url: string;
-    issue_url: string;
-    number: number;
-    state: "open" | "closed";
-    locked: boolean;
-    title: string;
-    user: User;
-    body: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    merged_at: string | null;
-    merge_commit_sha: string | null;
-    assignee: User | null;
-    assignees: User[];
-    requested_reviewers: (User | Team)[];
-    requested_teams: Team[];
-    labels: Label[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      number: number;
-      title: string;
-      description: string;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string | null;
-    } | null;
-    commits_url: string;
-    review_comments_url: string;
-    review_comment_url: string;
-    comments_url: string;
-    statuses_url: string;
-    head: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    base: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
-    };
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    draft: boolean;
-    merged: boolean;
-    mergeable: boolean | null;
-    rebaseable: boolean | null;
-    mergeable_state: string;
-    merged_by: null;
-    comments: number;
-    review_comments: number;
-    maintainer_can_modify: boolean;
-    commits: number;
-    additions: number;
-    deletions: number;
-    changed_files: number;
-  };
+  pull_request: PullRequest;
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
 export interface PullRequestSynchronizeEvent {
   action: "synchronize";
   number: number;
-  pull_request: {
-    url: string;
-    id: number;
-    node_id: string;
-    html_url: string;
-    diff_url: string;
-    patch_url: string;
-    issue_url: string;
-    number: number;
-    state: "open" | "closed";
-    locked: boolean;
-    title: string;
-    user: User;
-    body: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    merged_at: string | null;
-    merge_commit_sha: string | null;
-    assignee: User | null;
-    assignees: User[];
-    requested_reviewers: (User | Team)[];
-    requested_teams: Team[];
-    labels: Label[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      number: number;
-      title: string;
-      description: string;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string | null;
-    } | null;
-    commits_url: string;
-    review_comments_url: string;
-    review_comment_url: string;
-    comments_url: string;
-    statuses_url: string;
-    head: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    base: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
-    };
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    draft: boolean;
-    merged: boolean;
-    mergeable: boolean | null;
-    rebaseable: boolean | null;
-    mergeable_state: string;
-    merged_by: null;
-    comments: number;
-    review_comments: number;
-    maintainer_can_modify: boolean;
-    commits: number;
-    additions: number;
-    deletions: number;
-    changed_files: number;
-  };
+  pull_request: PullRequest;
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
 export interface PullRequestUnassignedEvent {
   action: "unassigned";
   number: number;
-  pull_request: {
-    url: string;
-    id: number;
-    node_id: string;
-    html_url: string;
-    diff_url: string;
-    patch_url: string;
-    issue_url: string;
-    number: number;
-    state: "open" | "closed";
-    locked: boolean;
-    title: string;
-    user: User;
-    body: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    merged_at: string | null;
-    merge_commit_sha: string | null;
-    assignee: User | null;
-    assignees: User[];
-    requested_reviewers: (User | Team)[];
-    requested_teams: Team[];
-    labels: Label[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      number: number;
-      title: string;
-      description: string;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string | null;
-    } | null;
-    commits_url: string;
-    review_comments_url: string;
-    review_comment_url: string;
-    comments_url: string;
-    statuses_url: string;
-    head: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    base: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
-    };
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    draft: boolean;
-    merged: boolean;
-    mergeable: boolean | null;
-    rebaseable: boolean | null;
-    mergeable_state: string;
-    merged_by: null;
-    comments: number;
-    review_comments: number;
-    maintainer_can_modify: boolean;
-    commits: number;
-    additions: number;
-    deletions: number;
-    changed_files: number;
-  };
+  pull_request: PullRequest;
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
 export interface PullRequestUnlabeledEvent {
   action: "unlabeled";
   number: number;
-  pull_request: {
-    url: string;
-    id: number;
-    node_id: string;
-    html_url: string;
-    diff_url: string;
-    patch_url: string;
-    issue_url: string;
-    number: number;
-    state: "open" | "closed";
-    locked: boolean;
-    title: string;
-    user: User;
-    body: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    merged_at: string | null;
-    merge_commit_sha: string | null;
-    assignee: User | null;
-    assignees: User[];
-    requested_reviewers: (User | Team)[];
-    requested_teams: Team[];
-    labels: Label[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      number: number;
-      title: string;
-      description: string;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string | null;
-    } | null;
-    commits_url: string;
-    review_comments_url: string;
-    review_comment_url: string;
-    comments_url: string;
-    statuses_url: string;
-    head: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    base: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
-    };
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    draft: boolean;
-    merged: boolean;
-    mergeable: boolean | null;
-    rebaseable: boolean | null;
-    mergeable_state: string;
-    merged_by: null;
-    comments: number;
-    review_comments: number;
-    maintainer_can_modify: boolean;
-    commits: number;
-    additions: number;
-    deletions: number;
-    changed_files: number;
-  };
+  pull_request: PullRequest;
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
 export interface PullRequestUnlockedEvent {
   action: "unlocked";
   number: number;
-  pull_request: {
-    url: string;
-    id: number;
-    node_id: string;
-    html_url: string;
-    diff_url: string;
-    patch_url: string;
-    issue_url: string;
-    number: number;
-    state: "open" | "closed";
-    locked: false;
-    title: string;
-    user: User;
-    body: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    merged_at: string | null;
-    merge_commit_sha: string | null;
-    assignee: User | null;
-    assignees: User[];
-    requested_reviewers: (User | Team)[];
-    requested_teams: Team[];
-    labels: Label[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      number: number;
-      title: string;
-      description: string;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string | null;
-    } | null;
-    commits_url: string;
-    review_comments_url: string;
-    review_comment_url: string;
-    comments_url: string;
-    statuses_url: string;
-    head: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    base: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
-    };
-    author_association: AuthorAssociation;
-    active_lock_reason: null;
-    draft: boolean;
-    merged: boolean;
-    mergeable: boolean | null;
-    rebaseable: boolean | null;
-    mergeable_state: string;
-    merged_by: null;
-    comments: number;
-    review_comments: number;
-    maintainer_can_modify: boolean;
-    commits: number;
-    additions: number;
-    deletions: number;
-    changed_files: number;
-  };
+  pull_request: PullRequest;
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
 export interface PullRequestReviewDismissedEvent {
   action: "dismissed";
   review: {
+    /**
+     * Unique identifier of the review
+     */
     id: number;
     node_id: string;
     user: User;
+    /**
+     * The text of the review.
+     */
     body: string | null;
+    /**
+     * A commit SHA for the review.
+     */
     commit_id: string;
     submitted_at: string;
-    state: string;
+    state: "dismissed";
     html_url: string;
     pull_request_url: string;
     author_association: AuthorAssociation;
@@ -5920,101 +6106,111 @@ export interface PullRequestReviewDismissedEvent {
       };
     };
   };
-  pull_request: {
-    url: string;
-    id: number;
-    node_id: string;
-    html_url: string;
-    diff_url: string;
-    patch_url: string;
-    issue_url: string;
-    number: number;
-    state: "open" | "closed";
-    locked: boolean;
-    title: string;
-    user: User;
-    body: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    merged_at: string | null;
-    merge_commit_sha: string | null;
-    assignee: User | null;
-    assignees: User[];
-    requested_reviewers: (User | Team)[];
-    requested_teams: Team[];
-    labels: Label[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      number: number;
-      title: string;
-      description: string;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string | null;
-    } | null;
-    draft: boolean;
-    commits_url: string;
-    review_comments_url: string;
-    review_comment_url: string;
-    comments_url: string;
-    statuses_url: string;
-    head: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    base: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
-    };
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-  };
+  pull_request: SimplePullRequest;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
+}
+export interface SimplePullRequest {
+  url: string;
+  id: number;
+  node_id: string;
+  html_url: string;
+  diff_url: string;
+  patch_url: string;
+  issue_url: string;
+  number: number;
+  state: "open" | "closed";
+  locked: boolean;
+  title: string;
+  user: User;
+  body: string;
+  created_at: string;
+  updated_at: string;
+  closed_at: string | null;
+  merged_at: string | null;
+  merge_commit_sha: string | null;
+  assignee: User | null;
+  assignees: User[];
+  requested_reviewers: (User | Team)[];
+  requested_teams: Team[];
+  labels: Label[];
+  milestone: {
+    url: string;
+    html_url: string;
+    labels_url: string;
+    id: number;
+    node_id: string;
+    /**
+     * The number of the milestone.
+     */
+    number: number;
+    /**
+     * The title of the milestone.
+     */
+    title: string;
+    description: string | null;
+    creator: User;
+    open_issues: number;
+    closed_issues: number;
+    /**
+     * The state of the milestone.
+     */
+    state: "open" | "closed";
+    created_at: string | null;
+    updated_at: string | null;
+    due_on: string | null;
+    closed_at: string | null;
+  } | null;
+  draft: boolean;
+  commits_url: string;
+  review_comments_url: string;
+  review_comment_url: string;
+  comments_url: string;
+  statuses_url: string;
+  head: {
+    label: string;
+    ref: string;
+    sha: string;
+    user: User;
+    repo: Repository;
+  };
+  base: {
+    label: string;
+    ref: string;
+    sha: string;
+    user: User;
+    repo: Repository;
+  };
+  _links: {
+    self: {
+      href: string;
+    };
+    html: {
+      href: string;
+    };
+    issue: {
+      href: string;
+    };
+    comments: {
+      href: string;
+    };
+    review_comments: {
+      href: string;
+    };
+    review_comment: {
+      href: string;
+    };
+    commits: {
+      href: string;
+    };
+    statuses: {
+      href: string;
+    };
+  };
+  author_association: AuthorAssociation;
+  active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
 }
 export interface PullRequestReviewEditedEvent {
   action: "edited";
@@ -6024,10 +6220,19 @@ export interface PullRequestReviewEditedEvent {
     };
   };
   review: {
+    /**
+     * Unique identifier of the review
+     */
     id: number;
     node_id: string;
     user: User;
+    /**
+     * The text of the review.
+     */
     body: string | null;
+    /**
+     * A commit SHA for the review.
+     */
     commit_id: string;
     submitted_at: string;
     state: string;
@@ -6043,109 +6248,28 @@ export interface PullRequestReviewEditedEvent {
       };
     };
   };
-  pull_request: {
-    url: string;
-    id: number;
-    node_id: string;
-    html_url: string;
-    diff_url: string;
-    patch_url: string;
-    issue_url: string;
-    number: number;
-    state: "open" | "closed";
-    locked: boolean;
-    title: string;
-    user: User;
-    body: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    merged_at: string | null;
-    merge_commit_sha: string | null;
-    assignee: User | null;
-    assignees: User[];
-    requested_reviewers: (User | Team)[];
-    requested_teams: Team[];
-    labels: Label[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      number: number;
-      title: string;
-      description: string;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string | null;
-    } | null;
-    draft: boolean;
-    commits_url: string;
-    review_comments_url: string;
-    review_comment_url: string;
-    comments_url: string;
-    statuses_url: string;
-    head: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    base: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
-    };
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-  };
+  pull_request: SimplePullRequest;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
 export interface PullRequestReviewSubmittedEvent {
   action: "submitted";
   review: {
+    /**
+     * Unique identifier of the review
+     */
     id: number;
     node_id: string;
     user: User;
+    /**
+     * The text of the review.
+     */
     body: string | null;
+    /**
+     * A commit SHA for the review.
+     */
     commit_id: string;
     submitted_at: string;
     state: string;
@@ -6161,120 +6285,69 @@ export interface PullRequestReviewSubmittedEvent {
       };
     };
   };
-  pull_request: {
-    url: string;
-    id: number;
-    node_id: string;
-    html_url: string;
-    diff_url: string;
-    patch_url: string;
-    issue_url: string;
-    number: number;
-    state: "open" | "closed";
-    locked: boolean;
-    title: string;
-    user: User;
-    body: string;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    merged_at: string | null;
-    merge_commit_sha: string | null;
-    assignee: User | null;
-    assignees: User[];
-    requested_reviewers: (User | Team)[];
-    requested_teams: Team[];
-    labels: Label[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      number: number;
-      title: string;
-      description: string;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string | null;
-    } | null;
-    draft: boolean;
-    commits_url: string;
-    review_comments_url: string;
-    review_comment_url: string;
-    comments_url: string;
-    statuses_url: string;
-    head: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    base: {
-      label: string;
-      ref: string;
-      sha: string;
-      user: User;
-      repo: Repository;
-    };
-    _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
-    };
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-  };
+  pull_request: SimplePullRequest;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
 export interface PullRequestReviewCommentCreatedEvent {
   action: "created";
   comment: {
+    /**
+     * URL for the pull request review comment
+     */
     url: string;
+    /**
+     * The ID of the pull request review to which the comment belongs.
+     */
     pull_request_review_id: number;
+    /**
+     * The ID of the pull request review comment.
+     */
     id: number;
+    /**
+     * The node ID of the pull request review comment.
+     */
     node_id: string;
+    /**
+     * The diff of the line that the comment refers to.
+     */
     diff_hunk: string;
+    /**
+     * The relative path of the file to which the comment applies.
+     */
     path: string;
+    /**
+     * The line index in the diff to which the comment applies.
+     */
     position: number;
+    /**
+     * The index of the original line in the diff to which the comment applies.
+     */
     original_position: number;
+    /**
+     * The SHA of the commit to which the comment applies.
+     */
     commit_id: string;
+    /**
+     * The SHA of the original commit to which the comment applies.
+     */
     original_commit_id: string;
     user: User;
+    /**
+     * The text of the comment.
+     */
     body: string;
     created_at: string;
     updated_at: string;
+    /**
+     * HTML URL for the pull request review comment.
+     */
     html_url: string;
+    /**
+     * URL for the pull request that the review comment belongs to.
+     */
     pull_request_url: string;
     author_association: AuthorAssociation;
     _links: {
@@ -6288,12 +6361,33 @@ export interface PullRequestReviewCommentCreatedEvent {
         href: string;
       };
     };
-    start_line?: null;
-    original_start_line?: null;
-    start_side?: null;
-    line?: null;
+    /**
+     * The first line of the range for a multi-line comment.
+     */
+    start_line?: number | null;
+    /**
+     * The first line of the range for a multi-line comment.
+     */
+    original_start_line?: number | null;
+    /**
+     * The side of the first line of the range for a multi-line comment.
+     */
+    start_side?: ("LEFT" | "RIGHT") | null;
+    /**
+     * The line of the blob to which the comment applies. The last line of the range for a multi-line comment
+     */
+    line?: number;
+    /**
+     * The line of the blob to which the comment applies. The last line of the range for a multi-line comment
+     */
     original_line?: number;
-    side?: "RIGHT";
+    /**
+     * The side of the first line of the range for a multi-line comment.
+     */
+    side?: "LEFT" | "RIGHT";
+    /**
+     * The comment ID to reply to.
+     */
     in_reply_to_id?: number;
   };
   pull_request: {
@@ -6326,16 +6420,25 @@ export interface PullRequestReviewCommentCreatedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     commits_url: string;
@@ -6386,28 +6489,67 @@ export interface PullRequestReviewCommentCreatedEvent {
     author_association: AuthorAssociation;
   };
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
 export interface PullRequestReviewCommentDeletedEvent {
   action: "deleted";
   comment: {
+    /**
+     * URL for the pull request review comment
+     */
     url: string;
+    /**
+     * The ID of the pull request review to which the comment belongs.
+     */
     pull_request_review_id: number;
+    /**
+     * The ID of the pull request review comment.
+     */
     id: number;
+    /**
+     * The node ID of the pull request review comment.
+     */
     node_id: string;
+    /**
+     * The diff of the line that the comment refers to.
+     */
     diff_hunk: string;
+    /**
+     * The relative path of the file to which the comment applies.
+     */
     path: string;
+    /**
+     * The line index in the diff to which the comment applies.
+     */
     position: number;
+    /**
+     * The index of the original line in the diff to which the comment applies.
+     */
     original_position: number;
+    /**
+     * The SHA of the commit to which the comment applies.
+     */
     commit_id: string;
+    /**
+     * The SHA of the original commit to which the comment applies.
+     */
     original_commit_id: string;
     user: User;
+    /**
+     * The text of the comment.
+     */
     body: string;
     created_at: string;
     updated_at: string;
+    /**
+     * HTML URL for the pull request review comment.
+     */
     html_url: string;
+    /**
+     * URL for the pull request that the review comment belongs to.
+     */
     pull_request_url: string;
     author_association: AuthorAssociation;
     _links: {
@@ -6421,6 +6563,34 @@ export interface PullRequestReviewCommentDeletedEvent {
         href: string;
       };
     };
+    /**
+     * The first line of the range for a multi-line comment.
+     */
+    start_line?: number | null;
+    /**
+     * The first line of the range for a multi-line comment.
+     */
+    original_start_line?: number | null;
+    /**
+     * The side of the first line of the range for a multi-line comment.
+     */
+    start_side?: ("LEFT" | "RIGHT") | null;
+    /**
+     * The line of the blob to which the comment applies. The last line of the range for a multi-line comment
+     */
+    line?: number;
+    /**
+     * The line of the blob to which the comment applies. The last line of the range for a multi-line comment
+     */
+    original_line?: number;
+    /**
+     * The side of the first line of the range for a multi-line comment.
+     */
+    side?: "LEFT" | "RIGHT";
+    /**
+     * The comment ID to reply to.
+     */
+    in_reply_to_id?: number;
   };
   pull_request: {
     url: string;
@@ -6452,16 +6622,25 @@ export interface PullRequestReviewCommentDeletedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     commits_url: string;
@@ -6512,7 +6691,7 @@ export interface PullRequestReviewCommentDeletedEvent {
     author_association: AuthorAssociation;
   };
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -6524,21 +6703,60 @@ export interface PullRequestReviewCommentEditedEvent {
     };
   };
   comment: {
+    /**
+     * URL for the pull request review comment
+     */
     url: string;
+    /**
+     * The ID of the pull request review to which the comment belongs.
+     */
     pull_request_review_id: number;
+    /**
+     * The ID of the pull request review comment.
+     */
     id: number;
+    /**
+     * The node ID of the pull request review comment.
+     */
     node_id: string;
+    /**
+     * The diff of the line that the comment refers to.
+     */
     diff_hunk: string;
+    /**
+     * The relative path of the file to which the comment applies.
+     */
     path: string;
+    /**
+     * The line index in the diff to which the comment applies.
+     */
     position: number;
+    /**
+     * The index of the original line in the diff to which the comment applies.
+     */
     original_position: number;
+    /**
+     * The SHA of the commit to which the comment applies.
+     */
     commit_id: string;
+    /**
+     * The SHA of the original commit to which the comment applies.
+     */
     original_commit_id: string;
     user: User;
+    /**
+     * The text of the comment.
+     */
     body: string;
     created_at: string;
     updated_at: string;
+    /**
+     * HTML URL for the pull request review comment.
+     */
     html_url: string;
+    /**
+     * URL for the pull request that the review comment belongs to.
+     */
     pull_request_url: string;
     author_association: AuthorAssociation;
     _links: {
@@ -6552,6 +6770,34 @@ export interface PullRequestReviewCommentEditedEvent {
         href: string;
       };
     };
+    /**
+     * The first line of the range for a multi-line comment.
+     */
+    start_line?: number | null;
+    /**
+     * The first line of the range for a multi-line comment.
+     */
+    original_start_line?: number | null;
+    /**
+     * The side of the first line of the range for a multi-line comment.
+     */
+    start_side?: ("LEFT" | "RIGHT") | null;
+    /**
+     * The line of the blob to which the comment applies. The last line of the range for a multi-line comment
+     */
+    line?: number;
+    /**
+     * The line of the blob to which the comment applies. The last line of the range for a multi-line comment
+     */
+    original_line?: number;
+    /**
+     * The side of the first line of the range for a multi-line comment.
+     */
+    side?: "LEFT" | "RIGHT";
+    /**
+     * The comment ID to reply to.
+     */
+    in_reply_to_id?: number;
   };
   pull_request: {
     url: string;
@@ -6583,16 +6829,25 @@ export interface PullRequestReviewCommentEditedEvent {
       labels_url: string;
       id: number;
       node_id: string;
+      /**
+       * The number of the milestone.
+       */
       number: number;
+      /**
+       * The title of the milestone.
+       */
       title: string;
-      description: string;
+      description: string | null;
       creator: User;
       open_issues: number;
       closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
+      /**
+       * The state of the milestone.
+       */
+      state: "open" | "closed";
+      created_at: string | null;
+      updated_at: string | null;
+      due_on: string | null;
       closed_at: string | null;
     } | null;
     commits_url: string;
@@ -6643,7 +6898,7 @@ export interface PullRequestReviewCommentEditedEvent {
     author_association: AuthorAssociation;
   };
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -6656,53 +6911,34 @@ export interface PushEvent {
   forced: boolean;
   base_ref: null;
   compare: string;
-  commits: {
-    id: string;
-    tree_id: string;
-    distinct: boolean;
-    message: string;
-    timestamp: string;
-    url: string;
-    author: {
-      name: string;
-      email: string;
-      username: string;
-    };
-    committer: {
-      name: string;
-      email: string;
-      username: string;
-    };
-    added: string[];
-    removed: string[];
-    modified: string[];
-  }[];
-  head_commit: {
-    id: string;
-    tree_id: string;
-    distinct: boolean;
-    message: string;
-    timestamp: string;
-    url: string;
-    author: {
-      name: string;
-      email: string;
-      username: string;
-    };
-    committer: {
-      name: string;
-      email: string;
-      username: string;
-    };
-    added: string[];
-    removed: string[];
-    modified: string[];
-  } | null;
+  commits: Commit[];
+  head_commit: Commit | null;
   repository: Repository;
   pusher: Committer;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
+}
+export interface Commit {
+  id: string;
+  tree_id: string;
+  distinct: boolean;
+  message: string;
+  timestamp: string;
+  url: string;
+  author: {
+    name: string;
+    email: string;
+    username: string;
+  };
+  committer: {
+    name: string;
+    email: string;
+    username: string;
+  };
+  added: string[];
+  removed: string[];
+  modified: string[];
 }
 export interface ReleaseCreatedEvent {
   action: "created";
@@ -6713,32 +6949,53 @@ export interface ReleaseCreatedEvent {
     html_url: string;
     id: number;
     node_id: string;
+    /**
+     * The name of the tag.
+     */
     tag_name: string;
+    /**
+     * Specifies the commitish value that determines where the Git tag is created from.
+     */
     target_commitish: string;
     name: null;
+    /**
+     * true to create a draft (unpublished) release, false to create a published one.
+     */
     draft: boolean;
     author: User;
+    /**
+     * Whether the release is identified as a prerelease or a full release.
+     */
     prerelease: boolean;
-    created_at: string;
-    published_at: string;
-    assets: Asset[];
-    tarball_url: string;
-    zipball_url: string;
+    created_at: string | null;
+    published_at: string | null;
+    assets: ReleaseAsset[];
+    tarball_url: string | null;
+    zipball_url: string | null;
     body: string | null;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
-export interface Asset {
+/**
+ * Data related to a release.
+ */
+export interface ReleaseAsset {
   url: string;
   browser_download_url: string;
   id: number;
   node_id: string;
+  /**
+   * The file name of the asset.
+   */
   name: string;
   label: string;
-  state: string;
+  /**
+   * State of the release asset.
+   */
+  state: "uploaded";
   content_type: string;
   size: number;
   download_count: number;
@@ -6755,22 +7012,34 @@ export interface ReleaseDeletedEvent {
     html_url: string;
     id: number;
     node_id: string;
+    /**
+     * The name of the tag.
+     */
     tag_name: string;
+    /**
+     * Specifies the commitish value that determines where the Git tag is created from.
+     */
     target_commitish: string;
     name: null;
+    /**
+     * true to create a draft (unpublished) release, false to create a published one.
+     */
     draft: boolean;
     author: User;
+    /**
+     * Whether the release is identified as a prerelease or a full release.
+     */
     prerelease: boolean;
-    created_at: string;
-    published_at: string;
-    assets: Asset[];
-    tarball_url: string;
-    zipball_url: string;
+    created_at: string | null;
+    published_at: string | null;
+    assets: ReleaseAsset[];
+    tarball_url: string | null;
+    zipball_url: string | null;
     body: string | null;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ReleaseEditedEvent {
@@ -6790,22 +7059,34 @@ export interface ReleaseEditedEvent {
     html_url: string;
     id: number;
     node_id: string;
+    /**
+     * The name of the tag.
+     */
     tag_name: string;
+    /**
+     * Specifies the commitish value that determines where the Git tag is created from.
+     */
     target_commitish: string;
     name: null;
+    /**
+     * true to create a draft (unpublished) release, false to create a published one.
+     */
     draft: boolean;
     author: User;
+    /**
+     * Whether the release is identified as a prerelease or a full release.
+     */
     prerelease: boolean;
-    created_at: string;
-    published_at: string;
-    assets: Asset[];
-    tarball_url: string;
-    zipball_url: string;
+    created_at: string | null;
+    published_at: string | null;
+    assets: ReleaseAsset[];
+    tarball_url: string | null;
+    zipball_url: string | null;
     body: string | null;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ReleasePrereleasedEvent {
@@ -6817,22 +7098,34 @@ export interface ReleasePrereleasedEvent {
     html_url: string;
     id: number;
     node_id: string;
+    /**
+     * The name of the tag.
+     */
     tag_name: string;
+    /**
+     * Specifies the commitish value that determines where the Git tag is created from.
+     */
     target_commitish: string;
     name: null;
+    /**
+     * true to create a draft (unpublished) release, false to create a published one.
+     */
     draft: boolean;
     author: User;
+    /**
+     * Whether the release is identified as a prerelease or a full release.
+     */
     prerelease: true;
-    created_at: string;
-    published_at: string;
-    assets: Asset[];
-    tarball_url: string;
-    zipball_url: string;
+    created_at: string | null;
+    published_at: string | null;
+    assets: ReleaseAsset[];
+    tarball_url: string | null;
+    zipball_url: string | null;
     body: string | null;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ReleasePublishedEvent {
@@ -6844,22 +7137,34 @@ export interface ReleasePublishedEvent {
     html_url: string;
     id: number;
     node_id: string;
+    /**
+     * The name of the tag.
+     */
     tag_name: string;
+    /**
+     * Specifies the commitish value that determines where the Git tag is created from.
+     */
     target_commitish: string;
     name: null;
+    /**
+     * true to create a draft (unpublished) release, false to create a published one.
+     */
     draft: boolean;
     author: User;
+    /**
+     * Whether the release is identified as a prerelease or a full release.
+     */
     prerelease: boolean;
-    created_at: string;
-    published_at: string;
-    assets: Asset[];
-    tarball_url: string;
-    zipball_url: string;
+    created_at: string | null;
+    published_at: string | null;
+    assets: ReleaseAsset[];
+    tarball_url: string | null;
+    zipball_url: string | null;
     body: string | null;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ReleaseReleasedEvent {
@@ -6871,22 +7176,34 @@ export interface ReleaseReleasedEvent {
     html_url: string;
     id: number;
     node_id: string;
+    /**
+     * The name of the tag.
+     */
     tag_name: string;
+    /**
+     * Specifies the commitish value that determines where the Git tag is created from.
+     */
     target_commitish: string;
     name: null;
+    /**
+     * true to create a draft (unpublished) release, false to create a published one.
+     */
     draft: boolean;
     author: User;
+    /**
+     * Whether the release is identified as a prerelease or a full release.
+     */
     prerelease: boolean;
-    created_at: string;
-    published_at: string;
-    assets: Asset[];
-    tarball_url: string;
-    zipball_url: string;
+    created_at: string | null;
+    published_at: string | null;
+    assets: ReleaseAsset[];
+    tarball_url: string | null;
+    zipball_url: string | null;
     body: string | null;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ReleaseUnpublishedEvent {
@@ -6898,31 +7215,55 @@ export interface ReleaseUnpublishedEvent {
     html_url: string;
     id: number;
     node_id: string;
+    /**
+     * The name of the tag.
+     */
     tag_name: string;
+    /**
+     * Specifies the commitish value that determines where the Git tag is created from.
+     */
     target_commitish: string;
     name: null;
+    /**
+     * true to create a draft (unpublished) release, false to create a published one.
+     */
     draft: boolean;
     author: User;
+    /**
+     * Whether the release is identified as a prerelease or a full release.
+     */
     prerelease: boolean;
-    created_at: string;
-    published_at: string;
-    assets: Asset[];
-    tarball_url: string;
-    zipball_url: string;
+    created_at: string | null;
+    published_at: string | null;
+    assets: ReleaseAsset[];
+    tarball_url: string | null;
+    zipball_url: string | null;
     body: string | null;
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface RepositoryArchivedEvent {
   action: "archived";
+  /**
+   * A git repository
+   */
   repository: {
+    /**
+     * Unique identifier of the repository
+     */
     id: number;
     node_id: string;
+    /**
+     * The name of the repository.
+     */
     name: string;
     full_name: string;
+    /**
+     * Whether the repository is private or public.
+     */
     private: boolean;
     owner: User;
     html_url: string;
@@ -6977,14 +7318,32 @@ export interface RepositoryArchivedEvent {
     stargazers_count: number;
     watchers_count: number;
     language: string | null;
+    /**
+     * Whether issues are enabled.
+     */
     has_issues: boolean;
+    /**
+     * Whether projects are enabled.
+     */
     has_projects: boolean;
+    /**
+     * Whether downloads are enabled.
+     */
     has_downloads: boolean;
+    /**
+     * Whether the wiki is enabled.
+     */
     has_wiki: boolean;
     has_pages: boolean;
     forks_count: number;
     mirror_url: string | null;
+    /**
+     * Whether the repository is archived.
+     */
     archived: true;
+    /**
+     * Returns whether or not this repository is disabled.
+     */
     disabled?: boolean;
     open_issues_count: number;
     license:
@@ -7000,10 +7359,25 @@ export interface RepositoryArchivedEvent {
     open_issues: number;
     watchers: number;
     stargazers?: number;
+    /**
+     * The default branch of the repository.
+     */
     default_branch: string;
+    /**
+     * Whether to allow squash merges for pull requests.
+     */
     allow_squash_merge?: boolean;
+    /**
+     * Whether to allow merge commits for pull requests.
+     */
     allow_merge_commit?: boolean;
+    /**
+     * Whether to allow rebase merges for pull requests.
+     */
     allow_rebase_merge?: boolean;
+    /**
+     * Whether to delete head branches when pull requests are merged
+     */
     delete_branch_on_merge?: boolean;
     master_branch?: string;
     permissions?: {
@@ -7015,21 +7389,21 @@ export interface RepositoryArchivedEvent {
     };
   };
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface RepositoryCreatedEvent {
   action: "created";
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface RepositoryDeletedEvent {
   action: "deleted";
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface RepositoryEditedEvent {
@@ -7047,16 +7421,28 @@ export interface RepositoryEditedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface RepositoryPrivatizedEvent {
   action: "privatized";
+  /**
+   * A git repository
+   */
   repository: {
+    /**
+     * Unique identifier of the repository
+     */
     id: number;
     node_id: string;
+    /**
+     * The name of the repository.
+     */
     name: string;
     full_name: string;
+    /**
+     * Whether the repository is private or public.
+     */
     private: true;
     owner: User;
     html_url: string;
@@ -7111,14 +7497,32 @@ export interface RepositoryPrivatizedEvent {
     stargazers_count: number;
     watchers_count: number;
     language: string | null;
+    /**
+     * Whether issues are enabled.
+     */
     has_issues: boolean;
+    /**
+     * Whether projects are enabled.
+     */
     has_projects: boolean;
+    /**
+     * Whether downloads are enabled.
+     */
     has_downloads: boolean;
+    /**
+     * Whether the wiki is enabled.
+     */
     has_wiki: boolean;
     has_pages: boolean;
     forks_count: number;
     mirror_url: string | null;
+    /**
+     * Whether the repository is archived.
+     */
     archived: boolean;
+    /**
+     * Returns whether or not this repository is disabled.
+     */
     disabled?: boolean;
     open_issues_count: number;
     license:
@@ -7134,10 +7538,25 @@ export interface RepositoryPrivatizedEvent {
     open_issues: number;
     watchers: number;
     stargazers?: number;
+    /**
+     * The default branch of the repository.
+     */
     default_branch: string;
+    /**
+     * Whether to allow squash merges for pull requests.
+     */
     allow_squash_merge?: boolean;
+    /**
+     * Whether to allow merge commits for pull requests.
+     */
     allow_merge_commit?: boolean;
+    /**
+     * Whether to allow rebase merges for pull requests.
+     */
     allow_rebase_merge?: boolean;
+    /**
+     * Whether to delete head branches when pull requests are merged
+     */
     delete_branch_on_merge?: boolean;
     master_branch?: string;
     permissions?: {
@@ -7149,16 +7568,28 @@ export interface RepositoryPrivatizedEvent {
     };
   };
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface RepositoryPublicizedEvent {
   action: "publicized";
+  /**
+   * A git repository
+   */
   repository: {
+    /**
+     * Unique identifier of the repository
+     */
     id: number;
     node_id: string;
+    /**
+     * The name of the repository.
+     */
     name: string;
     full_name: string;
+    /**
+     * Whether the repository is private or public.
+     */
     private: false;
     owner: User;
     html_url: string;
@@ -7213,14 +7644,32 @@ export interface RepositoryPublicizedEvent {
     stargazers_count: number;
     watchers_count: number;
     language: string | null;
+    /**
+     * Whether issues are enabled.
+     */
     has_issues: boolean;
+    /**
+     * Whether projects are enabled.
+     */
     has_projects: boolean;
+    /**
+     * Whether downloads are enabled.
+     */
     has_downloads: boolean;
+    /**
+     * Whether the wiki is enabled.
+     */
     has_wiki: boolean;
     has_pages: boolean;
     forks_count: number;
     mirror_url: string | null;
+    /**
+     * Whether the repository is archived.
+     */
     archived: boolean;
+    /**
+     * Returns whether or not this repository is disabled.
+     */
     disabled?: boolean;
     open_issues_count: number;
     license:
@@ -7236,10 +7685,25 @@ export interface RepositoryPublicizedEvent {
     open_issues: number;
     watchers: number;
     stargazers?: number;
+    /**
+     * The default branch of the repository.
+     */
     default_branch: string;
+    /**
+     * Whether to allow squash merges for pull requests.
+     */
     allow_squash_merge?: boolean;
+    /**
+     * Whether to allow merge commits for pull requests.
+     */
     allow_merge_commit?: boolean;
+    /**
+     * Whether to allow rebase merges for pull requests.
+     */
     allow_rebase_merge?: boolean;
+    /**
+     * Whether to delete head branches when pull requests are merged
+     */
     delete_branch_on_merge?: boolean;
     master_branch?: string;
     permissions?: {
@@ -7251,14 +7715,14 @@ export interface RepositoryPublicizedEvent {
     };
   };
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface RepositoryRenamedEvent {
   action: "renamed";
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface RepositoryTransferredEvent {
@@ -7272,16 +7736,28 @@ export interface RepositoryTransferredEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface RepositoryUnarchivedEvent {
   action: "unarchived";
+  /**
+   * A git repository
+   */
   repository: {
+    /**
+     * Unique identifier of the repository
+     */
     id: number;
     node_id: string;
+    /**
+     * The name of the repository.
+     */
     name: string;
     full_name: string;
+    /**
+     * Whether the repository is private or public.
+     */
     private: boolean;
     owner: User;
     html_url: string;
@@ -7336,14 +7812,32 @@ export interface RepositoryUnarchivedEvent {
     stargazers_count: number;
     watchers_count: number;
     language: string | null;
+    /**
+     * Whether issues are enabled.
+     */
     has_issues: boolean;
+    /**
+     * Whether projects are enabled.
+     */
     has_projects: boolean;
+    /**
+     * Whether downloads are enabled.
+     */
     has_downloads: boolean;
+    /**
+     * Whether the wiki is enabled.
+     */
     has_wiki: boolean;
     has_pages: boolean;
     forks_count: number;
     mirror_url: string | null;
+    /**
+     * Whether the repository is archived.
+     */
     archived: false;
+    /**
+     * Returns whether or not this repository is disabled.
+     */
     disabled?: boolean;
     open_issues_count: number;
     license:
@@ -7359,10 +7853,25 @@ export interface RepositoryUnarchivedEvent {
     open_issues: number;
     watchers: number;
     stargazers?: number;
+    /**
+     * The default branch of the repository.
+     */
     default_branch: string;
+    /**
+     * Whether to allow squash merges for pull requests.
+     */
     allow_squash_merge?: boolean;
+    /**
+     * Whether to allow merge commits for pull requests.
+     */
     allow_merge_commit?: boolean;
+    /**
+     * Whether to allow rebase merges for pull requests.
+     */
     allow_rebase_merge?: boolean;
+    /**
+     * Whether to delete head branches when pull requests are merged
+     */
     delete_branch_on_merge?: boolean;
     master_branch?: string;
     permissions?: {
@@ -7374,7 +7883,7 @@ export interface RepositoryUnarchivedEvent {
     };
   };
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface RepositoryDispatchOnDemandTestEvent {
@@ -7385,14 +7894,14 @@ export interface RepositoryDispatchOnDemandTestEvent {
   };
   repository: Repository;
   sender: User;
-  installation: Installation;
+  installation: InstallationLite;
   organization?: Organization;
 }
 export interface RepositoryImportEvent {
   status: "success" | "cancelled" | "failure";
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface RepositoryVulnerabilityAlertCreateEvent {
@@ -7463,7 +7972,7 @@ export interface SecretScanningAlertCreatedEvent {
   };
   repository: Repository;
   organization?: Organization;
-  installation?: Installation;
+  installation?: InstallationLite;
   sender: User;
 }
 export interface SecretScanningAlertReopenedEvent {
@@ -7477,7 +7986,7 @@ export interface SecretScanningAlertReopenedEvent {
   };
   repository: Repository;
   organization?: Organization;
-  installation?: Installation;
+  installation?: InstallationLite;
   sender: User;
 }
 export interface SecretScanningAlertResolvedEvent {
@@ -7491,7 +8000,7 @@ export interface SecretScanningAlertResolvedEvent {
   };
   repository: Repository;
   organization?: Organization;
-  installation?: Installation;
+  installation?: InstallationLite;
   sender: User;
 }
 export interface SecurityAdvisoryPerformedEvent {
@@ -7687,7 +8196,7 @@ export interface StarCreatedEvent {
   repository: Repository;
   sender: User;
   organization?: Organization;
-  installation?: Installation;
+  installation?: InstallationLite;
 }
 export interface StarDeletedEvent {
   action: "deleted";
@@ -7695,7 +8204,7 @@ export interface StarDeletedEvent {
   repository: Repository;
   sender: User;
   organization?: Organization;
-  installation?: Installation;
+  installation?: InstallationLite;
 }
 export interface StatusEvent {
   id: number;
@@ -7770,7 +8279,7 @@ export interface StatusEvent {
   updated_at: string;
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface TeamAddedToRepositoryEvent {
@@ -7832,14 +8341,14 @@ export interface TeamAddEvent {
   team: Team;
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization: Organization;
 }
 export interface WatchStartedEvent {
   action: "started";
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface WorkflowDispatchEvent {
@@ -7849,7 +8358,7 @@ export interface WorkflowDispatchEvent {
   ref: string;
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   workflow: string;
 }
@@ -7878,14 +8387,7 @@ export interface WorkflowRunCompletedEvent {
     created_at: string;
     event: string;
     head_branch: string;
-    head_commit: {
-      author: Committer;
-      committer: Committer;
-      id: string;
-      message: string;
-      timestamp: string;
-      tree_id: string;
-    };
+    head_commit: SimpleCommit;
     head_repository: {
       archive_url: string;
       assignees_url: string;
@@ -7964,6 +8466,9 @@ export interface WorkflowRunCompletedEvent {
       git_tags_url: string;
       hooks_url: string;
       html_url: string;
+      /**
+       * Unique identifier of the repository
+       */
       id: number;
       issue_comment_url: string;
       issue_events_url: string;
@@ -7973,10 +8478,16 @@ export interface WorkflowRunCompletedEvent {
       languages_url: string;
       merges_url: string;
       milestones_url: string;
+      /**
+       * The name of the repository.
+       */
       name: string;
       node_id: string;
       notifications_url: string;
       owner: User;
+      /**
+       * Whether the repository is private or public.
+       */
       private: boolean;
       pulls_url: string;
       releases_url: string;
@@ -7997,7 +8508,7 @@ export interface WorkflowRunCompletedEvent {
     workflow_id: number;
     workflow_url: string;
   };
-  installation?: Installation;
+  installation?: InstallationLite;
 }
 export interface WorkflowRunRequestedEvent {
   action: "requested";
@@ -8024,14 +8535,7 @@ export interface WorkflowRunRequestedEvent {
     created_at: string;
     event: string;
     head_branch: string;
-    head_commit: {
-      author: Committer;
-      committer: Committer;
-      id: string;
-      message: string;
-      timestamp: string;
-      tree_id: string;
-    };
+    head_commit: SimpleCommit;
     head_repository: {
       archive_url: string;
       assignees_url: string;
@@ -8110,6 +8614,9 @@ export interface WorkflowRunRequestedEvent {
       git_tags_url: string;
       hooks_url: string;
       html_url: string;
+      /**
+       * Unique identifier of the repository
+       */
       id: number;
       issue_comment_url: string;
       issue_events_url: string;
@@ -8119,10 +8626,16 @@ export interface WorkflowRunRequestedEvent {
       languages_url: string;
       merges_url: string;
       milestones_url: string;
+      /**
+       * The name of the repository.
+       */
       name: string;
       node_id: string;
       notifications_url: string;
       owner: User;
+      /**
+       * Whether the repository is private or public.
+       */
       private: boolean;
       pulls_url: string;
       releases_url: string;
@@ -8143,7 +8656,7 @@ export interface WorkflowRunRequestedEvent {
     workflow_id: number;
     workflow_url: string;
   };
-  installation?: Installation;
+  installation?: InstallationLite;
 }
 
 export interface EventPayloadMap {
@@ -8200,6 +8713,7 @@ export interface EventPayloadMap {
   workflow_run: WorkflowRunEvent;
 }
 
+export type Asset = ReleaseAsset;
 export type WebhookEvent = Schema;
 export type WebhookEventMap = EventPayloadMap;
 export type WebhookEventName = keyof EventPayloadMap;

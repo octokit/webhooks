@@ -1,6 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "common/app.schema.json",
+  "description": "GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
   "type": "object",
   "required": [
     "id",
@@ -14,17 +15,39 @@
     "updated_at"
   ],
   "properties": {
-    "id": { "type": "integer" },
-    "slug": { "type": "string" },
+    "id": {
+      "description": "Unique identifier of the GitHub app",
+      "type": "integer"
+    },
+    "slug": {
+      "description": "The slug name of the GitHub app",
+      "type": "string"
+    },
     "node_id": { "type": "string" },
     "owner": { "$ref": "user.schema.json" },
-    "name": { "type": "string" },
+    "name": {
+      "description": "The name of the GitHub app",
+      "type": "string"
+    },
     "description": { "type": ["string", "null"] },
-    "external_url": { "type": "string" },
-    "html_url": { "type": "string" },
-    "created_at": { "type": "string" },
-    "updated_at": { "type": "string" },
+    "external_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "html_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
     "permissions": {
+      "description": "The set of permissions for the GitHub app",
       "type": "object",
       "properties": {
         "administration": {
@@ -87,7 +110,11 @@
       },
       "additionalProperties": false
     },
-    "events": { "type": "array", "items": { "type": "string" } }
+    "events": {
+      "description": "The list of events for the GitHub app",
+      "type": "array",
+      "items": { "type": "string" }
+    }
   },
   "additionalProperties": false,
   "title": "App"
