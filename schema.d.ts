@@ -330,7 +330,7 @@ export interface CheckRunCompletedEvent {
   } | null;
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface RepoRef {
@@ -576,7 +576,7 @@ export interface Repository {
 /**
  * Installation
  */
-export interface Installation {
+export interface InstallationLite {
   /**
    * The ID of the installation.
    */
@@ -671,7 +671,7 @@ export interface CheckRunCreatedEvent {
   } | null;
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface CheckRunRequestedActionEvent {
@@ -763,7 +763,7 @@ export interface CheckRunRequestedActionEvent {
   } | null;
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface CheckRunRerequestedEvent {
@@ -855,7 +855,7 @@ export interface CheckRunRerequestedEvent {
   } | null;
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface CheckSuiteCompletedEvent {
@@ -909,7 +909,7 @@ export interface CheckSuiteCompletedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 /**
@@ -971,7 +971,7 @@ export interface CheckSuiteRequestedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface CheckSuiteRerequestedEvent {
@@ -1025,7 +1025,7 @@ export interface CheckSuiteRerequestedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface CodeScanningAlertAppearedInBranchEvent {
@@ -1058,7 +1058,7 @@ export interface CodeScanningAlertAppearedInBranchEvent {
   ref: string;
   commit_oid: string;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface CodeScanningAlertClosedByUserEvent {
@@ -1092,7 +1092,7 @@ export interface CodeScanningAlertClosedByUserEvent {
   commit_oid: string;
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface CodeScanningAlertCreatedEvent {
@@ -1125,7 +1125,7 @@ export interface CodeScanningAlertCreatedEvent {
   ref: string;
   commit_oid: string;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface CodeScanningAlertFixedEvent {
@@ -1158,7 +1158,7 @@ export interface CodeScanningAlertFixedEvent {
   ref: string;
   commit_oid: string;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface CodeScanningAlertReopenedEvent {
@@ -1191,7 +1191,7 @@ export interface CodeScanningAlertReopenedEvent {
   ref: string;
   commit_oid: string;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface CodeScanningAlertReopenedByUserEvent {
@@ -1225,7 +1225,7 @@ export interface CodeScanningAlertReopenedByUserEvent {
   commit_oid: string;
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface CommitCommentCreatedEvent {
@@ -1247,7 +1247,7 @@ export interface CommitCommentCreatedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ContentReferenceCreatedEvent {
@@ -1259,7 +1259,7 @@ export interface ContentReferenceCreatedEvent {
   };
   repository: Repository;
   sender: User;
-  installation: Installation;
+  installation: InstallationLite;
   organization?: Organization;
 }
 export interface CreateEvent {
@@ -1270,7 +1270,7 @@ export interface CreateEvent {
   pusher_type: string;
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface DeleteEvent {
@@ -1279,7 +1279,7 @@ export interface DeleteEvent {
   pusher_type: string;
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface DeployKeyCreatedEvent {
@@ -1295,7 +1295,7 @@ export interface DeployKeyCreatedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface DeployKeyDeletedEvent {
@@ -1311,7 +1311,7 @@ export interface DeployKeyDeletedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface DeploymentCreatedEvent {
@@ -1336,7 +1336,7 @@ export interface DeploymentCreatedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface DeploymentStatusCreatedEvent {
@@ -1375,7 +1375,7 @@ export interface DeploymentStatusCreatedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ForkEvent {
@@ -1478,7 +1478,7 @@ export interface ForkEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface GithubAppAuthorizationRevokedEvent {
@@ -1496,12 +1496,12 @@ export interface GollumEvent {
   }[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface InstallationCreatedEvent {
   action: "created";
-  installation: InstallationFull;
+  installation: Installation;
   repositories?: {
     /**
      * Unique identifier of the repository
@@ -1524,7 +1524,7 @@ export interface InstallationCreatedEvent {
 /**
  * Installation
  */
-export interface InstallationFull {
+export interface Installation {
   /**
    * The ID of the installation.
    */
@@ -1571,7 +1571,7 @@ export interface InstallationFull {
 }
 export interface InstallationDeletedEvent {
   action: "deleted";
-  installation: InstallationFull;
+  installation: Installation;
   repositories?: {
     /**
      * Unique identifier of the repository
@@ -1593,7 +1593,7 @@ export interface InstallationDeletedEvent {
 }
 export interface InstallationNewPermissionsAcceptedEvent {
   action: "new_permissions_accepted";
-  installation: InstallationFull;
+  installation: Installation;
   repositories?: {
     /**
      * Unique identifier of the repository
@@ -1615,7 +1615,7 @@ export interface InstallationNewPermissionsAcceptedEvent {
 }
 export interface InstallationSuspendedEvent {
   action: "suspend";
-  installation: InstallationFull;
+  installation: Installation;
   repositories?: {
     /**
      * Unique identifier of the repository
@@ -1637,7 +1637,7 @@ export interface InstallationSuspendedEvent {
 }
 export interface InstallationUnsuspendedEvent {
   action: "unsuspend";
-  installation: InstallationFull;
+  installation: Installation;
   repositories?: {
     /**
      * Unique identifier of the repository
@@ -1659,7 +1659,7 @@ export interface InstallationUnsuspendedEvent {
 }
 export interface InstallationRepositoriesAddedEvent {
   action: "added";
-  installation: InstallationFull;
+  installation: Installation;
   /**
    * Describe whether all repositories have been selected or there's a selection involved
    */
@@ -1685,7 +1685,7 @@ export interface InstallationRepositoriesAddedEvent {
 }
 export interface InstallationRepositoriesRemovedEvent {
   action: "removed";
-  installation: InstallationFull;
+  installation: Installation;
   /**
    * Describe whether all repositories have been selected or there's a selection involved
    */
@@ -1796,7 +1796,7 @@ export interface IssueCommentCreatedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 /**
@@ -1907,7 +1907,7 @@ export interface IssueCommentDeletedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssueCommentEditedEvent {
@@ -2002,7 +2002,7 @@ export interface IssueCommentEditedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesAssignedEvent {
@@ -2083,7 +2083,7 @@ export interface IssuesAssignedEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesClosedEvent {
@@ -2164,7 +2164,7 @@ export interface IssuesClosedEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesDeletedEvent {
@@ -2245,7 +2245,7 @@ export interface IssuesDeletedEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesDemilestonedEvent {
@@ -2326,7 +2326,7 @@ export interface IssuesDemilestonedEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesEditedEvent {
@@ -2415,7 +2415,7 @@ export interface IssuesEditedEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesLabeledEvent {
@@ -2496,7 +2496,7 @@ export interface IssuesLabeledEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesLockedEvent {
@@ -2577,7 +2577,7 @@ export interface IssuesLockedEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesMilestonedEvent {
@@ -2658,7 +2658,7 @@ export interface IssuesMilestonedEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesOpenedEvent {
@@ -2739,7 +2739,7 @@ export interface IssuesOpenedEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesPinnedEvent {
@@ -2820,7 +2820,7 @@ export interface IssuesPinnedEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesReopenedEvent {
@@ -2901,7 +2901,7 @@ export interface IssuesReopenedEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesTransferredEvent {
@@ -2982,7 +2982,7 @@ export interface IssuesTransferredEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesUnassignedEvent {
@@ -3063,7 +3063,7 @@ export interface IssuesUnassignedEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesUnlabeledEvent {
@@ -3144,7 +3144,7 @@ export interface IssuesUnlabeledEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesUnlockedEvent {
@@ -3225,7 +3225,7 @@ export interface IssuesUnlockedEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface IssuesUnpinnedEvent {
@@ -3306,7 +3306,7 @@ export interface IssuesUnpinnedEvent {
   assignees?: User[];
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface LabelCreatedEvent {
@@ -3314,7 +3314,7 @@ export interface LabelCreatedEvent {
   label: Label;
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface LabelDeletedEvent {
@@ -3322,7 +3322,7 @@ export interface LabelDeletedEvent {
   label: Label;
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface LabelEditedEvent {
@@ -3338,7 +3338,7 @@ export interface LabelEditedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface MarketplacePurchaseCancelledEvent {
@@ -3705,7 +3705,7 @@ export interface MemberAddedEvent {
   action: "added";
   member: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   sender: User;
 }
 export interface MemberEditedEvent {
@@ -3717,14 +3717,14 @@ export interface MemberEditedEvent {
     };
   };
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   sender: User;
 }
 export interface MemberRemovedEvent {
   action: "removed";
   member: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   sender: User;
 }
 export interface MembershipAddedEvent {
@@ -3734,7 +3734,7 @@ export interface MembershipAddedEvent {
   sender: User;
   team: Team;
   organization: Organization;
-  installation?: Installation;
+  installation?: InstallationLite;
 }
 /**
  * Groups of organization members that gives permissions on specified repositories.
@@ -3802,7 +3802,7 @@ export interface MembershipRemovedEvent {
   sender: User;
   team: Team;
   organization: Organization;
-  installation?: Installation;
+  installation?: InstallationLite;
 }
 export interface MetaDeletedEvent {
   action: "deleted";
@@ -3858,7 +3858,7 @@ export interface MilestoneClosedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface MilestoneCreatedEvent {
@@ -3892,7 +3892,7 @@ export interface MilestoneCreatedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface MilestoneDeletedEvent {
@@ -3926,7 +3926,7 @@ export interface MilestoneDeletedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface MilestoneEditedEvent {
@@ -3971,7 +3971,7 @@ export interface MilestoneEditedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface MilestoneOpenedEvent {
@@ -4005,21 +4005,21 @@ export interface MilestoneOpenedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface OrgBlockBlockedEvent {
   action: "blocked";
   blocked_user: User;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization: Organization;
 }
 export interface OrgBlockUnblockedEvent {
   action: "unblocked";
   blocked_user: User;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization: Organization;
 }
 export interface OrganizationDeletedEvent {
@@ -4032,7 +4032,7 @@ export interface OrganizationDeletedEvent {
     user: User;
   };
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization: Organization;
 }
 export interface OrganizationMemberAddedEvent {
@@ -4045,14 +4045,14 @@ export interface OrganizationMemberAddedEvent {
     user: User;
   };
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization: Organization;
 }
 export interface OrganizationMemberInvitedEvent {
   action: "member_invited";
   invitation: {};
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization: Organization;
 }
 export interface OrganizationMemberRemovedEvent {
@@ -4065,7 +4065,7 @@ export interface OrganizationMemberRemovedEvent {
     user: User;
   };
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization: Organization;
 }
 export interface OrganizationRenamedEvent {
@@ -4078,7 +4078,7 @@ export interface OrganizationRenamedEvent {
     user: User;
   };
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization: Organization;
 }
 export interface PackagePublishedEvent {
@@ -4234,7 +4234,7 @@ export interface PageBuildEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface PingEvent {
@@ -4295,7 +4295,7 @@ export interface ProjectClosedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ProjectCreatedEvent {
@@ -4326,7 +4326,7 @@ export interface ProjectCreatedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ProjectDeletedEvent {
@@ -4357,7 +4357,7 @@ export interface ProjectDeletedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ProjectEditedEvent {
@@ -4396,7 +4396,7 @@ export interface ProjectEditedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ProjectReopenedEvent {
@@ -4427,7 +4427,7 @@ export interface ProjectReopenedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ProjectCardConvertedEvent {
@@ -4455,7 +4455,7 @@ export interface ProjectCardConvertedEvent {
   repository: Repository;
   sender: User;
   organization?: Organization;
-  installation?: Installation;
+  installation?: InstallationLite;
 }
 export interface ProjectCardCreatedEvent {
   action: "created";
@@ -4482,7 +4482,7 @@ export interface ProjectCardCreatedEvent {
   repository: Repository;
   sender: User;
   organization?: Organization;
-  installation?: Installation;
+  installation?: InstallationLite;
 }
 export interface ProjectCardDeletedEvent {
   action: "deleted";
@@ -4509,7 +4509,7 @@ export interface ProjectCardDeletedEvent {
   repository: Repository;
   sender: User;
   organization?: Organization;
-  installation?: Installation;
+  installation?: InstallationLite;
 }
 export interface ProjectCardEditedEvent {
   action: "edited";
@@ -4536,7 +4536,7 @@ export interface ProjectCardEditedEvent {
   repository: Repository;
   sender: User;
   organization?: Organization;
-  installation?: Installation;
+  installation?: InstallationLite;
 }
 export interface ProjectCardMovedEvent {
   action: "moved";
@@ -4563,7 +4563,7 @@ export interface ProjectCardMovedEvent {
   repository: Repository;
   sender: User;
   organization?: Organization;
-  installation?: Installation;
+  installation?: InstallationLite;
 }
 export interface ProjectColumnCreatedEvent {
   action: "created";
@@ -4585,7 +4585,7 @@ export interface ProjectColumnCreatedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ProjectColumnDeletedEvent {
@@ -4608,7 +4608,7 @@ export interface ProjectColumnDeletedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ProjectColumnEditedEvent {
@@ -4631,7 +4631,7 @@ export interface ProjectColumnEditedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ProjectColumnMovedEvent {
@@ -4654,7 +4654,7 @@ export interface ProjectColumnMovedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface PublicEvent {
@@ -4800,7 +4800,7 @@ export interface PublicEvent {
     };
   };
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface PullRequestAssignedEvent {
@@ -4936,7 +4936,7 @@ export interface PullRequestAssignedEvent {
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -5073,7 +5073,7 @@ export interface PullRequestClosedEvent {
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -5210,7 +5210,7 @@ export interface PullRequestConvertedToDraftEvent {
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -5340,7 +5340,7 @@ export interface PullRequestEditedEvent {
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -5462,7 +5462,7 @@ export interface PullRequestLabeledEvent {
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -5584,7 +5584,7 @@ export interface PullRequestLockedEvent {
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -5706,7 +5706,7 @@ export interface PullRequestOpenedEvent {
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -5828,7 +5828,7 @@ export interface PullRequestReadyForReviewEvent {
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -5950,7 +5950,7 @@ export interface PullRequestReopenedEvent {
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -6072,7 +6072,7 @@ export interface PullRequestReviewRequestRemovedEvent {
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -6194,7 +6194,7 @@ export interface PullRequestReviewRequestedEvent {
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -6316,7 +6316,7 @@ export interface PullRequestSynchronizeEvent {
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -6438,7 +6438,7 @@ export interface PullRequestUnassignedEvent {
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -6560,7 +6560,7 @@ export interface PullRequestUnlabeledEvent {
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -6682,7 +6682,7 @@ export interface PullRequestUnlockedEvent {
   label?: Label;
   assignee?: User;
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -6818,7 +6818,7 @@ export interface PullRequestReviewDismissedEvent {
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
   };
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -6959,7 +6959,7 @@ export interface PullRequestReviewEditedEvent {
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
   };
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -7095,7 +7095,7 @@ export interface PullRequestReviewSubmittedEvent {
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
   };
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -7297,7 +7297,7 @@ export interface PullRequestReviewCommentCreatedEvent {
     author_association: AuthorAssociation;
   };
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -7499,7 +7499,7 @@ export interface PullRequestReviewCommentDeletedEvent {
     author_association: AuthorAssociation;
   };
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -7706,7 +7706,7 @@ export interface PullRequestReviewCommentEditedEvent {
     author_association: AuthorAssociation;
   };
   repository: Repository;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   sender: User;
 }
@@ -7764,7 +7764,7 @@ export interface PushEvent {
   repository: Repository;
   pusher: Committer;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ReleaseCreatedEvent {
@@ -7803,7 +7803,7 @@ export interface ReleaseCreatedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 /**
@@ -7866,7 +7866,7 @@ export interface ReleaseDeletedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ReleaseEditedEvent {
@@ -7913,7 +7913,7 @@ export interface ReleaseEditedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ReleasePrereleasedEvent {
@@ -7952,7 +7952,7 @@ export interface ReleasePrereleasedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ReleasePublishedEvent {
@@ -7991,7 +7991,7 @@ export interface ReleasePublishedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ReleaseReleasedEvent {
@@ -8030,7 +8030,7 @@ export interface ReleaseReleasedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ReleaseUnpublishedEvent {
@@ -8069,7 +8069,7 @@ export interface ReleaseUnpublishedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface RepositoryArchivedEvent {
@@ -8216,21 +8216,21 @@ export interface RepositoryArchivedEvent {
     };
   };
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface RepositoryCreatedEvent {
   action: "created";
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface RepositoryDeletedEvent {
   action: "deleted";
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface RepositoryEditedEvent {
@@ -8248,7 +8248,7 @@ export interface RepositoryEditedEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface RepositoryPrivatizedEvent {
@@ -8395,7 +8395,7 @@ export interface RepositoryPrivatizedEvent {
     };
   };
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface RepositoryPublicizedEvent {
@@ -8542,14 +8542,14 @@ export interface RepositoryPublicizedEvent {
     };
   };
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface RepositoryRenamedEvent {
   action: "renamed";
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface RepositoryTransferredEvent {
@@ -8563,7 +8563,7 @@ export interface RepositoryTransferredEvent {
   };
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface RepositoryUnarchivedEvent {
@@ -8710,7 +8710,7 @@ export interface RepositoryUnarchivedEvent {
     };
   };
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface RepositoryDispatchOnDemandTestEvent {
@@ -8721,14 +8721,14 @@ export interface RepositoryDispatchOnDemandTestEvent {
   };
   repository: Repository;
   sender: User;
-  installation: Installation;
+  installation: InstallationLite;
   organization?: Organization;
 }
 export interface RepositoryImportEvent {
   status: "success" | "cancelled" | "failure";
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface RepositoryVulnerabilityAlertCreateEvent {
@@ -8799,7 +8799,7 @@ export interface SecretScanningAlertCreatedEvent {
   };
   repository: Repository;
   organization?: Organization;
-  installation?: Installation;
+  installation?: InstallationLite;
   sender: User;
 }
 export interface SecretScanningAlertReopenedEvent {
@@ -8813,7 +8813,7 @@ export interface SecretScanningAlertReopenedEvent {
   };
   repository: Repository;
   organization?: Organization;
-  installation?: Installation;
+  installation?: InstallationLite;
   sender: User;
 }
 export interface SecretScanningAlertResolvedEvent {
@@ -8827,7 +8827,7 @@ export interface SecretScanningAlertResolvedEvent {
   };
   repository: Repository;
   organization?: Organization;
-  installation?: Installation;
+  installation?: InstallationLite;
   sender: User;
 }
 export interface SecurityAdvisoryPerformedEvent {
@@ -9023,7 +9023,7 @@ export interface StarCreatedEvent {
   repository: Repository;
   sender: User;
   organization?: Organization;
-  installation?: Installation;
+  installation?: InstallationLite;
 }
 export interface StarDeletedEvent {
   action: "deleted";
@@ -9031,7 +9031,7 @@ export interface StarDeletedEvent {
   repository: Repository;
   sender: User;
   organization?: Organization;
-  installation?: Installation;
+  installation?: InstallationLite;
 }
 export interface StatusEvent {
   id: number;
@@ -9106,7 +9106,7 @@ export interface StatusEvent {
   updated_at: string;
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface TeamAddedToRepositoryEvent {
@@ -9168,14 +9168,14 @@ export interface TeamAddEvent {
   team: Team;
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization: Organization;
 }
 export interface WatchStartedEvent {
   action: "started";
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface WorkflowDispatchEvent {
@@ -9185,7 +9185,7 @@ export interface WorkflowDispatchEvent {
   ref: string;
   repository: Repository;
   sender: User;
-  installation?: Installation;
+  installation?: InstallationLite;
   organization?: Organization;
   workflow: string;
 }
@@ -9342,7 +9342,7 @@ export interface WorkflowRunCompletedEvent {
     workflow_id: number;
     workflow_url: string;
   };
-  installation?: Installation;
+  installation?: InstallationLite;
 }
 export interface WorkflowRunRequestedEvent {
   action: "requested";
@@ -9497,7 +9497,7 @@ export interface WorkflowRunRequestedEvent {
     workflow_id: number;
     workflow_url: string;
   };
-  installation?: Installation;
+  installation?: InstallationLite;
 }
 
 export interface EventPayloadMap {

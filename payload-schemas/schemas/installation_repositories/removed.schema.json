@@ -12,7 +12,7 @@
   ],
   "properties": {
     "action": { "type": "string", "enum": ["removed"] },
-    "installation": { "$ref": "common/installation-full.schema.json" },
+    "installation": { "$ref": "common/installation.schema.json" },
     "repository_selection": {
       "type": "string",
       "enum": ["all", "selected"],

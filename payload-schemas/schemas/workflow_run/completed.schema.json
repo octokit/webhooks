@@ -318,7 +318,7 @@
       },
       "additionalProperties": false
     },
-    "installation": { "$ref": "common/installation.schema.json" }
+    "installation": { "$ref": "common/installation-lite.schema.json" }
   },
   "additionalProperties": false,
   "title": "workflow_run completed event"

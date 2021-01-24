@@ -5,7 +5,7 @@
   "required": ["action", "installation", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["deleted"] },
-    "installation": { "$ref": "common/installation-full.schema.json" },
+    "installation": { "$ref": "common/installation.schema.json" },
     "repositories": {
       "type": "array",
       "items": {
