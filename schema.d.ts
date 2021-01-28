@@ -5419,6 +5419,7 @@ export interface PullRequestReviewRequestRemovedEvent {
   action: "review_request_removed";
   number: number;
   pull_request: PullRequest;
+  requested_reviewer: User;
   label?: Label;
   assignee?: User;
   repository: Repository;
@@ -5430,6 +5431,7 @@ export interface PullRequestReviewRequestedEvent {
   action: "review_requested";
   number: number;
   pull_request: PullRequest;
+  requested_reviewer: User;
   label?: Label;
   assignee?: User;
   repository: Repository;
