@@ -95,8 +95,8 @@ export type InstallationEvent =
   | InstallationCreatedEvent
   | InstallationDeletedEvent
   | InstallationNewPermissionsAcceptedEvent
-  | InstallationSuspendedEvent
-  | InstallationUnsuspendedEvent;
+  | InstallationSuspendEvent
+  | InstallationUnsuspendEvent;
 export type InstallationRepositoriesEvent =
   | InstallationRepositoriesAddedEvent
   | InstallationRepositoriesRemovedEvent;
@@ -2000,7 +2000,7 @@ export interface InstallationNewPermissionsAcceptedEvent {
   requester?: null;
   sender: User;
 }
-export interface InstallationSuspendedEvent {
+export interface InstallationSuspendEvent {
   action: "suspend";
   installation: Installation;
   repositories?: {
@@ -2022,7 +2022,7 @@ export interface InstallationSuspendedEvent {
   requester?: null;
   sender: User;
 }
-export interface InstallationUnsuspendedEvent {
+export interface InstallationUnsuspendEvent {
   action: "unsuspend";
   installation: Installation;
   repositories?: {

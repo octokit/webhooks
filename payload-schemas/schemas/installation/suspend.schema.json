@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "installation$suspended",
+  "$id": "installation$suspend",
   "type": "object",
   "required": ["action", "installation", "sender"],
   "properties": {
@@ -34,5 +34,5 @@
     "sender": { "$ref": "common/user.schema.json" }
   },
   "additionalProperties": false,
-  "title": "installation suspended event"
+  "title": "installation suspend event"
 }
