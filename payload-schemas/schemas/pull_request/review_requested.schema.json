@@ -2,11 +2,19 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "pull_request$review_requested",
   "type": "object",
-  "required": ["action", "number", "pull_request", "repository", "sender"],
+  "required": [
+    "action",
+    "number",
+    "pull_request",
+    "requested_reviewer",
+    "repository",
+    "sender"
+  ],
   "properties": {
     "action": { "type": "string", "enum": ["review_requested"] },
     "number": { "type": "integer" },
     "pull_request": { "$ref": "common/pull-request.schema.json" },
+    "requested_reviewer": { "$ref": "common/user.schema.json" },
     "label": { "$ref": "common/label.schema.json" },
     "assignee": { "$ref": "common/user.schema.json" },
     "repository": { "$ref": "common/repository.schema.json" },
