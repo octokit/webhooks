@@ -72,6 +72,10 @@
           "type": "string",
           "enum": ["read", "write"]
         },
+        "organization_packages": {
+          "type": "string",
+          "enum": ["read", "write"]
+        },
         "organization_plan": {
           "type": "string",
           "enum": ["read", "write"]
@@ -95,6 +99,10 @@
           "enum": ["read", "write"]
         },
         "repository_projects": {
+          "type": "string",
+          "enum": ["read", "write"]
+        },
+        "security_events": {
           "type": "string",
           "enum": ["read", "write"]
         },
