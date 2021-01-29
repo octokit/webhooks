@@ -598,6 +598,7 @@ export interface Repository {
     triage?: boolean;
   };
   public?: boolean;
+  organization?: string;
 }
 /**
  * Installation
