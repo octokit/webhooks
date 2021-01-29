@@ -24,7 +24,11 @@
     },
     "message": { "type": "string", "description": "The commit message." },
     "timestamp": { "type": "string" },
-    "url": { "type": "string", "format": "uri","description": "URL that points to the commit API resource." },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL that points to the commit API resource."
+    },
     "author": {
       "allOf": [
         { "$ref": "committer.schema.json" },

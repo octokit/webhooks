@@ -29,7 +29,10 @@
       "properties": {
         "id": { "type": "integer" },
         "node_id": { "type": "string" },
-        "head_branch": { "type": ["string", "null"], "description": "The head branch name the changes are on." },
+        "head_branch": {
+          "type": ["string", "null"],
+          "description": "The head branch name the changes are on."
+        },
         "head_sha": {
           "type": "string",
           "description": "The SHA of the head commit that is being checked."
@@ -52,7 +55,11 @@
             null
           ]
         },
-        "url": { "type": "string", "format": "uri","description": "URL that points to the check suite API resource." },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL that points to the check suite API resource."
+        },
         "before": { "type": "string" },
         "after": { "type": "string" },
         "pull_requests": {
