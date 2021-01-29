@@ -2,8 +2,8 @@
 
 import { strict as assert } from "assert";
 import { promises as fs } from "fs";
-import { JSONSchema7 } from "json-schema";
-import { compileFromFile } from "json-schema-to-typescript";
+import { JSONSchema4, JSONSchema7 } from "json-schema";
+import { compile } from "json-schema-to-typescript";
 import { format } from "prettier";
 
 const titleCase = (str: string) => `${str[0].toUpperCase()}${str.substring(1)}`;
@@ -47,11 +47,36 @@ const buildEventPayloadMap = (schema: Schema): string => {
 const getSchema = async () =>
   JSON.parse(await fs.readFile("./schema.json", "utf-8")) as Schema;
 
+const isJsonSchemaObject = (object: unknown): object is JSONSchema7 =>
+  typeof object === "object" && object !== null && !Array.isArray(object);
+
+declare module "json-schema" {
+  interface JSONSchema7 {
+    tsAdditionalProperties?: JSONSchema7["additionalProperties"];
+  }
+}
+
+const compileSchema = async (): Promise<string> => {
+  // has to be 4 due to https://github.com/bcherny/json-schema-to-typescript/issues/359
+  const schema: JSONSchema4 = JSON.parse(
+    await fs.readFile("./schema.json", "utf-8"),
+    (key, value: unknown) => {
+      if (isJsonSchemaObject(value) && "tsAdditionalProperties" in value) {
+        value.additionalProperties = value.tsAdditionalProperties;
+      }
+
+      return value;
+    }
+  ) as JSONSchema4;
+
+  return compile(schema, "Schema", { format: false });
+};
+
 const run = async () => {
   const schema = await getSchema();
 
   const ts = [
-    await compileFromFile("./schema.json", { format: false }),
+    await compileSchema(),
     buildEventPayloadMap(schema),
     "",
     "export type Asset = ReleaseAsset;",

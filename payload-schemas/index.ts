@@ -25,6 +25,8 @@ const requireSchema = (
   return keyName;
 };
 
+ajv.addKeyword("tsAdditionalProperties");
+
 readdirSync(`${schemaDir}/common`).forEach((filename) =>
   requireSchema("common", filename)
 );

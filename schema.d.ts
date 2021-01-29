@@ -2252,21 +2252,8 @@ export interface IssueCommentDeletedEvent {
     locked: boolean;
     assignee: User | null;
     assignees: User[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      number: number;
-      title: string;
+    milestone: Milestone & {
       description: string;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
       due_on: string;
       closed_at: string;
     };
@@ -2347,21 +2334,8 @@ export interface IssueCommentEditedEvent {
     locked: boolean;
     assignee: User | null;
     assignees: User[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      number: number;
-      title: string;
+    milestone: Milestone & {
       description: string;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
       due_on: string;
       closed_at: string;
     };
@@ -3814,34 +3788,8 @@ export interface MetaDeletedEvent {
 }
 export interface MilestoneClosedEvent {
   action: "closed";
-  /**
-   * A collection of related issues and pull requests.
-   */
-  milestone: {
-    url: string;
-    html_url: string;
-    labels_url: string;
-    id: number;
-    node_id: string;
-    /**
-     * The number of the milestone.
-     */
-    number: number;
-    /**
-     * The title of the milestone.
-     */
-    title: string;
-    description: string | null;
-    creator: User;
-    open_issues: number;
-    closed_issues: number;
-    /**
-     * The state of the milestone.
-     */
+  milestone: Milestone & {
     state: "closed";
-    created_at: string;
-    updated_at: string;
-    due_on: string | null;
     closed_at: string;
   };
   repository: Repository;
@@ -3851,31 +3799,8 @@ export interface MilestoneClosedEvent {
 }
 export interface MilestoneCreatedEvent {
   action: "created";
-  milestone: {
-    url: string;
-    html_url: string;
-    labels_url: string;
-    id: number;
-    node_id: string;
-    /**
-     * The number of the milestone.
-     */
-    number: number;
-    /**
-     * The title of the milestone.
-     */
-    title: string;
-    description: string | null;
-    creator: User;
-    open_issues: number;
-    closed_issues: number;
-    /**
-     * The state of the milestone.
-     */
+  milestone: Milestone & {
     state: "open";
-    created_at: string;
-    updated_at: string;
-    due_on: string | null;
     closed_at: null;
   };
   repository: Repository;
@@ -3912,31 +3837,8 @@ export interface MilestoneEditedEvent {
 }
 export interface MilestoneOpenedEvent {
   action: "opened";
-  milestone: {
-    url: string;
-    html_url: string;
-    labels_url: string;
-    id: number;
-    node_id: string;
-    /**
-     * The number of the milestone.
-     */
-    number: number;
-    /**
-     * The title of the milestone.
-     */
-    title: string;
-    description: string | null;
-    creator: User;
-    open_issues: number;
-    closed_issues: number;
-    /**
-     * The state of the milestone.
-     */
+  milestone: Milestone & {
     state: "open";
-    created_at: string;
-    updated_at: string;
-    due_on: string | null;
     closed_at: null;
   };
   repository: Repository;
@@ -5531,33 +5433,12 @@ export interface SimplePullRequest {
   requested_reviewers: (User | Team)[];
   requested_teams: Team[];
   labels: Label[];
-  milestone: {
-    url: string;
-    html_url: string;
-    labels_url: string;
-    id: number;
-    node_id: string;
-    /**
-     * The number of the milestone.
-     */
-    number: number;
-    /**
-     * The title of the milestone.
-     */
-    title: string;
-    description: string | null;
-    creator: User;
-    open_issues: number;
-    closed_issues: number;
-    /**
-     * The state of the milestone.
-     */
-    state: "open" | "closed";
-    created_at: string | null;
-    updated_at: string | null;
-    due_on: string | null;
-    closed_at: string | null;
-  } | null;
+  milestone:
+    | null
+    | (Milestone & {
+        state: "closed";
+        closed_at: string;
+      });
   draft: boolean;
   commits_url: string;
   review_comments_url: string;
