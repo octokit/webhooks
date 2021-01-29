@@ -2,6 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "member$added",
   "type": "object",
+  "description": "Activity related to repository collaborators. The type of activity is specified in the action property.",
   "required": ["action", "member", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["added"] },

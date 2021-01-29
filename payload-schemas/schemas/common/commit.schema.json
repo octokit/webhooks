@@ -18,10 +18,13 @@
   "properties": {
     "id": { "type": "string" },
     "tree_id": { "type": "string" },
-    "distinct": { "type": "boolean" },
-    "message": { "type": "string" },
+    "distinct": {
+      "type": "boolean",
+      "description": "Whether this commit is distinct from any that have been pushed before."
+    },
+    "message": { "type": "string", "description": "The commit message." },
     "timestamp": { "type": "string" },
-    "url": { "type": "string", "format": "uri" },
+    "url": { "type": "string", "format": "uri","description": "URL that points to the commit API resource." },
     "author": {
       "allOf": [
         { "$ref": "committer.schema.json" },

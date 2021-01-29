@@ -8,12 +8,18 @@
     "member": { "$ref": "common/user.schema.json" },
     "changes": {
       "type": "object",
+      "description": "The changes to the collaborator permissions",
       "required": ["old_permission"],
       "properties": {
         "old_permission": {
           "type": "object",
           "required": ["from"],
-          "properties": { "from": { "type": "string" } },
+          "properties": {
+            "from": {
+              "type": "string",
+              "description": "The previous permissions of the collaborator if the action was edited."
+            }
+          },
           "additionalProperties": false
         }
       },

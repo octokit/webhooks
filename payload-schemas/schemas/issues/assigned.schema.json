@@ -2,11 +2,13 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "issues$assigned",
   "type": "object",
+  "description": "Activity related to an issue. The type of activity is specified in the action property.",
   "required": ["action", "issue", "repository", "sender"],
   "properties": {
-    "action": { "type": "string", "enum": ["assigned"] },
-    "issue": { "$ref": "common/issue.schema.json" },
+    "action": { "type": "string", "enum": ["assigned"],"description": "The action that was performed." },
+    "issue": { "$ref": "common/issue.schema.json","description": "The [issue](https://docs.github.com/en/rest/reference/issues) itself." },
     "assignee": {
+      "description": "The optional user who was assigned or unassigned from the issue.",
       "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": "null" }]
     },
     "repository": { "$ref": "common/repository.schema.json" },

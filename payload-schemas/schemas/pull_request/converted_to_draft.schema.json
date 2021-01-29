@@ -5,7 +5,7 @@
   "required": ["action", "number", "pull_request", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["converted_to_draft"] },
-    "number": { "type": "integer" },
+    "number": { "type": "integer", "description": "The pull request number." },
     "pull_request": {
       "allOf": [
         { "$ref": "common/pull-request.schema.json" },

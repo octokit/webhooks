@@ -5,7 +5,8 @@
   "required": ["action", "issue", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["deleted"] },
-    "issue": { "$ref": "common/issue.schema.json" },
+    "issue": { "$ref": "common/issue.schema.json",      "description": "The [issue](https://docs.github.com/en/rest/reference/issues) itself."
+    },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },

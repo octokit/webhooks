@@ -2,11 +2,17 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "commit_comment$created",
   "type": "object",
+  "description": "A commit comment is created. The type of activity is specified in the `action` property. ",
   "required": ["action", "comment", "repository", "sender"],
   "properties": {
-    "action": { "type": "string", "enum": ["created"] },
+    "action": {
+      "type": "string",
+      "enum": ["created"],
+      "description": "The action performed. Can be `created`."
+    },
     "comment": {
       "type": "object",
+      "description": "The [commit comment](https://docs.github.com/en/rest/reference/repos#get-a-commit-comment) resource.",
       "required": [
         "url",
         "html_url",
@@ -25,19 +31,37 @@
       "properties": {
         "url": { "type": "string", "format": "uri" },
         "html_url": { "type": "string", "format": "uri" },
-        "id": { "type": "integer" },
-        "node_id": { "type": "string" },
+        "id": {
+          "type": "integer",
+          "description": "The ID of the commit comment."
+        },
+        "node_id": {
+          "type": "string",
+          "description": "The node ID of the commit comment."
+        },
         "user": { "$ref": "common/user.schema.json" },
-        "position": { "type": ["integer", "null"] },
-        "line": { "type": ["integer", "null"] },
-        "path": { "type": ["string", "null"] },
-        "commit_id": { "type": "string" },
+        "position": {
+          "type": ["integer", "null"],
+          "description": "The line index in the diff to which the comment applies."
+        },
+        "line": {
+          "type": ["integer", "null"],
+          "description": "The line of the blob to which the comment applies. The last line of the range for a multi-line comment"
+        },
+        "path": {
+          "type": ["string", "null"],
+          "description": "The relative path of the file to which the comment applies."
+        },
+        "commit_id": {
+          "type": "string",
+          "description": "The SHA of the commit to which the comment applies."
+        },
         "created_at": { "type": "string" },
         "updated_at": { "type": "string" },
         "author_association": {
           "$ref": "common/author_association.schema.json"
         },
-        "body": { "type": "string" }
+        "body": { "type": "string", "description": "The text of the comment." }
       },
       "additionalProperties": false
     },

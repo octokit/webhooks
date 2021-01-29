@@ -2,11 +2,18 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "check_run$requested_action",
   "type": "object",
-  "required": ["action", "check_run", "repository", "sender"],
+  "required": [
+    "action",
+    "check_run",
+    "requested_action",
+    "repository",
+    "sender"
+  ],
   "properties": {
     "action": { "type": "string", "enum": ["requested_action"] },
     "check_run": {
       "type": "object",
+      "description": "The [check_run](https://docs.github.com/en/rest/reference/checks#get-a-check-run).",
       "required": [
         "id",
         "head_sha",
@@ -51,7 +58,7 @@
             "stale",
             null
           ],
-          "description": "The final conclusion of the check. Can be one of `success`, `failure`, `neutral`, `cancelled`, `skipped`, `timed_out`, or `action_required`. When the conclusion is `action_required`, additional details should be provided on the site specified by `details_url`."
+          "description": "The result of the completed check run. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has `completed`."
         },
         "started_at": {
           "type": "string",
@@ -96,7 +103,10 @@
             "updated_at"
           ],
           "properties": {
-            "id": { "type": "integer" },
+            "id": {
+              "type": "integer",
+              "description": "The id of the check suite that this check run is part of."
+            },
             "node_id": { "type": "string" },
             "head_branch": { "type": ["string", "null"] },
             "head_sha": {
@@ -144,7 +154,13 @@
     },
     "requested_action": {
       "type": "object",
-      "properties": { "identifier": { "type": "string" } },
+      "description": "The action requested by the user.",
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "description": "The integrator reference of the action requested by the user."
+        }
+      },
       "additionalProperties": false
     },
     "repository": { "$ref": "common/repository.schema.json" },

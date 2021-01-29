@@ -4,8 +4,13 @@
   "type": "object",
   "required": ["action", "issue", "repository", "sender"],
   "properties": {
-    "action": { "type": "string", "enum": ["closed"] },
+    "action": {
+      "type": "string",
+      "enum": ["closed"],
+      "description": "The action that was performed."
+    },
     "issue": {
+      "description": "The [issue](https://docs.github.com/en/rest/reference/issues) itself.",
       "allOf": [
         { "$ref": "common/issue.schema.json" },
         {

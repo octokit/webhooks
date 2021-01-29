@@ -2,6 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "create$event",
   "type": "object",
+  "description": "A Git branch or tag is created.",
   "required": [
     "ref",
     "ref_type",
@@ -12,10 +13,23 @@
     "sender"
   ],
   "properties": {
-    "ref": { "type": "string" },
-    "ref_type": { "type": "string", "enum": ["tag", "branch"] },
-    "master_branch": { "type": "string" },
-    "description": { "type": ["string", "null"] },
+    "ref": {
+      "type": "string",
+      "description": "The [`git ref`](https://docs.github.com/en/rest/reference/git#get-a-reference) resource."
+    },
+    "ref_type": {
+      "type": "string",
+      "enum": ["tag", "branch"],
+      "description": "The type of Git ref object created in the repository. Can be either `branch` or `tag`."
+    },
+    "master_branch": {
+      "type": "string",
+      "description": "The name of the repository's default branch (usually `main`)."
+    },
+    "description": {
+      "type": ["string", "null"],
+      "description": "The repository's current description."
+    },
     "pusher_type": { "type": "string" },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },

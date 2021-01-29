@@ -246,6 +246,9 @@ export type WorkflowRunEvent =
 
 export interface CheckRunCompletedEvent {
   action: "completed";
+  /**
+   * The [check_run](https://docs.github.com/en/rest/reference/checks#get-a-check-run).
+   */
   check_run: {
     /**
      * The id of the check.
@@ -265,7 +268,7 @@ export interface CheckRunCompletedEvent {
      */
     status: "completed";
     /**
-     * The final conclusion of the check. Can be one of `success`, `failure`, `neutral`, `cancelled`, `skipped`, `timed_out`, or `action_required`. When the conclusion is `action_required`, additional details should be provided on the site specified by `details_url`.
+     * The final conclusion of the check. Can be one of `success`, `failure`, `neutral`, `cancelled`, `skipped`, `timed_out`, or `action_required`.
      */
     conclusion:
       | "success"
@@ -274,8 +277,7 @@ export interface CheckRunCompletedEvent {
       | "cancelled"
       | "timed_out"
       | "action_required"
-      | "stale"
-      | null;
+      | "stale";
     /**
      * The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
      */
@@ -316,6 +318,9 @@ export interface CheckRunCompletedEvent {
       url: string;
       before: string | null;
       after: string | null;
+      /**
+       * An array of pull requests that match this check suite. A pull request matches a check suite if they have the same head_sha and head_branch. When the check suite's head_branch is in a forked repository it will be null and the pull_requests array will be empty.
+       */
       pull_requests: CheckRunPullRequest[];
       app: App;
       created_at: string;
@@ -616,6 +621,9 @@ export interface Organization {
 }
 export interface CheckRunCreatedEvent {
   action: "created";
+  /**
+   * The [check_run](https://docs.github.com/en/rest/reference/checks#get-a-check-run).
+   */
   check_run: {
     /**
      * The id of the check.
@@ -635,17 +643,9 @@ export interface CheckRunCreatedEvent {
      */
     status: "queued" | "in_progress";
     /**
-     * The final conclusion of the check. Can be one of `success`, `failure`, `neutral`, `cancelled`, `skipped`, `timed_out`, or `action_required`. When the conclusion is `action_required`, additional details should be provided on the site specified by `details_url`.
+     * The final conclusion of the check. Can be one of `success`, `failure`, `neutral`, `cancelled`, `skipped`, `timed_out`, or `action_required`. This value will be null until the check run has completed.
      */
-    conclusion:
-      | "success"
-      | "failure"
-      | "neutral"
-      | "cancelled"
-      | "timed_out"
-      | "action_required"
-      | "stale"
-      | null;
+    conclusion: null;
     /**
      * The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
      */
@@ -662,10 +662,13 @@ export interface CheckRunCreatedEvent {
       annotations_url: string;
     };
     /**
-     * The name of the check.
+     * The name of the check run.
      */
     name: string;
     check_suite: {
+      /**
+       * The id of the check suite that this check run is part of.
+       */
       id: number;
       node_id?: string;
       head_branch: string | null;
@@ -684,6 +687,9 @@ export interface CheckRunCreatedEvent {
       updated_at: string;
     };
     app: App;
+    /**
+     * An array of pull requests that match this check suite. A pull request matches a check suite if they have the same head_sha and head_branch. When the check suite's head_branch is in a forked repository it will be null and the pull_requests array will be empty.
+     */
     pull_requests: CheckRunPullRequest[];
     deployment?: CheckRunDeployment;
   };
@@ -697,6 +703,9 @@ export interface CheckRunCreatedEvent {
 }
 export interface CheckRunRequestedActionEvent {
   action: "requested_action";
+  /**
+   * The [check_run](https://docs.github.com/en/rest/reference/checks#get-a-check-run).
+   */
   check_run: {
     /**
      * The id of the check.
@@ -716,7 +725,7 @@ export interface CheckRunRequestedActionEvent {
      */
     status: "queued" | "in_progress" | "completed";
     /**
-     * The final conclusion of the check. Can be one of `success`, `failure`, `neutral`, `cancelled`, `skipped`, `timed_out`, or `action_required`. When the conclusion is `action_required`, additional details should be provided on the site specified by `details_url`.
+     * The result of the completed check run. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has `completed`.
      */
     conclusion:
       | "success"
@@ -747,6 +756,9 @@ export interface CheckRunRequestedActionEvent {
      */
     name: string;
     check_suite: {
+      /**
+       * The id of the check suite that this check run is part of.
+       */
       id: number;
       node_id?: string;
       head_branch: string | null;
@@ -776,7 +788,13 @@ export interface CheckRunRequestedActionEvent {
     pull_requests: CheckRunPullRequest[];
     deployment?: CheckRunDeployment;
   };
-  requested_action?: {
+  /**
+   * The action requested by the user.
+   */
+  requested_action: {
+    /**
+     * The integrator reference of the action requested by the user.
+     */
     identifier?: string;
   };
   repository: Repository;
@@ -786,6 +804,9 @@ export interface CheckRunRequestedActionEvent {
 }
 export interface CheckRunRerequestedEvent {
   action: "rerequested";
+  /**
+   * The [check_run](https://docs.github.com/en/rest/reference/checks#get-a-check-run).
+   */
   check_run: {
     /**
      * The id of the check.
@@ -805,7 +826,7 @@ export interface CheckRunRerequestedEvent {
      */
     status: "completed";
     /**
-     * The final conclusion of the check. Can be one of `success`, `failure`, `neutral`, `cancelled`, `skipped`, `timed_out`, or `action_required`. When the conclusion is `action_required`, additional details should be provided on the site specified by `details_url`.
+     * The result of the completed check run. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has `completed`.
      */
     conclusion:
       | "success"
@@ -836,6 +857,9 @@ export interface CheckRunRerequestedEvent {
      */
     name: string;
     check_suite: {
+      /**
+       * The id of the check suite that this check run is part of.
+       */
       id: number;
       node_id?: string;
       head_branch: string | null;
@@ -855,6 +879,9 @@ export interface CheckRunRerequestedEvent {
       url: string;
       before: string | null;
       after: string | null;
+      /**
+       * An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.
+       */
       pull_requests: CheckRunPullRequest[];
       app: App;
       created_at: string;
@@ -874,15 +901,24 @@ export interface CheckRunRerequestedEvent {
 }
 export interface CheckSuiteCompletedEvent {
   action: "completed";
+  /**
+   * The [check_suite](https://docs.github.com/en/rest/reference/checks#suites).
+   */
   check_suite: {
     id: number;
     node_id: string;
+    /**
+     * The head branch name the changes are on.
+     */
     head_branch: string | null;
     /**
      * The SHA of the head commit that is being checked.
      */
     head_sha: string;
-    status: "requested" | "in_progress" | "completed" | "queued" | null;
+    /**
+     * The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`.
+     */
+    status: "completed";
     conclusion:
       | "success"
       | "failure"
@@ -892,9 +928,15 @@ export interface CheckSuiteCompletedEvent {
       | "action_required"
       | "stale"
       | null;
+    /**
+     * URL that points to the check suite API resource.
+     */
     url: string;
     before: string;
     after: string;
+    /**
+     * An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.
+     */
     pull_requests: CheckRunPullRequest[];
     app: App;
     created_at: string;
@@ -920,22 +962,40 @@ export interface SimpleCommit {
  * Metaproperties for Git author/committer information.
  */
 export interface Committer {
+  /**
+   * The git author's name.
+   */
   name: string;
+  /**
+   * The git author's email address.
+   */
   email: string;
   date?: string;
   username?: string;
 }
 export interface CheckSuiteRequestedEvent {
   action: "requested";
+  /**
+   * The [check_suite](https://docs.github.com/en/rest/reference/checks#suites).
+   */
   check_suite: {
     id: number;
     node_id: string;
+    /**
+     * The head branch name the changes are on.
+     */
     head_branch: string | null;
     /**
      * The SHA of the head commit that is being checked.
      */
     head_sha: string;
+    /**
+     * The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`.
+     */
     status: "requested" | "in_progress" | "completed" | "queued" | null;
+    /**
+     * The summary conclusion for all check runs that are part of the check suite. Can be one of `success`, `failure`,` neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has completed.
+     */
     conclusion:
       | "success"
       | "failure"
@@ -945,9 +1005,15 @@ export interface CheckSuiteRequestedEvent {
       | "action_required"
       | "stale"
       | null;
+    /**
+     * URL that points to the check suite API resource.
+     */
     url: string;
     before: string;
     after: string;
+    /**
+     * An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.
+     */
     pull_requests: CheckRunPullRequest[];
     app: App;
     created_at: string;
@@ -963,15 +1029,27 @@ export interface CheckSuiteRequestedEvent {
 }
 export interface CheckSuiteRerequestedEvent {
   action: "rerequested";
+  /**
+   * The [check_suite](https://docs.github.com/en/rest/reference/checks#suites).
+   */
   check_suite: {
     id: number;
     node_id: string;
+    /**
+     * The head branch name the changes are on.
+     */
     head_branch: string | null;
     /**
      * The SHA of the head commit that is being checked.
      */
     head_sha: string;
+    /**
+     * The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`.
+     */
     status: "requested" | "in_progress" | "completed" | "queued" | null;
+    /**
+     * The summary conclusion for all check runs that are part of the check suite. Can be one of `success`, `failure`,` neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has completed.
+     */
     conclusion:
       | "success"
       | "failure"
@@ -981,9 +1059,15 @@ export interface CheckSuiteRerequestedEvent {
       | "action_required"
       | "stale"
       | null;
+    /**
+     * URL that points to the check suite API resource.
+     */
     url: string;
     before: string;
     after: string;
+    /**
+     * An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.
+     */
     pull_requests: CheckRunPullRequest[];
     app: App;
     created_at: string;
@@ -1437,21 +1521,51 @@ export interface CodeScanningAlertReopenedByUserEvent {
   installation?: InstallationLite;
   organization?: Organization;
 }
+/**
+ * A commit comment is created. The type of activity is specified in the `action` property.
+ */
 export interface CommitCommentCreatedEvent {
+  /**
+   * The action performed. Can be `created`.
+   */
   action: "created";
+  /**
+   * The [commit comment](https://docs.github.com/en/rest/reference/repos#get-a-commit-comment) resource.
+   */
   comment: {
     url: string;
     html_url: string;
+    /**
+     * The ID of the commit comment.
+     */
     id: number;
+    /**
+     * The node ID of the commit comment.
+     */
     node_id: string;
     user: User;
+    /**
+     * The line index in the diff to which the comment applies.
+     */
     position: number | null;
+    /**
+     * The line of the blob to which the comment applies. The last line of the range for a multi-line comment
+     */
     line: number | null;
+    /**
+     * The relative path of the file to which the comment applies.
+     */
     path: string | null;
+    /**
+     * The SHA of the commit to which the comment applies.
+     */
     commit_id: string;
     created_at: string;
     updated_at: string;
     author_association: AuthorAssociation;
+    /**
+     * The text of the comment.
+     */
     body: string;
   };
   repository: Repository;
@@ -1471,10 +1585,25 @@ export interface ContentReferenceCreatedEvent {
   installation: InstallationLite;
   organization?: Organization;
 }
+/**
+ * A Git branch or tag is created.
+ */
 export interface CreateEvent {
+  /**
+   * The [`git ref`](https://docs.github.com/en/rest/reference/git#get-a-reference) resource.
+   */
   ref: string;
+  /**
+   * The type of Git ref object created in the repository. Can be either `branch` or `tag`.
+   */
   ref_type: "tag" | "branch";
+  /**
+   * The name of the repository's default branch (usually `main`).
+   */
   master_branch: string;
+  /**
+   * The repository's current description.
+   */
   description: string | null;
   pusher_type: string;
   repository: Repository;
@@ -1482,8 +1611,17 @@ export interface CreateEvent {
   installation?: InstallationLite;
   organization?: Organization;
 }
+/**
+ * A Git branch or tag is deleted.
+ */
 export interface DeleteEvent {
+  /**
+   * The [`git ref`](https://docs.github.com/en/rest/reference/git#get-a-reference) resource.
+   */
   ref: string;
+  /**
+   * The type of Git ref object deleted in the repository. Can be either `branch` or `tag`.
+   */
   ref_type: "tag" | "branch";
   pusher_type: string;
   repository: Repository;
@@ -1587,7 +1725,13 @@ export interface DeploymentStatusCreatedEvent {
   installation?: InstallationLite;
   organization?: Organization;
 }
+/**
+ * A user forks a repository.
+ */
 export interface ForkEvent {
+  /**
+   * The created [`repository`](https://docs.github.com/en/rest/reference/repos#get-a-repository) resource.
+   */
   forkee: Repository & {
     fork?: true;
   };
@@ -1600,13 +1744,34 @@ export interface GithubAppAuthorizationRevokedEvent {
   action: "revoked";
   sender: User;
 }
+/**
+ * A wiki page is created or updated.
+ */
 export interface GollumEvent {
+  /**
+   * The pages that were updated.
+   */
   pages: {
+    /**
+     * The name of the page.
+     */
     page_name: string;
+    /**
+     * The current page title.
+     */
     title: string;
     summary: null;
+    /**
+     * The action that was performed on the page. Can be `created` or `edited`.
+     */
     action: "created" | "edited";
+    /**
+     * The latest commit SHA of the page.
+     */
     sha: string;
+    /**
+     * Points to the HTML wiki page.
+     */
     html_url: string;
   }[];
   repository: Repository;
@@ -1826,6 +1991,9 @@ export interface InstallationRepositoriesRemovedEvent {
 }
 export interface IssueCommentCreatedEvent {
   action: "created";
+  /**
+   * The [issue](https://docs.github.com/en/rest/reference/issues) the comment belongs to.
+   */
   issue: Issue & {
     assignee: User | null;
     /**
@@ -1842,6 +2010,9 @@ export interface IssueCommentCreatedEvent {
       patch_url: string;
     };
   };
+  /**
+   * The [comment](https://docs.github.com/en/rest/reference/issues#comments) itself.
+   */
   comment: {
     /**
      * URL for the issue comment
@@ -1967,6 +2138,9 @@ export interface Milestone {
 }
 export interface IssueCommentDeletedEvent {
   action: "deleted";
+  /**
+   * The [issue](https://docs.github.com/en/rest/reference/issues) the comment belongs to.
+   */
   issue: Issue & {
     assignee: User | null;
     /**
@@ -1983,6 +2157,9 @@ export interface IssueCommentDeletedEvent {
       patch_url: string;
     };
   };
+  /**
+   * The [comment](https://docs.github.com/en/rest/reference/issues#comments) itself.
+   */
   comment: {
     /**
      * URL for the issue comment
@@ -2011,11 +2188,20 @@ export interface IssueCommentDeletedEvent {
 }
 export interface IssueCommentEditedEvent {
   action: "edited";
+  /**
+   * The changes to the comment.
+   */
   changes: {
     body?: {
+      /**
+       * The previous version of the body.
+       */
       from: string;
     };
   };
+  /**
+   * The [issue](https://docs.github.com/en/rest/reference/issues) the comment belongs to.
+   */
   issue: Issue & {
     assignee: User | null;
     /**
@@ -2032,6 +2218,9 @@ export interface IssueCommentEditedEvent {
       patch_url: string;
     };
   };
+  /**
+   * The [comment](https://docs.github.com/en/rest/reference/issues#comments) itself.
+   */
   comment: {
     /**
      * URL for the issue comment
@@ -2058,17 +2247,80 @@ export interface IssueCommentEditedEvent {
   installation?: InstallationLite;
   organization?: Organization;
 }
+/**
+ * Activity related to an issue. The type of activity is specified in the action property.
+ */
 export interface IssuesAssignedEvent {
+  /**
+   * The action that was performed.
+   */
   action: "assigned";
-  issue: Issue;
+  issue: Issue1;
+  /**
+   * The optional user who was assigned or unassigned from the issue.
+   */
   assignee?: User | null;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
 }
+/**
+ * The [issue](https://docs.github.com/en/rest/reference/issues) itself.
+ */
+export interface Issue1 {
+  /**
+   * URL for the issue
+   */
+  url: string;
+  repository_url: string;
+  labels_url: string;
+  comments_url: string;
+  events_url: string;
+  html_url: string;
+  id: number;
+  node_id: string;
+  number: number;
+  /**
+   * Title of the issue
+   */
+  title: string;
+  user: User;
+  labels?: Label[];
+  /**
+   * State of the issue; either 'open' or 'closed'
+   */
+  state?: "open" | "closed";
+  locked?: boolean;
+  assignee?: User | null;
+  assignees: User[];
+  milestone: Milestone | null;
+  comments: number;
+  created_at: string;
+  updated_at: string;
+  closed_at: string | null;
+  author_association: AuthorAssociation;
+  active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
+  performed_via_github_app?: App | null;
+  pull_request?: {
+    url?: string;
+    html_url?: string;
+    diff_url?: string;
+    patch_url?: string;
+  };
+  /**
+   * Contents of the issue
+   */
+  body: string;
+}
 export interface IssuesClosedEvent {
+  /**
+   * The action that was performed.
+   */
   action: "closed";
+  /**
+   * The [issue](https://docs.github.com/en/rest/reference/issues) itself.
+   */
   issue: Issue & {
     state: "closed";
     closed_at: string;
@@ -2080,29 +2332,134 @@ export interface IssuesClosedEvent {
 }
 export interface IssuesDeletedEvent {
   action: "deleted";
-  issue: Issue;
+  issue: Issue2;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
 }
+/**
+ * The [issue](https://docs.github.com/en/rest/reference/issues) itself.
+ */
+export interface Issue2 {
+  /**
+   * URL for the issue
+   */
+  url: string;
+  repository_url: string;
+  labels_url: string;
+  comments_url: string;
+  events_url: string;
+  html_url: string;
+  id: number;
+  node_id: string;
+  number: number;
+  /**
+   * Title of the issue
+   */
+  title: string;
+  user: User;
+  labels?: Label[];
+  /**
+   * State of the issue; either 'open' or 'closed'
+   */
+  state?: "open" | "closed";
+  locked?: boolean;
+  assignee?: User | null;
+  assignees: User[];
+  milestone: Milestone | null;
+  comments: number;
+  created_at: string;
+  updated_at: string;
+  closed_at: string | null;
+  author_association: AuthorAssociation;
+  active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
+  performed_via_github_app?: App | null;
+  pull_request?: {
+    url?: string;
+    html_url?: string;
+    diff_url?: string;
+    patch_url?: string;
+  };
+  /**
+   * Contents of the issue
+   */
+  body: string;
+}
 export interface IssuesDemilestonedEvent {
   action: "demilestoned";
-  issue: Issue;
+  issue: Issue3;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
+}
+/**
+ * The [issue](https://docs.github.com/en/rest/reference/issues) itself.
+ */
+export interface Issue3 {
+  /**
+   * URL for the issue
+   */
+  url: string;
+  repository_url: string;
+  labels_url: string;
+  comments_url: string;
+  events_url: string;
+  html_url: string;
+  id: number;
+  node_id: string;
+  number: number;
+  /**
+   * Title of the issue
+   */
+  title: string;
+  user: User;
+  labels?: Label[];
+  /**
+   * State of the issue; either 'open' or 'closed'
+   */
+  state?: "open" | "closed";
+  locked?: boolean;
+  assignee?: User | null;
+  assignees: User[];
+  milestone: Milestone | null;
+  comments: number;
+  created_at: string;
+  updated_at: string;
+  closed_at: string | null;
+  author_association: AuthorAssociation;
+  active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
+  performed_via_github_app?: App | null;
+  pull_request?: {
+    url?: string;
+    html_url?: string;
+    diff_url?: string;
+    patch_url?: string;
+  };
+  /**
+   * Contents of the issue
+   */
+  body: string;
 }
 export interface IssuesEditedEvent {
   action: "edited";
   issue: Issue;
   label?: Label;
+  /**
+   * The changes to the issue.
+   */
   changes: {
     body?: {
+      /**
+       * The previous version of the body.
+       */
       from: string;
     };
     title?: {
+      /**
+       * The previous version of the title.
+       */
       from: string;
     };
   };
@@ -2177,8 +2534,14 @@ export interface IssuesTransferredEvent {
   organization?: Organization;
 }
 export interface IssuesUnassignedEvent {
+  /**
+   * The action that was performed.
+   */
   action: "unassigned";
   issue: Issue;
+  /**
+   * The optional user who was assigned or unassigned from the issue.
+   */
   assignee?: User | null;
   repository: Repository;
   sender: User;
@@ -2409,6 +2772,9 @@ export interface MarketplacePurchasePurchasedEvent {
   };
   previous_marketplace_purchase?: MarketplacePurchase;
 }
+/**
+ * Activity related to repository collaborators. The type of activity is specified in the action property.
+ */
 export interface MemberAddedEvent {
   action: "added";
   member: User;
@@ -2419,8 +2785,14 @@ export interface MemberAddedEvent {
 export interface MemberEditedEvent {
   action: "edited";
   member: User;
+  /**
+   * The changes to the collaborator permissions
+   */
   changes: {
     old_permission: {
+      /**
+       * The previous permissions of the collaborator if the action was edited.
+       */
       from: string;
     };
   };
@@ -3014,6 +3386,9 @@ export interface ProjectColumnMovedEvent {
   installation?: InstallationLite;
   organization?: Organization;
 }
+/**
+ * When a private repository is made public.
+ */
 export interface PublicEvent {
   repository: Repository & {
     private: false;
@@ -3024,9 +3399,12 @@ export interface PublicEvent {
 }
 export interface PullRequestAssignedEvent {
   action: "assigned";
+  /**
+   * The pull request number.
+   */
   number: number;
   pull_request: PullRequest;
-  assignee?: User;
+  assignee: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -3140,6 +3518,9 @@ export interface PullRequestAutoMergeEnabledEvent {
 }
 export interface PullRequestClosedEvent {
   action: "closed";
+  /**
+   * The pull request number.
+   */
   number: number;
   pull_request: PullRequest & {
     /**
@@ -3156,6 +3537,9 @@ export interface PullRequestClosedEvent {
 }
 export interface PullRequestConvertedToDraftEvent {
   action: "converted_to_draft";
+  /**
+   * The pull request number.
+   */
   number: number;
   pull_request: PullRequest & {
     closed_at: null;
@@ -3175,6 +3559,9 @@ export interface PullRequestConvertedToDraftEvent {
 }
 export interface PullRequestEditedEvent {
   action: "edited";
+  /**
+   * The pull request number.
+   */
   number: number;
   changes: {
     body?: {
@@ -3192,9 +3579,12 @@ export interface PullRequestEditedEvent {
 }
 export interface PullRequestLabeledEvent {
   action: "labeled";
+  /**
+   * The pull request number.
+   */
   number: number;
   pull_request: PullRequest;
-  label?: Label;
+  label: Label;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -3202,6 +3592,9 @@ export interface PullRequestLabeledEvent {
 }
 export interface PullRequestLockedEvent {
   action: "locked";
+  /**
+   * The pull request number.
+   */
   number: number;
   pull_request: PullRequest;
   repository: Repository;
@@ -3211,6 +3604,9 @@ export interface PullRequestLockedEvent {
 }
 export interface PullRequestOpenedEvent {
   action: "opened";
+  /**
+   * The pull request number.
+   */
   number: number;
   pull_request: PullRequest & {
     state: "open";
@@ -3227,6 +3623,9 @@ export interface PullRequestOpenedEvent {
 }
 export interface PullRequestReadyForReviewEvent {
   action: "ready_for_review";
+  /**
+   * The pull request number.
+   */
   number: number;
   pull_request: PullRequest & {
     state: "open";
@@ -3247,6 +3646,9 @@ export interface PullRequestReadyForReviewEvent {
 }
 export interface PullRequestReopenedEvent {
   action: "reopened";
+  /**
+   * The pull request number.
+   */
   number: number;
   pull_request: PullRequest & {
     state: "open";
@@ -3263,6 +3665,9 @@ export interface PullRequestReopenedEvent {
 }
 export interface PullRequestReviewRequestRemovedEvent {
   action: "review_request_removed";
+  /**
+   * The pull request number.
+   */
   number: number;
   pull_request: PullRequest;
   requested_reviewer: User;
@@ -3273,6 +3678,9 @@ export interface PullRequestReviewRequestRemovedEvent {
 }
 export interface PullRequestReviewRequestedEvent {
   action: "review_requested";
+  /**
+   * The pull request number.
+   */
   number: number;
   pull_request: PullRequest;
   requested_reviewer: User;
@@ -3283,6 +3691,9 @@ export interface PullRequestReviewRequestedEvent {
 }
 export interface PullRequestSynchronizeEvent {
   action: "synchronize";
+  /**
+   * The pull request number.
+   */
   number: number;
   pull_request: PullRequest;
   repository: Repository;
@@ -3292,9 +3703,12 @@ export interface PullRequestSynchronizeEvent {
 }
 export interface PullRequestUnassignedEvent {
   action: "unassigned";
+  /**
+   * The pull request number.
+   */
   number: number;
   pull_request: PullRequest;
-  assignee?: User;
+  assignee: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -3302,9 +3716,12 @@ export interface PullRequestUnassignedEvent {
 }
 export interface PullRequestUnlabeledEvent {
   action: "unlabeled";
+  /**
+   * The pull request number.
+   */
   number: number;
   pull_request: PullRequest;
-  label?: Label;
+  label: Label;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -3312,6 +3729,9 @@ export interface PullRequestUnlabeledEvent {
 }
 export interface PullRequestUnlockedEvent {
   action: "unlocked";
+  /**
+   * The pull request number.
+   */
   number: number;
   pull_request: PullRequest;
   repository: Repository;
@@ -3483,6 +3903,9 @@ export interface PullRequestReviewSubmittedEvent {
 }
 export interface PullRequestReviewCommentCreatedEvent {
   action: "created";
+  /**
+   * The [comment](https://docs.github.com/en/rest/reference/pulls#comments) itself.
+   */
   comment: {
     /**
      * URL for the pull request review comment
@@ -3637,6 +4060,9 @@ export interface PullRequestReviewCommentCreatedEvent {
 }
 export interface PullRequestReviewCommentDeletedEvent {
   action: "deleted";
+  /**
+   * The [comment](https://docs.github.com/en/rest/reference/pulls#comments) itself.
+   */
   comment: {
     /**
      * URL for the pull request review comment
@@ -3791,11 +4217,20 @@ export interface PullRequestReviewCommentDeletedEvent {
 }
 export interface PullRequestReviewCommentEditedEvent {
   action: "edited";
+  /**
+   * The changes to the comment.
+   */
   changes: {
     body?: {
+      /**
+       * The previous version of the body.
+       */
       from: string;
     };
   };
+  /**
+   * The [comment](https://docs.github.com/en/rest/reference/pulls#comments) itself.
+   */
   comment: {
     /**
      * URL for the pull request review comment
@@ -3949,14 +4384,26 @@ export interface PullRequestReviewCommentEditedEvent {
   sender: User;
 }
 export interface PushEvent {
+  /**
+   * The full git ref that was pushed. Example: `refs/heads/main`.
+   */
   ref: string;
+  /**
+   * The SHA of the most recent commit on ref before the push.
+   */
   before: string;
+  /**
+   * The SHA of the most recent commit on ref after the push.
+   */
   after: string;
   created: boolean;
   deleted: boolean;
   forced: boolean;
   base_ref: null;
   compare: string;
+  /**
+   * An array of commit objects describing the pushed commits.
+   */
   commits: Commit[];
   head_commit: Commit | null;
   repository: Repository;
@@ -3968,9 +4415,18 @@ export interface PushEvent {
 export interface Commit {
   id: string;
   tree_id: string;
+  /**
+   * Whether this commit is distinct from any that have been pushed before.
+   */
   distinct: boolean;
+  /**
+   * The commit message.
+   */
   message: string;
   timestamp: string;
+  /**
+   * URL that points to the commit API resource.
+   */
   url: string;
   author: Committer & {
     username: string;

@@ -6,6 +6,7 @@
   "properties": {
     "action": { "type": "string", "enum": ["completed"] },
     "check_run": {
+      "description": "The [check_run](https://docs.github.com/en/rest/reference/checks#get-a-check-run).",
       "type": "object",
       "required": [
         "id",
@@ -40,7 +41,7 @@
           "description": "The phase of the lifecycle that the check is currently in."
         },
         "conclusion": {
-          "type": ["string", "null"],
+          "type": "string",
           "enum": [
             "success",
             "failure",
@@ -48,10 +49,9 @@
             "cancelled",
             "timed_out",
             "action_required",
-            "stale",
-            null
+            "stale"
           ],
-          "description": "The final conclusion of the check. Can be one of `success`, `failure`, `neutral`, `cancelled`, `skipped`, `timed_out`, or `action_required`. When the conclusion is `action_required`, additional details should be provided on the site specified by `details_url`."
+          "description": "The final conclusion of the check. Can be one of `success`, `failure`, `neutral`, `cancelled`, `skipped`, `timed_out`, or `action_required`."
         },
         "started_at": {
           "type": "string",
@@ -124,6 +124,7 @@
             "before": { "type": ["string", "null"] },
             "after": { "type": ["string", "null"] },
             "pull_requests": {
+              "description": "An array of pull requests that match this check suite. A pull request matches a check suite if they have the same head_sha and head_branch. When the check suite's head_branch is in a forked repository it will be null and the pull_requests array will be empty.",
               "type": "array",
               "items": { "$ref": "common/check-run-pull-request.schema.json" }
             },

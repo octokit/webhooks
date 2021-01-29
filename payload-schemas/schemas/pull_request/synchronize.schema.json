@@ -5,7 +5,7 @@
   "required": ["action", "number", "pull_request", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["synchronize"] },
-    "number": { "type": "integer" },
+    "number": { "type": "integer", "description": "The pull request number." },
     "pull_request": { "$ref": "common/pull-request.schema.json" },
     "repository": { "$ref": "common/repository.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },
