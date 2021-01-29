@@ -2127,24 +2127,7 @@ export interface IssueCommentCreatedEvent {
     locked: boolean;
     assignee: User | null;
     assignees: User[];
-    milestone: {
-      url: string;
-      html_url: string;
-      labels_url: string;
-      id: number;
-      node_id: string;
-      number: number;
-      title: string;
-      description: string;
-      creator: User;
-      open_issues: number;
-      closed_issues: number;
-      state: string;
-      created_at: string;
-      updated_at: string;
-      due_on: string;
-      closed_at: string;
-    };
+    milestone: Milestone | null;
     comments: number;
     created_at: string;
     updated_at: string;
@@ -2183,6 +2166,7 @@ export interface IssueCommentCreatedEvent {
      * Contents of the issue comment
      */
     body: string;
+    performed_via_github_app?: App | null;
   };
   repository: Repository;
   sender: User;
@@ -2209,6 +2193,36 @@ export interface Label {
    */
   color: string;
   default: boolean;
+}
+/**
+ * A collection of related issues and pull requests.
+ */
+export interface Milestone {
+  url: string;
+  html_url: string;
+  labels_url: string;
+  id: number;
+  node_id: string;
+  /**
+   * The number of the milestone.
+   */
+  number: number;
+  /**
+   * The title of the milestone.
+   */
+  title: string;
+  description: string | null;
+  creator: User;
+  open_issues: number;
+  closed_issues: number;
+  /**
+   * The state of the milestone.
+   */
+  state: "open" | "closed";
+  created_at: string;
+  updated_at: string;
+  due_on: string | null;
+  closed_at: string | null;
 }
 export interface IssueCommentDeletedEvent {
   action: "deleted";
@@ -2449,36 +2463,6 @@ export interface IssuesAssignedEvent {
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
-}
-/**
- * A collection of related issues and pull requests.
- */
-export interface Milestone {
-  url: string;
-  html_url: string;
-  labels_url: string;
-  id: number;
-  node_id: string;
-  /**
-   * The number of the milestone.
-   */
-  number: number;
-  /**
-   * The title of the milestone.
-   */
-  title: string;
-  description: string | null;
-  creator: User;
-  open_issues: number;
-  closed_issues: number;
-  /**
-   * The state of the milestone.
-   */
-  state: "open" | "closed";
-  created_at: string;
-  updated_at: string;
-  due_on: string | null;
-  closed_at: string | null;
 }
 export interface IssuesClosedEvent {
   action: "closed";
