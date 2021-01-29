@@ -46,18 +46,8 @@
           "type": "object",
           "required": ["html", "pull_request"],
           "properties": {
-            "html": {
-              "type": "object",
-              "required": ["href"],
-              "properties": { "href": { "type": "string" } },
-              "additionalProperties": false
-            },
-            "pull_request": {
-              "type": "object",
-              "required": ["href"],
-              "properties": { "href": { "type": "string" } },
-              "additionalProperties": false
-            }
+            "html": { "$ref": "common/link.schema.json" },
+            "pull_request": { "$ref": "common/link.schema.json" }
           },
           "additionalProperties": false
         }

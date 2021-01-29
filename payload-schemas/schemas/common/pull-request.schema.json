@@ -143,54 +143,14 @@
         "statuses"
       ],
       "properties": {
-        "self": {
-          "type": "object",
-          "required": ["href"],
-          "properties": { "href": { "type": "string" } },
-          "additionalProperties": false
-        },
-        "html": {
-          "type": "object",
-          "required": ["href"],
-          "properties": { "href": { "type": "string" } },
-          "additionalProperties": false
-        },
-        "issue": {
-          "type": "object",
-          "required": ["href"],
-          "properties": { "href": { "type": "string" } },
-          "additionalProperties": false
-        },
-        "comments": {
-          "type": "object",
-          "required": ["href"],
-          "properties": { "href": { "type": "string" } },
-          "additionalProperties": false
-        },
-        "review_comments": {
-          "type": "object",
-          "required": ["href"],
-          "properties": { "href": { "type": "string" } },
-          "additionalProperties": false
-        },
-        "review_comment": {
-          "type": "object",
-          "required": ["href"],
-          "properties": { "href": { "type": "string" } },
-          "additionalProperties": false
-        },
-        "commits": {
-          "type": "object",
-          "required": ["href"],
-          "properties": { "href": { "type": "string" } },
-          "additionalProperties": false
-        },
-        "statuses": {
-          "type": "object",
-          "required": ["href"],
-          "properties": { "href": { "type": "string" } },
-          "additionalProperties": false
-        }
+        "self": { "$ref": "link.schema.json" },
+        "html": { "$ref": "link.schema.json" },
+        "issue": { "$ref": "link.schema.json" },
+        "comments": { "$ref": "link.schema.json" },
+        "review_comments": { "$ref": "link.schema.json" },
+        "review_comment": { "$ref": "link.schema.json" },
+        "commits": { "$ref": "link.schema.json" },
+        "statuses": { "$ref": "link.schema.json" }
       },
       "additionalProperties": false
     },

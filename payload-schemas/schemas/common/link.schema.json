@@ -1,0 +1,9 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/link.schema.json",
+  "required": ["href"],
+  "type": "object",
+  "properties": { "href": { "type": "string", "format": "uri-template" } },
+  "additionalProperties": false,
+  "title": "Link"
+}

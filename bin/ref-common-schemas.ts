@@ -12,6 +12,7 @@ const metaProperties = [
   "$id",
   "title",
   "description",
+  "format",
 ];
 
 const cloneObject = <TObject extends object>(object: TObject): TObject =>
