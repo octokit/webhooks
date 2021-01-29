@@ -77,54 +77,23 @@
     },
     "labels": { "type": "array", "items": { "$ref": "label.schema.json" } },
     "milestone": {
-      "type": ["object", "null"],
-      "required": [
-        "url",
-        "html_url",
-        "labels_url",
-        "id",
-        "node_id",
-        "number",
-        "title",
-        "description",
-        "creator",
-        "open_issues",
-        "closed_issues",
-        "state",
-        "created_at",
-        "updated_at",
-        "due_on",
-        "closed_at"
-      ],
-      "properties": {
-        "url": { "type": "string", "format": "uri" },
-        "html_url": { "type": "string", "format": "uri" },
-        "labels_url": { "type": "string", "format": "uri" },
-        "id": { "type": "integer" },
-        "node_id": { "type": "string" },
-        "number": {
-          "type": "integer",
-          "description": "The number of the milestone."
-        },
-        "title": {
-          "type": "string",
-          "description": "The title of the milestone."
-        },
-        "description": { "type": ["string", "null"] },
-        "creator": { "$ref": "user.schema.json" },
-        "open_issues": { "type": "integer" },
-        "closed_issues": { "type": "integer" },
-        "state": {
-          "type": "string",
-          "enum": ["open", "closed"],
-          "description": "The state of the milestone."
-        },
-        "created_at": { "type": ["string", "null"], "format": "date-time" },
-        "updated_at": { "type": ["string", "null"], "format": "date-time" },
-        "due_on": { "type": ["string", "null"], "format": "date-time" },
-        "closed_at": { "type": ["string", "null"], "format": "date-time" }
-      },
-      "additionalProperties": false
+      "oneOf": [
+        { "type": "null" },
+        {
+          "allOf": [
+            { "$ref": "milestone.schema.json" },
+            {
+              "type": "object",
+              "required": ["state", "closed_at"],
+              "properties": {
+                "state": { "type": "string", "enum": ["closed"] },
+                "closed_at": { "type": "string" }
+              },
+              "tsAdditionalProperties": false
+            }
+          ]
+        }
+      ]
     },
     "draft": { "type": "boolean" },
     "commits_url": { "type": "string" },
