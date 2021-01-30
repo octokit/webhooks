@@ -24589,6 +24589,7 @@
     "actions": [
       "assigned",
       "closed",
+      "converted_to_draft",
       "edited",
       "labeled",
       "locked",
@@ -24601,8 +24602,7 @@
       "synchronize",
       "unassigned",
       "unlabeled",
-      "unlocked",
-      "converted_to_draft"
+      "unlocked"
     ],
     "examples": [
       {
