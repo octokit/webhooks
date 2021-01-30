@@ -89,24 +89,9 @@
           "type": "object",
           "required": ["self", "html", "pull_request"],
           "properties": {
-            "self": {
-              "type": "object",
-              "required": ["href"],
-              "properties": { "href": { "type": "string", "format": "uri" } },
-              "additionalProperties": false
-            },
-            "html": {
-              "type": "object",
-              "required": ["href"],
-              "properties": { "href": { "type": "string", "format": "uri" } },
-              "additionalProperties": false
-            },
-            "pull_request": {
-              "type": "object",
-              "required": ["href"],
-              "properties": { "href": { "type": "string", "format": "uri" } },
-              "additionalProperties": false
-            }
+            "self": { "$ref": "common/link.schema.json" },
+            "html": { "$ref": "common/link.schema.json" },
+            "pull_request": { "$ref": "common/link.schema.json" }
           },
           "additionalProperties": false
         },
@@ -272,54 +257,14 @@
             "statuses"
           ],
           "properties": {
-            "self": {
-              "type": "object",
-              "required": ["href"],
-              "properties": { "href": { "type": "string" } },
-              "additionalProperties": false
-            },
-            "html": {
-              "type": "object",
-              "required": ["href"],
-              "properties": { "href": { "type": "string" } },
-              "additionalProperties": false
-            },
-            "issue": {
-              "type": "object",
-              "required": ["href"],
-              "properties": { "href": { "type": "string" } },
-              "additionalProperties": false
-            },
-            "comments": {
-              "type": "object",
-              "required": ["href"],
-              "properties": { "href": { "type": "string" } },
-              "additionalProperties": false
-            },
-            "review_comments": {
-              "type": "object",
-              "required": ["href"],
-              "properties": { "href": { "type": "string" } },
-              "additionalProperties": false
-            },
-            "review_comment": {
-              "type": "object",
-              "required": ["href"],
-              "properties": { "href": { "type": "string" } },
-              "additionalProperties": false
-            },
-            "commits": {
-              "type": "object",
-              "required": ["href"],
-              "properties": { "href": { "type": "string" } },
-              "additionalProperties": false
-            },
-            "statuses": {
-              "type": "object",
-              "required": ["href"],
-              "properties": { "href": { "type": "string" } },
-              "additionalProperties": false
-            }
+            "self": { "$ref": "common/link.schema.json" },
+            "html": { "$ref": "common/link.schema.json" },
+            "issue": { "$ref": "common/link.schema.json" },
+            "comments": { "$ref": "common/link.schema.json" },
+            "review_comments": { "$ref": "common/link.schema.json" },
+            "review_comment": { "$ref": "common/link.schema.json" },
+            "commits": { "$ref": "common/link.schema.json" },
+            "statuses": { "$ref": "common/link.schema.json" }
           },
           "additionalProperties": false
         },

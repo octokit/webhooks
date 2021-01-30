@@ -4706,30 +4706,14 @@ export interface PullRequest {
     repo: Repository;
   };
   _links: {
-    self: {
-      href: string;
-    };
-    html: {
-      href: string;
-    };
-    issue: {
-      href: string;
-    };
-    comments: {
-      href: string;
-    };
-    review_comments: {
-      href: string;
-    };
-    review_comment: {
-      href: string;
-    };
-    commits: {
-      href: string;
-    };
-    statuses: {
-      href: string;
-    };
+    self: Link;
+    html: Link;
+    issue: Link;
+    comments: Link;
+    review_comments: Link;
+    review_comment: Link;
+    commits: Link;
+    statuses: Link;
   };
   author_association: AuthorAssociation;
   active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
@@ -4752,6 +4736,9 @@ export interface PullRequest {
   additions: number;
   deletions: number;
   changed_files: number;
+}
+export interface Link {
+  href: string;
 }
 export interface PullRequestClosedEvent {
   action: "closed";
@@ -4810,30 +4797,14 @@ export interface PullRequestClosedEvent {
       repo: Repository;
     };
     _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
+      self: Link;
+      html: Link;
+      issue: Link;
+      comments: Link;
+      review_comments: Link;
+      review_comment: Link;
+      commits: Link;
+      statuses: Link;
     };
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
@@ -4921,30 +4892,14 @@ export interface PullRequestConvertedToDraftEvent {
       repo: Repository;
     };
     _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
+      self: Link;
+      html: Link;
+      issue: Link;
+      comments: Link;
+      review_comments: Link;
+      review_comment: Link;
+      commits: Link;
+      statuses: Link;
     };
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
@@ -5064,30 +5019,14 @@ export interface PullRequestOpenedEvent {
       repo: Repository;
     };
     _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
+      self: Link;
+      html: Link;
+      issue: Link;
+      comments: Link;
+      review_comments: Link;
+      review_comment: Link;
+      commits: Link;
+      statuses: Link;
     };
     author_association: AuthorAssociation;
     active_lock_reason: null;
@@ -5160,30 +5099,14 @@ export interface PullRequestReadyForReviewEvent {
       repo: Repository;
     };
     _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
+      self: Link;
+      html: Link;
+      issue: Link;
+      comments: Link;
+      review_comments: Link;
+      review_comment: Link;
+      commits: Link;
+      statuses: Link;
     };
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
@@ -5256,30 +5179,14 @@ export interface PullRequestReopenedEvent {
       repo: Repository;
     };
     _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
+      self: Link;
+      html: Link;
+      issue: Link;
+      comments: Link;
+      review_comments: Link;
+      review_comment: Link;
+      commits: Link;
+      statuses: Link;
     };
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
@@ -5395,12 +5302,8 @@ export interface PullRequestReviewDismissedEvent {
     pull_request_url: string;
     author_association: AuthorAssociation;
     _links: {
-      html: {
-        href: string;
-      };
-      pull_request: {
-        href: string;
-      };
+      html: Link;
+      pull_request: Link;
     };
   };
   pull_request: SimplePullRequest;
@@ -5460,30 +5363,14 @@ export interface SimplePullRequest {
     repo: Repository;
   };
   _links: {
-    self: {
-      href: string;
-    };
-    html: {
-      href: string;
-    };
-    issue: {
-      href: string;
-    };
-    comments: {
-      href: string;
-    };
-    review_comments: {
-      href: string;
-    };
-    review_comment: {
-      href: string;
-    };
-    commits: {
-      href: string;
-    };
-    statuses: {
-      href: string;
-    };
+    self: Link;
+    html: Link;
+    issue: Link;
+    comments: Link;
+    review_comments: Link;
+    review_comment: Link;
+    commits: Link;
+    statuses: Link;
   };
   author_association: AuthorAssociation;
   active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
@@ -5516,12 +5403,8 @@ export interface PullRequestReviewEditedEvent {
     pull_request_url: string;
     author_association: AuthorAssociation;
     _links: {
-      html: {
-        href: string;
-      };
-      pull_request: {
-        href: string;
-      };
+      html: Link;
+      pull_request: Link;
     };
   };
   pull_request: SimplePullRequest;
@@ -5553,12 +5436,8 @@ export interface PullRequestReviewSubmittedEvent {
     pull_request_url: string;
     author_association: AuthorAssociation;
     _links: {
-      html: {
-        href: string;
-      };
-      pull_request: {
-        href: string;
-      };
+      html: Link;
+      pull_request: Link;
     };
   };
   pull_request: SimplePullRequest;
@@ -5627,15 +5506,9 @@ export interface PullRequestReviewCommentCreatedEvent {
     pull_request_url: string;
     author_association: AuthorAssociation;
     _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      pull_request: {
-        href: string;
-      };
+      self: Link;
+      html: Link;
+      pull_request: Link;
     };
     /**
      * The first line of the range for a multi-line comment.
@@ -5711,30 +5584,14 @@ export interface PullRequestReviewCommentCreatedEvent {
       repo: Repository;
     };
     _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
+      self: Link;
+      html: Link;
+      issue: Link;
+      comments: Link;
+      review_comments: Link;
+      review_comment: Link;
+      commits: Link;
+      statuses: Link;
     };
     author_association: AuthorAssociation;
   };
@@ -5803,15 +5660,9 @@ export interface PullRequestReviewCommentDeletedEvent {
     pull_request_url: string;
     author_association: AuthorAssociation;
     _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      pull_request: {
-        href: string;
-      };
+      self: Link;
+      html: Link;
+      pull_request: Link;
     };
     /**
      * The first line of the range for a multi-line comment.
@@ -5887,30 +5738,14 @@ export interface PullRequestReviewCommentDeletedEvent {
       repo: Repository;
     };
     _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
+      self: Link;
+      html: Link;
+      issue: Link;
+      comments: Link;
+      review_comments: Link;
+      review_comment: Link;
+      commits: Link;
+      statuses: Link;
     };
     author_association: AuthorAssociation;
   };
@@ -5984,15 +5819,9 @@ export interface PullRequestReviewCommentEditedEvent {
     pull_request_url: string;
     author_association: AuthorAssociation;
     _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      pull_request: {
-        href: string;
-      };
+      self: Link;
+      html: Link;
+      pull_request: Link;
     };
     /**
      * The first line of the range for a multi-line comment.
@@ -6068,30 +5897,14 @@ export interface PullRequestReviewCommentEditedEvent {
       repo: Repository;
     };
     _links: {
-      self: {
-        href: string;
-      };
-      html: {
-        href: string;
-      };
-      issue: {
-        href: string;
-      };
-      comments: {
-        href: string;
-      };
-      review_comments: {
-        href: string;
-      };
-      review_comment: {
-        href: string;
-      };
-      commits: {
-        href: string;
-      };
-      statuses: {
-        href: string;
-      };
+      self: Link;
+      html: Link;
+      issue: Link;
+      comments: Link;
+      review_comments: Link;
+      review_comment: Link;
+      commits: Link;
+      statuses: Link;
     };
     author_association: AuthorAssociation;
   };
