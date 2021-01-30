@@ -110,7 +110,7 @@ fs.readdirSync(payloads).forEach((event) => {
                 "unexpected boolean in oneOf"
               );
 
-              if (!notNullType.$ref) {
+              if (!notNullType.$ref && !notNullType.allOf) {
                 addNullToObject(notNullType);
 
                 return notNullType;
