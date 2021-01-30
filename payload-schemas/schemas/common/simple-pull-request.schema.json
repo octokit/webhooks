@@ -77,23 +77,7 @@
     },
     "labels": { "type": "array", "items": { "$ref": "label.schema.json" } },
     "milestone": {
-      "oneOf": [
-        { "type": "null" },
-        {
-          "allOf": [
-            { "$ref": "milestone.schema.json" },
-            {
-              "type": "object",
-              "required": ["state", "closed_at"],
-              "properties": {
-                "state": { "type": "string", "enum": ["closed"] },
-                "closed_at": { "type": "string" }
-              },
-              "tsAdditionalProperties": false
-            }
-          ]
-        }
-      ]
+      "oneOf": [{ "$ref": "milestone.schema.json" }, { "type": "null" }]
     },
     "draft": { "type": "boolean" },
     "commits_url": { "type": "string" },
