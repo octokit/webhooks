@@ -105,7 +105,7 @@
             },
             "status": { "type": "string", "enum": ["completed"] },
             "conclusion": {
-              "type": ["string"],
+              "type": "string",
               "enum": [
                 "success",
                 "failure",

@@ -85,7 +85,10 @@ fs.readdirSync(payloads).forEach((event) => {
               value.type = standardizeTypeProperty(value.type);
             }
 
-            if (ensureArray(value.type).includes("object")) {
+            if (
+              ensureArray(value.type).includes("object") &&
+              !("tsAdditionalProperties" in value)
+            ) {
               value.additionalProperties ||= false;
             }
           }
@@ -110,7 +113,7 @@ fs.readdirSync(payloads).forEach((event) => {
                 "unexpected boolean in oneOf"
               );
 
-              if (!notNullType.$ref) {
+              if (!notNullType.$ref && !notNullType.allOf) {
                 addNullToObject(notNullType);
 
                 return notNullType;
