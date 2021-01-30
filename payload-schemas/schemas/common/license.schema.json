@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/license.schema.json",
+  "type": "object",
+  "required": ["key", "name", "spdx_id", "url", "node_id"],
+  "properties": {
+    "key": { "type": "string" },
+    "name": { "type": "string" },
+    "spdx_id": { "type": "string" },
+    "url": { "type": ["string", "null"] },
+    "node_id": { "type": "string" }
+  },
+  "additionalProperties": false,
+  "title": "License"
+}
