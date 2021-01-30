@@ -5310,12 +5310,7 @@ export interface SimplePullRequest {
   requested_reviewers: (User | Team)[];
   requested_teams: Team[];
   labels: Label[];
-  milestone:
-    | null
-    | (Milestone & {
-        state: "closed";
-        closed_at: string;
-      });
+  milestone: Milestone | null;
   draft: boolean;
   commits_url: string;
   review_comments_url: string;
