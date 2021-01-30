@@ -4,19 +4,12 @@ import { strict as assert } from "assert";
 import fs from "fs";
 import { JSONSchema7 } from "json-schema";
 import { format } from "prettier";
-
-const pathToSchemas = "payload-schemas/schemas";
-
-const parseArgv = (argv: string[]): [args: string[], flags: string[]] => {
-  const flags: string[] = [];
-  const args: string[] = [];
-
-  argv.forEach((arg) => {
-    arg.startsWith("--") ? flags.push(arg) : args.push(arg);
-  });
-
-  return [args, flags];
-};
+import {
+  getSchemaFromPath,
+  loadMapOfSchemas,
+  parseArgv,
+  pathToSchemas,
+} from "./utils";
 
 const [[interfacePropertyPath, interfaceName], flags] = parseArgv(
   process.argv.slice(2)
@@ -32,42 +25,6 @@ assert.ok(
   interfaceName,
   "second argument must be name of the interface the new common schema should generate"
 );
-
-const titleCase = (str: string) => `${str[0].toUpperCase()}${str.substring(1)}`;
-
-const guessAtInterfaceName = (schema: JSONSchema7): string => {
-  const str = schema.title || schema.$id;
-
-  assert.ok(str, "unable to guess interface name");
-
-  return str
-    .split(/[$_ -]/u)
-    .map(titleCase)
-    .join("");
-};
-
-const ensureArray = <T>(arr: T | T[]): T[] =>
-  Array.isArray(arr) ? arr : [arr];
-
-type InterfaceNameAndSchema = [interfaceName: string, schema: JSONSchema7];
-
-const loadSchemas = (directory: string): InterfaceNameAndSchema[] => {
-  return fs
-    .readdirSync(directory, { withFileTypes: true })
-    .flatMap((entity) => {
-      const pathToEntity = `${directory}/${entity.name}`;
-
-      if (entity.isDirectory()) {
-        return loadSchemas(pathToEntity);
-      }
-
-      const schema = JSON.parse(
-        fs.readFileSync(pathToEntity, "utf-8")
-      ) as JSONSchema7;
-
-      return [[guessAtInterfaceName(schema), schema]];
-    });
-};
 
 const RequiredSchemaProperties = [
   "$id",
@@ -123,40 +80,8 @@ const writeNewCommonSchema = (name: string, schema: JSONSchema7) => {
   );
 };
 
-const extractFromSchema = (schema: JSONSchema7, name: string): JSONSchema7 => {
-  if (ensureArray(schema.type).includes("object")) {
-    assert.ok(
-      schema.properties,
-      "cannot extract from an object-type schema that lacks properties"
-    );
-
-    const value = schema.properties[name];
-
-    assert.ok(typeof value !== "boolean", "this is not what you want");
-
-    return value;
-  }
-
-  if (ensureArray(schema.type).includes("array")) {
-    assert.ok(schema.items);
-  }
-
-  if (schema.oneOf) {
-    throw new Error("extracting schemas from unions is not supported");
-  }
-
-  throw new Error(
-    `schemas can only be extracted from objects or arrays (got ${schema.type})`
-  );
-};
-
-const schemas = Object.fromEntries(loadSchemas(pathToSchemas));
-const segments = interfacePropertyPath.split(".");
-
-const rawSchema = segments.reduce<JSONSchema7>(
-  (schema, segment) => extractFromSchema(schema, segment),
-  { type: "object", properties: schemas }
-);
+const schemas = loadMapOfSchemas();
+const rawSchema = getSchemaFromPath(interfacePropertyPath, schemas);
 
 if (
   rawSchema.$ref ||

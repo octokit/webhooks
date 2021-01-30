@@ -5,8 +5,7 @@ import fs from "fs";
 import { JSONSchema7 } from "json-schema";
 import path from "path";
 import { format } from "prettier";
-
-const pathToWebhookSchemas = "payload-schemas/schemas";
+import { pathToSchemas } from "./utils";
 
 const removeExtension = (fileName: string, ext: string): string => {
   assert.ok(fileName.endsWith(ext), `"${fileName}" does not end with "${ext}"`);
@@ -15,20 +14,20 @@ const removeExtension = (fileName: string, ext: string): string => {
 };
 
 const buildCommonSchemasDefinitionSchema = (): Record<string, JSONSchema7> => {
-  const commonSchemas = fs.readdirSync(`${pathToWebhookSchemas}/common`);
+  const commonSchemas = fs.readdirSync(`${pathToSchemas}/common`);
   const definitions: Record<string, JSONSchema7> = {};
 
   commonSchemas.forEach((schema) => {
     definitions[
       removeExtension(schema, ".schema.json")
-    ] = require(`../${pathToWebhookSchemas}/common/${schema}`);
+    ] = require(`../${pathToSchemas}/common/${schema}`);
   });
 
   return definitions;
 };
 
 const listEvents = () => {
-  const directoryEntities = fs.readdirSync(pathToWebhookSchemas, {
+  const directoryEntities = fs.readdirSync(pathToSchemas, {
     withFileTypes: true,
   });
 
@@ -51,11 +50,11 @@ const combineEventSchemas = () => {
   const events = listEvents();
 
   events.forEach((event) => {
-    const schemas = fs.readdirSync(`${pathToWebhookSchemas}/${event}`);
+    const schemas = fs.readdirSync(`${pathToSchemas}/${event}`);
 
     if (schemas.length === 1 && schemas[0] === "event.schema.json") {
       // schemas without any actions are just called "event"
-      const schema = require(`../${pathToWebhookSchemas}/${event}/event.schema.json`) as JSONSchema7;
+      const schema = require(`../${pathToSchemas}/${event}/event.schema.json`) as JSONSchema7;
       const eventName = schema.$id;
 
       assert.ok(eventName, `${event}/event.schema.json does not have an $id`);
@@ -74,7 +73,7 @@ const combineEventSchemas = () => {
     }
 
     const eventActions = schemas.map((schemaName) => {
-      const schema = require(`../${pathToWebhookSchemas}/${event}/${schemaName}`) as JSONSchema7;
+      const schema = require(`../${pathToSchemas}/${event}/${schemaName}`) as JSONSchema7;
       const actionEventName = schema.$id;
 
       assert.ok(actionEventName, `${event}/${schemaName} does not have an $id`);

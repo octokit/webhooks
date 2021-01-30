@@ -5,11 +5,7 @@ import { promises as fs } from "fs";
 import { JSONSchema4, JSONSchema7 } from "json-schema";
 import { compile } from "json-schema-to-typescript";
 import { format } from "prettier";
-
-const titleCase = (str: string) => `${str[0].toUpperCase()}${str.substring(1)}`;
-
-const guessAtInterfaceName = (str: string) =>
-  str.split("_").map(titleCase).join("");
+import { guessAtInterfaceName, isJsonSchemaObject } from "./utils";
 
 const getEventName = (ref: string): string => {
   assert.ok(
@@ -36,7 +32,7 @@ interface Schema extends JSONSchema7 {
 const buildEventPayloadMap = (schema: Schema): string => {
   const properties = schema.oneOf.map(({ $ref }) => {
     const eventName = getEventName($ref);
-    const interfaceName = guessAtInterfaceName(`${eventName}_event`);
+    const interfaceName = guessAtInterfaceName({ $id: `${eventName}_event` });
 
     return `"${eventName}": ${interfaceName}`;
   });
@@ -46,9 +42,6 @@ const buildEventPayloadMap = (schema: Schema): string => {
 
 const getSchema = async () =>
   JSON.parse(await fs.readFile("./schema.json", "utf-8")) as Schema;
-
-const isJsonSchemaObject = (object: unknown): object is JSONSchema7 =>
-  typeof object === "object" && object !== null && !Array.isArray(object);
 
 declare module "json-schema" {
   interface JSONSchema7 {
