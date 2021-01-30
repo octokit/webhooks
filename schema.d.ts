@@ -5201,8 +5201,6 @@ export interface PullRequestReviewRequestRemovedEvent {
   number: number;
   pull_request: PullRequest;
   requested_reviewer: User;
-  label?: Label;
-  assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -5213,8 +5211,6 @@ export interface PullRequestReviewRequestedEvent {
   number: number;
   pull_request: PullRequest;
   requested_reviewer: User;
-  label?: Label;
-  assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
