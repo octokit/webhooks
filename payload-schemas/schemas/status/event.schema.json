@@ -58,24 +58,26 @@
           ],
           "properties": {
             "author": {
-              "type": "object",
-              "required": ["name", "email", "date"],
-              "properties": {
-                "name": { "type": "string" },
-                "email": { "type": "string" },
-                "date": { "type": "string" }
-              },
-              "additionalProperties": false
+              "allOf": [
+                { "$ref": "common/committer.schema.json" },
+                {
+                  "type": "object",
+                  "required": ["date"],
+                  "properties": { "date": { "type": "string" } },
+                  "tsAdditionalProperties": false
+                }
+              ]
             },
             "committer": {
-              "type": "object",
-              "required": ["name", "email", "date"],
-              "properties": {
-                "name": { "type": "string" },
-                "email": { "type": "string" },
-                "date": { "type": "string" }
-              },
-              "additionalProperties": false
+              "allOf": [
+                { "$ref": "common/committer.schema.json" },
+                {
+                  "type": "object",
+                  "required": ["date"],
+                  "properties": { "date": { "type": "string" } },
+                  "tsAdditionalProperties": false
+                }
+              ]
             },
             "message": { "type": "string" },
             "tree": {

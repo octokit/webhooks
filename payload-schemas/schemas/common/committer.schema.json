@@ -7,7 +7,8 @@
   "properties": {
     "name": { "type": "string" },
     "email": { "type": "string", "format": "email" },
-    "date": { "type": "string", "format": "date-time" }
+    "date": { "type": "string", "format": "date-time" },
+    "username": { "type": "string" }
   },
   "additionalProperties": false,
   "title": "Committer"

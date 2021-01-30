@@ -1030,6 +1030,7 @@ export interface Committer {
   name: string;
   email: string;
   date?: string;
+  username?: string;
 }
 export interface CheckSuiteRequestedEvent {
   action: "requested";
@@ -5922,14 +5923,10 @@ export interface Commit {
   message: string;
   timestamp: string;
   url: string;
-  author: {
-    name: string;
-    email: string;
+  author: Committer & {
     username: string;
   };
-  committer: {
-    name: string;
-    email: string;
+  committer: Committer & {
     username: string;
   };
   added: string[];
@@ -7183,14 +7180,10 @@ export interface StatusEvent {
     sha: string;
     node_id: string;
     commit: {
-      author: {
-        name: string;
-        email: string;
+      author: Committer & {
         date: string;
       };
-      committer: {
-        name: string;
-        email: string;
+      committer: Committer & {
         date: string;
       };
       message: string;

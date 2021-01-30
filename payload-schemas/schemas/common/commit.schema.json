@@ -23,24 +23,26 @@
     "timestamp": { "type": "string" },
     "url": { "type": "string" },
     "author": {
-      "type": "object",
-      "required": ["name", "email", "username"],
-      "properties": {
-        "name": { "type": "string" },
-        "email": { "type": "string" },
-        "username": { "type": "string" }
-      },
-      "additionalProperties": false
+      "allOf": [
+        { "$ref": "committer.schema.json" },
+        {
+          "type": "object",
+          "required": ["username"],
+          "properties": { "username": { "type": "string" } },
+          "tsAdditionalProperties": false
+        }
+      ]
     },
     "committer": {
-      "type": "object",
-      "required": ["name", "email", "username"],
-      "properties": {
-        "name": { "type": "string" },
-        "email": { "type": "string" },
-        "username": { "type": "string" }
-      },
-      "additionalProperties": false
+      "allOf": [
+        { "$ref": "committer.schema.json" },
+        {
+          "type": "object",
+          "required": ["username"],
+          "properties": { "username": { "type": "string" } },
+          "tsAdditionalProperties": false
+        }
+      ]
     },
     "added": { "type": "array", "items": { "type": "string" } },
     "removed": { "type": "array", "items": { "type": "string" } },
