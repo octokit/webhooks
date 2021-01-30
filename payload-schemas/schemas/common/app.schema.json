@@ -25,42 +25,21 @@
     },
     "node_id": { "type": "string" },
     "owner": { "$ref": "user.schema.json" },
-    "name": {
-      "description": "The name of the GitHub app",
-      "type": "string"
-    },
+    "name": { "description": "The name of the GitHub app", "type": "string" },
     "description": { "type": ["string", "null"] },
-    "external_url": {
-      "type": "string",
-      "format": "uri"
-    },
-    "html_url": {
-      "type": "string",
-      "format": "uri"
-    },
-    "created_at": {
-      "type": "string",
-      "format": "date-time"
-    },
-    "updated_at": {
-      "type": "string",
-      "format": "date-time"
-    },
+    "external_url": { "type": "string", "format": "uri" },
+    "html_url": { "type": "string", "format": "uri" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
     "permissions": {
       "description": "The set of permissions for the GitHub app",
       "type": "object",
       "properties": {
-        "administration": {
-          "type": "string",
-          "enum": ["read", "write"]
-        },
+        "administration": { "type": "string", "enum": ["read", "write"] },
         "actions": { "type": "string", "enum": ["read", "write"] },
         "checks": { "type": "string", "enum": ["read", "write"] },
         "contents": { "type": "string", "enum": ["read", "write"] },
-        "deployments": {
-          "type": "string",
-          "enum": ["read", "write"]
-        },
+        "deployments": { "type": "string", "enum": ["read", "write"] },
         "issues": { "type": "string", "enum": ["read", "write"] },
         "members": { "type": "string", "enum": ["read", "write"] },
         "metadata": { "type": "string", "enum": ["read", "write"] },
@@ -68,18 +47,12 @@
           "type": "string",
           "enum": ["read", "write"]
         },
-        "organization_hooks": {
-          "type": "string",
-          "enum": ["read", "write"]
-        },
+        "organization_hooks": { "type": "string", "enum": ["read", "write"] },
         "organization_packages": {
           "type": "string",
           "enum": ["read", "write"]
         },
-        "organization_plan": {
-          "type": "string",
-          "enum": ["read", "write"]
-        },
+        "organization_plan": { "type": "string", "enum": ["read", "write"] },
         "organization_projects": {
           "type": "string",
           "enum": ["read", "write"]
@@ -90,31 +63,13 @@
         },
         "pages": { "type": "string", "enum": ["read", "write"] },
         "packages": { "type": "string", "enum": ["read", "write"] },
-        "pull_requests": {
-          "type": "string",
-          "enum": ["read", "write"]
-        },
-        "repository_hooks": {
-          "type": "string",
-          "enum": ["read", "write"]
-        },
-        "repository_projects": {
-          "type": "string",
-          "enum": ["read", "write"]
-        },
-        "security_events": {
-          "type": "string",
-          "enum": ["read", "write"]
-        },
+        "pull_requests": { "type": "string", "enum": ["read", "write"] },
+        "repository_hooks": { "type": "string", "enum": ["read", "write"] },
+        "repository_projects": { "type": "string", "enum": ["read", "write"] },
+        "security_events": { "type": "string", "enum": ["read", "write"] },
         "statuses": { "type": "string", "enum": ["read", "write"] },
-        "team_discussions": {
-          "type": "string",
-          "enum": ["read", "write"]
-        },
-        "vulnerability_alerts": {
-          "type": "string",
-          "enum": ["read", "write"]
-        }
+        "team_discussions": { "type": "string", "enum": ["read", "write"] },
+        "vulnerability_alerts": { "type": "string", "enum": ["read", "write"] }
       },
       "additionalProperties": false
     },

@@ -23,10 +23,7 @@
     "browser_download_url": { "type": "string", "format": "uri" },
     "id": { "type": "integer" },
     "node_id": { "type": "string" },
-    "name": {
-      "description": "The file name of the asset.",
-      "type": "string"
-    },
+    "name": { "description": "The file name of the asset.", "type": "string" },
     "label": { "type": "string" },
     "state": {
       "description": "State of the release asset.",
