@@ -168,9 +168,7 @@
       }
     ]
   },
-  "requested_action": {
-    "identifier": "lgtm|26764"
-  },
+  "requested_action": { "identifier": "lgtm|26764" },
   "repository": {
     "id": 9384267,
     "node_id": "MDEwOlJlcG9zaXRvcnk5Mzg0MjY3",

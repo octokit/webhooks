@@ -30,7 +30,7 @@ const formatJsonInDirectory = (pathToJsons: string) => {
         return;
       }
 
-      fs.writeFileSync(filePath, contentsBefore);
+      fs.writeFileSync(filePath, contentsAfter);
     });
   });
 };
