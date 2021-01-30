@@ -192,7 +192,7 @@
     "ssh_url": { "type": "string" },
     "clone_url": { "type": "string" },
     "svn_url": { "type": "string" },
-    "homepage": { "type": ["string", "null"], "format": "uri" },
+    "homepage": { "type": ["string", "null"] },
     "size": { "type": "integer" },
     "stargazers_count": { "type": "integer" },
     "watchers_count": { "type": "integer" },
