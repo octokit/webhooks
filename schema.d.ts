@@ -558,13 +558,7 @@ export interface Repository {
    */
   disabled?: boolean;
   open_issues_count: number;
-  license: {
-    key: string;
-    name: string;
-    spdx_id: string;
-    url: string | null;
-    node_id: string;
-  } | null;
+  license: License | null;
   forks: number;
   open_issues: number;
   watchers: number;
@@ -599,6 +593,13 @@ export interface Repository {
   };
   public?: boolean;
   organization?: string;
+}
+export interface License {
+  key: string;
+  name: string;
+  spdx_id: string;
+  url: string | null;
+  node_id: string;
 }
 /**
  * Installation
@@ -1838,15 +1839,7 @@ export interface ForkEvent {
     archived: boolean;
     disabled?: boolean;
     open_issues_count: number;
-    license:
-      | {
-          key: string;
-          name: string;
-          spdx_id: string;
-          url: string;
-          node_id: string;
-        }
-      | (string | null);
+    license: License | string | null;
     forks: number;
     open_issues: number;
     watchers: number;
@@ -4595,15 +4588,7 @@ export interface PublicEvent {
      */
     disabled?: boolean;
     open_issues_count: number;
-    license:
-      | {
-          key: string;
-          name: string;
-          spdx_id: string;
-          url: string | null;
-          node_id: string;
-        }
-      | (string | null);
+    license: License | string | null;
     forks: number;
     open_issues: number;
     watchers: number;
@@ -6357,15 +6342,7 @@ export interface RepositoryArchivedEvent {
      */
     disabled?: boolean;
     open_issues_count: number;
-    license:
-      | {
-          key: string;
-          name: string;
-          spdx_id: string;
-          url: string | null;
-          node_id: string;
-        }
-      | (string | null);
+    license: License | string | null;
     forks: number;
     open_issues: number;
     watchers: number;
@@ -6536,15 +6513,7 @@ export interface RepositoryPrivatizedEvent {
      */
     disabled?: boolean;
     open_issues_count: number;
-    license:
-      | {
-          key: string;
-          name: string;
-          spdx_id: string;
-          url: string | null;
-          node_id: string;
-        }
-      | (string | null);
+    license: License | string | null;
     forks: number;
     open_issues: number;
     watchers: number;
@@ -6683,15 +6652,7 @@ export interface RepositoryPublicizedEvent {
      */
     disabled?: boolean;
     open_issues_count: number;
-    license:
-      | {
-          key: string;
-          name: string;
-          spdx_id: string;
-          url: string | null;
-          node_id: string;
-        }
-      | (string | null);
+    license: License | string | null;
     forks: number;
     open_issues: number;
     watchers: number;
@@ -6851,15 +6812,7 @@ export interface RepositoryUnarchivedEvent {
      */
     disabled?: boolean;
     open_issues_count: number;
-    license:
-      | {
-          key: string;
-          name: string;
-          spdx_id: string;
-          url: string | null;
-          node_id: string;
-        }
-      | (string | null);
+    license: License | string | null;
     forks: number;
     open_issues: number;
     watchers: number;

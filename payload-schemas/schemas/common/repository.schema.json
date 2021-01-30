@@ -231,16 +231,7 @@
     },
     "open_issues_count": { "type": "integer" },
     "license": {
-      "type": ["object", "null"],
-      "required": ["key", "name", "spdx_id", "url", "node_id"],
-      "properties": {
-        "key": { "type": "string" },
-        "name": { "type": "string" },
-        "spdx_id": { "type": "string" },
-        "url": { "type": ["string", "null"] },
-        "node_id": { "type": "string" }
-      },
-      "additionalProperties": false
+      "oneOf": [{ "$ref": "license.schema.json" }, { "type": "null" }]
     },
     "forks": { "type": "integer" },
     "open_issues": { "type": "integer" },
