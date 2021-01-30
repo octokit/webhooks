@@ -85,7 +85,10 @@ fs.readdirSync(payloads).forEach((event) => {
               value.type = standardizeTypeProperty(value.type);
             }
 
-            if (ensureArray(value.type).includes("object")) {
+            if (
+              ensureArray(value.type).includes("object") &&
+              !("tsAdditionalProperties" in value)
+            ) {
               value.additionalProperties ||= false;
             }
           }
