@@ -2245,11 +2245,7 @@ export interface IssueCommentDeletedEvent {
     locked: boolean;
     assignee: User | null;
     assignees: User[];
-    milestone: Milestone & {
-      description: string;
-      due_on: string;
-      closed_at: string;
-    };
+    milestone: Milestone | null;
     comments: number;
     created_at: string;
     updated_at: string;
@@ -2327,11 +2323,7 @@ export interface IssueCommentEditedEvent {
     locked: boolean;
     assignee: User | null;
     assignees: User[];
-    milestone: Milestone & {
-      description: string;
-      due_on: string;
-      closed_at: string;
-    };
+    milestone: Milestone | null;
     comments: number;
     created_at: string;
     updated_at: string;
