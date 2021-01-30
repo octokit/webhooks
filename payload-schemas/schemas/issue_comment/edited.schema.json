@@ -79,18 +79,9 @@
           "items": { "$ref": "common/user.schema.json" }
         },
         "milestone": {
-          "allOf": [
+          "oneOf": [
             { "$ref": "common/milestone.schema.json" },
-            {
-              "type": "object",
-              "required": ["description", "due_on", "closed_at"],
-              "properties": {
-                "description": { "type": "string" },
-                "due_on": { "type": "string" },
-                "closed_at": { "type": "string" }
-              },
-              "tsAdditionalProperties": false
-            }
+            { "type": "null" }
           ]
         },
         "comments": { "type": "integer" },
