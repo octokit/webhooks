@@ -47,6 +47,7 @@
     "json-diff": "^0.5.3",
     "json-schema-to-typescript": "^10.1.2",
     "prettier": "^2.0.5",
+    "prettier-plugin-packagejson": "^2.2.9",
     "semantic-release": "^17.0.0",
     "ts-node": "^9.1.1",
     "turndown": "^7.0.0",
