@@ -5,7 +5,9 @@ import fs from "fs";
 import { JSONSchema7 } from "json-schema";
 import path from "path";
 import { format } from "prettier";
-import { pathToSchemas } from "./utils";
+import { parseArgv, pathToSchemas } from "./utils";
+
+parseArgv(__filename, []);
 
 const removeExtension = (fileName: string, ext: string): string => {
   assert.ok(fileName.endsWith(ext), `"${fileName}" does not end with "${ext}"`);

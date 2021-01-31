@@ -13,7 +13,10 @@ import {
   ensureArray,
   isJsonSchemaObject,
   forEachJsonFile,
+  parseArgv,
 } from "./utils";
+
+parseArgv(__filename, []);
 
 const JSONSchema7TypeNameOrder = [
   "string",

@@ -1,6 +1,5 @@
 #!/usr/bin/env ts-node-transpile-only
 
-import { strict as assert } from "assert";
 import { diffString } from "json-diff";
 import { JSONSchema7 } from "json-schema";
 import {
@@ -10,20 +9,16 @@ import {
   parseArgv,
 } from "./utils";
 
-const [[interfacePropertyPath1, interfacePropertyPath2], flags] = parseArgv(
-  process.argv.slice(2)
-);
-
-const skipNormalizingSchema = flags.includes("--full");
-
-assert.ok(
-  interfacePropertyPath1,
-  "first argument must be path to a property on an interface to compare the schema of"
-);
-
-assert.ok(
-  interfacePropertyPath2,
-  "second argument must be path to a property on an interface to compare the schema of"
+const [
+  [interfacePropertyPath1, interfacePropertyPath2],
+  { full: skipNormalizingSchema },
+] = parseArgv(
+  __filename,
+  [
+    "first argument must be path to a property on an interface to compare the schema of",
+    "second argument must be path to a property on an interface to compare the schema of",
+  ],
+  ["full"]
 );
 
 const schemas = loadMapOfSchemas();

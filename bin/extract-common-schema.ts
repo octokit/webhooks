@@ -11,19 +11,16 @@ import {
   pathToSchemas,
 } from "./utils";
 
-const [[interfacePropertyPath, interfaceName], flags] = parseArgv(
-  process.argv.slice(2)
-);
-
-const overwriteIfExists = flags.includes("--overwrite");
-
-assert.ok(
-  interfacePropertyPath,
-  "first argument must be path to a property on an interface to extract into a common schema"
-);
-assert.ok(
-  interfaceName,
-  "second argument must be name of the interface the new common schema should generate"
+const [
+  [interfacePropertyPath, interfaceName],
+  { overwrite: overwriteIfExists },
+] = parseArgv(
+  __filename,
+  [
+    "first argument must be path to a property on an interface to extract into a common schema",
+    "second argument must be name of the interface the new common schema should generate",
+  ],
+  ["overwrite"]
 );
 
 const RequiredSchemaProperties = [

@@ -1,7 +1,7 @@
 import { strict as assert } from "assert";
 import { JSONSchema7 } from "json-schema";
 
-const capitalize = (str: string) =>
+export const capitalize = (str: string) =>
   `${str[0].toUpperCase()}${str.substring(1)}`;
 
 export const guessAtInterfaceName = (schema: JSONSchema7): string => {
