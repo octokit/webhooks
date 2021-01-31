@@ -1,11 +1,10 @@
 #!/usr/bin/env ts-node-transpile-only
 
 import { DefinedError, ErrorObject } from "ajv";
-import fs from "fs";
-import { ajv, validate } from "../payload-schemas";
+import path from "path";
 import { inspect } from "util";
-
-const payloads = `./payload-examples/api.github.com`;
+import { ajv, validate } from "../payload-schemas";
+import { forEachJsonFile, pathToPayloads } from "./utils";
 
 const continueOnError = process.argv.includes("--continue-on-error");
 
@@ -29,33 +28,28 @@ const printAjvErrors = () => {
   console.error(inspect(finalErrors, { depth: Infinity, colors: true }));
 };
 
-fs.readdirSync(payloads).forEach((event) => {
-  fs.readdirSync(`${payloads}/${event}`)
-    .filter((filename) => filename.endsWith(".json"))
-    .forEach((filename) => {
-      const file = require(`../${payloads}/${event}/${filename}`) as unknown;
+forEachJsonFile(pathToPayloads, (filePath) => {
+  const file = require(`../${filePath}`) as unknown;
+  const { dir: event, base: filename } = path.parse(
+    path.relative(pathToPayloads, filePath)
+  );
 
-      try {
-        const validationResult = validate(event, file);
+  try {
+    const validationResult = validate(event, file);
 
-        if (!validationResult) {
-          console.error(
-            `❌ Payload '${event}/${filename}' does not match schema`
-          );
-          printAjvErrors();
-          process.exitCode = 1;
-        } else {
-          console.log(`✅ Payload '${event}/${filename}' matches schema`);
-        }
-      } catch (err) {
-        if (!continueOnError) {
-          throw err;
-        }
+    if (!validationResult) {
+      console.error(`❌ Payload '${event}/${filename}' does not match schema`);
+      printAjvErrors();
+      process.exitCode = 1;
+    } else {
+      console.log(`✅ Payload '${event}/${filename}' matches schema`);
+    }
+  } catch (err) {
+    if (!continueOnError) {
+      throw err;
+    }
 
-        console.error(
-          `💥 Payload '${event}/${filename}' errored: ${err.message}`
-        );
-        process.exitCode = 1;
-      }
-    });
+    console.error(`💥 Payload '${event}/${filename}' errored: ${err.message}`);
+    process.exitCode = 1;
+  }
 });
