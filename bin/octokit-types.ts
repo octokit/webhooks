@@ -5,7 +5,9 @@ import { promises as fs } from "fs";
 import { JSONSchema4, JSONSchema7 } from "json-schema";
 import { compile } from "json-schema-to-typescript";
 import { format } from "prettier";
-import { guessAtInterfaceName, isJsonSchemaObject } from "./utils";
+import { guessAtInterfaceName, isJsonSchemaObject, parseArgv } from "./utils";
+
+parseArgv(__filename, []);
 
 const getEventName = (ref: string): string => {
   assert.ok(

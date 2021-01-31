@@ -4,9 +4,13 @@ import { DefinedError, ErrorObject } from "ajv";
 import path from "path";
 import { inspect } from "util";
 import { ajv, validate } from "../payload-schemas";
-import { forEachJsonFile, pathToPayloads } from "./utils";
+import { forEachJsonFile, parseArgv, pathToPayloads } from "./utils";
 
-const continueOnError = process.argv.includes("--continue-on-error");
+const [, { continueOnError = false }] = parseArgv(
+  __filename,
+  [],
+  ["continue-on-error"]
+);
 
 const printAjvErrors = () => {
   const finalErrors: ErrorObject[] = [];

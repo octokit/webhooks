@@ -3,9 +3,14 @@
 import fs from "fs";
 import { JSONSchema7 } from "json-schema";
 import { format } from "prettier";
-import { forEachJsonFile, pathToPayloads, pathToSchemas } from "./utils";
+import {
+  forEachJsonFile,
+  parseArgv,
+  pathToPayloads,
+  pathToSchemas,
+} from "./utils";
 
-const checkOnly = process.argv.includes("--check");
+const [, { check: checkOnly }] = parseArgv(__filename, [], ["check"]);
 
 const formatJsonInDirectory = (pathToJsons: string) => {
   forEachJsonFile(pathToJsons, (filePath) => {

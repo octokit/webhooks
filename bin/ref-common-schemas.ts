@@ -5,11 +5,14 @@ import fs from "fs";
 import { JSONSchema7 } from "json-schema";
 import { format } from "prettier";
 import {
-  pathToSchemas,
   ensureArray,
-  normalizeSchema,
   forEachJsonFile,
+  normalizeSchema,
+  parseArgv,
+  pathToSchemas,
 } from "./utils";
+
+parseArgv(__filename, []);
 
 const commonSchemas = fs
   .readdirSync(`${pathToSchemas}/common`)
