@@ -2076,50 +2076,21 @@ export interface InstallationRepositoriesRemovedEvent {
 }
 export interface IssueCommentCreatedEvent {
   action: "created";
-  issue: {
-    /**
-     * URL for the issue
-     */
-    url: string;
-    repository_url: string;
-    labels_url: string;
-    comments_url: string;
-    events_url: string;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    /**
-     * Title of the issue
-     */
-    title: string;
-    user: User;
-    labels: Label[];
+  issue: Issue & {
+    assignee: User | null;
     /**
      * State of the issue; either 'open' or 'closed'
      */
     state: "open" | "closed";
-    locked: boolean;
-    assignee: User | null;
-    assignees: User[];
-    milestone: Milestone | null;
-    comments: number;
-    created_at: string;
-    updated_at: string;
     closed_at: null;
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
+    locked: boolean;
+    labels: Label[];
     pull_request?: {
       url: string;
       html_url: string;
       diff_url: string;
       patch_url: string;
     };
-    /**
-     * Contents of the issue
-     */
-    body: string;
-    performed_via_github_app?: App | null;
   };
   comment: {
     /**
@@ -2147,6 +2118,51 @@ export interface IssueCommentCreatedEvent {
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
+}
+export interface Issue {
+  /**
+   * URL for the issue
+   */
+  url: string;
+  repository_url: string;
+  labels_url: string;
+  comments_url: string;
+  events_url: string;
+  html_url: string;
+  id: number;
+  node_id: string;
+  number: number;
+  /**
+   * Title of the issue
+   */
+  title: string;
+  user: User;
+  labels?: Label[];
+  /**
+   * State of the issue; either 'open' or 'closed'
+   */
+  state?: "open" | "closed";
+  locked?: boolean;
+  assignee?: User | null;
+  assignees: User[];
+  milestone: Milestone | null;
+  comments: number;
+  created_at: string;
+  updated_at: string;
+  closed_at: string | null;
+  author_association: AuthorAssociation;
+  active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
+  performed_via_github_app?: App | null;
+  pull_request?: {
+    url?: string;
+    html_url?: string;
+    diff_url?: string;
+    patch_url?: string;
+  };
+  /**
+   * Contents of the issue
+   */
+  body: string;
 }
 /**
  * Color-coded labels help you categorize and filter your issues (just like labels in Gmail).
@@ -2201,50 +2217,21 @@ export interface Milestone {
 }
 export interface IssueCommentDeletedEvent {
   action: "deleted";
-  issue: {
-    /**
-     * URL for the issue
-     */
-    url: string;
-    repository_url: string;
-    labels_url: string;
-    comments_url: string;
-    events_url: string;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    /**
-     * Title of the issue
-     */
-    title: string;
-    user: User;
-    labels: Label[];
+  issue: Issue & {
+    assignee: User | null;
     /**
      * State of the issue; either 'open' or 'closed'
      */
     state: "open" | "closed";
-    locked: boolean;
-    assignee: User | null;
-    assignees: User[];
-    milestone: Milestone | null;
-    comments: number;
-    created_at: string;
-    updated_at: string;
     closed_at: null;
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
+    locked: boolean;
+    labels: Label[];
     pull_request?: {
       url: string;
       html_url: string;
       diff_url: string;
       patch_url: string;
     };
-    /**
-     * Contents of the issue
-     */
-    body: string;
-    performed_via_github_app?: App | null;
   };
   comment: {
     /**
@@ -2279,50 +2266,21 @@ export interface IssueCommentEditedEvent {
       from: string;
     };
   };
-  issue: {
-    /**
-     * URL for the issue
-     */
-    url: string;
-    repository_url: string;
-    labels_url: string;
-    comments_url: string;
-    events_url: string;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    /**
-     * Title of the issue
-     */
-    title: string;
-    user: User;
-    labels: Label[];
+  issue: Issue & {
+    assignee: User | null;
     /**
      * State of the issue; either 'open' or 'closed'
      */
     state: "open" | "closed";
-    locked: boolean;
-    assignee: User | null;
-    assignees: User[];
-    milestone: Milestone | null;
-    comments: number;
-    created_at: string;
-    updated_at: string;
     closed_at: null;
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
+    locked: boolean;
+    labels: Label[];
     pull_request?: {
       url: string;
       html_url: string;
       diff_url: string;
       patch_url: string;
     };
-    /**
-     * Contents of the issue
-     */
-    body: string;
-    performed_via_github_app?: App | null;
   };
   comment: {
     /**
@@ -2352,51 +2310,7 @@ export interface IssueCommentEditedEvent {
 }
 export interface IssuesAssignedEvent {
   action: "assigned";
-  issue: {
-    /**
-     * URL for the issue
-     */
-    url: string;
-    repository_url: string;
-    labels_url: string;
-    comments_url: string;
-    events_url: string;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    /**
-     * Title of the issue
-     */
-    title: string;
-    user: User;
-    labels?: Label[];
-    /**
-     * State of the issue; either 'open' or 'closed'
-     */
-    state?: "open" | "closed";
-    locked?: boolean;
-    assignee?: User | null;
-    assignees: User[];
-    milestone: Milestone | null;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: App | null;
-    pull_request?: {
-      url?: string;
-      html_url?: string;
-      diff_url?: string;
-      patch_url?: string;
-    };
-    /**
-     * Contents of the issue
-     */
-    body: string;
-  };
+  issue: Issue;
   label?: Label;
   assignee?: User | null;
   assignees?: User[];
@@ -2407,50 +2321,9 @@ export interface IssuesAssignedEvent {
 }
 export interface IssuesClosedEvent {
   action: "closed";
-  issue: {
-    /**
-     * URL for the issue
-     */
-    url: string;
-    repository_url: string;
-    labels_url: string;
-    comments_url: string;
-    events_url: string;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    /**
-     * Title of the issue
-     */
-    title: string;
-    user: User;
-    labels?: Label[];
-    /**
-     * State of the issue; either 'open' or 'closed'
-     */
-    state?: "closed";
-    locked?: boolean;
-    assignee?: User | null;
-    assignees: User[];
-    milestone: Milestone | null;
-    comments: number;
-    created_at: string;
-    updated_at: string;
+  issue: Issue & {
+    state: "closed";
     closed_at: string;
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: App | null;
-    pull_request?: {
-      url?: string;
-      html_url?: string;
-      diff_url?: string;
-      patch_url?: string;
-    };
-    /**
-     * Contents of the issue
-     */
-    body: string;
   };
   label?: Label;
   assignee?: User | null;
@@ -2462,51 +2335,7 @@ export interface IssuesClosedEvent {
 }
 export interface IssuesDeletedEvent {
   action: "deleted";
-  issue: {
-    /**
-     * URL for the issue
-     */
-    url: string;
-    repository_url: string;
-    labels_url: string;
-    comments_url: string;
-    events_url: string;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    /**
-     * Title of the issue
-     */
-    title: string;
-    user: User;
-    labels?: Label[];
-    /**
-     * State of the issue; either 'open' or 'closed'
-     */
-    state?: "open" | "closed";
-    locked?: boolean;
-    assignee?: User | null;
-    assignees: User[];
-    milestone: Milestone | null;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: App | null;
-    pull_request?: {
-      url?: string;
-      html_url?: string;
-      diff_url?: string;
-      patch_url?: string;
-    };
-    /**
-     * Contents of the issue
-     */
-    body: string;
-  };
+  issue: Issue;
   label?: Label;
   assignee?: User | null;
   assignees?: User[];
@@ -2517,51 +2346,7 @@ export interface IssuesDeletedEvent {
 }
 export interface IssuesDemilestonedEvent {
   action: "demilestoned";
-  issue: {
-    /**
-     * URL for the issue
-     */
-    url: string;
-    repository_url: string;
-    labels_url: string;
-    comments_url: string;
-    events_url: string;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    /**
-     * Title of the issue
-     */
-    title: string;
-    user: User;
-    labels?: Label[];
-    /**
-     * State of the issue; either 'open' or 'closed'
-     */
-    state?: "open" | "closed";
-    locked?: boolean;
-    assignee?: User | null;
-    assignees: User[];
-    milestone: Milestone | null;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: App | null;
-    pull_request?: {
-      url?: string;
-      html_url?: string;
-      diff_url?: string;
-      patch_url?: string;
-    };
-    /**
-     * Contents of the issue
-     */
-    body: string;
-  };
+  issue: Issue;
   label?: Label;
   assignee?: User | null;
   assignees?: User[];
@@ -2572,51 +2357,7 @@ export interface IssuesDemilestonedEvent {
 }
 export interface IssuesEditedEvent {
   action: "edited";
-  issue: {
-    /**
-     * URL for the issue
-     */
-    url: string;
-    repository_url: string;
-    labels_url: string;
-    comments_url: string;
-    events_url: string;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    /**
-     * Title of the issue
-     */
-    title: string;
-    user: User;
-    labels?: Label[];
-    /**
-     * State of the issue; either 'open' or 'closed'
-     */
-    state?: "open" | "closed";
-    locked?: boolean;
-    assignee?: User | null;
-    assignees: User[];
-    milestone: Milestone | null;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: App | null;
-    pull_request?: {
-      url?: string;
-      html_url?: string;
-      diff_url?: string;
-      patch_url?: string;
-    };
-    /**
-     * Contents of the issue
-     */
-    body: string;
-  };
+  issue: Issue;
   label?: Label;
   changes: {
     body?: {
@@ -2635,51 +2376,7 @@ export interface IssuesEditedEvent {
 }
 export interface IssuesLabeledEvent {
   action: "labeled";
-  issue: {
-    /**
-     * URL for the issue
-     */
-    url: string;
-    repository_url: string;
-    labels_url: string;
-    comments_url: string;
-    events_url: string;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    /**
-     * Title of the issue
-     */
-    title: string;
-    user: User;
-    labels?: Label[];
-    /**
-     * State of the issue; either 'open' or 'closed'
-     */
-    state?: "open" | "closed";
-    locked?: boolean;
-    assignee?: User | null;
-    assignees: User[];
-    milestone: Milestone | null;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: App | null;
-    pull_request?: {
-      url?: string;
-      html_url?: string;
-      diff_url?: string;
-      patch_url?: string;
-    };
-    /**
-     * Contents of the issue
-     */
-    body: string;
-  };
+  issue: Issue;
   label?: Label;
   assignee?: User | null;
   assignees?: User[];
@@ -2690,50 +2387,9 @@ export interface IssuesLabeledEvent {
 }
 export interface IssuesLockedEvent {
   action: "locked";
-  issue: {
-    /**
-     * URL for the issue
-     */
-    url: string;
-    repository_url: string;
-    labels_url: string;
-    comments_url: string;
-    events_url: string;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    /**
-     * Title of the issue
-     */
-    title: string;
-    user: User;
-    labels?: Label[];
-    /**
-     * State of the issue; either 'open' or 'closed'
-     */
-    state?: "open" | "closed";
-    locked?: true;
-    assignee?: User | null;
-    assignees: User[];
-    milestone: Milestone | null;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    author_association: AuthorAssociation;
+  issue: Issue & {
+    locked: true;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam";
-    performed_via_github_app?: App | null;
-    pull_request?: {
-      url?: string;
-      html_url?: string;
-      diff_url?: string;
-      patch_url?: string;
-    };
-    /**
-     * Contents of the issue
-     */
-    body: string;
   };
   label?: Label;
   assignee?: User | null;
@@ -2745,51 +2401,7 @@ export interface IssuesLockedEvent {
 }
 export interface IssuesMilestonedEvent {
   action: "milestoned";
-  issue: {
-    /**
-     * URL for the issue
-     */
-    url: string;
-    repository_url: string;
-    labels_url: string;
-    comments_url: string;
-    events_url: string;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    /**
-     * Title of the issue
-     */
-    title: string;
-    user: User;
-    labels?: Label[];
-    /**
-     * State of the issue; either 'open' or 'closed'
-     */
-    state?: "open" | "closed";
-    locked?: boolean;
-    assignee?: User | null;
-    assignees: User[];
-    milestone: Milestone | null;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: App | null;
-    pull_request?: {
-      url?: string;
-      html_url?: string;
-      diff_url?: string;
-      patch_url?: string;
-    };
-    /**
-     * Contents of the issue
-     */
-    body: string;
-  };
+  issue: Issue;
   label?: Label;
   assignee?: User | null;
   assignees?: User[];
@@ -2800,50 +2412,9 @@ export interface IssuesMilestonedEvent {
 }
 export interface IssuesOpenedEvent {
   action: "opened";
-  issue: {
-    /**
-     * URL for the issue
-     */
-    url: string;
-    repository_url: string;
-    labels_url: string;
-    comments_url: string;
-    events_url: string;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    /**
-     * Title of the issue
-     */
-    title: string;
-    user: User;
-    labels?: Label[];
-    /**
-     * State of the issue; either 'open' or 'closed'
-     */
-    state?: "open";
-    locked?: boolean;
-    assignee?: User | null;
-    assignees: User[];
-    milestone: Milestone | null;
-    comments: number;
-    created_at: string;
-    updated_at: string;
+  issue: Issue & {
+    state: "open";
     closed_at: null;
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: App | null;
-    pull_request?: {
-      url?: string;
-      html_url?: string;
-      diff_url?: string;
-      patch_url?: string;
-    };
-    /**
-     * Contents of the issue
-     */
-    body: string;
   };
   label?: Label;
   assignee?: User | null;
@@ -2855,51 +2426,7 @@ export interface IssuesOpenedEvent {
 }
 export interface IssuesPinnedEvent {
   action: "pinned";
-  issue: {
-    /**
-     * URL for the issue
-     */
-    url: string;
-    repository_url: string;
-    labels_url: string;
-    comments_url: string;
-    events_url: string;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    /**
-     * Title of the issue
-     */
-    title: string;
-    user: User;
-    labels?: Label[];
-    /**
-     * State of the issue; either 'open' or 'closed'
-     */
-    state?: "open" | "closed";
-    locked?: boolean;
-    assignee?: User | null;
-    assignees: User[];
-    milestone: Milestone | null;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: App | null;
-    pull_request?: {
-      url?: string;
-      html_url?: string;
-      diff_url?: string;
-      patch_url?: string;
-    };
-    /**
-     * Contents of the issue
-     */
-    body: string;
-  };
+  issue: Issue;
   label?: Label;
   assignee?: User | null;
   assignees?: User[];
@@ -2910,50 +2437,8 @@ export interface IssuesPinnedEvent {
 }
 export interface IssuesReopenedEvent {
   action: "reopened";
-  issue: {
-    /**
-     * URL for the issue
-     */
-    url: string;
-    repository_url: string;
-    labels_url: string;
-    comments_url: string;
-    events_url: string;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    /**
-     * Title of the issue
-     */
-    title: string;
-    user: User;
-    labels?: Label[];
-    /**
-     * State of the issue; either 'open' or 'closed'
-     */
-    state?: "open";
-    locked?: boolean;
-    assignee?: User | null;
-    assignees: User[];
-    milestone: Milestone | null;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: App | null;
-    pull_request?: {
-      url?: string;
-      html_url?: string;
-      diff_url?: string;
-      patch_url?: string;
-    };
-    /**
-     * Contents of the issue
-     */
-    body: string;
+  issue: Issue & {
+    state: "open";
   };
   label?: Label;
   assignee?: User | null;
@@ -2965,51 +2450,7 @@ export interface IssuesReopenedEvent {
 }
 export interface IssuesTransferredEvent {
   action: "transferred";
-  issue: {
-    /**
-     * URL for the issue
-     */
-    url: string;
-    repository_url: string;
-    labels_url: string;
-    comments_url: string;
-    events_url: string;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    /**
-     * Title of the issue
-     */
-    title: string;
-    user: User;
-    labels?: Label[];
-    /**
-     * State of the issue; either 'open' or 'closed'
-     */
-    state?: "open" | "closed";
-    locked?: boolean;
-    assignee?: User | null;
-    assignees: User[];
-    milestone: Milestone | null;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: App | null;
-    pull_request?: {
-      url?: string;
-      html_url?: string;
-      diff_url?: string;
-      patch_url?: string;
-    };
-    /**
-     * Contents of the issue
-     */
-    body: string;
-  };
+  issue: Issue;
   label?: Label;
   assignee?: User | null;
   assignees?: User[];
@@ -3020,51 +2461,7 @@ export interface IssuesTransferredEvent {
 }
 export interface IssuesUnassignedEvent {
   action: "unassigned";
-  issue: {
-    /**
-     * URL for the issue
-     */
-    url: string;
-    repository_url: string;
-    labels_url: string;
-    comments_url: string;
-    events_url: string;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    /**
-     * Title of the issue
-     */
-    title: string;
-    user: User;
-    labels?: Label[];
-    /**
-     * State of the issue; either 'open' or 'closed'
-     */
-    state?: "open" | "closed";
-    locked?: boolean;
-    assignee?: User | null;
-    assignees: User[];
-    milestone: Milestone | null;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: App | null;
-    pull_request?: {
-      url?: string;
-      html_url?: string;
-      diff_url?: string;
-      patch_url?: string;
-    };
-    /**
-     * Contents of the issue
-     */
-    body: string;
-  };
+  issue: Issue;
   label?: Label;
   assignee?: User | null;
   assignees?: User[];
@@ -3075,51 +2472,7 @@ export interface IssuesUnassignedEvent {
 }
 export interface IssuesUnlabeledEvent {
   action: "unlabeled";
-  issue: {
-    /**
-     * URL for the issue
-     */
-    url: string;
-    repository_url: string;
-    labels_url: string;
-    comments_url: string;
-    events_url: string;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    /**
-     * Title of the issue
-     */
-    title: string;
-    user: User;
-    labels?: Label[];
-    /**
-     * State of the issue; either 'open' or 'closed'
-     */
-    state?: "open" | "closed";
-    locked?: boolean;
-    assignee?: User | null;
-    assignees: User[];
-    milestone: Milestone | null;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: App | null;
-    pull_request?: {
-      url?: string;
-      html_url?: string;
-      diff_url?: string;
-      patch_url?: string;
-    };
-    /**
-     * Contents of the issue
-     */
-    body: string;
-  };
+  issue: Issue;
   label?: Label;
   assignee?: User | null;
   assignees?: User[];
@@ -3130,50 +2483,9 @@ export interface IssuesUnlabeledEvent {
 }
 export interface IssuesUnlockedEvent {
   action: "unlocked";
-  issue: {
-    /**
-     * URL for the issue
-     */
-    url: string;
-    repository_url: string;
-    labels_url: string;
-    comments_url: string;
-    events_url: string;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    /**
-     * Title of the issue
-     */
-    title: string;
-    user: User;
-    labels?: Label[];
-    /**
-     * State of the issue; either 'open' or 'closed'
-     */
-    state?: "open" | "closed";
-    locked?: false;
-    assignee?: User | null;
-    assignees: User[];
-    milestone: Milestone | null;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    author_association: AuthorAssociation;
+  issue: Issue & {
+    locked: false;
     active_lock_reason: null;
-    performed_via_github_app?: App | null;
-    pull_request?: {
-      url?: string;
-      html_url?: string;
-      diff_url?: string;
-      patch_url?: string;
-    };
-    /**
-     * Contents of the issue
-     */
-    body: string;
   };
   label?: Label;
   assignee?: User | null;
@@ -3185,51 +2497,7 @@ export interface IssuesUnlockedEvent {
 }
 export interface IssuesUnpinnedEvent {
   action: "unpinned";
-  issue: {
-    /**
-     * URL for the issue
-     */
-    url: string;
-    repository_url: string;
-    labels_url: string;
-    comments_url: string;
-    events_url: string;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    /**
-     * Title of the issue
-     */
-    title: string;
-    user: User;
-    labels?: Label[];
-    /**
-     * State of the issue; either 'open' or 'closed'
-     */
-    state?: "open" | "closed";
-    locked?: boolean;
-    assignee?: User | null;
-    assignees: User[];
-    milestone: Milestone | null;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    closed_at: string | null;
-    author_association: AuthorAssociation;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-    performed_via_github_app?: App | null;
-    pull_request?: {
-      url?: string;
-      html_url?: string;
-      diff_url?: string;
-      patch_url?: string;
-    };
-    /**
-     * Contents of the issue
-     */
-    body: string;
-  };
+  issue: Issue;
   label?: Label;
   assignee?: User | null;
   assignees?: User[];
