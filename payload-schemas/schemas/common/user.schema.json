@@ -26,6 +26,8 @@
     "login": { "type": "string" },
     "id": { "type": "integer" },
     "node_id": { "type": "string" },
+    "name": { "type": "string" },
+    "email": { "type": "string" },
     "avatar_url": { "type": "string" },
     "gravatar_id": { "type": "string" },
     "url": { "type": "string" },
