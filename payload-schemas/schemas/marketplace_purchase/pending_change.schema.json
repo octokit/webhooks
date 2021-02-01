@@ -51,117 +51,18 @@
       "additionalProperties": false
     },
     "marketplace_purchase": {
-      "type": "object",
-      "required": [
-        "account",
-        "billing_cycle",
-        "unit_count",
-        "on_free_trial",
-        "free_trial_ends_on",
-        "next_billing_date",
-        "plan"
-      ],
-      "properties": {
-        "account": {
+      "allOf": [
+        { "$ref": "common/marketplace-purchase.schema.json" },
+        {
           "type": "object",
-          "required": ["type", "id", "login", "organization_billing_email"],
-          "properties": {
-            "type": { "type": "string" },
-            "id": { "type": "integer" },
-            "login": { "type": "string" },
-            "organization_billing_email": { "type": "string" }
-          },
-          "additionalProperties": false
-        },
-        "billing_cycle": { "type": "string" },
-        "unit_count": { "type": "integer" },
-        "on_free_trial": { "type": "boolean" },
-        "free_trial_ends_on": { "type": "null" },
-        "next_billing_date": { "type": "string" },
-        "plan": {
-          "type": "object",
-          "required": [
-            "id",
-            "name",
-            "description",
-            "monthly_price_in_cents",
-            "yearly_price_in_cents",
-            "price_model",
-            "has_free_trial",
-            "unit_name",
-            "bullets"
-          ],
-          "properties": {
-            "id": { "type": "integer" },
-            "name": { "type": "string" },
-            "description": { "type": "string" },
-            "monthly_price_in_cents": { "type": "integer" },
-            "yearly_price_in_cents": { "type": "integer" },
-            "price_model": { "type": "string" },
-            "has_free_trial": { "type": "boolean" },
-            "unit_name": { "type": ["string", "null"] },
-            "bullets": { "type": "array", "items": { "type": "string" } }
-          },
-          "additionalProperties": false
+          "required": ["next_billing_date"],
+          "properties": { "next_billing_date": { "type": "string" } },
+          "tsAdditionalProperties": false
         }
-      },
-      "additionalProperties": false
+      ]
     },
     "previous_marketplace_purchase": {
-      "type": "object",
-      "required": [
-        "account",
-        "billing_cycle",
-        "unit_count",
-        "on_free_trial",
-        "free_trial_ends_on",
-        "plan"
-      ],
-      "properties": {
-        "account": {
-          "type": "object",
-          "required": ["type", "id", "login", "organization_billing_email"],
-          "properties": {
-            "type": { "type": "string" },
-            "id": { "type": "integer" },
-            "login": { "type": "string" },
-            "organization_billing_email": { "type": "string" }
-          },
-          "additionalProperties": false
-        },
-        "billing_cycle": { "type": "string" },
-        "unit_count": { "type": "integer" },
-        "on_free_trial": { "type": "boolean" },
-        "free_trial_ends_on": { "type": "null" },
-        "next_billing_date": { "type": "string" },
-        "plan": {
-          "type": "object",
-          "required": [
-            "id",
-            "name",
-            "description",
-            "monthly_price_in_cents",
-            "yearly_price_in_cents",
-            "price_model",
-            "has_free_trial",
-            "unit_name",
-            "bullets"
-          ],
-          "properties": {
-            "id": { "type": "integer" },
-            "name": { "type": "string" },
-            "description": { "type": "string" },
-            "monthly_price_in_cents": { "type": "integer" },
-            "yearly_price_in_cents": { "type": "integer" },
-            "price_model": { "type": "string" },
-            "has_free_trial": { "type": "boolean" },
-            "unit_name": { "type": ["string", "null"] },
-            "bullets": { "type": "array", "items": { "type": "string" } }
-          },
-          "additionalProperties": false
-        }
-      },
-      "additionalProperties": false
+      "$ref": "common/marketplace-purchase.schema.json"
     }
   },
   "additionalProperties": false,

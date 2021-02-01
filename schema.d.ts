@@ -3293,53 +3293,33 @@ export interface MarketplacePurchaseCancelledEvent {
     site_admin: boolean;
     email: string;
   };
-  marketplace_purchase: {
-    account: {
-      type: string;
-      id: number;
-      login: string;
-      organization_billing_email: string;
-    };
-    billing_cycle: string;
-    unit_count: number;
-    on_free_trial: boolean;
-    free_trial_ends_on: null;
+  marketplace_purchase: MarketplacePurchase & {
     next_billing_date: string;
-    plan: {
-      id: number;
-      name: string;
-      description: string;
-      monthly_price_in_cents: number;
-      yearly_price_in_cents: number;
-      price_model: string;
-      has_free_trial: boolean;
-      unit_name: string | null;
-      bullets: string[];
-    };
   };
-  previous_marketplace_purchase?: {
-    account: {
-      type: string;
-      id: number;
-      login: string;
-      organization_billing_email: string;
-    };
-    billing_cycle: string;
-    unit_count: number;
-    on_free_trial: boolean;
-    free_trial_ends_on: null;
-    next_billing_date?: string;
-    plan: {
-      id: number;
-      name: string;
-      description: string;
-      monthly_price_in_cents: number;
-      yearly_price_in_cents: number;
-      price_model: string;
-      has_free_trial: boolean;
-      unit_name: string | null;
-      bullets: string[];
-    };
+  previous_marketplace_purchase?: MarketplacePurchase;
+}
+export interface MarketplacePurchase {
+  account: {
+    type: string;
+    id: number;
+    login: string;
+    organization_billing_email: string;
+  };
+  billing_cycle: string;
+  unit_count: number;
+  on_free_trial: boolean;
+  free_trial_ends_on: null;
+  next_billing_date?: string;
+  plan: {
+    id: number;
+    name: string;
+    description: string;
+    monthly_price_in_cents: number;
+    yearly_price_in_cents: number;
+    price_model: string;
+    has_free_trial: boolean;
+    unit_name: string | null;
+    bullets: string[];
   };
 }
 export interface MarketplacePurchaseChangedEvent {
@@ -3365,54 +3345,10 @@ export interface MarketplacePurchaseChangedEvent {
     site_admin: boolean;
     email: string;
   };
-  marketplace_purchase: {
-    account: {
-      type: string;
-      id: number;
-      login: string;
-      organization_billing_email: string;
-    };
-    billing_cycle: string;
-    unit_count: number;
-    on_free_trial: boolean;
-    free_trial_ends_on: null;
+  marketplace_purchase: MarketplacePurchase & {
     next_billing_date: string;
-    plan: {
-      id: number;
-      name: string;
-      description: string;
-      monthly_price_in_cents: number;
-      yearly_price_in_cents: number;
-      price_model: string;
-      has_free_trial: boolean;
-      unit_name: string | null;
-      bullets: string[];
-    };
   };
-  previous_marketplace_purchase?: {
-    account: {
-      type: string;
-      id: number;
-      login: string;
-      organization_billing_email: string;
-    };
-    billing_cycle: string;
-    unit_count: number;
-    on_free_trial: boolean;
-    free_trial_ends_on: null;
-    next_billing_date?: string;
-    plan: {
-      id: number;
-      name: string;
-      description: string;
-      monthly_price_in_cents: number;
-      yearly_price_in_cents: number;
-      price_model: string;
-      has_free_trial: boolean;
-      unit_name: string | null;
-      bullets: string[];
-    };
-  };
+  previous_marketplace_purchase?: MarketplacePurchase;
 }
 export interface MarketplacePurchasePendingChangeEvent {
   action: "pending_change";
@@ -3437,54 +3373,10 @@ export interface MarketplacePurchasePendingChangeEvent {
     site_admin: boolean;
     email: string;
   };
-  marketplace_purchase: {
-    account: {
-      type: string;
-      id: number;
-      login: string;
-      organization_billing_email: string;
-    };
-    billing_cycle: string;
-    unit_count: number;
-    on_free_trial: boolean;
-    free_trial_ends_on: null;
+  marketplace_purchase: MarketplacePurchase & {
     next_billing_date: string;
-    plan: {
-      id: number;
-      name: string;
-      description: string;
-      monthly_price_in_cents: number;
-      yearly_price_in_cents: number;
-      price_model: string;
-      has_free_trial: boolean;
-      unit_name: string | null;
-      bullets: string[];
-    };
   };
-  previous_marketplace_purchase?: {
-    account: {
-      type: string;
-      id: number;
-      login: string;
-      organization_billing_email: string;
-    };
-    billing_cycle: string;
-    unit_count: number;
-    on_free_trial: boolean;
-    free_trial_ends_on: null;
-    next_billing_date?: string;
-    plan: {
-      id: number;
-      name: string;
-      description: string;
-      monthly_price_in_cents: number;
-      yearly_price_in_cents: number;
-      price_model: string;
-      has_free_trial: boolean;
-      unit_name: string | null;
-      bullets: string[];
-    };
-  };
+  previous_marketplace_purchase?: MarketplacePurchase;
 }
 export interface MarketplacePurchasePendingChangeCancelledEvent {
   action: "pending_change_cancelled";
@@ -3509,54 +3401,10 @@ export interface MarketplacePurchasePendingChangeCancelledEvent {
     site_admin: boolean;
     email: string;
   };
-  marketplace_purchase: {
-    account: {
-      type: string;
-      id: number;
-      login: string;
-      organization_billing_email: string;
-    };
-    billing_cycle: string;
-    unit_count: number;
-    on_free_trial: boolean;
-    free_trial_ends_on: null;
+  marketplace_purchase: MarketplacePurchase & {
     next_billing_date: string;
-    plan: {
-      id: number;
-      name: string;
-      description: string;
-      monthly_price_in_cents: number;
-      yearly_price_in_cents: number;
-      price_model: string;
-      has_free_trial: boolean;
-      unit_name: string | null;
-      bullets: string[];
-    };
   };
-  previous_marketplace_purchase?: {
-    account: {
-      type: string;
-      id: number;
-      login: string;
-      organization_billing_email: string;
-    };
-    billing_cycle: string;
-    unit_count: number;
-    on_free_trial: boolean;
-    free_trial_ends_on: null;
-    next_billing_date?: string;
-    plan: {
-      id: number;
-      name: string;
-      description: string;
-      monthly_price_in_cents: number;
-      yearly_price_in_cents: number;
-      price_model: string;
-      has_free_trial: boolean;
-      unit_name: string | null;
-      bullets: string[];
-    };
-  };
+  previous_marketplace_purchase?: MarketplacePurchase;
 }
 export interface MarketplacePurchasePurchasedEvent {
   action: "purchased";
@@ -3581,54 +3429,10 @@ export interface MarketplacePurchasePurchasedEvent {
     site_admin: boolean;
     email: string;
   };
-  marketplace_purchase: {
-    account: {
-      type: string;
-      id: number;
-      login: string;
-      organization_billing_email: string;
-    };
-    billing_cycle: string;
-    unit_count: number;
-    on_free_trial: boolean;
-    free_trial_ends_on: null;
+  marketplace_purchase: MarketplacePurchase & {
     next_billing_date: string;
-    plan: {
-      id: number;
-      name: string;
-      description: string;
-      monthly_price_in_cents: number;
-      yearly_price_in_cents: number;
-      price_model: string;
-      has_free_trial: boolean;
-      unit_name: string | null;
-      bullets: string[];
-    };
   };
-  previous_marketplace_purchase?: {
-    account: {
-      type: string;
-      id: number;
-      login: string;
-      organization_billing_email: string;
-    };
-    billing_cycle: string;
-    unit_count: number;
-    on_free_trial: boolean;
-    free_trial_ends_on: null;
-    next_billing_date?: string;
-    plan: {
-      id: number;
-      name: string;
-      description: string;
-      monthly_price_in_cents: number;
-      yearly_price_in_cents: number;
-      price_model: string;
-      has_free_trial: boolean;
-      unit_name: string | null;
-      bullets: string[];
-    };
-  };
+  previous_marketplace_purchase?: MarketplacePurchase;
 }
 export interface MemberAddedEvent {
   action: "added";
