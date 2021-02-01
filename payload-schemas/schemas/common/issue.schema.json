@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/issue.schema.json",
+  "required": [
+    "url",
+    "repository_url",
+    "labels_url",
+    "comments_url",
+    "events_url",
+    "html_url",
+    "id",
+    "node_id",
+    "number",
+    "title",
+    "user",
+    "assignees",
+    "milestone",
+    "comments",
+    "created_at",
+    "updated_at",
+    "closed_at",
+    "author_association",
+    "active_lock_reason",
+    "body"
+  ],
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL for the issue"
+    },
+    "repository_url": { "type": "string", "format": "uri" },
+    "labels_url": { "type": "string" },
+    "comments_url": { "type": "string", "format": "uri" },
+    "events_url": { "type": "string", "format": "uri" },
+    "html_url": { "type": "string", "format": "uri" },
+    "id": { "type": "integer" },
+    "node_id": { "type": "string" },
+    "number": { "type": "integer" },
+    "title": { "type": "string", "description": "Title of the issue" },
+    "user": { "$ref": "user.schema.json" },
+    "labels": { "type": "array", "items": { "$ref": "label.schema.json" } },
+    "state": {
+      "type": "string",
+      "enum": ["open", "closed"],
+      "description": "State of the issue; either 'open' or 'closed'"
+    },
+    "locked": { "type": "boolean" },
+    "assignee": {
+      "oneOf": [{ "$ref": "user.schema.json" }, { "type": "null" }]
+    },
+    "assignees": { "type": "array", "items": { "$ref": "user.schema.json" } },
+    "milestone": {
+      "oneOf": [{ "$ref": "milestone.schema.json" }, { "type": "null" }]
+    },
+    "comments": { "type": "integer" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "closed_at": { "type": ["string", "null"], "format": "date-time" },
+    "author_association": { "$ref": "author_association.schema.json" },
+    "active_lock_reason": {
+      "type": ["string", "null"],
+      "enum": ["resolved", "off-topic", "too heated", "spam", null]
+    },
+    "performed_via_github_app": {
+      "oneOf": [{ "$ref": "app.schema.json" }, { "type": "null" }]
+    },
+    "pull_request": {
+      "type": "object",
+      "properties": {
+        "url": { "type": "string", "format": "uri" },
+        "html_url": { "type": "string", "format": "uri" },
+        "diff_url": { "type": "string", "format": "uri" },
+        "patch_url": { "type": "string", "format": "uri" }
+      },
+      "additionalProperties": false
+    },
+    "body": { "type": "string", "description": "Contents of the issue" }
+  },
+  "additionalProperties": false,
+  "title": "Issue"
+}
