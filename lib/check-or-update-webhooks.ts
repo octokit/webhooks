@@ -40,6 +40,7 @@ export const checkOrUpdateWebhooks = async ({
       actions: Array.from(
         new Set(webhook.actions.concat(webhookFromPayloadExamples.actions))
       ),
+      properties: webhook.properties,
       examples: webhook.examples.concat(webhookFromPayloadExamples.examples),
     };
   });

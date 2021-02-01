@@ -35,6 +35,7 @@ export const toWebhook = (section: Section): Webhook | null => {
   return {
     name: getName($),
     description: getDescription($),
+    properties: getProperties($),
     actions: getActions($),
     examples: getExamples($),
   };
@@ -51,17 +52,40 @@ const getDescription = ($: cheerio.Root): string =>
     .map((html) => turndownService.turndown(html))
     .join("\n\n");
 
-const getActions = ($: cheerio.Root): string[] => {
-  const unwantedActions = ["true", "false", "status"];
-
+const getPropertiesEl = ($: cheerio.Root) => {
   const $table = $('[id^="webhook-payload-object"]').next("table");
 
   if (!$table.is("table")) {
     return [];
   }
 
-  const [keyEl, , descriptionEl] = $table
-    .find("tbody tr:first-child td")
+  return $table.find("tbody tr").get() as cheerio.Element[][];
+};
+
+const getProperties = ($: cheerio.Root) => {
+  const propertiesEl = getPropertiesEl($).slice(1);
+  const properties: {
+    [key: string]: { type: string; description: string };
+  } = {};
+
+  propertiesEl.forEach((propertyEl) => {
+    const [keyEl, typeEl, descriptionEl] = $(propertyEl)
+      .find("td")
+      .get() as cheerio.Element[];
+    const key = $(keyEl).text();
+    const type = $(typeEl).text();
+    const description = turndownService.turndown($(descriptionEl).html() ?? "");
+
+    properties[key] = { type, description };
+  });
+
+  return properties;
+};
+const getActions = ($: cheerio.Root): string[] => {
+  const unwantedActions = ["true", "false", "status"];
+
+  const [keyEl, , descriptionEl] = $(getPropertiesEl($)[0])
+    .find("td")
     .get() as cheerio.Element[];
 
   if ($(keyEl).text().trim() !== "action") {

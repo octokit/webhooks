@@ -3,6 +3,56 @@
     "name": "check_run",
     "description": "Check run activity has occurred. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[check runs](https://docs.github.com/en/rest/reference/checks#runs)\" REST API.",
     "actions": ["completed", "created", "requested_action", "rerequested"],
+    "properties": {
+      "check_run": {
+        "type": "object",
+        "description": "The [check\\_run](/en/rest/reference/checks#get-a-check-run)."
+      },
+      "check_run[status]": {
+        "type": "string",
+        "description": "The current status of the check run. Can be `queued`, `in_progress`, or `completed`."
+      },
+      "check_run[conclusion]": {
+        "type": "string",
+        "description": "The result of the completed check run. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has `completed`."
+      },
+      "check_run[name]": {
+        "type": "string",
+        "description": "The name of the check run."
+      },
+      "check_run[check_suite][id]": {
+        "type": "integer",
+        "description": "The id of the check suite that this check run is part of."
+      },
+      "check_run[check_suite][pull_requests]": {
+        "type": "array",
+        "description": "An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty."
+      },
+      "requested_action": {
+        "type": "object",
+        "description": "The action requested by the user."
+      },
+      "requested_action[identifier]": {
+        "type": "string",
+        "description": "The integrator reference of the action requested by the user."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "created",
@@ -2629,6 +2679,52 @@
     "name": "check_suite",
     "description": "Check suite activity has occurred. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[check suites](https://docs.github.com/en/rest/reference/checks#suites)\" REST API.",
     "actions": ["completed", "requested", "rerequested"],
+    "properties": {
+      "check_suite": {
+        "type": "object",
+        "description": "The [check\\_suite](/en/rest/reference/checks#suites)."
+      },
+      "check_suite[head_branch]": {
+        "type": "string",
+        "description": "The head branch name the changes are on."
+      },
+      "check_suite[head_sha]": {
+        "type": "string",
+        "description": "The SHA of the most recent commit for this check suite."
+      },
+      "check_suite[status]": {
+        "type": "string",
+        "description": "The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`."
+      },
+      "check_suite[conclusion]": {
+        "type": "string",
+        "description": "The summary conclusion for all check runs that are part of the check suite. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has `completed`."
+      },
+      "check_suite[url]": {
+        "type": "string",
+        "description": "URL that points to the check suite API resource."
+      },
+      "check_suite[pull_requests]": {
+        "type": "array",
+        "description": "An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "completed",
@@ -4410,6 +4506,36 @@
       "reopened",
       "reopened_by_user"
     ],
+    "properties": {
+      "alert": {
+        "type": "object",
+        "description": "The code scanning alert involved in the event."
+      },
+      "ref": {
+        "type": "string",
+        "description": "The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user` , the event was triggered by the `sender` and this value will be empty."
+      },
+      "commit_oid": {
+        "type": "string",
+        "description": "The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user` , the event was triggered by the `sender` and this value will be empty."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "If the `action` is `reopened_by_user` or `closed_by_user`, the `sender` object will be the user that triggered the event. The `sender` object is empty for all other actions."
+      }
+    },
     "examples": [
       {
         "action": "reopened",
@@ -4841,6 +4967,28 @@
     "name": "commit_comment",
     "description": "A commit comment is created. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[commit comment](https://docs.github.com/en/rest/reference/repos#comments)\" REST API.",
     "actions": ["created"],
+    "properties": {
+      "comment": {
+        "type": "object",
+        "description": "The [commit comment](/en/rest/reference/repos#get-a-commit-comment) resource."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "created",
@@ -5635,6 +5783,7 @@
     "name": "content_reference",
     "description": "A new content reference is `created`. A new content reference is created when the body or comment of an issue or pull request includes a URL that matches a configured content reference domain. For more information, see \"[Using content attachments](/en/apps/using-content-attachments)\" to learn more about content references and attachments.\n\nWebhook events are triggered based on the specificity of the domain you register. For example, if you register a subdomain (`https://subdomain.example.com`) then only URLs for the subdomain trigger this event. If you register a domain (`https://example.com`) then URLs for domain and all subdomains trigger this event. See \"[Create a content attachment](https://docs.github.com/en/rest/reference/apps#create-a-content-attachment)\" to create a new content attachment.\n\nOnly GitHub Apps can receive this event. GitHub Apps must have the `content_references` `write` permission to subscribe to this event.",
     "actions": ["created"],
+    "properties": {},
     "examples": [
       {
         "action": "created",
@@ -5892,6 +6041,36 @@
     "name": "create",
     "description": "A Git branch or tag is created. For more information, see the \"[Git data](https://docs.github.com/en/rest/reference/git)\" REST API.",
     "actions": [],
+    "properties": {
+      "ref_type": {
+        "type": "string",
+        "description": "The type of Git ref object created in the repository. Can be either `branch` or `tag`."
+      },
+      "master_branch": {
+        "type": "string",
+        "description": "The name of the repository's default branch (usually `main`)."
+      },
+      "description": {
+        "type": "string",
+        "description": "The repository's current description."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "ref": "simple-tag",
@@ -6522,6 +6701,28 @@
     "name": "delete",
     "description": "A Git branch or tag is deleted. For more information, see the \"[Git data](https://docs.github.com/en/rest/reference/git)\" REST API.",
     "actions": [],
+    "properties": {
+      "ref_type": {
+        "type": "string",
+        "description": "The type of Git ref oject deleted in the repository. Can be `branch` or `tag`."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "ref": "simple-tag",
@@ -7023,6 +7224,24 @@
     "name": "deploy_key",
     "description": "A deploy key is added or removed from a repository. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[Deploy keys](https://docs.github.com/en/rest/reference/repos#keys)\" REST API.",
     "actions": ["created", "deleted"],
+    "properties": {
+      "key": {
+        "type": "object",
+        "description": "The [`deploy key`](/en/rest/reference/repos#get-a-deploy-key) resource."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "created",
@@ -7280,6 +7499,28 @@
     "name": "deployment",
     "description": "A deployment is created. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[deployment](https://docs.github.com/en/rest/reference/repos#list-deployments)\" REST API.",
     "actions": ["created"],
+    "properties": {
+      "deployment": {
+        "type": "object",
+        "description": "The [deployment](/en/rest/reference/repos#list-deployments)."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "created",
@@ -7750,6 +7991,44 @@
     "name": "deployment_status",
     "description": "A deployment is created. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[deployment statuses](https://docs.github.com/en/rest/reference/repos#list-deployment-statuses)\" REST API.",
     "actions": ["created"],
+    "properties": {
+      "deployment_status": {
+        "type": "object",
+        "description": "The [deployment status](/en/rest/reference/repos#list-deployment-statuses)."
+      },
+      "deployment_status[\"state\"]": {
+        "type": "string",
+        "description": "The new state. Can be `pending`, `success`, `failure`, or `error`."
+      },
+      "deployment_status[\"target_url\"]": {
+        "type": "string",
+        "description": "The optional link added to the status."
+      },
+      "deployment_status[\"description\"]": {
+        "type": "string",
+        "description": "The optional human-readable description added to the status."
+      },
+      "deployment": {
+        "type": "object",
+        "description": "The [deployment](/en/rest/reference/repos#list-deployments) that this status is associated with."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "created",
@@ -8319,6 +8598,24 @@
     "name": "fork",
     "description": "A user forks a repository. For more information, see the \"[forks](https://docs.github.com/en/rest/reference/repos#forks)\" REST API.",
     "actions": [],
+    "properties": {
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "forkee": {
@@ -8963,6 +9260,12 @@
     "name": "github_app_authorization",
     "description": "When someone revokes their authorization of a GitHub App, this event occurs. A GitHub App receives this webhook by default and cannot unsubscribe from this event.\n\nAnyone can revoke their authorization of a GitHub App from their [GitHub account settings page](https://github.com/settings/apps/authorizations). Revoking the authorization of a GitHub App does not uninstall the GitHub App. You should program your GitHub App so that when it receives this webhook, it stops calling the API on behalf of the person who revoked the token. If your GitHub App continues to use a revoked access token, it will receive the `401 Bad Credentials` error. For details about user-to-server requests, which require GitHub App authorization, see \"[Identifying and authorizing users for GitHub Apps](/en/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps).\"",
     "actions": ["revoked"],
+    "properties": {
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "revoked",
@@ -9016,6 +9319,44 @@
     "name": "gollum",
     "description": "A wiki page is created or updated. For more information, see the \"[About wikis](/en/github/building-a-strong-community/about-wikis)\".",
     "actions": [],
+    "properties": {
+      "pages[][page_name]": {
+        "type": "string",
+        "description": "The name of the page."
+      },
+      "pages[][title]": {
+        "type": "string",
+        "description": "The current page title."
+      },
+      "pages[][action]": {
+        "type": "string",
+        "description": "The action that was performed on the page. Can be `created` or `edited`."
+      },
+      "pages[][sha]": {
+        "type": "string",
+        "description": "The latest commit SHA of the page."
+      },
+      "pages[][html_url]": {
+        "type": "string",
+        "description": "Points to the HTML wiki page."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "pages": [
@@ -9411,6 +9752,20 @@
       "suspend",
       "unsuspend"
     ],
+    "properties": {
+      "repositories": {
+        "type": "array",
+        "description": "An array of repository objects that the installation can access."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "deleted",
@@ -9761,6 +10116,28 @@
     "name": "installation_repositories",
     "description": "Activity related to repositories being added to a GitHub App installation. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[GitHub App installation](https://docs.github.com/en/rest/reference/apps)\" REST API.",
     "actions": ["added", "removed"],
+    "properties": {
+      "repository_selection": {
+        "type": "string",
+        "description": "The choice of repositories the installation is on. Can be either `selected` or `all`."
+      },
+      "repositories_added": {
+        "type": "array",
+        "description": "An array of repository objects, which were added to the installation."
+      },
+      "repositories_removed": {
+        "type": "array",
+        "description": "An array of repository objects, which were removed from the installation."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "added",
@@ -10005,6 +10382,40 @@
     "name": "issue_comment",
     "description": "Activity related to an issue comment. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[issue comments](https://docs.github.com/en/rest/reference/issues#comments)\" REST API.",
     "actions": ["created", "deleted", "edited"],
+    "properties": {
+      "changes": {
+        "type": "object",
+        "description": "The changes to the comment if the action was `edited`."
+      },
+      "changes[body][from]": {
+        "type": "string",
+        "description": "The previous version of the body if the action was `edited`."
+      },
+      "issue": {
+        "type": "object",
+        "description": "The [issue](/en/rest/reference/issues) the comment belongs to."
+      },
+      "comment": {
+        "type": "object",
+        "description": "The [comment](/en/rest/reference/issues#comments) itself."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "created",
@@ -12548,6 +12959,48 @@
       "unlocked",
       "unpinned"
     ],
+    "properties": {
+      "issue": {
+        "type": "object",
+        "description": "The [issue](/en/rest/reference/issues) itself."
+      },
+      "changes": {
+        "type": "object",
+        "description": "The changes to the issue if the action was `edited`."
+      },
+      "changes[title][from]": {
+        "type": "string",
+        "description": "The previous version of the title if the action was `edited`."
+      },
+      "changes[body][from]": {
+        "type": "string",
+        "description": "The previous version of the body if the action was `edited`."
+      },
+      "assignee": {
+        "type": "object",
+        "description": "The optional user who was assigned or unassigned from the issue."
+      },
+      "label": {
+        "type": "object",
+        "description": "The optional label that was added or removed from the issue."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "edited",
@@ -18060,6 +18513,40 @@
     "name": "label",
     "description": "Activity related to an issue. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[labels](https://docs.github.com/en/rest/reference/issues#labels)\" REST API.",
     "actions": ["created", "deleted", "edited"],
+    "properties": {
+      "label": {
+        "type": "object",
+        "description": "The label that was added."
+      },
+      "changes": {
+        "type": "object",
+        "description": "The changes to the label if the action was `edited`."
+      },
+      "changes[name][from]": {
+        "type": "string",
+        "description": "The previous version of the name if the action was `edited`."
+      },
+      "changes[color][from]": {
+        "type": "string",
+        "description": "The previous version of the color if the action was `edited`."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "deleted",
@@ -18837,6 +19324,7 @@
       "pending_change_cancelled",
       "purchased"
     ],
+    "properties": {},
     "examples": [
       {
         "action": "purchased",
@@ -19060,6 +19548,36 @@
     "name": "member",
     "description": "Activity related to repository collaborators. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[collaborators](https://docs.github.com/en/rest/reference/repos#collaborators)\" REST API.",
     "actions": ["added", "edited", "removed"],
+    "properties": {
+      "member": {
+        "type": "object",
+        "description": "The [user](/en/rest/reference/users) that was added."
+      },
+      "changes": {
+        "type": "object",
+        "description": "The changes to the collaborator permissions if the action was `edited`."
+      },
+      "changes[old_permission][from]": {
+        "type": "string",
+        "description": "The previous permissions of the collaborator if the action was `edited`."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "added",
@@ -19623,6 +20141,32 @@
     "name": "membership",
     "description": "Activity related to team membership. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[team members](https://docs.github.com/en/rest/reference/teams#members)\" REST API.",
     "actions": ["added", "removed"],
+    "properties": {
+      "scope": {
+        "type": "string",
+        "description": "The scope of the membership. Currently, can only be `team`."
+      },
+      "member": {
+        "type": "object",
+        "description": "The [user](/en/rest/reference/users) that was added or removed."
+      },
+      "team": {
+        "type": "object",
+        "description": "The [team](/en/rest/reference/teams) for the membership."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "removed",
@@ -19918,6 +20462,28 @@
     "name": "meta",
     "description": "The webhook this event is configured on was deleted. This event will only listen for changes to the particular hook the event is installed on. Therefore, it must be selected for each hook that you'd like to receive meta events for.",
     "actions": ["deleted"],
+    "properties": {
+      "hook_id": {
+        "type": "integer",
+        "description": "The id of the modified webhook."
+      },
+      "hook": {
+        "type": "object",
+        "description": "The modified webhook. This will contain different keys based on the type of webhook it is: repository, organization, business, app, or GitHub Marketplace."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "deleted",
@@ -20187,6 +20753,44 @@
     "name": "milestone",
     "description": "Activity related to milestones. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[milestones](https://docs.github.com/en/rest/reference/issues#milestones)\" REST API.",
     "actions": ["closed", "created", "deleted", "edited", "opened"],
+    "properties": {
+      "milestone": {
+        "type": "object",
+        "description": "The milestone itself."
+      },
+      "changes": {
+        "type": "object",
+        "description": "The changes to the milestone if the action was `edited`."
+      },
+      "changes[description][from]": {
+        "type": "string",
+        "description": "The previous version of the description if the action was `edited`."
+      },
+      "changes[due_on][from]": {
+        "type": "string",
+        "description": "The previous version of the due date if the action was `edited`."
+      },
+      "changes[title][from]": {
+        "type": "string",
+        "description": "The previous version of the title if the action was `edited`."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "created",
@@ -20974,6 +21578,28 @@
       "member_removed",
       "renamed"
     ],
+    "properties": {
+      "invitation": {
+        "type": "object",
+        "description": "The invitation for the user or email if the action is `member_invited`."
+      },
+      "membership": {
+        "type": "object",
+        "description": "The membership between the user and the organization. Not present when the action is `member_invited`."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "member_added",
@@ -21174,6 +21800,24 @@
     "name": "org_block",
     "description": "Activity related to people being blocked in an organization. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[blocking organization users](https://docs.github.com/en/rest/reference/orgs#blocking)\" REST API.",
     "actions": ["blocked", "unblocked"],
+    "properties": {
+      "blocked_user": {
+        "type": "object",
+        "description": "Information about the user that was blocked or unblocked."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "blocked",
@@ -21413,6 +22057,24 @@
     "name": "package",
     "description": "Activity related to GitHub Packages. The type of activity is specified in the `action` property of the payload object. For more information, see \"[Managing packages with GitHub Packages](/en/github/managing-packages-with-github-packages)\" to learn more about GitHub Packages.",
     "actions": ["published", "updated"],
+    "properties": {
+      "package": {
+        "type": "object",
+        "description": "Information about the package."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "published",
@@ -21894,6 +22556,28 @@
     "name": "page_build",
     "description": "Represents an attempted build of a GitHub Pages site, whether successful or not. A push to a GitHub Pages enabled branch (`gh-pages` for project pages, the default branch for user and organization pages) triggers this event.",
     "actions": [],
+    "properties": {
+      "build": {
+        "type": "object",
+        "description": "The [List GitHub Pages builds](/en/rest/reference/repos#list-github-pages-builds) itself."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "id": 130514899,
@@ -22349,6 +23033,32 @@
     "name": "ping",
     "description": "When you create a new webhook, we'll send you a simple `ping` event to let you know you've set up the webhook correctly. This event isn't stored so it isn't retrievable via the [Events API](https://docs.github.com/en/rest/reference/activity#ping-a-repository-webhook) endpoint.",
     "actions": [],
+    "properties": {
+      "hook_id": {
+        "type": "integer",
+        "description": "The ID of the webhook that triggered the ping."
+      },
+      "hook": {
+        "type": "object",
+        "description": "The [webhook configuration](/en/rest/reference/repos#get-a-repository-webhook)."
+      },
+      "hook[app_id]": {
+        "type": "integer",
+        "description": "When you register a new GitHub App, GitHub sends a ping event to the **webhook URL** you specified during registration. The event contains the `app_id`, which is required for [authenticating](/en/apps/building-integrations/setting-up-and-registering-github-apps/about-authentication-options-for-github-apps) an app."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "zen": "Anything added dilutes everything else.",
@@ -22706,6 +23416,40 @@
     "name": "project_card",
     "description": "Activity related to project cards. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[project cards](https://docs.github.com/en/rest/reference/projects#cards)\" REST API.",
     "actions": ["converted", "created", "deleted", "edited", "moved"],
+    "properties": {
+      "changes": {
+        "type": "object",
+        "description": "The changes to the project card if the action was `edited` or `converted`."
+      },
+      "changes[note][from]": {
+        "type": "string",
+        "description": "The previous version of the note if the action was `edited` or `converted`."
+      },
+      "after_id": {
+        "type": "integer",
+        "description": "The id of the card that this card now follows if the action was \"moved\". Will be `null` if it is the first card in a column."
+      },
+      "project_card": {
+        "type": "object",
+        "description": "The [project card](/en/rest/reference/projects#cards) itself."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "created",
@@ -23798,6 +24542,40 @@
     "name": "project_column",
     "description": "Activity related to columns in a project board. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[project columns](https://docs.github.com/en/rest/reference/projects#columns)\" REST API.",
     "actions": ["created", "deleted", "edited", "moved"],
+    "properties": {
+      "changes": {
+        "type": "object",
+        "description": "The changes to the project column if the action was `edited`."
+      },
+      "changes[name][from]": {
+        "type": "string",
+        "description": "The previous version of the name if the action was `edited`."
+      },
+      "after_id": {
+        "type": "integer",
+        "description": "The id of the column that this column now follows if the action was \"moved\". Will be `null` if it is the first column in a project."
+      },
+      "project_column": {
+        "type": "object",
+        "description": "The [project column](/en/rest/reference/projects#columns) itself."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "created",
@@ -24190,6 +24968,40 @@
     "name": "project",
     "description": "Activity related to project boards. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[projects](https://docs.github.com/en/rest/reference/projects)\" REST API.",
     "actions": ["closed", "created", "deleted", "edited", "reopened"],
+    "properties": {
+      "changes": {
+        "type": "object",
+        "description": "The changes to the project if the action was `edited`."
+      },
+      "changes[name][from]": {
+        "type": "string",
+        "description": "The previous version of the name if the action was `edited`."
+      },
+      "changes[body][from]": {
+        "type": "string",
+        "description": "The previous version of the body if the action was `edited`."
+      },
+      "project": {
+        "type": "object",
+        "description": "The [project](/en/rest/reference/projects) itself."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "created",
@@ -24654,6 +25466,20 @@
     "name": "public",
     "description": "When a private repository is made public. Without a doubt: the best GitHub event.",
     "actions": [],
+    "properties": {
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "repository": {
@@ -25032,6 +25858,44 @@
       "unlabeled",
       "unlocked"
     ],
+    "properties": {
+      "number": {
+        "type": "integer",
+        "description": "The pull request number."
+      },
+      "changes": {
+        "type": "object",
+        "description": "The changes to the comment if the action was `edited`."
+      },
+      "changes[title][from]": {
+        "type": "string",
+        "description": "The previous version of the title if the action was `edited`."
+      },
+      "changes[body][from]": {
+        "type": "string",
+        "description": "The previous version of the body if the action was `edited`."
+      },
+      "pull_request": {
+        "type": "object",
+        "description": "The [pull request](/en/rest/reference/pulls) itself."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "opened",
@@ -38987,6 +39851,36 @@
     "name": "pull_request_review",
     "description": "Activity related to pull request reviews. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[pull request reviews](https://docs.github.com/en/rest/reference/pulls#reviews)\" REST API.",
     "actions": ["dismissed", "edited", "submitted"],
+    "properties": {
+      "pull_request": {
+        "type": "object",
+        "description": "The [pull request](/en/rest/reference/pulls) the review pertains to."
+      },
+      "review": {
+        "type": "object",
+        "description": "The review that was affected."
+      },
+      "changes[body][from]": {
+        "type": "string",
+        "description": "The previous version of the body if the action was `edited`."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "submitted",
@@ -41088,6 +41982,40 @@
     "name": "pull_request_review_comment",
     "description": "Activity related to pull request review comments in the pull request's unified diff. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[pull request review comments](https://docs.github.com/en/rest/reference/pulls#comments)\" REST API.",
     "actions": ["created", "deleted", "edited"],
+    "properties": {
+      "changes": {
+        "type": "object",
+        "description": "The changes to the comment if the action was `edited`."
+      },
+      "changes[body][from]": {
+        "type": "string",
+        "description": "The previous version of the body if the action was `edited`."
+      },
+      "pull_request": {
+        "type": "object",
+        "description": "The [pull request](/en/rest/reference/pulls) the comment belongs to."
+      },
+      "comment": {
+        "type": "object",
+        "description": "The [comment](/en/rest/reference/pulls#comments) itself."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "created",
@@ -43751,6 +44679,84 @@
     "name": "push",
     "description": "One or more commits are pushed to a repository branch or tag.",
     "actions": [],
+    "properties": {
+      "before": {
+        "type": "string",
+        "description": "The SHA of the most recent commit on `ref` before the push."
+      },
+      "after": {
+        "type": "string",
+        "description": "The SHA of the most recent commit on `ref` after the push."
+      },
+      "commits": {
+        "type": "array",
+        "description": "An array of commit objects describing the pushed commits. (The array includes a maximum of 20 commits. If necessary, you can use the [Commits API](/en/rest/reference/repos#commits) to fetch additional commits. This limit is applied to timeline events only and isn't applied to webhook deliveries.)"
+      },
+      "commits[][id]": {
+        "type": "string",
+        "description": "The SHA of the commit."
+      },
+      "commits[][timestamp]": {
+        "type": "string",
+        "description": "The ISO 8601 timestamp of the commit."
+      },
+      "commits[][message]": {
+        "type": "string",
+        "description": "The commit message."
+      },
+      "commits[][author]": {
+        "type": "object",
+        "description": "The git author of the commit."
+      },
+      "commits[][author][name]": {
+        "type": "string",
+        "description": "The git author's name."
+      },
+      "commits[][author][email]": {
+        "type": "string",
+        "description": "The git author's email address."
+      },
+      "commits[][url]": {
+        "type": "url",
+        "description": "URL that points to the commit API resource."
+      },
+      "commits[][distinct]": {
+        "type": "boolean",
+        "description": "Whether this commit is distinct from any that have been pushed before."
+      },
+      "commits[][added]": {
+        "type": "array",
+        "description": "An array of files added in the commit."
+      },
+      "commits[][modified]": {
+        "type": "array",
+        "description": "An array of files modified by the commit."
+      },
+      "commits[][removed]": {
+        "type": "array",
+        "description": "An array of files removed in the commit."
+      },
+      "pusher": {
+        "type": "object",
+        "description": "The user who pushed the commits."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "ref": "refs/tags/simple-tag",
@@ -44649,6 +45655,36 @@
       "released",
       "unpublished"
     ],
+    "properties": {
+      "changes[body][from]": {
+        "type": "string",
+        "description": "The previous version of the body if the action was `edited`."
+      },
+      "changes[name][from]": {
+        "type": "string",
+        "description": "The previous version of the name if the action was `edited`."
+      },
+      "release": {
+        "type": "object",
+        "description": "The [release](/en/rest/reference/repos/#get-a-release) object."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "published",
@@ -45284,6 +46320,7 @@
     "name": "repository_dispatch",
     "description": "This event occurs when a GitHub App sends a `POST` request to the \"[Create a repository dispatch event](https://docs.github.com/en/rest/reference/repos#create-a-repository-dispatch-event)\" endpoint.",
     "actions": ["on-demand-test"],
+    "properties": {},
     "examples": [
       {
         "action": "on-demand-test",
@@ -45573,6 +46610,24 @@
       "transferred",
       "unarchived"
     ],
+    "properties": {
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "publicized",
@@ -47178,6 +48233,20 @@
     "name": "repository_import",
     "description": "Activity related to a repository being imported to GitHub. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[source imports](https://docs.github.com/en/rest/reference/migrations#source-imports)\" REST API. To receive this event for a personal repository, you must create an empty repository prior to the import. This event can be triggered using either the [GitHub Importer](/en/articles/importing-a-repository-with-github-importer) or the [Source imports API](https://docs.github.com/en/rest/reference/migrations#source-imports).",
     "actions": [],
+    "properties": {
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "status": "success",
@@ -47445,6 +48514,24 @@
     "name": "repository_vulnerability_alert",
     "description": "Activity related to security vulnerability alerts in a repository. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[About security alerts for vulnerable dependencies](/en/github/managing-security-vulnerabilities/about-security-alerts-for-vulnerable-dependencies)\".",
     "actions": ["create", "dismiss", "resolve"],
+    "properties": {
+      "alert": {
+        "type": "object",
+        "description": "The security alert of the vulnerable dependency."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "create",
@@ -48115,6 +49202,28 @@
     "name": "secret_scanning_alert",
     "description": "Activity related to secret scanning alerts in a repository. The type of activity is specified in the action property of the payload object. For more information, see “[About secret scanning](/en/github/administering-a-repository/about-secret-scanning).”",
     "actions": ["created", "reopened", "resolved"],
+    "properties": {
+      "alert": {
+        "type": "object",
+        "description": "The secret scanning alert involved in the event."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "If the `action` is `resolved` or `reopened`, the `sender` object will be the user that triggered the event. The `sender` object is empty for all other actions."
+      }
+    },
     "examples": [
       {
         "action": "reopened",
@@ -48398,6 +49507,12 @@
     "name": "security_advisory",
     "description": "Activity related to a security advisory. A security advisory provides information about security-related vulnerabilities in software on GitHub. The security advisory dataset also powers the GitHub security alerts, see \"[About security alerts for vulnerable dependencies](/en/articles/about-security-alerts-for-vulnerable-dependencies).\"",
     "actions": ["performed", "published", "updated"],
+    "properties": {
+      "security_advisory": {
+        "type": "object",
+        "description": "The details of the security advisory, including summary, description, and severity."
+      }
+    },
     "examples": [
       {
         "action": "published",
@@ -48555,6 +49670,24 @@
       "pending_tier_change",
       "tier_changed"
     ],
+    "properties": {
+      "effective_date": {
+        "type": "string",
+        "description": "The `pending_cancellation` and `pending_tier_change` event types will include the date the cancellation or tier change will take effect."
+      },
+      "changes[tier][from]": {
+        "type": "object",
+        "description": "The `tier_changed` and `pending_tier_change` will include the original tier before the change or pending change. For more information, see the [pending tier change payload](/en/webhooks/event-payloads#webhook-payload-example-when-someone-downgrades-a-sponsorship)."
+      },
+      "changes[privacy_level][from]": {
+        "type": "string",
+        "description": "The `edited` event types include the details about the change when someone edits a sponsorship to change the privacy."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "created",
@@ -48892,6 +50025,24 @@
     "name": "star",
     "description": "Activity related to a repository being starred. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[starring](https://docs.github.com/en/rest/reference/activity#starring)\" REST API.",
     "actions": ["created", "deleted"],
+    "properties": {
+      "starred_at": {
+        "type": "string",
+        "description": "The time the star was created. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Will be `null` for the `deleted` action."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "created",
@@ -49253,6 +50404,44 @@
     "name": "status",
     "description": "When the status of a Git commit changes. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[statuses](https://docs.github.com/en/rest/reference/repos#statuses)\" REST API.",
     "actions": [],
+    "properties": {
+      "sha": {
+        "type": "string",
+        "description": "The Commit SHA."
+      },
+      "state": {
+        "type": "string",
+        "description": "The new state. Can be `pending`, `success`, `failure`, or `error`."
+      },
+      "description": {
+        "type": "string",
+        "description": "The optional human-readable description added to the status."
+      },
+      "target_url": {
+        "type": "string",
+        "description": "The optional link added to the status."
+      },
+      "branches": {
+        "type": "array",
+        "description": "An array of branch objects containing the status' SHA. Each branch contains the given SHA, but the SHA may or may not be the head of the branch. The array includes a maximum of 10 branches."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "id": 6805126730,
@@ -50127,6 +51316,52 @@
       "edited",
       "removed_from_repository"
     ],
+    "properties": {
+      "team": {
+        "type": "object",
+        "description": "The team itself."
+      },
+      "changes": {
+        "type": "object",
+        "description": "The changes to the team if the action was `edited`."
+      },
+      "changes[description][from]": {
+        "type": "string",
+        "description": "The previous version of the description if the action was `edited`."
+      },
+      "changes[name][from]": {
+        "type": "string",
+        "description": "The previous version of the name if the action was `edited`."
+      },
+      "changes[privacy][from]": {
+        "type": "string",
+        "description": "The previous version of the team's privacy if the action was `edited`."
+      },
+      "changes[repository][permissions][from][admin]": {
+        "type": "boolean",
+        "description": "The previous version of the team member's `admin` permission on a repository, if the action was `edited`."
+      },
+      "changes[repository][permissions][from][pull]": {
+        "type": "boolean",
+        "description": "The previous version of the team member's `pull` permission on a repository, if the action was `edited`."
+      },
+      "changes[repository][permissions][from][push]": {
+        "type": "boolean",
+        "description": "The previous version of the team member's `push` permission on a repository, if the action was `edited`."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The repository that was added or removed from to the team's purview if the action was `added_to_repository`, `removed_from_repository`, or `edited`. For `edited` actions, `repository` also contains the team's new permission levels for the repository."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "added_to_repository",
@@ -50734,6 +51969,24 @@
     "name": "team_add",
     "description": "When a [repository is added to a team](https://docs.github.com/en/rest/reference/teams#add-or-update-team-repository-permissions).",
     "actions": [],
+    "properties": {
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "team": {
@@ -51174,6 +52427,24 @@
     "name": "watch",
     "description": "When someone stars a repository. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[starring](https://docs.github.com/en/rest/reference/activity#starring)\" REST API.\n\nThe event’s actor is the [user](https://docs.github.com/en/rest/reference/users) who starred a repository, and the event’s repository is the [repository](https://docs.github.com/en/rest/reference/repos) that was starred.",
     "actions": ["started"],
+    "properties": {
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "started",
@@ -51536,6 +52807,7 @@
     "name": "workflow_dispatch",
     "description": "This event occurs when someone triggers a workflow run on GitHub or sends a `POST` request to the \"[Create a workflow dispatch event](https://docs.github.com/en/rest/reference/actions/#create-a-workflow-dispatch-event)\" endpoint. For more information, see \"[Events that trigger workflows](/en/actions/reference/events-that-trigger-workflows#workflow_dispatch).\"",
     "actions": [],
+    "properties": {},
     "examples": [
       {
         "inputs": {},
@@ -51807,6 +53079,20 @@
     "name": "workflow_run",
     "description": "When a GitHub Actions workflow run is requested or completed. For more information, see \"[Events that trigger workflows](/en/actions/reference/events-that-trigger-workflows#workflow_run).\"",
     "actions": ["action", "completed", "requested"],
+    "properties": {
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
     "examples": [
       {
         "action": "completed",
