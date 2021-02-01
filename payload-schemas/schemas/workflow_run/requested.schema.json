@@ -8,34 +8,7 @@
     "organization": { "$ref": "common/organization.schema.json" },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
-    "workflow": {
-      "type": "object",
-      "required": [
-        "badge_url",
-        "created_at",
-        "html_url",
-        "id",
-        "name",
-        "node_id",
-        "path",
-        "state",
-        "updated_at",
-        "url"
-      ],
-      "properties": {
-        "badge_url": { "type": "string" },
-        "created_at": { "type": "string" },
-        "html_url": { "type": "string" },
-        "id": { "type": "integer" },
-        "name": { "type": "string" },
-        "node_id": { "type": "string" },
-        "path": { "type": "string" },
-        "state": { "type": "string" },
-        "updated_at": { "type": "string" },
-        "url": { "type": "string" }
-      },
-      "additionalProperties": false
-    },
+    "workflow": { "$ref": "common/workflow.schema.json" },
     "workflow_run": {
       "type": "object",
       "required": [

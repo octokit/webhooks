@@ -5835,18 +5835,7 @@ export interface WorkflowRunCompletedEvent {
   organization?: Organization;
   repository: Repository;
   sender: User;
-  workflow: {
-    badge_url: string;
-    created_at: string;
-    html_url: string;
-    id: number;
-    name: string;
-    node_id: string;
-    path: string;
-    state: string;
-    updated_at: string;
-    url: string;
-  };
+  workflow: Workflow;
   workflow_run: {
     artifacts_url: string;
     cancel_url: string;
@@ -5978,23 +5967,24 @@ export interface WorkflowRunCompletedEvent {
   };
   installation?: InstallationLite;
 }
+export interface Workflow {
+  badge_url: string;
+  created_at: string;
+  html_url: string;
+  id: number;
+  name: string;
+  node_id: string;
+  path: string;
+  state: string;
+  updated_at: string;
+  url: string;
+}
 export interface WorkflowRunRequestedEvent {
   action: "requested";
   organization?: Organization;
   repository: Repository;
   sender: User;
-  workflow: {
-    badge_url: string;
-    created_at: string;
-    html_url: string;
-    id: number;
-    name: string;
-    node_id: string;
-    path: string;
-    state: string;
-    updated_at: string;
-    url: string;
-  };
+  workflow: Workflow;
   workflow_run: {
     artifacts_url: string;
     cancel_url: string;

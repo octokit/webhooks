@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/workflow.schema.json",
+  "required": [
+    "badge_url",
+    "created_at",
+    "html_url",
+    "id",
+    "name",
+    "node_id",
+    "path",
+    "state",
+    "updated_at",
+    "url"
+  ],
+  "type": "object",
+  "properties": {
+    "badge_url": { "type": "string" },
+    "created_at": { "type": "string" },
+    "html_url": { "type": "string" },
+    "id": { "type": "integer" },
+    "name": { "type": "string" },
+    "node_id": { "type": "string" },
+    "path": { "type": "string" },
+    "state": { "type": "string" },
+    "updated_at": { "type": "string" },
+    "url": { "type": "string" }
+  },
+  "additionalProperties": false,
+  "title": "Workflow"
+}
