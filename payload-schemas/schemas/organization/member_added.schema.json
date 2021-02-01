@@ -5,18 +5,7 @@
   "required": ["action", "membership", "organization", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["member_added"] },
-    "membership": {
-      "type": "object",
-      "required": ["url", "state", "role", "organization_url", "user"],
-      "properties": {
-        "url": { "type": "string" },
-        "state": { "type": "string" },
-        "role": { "type": "string" },
-        "organization_url": { "type": "string" },
-        "user": { "$ref": "common/user.schema.json" }
-      },
-      "additionalProperties": false
-    },
+    "membership": { "$ref": "common/membership.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },
     "organization": { "$ref": "common/organization.schema.json" }

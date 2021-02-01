@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/membership.schema.json",
+  "required": ["url", "state", "role", "organization_url", "user"],
+  "type": "object",
+  "properties": {
+    "url": { "type": "string" },
+    "state": { "type": "string" },
+    "role": { "type": "string" },
+    "organization_url": { "type": "string" },
+    "user": { "$ref": "user.schema.json" }
+  },
+  "additionalProperties": false,
+  "title": "Membership"
+}

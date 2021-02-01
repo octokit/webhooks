@@ -3097,26 +3097,21 @@ export interface OrgBlockUnblockedEvent {
 }
 export interface OrganizationDeletedEvent {
   action: "deleted";
-  membership: {
-    url: string;
-    state: string;
-    role: string;
-    organization_url: string;
-    user: User;
-  };
+  membership: Membership;
   sender: User;
   installation?: InstallationLite;
   organization: Organization;
 }
+export interface Membership {
+  url: string;
+  state: string;
+  role: string;
+  organization_url: string;
+  user: User;
+}
 export interface OrganizationMemberAddedEvent {
   action: "member_added";
-  membership: {
-    url: string;
-    state: string;
-    role: string;
-    organization_url: string;
-    user: User;
-  };
+  membership: Membership;
   sender: User;
   installation?: InstallationLite;
   organization: Organization;
@@ -3130,26 +3125,14 @@ export interface OrganizationMemberInvitedEvent {
 }
 export interface OrganizationMemberRemovedEvent {
   action: "member_removed";
-  membership: {
-    url: string;
-    state: string;
-    role: string;
-    organization_url: string;
-    user: User;
-  };
+  membership: Membership;
   sender: User;
   installation?: InstallationLite;
   organization: Organization;
 }
 export interface OrganizationRenamedEvent {
   action: "renamed";
-  membership: {
-    url: string;
-    state: string;
-    role: string;
-    organization_url: string;
-    user: User;
-  };
+  membership: Membership;
   sender: User;
   installation?: InstallationLite;
   organization: Organization;
