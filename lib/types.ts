@@ -7,7 +7,7 @@ export interface Webhook<TExample extends object = object> {
   name: string;
   description: string;
   actions: string[];
-  properties: { [key: string]: { type: string; description: string } };
+  properties: Record<string, { type: string; description: string }>;
   examples: TExample[];
 }
 

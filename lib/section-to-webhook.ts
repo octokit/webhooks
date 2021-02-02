@@ -1,5 +1,6 @@
 import { strict as assert } from "assert";
 import cheerio from "cheerio";
+import { JSONSchema7TypeName } from "json-schema";
 import TurndownService from "turndown";
 import { Section, Webhook } from ".";
 
@@ -62,18 +63,16 @@ const getPropertiesEl = ($: cheerio.Root) => {
   return $table.find("tbody tr").get() as cheerio.Element[][];
 };
 
-const getProperties = ($: cheerio.Root) => {
-  const propertiesEl = getPropertiesEl($).slice(1);
-  const properties: {
-    [key: string]: { type: string; description: string };
-  } = {};
+const getProperties = ($: cheerio.Root): Webhook["properties"] => {
+  const propertiesEl = [, ...getPropertiesEl($)];
+  const properties: Webhook["properties"] = {};
 
   propertiesEl.forEach((propertyEl) => {
     const [keyEl, typeEl, descriptionEl] = $(propertyEl)
       .find("td")
       .get() as cheerio.Element[];
     const key = $(keyEl).text();
-    const type = $(typeEl).text();
+    const type = $(typeEl).text() as JSONSchema7TypeName;
     const description = turndownService.turndown($(descriptionEl).html() ?? "");
 
     properties[key] = { type, description };
