@@ -170,6 +170,8 @@ export type ProjectColumnEvent =
   | ProjectColumnMovedEvent;
 export type PullRequestEvent =
   | PullRequestAssignedEvent
+  | PullRequestAutoMergeDisabledEvent
+  | PullRequestAutoMergeEnabledEvent
   | PullRequestClosedEvent
   | PullRequestConvertedToDraftEvent
   | PullRequestEditedEvent
@@ -3753,6 +3755,24 @@ export interface PullRequest {
 }
 export interface Link {
   href: string;
+}
+export interface PullRequestAutoMergeDisabledEvent {
+  action: "auto_merge_disabled";
+  number: number;
+  pull_request: PullRequest;
+  repository: Repository;
+  installation?: InstallationLite;
+  organization?: Organization;
+  sender: User;
+}
+export interface PullRequestAutoMergeEnabledEvent {
+  action: "auto_merge_enabled";
+  number: number;
+  pull_request: PullRequest;
+  repository: Repository;
+  installation?: InstallationLite;
+  organization?: Organization;
+  sender: User;
 }
 export interface PullRequestClosedEvent {
   action: "closed";

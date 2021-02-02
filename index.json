@@ -24714,6 +24714,8 @@
     "description": "Activity related to pull requests. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[pull requests](/en/rest/reference/pulls)\" REST API.",
     "actions": [
       "assigned",
+      "auto_merge_disabled",
+      "auto_merge_enabled",
       "closed",
       "converted_to_draft",
       "edited",
