@@ -103,9 +103,12 @@
               "type": "string",
               "description": "The SHA of the head commit that is being checked."
             },
-            "status": { "type": "string", "enum": ["completed"] },
-            "conclusion": {
+            "status": {
               "type": "string",
+              "enum": ["in_progress", "completed"]
+            },
+            "conclusion": {
+              "type": ["string", "null"],
               "enum": [
                 "success",
                 "failure",
@@ -113,7 +116,8 @@
                 "cancelled",
                 "timed_out",
                 "action_required",
-                "stale"
+                "stale",
+                null
               ]
             },
             "url": { "type": "string" },
