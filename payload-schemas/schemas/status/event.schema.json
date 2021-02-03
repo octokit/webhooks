@@ -125,8 +125,12 @@
         "url": { "type": "string" },
         "html_url": { "type": "string" },
         "comments_url": { "type": "string" },
-        "author": { "$ref": "common/user.schema.json" },
-        "committer": { "$ref": "common/user.schema.json" },
+        "author": {
+          "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": "null" }]
+        },
+        "committer": {
+          "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": "null" }]
+        },
         "parents": {
           "type": "array",
           "items": {

@@ -5748,8 +5748,8 @@ export interface StatusEvent {
     url: string;
     html_url: string;
     comments_url: string;
-    author: User;
-    committer: User;
+    author: User | null;
+    committer: User | null;
     parents: {
       sha: string;
       url: string;
