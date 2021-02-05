@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/project-card.schema.json",
+  "required": [
+    "url",
+    "project_url",
+    "column_url",
+    "column_id",
+    "id",
+    "node_id",
+    "note",
+    "archived",
+    "creator",
+    "created_at",
+    "updated_at",
+    "content_url"
+  ],
+  "type": "object",
+  "properties": {
+    "url": { "type": "string", "format": "uri" },
+    "project_url": { "type": "string", "format": "uri" },
+    "column_url": { "type": "string", "format": "uri" },
+    "column_id": { "type": "integer" },
+    "id": { "type": "integer", "description": "The project card's ID" },
+    "node_id": { "type": "string" },
+    "note": { "type": "string" },
+    "archived": {
+      "type": "boolean",
+      "description": "Whether or not the card is archived"
+    },
+    "creator": { "$ref": "user.schema.json" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "content_url": { "type": "string", "format": "uri" }
+  },
+  "additionalProperties": false,
+  "title": "Project Card"
+}
