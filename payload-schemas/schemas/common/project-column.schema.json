@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/project-column.schema.json",
+  "required": [
+    "url",
+    "project_url",
+    "cards_url",
+    "id",
+    "node_id",
+    "name",
+    "created_at",
+    "updated_at"
+  ],
+  "type": "object",
+  "properties": {
+    "url": { "type": "string", "format": "uri" },
+    "project_url": { "type": "string", "format": "uri" },
+    "cards_url": { "type": "string", "format": "uri" },
+    "id": {
+      "type": "integer",
+      "description": "The unique identifier of the project column"
+    },
+    "node_id": { "type": "string" },
+    "name": { "type": "string", "description": "Name of the project column" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false,
+  "title": "Project Column"
+}

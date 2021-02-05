@@ -3430,45 +3430,31 @@ export interface ProjectCardMovedEvent {
 }
 export interface ProjectColumnCreatedEvent {
   action: "created";
-  project_column: {
-    url: string;
-    project_url: string;
-    cards_url: string;
-    /**
-     * The unique identifier of the project column
-     */
-    id: number;
-    node_id: string;
-    /**
-     * Name of the project column
-     */
-    name: string;
-    created_at: string;
-    updated_at: string;
-  };
+  project_column: ProjectColumn;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
 }
+export interface ProjectColumn {
+  url: string;
+  project_url: string;
+  cards_url: string;
+  /**
+   * The unique identifier of the project column
+   */
+  id: number;
+  node_id: string;
+  /**
+   * Name of the project column
+   */
+  name: string;
+  created_at: string;
+  updated_at: string;
+}
 export interface ProjectColumnDeletedEvent {
   action: "deleted";
-  project_column: {
-    url: string;
-    project_url: string;
-    cards_url: string;
-    /**
-     * The unique identifier of the project column
-     */
-    id: number;
-    node_id: string;
-    /**
-     * Name of the project column
-     */
-    name: string;
-    created_at: string;
-    updated_at: string;
-  };
+  project_column: ProjectColumn;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -3476,22 +3462,7 @@ export interface ProjectColumnDeletedEvent {
 }
 export interface ProjectColumnEditedEvent {
   action: "edited";
-  project_column: {
-    url: string;
-    project_url: string;
-    cards_url: string;
-    /**
-     * The unique identifier of the project column
-     */
-    id: number;
-    node_id: string;
-    /**
-     * Name of the project column
-     */
-    name: string;
-    created_at: string;
-    updated_at: string;
-  };
+  project_column: ProjectColumn;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -3499,22 +3470,7 @@ export interface ProjectColumnEditedEvent {
 }
 export interface ProjectColumnMovedEvent {
   action: "moved";
-  project_column: {
-    url: string;
-    project_url: string;
-    cards_url: string;
-    /**
-     * The unique identifier of the project column
-     */
-    id: number;
-    node_id: string;
-    /**
-     * Name of the project column
-     */
-    name: string;
-    created_at: string;
-    updated_at: string;
-  };
+  project_column: ProjectColumn;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
