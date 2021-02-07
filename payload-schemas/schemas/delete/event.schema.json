@@ -5,7 +5,7 @@
   "required": ["ref", "ref_type", "pusher_type", "repository", "sender"],
   "properties": {
     "ref": { "type": "string" },
-    "ref_type": { "type": "string" },
+    "ref_type": { "type": "string", "enum": ["tag", "branch"] },
     "pusher_type": { "type": "string" },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
