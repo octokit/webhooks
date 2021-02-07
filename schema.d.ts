@@ -1651,7 +1651,7 @@ export interface CreateEvent {
 }
 export interface DeleteEvent {
   ref: string;
-  ref_type: string;
+  ref_type: "tag" | "branch";
   pusher_type: string;
   repository: Repository;
   sender: User;
