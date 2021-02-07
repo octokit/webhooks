@@ -64,7 +64,7 @@ const getPropertiesEl = ($: cheerio.Root) => {
 };
 
 const getProperties = ($: cheerio.Root): Webhook["properties"] => {
-  const propertiesEl = [, ...getPropertiesEl($)];
+  const [, ...propertiesEl] = getPropertiesEl($);
   const properties: Webhook["properties"] = {};
 
   propertiesEl.forEach((propertyEl) => {
