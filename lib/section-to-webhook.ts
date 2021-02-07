@@ -18,16 +18,16 @@ export const toWebhook = (section: Section): Webhook | null => {
     return null;
   }
 
-  // rewrite local links to /v3* as fully-qualified URLs
+  // rewrite local links to /en/rest* as fully-qualified URLs
   $("a").each((i, element) => {
     const url = $(element).attr("href");
 
     assert.ok(url, `${element} has no url attribute`);
 
-    if (url.startsWith("/en/v3")) {
+    if (url.startsWith("/en/rest")) {
       $(element).attr(
         "href",
-        url.replace("/en/v3", "https://docs.github.com/en/v3")
+        url.replace("/en/rest", "https://docs.github.com/en/rest")
       );
     }
   });
