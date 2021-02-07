@@ -5,47 +5,7 @@
   "required": ["action", "project", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["created"] },
-    "project": {
-      "type": "object",
-      "required": [
-        "owner_url",
-        "url",
-        "html_url",
-        "columns_url",
-        "id",
-        "node_id",
-        "name",
-        "body",
-        "number",
-        "state",
-        "creator",
-        "created_at",
-        "updated_at"
-      ],
-      "properties": {
-        "owner_url": { "type": "string", "format": "uri" },
-        "url": { "type": "string", "format": "uri" },
-        "html_url": { "type": "string", "format": "uri" },
-        "columns_url": { "type": "string", "format": "uri" },
-        "id": { "type": "integer" },
-        "node_id": { "type": "string" },
-        "name": { "type": "string", "description": "Name of the project" },
-        "body": {
-          "type": ["string", "null"],
-          "description": "Body of the project"
-        },
-        "number": { "type": "integer" },
-        "state": {
-          "type": "string",
-          "enum": ["open", "closed"],
-          "description": "State of the project; either 'open' or 'closed'"
-        },
-        "creator": { "$ref": "common/user.schema.json" },
-        "created_at": { "type": "string", "format": "date-time" },
-        "updated_at": { "type": "string", "format": "date-time" }
-      },
-      "additionalProperties": false
-    },
+    "project": { "$ref": "common/project.schema.json" },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },

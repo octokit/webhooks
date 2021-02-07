@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/project.schema.json",
+  "required": [
+    "owner_url",
+    "url",
+    "html_url",
+    "columns_url",
+    "id",
+    "node_id",
+    "name",
+    "body",
+    "number",
+    "state",
+    "creator",
+    "created_at",
+    "updated_at"
+  ],
+  "type": "object",
+  "properties": {
+    "owner_url": { "type": "string", "format": "uri" },
+    "url": { "type": "string", "format": "uri" },
+    "html_url": { "type": "string", "format": "uri" },
+    "columns_url": { "type": "string", "format": "uri" },
+    "id": { "type": "integer" },
+    "node_id": { "type": "string" },
+    "name": { "type": "string", "description": "Name of the project" },
+    "body": {
+      "type": ["string", "null"],
+      "description": "Body of the project"
+    },
+    "number": { "type": "integer" },
+    "state": {
+      "type": "string",
+      "enum": ["open", "closed"],
+      "description": "State of the project; either 'open' or 'closed'"
+    },
+    "creator": { "$ref": "user.schema.json" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false,
+  "title": "Project"
+}

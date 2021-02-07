@@ -3132,61 +3132,39 @@ export interface PingEvent {
 }
 export interface ProjectClosedEvent {
   action: "closed";
-  project: {
-    owner_url: string;
-    url: string;
-    html_url: string;
-    columns_url: string;
-    id: number;
-    node_id: string;
-    /**
-     * Name of the project
-     */
-    name: string;
-    /**
-     * Body of the project
-     */
-    body: string | null;
-    number: number;
-    /**
-     * State of the project; either 'open' or 'closed'
-     */
-    state: "open" | "closed";
-    creator: User;
-    created_at: string;
-    updated_at: string;
-  };
+  project: Project;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
 }
+export interface Project {
+  owner_url: string;
+  url: string;
+  html_url: string;
+  columns_url: string;
+  id: number;
+  node_id: string;
+  /**
+   * Name of the project
+   */
+  name: string;
+  /**
+   * Body of the project
+   */
+  body: string | null;
+  number: number;
+  /**
+   * State of the project; either 'open' or 'closed'
+   */
+  state: "open" | "closed";
+  creator: User;
+  created_at: string;
+  updated_at: string;
+}
 export interface ProjectCreatedEvent {
   action: "created";
-  project: {
-    owner_url: string;
-    url: string;
-    html_url: string;
-    columns_url: string;
-    id: number;
-    node_id: string;
-    /**
-     * Name of the project
-     */
-    name: string;
-    /**
-     * Body of the project
-     */
-    body: string | null;
-    number: number;
-    /**
-     * State of the project; either 'open' or 'closed'
-     */
-    state: "open" | "closed";
-    creator: User;
-    created_at: string;
-    updated_at: string;
-  };
+  project: Project;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -3194,30 +3172,7 @@ export interface ProjectCreatedEvent {
 }
 export interface ProjectDeletedEvent {
   action: "deleted";
-  project: {
-    owner_url: string;
-    url: string;
-    html_url: string;
-    columns_url: string;
-    id: number;
-    node_id: string;
-    /**
-     * Name of the project
-     */
-    name: string;
-    /**
-     * Body of the project
-     */
-    body: string | null;
-    number: number;
-    /**
-     * State of the project; either 'open' or 'closed'
-     */
-    state: "open" | "closed";
-    creator: User;
-    created_at: string;
-    updated_at: string;
-  };
+  project: Project;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -3233,30 +3188,7 @@ export interface ProjectEditedEvent {
       from: string;
     };
   };
-  project: {
-    owner_url: string;
-    url: string;
-    html_url: string;
-    columns_url: string;
-    id: number;
-    node_id: string;
-    /**
-     * Name of the project
-     */
-    name: string;
-    /**
-     * Body of the project
-     */
-    body: string | null;
-    number: number;
-    /**
-     * State of the project; either 'open' or 'closed'
-     */
-    state: "open" | "closed";
-    creator: User;
-    created_at: string;
-    updated_at: string;
-  };
+  project: Project;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -3264,30 +3196,7 @@ export interface ProjectEditedEvent {
 }
 export interface ProjectReopenedEvent {
   action: "reopened";
-  project: {
-    owner_url: string;
-    url: string;
-    html_url: string;
-    columns_url: string;
-    id: number;
-    node_id: string;
-    /**
-     * Name of the project
-     */
-    name: string;
-    /**
-     * Body of the project
-     */
-    body: string | null;
-    number: number;
-    /**
-     * State of the project; either 'open' or 'closed'
-     */
-    state: "open" | "closed";
-    creator: User;
-    created_at: string;
-    updated_at: string;
-  };
+  project: Project;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
