@@ -3204,53 +3204,35 @@ export interface ProjectReopenedEvent {
 }
 export interface ProjectCardConvertedEvent {
   action: "converted";
-  project_card: {
-    url: string;
-    project_url: string;
-    column_url: string;
-    column_id: number;
-    /**
-     * The project card's ID
-     */
-    id: number;
-    node_id: string;
-    note: string;
-    /**
-     * Whether or not the card is archived
-     */
-    archived: boolean;
-    creator: User;
-    created_at: string;
-    updated_at: string;
-    content_url: string;
-  };
+  project_card: ProjectCard;
   repository: Repository;
   sender: User;
   organization?: Organization;
   installation?: InstallationLite;
 }
+export interface ProjectCard {
+  url: string;
+  project_url: string;
+  column_url: string;
+  column_id: number;
+  /**
+   * The project card's ID
+   */
+  id: number;
+  node_id: string;
+  note: string;
+  /**
+   * Whether or not the card is archived
+   */
+  archived: boolean;
+  creator: User;
+  created_at: string;
+  updated_at: string;
+  content_url: string;
+}
 export interface ProjectCardCreatedEvent {
   action: "created";
-  project_card: {
-    url: string;
-    project_url: string;
-    column_url: string;
-    column_id: number;
-    /**
-     * The project card's ID
-     */
-    id: number;
-    node_id: string;
-    note: string;
-    /**
-     * Whether or not the card is archived
-     */
-    archived: boolean;
-    creator: User;
-    created_at: string;
-    updated_at: string;
-    content_url: string;
-  };
+  project_card: ProjectCard;
   repository: Repository;
   sender: User;
   organization?: Organization;
@@ -3258,26 +3240,7 @@ export interface ProjectCardCreatedEvent {
 }
 export interface ProjectCardDeletedEvent {
   action: "deleted";
-  project_card: {
-    url: string;
-    project_url: string;
-    column_url: string;
-    column_id: number;
-    /**
-     * The project card's ID
-     */
-    id: number;
-    node_id: string;
-    note: string;
-    /**
-     * Whether or not the card is archived
-     */
-    archived: boolean;
-    creator: User;
-    created_at: string;
-    updated_at: string;
-    content_url: string;
-  };
+  project_card: ProjectCard;
   repository: Repository;
   sender: User;
   organization?: Organization;
@@ -3285,26 +3248,7 @@ export interface ProjectCardDeletedEvent {
 }
 export interface ProjectCardEditedEvent {
   action: "edited";
-  project_card: {
-    url: string;
-    project_url: string;
-    column_url: string;
-    column_id: number;
-    /**
-     * The project card's ID
-     */
-    id: number;
-    node_id: string;
-    note: string;
-    /**
-     * Whether or not the card is archived
-     */
-    archived: boolean;
-    creator: User;
-    created_at: string;
-    updated_at: string;
-    content_url: string;
-  };
+  project_card: ProjectCard;
   repository: Repository;
   sender: User;
   organization?: Organization;
@@ -3312,26 +3256,7 @@ export interface ProjectCardEditedEvent {
 }
 export interface ProjectCardMovedEvent {
   action: "moved";
-  project_card: {
-    url: string;
-    project_url: string;
-    column_url: string;
-    column_id: number;
-    /**
-     * The project card's ID
-     */
-    id: number;
-    node_id: string;
-    note: string;
-    /**
-     * Whether or not the card is archived
-     */
-    archived: boolean;
-    creator: User;
-    created_at: string;
-    updated_at: string;
-    content_url: string;
-  };
+  project_card: ProjectCard;
   repository: Repository;
   sender: User;
   organization?: Organization;
