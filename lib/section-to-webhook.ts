@@ -53,7 +53,7 @@ const getDescription = ($: cheerio.Root): string =>
     .map((html) => turndownService.turndown(html))
     .join("\n\n");
 
-const getPropertiesEl = ($: cheerio.Root) => {
+const getPropertiesEl = ($: cheerio.Root): cheerio.Element[][] => {
   const $table = $('[id^="webhook-payload-object"]').next("table");
 
   if (!$table.is("table")) {
