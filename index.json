@@ -6042,6 +6042,10 @@
     "description": "A Git branch or tag is created. For more information, see the \"[Git data](https://docs.github.com/en/rest/reference/git)\" REST API.",
     "actions": [],
     "properties": {
+      "ref": {
+        "type": "string",
+        "description": "The [`git ref`](https://docs.github.com/en/rest/reference/git#get-a-reference) resource."
+      },
       "ref_type": {
         "type": "string",
         "description": "The type of Git ref object created in the repository. Can be either `branch` or `tag`."
@@ -6702,6 +6706,10 @@
     "description": "A Git branch or tag is deleted. For more information, see the \"[Git data](https://docs.github.com/en/rest/reference/git)\" REST API.",
     "actions": [],
     "properties": {
+      "ref": {
+        "type": "string",
+        "description": "The [`git ref`](https://docs.github.com/en/rest/reference/git#get-a-reference) resource."
+      },
       "ref_type": {
         "type": "string",
         "description": "The type of Git ref oject deleted in the repository. Can be `branch` or `tag`."
@@ -8599,6 +8607,10 @@
     "description": "A user forks a repository. For more information, see the \"[forks](https://docs.github.com/en/rest/reference/repos#forks)\" REST API.",
     "actions": [],
     "properties": {
+      "forkee": {
+        "type": "object",
+        "description": "The created [`repository`](https://docs.github.com/en/rest/reference/repos#get-a-repository) resource."
+      },
       "repository": {
         "type": "object",
         "description": "The [`repository`](https://docs.github.com/en/rest/reference/repos#get-a-repository) where the event occurred."
@@ -9320,6 +9332,10 @@
     "description": "A wiki page is created or updated. For more information, see the \"[About wikis](/en/github/building-a-strong-community/about-wikis)\".",
     "actions": [],
     "properties": {
+      "pages": {
+        "type": "array",
+        "description": "The pages that were updated."
+      },
       "pages[][page_name]": {
         "type": "string",
         "description": "The name of the page."
@@ -22557,6 +22573,10 @@
     "description": "Represents an attempted build of a GitHub Pages site, whether successful or not. A push to a GitHub Pages enabled branch (`gh-pages` for project pages, the default branch for user and organization pages) triggers this event.",
     "actions": [],
     "properties": {
+      "id": {
+        "type": "integer",
+        "description": "The unique identifier of the page build."
+      },
       "build": {
         "type": "object",
         "description": "The [List GitHub Pages builds](https://docs.github.com/en/rest/reference/repos#list-github-pages-builds) itself."
@@ -23034,6 +23054,10 @@
     "description": "When you create a new webhook, we'll send you a simple `ping` event to let you know you've set up the webhook correctly. This event isn't stored so it isn't retrievable via the [Events API](https://docs.github.com/en/rest/reference/activity#ping-a-repository-webhook) endpoint.",
     "actions": [],
     "properties": {
+      "zen": {
+        "type": "string",
+        "description": "Random string of GitHub zen."
+      },
       "hook_id": {
         "type": "integer",
         "description": "The ID of the webhook that triggered the ping."
@@ -25467,6 +25491,10 @@
     "description": "When a private repository is made public. Without a doubt: the best GitHub event.",
     "actions": [],
     "properties": {
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](https://docs.github.com/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
       "organization": {
         "type": "object",
         "description": "Webhook payloads contain the [`organization`](https://docs.github.com/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
@@ -44680,6 +44708,10 @@
     "description": "One or more commits are pushed to a repository branch or tag.",
     "actions": [],
     "properties": {
+      "ref": {
+        "type": "string",
+        "description": "The full [`git ref`](https://docs.github.com/en/rest/reference/git#refs) that was pushed. Example: `refs/heads/main`."
+      },
       "before": {
         "type": "string",
         "description": "The SHA of the most recent commit on `ref` before the push."
@@ -48234,6 +48266,10 @@
     "description": "Activity related to a repository being imported to GitHub. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[source imports](https://docs.github.com/en/rest/reference/migrations#source-imports)\" REST API. To receive this event for a personal repository, you must create an empty repository prior to the import. This event can be triggered using either the [GitHub Importer](/en/articles/importing-a-repository-with-github-importer) or the [Source imports API](https://docs.github.com/en/rest/reference/migrations#source-imports).",
     "actions": [],
     "properties": {
+      "status": {
+        "type": "string",
+        "description": "The final state of the import. This can be one of `success`, `cancelled`, or `failure`."
+      },
       "repository": {
         "type": "object",
         "description": "The [`repository`](https://docs.github.com/en/rest/reference/repos#get-a-repository) where the event occurred."
@@ -50405,6 +50441,10 @@
     "description": "When the status of a Git commit changes. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[statuses](https://docs.github.com/en/rest/reference/repos#statuses)\" REST API.",
     "actions": [],
     "properties": {
+      "id": {
+        "type": "integer",
+        "description": "The unique identifier of the status."
+      },
       "sha": {
         "type": "string",
         "description": "The Commit SHA."
@@ -51970,6 +52010,10 @@
     "description": "When a [repository is added to a team](https://docs.github.com/en/rest/reference/teams#add-or-update-team-repository-permissions).",
     "actions": [],
     "properties": {
+      "team": {
+        "type": "object",
+        "description": "The [team](https://docs.github.com/en/rest/reference/teams) that was modified. **Note:** Older events may not include this in the payload."
+      },
       "repository": {
         "type": "object",
         "description": "The [`repository`](https://docs.github.com/en/rest/reference/repos#get-a-repository) where the event occurred."
