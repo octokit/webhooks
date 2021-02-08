@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "code_scanning_alert$appeared_in_branch",
   "type": "object",
-  "required": ["action", "alert", "ref", "commit_oid", "repository"],
+  "required": ["action", "alert", "ref", "commit_oid", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["appeared_in_branch"] },
     "alert": {
@@ -125,6 +125,7 @@
     },
     "commit_oid": { "type": "string" },
     "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },
     "organization": { "$ref": "common/organization.schema.json" }
   },
