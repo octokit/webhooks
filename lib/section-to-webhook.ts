@@ -74,7 +74,9 @@ const getProperties = ($: cheerio.Root): Webhook["properties"] => {
     const key = $(keyEl).text();
     if (key !== "action") {
       const type = $(typeEl).text() as JSONSchema7TypeName;
-      const description = turndownService.turndown($(descriptionEl).html() ?? "");
+      const description = turndownService.turndown(
+        $(descriptionEl).html() ?? ""
+      );
 
       properties[key] = { type, description };
     }
