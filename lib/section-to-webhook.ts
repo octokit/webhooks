@@ -64,7 +64,7 @@ const getPropertiesEl = ($: cheerio.Root): cheerio.Element[][] => {
 };
 
 const getProperties = ($: cheerio.Root): Webhook["properties"] => {
-  const [, ...propertiesEl] = getPropertiesEl($);
+  const propertiesEl = getPropertiesEl($);
   const properties: Webhook["properties"] = {};
 
   propertiesEl.forEach((propertyEl) => {
@@ -72,10 +72,12 @@ const getProperties = ($: cheerio.Root): Webhook["properties"] => {
       .find("td")
       .get() as cheerio.Element[];
     const key = $(keyEl).text();
-    const type = $(typeEl).text() as JSONSchema7TypeName;
-    const description = turndownService.turndown($(descriptionEl).html() ?? "");
+    if (key !== "action") {
+      const type = $(typeEl).text() as JSONSchema7TypeName;
+      const description = turndownService.turndown($(descriptionEl).html() ?? "");
 
-    properties[key] = { type, description };
+      properties[key] = { type, description };
+    }
   });
 
   return properties;
