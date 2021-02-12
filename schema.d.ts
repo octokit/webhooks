@@ -1194,11 +1194,11 @@ export interface CodeScanningAlertAppearedInBranchEvent {
   ref: string;
   commit_oid: string;
   repository: Repository;
-  sender: GitHub;
+  sender: GitHubOrg;
   installation?: InstallationLite;
   organization?: Organization;
 }
-export interface GitHub {
+export interface GitHubOrg {
   login: "github";
   id: 9919;
   node_id: "MDEyOk9yZ2FuaXphdGlvbjk5MTk=";
@@ -1389,7 +1389,7 @@ export interface CodeScanningAlertCreatedEvent {
   ref: string;
   commit_oid: string;
   repository: Repository;
-  sender: GitHub;
+  sender: GitHubOrg;
   installation?: InstallationLite;
   organization?: Organization;
 }
@@ -1471,7 +1471,7 @@ export interface CodeScanningAlertFixedEvent {
   ref: string;
   commit_oid: string;
   repository: Repository;
-  sender: GitHub;
+  sender: GitHubOrg;
   installation?: InstallationLite;
   organization?: Organization;
 }
@@ -1553,7 +1553,7 @@ export interface CodeScanningAlertReopenedEvent {
   ref: string;
   commit_oid: string;
   repository: Repository;
-  sender: GitHub;
+  sender: GitHubOrg;
   installation?: InstallationLite;
   organization?: Organization;
 }

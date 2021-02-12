@@ -86,5 +86,5 @@
     "type": { "type": "string", "enum": ["Organization"] }
   },
   "additionalProperties": false,
-  "title": "GitHub"
+  "title": "GitHub Org"
 }
