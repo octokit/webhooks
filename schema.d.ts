@@ -1194,6 +1194,7 @@ export interface CodeScanningAlertAppearedInBranchEvent {
   ref: string;
   commit_oid: string;
   repository: Repository;
+  sender: User;
   installation?: InstallationLite;
   organization?: Organization;
 }
@@ -1357,6 +1358,7 @@ export interface CodeScanningAlertCreatedEvent {
   ref: string;
   commit_oid: string;
   repository: Repository;
+  sender: User;
   installation?: InstallationLite;
   organization?: Organization;
 }
@@ -1438,6 +1440,7 @@ export interface CodeScanningAlertFixedEvent {
   ref: string;
   commit_oid: string;
   repository: Repository;
+  sender: User;
   installation?: InstallationLite;
   organization?: Organization;
 }
@@ -1519,6 +1522,7 @@ export interface CodeScanningAlertReopenedEvent {
   ref: string;
   commit_oid: string;
   repository: Repository;
+  sender: User;
   installation?: InstallationLite;
   organization?: Organization;
 }
