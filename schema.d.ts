@@ -1220,13 +1220,13 @@ export interface GitHub {
   is_verified: true;
   has_organization_projects: true;
   has_repository_projects: true;
-  public_repos: 371;
-  public_gists: 0;
-  followers: 0;
-  following: 0;
+  public_repos: number;
+  public_gists: number;
+  followers: number;
+  following: number;
   html_url: "https://github.com/github";
   created_at: "2008-05-11T04:37:31Z";
-  updated_at: "2020-09-28T06:15:10Z";
+  updated_at: string;
   type: "Organization";
 }
 export interface CodeScanningAlertClosedByUserEvent {
