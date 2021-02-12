@@ -1,4 +1,4 @@
-#!/usr/bin/env ts-node-transpile-only
+#!/usr/bin/env npx ts-node-transpile-only
 
 import { DefinedError, ErrorObject } from "ajv";
 import path from "path";

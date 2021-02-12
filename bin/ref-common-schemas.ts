@@ -1,4 +1,4 @@
-#!/usr/bin/env ts-node-transpile-only
+#!/usr/bin/env npx ts-node-transpile-only
 
 import deepEqual from "fast-deep-equal";
 import fs from "fs";

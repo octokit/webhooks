@@ -1,4 +1,4 @@
-#!/usr/bin/env ts-node-transpile-only
+#!/usr/bin/env npx ts-node-transpile-only
 
 import fs from "fs";
 import { JSONSchema7 } from "json-schema";
