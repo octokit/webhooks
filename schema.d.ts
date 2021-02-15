@@ -1194,9 +1194,40 @@ export interface CodeScanningAlertAppearedInBranchEvent {
   ref: string;
   commit_oid: string;
   repository: Repository;
-  sender: User;
+  sender: GitHubOrg;
   installation?: InstallationLite;
   organization?: Organization;
+}
+export interface GitHubOrg {
+  login: "github";
+  id: 9919;
+  node_id: "MDEyOk9yZ2FuaXphdGlvbjk5MTk=";
+  url: "https://api.github.com/orgs/github";
+  repos_url: "https://api.github.com/orgs/github/repos";
+  events_url: "https://api.github.com/orgs/github/events";
+  hooks_url: "https://api.github.com/orgs/github/hooks";
+  issues_url: "https://api.github.com/orgs/github/issues";
+  members_url: "https://api.github.com/orgs/github/members{/member}";
+  public_members_url: "https://api.github.com/orgs/github/public_members{/member}";
+  avatar_url: "https://avatars.githubusercontent.com/u/9919?v=4";
+  description: "How people build software.";
+  name: "GitHub";
+  company: null;
+  blog: "https://github.com/about";
+  location: "San Francisco, CA";
+  email: null;
+  twitter_username: null;
+  is_verified: true;
+  has_organization_projects: true;
+  has_repository_projects: true;
+  public_repos: number;
+  public_gists: number;
+  followers: number;
+  following: number;
+  html_url: "https://github.com/github";
+  created_at: "2008-05-11T04:37:31Z";
+  updated_at: string;
+  type: "Organization";
 }
 export interface CodeScanningAlertClosedByUserEvent {
   action: "closed_by_user";
@@ -1358,7 +1389,7 @@ export interface CodeScanningAlertCreatedEvent {
   ref: string;
   commit_oid: string;
   repository: Repository;
-  sender: User;
+  sender: GitHubOrg;
   installation?: InstallationLite;
   organization?: Organization;
 }
@@ -1440,7 +1471,7 @@ export interface CodeScanningAlertFixedEvent {
   ref: string;
   commit_oid: string;
   repository: Repository;
-  sender: User;
+  sender: GitHubOrg;
   installation?: InstallationLite;
   organization?: Organization;
 }
@@ -1522,7 +1553,7 @@ export interface CodeScanningAlertReopenedEvent {
   ref: string;
   commit_oid: string;
   repository: Repository;
-  sender: User;
+  sender: GitHubOrg;
   installation?: InstallationLite;
   organization?: Organization;
 }

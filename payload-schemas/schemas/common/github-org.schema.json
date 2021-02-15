@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/github-org.schema.json",
+  "required": [
+    "login",
+    "id",
+    "node_id",
+    "url",
+    "repos_url",
+    "events_url",
+    "hooks_url",
+    "issues_url",
+    "members_url",
+    "public_members_url",
+    "avatar_url",
+    "description",
+    "name",
+    "company",
+    "blog",
+    "location",
+    "email",
+    "twitter_username",
+    "is_verified",
+    "has_organization_projects",
+    "has_repository_projects",
+    "public_repos",
+    "public_gists",
+    "followers",
+    "following",
+    "html_url",
+    "created_at",
+    "updated_at",
+    "type"
+  ],
+  "type": "object",
+  "properties": {
+    "login": { "type": "string", "enum": ["github"] },
+    "id": { "type": "integer", "enum": [9919] },
+    "node_id": { "type": "string", "enum": ["MDEyOk9yZ2FuaXphdGlvbjk5MTk="] },
+    "url": { "type": "string", "enum": ["https://api.github.com/orgs/github"] },
+    "repos_url": {
+      "type": "string",
+      "enum": ["https://api.github.com/orgs/github/repos"]
+    },
+    "events_url": {
+      "type": "string",
+      "enum": ["https://api.github.com/orgs/github/events"]
+    },
+    "hooks_url": {
+      "type": "string",
+      "enum": ["https://api.github.com/orgs/github/hooks"]
+    },
+    "issues_url": {
+      "type": "string",
+      "enum": ["https://api.github.com/orgs/github/issues"]
+    },
+    "members_url": {
+      "type": "string",
+      "enum": ["https://api.github.com/orgs/github/members{/member}"]
+    },
+    "public_members_url": {
+      "type": "string",
+      "enum": ["https://api.github.com/orgs/github/public_members{/member}"]
+    },
+    "avatar_url": {
+      "type": "string",
+      "enum": ["https://avatars.githubusercontent.com/u/9919?v=4"]
+    },
+    "description": { "type": "string", "enum": ["How people build software."] },
+    "name": { "type": "string", "enum": ["GitHub"] },
+    "company": { "type": ["string", "null"], "enum": [null] },
+    "blog": { "type": "string", "enum": ["https://github.com/about"] },
+    "location": { "type": "string", "enum": ["San Francisco, CA"] },
+    "email": { "type": ["string", "null"], "enum": [null] },
+    "twitter_username": { "type": ["string", "null"], "enum": [null] },
+    "is_verified": { "type": "boolean", "enum": [true] },
+    "has_organization_projects": { "type": "boolean", "enum": [true] },
+    "has_repository_projects": { "type": "boolean", "enum": [true] },
+    "public_repos": { "type": "integer" },
+    "public_gists": { "type": "integer" },
+    "followers": { "type": "integer" },
+    "following": { "type": "integer" },
+    "html_url": { "type": "string", "enum": ["https://github.com/github"] },
+    "created_at": { "type": "string", "enum": ["2008-05-11T04:37:31Z"] },
+    "updated_at": { "type": "string" },
+    "type": { "type": "string", "enum": ["Organization"] }
+  },
+  "additionalProperties": false,
+  "title": "GitHub Org"
+}
