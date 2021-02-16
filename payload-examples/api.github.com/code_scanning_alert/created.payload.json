@@ -1,15 +1,15 @@
 {
   "action": "created",
   "alert": {
-      "number": 10,
-      "created_at": "2021-02-11T03:10:43Z",
-      "url": "https://api.github.com/repos/Codertocat/Hello-World/code-scanning/alerts/10",
-      "html_url": "https://github.com/Codertocat/Hello-World/security/code-scanning/10",
-      "state": "open",
-      "dismissed_by": null,
-      "dismissed_at": null,
-      "dismissed_reason": null,
-      "rule": {
+    "number": 10,
+    "created_at": "2021-02-11T03:10:43Z",
+    "url": "https://api.github.com/repos/Codertocat/Hello-World/code-scanning/alerts/10",
+    "html_url": "https://github.com/Codertocat/Hello-World/security/code-scanning/10",
+    "state": "open",
+    "dismissed_by": null,
+    "dismissed_at": null,
+    "dismissed_reason": null,
+    "rule": {
       "id": "java/sql-injection",
       "severity": "error",
       "description": "Query built from user-controlled sources",
@@ -17,8 +17,8 @@
       "full_description": "Building a SQL or Java Persistence query from user-controlled sources is vulnerable to insertion of malicious code by the user.",
       "tags": null,
       "help": null
-      },
-      "tool": {
+    },
+    "tool": {
       "name": "CodeQL",
       "guid": null,
       "version": null
@@ -40,9 +40,7 @@
           "start_column": 51,
           "end_column": 56
         },
-        "classifications": [
-
-        ]
+        "classifications": []
       }
     ]
   },
