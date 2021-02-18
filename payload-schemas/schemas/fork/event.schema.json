@@ -78,8 +78,7 @@
         "forks",
         "open_issues",
         "watchers",
-        "default_branch",
-        "public"
+        "default_branch"
       ],
       "properties": {
         "id": { "type": "integer" },
@@ -90,7 +89,7 @@
         "owner": { "$ref": "common/user.schema.json" },
         "html_url": { "type": "string" },
         "description": { "type": ["string", "null"] },
-        "fork": { "type": "boolean", "enum": [true] },
+        "fork": { "type": "boolean" },
         "url": { "type": "string" },
         "forks_url": { "type": "string" },
         "keys_url": { "type": "string" },
@@ -155,7 +154,6 @@
         "license": {
           "oneOf": [
             { "$ref": "common/license.schema.json" },
-            { "type": "string" },
             { "type": "null" }
           ]
         },
@@ -181,7 +179,8 @@
           },
           "additionalProperties": false
         },
-        "public": { "type": "boolean" }
+        "public": { "type": "boolean" },
+        "organization": { "type": "string" }
       },
       "additionalProperties": false
     },
