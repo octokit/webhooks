@@ -10,12 +10,7 @@
         {
           "type": "object",
           "required": ["private"],
-          "properties": {
-            "private": {
-              "type": "boolean",
-              "enum": [false]
-            }
-          },
+          "properties": { "private": { "type": "boolean", "enum": [false] } },
           "tsAdditionalProperties": false
         }
       ]

@@ -37,39 +37,54 @@
     "login": { "type": "string", "enum": ["github"] },
     "id": { "type": "integer", "enum": [9919] },
     "node_id": { "type": "string", "enum": ["MDEyOk9yZ2FuaXphdGlvbjk5MTk="] },
-    "url": { "type": "string", "enum": ["https://api.github.com/orgs/github"] },
+    "url": {
+      "type": "string",
+      "enum": ["https://api.github.com/orgs/github"],
+      "format": "uri"
+    },
     "repos_url": {
       "type": "string",
-      "enum": ["https://api.github.com/orgs/github/repos"]
+      "enum": ["https://api.github.com/orgs/github/repos"],
+      "format": "uri"
     },
     "events_url": {
       "type": "string",
-      "enum": ["https://api.github.com/orgs/github/events"]
+      "enum": ["https://api.github.com/orgs/github/events"],
+      "format": "uri"
     },
     "hooks_url": {
       "type": "string",
-      "enum": ["https://api.github.com/orgs/github/hooks"]
+      "enum": ["https://api.github.com/orgs/github/hooks"],
+      "format": "uri"
     },
     "issues_url": {
       "type": "string",
-      "enum": ["https://api.github.com/orgs/github/issues"]
+      "enum": ["https://api.github.com/orgs/github/issues"],
+      "format": "uri"
     },
     "members_url": {
       "type": "string",
-      "enum": ["https://api.github.com/orgs/github/members{/member}"]
+      "enum": ["https://api.github.com/orgs/github/members{/member}"],
+      "format": "uri-template"
     },
     "public_members_url": {
       "type": "string",
-      "enum": ["https://api.github.com/orgs/github/public_members{/member}"]
+      "enum": ["https://api.github.com/orgs/github/public_members{/member}"],
+      "format": "uri-template"
     },
     "avatar_url": {
       "type": "string",
-      "enum": ["https://avatars.githubusercontent.com/u/9919?v=4"]
+      "enum": ["https://avatars.githubusercontent.com/u/9919?v=4"],
+      "format": "uri"
     },
     "description": { "type": "string", "enum": ["How people build software."] },
     "name": { "type": "string", "enum": ["GitHub"] },
     "company": { "type": ["string", "null"], "enum": [null] },
-    "blog": { "type": "string", "enum": ["https://github.com/about"] },
+    "blog": {
+      "type": "string",
+      "enum": ["https://github.com/about"],
+      "format": "uri"
+    },
     "location": { "type": "string", "enum": ["San Francisco, CA"] },
     "email": { "type": ["string", "null"], "enum": [null] },
     "twitter_username": { "type": ["string", "null"], "enum": [null] },
@@ -80,7 +95,11 @@
     "public_gists": { "type": "integer" },
     "followers": { "type": "integer" },
     "following": { "type": "integer" },
-    "html_url": { "type": "string", "enum": ["https://github.com/github"] },
+    "html_url": {
+      "type": "string",
+      "enum": ["https://github.com/github"],
+      "format": "uri"
+    },
     "created_at": { "type": "string", "enum": ["2008-05-11T04:37:31Z"] },
     "updated_at": { "type": "string" },
     "type": { "type": "string", "enum": ["Organization"] }

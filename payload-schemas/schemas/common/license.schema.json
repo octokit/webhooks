@@ -7,7 +7,7 @@
     "key": { "type": "string" },
     "name": { "type": "string" },
     "spdx_id": { "type": "string" },
-    "url": { "type": ["string", "null"] },
+    "url": { "type": ["string", "null"], "format": "uri" },
     "node_id": { "type": "string" }
   },
   "additionalProperties": false,

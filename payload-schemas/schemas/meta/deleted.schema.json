@@ -30,7 +30,7 @@
           "properties": {
             "content_type": { "type": "string" },
             "insecure_ssl": { "type": "string" },
-            "url": { "type": "string" }
+            "url": { "type": "string", "format": "uri" }
           },
           "additionalProperties": false
         },

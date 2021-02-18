@@ -47,8 +47,8 @@
       ],
       "properties": {
         "url": { "type": "string", "format": "uri" },
-        "assets_url": { "type": "string" },
-        "upload_url": { "type": "string" },
+        "assets_url": { "type": "string", "format": "uri" },
+        "upload_url": { "type": "string", "format": "uri-template" },
         "html_url": { "type": "string", "format": "uri" },
         "id": { "type": "integer" },
         "node_id": { "type": "string" },

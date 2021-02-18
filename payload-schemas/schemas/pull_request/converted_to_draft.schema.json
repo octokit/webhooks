@@ -116,11 +116,11 @@
             { "type": "null" }
           ]
         },
-        "commits_url": { "type": "string" },
-        "review_comments_url": { "type": "string" },
-        "review_comment_url": { "type": "string" },
-        "comments_url": { "type": "string" },
-        "statuses_url": { "type": "string" },
+        "commits_url": { "type": "string", "format": "uri" },
+        "review_comments_url": { "type": "string", "format": "uri" },
+        "review_comment_url": { "type": "string", "format": "uri-template" },
+        "comments_url": { "type": "string", "format": "uri" },
+        "statuses_url": { "type": "string", "format": "uri" },
         "head": {
           "type": "object",
           "required": ["label", "ref", "sha", "user", "repo"],

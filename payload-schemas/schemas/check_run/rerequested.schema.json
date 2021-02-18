@@ -31,9 +31,9 @@
           "description": "The SHA of the commit that is being checked."
         },
         "external_id": { "type": "string" },
-        "url": { "type": "string" },
-        "html_url": { "type": "string" },
-        "details_url": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "html_url": { "type": "string", "format": "uri" },
+        "details_url": { "type": "string", "format": "uri" },
         "status": {
           "type": "string",
           "enum": ["completed"],
@@ -74,7 +74,7 @@
             "summary": { "type": ["string", "null"] },
             "text": { "type": ["string", "null"] },
             "annotations_count": { "type": "integer" },
-            "annotations_url": { "type": "string" }
+            "annotations_url": { "type": "string", "format": "uri" }
           },
           "additionalProperties": false
         },
@@ -116,7 +116,7 @@
                 "stale"
               ]
             },
-            "url": { "type": "string" },
+            "url": { "type": "string", "format": "uri" },
             "before": { "type": ["string", "null"] },
             "after": { "type": ["string", "null"] },
             "pull_requests": {
@@ -125,7 +125,7 @@
                 "type": "object",
                 "required": ["url", "id", "number", "head", "base"],
                 "properties": {
-                  "url": { "type": "string" },
+                  "url": { "type": "string", "format": "uri" },
                   "id": { "type": "integer" },
                   "number": { "type": "integer" },
                   "head": {
@@ -165,7 +165,7 @@
             "type": "object",
             "required": ["url", "id", "number", "head", "base"],
             "properties": {
-              "url": { "type": "string" },
+              "url": { "type": "string", "format": "uri" },
               "id": { "type": "integer" },
               "number": { "type": "integer" },
               "head": {
