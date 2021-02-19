@@ -17,7 +17,7 @@
       "properties": {
         "id": { "type": "integer" },
         "node_id": { "type": "string" },
-        "reference": { "type": "string" }
+        "reference": { "type": "string", "format": "uri" }
       },
       "additionalProperties": false
     },

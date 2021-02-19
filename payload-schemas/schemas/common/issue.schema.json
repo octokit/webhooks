@@ -31,7 +31,7 @@
       "description": "URL for the issue"
     },
     "repository_url": { "type": "string", "format": "uri" },
-    "labels_url": { "type": "string" },
+    "labels_url": { "type": "string", "format": "uri-template" },
     "comments_url": { "type": "string", "format": "uri" },
     "events_url": { "type": "string", "format": "uri" },
     "html_url": { "type": "string", "format": "uri" },

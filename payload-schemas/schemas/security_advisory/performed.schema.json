@@ -41,7 +41,7 @@
           "items": {
             "type": "object",
             "required": ["url"],
-            "properties": { "url": { "type": "string" } },
+            "properties": { "url": { "type": "string", "format": "uri" } },
             "additionalProperties": false
           }
         },

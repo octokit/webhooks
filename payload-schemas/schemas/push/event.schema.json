@@ -25,7 +25,7 @@
     "deleted": { "type": "boolean" },
     "forced": { "type": "boolean" },
     "base_ref": { "type": "null" },
-    "compare": { "type": "string" },
+    "compare": { "type": "string", "format": "uri" },
     "commits": {
       "type": "array",
       "items": { "$ref": "common/commit.schema.json" }

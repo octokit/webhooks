@@ -32,16 +32,16 @@
           "properties": {
             "content_type": { "type": "string" },
             "secret": { "type": "string" },
-            "url": { "type": "string" },
+            "url": { "type": "string", "format": "uri" },
             "insecure_ssl": { "type": "string" }
           },
           "additionalProperties": false
         },
         "updated_at": { "type": "string" },
         "created_at": { "type": "string" },
-        "url": { "type": "string" },
-        "test_url": { "type": "string" },
-        "ping_url": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "test_url": { "type": "string", "format": "uri" },
+        "ping_url": { "type": "string", "format": "uri" },
         "last_response": {
           "type": "object",
           "required": ["code", "status", "message"],

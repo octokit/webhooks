@@ -21,8 +21,8 @@
     "id": { "type": "integer" },
     "sha": { "type": "string" },
     "name": { "type": "string" },
-    "avatar_url": { "type": ["string", "null"] },
-    "target_url": { "type": ["string", "null"] },
+    "avatar_url": { "type": ["string", "null"], "format": "uri" },
+    "target_url": { "type": ["string", "null"], "format": "uri" },
     "context": { "type": "string" },
     "description": { "type": ["string", "null"] },
     "state": {
@@ -85,11 +85,11 @@
               "required": ["sha", "url"],
               "properties": {
                 "sha": { "type": "string" },
-                "url": { "type": "string" }
+                "url": { "type": "string", "format": "uri" }
               },
               "additionalProperties": false
             },
-            "url": { "type": "string" },
+            "url": { "type": "string", "format": "uri" },
             "comment_count": { "type": "integer" },
             "verification": {
               "type": "object",
@@ -122,9 +122,9 @@
           },
           "additionalProperties": false
         },
-        "url": { "type": "string" },
-        "html_url": { "type": "string" },
-        "comments_url": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "html_url": { "type": "string", "format": "uri" },
+        "comments_url": { "type": "string", "format": "uri" },
         "author": {
           "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": "null" }]
         },
@@ -138,8 +138,8 @@
             "required": ["sha", "url", "html_url"],
             "properties": {
               "sha": { "type": "string" },
-              "url": { "type": "string" },
-              "html_url": { "type": "string" }
+              "url": { "type": "string", "format": "uri" },
+              "html_url": { "type": "string", "format": "uri" }
             },
             "additionalProperties": false
           }
@@ -159,7 +159,7 @@
             "required": ["sha", "url"],
             "properties": {
               "sha": { "type": "string" },
-              "url": { "type": "string" }
+              "url": { "type": "string", "format": "uri" }
             },
             "additionalProperties": false
           },
