@@ -7,7 +7,11 @@
     "forkee": {
       "allOf": [
         { "$ref": "common/repository.schema.json" },
-        { "type": "object", "properties": { "fork": { "enum": [true] } } }
+        {
+          "type": "object",
+          "properties": { "fork": { "enum": [true] } },
+          "tsAdditionalProperties": false
+        }
       ]
     },
     "repository": { "$ref": "common/repository.schema.json" },

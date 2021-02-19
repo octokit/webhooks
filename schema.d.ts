@@ -1792,7 +1792,6 @@ export interface DeploymentStatusCreatedEvent {
 export interface ForkEvent {
   forkee: Repository & {
     fork?: true;
-    [k: string]: unknown;
   };
   repository: Repository;
   sender: User;
