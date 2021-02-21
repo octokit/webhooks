@@ -426,7 +426,7 @@ export interface User {
   id: number;
   node_id: string;
   name?: string;
-  email?: string;
+  email?: string | null;
   avatar_url: string;
   gravatar_id: string;
   url: string;
@@ -1198,6 +1198,18 @@ export interface AlertInstance {
    * State of a code scanning alert.
    */
   state: "open" | "dismissed" | "fixed";
+  commit_sha?: string;
+  message?: {
+    text?: string;
+  };
+  location?: {
+    path?: string;
+    start_line?: number;
+    end_line?: number;
+    start_column?: number;
+    end_column?: number;
+  };
+  classifications?: string[];
 }
 export interface GitHubOrg {
   login: "github";
@@ -1275,6 +1287,10 @@ export interface CodeScanningAlertClosedByUserEvent {
        * A short description of the rule used to detect the alert.
        */
       description: string;
+      name?: string;
+      full_description?: string;
+      tags?: null;
+      help?: null;
     };
     tool: {
       /**
@@ -1285,6 +1301,7 @@ export interface CodeScanningAlertClosedByUserEvent {
        * The version of the tool used to detect the alert.
        */
       version: string | null;
+      guid?: string | null;
     };
   };
   /**
@@ -1342,6 +1359,10 @@ export interface CodeScanningAlertCreatedEvent {
        * A short description of the rule used to detect the alert.
        */
       description: string;
+      name?: string;
+      full_description?: string;
+      tags?: null;
+      help?: null;
     };
     tool: {
       /**
@@ -1352,6 +1373,7 @@ export interface CodeScanningAlertCreatedEvent {
        * The version of the tool used to detect the alert.
        */
       version: string | null;
+      guid?: string | null;
     };
   };
   /**
@@ -1409,6 +1431,10 @@ export interface CodeScanningAlertFixedEvent {
        * A short description of the rule used to detect the alert.
        */
       description: string;
+      name?: string;
+      full_description?: string;
+      tags?: null;
+      help?: null;
     };
     tool: {
       /**
@@ -1419,7 +1445,10 @@ export interface CodeScanningAlertFixedEvent {
        * The version of the tool used to detect the alert.
        */
       version: string | null;
+      guid?: string | null;
     };
+    most_recent_instance?: AlertInstance;
+    instances_url?: string;
   };
   /**
    * The full Git reference, formatted as `refs/heads/<branch name>`.
@@ -1476,6 +1505,10 @@ export interface CodeScanningAlertReopenedEvent {
        * A short description of the rule used to detect the alert.
        */
       description: string;
+      name?: string;
+      full_description?: string;
+      tags?: null;
+      help?: null;
     };
     tool: {
       /**
@@ -1486,6 +1519,7 @@ export interface CodeScanningAlertReopenedEvent {
        * The version of the tool used to detect the alert.
        */
       version: string | null;
+      guid?: string | null;
     };
   };
   /**
