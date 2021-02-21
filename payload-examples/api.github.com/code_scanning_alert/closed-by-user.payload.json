@@ -179,18 +179,6 @@
     "avatar_url": "https://avatars.githubusercontent.com/u/38940897?v=4",
     "description": "A collection of all demos managed by GitHub"
   },
-  "enterprise": {
-    "id": 118,
-    "slug": "Codertocat",
-    "name": "Codertocat",
-    "node_id": "MDEwOkVudGVycHJpc2UxMTg=",
-    "avatar_url": "https://avatars.githubusercontent.com/b/118?v=4",
-    "description": "",
-    "website_url": "",
-    "html_url": "https://github.com/enterprises/Codertocat",
-    "created_at": "2019-05-06T13:13:38Z",
-    "updated_at": "2020-04-14T00:30:53Z"
-  },
   "sender": {
     "login": "Codertocat",
     "id": 21031067,
