@@ -26,7 +26,8 @@
       "type": "object",
       "properties": {
         "text": { "type": "string" }
-      }
+      },
+      "additionalProperties": false
     },
     "location": {
       "type": "object",
