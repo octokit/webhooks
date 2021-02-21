@@ -20,7 +20,26 @@
       "type": "string",
       "description": "State of a code scanning alert.",
       "enum": ["open", "dismissed", "fixed"]
-    }
+    },
+    "commit_sha": { "type": "string" },
+    "message": {
+      "type": "object",
+      "properties": {
+        "text": { "type": "string" }
+      }
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "path": { "type": "string" },
+        "start_line": { "type": "integer" },
+        "end_line": { "type": "integer" },
+        "start_column": { "type": "integer" },
+        "end_column": { "type": "integer" }
+      },
+      "additionalProperties": false
+    },
+    "classifications": { "type": "array", "items": { "type": "string" } }
   },
   "additionalProperties": false,
   "title": "Alert Instance"

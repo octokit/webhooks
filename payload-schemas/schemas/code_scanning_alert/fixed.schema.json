@@ -86,7 +86,11 @@
             "description": {
               "type": "string",
               "description": "A short description of the rule used to detect the alert."
-            }
+            },
+            "name": { "type": "string" },
+            "full_description": { "type": "string" },
+            "tags": { "type": "null" },
+            "help": { "type": "null" }
           },
           "additionalProperties": false
         },
@@ -101,10 +105,13 @@
             "version": {
               "type": ["string", "null"],
               "description": "The version of the tool used to detect the alert."
-            }
+            },
+            "guid": { "type": ["string", "null"] }
           },
           "additionalProperties": false
-        }
+        },
+        "most_recent_instance": { "$ref": "common/alert-instance.schema.json" },
+        "instances_url": { "type":"string","format": "uri"}
       },
       "additionalProperties": false
     },
