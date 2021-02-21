@@ -6,6 +6,7 @@ const metaProperties = [
   "$id",
   "title",
   "description",
+  "default",
   "format",
 ];
 

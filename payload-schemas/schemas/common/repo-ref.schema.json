@@ -5,7 +5,7 @@
   "required": ["id", "url", "name"],
   "properties": {
     "id": { "type": "integer" },
-    "url": { "type": "string" },
+    "url": { "type": "string", "format": "uri" },
     "name": { "type": "string" }
   },
   "additionalProperties": false,

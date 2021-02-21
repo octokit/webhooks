@@ -4,10 +4,10 @@
   "required": ["url", "state", "role", "organization_url", "user"],
   "type": "object",
   "properties": {
-    "url": { "type": "string" },
+    "url": { "type": "string", "format": "uri" },
     "state": { "type": "string" },
     "role": { "type": "string" },
-    "organization_url": { "type": "string" },
+    "organization_url": { "type": "string", "format": "uri" },
     "user": { "$ref": "user.schema.json" }
   },
   "additionalProperties": false,

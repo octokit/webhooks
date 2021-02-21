@@ -19,7 +19,7 @@
         "updated_at"
       ],
       "properties": {
-        "url": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
         "status": { "type": "string" },
         "error": {
           "type": "object",

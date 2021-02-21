@@ -22,7 +22,7 @@
         "id": { "type": "integer" },
         "name": { "type": "string" },
         "package_type": { "type": "string" },
-        "html_url": { "type": "string" },
+        "html_url": { "type": "string", "format": "uri" },
         "created_at": { "type": "string" },
         "updated_at": { "type": "string" },
         "owner": { "$ref": "common/user.schema.json" },
@@ -71,8 +71,8 @@
                 "published_at"
               ],
               "properties": {
-                "url": { "type": "string" },
-                "html_url": { "type": "string" },
+                "url": { "type": "string", "format": "uri" },
+                "html_url": { "type": "string", "format": "uri" },
                 "id": { "type": "integer" },
                 "tag_name": { "type": "string" },
                 "target_commitish": { "type": "string" },
@@ -86,7 +86,7 @@
               "additionalProperties": false
             },
             "manifest": { "type": "string" },
-            "html_url": { "type": "string" },
+            "html_url": { "type": "string", "format": "uri" },
             "tag_name": { "type": "string" },
             "target_commitish": { "type": "string" },
             "target_oid": { "type": "string" },
@@ -113,7 +113,7 @@
                   "updated_at"
                 ],
                 "properties": {
-                  "download_url": { "type": "string" },
+                  "download_url": { "type": "string", "format": "uri" },
                   "id": { "type": "integer" },
                   "name": { "type": "string" },
                   "sha256": { "type": "string" },
@@ -137,10 +137,10 @@
           "type": "object",
           "required": ["about_url", "name", "type", "url", "vendor"],
           "properties": {
-            "about_url": { "type": "string" },
+            "about_url": { "type": "string", "format": "uri" },
             "name": { "type": "string" },
             "type": { "type": "string" },
-            "url": { "type": "string" },
+            "url": { "type": "string", "format": "uri" },
             "vendor": { "type": "string" }
           },
           "additionalProperties": false

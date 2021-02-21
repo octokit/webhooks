@@ -23,8 +23,8 @@
         "body"
       ],
       "properties": {
-        "url": { "type": "string" },
-        "html_url": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "html_url": { "type": "string", "format": "uri" },
         "id": { "type": "integer" },
         "node_id": { "type": "string" },
         "user": { "$ref": "common/user.schema.json" },

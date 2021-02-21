@@ -19,7 +19,7 @@
       "properties": {
         "id": { "type": "integer" },
         "key": { "type": "string" },
-        "url": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
         "title": { "type": "string" },
         "verified": { "type": "boolean" },
         "created_at": { "type": "string" },

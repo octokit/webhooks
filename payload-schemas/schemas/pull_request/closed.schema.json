@@ -7,198 +7,23 @@
     "action": { "type": "string", "enum": ["closed"] },
     "number": { "type": "integer" },
     "pull_request": {
-      "type": "object",
-      "required": [
-        "url",
-        "id",
-        "node_id",
-        "html_url",
-        "diff_url",
-        "patch_url",
-        "issue_url",
-        "number",
-        "state",
-        "locked",
-        "title",
-        "user",
-        "body",
-        "created_at",
-        "updated_at",
-        "closed_at",
-        "merged_at",
-        "merge_commit_sha",
-        "assignee",
-        "assignees",
-        "requested_reviewers",
-        "requested_teams",
-        "labels",
-        "milestone",
-        "commits_url",
-        "review_comments_url",
-        "review_comment_url",
-        "comments_url",
-        "statuses_url",
-        "head",
-        "base",
-        "_links",
-        "author_association",
-        "active_lock_reason",
-        "draft",
-        "merged",
-        "mergeable",
-        "rebaseable",
-        "mergeable_state",
-        "merged_by",
-        "comments",
-        "review_comments",
-        "maintainer_can_modify",
-        "commits",
-        "additions",
-        "deletions",
-        "changed_files"
-      ],
-      "properties": {
-        "url": { "type": "string", "format": "uri" },
-        "id": { "type": "integer" },
-        "node_id": { "type": "string" },
-        "html_url": { "type": "string", "format": "uri" },
-        "diff_url": { "type": "string", "format": "uri" },
-        "patch_url": { "type": "string", "format": "uri" },
-        "issue_url": { "type": "string", "format": "uri" },
-        "number": {
-          "type": "integer",
-          "description": "Number uniquely identifying the pull request within its repository."
-        },
-        "state": {
-          "type": "string",
-          "enum": ["closed"],
-          "description": "State of this Pull Request. Either `open` or `closed`."
-        },
-        "locked": { "type": "boolean" },
-        "title": {
-          "type": "string",
-          "description": "The title of the pull request."
-        },
-        "user": { "$ref": "common/user.schema.json" },
-        "body": { "type": "string" },
-        "created_at": { "type": "string", "format": "date-time" },
-        "updated_at": { "type": "string", "format": "date-time" },
-        "closed_at": { "type": "string", "format": "date-time" },
-        "merged_at": { "type": ["string", "null"], "format": "date-time" },
-        "merge_commit_sha": { "type": ["string", "null"] },
-        "assignee": {
-          "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": "null" }]
-        },
-        "assignees": {
-          "type": "array",
-          "items": { "$ref": "common/user.schema.json" }
-        },
-        "requested_reviewers": {
-          "type": "array",
-          "items": {
-            "oneOf": [
-              { "$ref": "common/user.schema.json" },
-              { "$ref": "common/team.schema.json" }
-            ]
-          }
-        },
-        "requested_teams": {
-          "type": "array",
-          "items": { "$ref": "common/team.schema.json" }
-        },
-        "labels": {
-          "type": "array",
-          "items": { "$ref": "common/label.schema.json" }
-        },
-        "milestone": {
-          "oneOf": [
-            { "$ref": "common/milestone.schema.json" },
-            { "type": "null" }
-          ]
-        },
-        "commits_url": { "type": "string" },
-        "review_comments_url": { "type": "string" },
-        "review_comment_url": { "type": "string" },
-        "comments_url": { "type": "string" },
-        "statuses_url": { "type": "string" },
-        "head": {
+      "allOf": [
+        { "$ref": "common/pull-request.schema.json" },
+        {
           "type": "object",
-          "required": ["label", "ref", "sha", "user", "repo"],
+          "required": ["state", "closed_at", "merged"],
           "properties": {
-            "label": { "type": "string" },
-            "ref": { "type": "string" },
-            "sha": { "type": "string" },
-            "user": { "$ref": "common/user.schema.json" },
-            "repo": { "$ref": "common/repository.schema.json" }
+            "state": {
+              "type": "string",
+              "enum": ["closed"],
+              "description": "State of this Pull Request. Either `open` or `closed`."
+            },
+            "closed_at": { "type": "string", "format": "date-time" },
+            "merged": { "type": "boolean" }
           },
-          "additionalProperties": false
-        },
-        "base": {
-          "type": "object",
-          "required": ["label", "ref", "sha", "user", "repo"],
-          "properties": {
-            "label": { "type": "string" },
-            "ref": { "type": "string" },
-            "sha": { "type": "string" },
-            "user": { "$ref": "common/user.schema.json" },
-            "repo": { "$ref": "common/repository.schema.json" }
-          },
-          "additionalProperties": false
-        },
-        "_links": {
-          "type": "object",
-          "required": [
-            "self",
-            "html",
-            "issue",
-            "comments",
-            "review_comments",
-            "review_comment",
-            "commits",
-            "statuses"
-          ],
-          "properties": {
-            "self": { "$ref": "common/link.schema.json" },
-            "html": { "$ref": "common/link.schema.json" },
-            "issue": { "$ref": "common/link.schema.json" },
-            "comments": { "$ref": "common/link.schema.json" },
-            "review_comments": { "$ref": "common/link.schema.json" },
-            "review_comment": { "$ref": "common/link.schema.json" },
-            "commits": { "$ref": "common/link.schema.json" },
-            "statuses": { "$ref": "common/link.schema.json" }
-          },
-          "additionalProperties": false
-        },
-        "author_association": {
-          "$ref": "common/author_association.schema.json"
-        },
-        "active_lock_reason": {
-          "type": ["string", "null"],
-          "enum": ["resolved", "off-topic", "too heated", "spam", null]
-        },
-        "draft": {
-          "type": "boolean",
-          "description": "Indicates whether or not the pull request is a draft."
-        },
-        "merged": { "type": "boolean" },
-        "mergeable": { "type": ["boolean", "null"] },
-        "rebaseable": { "type": ["boolean", "null"] },
-        "mergeable_state": { "type": "string" },
-        "merged_by": {
-          "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": "null" }]
-        },
-        "comments": { "type": "integer" },
-        "review_comments": { "type": "integer" },
-        "maintainer_can_modify": {
-          "type": "boolean",
-          "description": "Indicates whether maintainers can modify the pull request."
-        },
-        "commits": { "type": "integer" },
-        "additions": { "type": "integer" },
-        "deletions": { "type": "integer" },
-        "changed_files": { "type": "integer" }
-      },
-      "additionalProperties": false
+          "tsAdditionalProperties": false
+        }
+      ]
     },
     "label": { "$ref": "common/label.schema.json" },
     "assignee": { "$ref": "common/user.schema.json" },

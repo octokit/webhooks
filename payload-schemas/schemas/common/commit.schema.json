@@ -21,7 +21,7 @@
     "distinct": { "type": "boolean" },
     "message": { "type": "string" },
     "timestamp": { "type": "string" },
-    "url": { "type": "string" },
+    "url": { "type": "string", "format": "uri" },
     "author": {
       "allOf": [
         { "$ref": "committer.schema.json" },
