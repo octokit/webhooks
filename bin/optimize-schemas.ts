@@ -90,6 +90,10 @@ forEachJsonFile(pathToSchemas, (pathToSchema) => {
           ) {
             value.additionalProperties ||= false;
           }
+
+          if (key === "url" || (key.endsWith("_url") && key !== "ssh_url")) {
+            value.format ||= "uri";
+          }
         }
 
         if (value.anyOf) {

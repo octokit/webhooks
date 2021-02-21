@@ -1760,7 +1760,7 @@ export interface DeploymentStatusCreatedEvent {
     creator: User;
     description: string;
     environment: string;
-    target_url: string;
+    target_url: string | "";
     created_at: string;
     updated_at: string;
     deployment_url: string;

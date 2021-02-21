@@ -35,7 +35,9 @@
         "creator": { "$ref": "common/user.schema.json" },
         "description": { "type": "string" },
         "environment": { "type": "string" },
-        "target_url": { "type": "string" },
+        "target_url": {
+          "oneOf": [{ "type": "string", "format": "uri" }, { "enum": [""] }]
+        },
         "created_at": { "type": "string" },
         "updated_at": { "type": "string" },
         "deployment_url": { "type": "string", "format": "uri" },
