@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/alert-instance.schema.json",
+  "required": ["ref", "analysis_key", "environment", "state"],
+  "type": "object",
+  "properties": {
+    "ref": {
+      "type": "string",
+      "description": "The full Git reference, formatted as `refs/heads/<branch name>`."
+    },
+    "analysis_key": {
+      "type": "string",
+      "description": "Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name."
+    },
+    "environment": {
+      "type": "string",
+      "description": "Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed."
+    },
+    "state": {
+      "type": "string",
+      "description": "State of a code scanning alert.",
+      "enum": ["open", "dismissed", "fixed"]
+    }
+  },
+  "additionalProperties": false,
+  "title": "Alert Instance"
+}

@@ -1132,24 +1132,7 @@ export interface CodeScanningAlertAppearedInBranchEvent {
      * The GitHub URL of the alert resource.
      */
     html_url: string;
-    instances: {
-      /**
-       * The full Git reference, formatted as `refs/heads/<branch name>`.
-       */
-      ref: string;
-      /**
-       * Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
-       */
-      analysis_key: string;
-      /**
-       * Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.
-       */
-      environment: string;
-      /**
-       * State of a code scanning alert.
-       */
-      state: "open" | "dismissed" | "fixed";
-    }[];
+    instances: AlertInstance[];
     /**
      * State of a code scanning alert.
      */
@@ -1198,6 +1181,24 @@ export interface CodeScanningAlertAppearedInBranchEvent {
   installation?: InstallationLite;
   organization?: Organization;
 }
+export interface AlertInstance {
+  /**
+   * The full Git reference, formatted as `refs/heads/<branch name>`.
+   */
+  ref: string;
+  /**
+   * Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
+   */
+  analysis_key: string;
+  /**
+   * Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.
+   */
+  environment: string;
+  /**
+   * State of a code scanning alert.
+   */
+  state: "open" | "dismissed" | "fixed";
+}
 export interface GitHubOrg {
   login: "github";
   id: 9919;
@@ -1245,24 +1246,9 @@ export interface CodeScanningAlertClosedByUserEvent {
      * The GitHub URL of the alert resource.
      */
     html_url: string;
-    instances: {
-      /**
-       * The full Git reference, formatted as `refs/heads/<branch name>`.
-       */
-      ref: string;
-      /**
-       * Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
-       */
-      analysis_key: string;
-      /**
-       * Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.
-       */
-      environment: string;
-      /**
-       * State of a code scanning alert.
-       */
+    instances: (AlertInstance & {
       state: "dismissed";
-    }[];
+    })[];
     /**
      * State of a code scanning alert.
      */
@@ -1327,24 +1313,9 @@ export interface CodeScanningAlertCreatedEvent {
      * The GitHub URL of the alert resource.
      */
     html_url: string;
-    instances: {
-      /**
-       * The full Git reference, formatted as `refs/heads/<branch name>`.
-       */
-      ref: string;
-      /**
-       * Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
-       */
-      analysis_key: string;
-      /**
-       * Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.
-       */
-      environment: string;
-      /**
-       * State of a code scanning alert.
-       */
+    instances: (AlertInstance & {
       state: "open" | "dismissed";
-    }[];
+    })[];
     /**
      * State of a code scanning alert.
      */
@@ -1409,24 +1380,9 @@ export interface CodeScanningAlertFixedEvent {
      * The GitHub URL of the alert resource.
      */
     html_url: string;
-    instances: {
-      /**
-       * The full Git reference, formatted as `refs/heads/<branch name>`.
-       */
-      ref: string;
-      /**
-       * Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
-       */
-      analysis_key: string;
-      /**
-       * Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.
-       */
-      environment: string;
-      /**
-       * State of a code scanning alert.
-       */
-      state: "open" | "dismissed" | "fixed";
-    }[];
+    instances: (AlertInstance & {
+      state: "fixed";
+    })[];
     /**
      * State of a code scanning alert.
      */
@@ -1491,24 +1447,9 @@ export interface CodeScanningAlertReopenedEvent {
      * The GitHub URL of the alert resource.
      */
     html_url: string;
-    instances: {
-      /**
-       * The full Git reference, formatted as `refs/heads/<branch name>`.
-       */
-      ref: string;
-      /**
-       * Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
-       */
-      analysis_key: string;
-      /**
-       * Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.
-       */
-      environment: string;
-      /**
-       * State of a code scanning alert.
-       */
+    instances: (AlertInstance & {
       state: "open";
-    }[];
+    })[];
     /**
      * State of a code scanning alert.
      */
@@ -1573,24 +1514,9 @@ export interface CodeScanningAlertReopenedByUserEvent {
      * The GitHub URL of the alert resource.
      */
     html_url: string;
-    instances: {
-      /**
-       * The full Git reference, formatted as `refs/heads/<branch name>`.
-       */
-      ref: string;
-      /**
-       * Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name.
-       */
-      analysis_key: string;
-      /**
-       * Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed.
-       */
-      environment: string;
-      /**
-       * State of a code scanning alert.
-       */
+    instances: (AlertInstance & {
       state: "open";
-    }[];
+    })[];
     /**
      * State of a code scanning alert.
      */
