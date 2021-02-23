@@ -180,7 +180,8 @@
             },
             "additionalProperties": false
           }
-        }
+        },
+        "deployment": { "$ref": "common/check-run-deployment.schema.json" }
       },
       "additionalProperties": false
     },
