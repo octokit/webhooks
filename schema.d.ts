@@ -316,41 +316,13 @@ export interface CheckRunCompletedEvent {
       url: string;
       before: string | null;
       after: string | null;
-      pull_requests: {
-        url: string;
-        id: number;
-        number: number;
-        head: {
-          ref: string;
-          sha: string;
-          repo: RepoRef;
-        };
-        base: {
-          ref: string;
-          sha: string;
-          repo: RepoRef;
-        };
-      }[];
+      pull_requests: CheckRunPullRequest[];
       app: App;
       created_at: string;
       updated_at: string;
     };
     app: App;
-    pull_requests: {
-      url: string;
-      id: number;
-      number: number;
-      head: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-      base: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-    }[];
+    pull_requests: CheckRunPullRequest[];
     deployment?: CheckRunDeployment;
   };
   requested_action?: {
@@ -360,6 +332,21 @@ export interface CheckRunCompletedEvent {
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
+}
+export interface CheckRunPullRequest {
+  url: string;
+  id: number;
+  number: number;
+  head: {
+    ref: string;
+    sha: string;
+    repo: RepoRef;
+  };
+  base: {
+    ref: string;
+    sha: string;
+    repo: RepoRef;
+  };
 }
 export interface RepoRef {
   id: number;
@@ -691,41 +678,13 @@ export interface CheckRunCreatedEvent {
       url: string;
       before: string | null;
       after: string | null;
-      pull_requests: {
-        url: string;
-        id: number;
-        number: number;
-        head: {
-          ref: string;
-          sha: string;
-          repo: RepoRef;
-        };
-        base: {
-          ref: string;
-          sha: string;
-          repo: RepoRef;
-        };
-      }[];
+      pull_requests: CheckRunPullRequest[];
       app: App;
       created_at: string;
       updated_at: string;
     };
     app: App;
-    pull_requests: {
-      url: string;
-      id: number;
-      number: number;
-      head: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-      base: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-    }[];
+    pull_requests: CheckRunPullRequest[];
     deployment?: CheckRunDeployment;
   };
   requested_action?: {
@@ -808,41 +767,13 @@ export interface CheckRunRequestedActionEvent {
       url: string;
       before: string | null;
       after: string | null;
-      pull_requests: {
-        url: string;
-        id: number;
-        number: number;
-        head: {
-          ref: string;
-          sha: string;
-          repo: RepoRef;
-        };
-        base: {
-          ref: string;
-          sha: string;
-          repo: RepoRef;
-        };
-      }[];
+      pull_requests: CheckRunPullRequest[];
       app: App;
       created_at: string;
       updated_at: string;
     };
     app: App;
-    pull_requests: {
-      url: string;
-      id: number;
-      number: number;
-      head: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-      base: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-    }[];
+    pull_requests: CheckRunPullRequest[];
     deployment?: CheckRunDeployment;
   };
   requested_action?: {
@@ -924,41 +855,13 @@ export interface CheckRunRerequestedEvent {
       url: string;
       before: string | null;
       after: string | null;
-      pull_requests: {
-        url: string;
-        id: number;
-        number: number;
-        head: {
-          ref: string;
-          sha: string;
-          repo: RepoRef;
-        };
-        base: {
-          ref: string;
-          sha: string;
-          repo: RepoRef;
-        };
-      }[];
+      pull_requests: CheckRunPullRequest[];
       app: App;
       created_at: string;
       updated_at: string;
     };
     app: App;
-    pull_requests: {
-      url: string;
-      id: number;
-      number: number;
-      head: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-      base: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-    }[];
+    pull_requests: CheckRunPullRequest[];
     deployment?: CheckRunDeployment;
   };
   requested_action?: {
@@ -992,21 +895,7 @@ export interface CheckSuiteCompletedEvent {
     url: string;
     before: string;
     after: string;
-    pull_requests: {
-      url: string;
-      id: number;
-      number: number;
-      head: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-      base: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-    }[];
+    pull_requests: CheckRunPullRequest[];
     app: App;
     created_at: string;
     updated_at: string;
@@ -1059,21 +948,7 @@ export interface CheckSuiteRequestedEvent {
     url: string;
     before: string;
     after: string;
-    pull_requests: {
-      url: string;
-      id: number;
-      number: number;
-      head: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-      base: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-    }[];
+    pull_requests: CheckRunPullRequest[];
     app: App;
     created_at: string;
     updated_at: string;
@@ -1109,21 +984,7 @@ export interface CheckSuiteRerequestedEvent {
     url: string;
     before: string;
     after: string;
-    pull_requests: {
-      url: string;
-      id: number;
-      number: number;
-      head: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-      base: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-    }[];
+    pull_requests: CheckRunPullRequest[];
     app: App;
     created_at: string;
     updated_at: string;
