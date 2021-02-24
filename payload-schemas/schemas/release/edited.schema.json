@@ -11,13 +11,23 @@
         "body": {
           "type": "object",
           "required": ["from"],
-          "properties": { "from": { "type": "string" } },
+          "properties": {
+            "from": {
+              "type": "string",
+              "description": "The previous version of the body if the action was `edited`."
+            }
+          },
           "additionalProperties": false
         },
         "name": {
           "type": "object",
           "required": ["from"],
-          "properties": { "from": { "type": "string" } },
+          "properties": {
+            "from": {
+              "type": "string",
+              "description": "The previous version of the name if the action was `edited`."
+            }
+          },
           "additionalProperties": false
         }
       },
@@ -25,6 +35,7 @@
     },
     "release": {
       "type": "object",
+      "description": "The [release](https://docs.github.com/en/rest/reference/repos/#get-a-release) object.",
       "required": [
         "url",
         "assets_url",

@@ -23,7 +23,10 @@
       "description": "Whether this commit is distinct from any that have been pushed before."
     },
     "message": { "type": "string", "description": "The commit message." },
-    "timestamp": { "type": "string" },
+    "timestamp": {
+      "type": "string",
+      "description": "The ISO 8601 timestamp of the commit."
+    },
     "url": {
       "type": "string",
       "format": "uri",
@@ -51,9 +54,21 @@
         }
       ]
     },
-    "added": { "type": "array", "items": { "type": "string" } },
-    "removed": { "type": "array", "items": { "type": "string" } },
-    "modified": { "type": "array", "items": { "type": "string" } }
+    "added": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "An array of files added in the commit."
+    },
+    "removed": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "An array of files modified by the commit."
+    },
+    "modified": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "An array of files removed in the commit."
+    }
   },
   "additionalProperties": false,
   "title": "Commit"

@@ -25,7 +25,10 @@
       },
       "additionalProperties": false
     },
-    "effective_date": { "type": "string" },
+    "effective_date": {
+      "type": "string",
+      "description": "The `pending_cancellation` and `pending_tier_change` event types will include the date the cancellation or tier change will take effect."
+    },
     "sender": { "$ref": "common/user.schema.json" }
   },
   "additionalProperties": false,

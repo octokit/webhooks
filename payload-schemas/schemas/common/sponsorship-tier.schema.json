@@ -1,6 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "common/sponsorship-tier.schema.json",
+  "description": "The `tier_changed` and `pending_tier_change` will include the original tier before the change or pending change. For more information, see the pending tier change payload.",
   "required": [
     "node_id",
     "created_at",

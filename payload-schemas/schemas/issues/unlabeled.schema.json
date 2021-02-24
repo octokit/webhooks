@@ -6,7 +6,10 @@
   "properties": {
     "action": { "type": "string", "enum": ["unlabeled"] },
     "issue": { "$ref": "common/issue.schema.json" },
-    "label": { "$ref": "common/label.schema.json" },
+    "label": {
+      "$ref": "common/label.schema.json",
+      "description": "The optional label that was added or removed from the issue."
+    },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },

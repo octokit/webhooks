@@ -7,6 +7,7 @@
     "action": { "type": "string", "enum": ["dismissed"] },
     "review": {
       "type": "object",
+      "description": "The review that was affected.",
       "required": [
         "id",
         "node_id",

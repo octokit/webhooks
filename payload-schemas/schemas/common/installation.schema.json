@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "common/installation.schema.json",
-  "description": "Installation",
+  "description": "The GitHub App installation.",
   "required": [
     "id",
     "account",

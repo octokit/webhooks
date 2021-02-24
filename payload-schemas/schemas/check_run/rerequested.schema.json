@@ -145,7 +145,13 @@
     },
     "requested_action": {
       "type": ["object", "null"],
-      "properties": { "identifier": { "type": "string" } },
+      "description": "The action requested by the user.",
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "description": "The integrator reference of the action requested by the user."
+        }
+      },
       "additionalProperties": false
     },
     "repository": { "$ref": "common/repository.schema.json" },

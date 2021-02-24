@@ -5,7 +5,10 @@
   "required": ["action", "changes", "member", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["edited"] },
-    "member": { "$ref": "common/user.schema.json" },
+    "member": {
+      "$ref": "common/user.schema.json",
+      "description": "The user who's permissions are changed."
+    },
     "changes": {
       "type": "object",
       "description": "The changes to the collaborator permissions",

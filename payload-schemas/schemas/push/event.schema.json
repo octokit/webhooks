@@ -24,11 +24,11 @@
     },
     "before": {
       "type": "string",
-      "description": "The SHA of the most recent commit on ref before the push."
+      "description": "The SHA of the most recent commit on `ref` before the push."
     },
     "after": {
       "type": "string",
-      "description": "The SHA of the most recent commit on ref after the push."
+      "description": "The SHA of the most recent commit on `ref` after the push."
     },
     "created": { "type": "boolean" },
     "deleted": { "type": "boolean" },

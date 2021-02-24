@@ -6,7 +6,10 @@
   "required": ["action", "member", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["added"] },
-    "member": { "$ref": "common/user.schema.json" },
+    "member": {
+      "$ref": "common/user.schema.json",
+      "description": "The user that was added."
+    },
     "repository": { "$ref": "common/repository.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },
     "sender": { "$ref": "common/user.schema.json" }
