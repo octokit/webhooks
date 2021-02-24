@@ -572,6 +572,15 @@
         </td>
       </tr>
       <tr>
+        <td><code>deployment</code></td>
+        <td><code>object</code></td>
+        <td>
+          A deployment to a repository environment. This will only be populated
+          if the check run was created by a GitHub Actions workflow job that
+          references an environment.
+        </td>
+      </tr>
+      <tr>
         <td><code>requested_action</code></td>
         <td><code>object</code></td>
         <td>The action requested by the user.</td>
@@ -812,7 +821,20 @@
           }
         }
       }
-    ]
+    ],
+    <span class="hljs-attr">"deployment"</span>: {
+      <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://api.github.com/repos/Codertocat/Hello-World/deployments/326191728"</span>,
+      <span class="hljs-attr">"id"</span>: <span class="hljs-number">326191728</span>,
+      <span class="hljs-attr">"node_id"</span>: <span class="hljs-string">"MDEwOkRlcGxveW1lbnQzMjYxOTE3Mjg="</span>,
+      <span class="hljs-attr">"task"</span>: <span class="hljs-string">"deploy"</span>,
+      <span class="hljs-attr">"original_environment"</span>: <span class="hljs-string">"lab"</span>,
+      <span class="hljs-attr">"environment"</span>: <span class="hljs-string">"lab"</span>,
+      <span class="hljs-attr">"description"</span>: <span class="hljs-literal">null</span>,
+      <span class="hljs-attr">"created_at"</span>: <span class="hljs-string">"2021-02-18T08:22:48Z"</span>,
+      <span class="hljs-attr">"updated_at"</span>: <span class="hljs-string">"2021-02-18T09:47:16Z"</span>,
+      <span class="hljs-attr">"statuses_url"</span>: <span class="hljs-string">"https://api.github.com/repos/Codertocat/Hello-World/deployments/326191728/statuses"</span>,
+      <span class="hljs-attr">"repository_url"</span>: <span class="hljs-string">"https://api.github.com/repos/Codertocat/Hello-World"</span>
+    }
   },
   <span class="hljs-attr">"repository"</span>: {
     <span class="hljs-attr">"id"</span>: <span class="hljs-number">186853002</span>,

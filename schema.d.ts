@@ -351,6 +351,7 @@ export interface CheckRunCompletedEvent {
         repo: RepoRef;
       };
     }[];
+    deployment?: CheckRunDeployment;
   };
   requested_action?: {
     identifier?: string;
@@ -442,6 +443,22 @@ export interface User {
   received_events_url: string;
   type: "Bot" | "User" | "Organization";
   site_admin: boolean;
+}
+/**
+ * A deployment to a repository environment. This will only be populated if the check run was created by a GitHub Actions workflow job that references an environment.
+ */
+export interface CheckRunDeployment {
+  url: string;
+  id: number;
+  node_id: string;
+  task: string;
+  original_environment: string;
+  environment: string;
+  description: string | null;
+  created_at: string;
+  updated_at: string;
+  statuses_url: string;
+  repository_url: string;
 }
 /**
  * A git repository
@@ -709,6 +726,7 @@ export interface CheckRunCreatedEvent {
         repo: RepoRef;
       };
     }[];
+    deployment?: CheckRunDeployment;
   };
   requested_action?: {
     identifier?: string;
@@ -825,6 +843,7 @@ export interface CheckRunRequestedActionEvent {
         repo: RepoRef;
       };
     }[];
+    deployment?: CheckRunDeployment;
   };
   requested_action?: {
     identifier?: string;
@@ -940,6 +959,7 @@ export interface CheckRunRerequestedEvent {
         repo: RepoRef;
       };
     }[];
+    deployment?: CheckRunDeployment;
   };
   requested_action?: {
     identifier?: string;
