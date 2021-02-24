@@ -4688,7 +4688,6 @@ export interface SecretScanningAlertCreatedEvent {
   repository: Repository;
   organization?: Organization;
   installation?: InstallationLite;
-  sender: User;
 }
 export interface SecretScanningAlertReopenedEvent {
   action: "reopened";

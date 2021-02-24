@@ -25,8 +25,7 @@
     },
     "repository": { "$ref": "common/repository.schema.json" },
     "organization": { "$ref": "common/organization.schema.json" },
-    "installation": { "$ref": "common/installation-lite.schema.json" },
-    "sender": { "$ref": "common/user.schema.json" }
+    "installation": { "$ref": "common/installation-lite.schema.json" }
   },
   "additionalProperties": false,
   "title": "secret_scanning_alert created event"
