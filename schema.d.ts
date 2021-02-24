@@ -2200,9 +2200,7 @@ export interface IssueCommentEditedEvent {
 export interface IssuesAssignedEvent {
   action: "assigned";
   issue: Issue;
-  label?: Label;
   assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2214,9 +2212,6 @@ export interface IssuesClosedEvent {
     state: "closed";
     closed_at: string;
   };
-  label?: Label;
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2225,9 +2220,6 @@ export interface IssuesClosedEvent {
 export interface IssuesDeletedEvent {
   action: "deleted";
   issue: Issue;
-  label?: Label;
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2236,9 +2228,6 @@ export interface IssuesDeletedEvent {
 export interface IssuesDemilestonedEvent {
   action: "demilestoned";
   issue: Issue;
-  label?: Label;
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2256,8 +2245,6 @@ export interface IssuesEditedEvent {
       from: string;
     };
   };
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2267,8 +2254,6 @@ export interface IssuesLabeledEvent {
   action: "labeled";
   issue: Issue;
   label?: Label;
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2280,9 +2265,6 @@ export interface IssuesLockedEvent {
     locked: true;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam";
   };
-  label?: Label;
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2291,9 +2273,6 @@ export interface IssuesLockedEvent {
 export interface IssuesMilestonedEvent {
   action: "milestoned";
   issue: Issue;
-  label?: Label;
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2305,9 +2284,6 @@ export interface IssuesOpenedEvent {
     state: "open";
     closed_at: null;
   };
-  label?: Label;
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2316,9 +2292,6 @@ export interface IssuesOpenedEvent {
 export interface IssuesPinnedEvent {
   action: "pinned";
   issue: Issue;
-  label?: Label;
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2329,9 +2302,6 @@ export interface IssuesReopenedEvent {
   issue: Issue & {
     state: "open";
   };
-  label?: Label;
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2340,9 +2310,6 @@ export interface IssuesReopenedEvent {
 export interface IssuesTransferredEvent {
   action: "transferred";
   issue: Issue;
-  label?: Label;
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2351,9 +2318,7 @@ export interface IssuesTransferredEvent {
 export interface IssuesUnassignedEvent {
   action: "unassigned";
   issue: Issue;
-  label?: Label;
   assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2363,8 +2328,6 @@ export interface IssuesUnlabeledEvent {
   action: "unlabeled";
   issue: Issue;
   label?: Label;
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2376,9 +2339,6 @@ export interface IssuesUnlockedEvent {
     locked: false;
     active_lock_reason: null;
   };
-  label?: Label;
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2387,9 +2347,6 @@ export interface IssuesUnlockedEvent {
 export interface IssuesUnpinnedEvent {
   action: "unpinned";
   issue: Issue;
-  label?: Label;
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -3208,7 +3165,6 @@ export interface PullRequestAssignedEvent {
   action: "assigned";
   number: number;
   pull_request: PullRequest;
-  label?: Label;
   assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
@@ -3332,8 +3288,6 @@ export interface PullRequestClosedEvent {
     closed_at: string;
     merged: boolean;
   };
-  label?: Label;
-  assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -3353,8 +3307,6 @@ export interface PullRequestConvertedToDraftEvent {
     merged: boolean;
     merged_by: null;
   };
-  label?: Label;
-  assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -3372,8 +3324,6 @@ export interface PullRequestEditedEvent {
     };
   };
   pull_request: PullRequest;
-  label?: Label;
-  assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -3384,7 +3334,6 @@ export interface PullRequestLabeledEvent {
   number: number;
   pull_request: PullRequest;
   label?: Label;
-  assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -3394,8 +3343,6 @@ export interface PullRequestLockedEvent {
   action: "locked";
   number: number;
   pull_request: PullRequest;
-  label?: Label;
-  assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -3412,8 +3359,6 @@ export interface PullRequestOpenedEvent {
     active_lock_reason: null;
     merged_by: null;
   };
-  label?: Label;
-  assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -3434,8 +3379,6 @@ export interface PullRequestReadyForReviewEvent {
     merged: boolean;
     merged_by: null;
   };
-  label?: Label;
-  assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -3452,8 +3395,6 @@ export interface PullRequestReopenedEvent {
     merged: boolean;
     merged_by: null;
   };
-  label?: Label;
-  assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -3483,8 +3424,6 @@ export interface PullRequestSynchronizeEvent {
   action: "synchronize";
   number: number;
   pull_request: PullRequest;
-  label?: Label;
-  assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -3494,7 +3433,6 @@ export interface PullRequestUnassignedEvent {
   action: "unassigned";
   number: number;
   pull_request: PullRequest;
-  label?: Label;
   assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
@@ -3506,7 +3444,6 @@ export interface PullRequestUnlabeledEvent {
   number: number;
   pull_request: PullRequest;
   label?: Label;
-  assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -3516,8 +3453,6 @@ export interface PullRequestUnlockedEvent {
   action: "unlocked";
   number: number;
   pull_request: PullRequest;
-  label?: Label;
-  assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;

@@ -37,8 +37,6 @@
         }
       ]
     },
-    "label": { "$ref": "common/label.schema.json" },
-    "assignee": { "$ref": "common/user.schema.json" },
     "repository": { "$ref": "common/repository.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },
     "organization": { "$ref": "common/organization.schema.json" },
