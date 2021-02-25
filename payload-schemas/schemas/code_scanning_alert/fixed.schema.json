@@ -111,7 +111,7 @@
           "additionalProperties": false
         },
         "most_recent_instance": { "$ref": "common/alert-instance.schema.json" },
-        "instances_url": { "type":"string","format": "uri"}
+        "instances_url": { "type": "string", "format": "uri" }
       },
       "additionalProperties": false
     },
