@@ -19216,7 +19216,7 @@
   },
   {
     "name": "label",
-    "description": "Activity related to an issue. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[labels](https://docs.github.com/en/rest/reference/issues#labels)\" REST API.",
+    "description": "Activity related to a label. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[labels](https://docs.github.com/en/rest/reference/issues#labels)\" REST API.",
     "actions": ["created", "deleted", "edited"],
     "properties": {
       "label": {
