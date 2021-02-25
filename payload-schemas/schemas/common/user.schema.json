@@ -27,7 +27,7 @@
     "id": { "type": "integer" },
     "node_id": { "type": "string" },
     "name": { "type": "string" },
-    "email": { "type": "string" },
+    "email": { "type": ["string", "null"] },
     "avatar_url": { "type": "string", "format": "uri" },
     "gravatar_id": { "type": "string" },
     "url": { "type": "string", "format": "uri" },
