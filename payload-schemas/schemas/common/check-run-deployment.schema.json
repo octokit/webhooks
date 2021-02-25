@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/check-run-deployment.schema.json",
+  "type": "object",
+  "required": [
+    "url",
+    "id",
+    "node_id",
+    "task",
+    "original_environment",
+    "environment",
+    "description",
+    "created_at",
+    "updated_at",
+    "statuses_url",
+    "repository_url"
+  ],
+  "properties": {
+    "url": { "type": "string", "format": "uri" },
+    "id": { "type": "integer" },
+    "node_id": { "type": "string" },
+    "task": { "type": "string" },
+    "original_environment": { "type": "string" },
+    "environment": { "type": "string" },
+    "description": { "type": ["string", "null"] },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "statuses_url": { "type": "string", "format": "uri" },
+    "repository_url": { "type": "string", "format": "uri" }
+  },
+  "additionalProperties": false,
+  "description": "A deployment to a repository environment. This will only be populated if the check run was created by a GitHub Actions workflow job that references an environment.",
+  "title": "Check Run Deployment"
+}

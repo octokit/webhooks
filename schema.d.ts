@@ -316,41 +316,14 @@ export interface CheckRunCompletedEvent {
       url: string;
       before: string | null;
       after: string | null;
-      pull_requests: {
-        url: string;
-        id: number;
-        number: number;
-        head: {
-          ref: string;
-          sha: string;
-          repo: RepoRef;
-        };
-        base: {
-          ref: string;
-          sha: string;
-          repo: RepoRef;
-        };
-      }[];
+      pull_requests: CheckRunPullRequest[];
       app: App;
       created_at: string;
       updated_at: string;
     };
     app: App;
-    pull_requests: {
-      url: string;
-      id: number;
-      number: number;
-      head: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-      base: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-    }[];
+    pull_requests: CheckRunPullRequest[];
+    deployment?: CheckRunDeployment;
   };
   requested_action?: {
     identifier?: string;
@@ -359,6 +332,21 @@ export interface CheckRunCompletedEvent {
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
+}
+export interface CheckRunPullRequest {
+  url: string;
+  id: number;
+  number: number;
+  head: {
+    ref: string;
+    sha: string;
+    repo: RepoRef;
+  };
+  base: {
+    ref: string;
+    sha: string;
+    repo: RepoRef;
+  };
 }
 export interface RepoRef {
   id: number;
@@ -442,6 +430,22 @@ export interface User {
   received_events_url: string;
   type: "Bot" | "User" | "Organization";
   site_admin: boolean;
+}
+/**
+ * A deployment to a repository environment. This will only be populated if the check run was created by a GitHub Actions workflow job that references an environment.
+ */
+export interface CheckRunDeployment {
+  url: string;
+  id: number;
+  node_id: string;
+  task: string;
+  original_environment: string;
+  environment: string;
+  description: string | null;
+  created_at: string;
+  updated_at: string;
+  statuses_url: string;
+  repository_url: string;
 }
 /**
  * A git repository
@@ -674,41 +678,14 @@ export interface CheckRunCreatedEvent {
       url: string;
       before: string | null;
       after: string | null;
-      pull_requests: {
-        url: string;
-        id: number;
-        number: number;
-        head: {
-          ref: string;
-          sha: string;
-          repo: RepoRef;
-        };
-        base: {
-          ref: string;
-          sha: string;
-          repo: RepoRef;
-        };
-      }[];
+      pull_requests: CheckRunPullRequest[];
       app: App;
       created_at: string;
       updated_at: string;
     };
     app: App;
-    pull_requests: {
-      url: string;
-      id: number;
-      number: number;
-      head: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-      base: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-    }[];
+    pull_requests: CheckRunPullRequest[];
+    deployment?: CheckRunDeployment;
   };
   requested_action?: {
     identifier?: string;
@@ -790,41 +767,14 @@ export interface CheckRunRequestedActionEvent {
       url: string;
       before: string | null;
       after: string | null;
-      pull_requests: {
-        url: string;
-        id: number;
-        number: number;
-        head: {
-          ref: string;
-          sha: string;
-          repo: RepoRef;
-        };
-        base: {
-          ref: string;
-          sha: string;
-          repo: RepoRef;
-        };
-      }[];
+      pull_requests: CheckRunPullRequest[];
       app: App;
       created_at: string;
       updated_at: string;
     };
     app: App;
-    pull_requests: {
-      url: string;
-      id: number;
-      number: number;
-      head: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-      base: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-    }[];
+    pull_requests: CheckRunPullRequest[];
+    deployment?: CheckRunDeployment;
   };
   requested_action?: {
     identifier?: string;
@@ -905,41 +855,14 @@ export interface CheckRunRerequestedEvent {
       url: string;
       before: string | null;
       after: string | null;
-      pull_requests: {
-        url: string;
-        id: number;
-        number: number;
-        head: {
-          ref: string;
-          sha: string;
-          repo: RepoRef;
-        };
-        base: {
-          ref: string;
-          sha: string;
-          repo: RepoRef;
-        };
-      }[];
+      pull_requests: CheckRunPullRequest[];
       app: App;
       created_at: string;
       updated_at: string;
     };
     app: App;
-    pull_requests: {
-      url: string;
-      id: number;
-      number: number;
-      head: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-      base: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-    }[];
+    pull_requests: CheckRunPullRequest[];
+    deployment?: CheckRunDeployment;
   };
   requested_action?: {
     identifier?: string;
@@ -972,21 +895,7 @@ export interface CheckSuiteCompletedEvent {
     url: string;
     before: string;
     after: string;
-    pull_requests: {
-      url: string;
-      id: number;
-      number: number;
-      head: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-      base: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-    }[];
+    pull_requests: CheckRunPullRequest[];
     app: App;
     created_at: string;
     updated_at: string;
@@ -1039,21 +948,7 @@ export interface CheckSuiteRequestedEvent {
     url: string;
     before: string;
     after: string;
-    pull_requests: {
-      url: string;
-      id: number;
-      number: number;
-      head: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-      base: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-    }[];
+    pull_requests: CheckRunPullRequest[];
     app: App;
     created_at: string;
     updated_at: string;
@@ -1089,21 +984,7 @@ export interface CheckSuiteRerequestedEvent {
     url: string;
     before: string;
     after: string;
-    pull_requests: {
-      url: string;
-      id: number;
-      number: number;
-      head: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-      base: {
-        ref: string;
-        sha: string;
-        repo: RepoRef;
-      };
-    }[];
+    pull_requests: CheckRunPullRequest[];
     app: App;
     created_at: string;
     updated_at: string;
@@ -1215,32 +1096,23 @@ export interface GitHubOrg {
   login: "github";
   id: 9919;
   node_id: "MDEyOk9yZ2FuaXphdGlvbjk5MTk=";
-  url: "https://api.github.com/orgs/github";
-  repos_url: "https://api.github.com/orgs/github/repos";
-  events_url: "https://api.github.com/orgs/github/events";
-  hooks_url: "https://api.github.com/orgs/github/hooks";
-  issues_url: "https://api.github.com/orgs/github/issues";
-  members_url: "https://api.github.com/orgs/github/members{/member}";
-  public_members_url: "https://api.github.com/orgs/github/public_members{/member}";
+  name?: "GitHub";
+  email?: null;
   avatar_url: "https://avatars.githubusercontent.com/u/9919?v=4";
-  description: "How people build software.";
-  name: "GitHub";
-  company: null;
-  blog: "https://github.com/about";
-  location: "San Francisco, CA";
-  email: null;
-  twitter_username: null;
-  is_verified: true;
-  has_organization_projects: true;
-  has_repository_projects: true;
-  public_repos: number;
-  public_gists: number;
-  followers: number;
-  following: number;
+  gravatar_id: string;
+  url: "https://api.github.com/users/github";
   html_url: "https://github.com/github";
-  created_at: "2008-05-11T04:37:31Z";
-  updated_at: string;
+  followers_url: "https://api.github.com/users/github/followers";
+  following_url: "https://api.github.com/users/github/following{/other_user}";
+  gists_url: "https://api.github.com/users/github/gists{/gist_id}";
+  starred_url: "https://api.github.com/users/github/starred{/owner}{/repo}";
+  subscriptions_url: "https://api.github.com/users/github/subscriptions";
+  organizations_url: "https://api.github.com/users/github/orgs";
+  repos_url: "https://api.github.com/users/github/repos";
+  events_url: "https://api.github.com/users/github/events{/privacy}";
+  received_events_url: "https://api.github.com/users/github/received_events";
   type: "Organization";
+  site_admin: boolean;
 }
 export interface CodeScanningAlertClosedByUserEvent {
   action: "closed_by_user";
@@ -2223,9 +2095,7 @@ export interface IssueCommentEditedEvent {
 export interface IssuesAssignedEvent {
   action: "assigned";
   issue: Issue;
-  label?: Label;
   assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2237,9 +2107,6 @@ export interface IssuesClosedEvent {
     state: "closed";
     closed_at: string;
   };
-  label?: Label;
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2248,9 +2115,6 @@ export interface IssuesClosedEvent {
 export interface IssuesDeletedEvent {
   action: "deleted";
   issue: Issue;
-  label?: Label;
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2259,9 +2123,6 @@ export interface IssuesDeletedEvent {
 export interface IssuesDemilestonedEvent {
   action: "demilestoned";
   issue: Issue;
-  label?: Label;
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2279,8 +2140,6 @@ export interface IssuesEditedEvent {
       from: string;
     };
   };
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2290,8 +2149,6 @@ export interface IssuesLabeledEvent {
   action: "labeled";
   issue: Issue;
   label?: Label;
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2303,9 +2160,6 @@ export interface IssuesLockedEvent {
     locked: true;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam";
   };
-  label?: Label;
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2314,9 +2168,6 @@ export interface IssuesLockedEvent {
 export interface IssuesMilestonedEvent {
   action: "milestoned";
   issue: Issue;
-  label?: Label;
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2328,9 +2179,6 @@ export interface IssuesOpenedEvent {
     state: "open";
     closed_at: null;
   };
-  label?: Label;
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2339,9 +2187,6 @@ export interface IssuesOpenedEvent {
 export interface IssuesPinnedEvent {
   action: "pinned";
   issue: Issue;
-  label?: Label;
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2352,9 +2197,6 @@ export interface IssuesReopenedEvent {
   issue: Issue & {
     state: "open";
   };
-  label?: Label;
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2363,9 +2205,6 @@ export interface IssuesReopenedEvent {
 export interface IssuesTransferredEvent {
   action: "transferred";
   issue: Issue;
-  label?: Label;
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2374,9 +2213,7 @@ export interface IssuesTransferredEvent {
 export interface IssuesUnassignedEvent {
   action: "unassigned";
   issue: Issue;
-  label?: Label;
   assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2386,8 +2223,6 @@ export interface IssuesUnlabeledEvent {
   action: "unlabeled";
   issue: Issue;
   label?: Label;
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2399,9 +2234,6 @@ export interface IssuesUnlockedEvent {
     locked: false;
     active_lock_reason: null;
   };
-  label?: Label;
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2410,9 +2242,6 @@ export interface IssuesUnlockedEvent {
 export interface IssuesUnpinnedEvent {
   action: "unpinned";
   issue: Issue;
-  label?: Label;
-  assignee?: User | null;
-  assignees?: User[];
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -3231,7 +3060,6 @@ export interface PullRequestAssignedEvent {
   action: "assigned";
   number: number;
   pull_request: PullRequest;
-  label?: Label;
   assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
@@ -3355,8 +3183,6 @@ export interface PullRequestClosedEvent {
     closed_at: string;
     merged: boolean;
   };
-  label?: Label;
-  assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -3376,8 +3202,6 @@ export interface PullRequestConvertedToDraftEvent {
     merged: boolean;
     merged_by: null;
   };
-  label?: Label;
-  assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -3395,8 +3219,6 @@ export interface PullRequestEditedEvent {
     };
   };
   pull_request: PullRequest;
-  label?: Label;
-  assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -3407,7 +3229,6 @@ export interface PullRequestLabeledEvent {
   number: number;
   pull_request: PullRequest;
   label?: Label;
-  assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -3417,8 +3238,6 @@ export interface PullRequestLockedEvent {
   action: "locked";
   number: number;
   pull_request: PullRequest;
-  label?: Label;
-  assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -3435,8 +3254,6 @@ export interface PullRequestOpenedEvent {
     active_lock_reason: null;
     merged_by: null;
   };
-  label?: Label;
-  assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -3457,8 +3274,6 @@ export interface PullRequestReadyForReviewEvent {
     merged: boolean;
     merged_by: null;
   };
-  label?: Label;
-  assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -3475,8 +3290,6 @@ export interface PullRequestReopenedEvent {
     merged: boolean;
     merged_by: null;
   };
-  label?: Label;
-  assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -3506,8 +3319,6 @@ export interface PullRequestSynchronizeEvent {
   action: "synchronize";
   number: number;
   pull_request: PullRequest;
-  label?: Label;
-  assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -3517,7 +3328,6 @@ export interface PullRequestUnassignedEvent {
   action: "unassigned";
   number: number;
   pull_request: PullRequest;
-  label?: Label;
   assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
@@ -3529,7 +3339,6 @@ export interface PullRequestUnlabeledEvent {
   number: number;
   pull_request: PullRequest;
   label?: Label;
-  assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -3539,8 +3348,6 @@ export interface PullRequestUnlockedEvent {
   action: "unlocked";
   number: number;
   pull_request: PullRequest;
-  label?: Label;
-  assignee?: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;

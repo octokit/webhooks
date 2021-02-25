@@ -16,14 +16,6 @@
         }
       ]
     },
-    "label": { "$ref": "common/label.schema.json" },
-    "assignee": {
-      "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": "null" }]
-    },
-    "assignees": {
-      "type": "array",
-      "items": { "$ref": "common/user.schema.json" }
-    },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },
