@@ -4978,7 +4978,7 @@ export interface WorkflowRun {
   jobs_url: string;
   logs_url: string;
   node_id: string;
-  pull_requests: unknown[];
+  pull_requests: PullRequest[];
   repository: {
     archive_url: string;
     assignees_url: string;
