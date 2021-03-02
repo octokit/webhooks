@@ -33,7 +33,7 @@
     "cancel_url": { "type": "string", "format": "uri" },
     "check_suite_url": { "type": "string", "format": "uri" },
     "conclusion": { "type": ["string", "null"] },
-    "created_at": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
     "event": { "type": "string" },
     "head_branch": { "type": "string" },
     "head_commit": { "$ref": "commit-simple.schema.json" },
@@ -49,7 +49,7 @@
     "rerun_url": { "type": "string", "format": "uri" },
     "run_number": { "type": "integer" },
     "status": { "type": "string" },
-    "updated_at": { "type": "string" },
+    "updated_at": { "type": "string", "format": "date-time" },
     "url": { "type": "string", "format": "uri" },
     "workflow_id": { "type": "integer" },
     "workflow_url": { "type": "string", "format": "uri" }
