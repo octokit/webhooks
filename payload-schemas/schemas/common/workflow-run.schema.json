@@ -44,7 +44,10 @@
     "jobs_url": { "type": "string", "format": "uri" },
     "logs_url": { "type": "string", "format": "uri" },
     "node_id": { "type": "string" },
-    "pull_requests": { "type": "array", "items": {} },
+    "pull_requests": {
+      "type": "array",
+      "items": { "$ref": "pull-request.schema.json" }
+    },
     "repository": { "$ref": "repository-lite.schema.json" },
     "rerun_url": { "type": "string", "format": "uri" },
     "run_number": { "type": "integer" },
