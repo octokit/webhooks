@@ -49237,7 +49237,7 @@
   },
   {
     "name": "repository_vulnerability_alert",
-    "description": "Activity related to security vulnerability alerts in a repository. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[About security alerts for vulnerable dependencies](/en/github/managing-security-vulnerabilities/about-security-alerts-for-vulnerable-dependencies)\".",
+    "description": "Activity related to security vulnerability alerts in a repository. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[About alerts for vulnerable dependencies](/en/github/managing-security-vulnerabilities/about-alerts-for-vulnerable-dependencies)\".",
     "actions": ["create", "dismiss", "resolve"],
     "properties": {
       "alert": {
@@ -50232,7 +50232,7 @@
   },
   {
     "name": "security_advisory",
-    "description": "Activity related to a security advisory. A security advisory provides information about security-related vulnerabilities in software on GitHub. The security advisory dataset also powers the GitHub security alerts, see \"[About security alerts for vulnerable dependencies](/en/articles/about-security-alerts-for-vulnerable-dependencies).\"",
+    "description": "Activity related to a security advisory. A security advisory provides information about security-related vulnerabilities in software on GitHub. The security advisory dataset also powers the GitHub security alerts, see \"[About alerts for vulnerable dependencies](/en/github/managing-security-vulnerabilities/about-alerts-for-vulnerable-dependencies).\"",
     "actions": ["performed", "published", "updated"],
     "properties": {
       "security_advisory": {
