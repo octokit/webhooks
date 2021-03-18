@@ -11157,8 +11157,8 @@
     Activity related to security vulnerability alerts in a repository. The type
     of activity is specified in the <code>action</code> property of the payload
     object. For more information, see the "<a
-      href="/en/github/managing-security-vulnerabilities/about-alerts-for-vulnerable-dependencies"
-      >About alerts for vulnerable dependencies</a
+      href="/en/github/managing-security-vulnerabilities/about-security-alerts-for-vulnerable-dependencies"
+      >About security alerts for vulnerable dependencies</a
     >".
   </p>
   <h4 id="availability-39"><a href="#availability-39">Availability</a></h4>
@@ -11595,9 +11595,8 @@
     Activity related to a security advisory. A security advisory provides
     information about security-related vulnerabilities in software on GitHub.
     The security advisory dataset also powers the GitHub security alerts, see
-    "<a
-      href="/en/github/managing-security-vulnerabilities/about-alerts-for-vulnerable-dependencies"
-      >About alerts for vulnerable dependencies</a
+    "<a href="/en/articles/about-security-alerts-for-vulnerable-dependencies"
+      >About security alerts for vulnerable dependencies</a
     >."
   </p>
   <h4 id="availability-41"><a href="#availability-41">Availability</a></h4>
@@ -13380,9 +13379,24 @@
         <td><code>action</code></td>
         <td><code>string</code></td>
         <td>
-          Most webhook payloads contain an <code>action</code> property that
-          contains the specific activity that triggered the event.
+          The action that was performed. Can be one of <code>requested</code> or
+          <code>completed</code>.
         </td>
+      </tr>
+      <tr>
+        <td><code>workflow_run</code></td>
+        <td><code>object</code></td>
+        <td>
+          The workflow run. Many <code>workflow_run</code> keys, such as
+          <code>head_branch</code>, <code>conclusion</code>, and
+          <code>pull_requests</code> are the same as those in a
+          <a href="#check_suite"><code>check_suite</code></a> object.
+        </td>
+      </tr>
+      <tr>
+        <td><code>workflow</code></td>
+        <td><code>object</code></td>
+        <td>The workflow that generated the workflow run.</td>
       </tr>
       <tr>
         <td><code>organization</code></td>

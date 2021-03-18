@@ -53813,8 +53813,16 @@
   {
     "name": "workflow_run",
     "description": "When a GitHub Actions workflow run is requested or completed. For more information, see \"[Events that trigger workflows](/en/actions/reference/events-that-trigger-workflows#workflow_run).\"",
-    "actions": ["action", "completed", "requested"],
+    "actions": ["completed", "requested"],
     "properties": {
+      "workflow_run": {
+        "type": "object",
+        "description": "The workflow run. Many `workflow_run` keys, such as `head_branch`, `conclusion`, and `pull_requests` are the same as those in a [`check_suite`](#check_suite) object."
+      },
+      "workflow": {
+        "type": "object",
+        "description": "The workflow that generated the workflow run."
+      },
       "organization": {
         "type": "object",
         "description": "Webhook payloads contain the [`organization`](https://docs.github.com/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
