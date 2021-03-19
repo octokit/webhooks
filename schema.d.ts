@@ -3055,7 +3055,7 @@ export interface User1 {
   id: number;
   node_id: string;
   name?: string;
-  email?: string;
+  email?: string | null;
   avatar_url: string;
   gravatar_id: string;
   url: string;
@@ -3098,7 +3098,7 @@ export interface User2 {
   id: number;
   node_id: string;
   name?: string;
-  email?: string;
+  email?: string | null;
   avatar_url: string;
   gravatar_id: string;
   url: string;
@@ -3130,7 +3130,7 @@ export interface User3 {
   id: number;
   node_id: string;
   name?: string;
-  email?: string;
+  email?: string | null;
   avatar_url: string;
   gravatar_id: string;
   url: string;
@@ -3167,7 +3167,7 @@ export interface User4 {
   id: number;
   node_id: string;
   name?: string;
-  email?: string;
+  email?: string | null;
   avatar_url: string;
   gravatar_id: string;
   url: string;
@@ -3263,7 +3263,7 @@ export interface User5 {
   id: number;
   node_id: string;
   name?: string;
-  email?: string;
+  email?: string | null;
   avatar_url: string;
   gravatar_id: string;
   url: string;
@@ -3452,7 +3452,7 @@ export interface User6 {
   id: number;
   node_id: string;
   name?: string;
-  email?: string;
+  email?: string | null;
   avatar_url: string;
   gravatar_id: string;
   url: string;
@@ -3484,7 +3484,7 @@ export interface User7 {
   id: number;
   node_id: string;
   name?: string;
-  email?: string;
+  email?: string | null;
   avatar_url: string;
   gravatar_id: string;
   url: string;
