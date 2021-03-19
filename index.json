@@ -6747,6 +6747,10 @@
         "type": "string",
         "description": "The repository's current description."
       },
+      "pusher_type": {
+        "type": "string",
+        "description": "The pusher type for the event. Can be either `user` or a deploy key."
+      },
       "repository": {
         "type": "object",
         "description": "The [`repository`](https://docs.github.com/en/rest/reference/repos#get-a-repository) where the event occurred."
@@ -7402,6 +7406,10 @@
       "ref_type": {
         "type": "string",
         "description": "The type of Git ref oject deleted in the repository. Can be `branch` or `tag`."
+      },
+      "pusher_type": {
+        "type": "string",
+        "description": "The pusher type for the event. Can be either `user` or a deploy key."
       },
       "repository": {
         "type": "object",
