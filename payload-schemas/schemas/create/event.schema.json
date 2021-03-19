@@ -30,7 +30,10 @@
       "type": ["string", "null"],
       "description": "The repository's current description."
     },
-    "pusher_type": { "type": "string" },
+    "pusher_type": {
+      "type": "string",
+      "description": "The pusher type for the event. Can be either `user` or a deploy key."
+    },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },

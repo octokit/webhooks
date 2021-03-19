@@ -572,7 +572,7 @@
         </td>
       </tr>
       <tr>
-        <td><code>deployment</code></td>
+        <td><code>check_run[check_suite][deployment]</code></td>
         <td><code>object</code></td>
         <td>
           A deployment to a repository environment. This will only be populated
@@ -1479,7 +1479,7 @@
     <span class="hljs-attr">"html_url"</span>: <span class="hljs-string">"https://github.com/Codertocat/Hello-World/security/code-scanning/10"</span>,
     <span class="hljs-attr">"instances"</span>: [
       {
-        <span class="hljs-attr">"ref"</span>: <span class="hljs-string">"refs/heads/master"</span>,
+        <span class="hljs-attr">"ref"</span>: <span class="hljs-string">"refs/heads/main"</span>,
         <span class="hljs-attr">"analysis_key"</span>: <span class="hljs-string">".github/workflows/workflow.yml:upload"</span>,
         <span class="hljs-attr">"environment"</span>: <span class="hljs-string">"{}"</span>,
         <span class="hljs-attr">"state"</span>: <span class="hljs-string">"open"</span>
@@ -1499,7 +1499,7 @@
       <span class="hljs-attr">"version"</span>: <span class="hljs-literal">null</span>
     }
   },
-  <span class="hljs-attr">"ref"</span>: <span class="hljs-string">"refs/heads/master"</span>,
+  <span class="hljs-attr">"ref"</span>: <span class="hljs-string">"refs/heads/main"</span>,
   <span class="hljs-attr">"commit_oid"</span>: <span class="hljs-string">"d6e4c75c141dbacecc279b721b8b9393d5405795"</span>,
   <span class="hljs-attr">"repository"</span>: {
     <span class="hljs-attr">"id"</span>: <span class="hljs-number">186853002</span>,
@@ -1593,7 +1593,7 @@
     <span class="hljs-attr">"forks"</span>: <span class="hljs-number">0</span>,
     <span class="hljs-attr">"open_issues"</span>: <span class="hljs-number">2</span>,
     <span class="hljs-attr">"watchers"</span>: <span class="hljs-number">0</span>,
-    <span class="hljs-attr">"default_branch"</span>: <span class="hljs-string">"master"</span>
+    <span class="hljs-attr">"default_branch"</span>: <span class="hljs-string">"main"</span>
   },
   <span class="hljs-attr">"organization"</span>: {
     <span class="hljs-attr">"login"</span>: <span class="hljs-string">"Octocoders"</span>,
@@ -1613,32 +1613,21 @@
     <span class="hljs-attr">"login"</span>: <span class="hljs-string">"github"</span>,
     <span class="hljs-attr">"id"</span>: <span class="hljs-number">9919</span>,
     <span class="hljs-attr">"node_id"</span>: <span class="hljs-string">"MDEyOk9yZ2FuaXphdGlvbjk5MTk="</span>,
-    <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://api.github.com/orgs/github"</span>,
-    <span class="hljs-attr">"repos_url"</span>: <span class="hljs-string">"https://api.github.com/orgs/github/repos"</span>,
-    <span class="hljs-attr">"events_url"</span>: <span class="hljs-string">"https://api.github.com/orgs/github/events"</span>,
-    <span class="hljs-attr">"hooks_url"</span>: <span class="hljs-string">"https://api.github.com/orgs/github/hooks"</span>,
-    <span class="hljs-attr">"issues_url"</span>: <span class="hljs-string">"https://api.github.com/orgs/github/issues"</span>,
-    <span class="hljs-attr">"members_url"</span>: <span class="hljs-string">"https://api.github.com/orgs/github/members{/member}"</span>,
-    <span class="hljs-attr">"public_members_url"</span>: <span class="hljs-string">"https://api.github.com/orgs/github/public_members{/member}"</span>,
     <span class="hljs-attr">"avatar_url"</span>: <span class="hljs-string">"https://avatars.githubusercontent.com/u/9919?v=4"</span>,
-    <span class="hljs-attr">"description"</span>: <span class="hljs-string">"How people build software."</span>,
-    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"GitHub"</span>,
-    <span class="hljs-attr">"company"</span>: <span class="hljs-literal">null</span>,
-    <span class="hljs-attr">"blog"</span>: <span class="hljs-string">"https://github.com/about"</span>,
-    <span class="hljs-attr">"location"</span>: <span class="hljs-string">"San Francisco, CA"</span>,
-    <span class="hljs-attr">"email"</span>: <span class="hljs-literal">null</span>,
-    <span class="hljs-attr">"twitter_username"</span>: <span class="hljs-literal">null</span>,
-    <span class="hljs-attr">"is_verified"</span>: <span class="hljs-literal">true</span>,
-    <span class="hljs-attr">"has_organization_projects"</span>: <span class="hljs-literal">true</span>,
-    <span class="hljs-attr">"has_repository_projects"</span>: <span class="hljs-literal">true</span>,
-    <span class="hljs-attr">"public_repos"</span>: <span class="hljs-number">371</span>,
-    <span class="hljs-attr">"public_gists"</span>: <span class="hljs-number">0</span>,
-    <span class="hljs-attr">"followers"</span>: <span class="hljs-number">0</span>,
-    <span class="hljs-attr">"following"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"gravatar_id"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://api.github.com/users/github"</span>,
     <span class="hljs-attr">"html_url"</span>: <span class="hljs-string">"https://github.com/github"</span>,
-    <span class="hljs-attr">"created_at"</span>: <span class="hljs-string">"2008-05-11T04:37:31Z"</span>,
-    <span class="hljs-attr">"updated_at"</span>: <span class="hljs-string">"2020-09-28T06:15:10Z"</span>,
-    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"Organization"</span>
+    <span class="hljs-attr">"followers_url"</span>: <span class="hljs-string">"https://api.github.com/users/github/followers"</span>,
+    <span class="hljs-attr">"following_url"</span>: <span class="hljs-string">"https://api.github.com/users/github/following{/other_user}"</span>,
+    <span class="hljs-attr">"gists_url"</span>: <span class="hljs-string">"https://api.github.com/users/github/gists{/gist_id}"</span>,
+    <span class="hljs-attr">"starred_url"</span>: <span class="hljs-string">"https://api.github.com/users/github/starred{/owner}{/repo}"</span>,
+    <span class="hljs-attr">"subscriptions_url"</span>: <span class="hljs-string">"https://api.github.com/users/github/subscriptions"</span>,
+    <span class="hljs-attr">"organizations_url"</span>: <span class="hljs-string">"https://api.github.com/users/github/orgs"</span>,
+    <span class="hljs-attr">"repos_url"</span>: <span class="hljs-string">"https://api.github.com/users/github/repos"</span>,
+    <span class="hljs-attr">"events_url"</span>: <span class="hljs-string">"https://api.github.com/users/github/events{/privacy}"</span>,
+    <span class="hljs-attr">"received_events_url"</span>: <span class="hljs-string">"https://api.github.com/users/github/received_events"</span>,
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"Organization"</span>,
+    <span class="hljs-attr">"site_admin"</span>: <span class="hljs-literal">false</span>
   }
 }
 </code></pre>
@@ -2106,6 +2095,14 @@
         <td>The repository's current description.</td>
       </tr>
       <tr>
+        <td><code>pusher_type</code></td>
+        <td><code>string</code></td>
+        <td>
+          The pusher type for the event. Can be either <code>user</code> or a
+          deploy key.
+        </td>
+      </tr>
+      <tr>
         <td><code>repository</code></td>
         <td><code>object</code></td>
         <td>
@@ -2322,6 +2319,14 @@
         <td>
           The type of Git ref oject deleted in the repository. Can be
           <code>branch</code> or <code>tag</code>.
+        </td>
+      </tr>
+      <tr>
+        <td><code>pusher_type</code></td>
+        <td><code>string</code></td>
+        <td>
+          The pusher type for the event. Can be either <code>user</code> or a
+          deploy key.
         </td>
       </tr>
       <tr>
@@ -4918,7 +4923,7 @@
   </div>
   <h3 id="label"><a href="#label">label</a></h3>
   <p>
-    Activity related to an issue. The type of activity is specified in the
+    Activity related to a label. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
     see the "<a href="/en/rest/reference/issues#labels">labels</a>" REST API.
   </p>
@@ -11243,9 +11248,11 @@
     <span class="hljs-attr">"id"</span>: <span class="hljs-number">91095730</span>,
     <span class="hljs-attr">"affected_range"</span>: <span class="hljs-string">"&gt;= 2.0.4, &lt; 2.0.6"</span>,
     <span class="hljs-attr">"affected_package_name"</span>: <span class="hljs-string">"rack"</span>,
+    <span class="hljs-attr">"fixed_in"</span>: <span class="hljs-string">"2.0.6"</span>,
     <span class="hljs-attr">"external_reference"</span>: <span class="hljs-string">"https://nvd.nist.gov/vuln/detail/CVE-2018-16470"</span>,
     <span class="hljs-attr">"external_identifier"</span>: <span class="hljs-string">"CVE-2018-16470"</span>,
-    <span class="hljs-attr">"fixed_in"</span>: <span class="hljs-string">"2.0.6"</span>
+    <span class="hljs-attr">"ghsa_id"</span>: <span class="hljs-string">"GHSA-hg78-4f6x-99wq"</span>,
+    <span class="hljs-attr">"created_at"</span>: <span class="hljs-string">"2021-03-01T01:23:45Z"</span>
   },
   <span class="hljs-attr">"repository"</span>: {
     <span class="hljs-attr">"id"</span>: <span class="hljs-number">186853002</span>,
@@ -13388,9 +13395,24 @@
         <td><code>action</code></td>
         <td><code>string</code></td>
         <td>
-          Most webhook payloads contain an <code>action</code> property that
-          contains the specific activity that triggered the event.
+          The action that was performed. Can be one of <code>requested</code> or
+          <code>completed</code>.
         </td>
+      </tr>
+      <tr>
+        <td><code>workflow_run</code></td>
+        <td><code>object</code></td>
+        <td>
+          The workflow run. Many <code>workflow_run</code> keys, such as
+          <code>head_branch</code>, <code>conclusion</code>, and
+          <code>pull_requests</code> are the same as those in a
+          <a href="#check_suite"><code>check_suite</code></a> object.
+        </td>
+      </tr>
+      <tr>
+        <td><code>workflow</code></td>
+        <td><code>object</code></td>
+        <td>The workflow that generated the workflow run.</td>
       </tr>
       <tr>
         <td><code>organization</code></td>

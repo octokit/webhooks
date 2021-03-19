@@ -3,7 +3,7 @@
   "version": "0.0.0-development",
   "description": "machine-readable, always up-to-date GitHub Webhooks specifications",
   "keywords": [],
-  "repository": "https://github.com/octokit/webhooks",
+  "repository": "github:octokit/webhooks",
   "license": "MIT",
   "author": "Gregor Martynus (https://github.com/gr2m)",
   "main": "index.json",

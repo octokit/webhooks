@@ -428,7 +428,7 @@ export interface User {
   id: number;
   node_id: string;
   name?: string;
-  email?: string;
+  email?: string | null;
   avatar_url: string;
   gravatar_id: string;
   url: string;
@@ -1196,6 +1196,18 @@ export interface AlertInstance {
    * State of a code scanning alert.
    */
   state: "open" | "dismissed" | "fixed";
+  commit_sha?: string;
+  message?: {
+    text?: string;
+  };
+  location?: {
+    path?: string;
+    start_line?: number;
+    end_line?: number;
+    start_column?: number;
+    end_column?: number;
+  };
+  classifications?: string[];
 }
 export interface GitHubOrg {
   login: "github";
@@ -1267,6 +1279,10 @@ export interface CodeScanningAlertClosedByUserEvent {
        * A short description of the rule used to detect the alert.
        */
       description: string;
+      name?: string;
+      full_description?: string;
+      tags?: null;
+      help?: null;
     };
     tool: {
       /**
@@ -1277,6 +1293,7 @@ export interface CodeScanningAlertClosedByUserEvent {
        * The version of the tool used to detect the alert.
        */
       version: string | null;
+      guid?: string | null;
     };
   };
   /**
@@ -1340,6 +1357,10 @@ export interface CodeScanningAlertCreatedEvent {
        * A short description of the rule used to detect the alert.
        */
       description: string;
+      name?: string;
+      full_description?: string;
+      tags?: null;
+      help?: null;
     };
     tool: {
       /**
@@ -1350,6 +1371,7 @@ export interface CodeScanningAlertCreatedEvent {
        * The version of the tool used to detect the alert.
        */
       version: string | null;
+      guid?: string | null;
     };
   };
   /**
@@ -1413,6 +1435,10 @@ export interface CodeScanningAlertFixedEvent {
        * A short description of the rule used to detect the alert.
        */
       description: string;
+      name?: string;
+      full_description?: string;
+      tags?: null;
+      help?: null;
     };
     tool: {
       /**
@@ -1423,7 +1449,10 @@ export interface CodeScanningAlertFixedEvent {
        * The version of the tool used to detect the alert.
        */
       version: string | null;
+      guid?: string | null;
     };
+    most_recent_instance?: AlertInstance;
+    instances_url?: string;
   };
   /**
    * The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty.
@@ -1486,6 +1515,10 @@ export interface CodeScanningAlertReopenedEvent {
        * A short description of the rule used to detect the alert.
        */
       description: string;
+      name?: string;
+      full_description?: string;
+      tags?: null;
+      help?: null;
     };
     tool: {
       /**
@@ -1496,6 +1529,7 @@ export interface CodeScanningAlertReopenedEvent {
        * The version of the tool used to detect the alert.
        */
       version: string | null;
+      guid?: string | null;
     };
   };
   /**
@@ -1668,6 +1702,9 @@ export interface CreateEvent {
    * The repository's current description.
    */
   description: string | null;
+  /**
+   * The pusher type for the event. Can be either `user` or a deploy key.
+   */
   pusher_type: string;
   repository: Repository;
   sender: User;
@@ -1686,6 +1723,9 @@ export interface DeleteEvent {
    * The type of Git ref object deleted in the repository. Can be either `branch` or `tag`.
    */
   ref_type: "tag" | "branch";
+  /**
+   * The pusher type for the event. Can be either `user` or a deploy key.
+   */
   pusher_type: string;
   repository: Repository;
   sender: User;
@@ -6059,118 +6099,15 @@ export interface WorkflowRun {
   event: string;
   head_branch: string;
   head_commit: SimpleCommit;
-  head_repository: {
-    archive_url: string;
-    assignees_url: string;
-    blobs_url: string;
-    branches_url: string;
-    collaborators_url: string;
-    comments_url: string;
-    commits_url: string;
-    compare_url: string;
-    contents_url: string;
-    contributors_url: string;
-    deployments_url: string;
-    description: string;
-    downloads_url: string;
-    events_url: string;
-    fork: boolean;
-    forks_url: string;
-    full_name: string;
-    git_commits_url: string;
-    git_refs_url: string;
-    git_tags_url: string;
-    hooks_url: string;
-    html_url: string;
-    id: number;
-    issue_comment_url: string;
-    issue_events_url: string;
-    issues_url: string;
-    keys_url: string;
-    labels_url: string;
-    languages_url: string;
-    merges_url: string;
-    milestones_url: string;
-    name: string;
-    node_id: string;
-    notifications_url: string;
-    owner: User;
-    private: boolean;
-    pulls_url: string;
-    releases_url: string;
-    stargazers_url: string;
-    statuses_url: string;
-    subscribers_url: string;
-    subscription_url: string;
-    tags_url: string;
-    teams_url: string;
-    trees_url: string;
-    url: string;
-  };
+  head_repository: RepositoryLite;
   head_sha: string;
   html_url: string;
   id: number;
   jobs_url: string;
   logs_url: string;
   node_id: string;
-  pull_requests: unknown[];
-  repository: {
-    archive_url: string;
-    assignees_url: string;
-    blobs_url: string;
-    branches_url: string;
-    collaborators_url: string;
-    comments_url: string;
-    commits_url: string;
-    compare_url: string;
-    contents_url: string;
-    contributors_url: string;
-    deployments_url: string;
-    description: string;
-    downloads_url: string;
-    events_url: string;
-    fork: boolean;
-    forks_url: string;
-    full_name: string;
-    git_commits_url: string;
-    git_refs_url: string;
-    git_tags_url: string;
-    hooks_url: string;
-    html_url: string;
-    /**
-     * Unique identifier of the repository
-     */
-    id: number;
-    issue_comment_url: string;
-    issue_events_url: string;
-    issues_url: string;
-    keys_url: string;
-    labels_url: string;
-    languages_url: string;
-    merges_url: string;
-    milestones_url: string;
-    /**
-     * The name of the repository.
-     */
-    name: string;
-    node_id: string;
-    notifications_url: string;
-    owner: User;
-    /**
-     * Whether the repository is private or public.
-     */
-    private: boolean;
-    pulls_url: string;
-    releases_url: string;
-    stargazers_url: string;
-    statuses_url: string;
-    subscribers_url: string;
-    subscription_url: string;
-    tags_url: string;
-    teams_url: string;
-    trees_url: string;
-    url: string;
-  };
+  pull_requests: PullRequest[];
+  repository: RepositoryLite;
   rerun_url: string;
   run_number: number;
   status: string;
@@ -6178,6 +6115,63 @@ export interface WorkflowRun {
   url: string;
   workflow_id: number;
   workflow_url: string;
+}
+export interface RepositoryLite {
+  archive_url: string;
+  assignees_url: string;
+  blobs_url: string;
+  branches_url: string;
+  collaborators_url: string;
+  comments_url: string;
+  commits_url: string;
+  compare_url: string;
+  contents_url: string;
+  contributors_url: string;
+  deployments_url: string;
+  description: string | null;
+  downloads_url: string;
+  events_url: string;
+  fork: boolean;
+  forks_url: string;
+  full_name: string;
+  git_commits_url: string;
+  git_refs_url: string;
+  git_tags_url: string;
+  hooks_url: string;
+  html_url: string;
+  /**
+   * Unique identifier of the repository
+   */
+  id: number;
+  issue_comment_url: string;
+  issue_events_url: string;
+  issues_url: string;
+  keys_url: string;
+  labels_url: string;
+  languages_url: string;
+  merges_url: string;
+  milestones_url: string;
+  /**
+   * The name of the repository.
+   */
+  name: string;
+  node_id: string;
+  notifications_url: string;
+  owner: User;
+  /**
+   * Whether the repository is private or public.
+   */
+  private: boolean;
+  pulls_url: string;
+  releases_url: string;
+  stargazers_url: string;
+  statuses_url: string;
+  subscribers_url: string;
+  subscription_url: string;
+  tags_url: string;
+  teams_url: string;
+  trees_url: string;
+  url: string;
 }
 export interface WorkflowRunRequestedEvent {
   action: "requested";

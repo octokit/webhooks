@@ -24,7 +24,7 @@ jobs:
           body: |
             I found new changes on [GitHub’s Webhooks Event Types & Payloads](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/webhook-events-and-payloads) and want to let you know about it 👋🤖
 
-            I can't tell if the changes are fixes, features or breaking changes. You'll have to figure that out on yourself and adapt the commit messages accordingly to trigger the right release, see [our commit message conventions](https://github.com/octokit/webhooks/blob/master/CONTRIBUTING.mdhttps://github.com/octokit/webhooks/blob/master/CONTRIBUTING.md#merging-the-pull-request--releasing-a-new-version).
+            I can't tell if the changes are fixes, features or breaking changes. You'll have to figure that out on yourself and adapt the commit messages accordingly to trigger the right release, see [our commit message conventions](https://github.com/octokit/webhooks/blob/master/CONTRIBUTING.md#merging-the-pull-request--releasing-a-new-version).
           branch: "webhooks-update"
           author: "Octokit Bot <octokitbot@martynus.net>"
           path: "cache/"
