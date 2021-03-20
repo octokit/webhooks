@@ -387,6 +387,7 @@ export interface App {
     deployments?: "read" | "write";
     issues?: "read" | "write";
     members?: "read" | "write";
+    emails?: "read" | "write";
     metadata?: "read" | "write";
     organization_administration?: "read" | "write";
     organization_hooks?: "read" | "write";

@@ -42,6 +42,7 @@
         "deployments": { "type": "string", "enum": ["read", "write"] },
         "issues": { "type": "string", "enum": ["read", "write"] },
         "members": { "type": "string", "enum": ["read", "write"] },
+        "emails": { "type": "string", "enum": ["read", "write"] },
         "metadata": { "type": "string", "enum": ["read", "write"] },
         "organization_administration": {
           "type": "string",

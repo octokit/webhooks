@@ -46,6 +46,7 @@
         "checks": "write",
         "contents": "write",
         "deployments": "write",
+        "emails": "read",
         "issues": "write",
         "metadata": "read",
         "organization_packages": "write",
