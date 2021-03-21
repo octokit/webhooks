@@ -5,9 +5,13 @@
   "required": ["action", "hook_id", "hook", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["deleted"] },
-    "hook_id": { "type": "integer" },
+    "hook_id": {
+      "type": "integer",
+      "description": "The id of the modified webhook."
+    },
     "hook": {
       "type": "object",
+      "description": "The modified webhook. This will contain different keys based on the type of webhook it is: repository, organization, business, app, or GitHub Marketplace.",
       "required": [
         "type",
         "id",

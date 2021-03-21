@@ -7,6 +7,7 @@
     "action": { "type": "string", "enum": ["rerequested"] },
     "check_run": {
       "type": "object",
+      "description": "The [check_run](https://docs.github.com/en/rest/reference/checks#get-a-check-run).",
       "required": [
         "id",
         "head_sha",
@@ -51,7 +52,7 @@
             "stale",
             null
           ],
-          "description": "The final conclusion of the check. Can be one of `success`, `failure`, `neutral`, `cancelled`, `skipped`, `timed_out`, or `action_required`. When the conclusion is `action_required`, additional details should be provided on the site specified by `details_url`."
+          "description": "The result of the completed check run. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has `completed`."
         },
         "started_at": {
           "type": "string",
@@ -96,7 +97,10 @@
             "updated_at"
           ],
           "properties": {
-            "id": { "type": "integer" },
+            "id": {
+              "type": "integer",
+              "description": "The id of the check suite that this check run is part of."
+            },
             "node_id": { "type": "string" },
             "head_branch": { "type": ["string", "null"] },
             "head_sha": {
@@ -120,6 +124,7 @@
             "before": { "type": ["string", "null"] },
             "after": { "type": ["string", "null"] },
             "pull_requests": {
+              "description": "An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.",
               "type": "array",
               "items": { "$ref": "common/check-run-pull-request.schema.json" }
             },
@@ -140,7 +145,13 @@
     },
     "requested_action": {
       "type": ["object", "null"],
-      "properties": { "identifier": { "type": "string" } },
+      "description": "The action requested by the user.",
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "description": "The integrator reference of the action requested by the user."
+        }
+      },
       "additionalProperties": false
     },
     "repository": { "$ref": "common/repository.schema.json" },

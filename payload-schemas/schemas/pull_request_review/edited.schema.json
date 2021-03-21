@@ -19,7 +19,12 @@
         "body": {
           "type": "object",
           "required": ["from"],
-          "properties": { "from": { "type": "string" } },
+          "properties": {
+            "from": {
+              "type": "string",
+              "description": "The previous version of the body if the action was `edited`."
+            }
+          },
           "additionalProperties": false
         }
       },
@@ -27,6 +32,7 @@
     },
     "review": {
       "type": "object",
+      "description": "The review that was affected.",
       "required": [
         "id",
         "node_id",

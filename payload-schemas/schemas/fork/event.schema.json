@@ -2,9 +2,11 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "fork$event",
   "type": "object",
+  "description": "A user forks a repository.",
   "required": ["forkee", "repository", "sender"],
   "properties": {
     "forkee": {
+      "description": "The created [`repository`](https://docs.github.com/en/rest/reference/repos#get-a-repository) resource.",
       "allOf": [
         { "$ref": "common/repository.schema.json" },
         {

@@ -4,9 +4,14 @@
   "type": "object",
   "required": ["action", "issue", "repository", "sender"],
   "properties": {
-    "action": { "type": "string", "enum": ["unassigned"] },
+    "action": {
+      "type": "string",
+      "enum": ["unassigned"],
+      "description": "The action that was performed."
+    },
     "issue": { "$ref": "common/issue.schema.json" },
     "assignee": {
+      "description": "The optional user who was assigned or unassigned from the issue.",
       "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": "null" }]
     },
     "repository": { "$ref": "common/repository.schema.json" },

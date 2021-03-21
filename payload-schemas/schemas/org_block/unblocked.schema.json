@@ -5,7 +5,10 @@
   "required": ["action", "blocked_user", "organization", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["unblocked"] },
-    "blocked_user": { "$ref": "common/user.schema.json" },
+    "blocked_user": {
+      "$ref": "common/user.schema.json",
+      "description": "Information about the user that was blocked or unblocked."
+    },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },
     "organization": { "$ref": "common/organization.schema.json" }

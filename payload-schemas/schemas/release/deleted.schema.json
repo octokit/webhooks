@@ -7,6 +7,7 @@
     "action": { "type": "string", "enum": ["deleted"] },
     "release": {
       "type": "object",
+      "description": "The [release](https://docs.github.com/en/rest/reference/repos/#get-a-release) object.",
       "required": [
         "url",
         "assets_url",

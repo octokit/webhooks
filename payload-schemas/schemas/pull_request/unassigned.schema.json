@@ -2,10 +2,17 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "pull_request$unassigned",
   "type": "object",
-  "required": ["action", "number", "pull_request", "repository", "sender"],
+  "required": [
+    "action",
+    "number",
+    "pull_request",
+    "assignee",
+    "repository",
+    "sender"
+  ],
   "properties": {
     "action": { "type": "string", "enum": ["unassigned"] },
-    "number": { "type": "integer" },
+    "number": { "type": "integer", "description": "The pull request number." },
     "pull_request": { "$ref": "common/pull-request.schema.json" },
     "assignee": { "$ref": "common/user.schema.json" },
     "repository": { "$ref": "common/repository.schema.json" },

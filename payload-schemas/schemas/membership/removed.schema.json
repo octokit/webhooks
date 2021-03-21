@@ -5,10 +5,20 @@
   "required": ["action", "scope", "member", "sender", "team", "organization"],
   "properties": {
     "action": { "type": "string", "enum": ["removed"] },
-    "scope": { "type": "string", "enum": ["team"] },
-    "member": { "$ref": "common/user.schema.json" },
+    "scope": {
+      "type": "string",
+      "enum": ["team"],
+      "description": "The scope of the membership. Currently, can only be `team`."
+    },
+    "member": {
+      "$ref": "common/user.schema.json",
+      "description": "The [user](https://docs.github.com/en/rest/reference/users) that was added or removed."
+    },
     "sender": { "$ref": "common/user.schema.json" },
-    "team": { "$ref": "common/team.schema.json" },
+    "team": {
+      "$ref": "common/team.schema.json",
+      "description": "The [team](https://docs.github.com/en/rest/reference/teams) for the membership."
+    },
     "organization": { "$ref": "common/organization.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" }
   },

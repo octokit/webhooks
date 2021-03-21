@@ -5,7 +5,11 @@
   "required": ["action", "invitation", "organization", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["member_invited"] },
-    "invitation": { "type": "object", "additionalProperties": false },
+    "invitation": {
+      "type": "object",
+      "description": "The invitation for the user or email if the action is `member_invited`.",
+      "additionalProperties": false
+    },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },
     "organization": { "$ref": "common/organization.schema.json" }

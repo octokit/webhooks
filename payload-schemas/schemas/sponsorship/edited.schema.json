@@ -31,7 +31,12 @@
         "privacy_level": {
           "type": "object",
           "required": ["from"],
-          "properties": { "from": { "type": "string" } },
+          "properties": {
+            "from": {
+              "type": "string",
+              "description": "The `edited` event types include the details about the change when someone edits a sponsorship to change the privacy."
+            }
+          },
           "additionalProperties": false
         }
       },

@@ -7,23 +7,39 @@
     "action": { "type": "string", "enum": ["edited"] },
     "changes": {
       "type": "object",
+      "description": "The changes to the milestone if the action was `edited`.",
       "properties": {
         "description": {
           "type": "object",
           "required": ["from"],
-          "properties": { "from": { "type": "string" } },
+          "properties": {
+            "from": {
+              "type": "string",
+              "description": "The previous version of the description if the action was `edited`."
+            }
+          },
           "additionalProperties": false
         },
         "due_on": {
           "type": "object",
           "required": ["from"],
-          "properties": { "from": { "type": "string" } },
+          "properties": {
+            "from": {
+              "type": "string",
+              "description": "The previous version of the due date if the action was `edited`."
+            }
+          },
           "additionalProperties": false
         },
         "title": {
           "type": "object",
           "required": ["from"],
-          "properties": { "from": { "type": "string" } },
+          "properties": {
+            "from": {
+              "type": "string",
+              "description": "The previous version of the title if the action was `edited`."
+            }
+          },
           "additionalProperties": false
         }
       },

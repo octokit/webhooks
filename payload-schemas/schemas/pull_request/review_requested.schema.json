@@ -12,7 +12,7 @@
   ],
   "properties": {
     "action": { "type": "string", "enum": ["review_requested"] },
-    "number": { "type": "integer" },
+    "number": { "type": "integer", "description": "The pull request number." },
     "pull_request": { "$ref": "common/pull-request.schema.json" },
     "requested_reviewer": { "$ref": "common/user.schema.json" },
     "repository": { "$ref": "common/repository.schema.json" },

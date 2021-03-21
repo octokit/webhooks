@@ -7,6 +7,7 @@
     "action": { "type": "string", "enum": ["closed_by_user"] },
     "alert": {
       "type": "object",
+      "description": "The code scanning alert involved in the event.",
       "required": [
         "number",
         "created_at",
@@ -113,9 +114,12 @@
     },
     "ref": {
       "type": "string",
-      "description": "The full Git reference, formatted as `refs/heads/<branch name>`."
+      "description": "The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
     },
-    "commit_oid": { "type": "string" },
+    "commit_oid": {
+      "type": "string",
+      "description": "The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
+    },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },

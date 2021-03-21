@@ -20,6 +20,7 @@
     },
     "repositories_added": {
       "type": "array",
+      "description": "An array of repository objects, which were added to the installation.",
       "items": {
         "type": "object",
         "required": ["id", "node_id", "name", "full_name", "private"],
@@ -44,6 +45,7 @@
     },
     "repositories_removed": {
       "type": "array",
+      "description": "An array of repository objects, which were removed from the installation.",
       "items": {
         "type": "object",
         "properties": {

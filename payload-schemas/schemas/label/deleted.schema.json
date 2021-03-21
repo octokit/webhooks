@@ -5,7 +5,10 @@
   "required": ["action", "label", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["deleted"] },
-    "label": { "$ref": "common/label.schema.json" },
+    "label": {
+      "$ref": "common/label.schema.json",
+      "description": "The label that was removed."
+    },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },

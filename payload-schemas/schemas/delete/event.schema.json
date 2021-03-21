@@ -2,10 +2,18 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "delete$event",
   "type": "object",
+  "description": "A Git branch or tag is deleted.",
   "required": ["ref", "ref_type", "pusher_type", "repository", "sender"],
   "properties": {
-    "ref": { "type": "string" },
-    "ref_type": { "type": "string", "enum": ["tag", "branch"] },
+    "ref": {
+      "type": "string",
+      "description": "The [`git ref`](https://docs.github.com/en/rest/reference/git#get-a-reference) resource."
+    },
+    "ref_type": {
+      "type": "string",
+      "enum": ["tag", "branch"],
+      "description": "The type of Git ref object deleted in the repository. Can be either `branch` or `tag`."
+    },
     "pusher_type": {
       "type": "string",
       "description": "The pusher type for the event. Can be either `user` or a deploy key."

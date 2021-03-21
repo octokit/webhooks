@@ -3,6 +3,7 @@
   "$id": "common/membership.schema.json",
   "required": ["url", "state", "role", "organization_url", "user"],
   "type": "object",
+  "description": "The membership between the user and the organization. Not present when the action is `member_invited`.",
   "properties": {
     "url": { "type": "string", "format": "uri" },
     "state": { "type": "string" },

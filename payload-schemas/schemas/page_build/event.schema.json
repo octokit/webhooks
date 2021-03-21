@@ -8,6 +8,7 @@
     "id": { "type": "integer" },
     "build": {
       "type": "object",
+      "description": "The [List GitHub Pages builds](https://docs.github.com/en/rest/reference/repos#list-github-pages-builds) itself.",
       "required": [
         "url",
         "status",

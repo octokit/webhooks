@@ -7,17 +7,28 @@
     "action": { "type": "string", "enum": ["edited"] },
     "changes": {
       "type": "object",
+      "description": "The changes to the project if the action was `edited`.",
       "properties": {
         "name": {
           "type": "object",
           "required": ["from"],
-          "properties": { "from": { "type": "string" } },
+          "properties": {
+            "from": {
+              "type": "string",
+              "description": "The changes to the project if the action was `edited`."
+            }
+          },
           "additionalProperties": false
         },
         "body": {
           "type": "object",
           "required": ["from"],
-          "properties": { "from": { "type": "string" } },
+          "properties": {
+            "from": {
+              "type": "string",
+              "description": "The previous version of the body if the action was `edited`."
+            }
+          },
           "additionalProperties": false
         }
       },

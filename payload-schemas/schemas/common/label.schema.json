@@ -1,7 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "common/label.schema.json",
-  "description": "Color-coded labels help you categorize and filter your issues (just like labels in Gmail).",
   "type": "object",
   "required": [
     "id",

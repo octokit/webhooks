@@ -3,6 +3,7 @@
   "$id": "public$event",
   "type": "object",
   "required": ["repository", "sender"],
+  "description": "When a private repository is made public.",
   "properties": {
     "repository": {
       "allOf": [

@@ -2,10 +2,12 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "gollum$event",
   "type": "object",
+  "description": "A wiki page is created or updated.",
   "required": ["pages", "repository", "sender"],
   "properties": {
     "pages": {
       "type": "array",
+      "description": "The pages that were updated.",
       "items": {
         "type": "object",
         "required": [
@@ -17,12 +19,29 @@
           "html_url"
         ],
         "properties": {
-          "page_name": { "type": "string" },
-          "title": { "type": "string" },
+          "page_name": {
+            "type": "string",
+            "description": "The name of the page."
+          },
+          "title": {
+            "type": "string",
+            "description": "The current page title."
+          },
           "summary": { "type": "null" },
-          "action": { "type": "string", "enum": ["created", "edited"] },
-          "sha": { "type": "string" },
-          "html_url": { "type": "string", "format": "uri" }
+          "action": {
+            "type": "string",
+            "enum": ["created", "edited"],
+            "description": "The action that was performed on the page. Can be `created` or `edited`."
+          },
+          "sha": {
+            "type": "string",
+            "description": "The latest commit SHA of the page."
+          },
+          "html_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Points to the HTML wiki page."
+          }
         },
         "additionalProperties": false
       }
