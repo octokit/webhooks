@@ -6,13 +6,8 @@
   "repository": "github:octokit/webhooks",
   "license": "MIT",
   "author": "Gregor Martynus (https://github.com/gr2m)",
-  "main": "index.json",
-  "files": [
-    "index.d.ts",
-    "index.json",
-    "schema.d.ts",
-    "schema.json"
-  ],
+  "main": "",
+  "files": [],
   "scripts": {
     "build": "ts-node -T bin/octokit-webhooks.ts check --cached",
     "build:all": "npm run -s build:webhooks && npm run -s build:schema && npm run -s build:types",
