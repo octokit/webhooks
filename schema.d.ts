@@ -277,7 +277,8 @@ export interface CheckRunCompletedEvent {
       | "cancelled"
       | "timed_out"
       | "action_required"
-      | "stale";
+      | "stale"
+      | null;
     /**
      * The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
      */
@@ -654,7 +655,15 @@ export interface CheckRunCreatedEvent {
     /**
      * The result of the completed check run. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has completed.
      */
-    conclusion: null;
+    conclusion:
+      | "success"
+      | "failure"
+      | "neutral"
+      | "cancelled"
+      | "timed_out"
+      | "action_required"
+      | "stale"
+      | null;
     /**
      * The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
      */
@@ -942,7 +951,7 @@ export interface CheckSuiteCompletedEvent {
     /**
      * The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`.
      */
-    status: "completed";
+    status: "requested" | "in_progress" | "completed" | "queued" | null;
     /**
      * The summary conclusion for all check runs that are part of the check suite. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has `completed`.
      */
@@ -1810,7 +1819,7 @@ export interface DeploymentStatusCreatedEvent {
     /**
      * The new state. Can be `pending`, `success`, `failure`, or `error`.
      */
-    state: "pending" | "success" | "failure" | "error";
+    state: string;
     creator: User;
     /**
      * The optional human-readable description added to the status.

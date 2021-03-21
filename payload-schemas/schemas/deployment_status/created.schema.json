@@ -34,7 +34,6 @@
         "node_id": { "type": "string" },
         "state": {
           "type": "string",
-          "enum": ["pending", "success", "failure", "error"],
           "description": "The new state. Can be `pending`, `success`, `failure`, or `error`."
         },
         "creator": { "$ref": "common/user.schema.json" },

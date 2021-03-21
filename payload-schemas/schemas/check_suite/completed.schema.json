@@ -38,8 +38,8 @@
           "description": "The SHA of the head commit that is being checked."
         },
         "status": {
-          "type": "string",
-          "enum": ["completed"],
+          "type": ["string", "null"],
+          "enum": ["requested", "in_progress", "completed", "queued", null],
           "description": "The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`."
         },
         "conclusion": {
