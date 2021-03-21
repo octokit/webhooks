@@ -26,7 +26,11 @@
     "validate:schema": "ts-node -T bin/validate-schema.ts"
   },
   "prettier": {},
-  "dependencies": {},
+  "dependencies": {
+    "@octokit/webhooks-examples": "3.65.0",
+    "@octokit/webhooks-schemas": "3.65.0",
+    "@octokit/webhooks-types": "3.65.0"
+  },
   "devDependencies": {
     "@octokit/request": "^5.0.0",
     "@types/cheerio": "^0.22.23",
