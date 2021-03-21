@@ -43,7 +43,9 @@ const buildEventPayloadMap = (schema: Schema): string => {
 };
 
 const getSchema = async () =>
-  JSON.parse(await fs.readFile("./payload-schemas/schema.json", "utf-8")) as Schema;
+  JSON.parse(
+    await fs.readFile("./payload-schemas/schema.json", "utf-8")
+  ) as Schema;
 
 declare module "json-schema" {
   interface JSONSchema7 {
