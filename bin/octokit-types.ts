@@ -43,7 +43,7 @@ const buildEventPayloadMap = (schema: Schema): string => {
 };
 
 const getSchema = async () =>
-  JSON.parse(await fs.readFile("./schema.json", "utf-8")) as Schema;
+  JSON.parse(await fs.readFile("./payload-schemas/schema.json", "utf-8")) as Schema;
 
 declare module "json-schema" {
   interface JSONSchema7 {
@@ -54,7 +54,7 @@ declare module "json-schema" {
 const compileSchema = async (): Promise<string> => {
   // has to be 4 due to https://github.com/bcherny/json-schema-to-typescript/issues/359
   const schema: JSONSchema4 = JSON.parse(
-    await fs.readFile("./schema.json", "utf-8"),
+    await fs.readFile("./payload-schemas/schema.json", "utf-8"),
     (key, value: unknown) => {
       if (isJsonSchemaObject(value)) {
         // $refs with a description result in a duplicate interface being made
