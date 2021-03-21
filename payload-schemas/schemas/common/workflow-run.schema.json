@@ -32,6 +32,7 @@
     "artifacts_url": { "type": "string", "format": "uri" },
     "cancel_url": { "type": "string", "format": "uri" },
     "check_suite_url": { "type": "string", "format": "uri" },
+    "check_suite_id": { "type": "integer" },
     "conclusion": { "type": ["string", "null"] },
     "created_at": { "type": "string", "format": "date-time" },
     "event": { "type": "string" },

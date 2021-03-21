@@ -4926,6 +4926,7 @@ export interface WorkflowRun {
   artifacts_url: string;
   cancel_url: string;
   check_suite_url: string;
+  check_suite_id?: number;
   conclusion: string | null;
   created_at: string;
   event: string;
