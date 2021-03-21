@@ -88,7 +88,10 @@ const run = async () => {
     "export type WebhookEventName = keyof EventPayloadMap;",
   ].join("\n");
 
-  await fs.writeFile("./schema.d.ts", format(ts, { parser: "typescript" }));
+  await fs.writeFile(
+    "./payload-types/schema.d.ts",
+    format(ts, { parser: "typescript" })
+  );
 };
 
 run();
