@@ -1,7 +1,7 @@
 {
   "name": "@octokit/webhooks-examples",
   "version": "0.0.0-development",
-  "description": "",
+  "description": "Example webhook payloads contributed by the community",
   "keywords": [],
   "repository": "github:octokit/webhooks",
   "license": "MIT",

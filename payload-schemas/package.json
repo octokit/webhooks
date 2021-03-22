@@ -1,7 +1,7 @@
 {
   "name": "@octokit/webhooks-schemas",
   "version": "0.0.0-development",
-  "description": "",
+  "description": "Community contributed webhook payload schemas in JSON schema format",
   "keywords": [],
   "repository": "github:octokit/webhooks",
   "license": "MIT",
