@@ -17,7 +17,7 @@ jobs:
       - run: npm run build:schema
       - run: cp payload-examples/index.{d.ts,json} ./
       - run: cp payload-schemas/schema.json ./schema.json
-      - run: cp payload-types/index.d.ts ./schema.d.ts
+      - run: cp payload-types/schema.d.ts ./schema.d.ts
       - run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.OCTOKITBOT_PAT }}
