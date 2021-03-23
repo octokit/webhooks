@@ -9,7 +9,19 @@
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "workflow": { "$ref": "common/workflow.schema.json" },
-    "workflow_run": { "$ref": "common/workflow-run.schema.json" },
+    "workflow_run": {
+      "allOf": [
+        { "$ref": "common/workflow-run.schema.json" },
+        {
+          "type": "object",
+          "required": ["conclusion"],
+          "properties": {
+            "conclusion": { "type": ["null"] }
+          },
+          "tsAdditionalProperties": false
+        }
+      ]
+    },
     "installation": { "$ref": "common/installation-lite.schema.json" }
   },
   "additionalProperties": false,
