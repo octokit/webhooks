@@ -2416,7 +2416,7 @@ export interface IssuesAssignedEvent {
    * The action that was performed.
    */
   action: "assigned";
-  issue: Issue1;
+  issue: Issue;
   /**
    * The optional user who was assigned or unassigned from the issue.
    */
@@ -2425,54 +2425,6 @@ export interface IssuesAssignedEvent {
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
-}
-/**
- * The [issue](https://docs.github.com/en/rest/reference/issues) itself.
- */
-export interface Issue1 {
-  /**
-   * URL for the issue
-   */
-  url: string;
-  repository_url: string;
-  labels_url: string;
-  comments_url: string;
-  events_url: string;
-  html_url: string;
-  id: number;
-  node_id: string;
-  number: number;
-  /**
-   * Title of the issue
-   */
-  title: string;
-  user: User;
-  labels?: Label[];
-  /**
-   * State of the issue; either 'open' or 'closed'
-   */
-  state?: "open" | "closed";
-  locked?: boolean;
-  assignee?: User | null;
-  assignees: User[];
-  milestone: Milestone | null;
-  comments: number;
-  created_at: string;
-  updated_at: string;
-  closed_at: string | null;
-  author_association: AuthorAssociation;
-  active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-  performed_via_github_app?: App | null;
-  pull_request?: {
-    url?: string;
-    html_url?: string;
-    diff_url?: string;
-    patch_url?: string;
-  };
-  /**
-   * Contents of the issue
-   */
-  body: string;
 }
 export interface IssuesClosedEvent {
   /**
@@ -2493,115 +2445,19 @@ export interface IssuesClosedEvent {
 }
 export interface IssuesDeletedEvent {
   action: "deleted";
-  issue: Issue2;
+  issue: Issue;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
-}
-/**
- * The [issue](https://docs.github.com/en/rest/reference/issues) itself.
- */
-export interface Issue2 {
-  /**
-   * URL for the issue
-   */
-  url: string;
-  repository_url: string;
-  labels_url: string;
-  comments_url: string;
-  events_url: string;
-  html_url: string;
-  id: number;
-  node_id: string;
-  number: number;
-  /**
-   * Title of the issue
-   */
-  title: string;
-  user: User;
-  labels?: Label[];
-  /**
-   * State of the issue; either 'open' or 'closed'
-   */
-  state?: "open" | "closed";
-  locked?: boolean;
-  assignee?: User | null;
-  assignees: User[];
-  milestone: Milestone | null;
-  comments: number;
-  created_at: string;
-  updated_at: string;
-  closed_at: string | null;
-  author_association: AuthorAssociation;
-  active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-  performed_via_github_app?: App | null;
-  pull_request?: {
-    url?: string;
-    html_url?: string;
-    diff_url?: string;
-    patch_url?: string;
-  };
-  /**
-   * Contents of the issue
-   */
-  body: string;
 }
 export interface IssuesDemilestonedEvent {
   action: "demilestoned";
-  issue: Issue3;
+  issue: Issue;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
-}
-/**
- * The [issue](https://docs.github.com/en/rest/reference/issues) itself.
- */
-export interface Issue3 {
-  /**
-   * URL for the issue
-   */
-  url: string;
-  repository_url: string;
-  labels_url: string;
-  comments_url: string;
-  events_url: string;
-  html_url: string;
-  id: number;
-  node_id: string;
-  number: number;
-  /**
-   * Title of the issue
-   */
-  title: string;
-  user: User;
-  labels?: Label[];
-  /**
-   * State of the issue; either 'open' or 'closed'
-   */
-  state?: "open" | "closed";
-  locked?: boolean;
-  assignee?: User | null;
-  assignees: User[];
-  milestone: Milestone | null;
-  comments: number;
-  created_at: string;
-  updated_at: string;
-  closed_at: string | null;
-  author_association: AuthorAssociation;
-  active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-  performed_via_github_app?: App | null;
-  pull_request?: {
-    url?: string;
-    html_url?: string;
-    diff_url?: string;
-    patch_url?: string;
-  };
-  /**
-   * Contents of the issue
-   */
-  body: string;
 }
 export interface IssuesEditedEvent {
   action: "edited";
@@ -2632,32 +2488,11 @@ export interface IssuesEditedEvent {
 export interface IssuesLabeledEvent {
   action: "labeled";
   issue: Issue;
-  label?: Label1;
+  label?: Label;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
-}
-/**
- * The optional label that was added or removed from the issue.
- */
-export interface Label1 {
-  id: number;
-  node_id: string;
-  /**
-   * URL for the label
-   */
-  url: string;
-  /**
-   * The name of the label.
-   */
-  name: string;
-  description: string | null;
-  /**
-   * 6-character hex code, without the leading #, identifying the color
-   */
-  color: string;
-  default: boolean;
 }
 export interface IssuesLockedEvent {
   action: "locked";
@@ -2733,32 +2568,11 @@ export interface IssuesUnassignedEvent {
 export interface IssuesUnlabeledEvent {
   action: "unlabeled";
   issue: Issue;
-  label?: Label2;
+  label?: Label;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
-}
-/**
- * The optional label that was added or removed from the issue.
- */
-export interface Label2 {
-  id: number;
-  node_id: string;
-  /**
-   * URL for the label
-   */
-  url: string;
-  /**
-   * The name of the label.
-   */
-  name: string;
-  description: string | null;
-  /**
-   * 6-character hex code, without the leading #, identifying the color
-   */
-  color: string;
-  default: boolean;
 }
 export interface IssuesUnlockedEvent {
   action: "unlocked";
@@ -2781,65 +2595,23 @@ export interface IssuesUnpinnedEvent {
 }
 export interface LabelCreatedEvent {
   action: "created";
-  label: Label3;
+  label: Label;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
-}
-/**
- * The label that was added.
- */
-export interface Label3 {
-  id: number;
-  node_id: string;
-  /**
-   * URL for the label
-   */
-  url: string;
-  /**
-   * The name of the label.
-   */
-  name: string;
-  description: string | null;
-  /**
-   * 6-character hex code, without the leading #, identifying the color
-   */
-  color: string;
-  default: boolean;
 }
 export interface LabelDeletedEvent {
   action: "deleted";
-  label: Label4;
+  label: Label;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
 }
-/**
- * The label that was removed.
- */
-export interface Label4 {
-  id: number;
-  node_id: string;
-  /**
-   * URL for the label
-   */
-  url: string;
-  /**
-   * The name of the label.
-   */
-  name: string;
-  description: string | null;
-  /**
-   * 6-character hex code, without the leading #, identifying the color
-   */
-  color: string;
-  default: boolean;
-}
 export interface LabelEditedEvent {
   action: "edited";
-  label: Label5;
+  label: Label;
   /**
    * The changes to the label if the action was `edited`.
    */
@@ -2861,27 +2633,6 @@ export interface LabelEditedEvent {
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
-}
-/**
- * The label that was edited.
- */
-export interface Label5 {
-  id: number;
-  node_id: string;
-  /**
-   * URL for the label
-   */
-  url: string;
-  /**
-   * The name of the label.
-   */
-  name: string;
-  description: string | null;
-  /**
-   * 6-character hex code, without the leading #, identifying the color
-   */
-  color: string;
-  default: boolean;
 }
 export interface MarketplacePurchaseCancelledEvent {
   action: "cancelled";
@@ -3052,39 +2803,14 @@ export interface MarketplacePurchasePurchasedEvent {
  */
 export interface MemberAddedEvent {
   action: "added";
-  member: User1;
+  member: User;
   repository: Repository;
   installation?: InstallationLite;
   sender: User;
 }
-/**
- * The user that was added.
- */
-export interface User1 {
-  login: string;
-  id: number;
-  node_id: string;
-  name?: string;
-  email?: string | null;
-  avatar_url: string;
-  gravatar_id: string;
-  url: string;
-  html_url: string;
-  followers_url: string;
-  following_url: string;
-  gists_url: string;
-  starred_url: string;
-  subscriptions_url: string;
-  organizations_url: string;
-  repos_url: string;
-  events_url: string;
-  received_events_url: string;
-  type: "Bot" | "User" | "Organization";
-  site_admin: boolean;
-}
 export interface MemberEditedEvent {
   action: "edited";
-  member: User2;
+  member: User;
   /**
    * The changes to the collaborator permissions
    */
@@ -3100,62 +2826,12 @@ export interface MemberEditedEvent {
   installation?: InstallationLite;
   sender: User;
 }
-/**
- * The user who's permissions are changed.
- */
-export interface User2 {
-  login: string;
-  id: number;
-  node_id: string;
-  name?: string;
-  email?: string | null;
-  avatar_url: string;
-  gravatar_id: string;
-  url: string;
-  html_url: string;
-  followers_url: string;
-  following_url: string;
-  gists_url: string;
-  starred_url: string;
-  subscriptions_url: string;
-  organizations_url: string;
-  repos_url: string;
-  events_url: string;
-  received_events_url: string;
-  type: "Bot" | "User" | "Organization";
-  site_admin: boolean;
-}
 export interface MemberRemovedEvent {
   action: "removed";
-  member: User3;
+  member: User;
   repository: Repository;
   installation?: InstallationLite;
   sender: User;
-}
-/**
- * The user that was removed.
- */
-export interface User3 {
-  login: string;
-  id: number;
-  node_id: string;
-  name?: string;
-  email?: string | null;
-  avatar_url: string;
-  gravatar_id: string;
-  url: string;
-  html_url: string;
-  followers_url: string;
-  following_url: string;
-  gists_url: string;
-  starred_url: string;
-  subscriptions_url: string;
-  organizations_url: string;
-  repos_url: string;
-  events_url: string;
-  received_events_url: string;
-  type: "Bot" | "User" | "Organization";
-  site_admin: boolean;
 }
 export interface MembershipAddedEvent {
   action: "added";
@@ -3163,39 +2839,14 @@ export interface MembershipAddedEvent {
    * The scope of the membership. Currently, can only be `team`.
    */
   scope: "team";
-  member: User4;
+  member: User;
   sender: User;
   team: Team;
   organization: Organization;
   installation?: InstallationLite;
 }
 /**
- * The [user](https://docs.github.com/en/rest/reference/users) that was added or removed.
- */
-export interface User4 {
-  login: string;
-  id: number;
-  node_id: string;
-  name?: string;
-  email?: string | null;
-  avatar_url: string;
-  gravatar_id: string;
-  url: string;
-  html_url: string;
-  followers_url: string;
-  following_url: string;
-  gists_url: string;
-  starred_url: string;
-  subscriptions_url: string;
-  organizations_url: string;
-  repos_url: string;
-  events_url: string;
-  received_events_url: string;
-  type: "Bot" | "User" | "Organization";
-  site_admin: boolean;
-}
-/**
- * The [team](https://docs.github.com/en/rest/reference/teams) for the membership.
+ * Groups of organization members that gives permissions on specified repositories.
  */
 export interface Team {
   /**
@@ -3259,95 +2910,11 @@ export interface MembershipRemovedEvent {
    * The scope of the membership. Currently, can only be `team`.
    */
   scope: "team";
-  member: User5;
+  member: User;
   sender: User;
-  team: Team1;
+  team: Team;
   organization: Organization;
   installation?: InstallationLite;
-}
-/**
- * The [user](https://docs.github.com/en/rest/reference/users) that was added or removed.
- */
-export interface User5 {
-  login: string;
-  id: number;
-  node_id: string;
-  name?: string;
-  email?: string | null;
-  avatar_url: string;
-  gravatar_id: string;
-  url: string;
-  html_url: string;
-  followers_url: string;
-  following_url: string;
-  gists_url: string;
-  starred_url: string;
-  subscriptions_url: string;
-  organizations_url: string;
-  repos_url: string;
-  events_url: string;
-  received_events_url: string;
-  type: "Bot" | "User" | "Organization";
-  site_admin: boolean;
-}
-/**
- * The [team](https://docs.github.com/en/rest/reference/teams) for the membership.
- */
-export interface Team1 {
-  /**
-   * Name of the team
-   */
-  name: string;
-  /**
-   * Unique identifier of the team
-   */
-  id: number;
-  node_id: string;
-  slug: string;
-  /**
-   * Description of the team
-   */
-  description: string | null;
-  privacy: "open" | "closed" | "secret";
-  /**
-   * URL for the team
-   */
-  url: string;
-  html_url: string;
-  members_url: string;
-  repositories_url: string;
-  /**
-   * Permission that the team will have for its repositories
-   */
-  permission: string;
-  parent?: {
-    /**
-     * Name of the team
-     */
-    name: string;
-    /**
-     * Unique identifier of the team
-     */
-    id: number;
-    node_id: string;
-    slug: string;
-    /**
-     * Description of the team
-     */
-    description: string | null;
-    privacy: "open" | "closed" | "secret";
-    /**
-     * URL for the team
-     */
-    url: string;
-    html_url: string;
-    members_url: string;
-    repositories_url: string;
-    /**
-     * Permission that the team will have for its repositories
-     */
-    permission: string;
-  } | null;
 }
 export interface MetaDeletedEvent {
   action: "deleted";
@@ -3449,67 +3016,17 @@ export interface MilestoneOpenedEvent {
 }
 export interface OrgBlockBlockedEvent {
   action: "blocked";
-  blocked_user: User6;
+  blocked_user: User;
   sender: User;
   installation?: InstallationLite;
   organization: Organization;
-}
-/**
- * Information about the user that was blocked or unblocked.
- */
-export interface User6 {
-  login: string;
-  id: number;
-  node_id: string;
-  name?: string;
-  email?: string | null;
-  avatar_url: string;
-  gravatar_id: string;
-  url: string;
-  html_url: string;
-  followers_url: string;
-  following_url: string;
-  gists_url: string;
-  starred_url: string;
-  subscriptions_url: string;
-  organizations_url: string;
-  repos_url: string;
-  events_url: string;
-  received_events_url: string;
-  type: "Bot" | "User" | "Organization";
-  site_admin: boolean;
 }
 export interface OrgBlockUnblockedEvent {
   action: "unblocked";
-  blocked_user: User7;
+  blocked_user: User;
   sender: User;
   installation?: InstallationLite;
   organization: Organization;
-}
-/**
- * Information about the user that was blocked or unblocked.
- */
-export interface User7 {
-  login: string;
-  id: number;
-  node_id: string;
-  name?: string;
-  email?: string | null;
-  avatar_url: string;
-  gravatar_id: string;
-  url: string;
-  html_url: string;
-  followers_url: string;
-  following_url: string;
-  gists_url: string;
-  starred_url: string;
-  subscriptions_url: string;
-  organizations_url: string;
-  repos_url: string;
-  events_url: string;
-  received_events_url: string;
-  type: "Bot" | "User" | "Organization";
-  site_admin: boolean;
 }
 export interface OrganizationDeletedEvent {
   action: "deleted";
@@ -4000,8 +3517,8 @@ export interface PullRequest {
   merge_commit_sha: string | null;
   assignee: User | null;
   assignees: User[];
-  requested_reviewers: (User | Team2)[];
-  requested_teams: Team2[];
+  requested_reviewers: (User | Team)[];
+  requested_teams: Team[];
   labels: Label[];
   milestone: Milestone | null;
   commits_url: string;
@@ -4055,65 +3572,6 @@ export interface PullRequest {
   additions: number;
   deletions: number;
   changed_files: number;
-}
-/**
- * Groups of organization members that gives permissions on specified repositories.
- */
-export interface Team2 {
-  /**
-   * Name of the team
-   */
-  name: string;
-  /**
-   * Unique identifier of the team
-   */
-  id: number;
-  node_id: string;
-  slug: string;
-  /**
-   * Description of the team
-   */
-  description: string | null;
-  privacy: "open" | "closed" | "secret";
-  /**
-   * URL for the team
-   */
-  url: string;
-  html_url: string;
-  members_url: string;
-  repositories_url: string;
-  /**
-   * Permission that the team will have for its repositories
-   */
-  permission: string;
-  parent?: {
-    /**
-     * Name of the team
-     */
-    name: string;
-    /**
-     * Unique identifier of the team
-     */
-    id: number;
-    node_id: string;
-    slug: string;
-    /**
-     * Description of the team
-     */
-    description: string | null;
-    privacy: "open" | "closed" | "secret";
-    /**
-     * URL for the team
-     */
-    url: string;
-    html_url: string;
-    members_url: string;
-    repositories_url: string;
-    /**
-     * Permission that the team will have for its repositories
-     */
-    permission: string;
-  } | null;
 }
 export interface Link {
   href: string;
@@ -4425,8 +3883,8 @@ export interface SimplePullRequest {
   merge_commit_sha: string | null;
   assignee: User | null;
   assignees: User[];
-  requested_reviewers: (User | Team2)[];
-  requested_teams: Team2[];
+  requested_reviewers: (User | Team)[];
+  requested_teams: Team[];
   labels: Label[];
   milestone: Milestone | null;
   draft: boolean;
@@ -4659,8 +4117,8 @@ export interface PullRequestReviewCommentCreatedEvent {
     merge_commit_sha: string | null;
     assignee: User | null;
     assignees: User[];
-    requested_reviewers: (User | Team2)[];
-    requested_teams: Team2[];
+    requested_reviewers: (User | Team)[];
+    requested_teams: Team[];
     labels: Label[];
     milestone: Milestone | null;
     commits_url: string;
@@ -4816,8 +4274,8 @@ export interface PullRequestReviewCommentDeletedEvent {
     merge_commit_sha: string | null;
     assignee: User | null;
     assignees: User[];
-    requested_reviewers: (User | Team2)[];
-    requested_teams: Team2[];
+    requested_reviewers: (User | Team)[];
+    requested_teams: Team[];
     labels: Label[];
     milestone: Milestone | null;
     commits_url: string;
@@ -4984,8 +4442,8 @@ export interface PullRequestReviewCommentEditedEvent {
     merge_commit_sha: string | null;
     assignee: User | null;
     assignees: User[];
-    requested_reviewers: (User | Team2)[];
-    requested_teams: Team2[];
+    requested_reviewers: (User | Team)[];
+    requested_teams: Team[];
     labels: Label[];
     milestone: Milestone | null;
     commits_url: string;
@@ -5980,21 +5438,21 @@ export interface StatusEvent {
 }
 export interface TeamAddedToRepositoryEvent {
   action: "added_to_repository";
-  team: Team2;
+  team: Team;
   repository?: Repository;
   sender: User;
   organization: Organization;
 }
 export interface TeamCreatedEvent {
   action: "created";
-  team: Team2;
+  team: Team;
   repository?: Repository;
   sender: User;
   organization: Organization;
 }
 export interface TeamDeletedEvent {
   action: "deleted";
-  team: Team2;
+  team: Team;
   repository?: Repository;
   sender: User;
   organization: Organization;
@@ -6042,20 +5500,20 @@ export interface TeamEditedEvent {
       };
     };
   };
-  team: Team2;
+  team: Team;
   repository?: Repository;
   sender: User;
   organization: Organization;
 }
 export interface TeamRemovedFromRepositoryEvent {
   action: "removed_from_repository";
-  team: Team2;
+  team: Team;
   repository?: Repository;
   sender: User;
   organization: Organization;
 }
 export interface TeamAddEvent {
-  team: Team2;
+  team: Team;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
