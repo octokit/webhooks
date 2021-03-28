@@ -15,8 +15,7 @@
     "size",
     "download_count",
     "created_at",
-    "updated_at",
-    "creator"
+    "updated_at"
   ],
   "properties": {
     "url": { "type": "string", "format": "uri" },

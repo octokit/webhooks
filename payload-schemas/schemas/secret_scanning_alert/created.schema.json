@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "secret_scanning_alert$created",
   "type": "object",
-  "required": ["action", "alert", "repository", "sender"],
+  "required": ["action", "alert", "repository"],
   "properties": {
     "action": { "type": "string", "enum": ["created"] },
     "alert": {
