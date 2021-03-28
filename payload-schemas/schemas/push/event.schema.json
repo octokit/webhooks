@@ -34,7 +34,7 @@
     "deleted": { "type": "boolean" },
     "forced": { "type": "boolean" },
     "base_ref": { "type": "null" },
-    "compare": { "type": "string", "format": "uri" },
+    "compare": { "type": "string" },
     "commits": {
       "type": "array",
       "description": "An array of commit objects describing the pushed commits.",
