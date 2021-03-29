@@ -10027,7 +10027,7 @@
   },
   {
     "name": "gollum",
-    "description": "A wiki page is created or updated. For more information, see the \"[About wikis](/en/github/building-a-strong-community/about-wikis)\".",
+    "description": "A wiki page is created or updated. For more information, see the \"[About wikis](/en/communities/documenting-your-project-with-wikis/about-wikis)\".",
     "actions": [],
     "properties": {
       "pages": {
