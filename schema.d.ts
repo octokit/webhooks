@@ -17,6 +17,7 @@ export type Schema =
   | DeploymentEvent
   | DeploymentStatusEvent
   | DiscussionEvent
+  | DiscussionCommentEvent
   | ForkEvent
   | GithubAppAuthorizationEvent
   | GollumEvent
@@ -103,6 +104,10 @@ export type DiscussionEvent =
   | DiscussionUnansweredEvent
   | DiscussionUnlockedEvent
   | DiscussionUnpinnedEvent;
+export type DiscussionCommentEvent =
+  | DiscussionCommentCreatedEvent
+  | DiscussionCommentDeletedEvent
+  | DiscussionCommentEditedEvent;
 export type GithubAppAuthorizationEvent = GithubAppAuthorizationRevokedEvent;
 export type InstallationEvent =
   | InstallationCreatedEvent
@@ -2314,6 +2319,167 @@ export interface DiscussionUnpinnedEvent {
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionCommentCreatedEvent {
+  action: "created";
+  comment: {
+    id: number;
+    node_id: string;
+    html_url: string;
+    parent_id: null;
+    child_comment_count: number;
+    repository_url: string;
+    discussion_id: number;
+    author_association: AuthorAssociation;
+    user: User;
+    created_at: string;
+    updated_at: string;
+    body: string;
+  };
+  discussion: {
+    repository_url: string;
+    category: {
+      id: number;
+      repository_id: number;
+      emoji: string;
+      name: string;
+      description: string;
+      created_at: string;
+      updated_at: string;
+      slug: string;
+      is_answerable: boolean;
+    };
+    answer_html_url: string | null;
+    answer_chosen_at: string | null;
+    answer_chosen_by: string | null;
+    html_url: string;
+    id: number;
+    node_id: string;
+    number: number;
+    title: string;
+    user: User;
+    state: "open";
+    locked: boolean;
+    comments: number;
+    created_at: string;
+    updated_at: string;
+    author_association: AuthorAssociation;
+    active_lock_reason: string | null;
+    body: string;
+  };
+  repository: Repository;
+  sender: User;
+  installation: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionCommentDeletedEvent {
+  action: "deleted";
+  comment: {
+    id: number;
+    node_id: string;
+    html_url: string;
+    parent_id: null;
+    child_comment_count: number;
+    repository_url: string;
+    discussion_id: number;
+    author_association: AuthorAssociation;
+    user: User;
+    created_at: string;
+    updated_at: string;
+    body: string;
+  };
+  discussion: {
+    repository_url: string;
+    category: {
+      id: number;
+      repository_id: number;
+      emoji: string;
+      name: string;
+      description: string;
+      created_at: string;
+      updated_at: string;
+      slug: string;
+      is_answerable: boolean;
+    };
+    answer_html_url: string | null;
+    answer_chosen_at: string | null;
+    answer_chosen_by: string | null;
+    html_url: string;
+    id: number;
+    node_id: string;
+    number: number;
+    title: string;
+    user: User;
+    state: "open";
+    locked: boolean;
+    comments: number;
+    created_at: string;
+    updated_at: string;
+    author_association: AuthorAssociation;
+    active_lock_reason: string | null;
+    body: string;
+  };
+  repository: Repository;
+  sender: User;
+  installation: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionCommentEditedEvent {
+  changes: {
+    body: {
+      from: string;
+    };
+  };
+  action: "edited";
+  comment: {
+    id: number;
+    node_id: string;
+    html_url: string;
+    parent_id: null;
+    child_comment_count: number;
+    repository_url: string;
+    discussion_id: number;
+    author_association: AuthorAssociation;
+    user: User;
+    created_at: string;
+    updated_at: string;
+    body: string;
+  };
+  discussion: {
+    repository_url: string;
+    category: {
+      id: number;
+      repository_id: number;
+      emoji: string;
+      name: string;
+      description: string;
+      created_at: string;
+      updated_at: string;
+      slug: string;
+      is_answerable: boolean;
+    };
+    answer_html_url: string | null;
+    answer_chosen_at: string | null;
+    answer_chosen_by: string | null;
+    html_url: string;
+    id: number;
+    node_id: string;
+    number: number;
+    title: string;
+    user: User;
+    state: "open";
+    locked: boolean;
+    comments: number;
+    created_at: string;
+    updated_at: string;
+    author_association: AuthorAssociation;
+    active_lock_reason: string | null;
+    body: string;
+  };
+  repository: Repository;
+  sender: User;
+  installation: InstallationLite;
   organization?: Organization;
 }
 /**
@@ -6121,6 +6287,7 @@ export interface EventPayloadMap {
   deployment: DeploymentEvent;
   deployment_status: DeploymentStatusEvent;
   discussion: DiscussionEvent;
+  discussion_comment: DiscussionCommentEvent;
   fork: ForkEvent;
   github_app_authorization: GithubAppAuthorizationEvent;
   gollum: GollumEvent;
