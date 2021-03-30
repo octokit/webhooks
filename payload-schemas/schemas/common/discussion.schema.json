@@ -53,7 +53,9 @@
     },
     "answer_html_url": { "type": ["string", "null"] },
     "answer_chosen_at": { "type": ["string", "null"] },
-    "answer_chosen_by": { "type": ["string", "null"] },
+    "answer_chosen_by": {
+      "oneOf": [{ "$ref": "user.schema.json" }, { "type": "null" }]
+    },
     "html_url": { "type": "string" },
     "id": { "type": "integer" },
     "node_id": { "type": "string" },
