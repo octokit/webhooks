@@ -82,6 +82,14 @@ forEachJsonFile(pathToSchemas, (pathToSchema) => {
         if (value.type) {
           if (Array.isArray(value.type)) {
             value.type = standardizeTypeProperty(value.type);
+
+            if (
+              value.type.includes("null") &&
+              typeof value.enum !== "undefined" &&
+              !value.enum.includes(null)
+            ) {
+              value.enum = [...value.enum, null];
+            }
           }
 
           if (
