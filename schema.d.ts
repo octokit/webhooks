@@ -16,6 +16,7 @@ export type Schema =
   | DeployKeyEvent
   | DeploymentEvent
   | DeploymentStatusEvent
+  | DiscussionEvent
   | ForkEvent
   | GithubAppAuthorizationEvent
   | GollumEvent
@@ -90,6 +91,18 @@ export type ContentReferenceEvent = ContentReferenceCreatedEvent;
 export type DeployKeyEvent = DeployKeyCreatedEvent | DeployKeyDeletedEvent;
 export type DeploymentEvent = DeploymentCreatedEvent;
 export type DeploymentStatusEvent = DeploymentStatusCreatedEvent;
+export type DiscussionEvent =
+  | DiscussionAnsweredEvent
+  | DiscussionCreatedEvent
+  | DiscussionCreatedEvent1
+  | DiscussionDeletedEvent
+  | DiscussionEditedEvent
+  | DiscussionLockedEvent
+  | DiscussionPinnedEvent
+  | DiscussionTransferredEvent
+  | DiscussionUnansweredEvent
+  | DiscussionUnlockedEvent
+  | DiscussionUnpinnedEvent;
 export type GithubAppAuthorizationEvent = GithubAppAuthorizationRevokedEvent;
 export type InstallationEvent =
   | InstallationCreatedEvent
@@ -1856,6 +1869,447 @@ export interface DeploymentStatusCreatedEvent {
     updated_at: string;
     statuses_url: string;
     repository_url: string;
+  };
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionAnsweredEvent {
+  action: "answered";
+  discussion: {
+    repository_url: string;
+    category: {
+      id: number;
+      repository_id: number;
+      emoji: string;
+      name: string;
+      description: string;
+      created_at: string;
+      updated_at: string;
+      slug: string;
+      is_answerable: boolean;
+    };
+    answer_html_url: string | null;
+    answer_chosen_at: string | null;
+    answer_chosen_by: string | null;
+    html_url: string;
+    id: number;
+    node_id: string;
+    number: number;
+    title: string;
+    user: User;
+    state: "open" | "locked";
+    locked: boolean;
+    comments: number;
+    created_at: string;
+    updated_at: string;
+    author_association: AuthorAssociation;
+    active_lock_reason: string | null;
+    body: string;
+  };
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionCreatedEvent {
+  changes: {
+    category: {
+      from: {
+        id: number;
+        repository_id: number;
+        emoji: string;
+        name: string;
+        description: string;
+        created_at: string;
+        updated_at: string;
+        slug: string;
+        is_answerable: boolean;
+      };
+    };
+  };
+  action: "category_changed";
+  discussion: {
+    repository_url: string;
+    category: {
+      id: number;
+      repository_id: number;
+      emoji: string;
+      name: string;
+      description: string;
+      created_at: string;
+      updated_at: string;
+      slug: string;
+      is_answerable: boolean;
+    };
+    answer_html_url: string | null;
+    answer_chosen_at: string | null;
+    answer_chosen_by: string | null;
+    html_url: string;
+    id: number;
+    node_id: string;
+    number: number;
+    title: string;
+    user: User;
+    state: "open" | "locked";
+    locked: boolean;
+    comments: number;
+    created_at: string;
+    updated_at: string;
+    author_association: AuthorAssociation;
+    active_lock_reason: string | null;
+    body: string;
+  };
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionCreatedEvent1 {
+  action: "created";
+  discussion: {
+    repository_url: string;
+    category: {
+      id: number;
+      repository_id: number;
+      emoji: string;
+      name: string;
+      description: string;
+      created_at: string;
+      updated_at: string;
+      slug: string;
+      is_answerable: boolean;
+    };
+    answer_html_url: string | null;
+    answer_chosen_at: string | null;
+    answer_chosen_by: string | null;
+    html_url: string;
+    id: number;
+    node_id: string;
+    number: number;
+    title: string;
+    user: User;
+    state: "open";
+    locked: boolean;
+    comments: number;
+    created_at: string;
+    updated_at: string;
+    author_association: AuthorAssociation;
+    active_lock_reason: string | null;
+    body: string;
+  };
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionDeletedEvent {
+  action: "deleted";
+  discussion: {
+    repository_url: string;
+    category: {
+      id: number;
+      repository_id: number;
+      emoji: string;
+      name: string;
+      description: string;
+      created_at: string;
+      updated_at: string;
+      slug: string;
+      is_answerable: boolean;
+    };
+    answer_html_url: string | null;
+    answer_chosen_at: string | null;
+    answer_chosen_by: string | null;
+    html_url: string;
+    id: number;
+    node_id: string;
+    number: number;
+    title: string;
+    user: User;
+    state: "open" | "locked";
+    locked: boolean;
+    comments: number;
+    created_at: string;
+    updated_at: string;
+    author_association: AuthorAssociation;
+    active_lock_reason: string | null;
+    body: string;
+  };
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionEditedEvent {
+  changes?: {
+    title?: {
+      from: string;
+    };
+    body?: {
+      from: string;
+    };
+  };
+  action: "edited";
+  discussion: {
+    repository_url: string;
+    category: {
+      id: number;
+      repository_id: number;
+      emoji: string;
+      name: string;
+      description: string;
+      created_at: string;
+      updated_at: string;
+      slug: string;
+      is_answerable: boolean;
+    };
+    answer_html_url: string | null;
+    answer_chosen_at: string | null;
+    answer_chosen_by: string | null;
+    html_url: string;
+    id: number;
+    node_id: string;
+    number: number;
+    title: string;
+    user: User;
+    state: "open" | "locked";
+    locked: boolean;
+    comments: number;
+    created_at: string;
+    updated_at: string;
+    author_association: AuthorAssociation;
+    active_lock_reason: string | null;
+    body: string;
+  };
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionLockedEvent {
+  action: "locked";
+  discussion: {
+    repository_url: string;
+    category: {
+      id: number;
+      repository_id: number;
+      emoji: string;
+      name: string;
+      description: string;
+      created_at: string;
+      updated_at: string;
+      slug: string;
+      is_answerable: boolean;
+    };
+    answer_html_url: string | null;
+    answer_chosen_at: string | null;
+    answer_chosen_by: string | null;
+    html_url: string;
+    id: number;
+    node_id: string;
+    number: number;
+    title: string;
+    user: User;
+    state: "locked";
+    locked: true;
+    comments: number;
+    created_at: string;
+    updated_at: string;
+    author_association: AuthorAssociation;
+    active_lock_reason: string | null;
+    body: string;
+  };
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionPinnedEvent {
+  action: "pinned";
+  discussion: {
+    repository_url: string;
+    category: {
+      id: number;
+      repository_id: number;
+      emoji: string;
+      name: string;
+      description: string;
+      created_at: string;
+      updated_at: string;
+      slug: string;
+      is_answerable: boolean;
+    };
+    answer_html_url: string | null;
+    answer_chosen_at: string | null;
+    answer_chosen_by: string | null;
+    html_url: string;
+    id: number;
+    node_id: string;
+    number: number;
+    title: string;
+    user: User;
+    state: "open" | "locked";
+    locked: boolean;
+    comments: number;
+    created_at: string;
+    updated_at: string;
+    author_association: AuthorAssociation;
+    active_lock_reason: string | null;
+    body: string;
+  };
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionTransferredEvent {
+  action: "transferred";
+  discussion: {
+    repository_url: string;
+    category: {
+      id: number;
+      repository_id: number;
+      emoji: string;
+      name: string;
+      description: string;
+      created_at: string;
+      updated_at: string;
+      slug: string;
+      is_answerable: boolean;
+    };
+    answer_html_url: string | null;
+    answer_chosen_at: string | null;
+    answer_chosen_by: string | null;
+    html_url: string;
+    id: number;
+    node_id: string;
+    number: number;
+    title: string;
+    user: User;
+    state: "open" | "locked";
+    locked: boolean;
+    comments: number;
+    created_at: string;
+    updated_at: string;
+    author_association: AuthorAssociation;
+    active_lock_reason: string | null;
+    body: string;
+  };
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionUnansweredEvent {
+  action: "unanswered";
+  discussion: {
+    repository_url: string;
+    category: {
+      id: number;
+      repository_id: number;
+      emoji: string;
+      name: string;
+      description: string;
+      created_at: string;
+      updated_at: string;
+      slug: string;
+      is_answerable: boolean;
+    };
+    answer_html_url: string | null;
+    answer_chosen_at: string | null;
+    answer_chosen_by: string | null;
+    html_url: string;
+    id: number;
+    node_id: string;
+    number: number;
+    title: string;
+    user: User;
+    state: "open" | "locked";
+    locked: boolean;
+    comments: number;
+    created_at: string;
+    updated_at: string;
+    author_association: AuthorAssociation;
+    active_lock_reason: string | null;
+    body: string;
+  };
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionUnlockedEvent {
+  action: "unlocked";
+  discussion: {
+    repository_url: string;
+    category: {
+      id: number;
+      repository_id: number;
+      emoji: string;
+      name: string;
+      description: string;
+      created_at: string;
+      updated_at: string;
+      slug: string;
+      is_answerable: boolean;
+    };
+    answer_html_url: string | null;
+    answer_chosen_at: string | null;
+    answer_chosen_by: string | null;
+    html_url: string;
+    id: number;
+    node_id: string;
+    number: number;
+    title: string;
+    user: User;
+    state: "open";
+    locked: false;
+    comments: number;
+    created_at: string;
+    updated_at: string;
+    author_association: AuthorAssociation;
+    active_lock_reason: string | null;
+    body: string;
+  };
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionUnpinnedEvent {
+  action: "unpinned";
+  discussion: {
+    repository_url: string;
+    category: {
+      id: number;
+      repository_id: number;
+      emoji: string;
+      name: string;
+      description: string;
+      created_at: string;
+      updated_at: string;
+      slug: string;
+      is_answerable: boolean;
+    };
+    answer_html_url: string | null;
+    answer_chosen_at: string | null;
+    answer_chosen_by: string | null;
+    html_url: string;
+    id: number;
+    node_id: string;
+    number: number;
+    title: string;
+    user: User;
+    state: "open" | "locked";
+    locked: boolean;
+    comments: number;
+    created_at: string;
+    updated_at: string;
+    author_association: AuthorAssociation;
+    active_lock_reason: string | null;
+    body: string;
   };
   repository: Repository;
   sender: User;
@@ -5666,6 +6120,7 @@ export interface EventPayloadMap {
   deploy_key: DeployKeyEvent;
   deployment: DeploymentEvent;
   deployment_status: DeploymentStatusEvent;
+  discussion: DiscussionEvent;
   fork: ForkEvent;
   github_app_authorization: GithubAppAuthorizationEvent;
   gollum: GollumEvent;
