@@ -1882,7 +1882,28 @@ export interface DeploymentStatusCreatedEvent {
 }
 export interface DiscussionAnsweredEvent {
   action: "answered";
-  discussion: Discussion;
+  discussion: Discussion & {
+    category: {
+      is_answerable: true;
+    };
+    answer_html_url: string;
+    answer_chosen_at: string;
+    answer_chosen_by: User;
+  };
+  answer: {
+    id: number;
+    node_id: string;
+    html_url: string;
+    parent_id: null;
+    child_comment_count: number;
+    repository_url: string;
+    discussion_id: number;
+    author_association: AuthorAssociation;
+    user: User;
+    created_at: string;
+    updated_at: string;
+    body: string;
+  };
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -1903,7 +1924,7 @@ export interface Discussion {
   };
   answer_html_url: string | null;
   answer_chosen_at: string | null;
-  answer_chosen_by: string | null;
+  answer_chosen_by: User | null;
   html_url: string;
   id: number;
   node_id: string;
@@ -1947,6 +1968,9 @@ export interface DiscussionCreatedEvent1 {
   discussion: Discussion & {
     state: "open";
     locked: false;
+    answer_html_url: null;
+    answer_chosen_at: null;
+    answer_chosen_by: null;
   };
   repository: Repository;
   sender: User;
@@ -2006,7 +2030,28 @@ export interface DiscussionTransferredEvent {
 }
 export interface DiscussionUnansweredEvent {
   action: "unanswered";
-  discussion: Discussion;
+  discussion: Discussion & {
+    category: {
+      is_answerable: true;
+    };
+    answer_html_url: null;
+    answer_chosen_at: null;
+    answer_chosen_by: null;
+  };
+  old_answer: {
+    id: number;
+    node_id: string;
+    html_url: string;
+    parent_id: null;
+    child_comment_count: number;
+    repository_url: string;
+    discussion_id: number;
+    author_association: AuthorAssociation;
+    user: User;
+    created_at: string;
+    updated_at: string;
+    body: string;
+  };
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
