@@ -2262,10 +2262,12 @@ export interface Installation {
     issues?: "read" | "write";
     organization_administration?: "read" | "write";
     pages?: "read" | "write";
+    packages?: "read" | "write";
     pull_requests?: "read" | "write";
     repository_hooks?: "read" | "write";
     repository_projects?: "read" | "write";
     statuses?: "read" | "write";
+    members?: "read" | "write";
     metadata?: "read" | "write";
     vulnerability_alerts?: "read" | "write";
   };

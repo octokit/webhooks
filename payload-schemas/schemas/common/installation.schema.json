@@ -52,10 +52,12 @@
           "enum": ["read", "write"]
         },
         "pages": { "type": "string", "enum": ["read", "write"] },
+        "packages": { "type": "string", "enum": ["read", "write"] },
         "pull_requests": { "type": "string", "enum": ["read", "write"] },
         "repository_hooks": { "type": "string", "enum": ["read", "write"] },
         "repository_projects": { "type": "string", "enum": ["read", "write"] },
         "statuses": { "type": "string", "enum": ["read", "write"] },
+        "members": { "type": "string", "enum": ["read", "write"] },
         "metadata": { "type": "string", "enum": ["read", "write"] },
         "vulnerability_alerts": { "type": "string", "enum": ["read", "write"] }
       },
