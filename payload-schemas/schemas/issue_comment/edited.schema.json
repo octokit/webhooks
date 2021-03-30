@@ -76,7 +76,8 @@
         "created_at",
         "updated_at",
         "author_association",
-        "body"
+        "body",
+        "performed_via_github_app"
       ],
       "properties": {
         "url": {
@@ -100,6 +101,9 @@
         "body": {
           "type": "string",
           "description": "Contents of the issue comment"
+        },
+        "performed_via_github_app": {
+          "oneOf": [{ "type": "null" }, { "$ref": "common/app.schema.json" }]
         }
       },
       "additionalProperties": false

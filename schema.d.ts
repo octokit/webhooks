@@ -2691,6 +2691,7 @@ export interface IssueCommentEditedEvent {
      * Contents of the issue comment
      */
     body: string;
+    performed_via_github_app: null | App;
   };
   repository: Repository;
   sender: User;
@@ -5411,6 +5412,7 @@ export interface SecurityAdvisoryPerformedEvent {
    * The details of the security advisory, including summary, description, and severity.
    */
   security_advisory: {
+    cvss?: string;
     ghsa_id: string;
     summary: string;
     description: string;
@@ -5444,6 +5446,7 @@ export interface SecurityAdvisoryPublishedEvent {
    * The details of the security advisory, including summary, description, and severity.
    */
   security_advisory: {
+    cvss?: string;
     ghsa_id: string;
     summary: string;
     description: string;
@@ -5477,6 +5480,7 @@ export interface SecurityAdvisoryUpdatedEvent {
    * The details of the security advisory, including summary, description, and severity.
    */
   security_advisory: {
+    cvss?: string;
     ghsa_id: string;
     summary: string;
     description: string;
@@ -5866,6 +5870,7 @@ export interface WorkflowRun {
   jobs_url: string;
   logs_url: string;
   node_id: string;
+  name: string;
   pull_requests: PullRequest[];
   repository: RepositoryLite;
   rerun_url: string;
