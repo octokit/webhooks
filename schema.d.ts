@@ -2369,7 +2369,6 @@ export interface IssueCommentEditedEvent {
      * State of the issue; either 'open' or 'closed'
      */
     state: "open" | "closed";
-    closed_at: null;
     locked: boolean;
     labels: Label[];
     pull_request?: {
