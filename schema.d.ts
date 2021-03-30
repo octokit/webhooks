@@ -1882,41 +1882,42 @@ export interface DeploymentStatusCreatedEvent {
 }
 export interface DiscussionAnsweredEvent {
   action: "answered";
-  discussion: {
-    repository_url: string;
-    category: {
-      id: number;
-      repository_id: number;
-      emoji: string;
-      name: string;
-      description: string;
-      created_at: string;
-      updated_at: string;
-      slug: string;
-      is_answerable: boolean;
-    };
-    answer_html_url: string | null;
-    answer_chosen_at: string | null;
-    answer_chosen_by: string | null;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    title: string;
-    user: User;
-    state: "open" | "locked";
-    locked: boolean;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    author_association: AuthorAssociation;
-    active_lock_reason: string | null;
-    body: string;
-  };
+  discussion: Discussion;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
+}
+export interface Discussion {
+  repository_url: string;
+  category: {
+    id: number;
+    repository_id: number;
+    emoji: string;
+    name: string;
+    description: string;
+    created_at: string;
+    updated_at: string;
+    slug: string;
+    is_answerable: boolean;
+  };
+  answer_html_url: string | null;
+  answer_chosen_at: string | null;
+  answer_chosen_by: string | null;
+  html_url: string;
+  id: number;
+  node_id: string;
+  number: number;
+  title: string;
+  user: User;
+  state: "open" | "locked";
+  locked: boolean;
+  comments: number;
+  created_at: string;
+  updated_at: string;
+  author_association: AuthorAssociation;
+  active_lock_reason: string | null;
+  body: string;
 }
 export interface DiscussionCreatedEvent {
   changes: {
@@ -1935,37 +1936,7 @@ export interface DiscussionCreatedEvent {
     };
   };
   action: "category_changed";
-  discussion: {
-    repository_url: string;
-    category: {
-      id: number;
-      repository_id: number;
-      emoji: string;
-      name: string;
-      description: string;
-      created_at: string;
-      updated_at: string;
-      slug: string;
-      is_answerable: boolean;
-    };
-    answer_html_url: string | null;
-    answer_chosen_at: string | null;
-    answer_chosen_by: string | null;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    title: string;
-    user: User;
-    state: "open" | "locked";
-    locked: boolean;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    author_association: AuthorAssociation;
-    active_lock_reason: string | null;
-    body: string;
-  };
+  discussion: Discussion;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -1973,36 +1944,9 @@ export interface DiscussionCreatedEvent {
 }
 export interface DiscussionCreatedEvent1 {
   action: "created";
-  discussion: {
-    repository_url: string;
-    category: {
-      id: number;
-      repository_id: number;
-      emoji: string;
-      name: string;
-      description: string;
-      created_at: string;
-      updated_at: string;
-      slug: string;
-      is_answerable: boolean;
-    };
-    answer_html_url: string | null;
-    answer_chosen_at: string | null;
-    answer_chosen_by: string | null;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    title: string;
-    user: User;
+  discussion: Discussion & {
     state: "open";
-    locked: boolean;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    author_association: AuthorAssociation;
-    active_lock_reason: string | null;
-    body: string;
+    locked: false;
   };
   repository: Repository;
   sender: User;
@@ -2011,37 +1955,7 @@ export interface DiscussionCreatedEvent1 {
 }
 export interface DiscussionDeletedEvent {
   action: "deleted";
-  discussion: {
-    repository_url: string;
-    category: {
-      id: number;
-      repository_id: number;
-      emoji: string;
-      name: string;
-      description: string;
-      created_at: string;
-      updated_at: string;
-      slug: string;
-      is_answerable: boolean;
-    };
-    answer_html_url: string | null;
-    answer_chosen_at: string | null;
-    answer_chosen_by: string | null;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    title: string;
-    user: User;
-    state: "open" | "locked";
-    locked: boolean;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    author_association: AuthorAssociation;
-    active_lock_reason: string | null;
-    body: string;
-  };
+  discussion: Discussion;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2057,37 +1971,7 @@ export interface DiscussionEditedEvent {
     };
   };
   action: "edited";
-  discussion: {
-    repository_url: string;
-    category: {
-      id: number;
-      repository_id: number;
-      emoji: string;
-      name: string;
-      description: string;
-      created_at: string;
-      updated_at: string;
-      slug: string;
-      is_answerable: boolean;
-    };
-    answer_html_url: string | null;
-    answer_chosen_at: string | null;
-    answer_chosen_by: string | null;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    title: string;
-    user: User;
-    state: "open" | "locked";
-    locked: boolean;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    author_association: AuthorAssociation;
-    active_lock_reason: string | null;
-    body: string;
-  };
+  discussion: Discussion;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2095,36 +1979,9 @@ export interface DiscussionEditedEvent {
 }
 export interface DiscussionLockedEvent {
   action: "locked";
-  discussion: {
-    repository_url: string;
-    category: {
-      id: number;
-      repository_id: number;
-      emoji: string;
-      name: string;
-      description: string;
-      created_at: string;
-      updated_at: string;
-      slug: string;
-      is_answerable: boolean;
-    };
-    answer_html_url: string | null;
-    answer_chosen_at: string | null;
-    answer_chosen_by: string | null;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    title: string;
-    user: User;
+  discussion: Discussion & {
     state: "locked";
     locked: true;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    author_association: AuthorAssociation;
-    active_lock_reason: string | null;
-    body: string;
   };
   repository: Repository;
   sender: User;
@@ -2133,37 +1990,7 @@ export interface DiscussionLockedEvent {
 }
 export interface DiscussionPinnedEvent {
   action: "pinned";
-  discussion: {
-    repository_url: string;
-    category: {
-      id: number;
-      repository_id: number;
-      emoji: string;
-      name: string;
-      description: string;
-      created_at: string;
-      updated_at: string;
-      slug: string;
-      is_answerable: boolean;
-    };
-    answer_html_url: string | null;
-    answer_chosen_at: string | null;
-    answer_chosen_by: string | null;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    title: string;
-    user: User;
-    state: "open" | "locked";
-    locked: boolean;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    author_association: AuthorAssociation;
-    active_lock_reason: string | null;
-    body: string;
-  };
+  discussion: Discussion;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2171,37 +1998,7 @@ export interface DiscussionPinnedEvent {
 }
 export interface DiscussionTransferredEvent {
   action: "transferred";
-  discussion: {
-    repository_url: string;
-    category: {
-      id: number;
-      repository_id: number;
-      emoji: string;
-      name: string;
-      description: string;
-      created_at: string;
-      updated_at: string;
-      slug: string;
-      is_answerable: boolean;
-    };
-    answer_html_url: string | null;
-    answer_chosen_at: string | null;
-    answer_chosen_by: string | null;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    title: string;
-    user: User;
-    state: "open" | "locked";
-    locked: boolean;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    author_association: AuthorAssociation;
-    active_lock_reason: string | null;
-    body: string;
-  };
+  discussion: Discussion;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2209,37 +2006,7 @@ export interface DiscussionTransferredEvent {
 }
 export interface DiscussionUnansweredEvent {
   action: "unanswered";
-  discussion: {
-    repository_url: string;
-    category: {
-      id: number;
-      repository_id: number;
-      emoji: string;
-      name: string;
-      description: string;
-      created_at: string;
-      updated_at: string;
-      slug: string;
-      is_answerable: boolean;
-    };
-    answer_html_url: string | null;
-    answer_chosen_at: string | null;
-    answer_chosen_by: string | null;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    title: string;
-    user: User;
-    state: "open" | "locked";
-    locked: boolean;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    author_association: AuthorAssociation;
-    active_lock_reason: string | null;
-    body: string;
-  };
+  discussion: Discussion;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2247,36 +2014,9 @@ export interface DiscussionUnansweredEvent {
 }
 export interface DiscussionUnlockedEvent {
   action: "unlocked";
-  discussion: {
-    repository_url: string;
-    category: {
-      id: number;
-      repository_id: number;
-      emoji: string;
-      name: string;
-      description: string;
-      created_at: string;
-      updated_at: string;
-      slug: string;
-      is_answerable: boolean;
-    };
-    answer_html_url: string | null;
-    answer_chosen_at: string | null;
-    answer_chosen_by: string | null;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    title: string;
-    user: User;
+  discussion: Discussion & {
     state: "open";
     locked: false;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    author_association: AuthorAssociation;
-    active_lock_reason: string | null;
-    body: string;
   };
   repository: Repository;
   sender: User;
@@ -2285,37 +2025,7 @@ export interface DiscussionUnlockedEvent {
 }
 export interface DiscussionUnpinnedEvent {
   action: "unpinned";
-  discussion: {
-    repository_url: string;
-    category: {
-      id: number;
-      repository_id: number;
-      emoji: string;
-      name: string;
-      description: string;
-      created_at: string;
-      updated_at: string;
-      slug: string;
-      is_answerable: boolean;
-    };
-    answer_html_url: string | null;
-    answer_chosen_at: string | null;
-    answer_chosen_by: string | null;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    title: string;
-    user: User;
-    state: "open" | "locked";
-    locked: boolean;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    author_association: AuthorAssociation;
-    active_lock_reason: string | null;
-    body: string;
-  };
+  discussion: Discussion;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2337,37 +2047,7 @@ export interface DiscussionCommentCreatedEvent {
     updated_at: string;
     body: string;
   };
-  discussion: {
-    repository_url: string;
-    category: {
-      id: number;
-      repository_id: number;
-      emoji: string;
-      name: string;
-      description: string;
-      created_at: string;
-      updated_at: string;
-      slug: string;
-      is_answerable: boolean;
-    };
-    answer_html_url: string | null;
-    answer_chosen_at: string | null;
-    answer_chosen_by: string | null;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    title: string;
-    user: User;
-    state: "open";
-    locked: boolean;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    author_association: AuthorAssociation;
-    active_lock_reason: string | null;
-    body: string;
-  };
+  discussion: Discussion;
   repository: Repository;
   sender: User;
   installation: InstallationLite;
@@ -2389,37 +2069,7 @@ export interface DiscussionCommentDeletedEvent {
     updated_at: string;
     body: string;
   };
-  discussion: {
-    repository_url: string;
-    category: {
-      id: number;
-      repository_id: number;
-      emoji: string;
-      name: string;
-      description: string;
-      created_at: string;
-      updated_at: string;
-      slug: string;
-      is_answerable: boolean;
-    };
-    answer_html_url: string | null;
-    answer_chosen_at: string | null;
-    answer_chosen_by: string | null;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    title: string;
-    user: User;
-    state: "open";
-    locked: boolean;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    author_association: AuthorAssociation;
-    active_lock_reason: string | null;
-    body: string;
-  };
+  discussion: Discussion;
   repository: Repository;
   sender: User;
   installation: InstallationLite;
@@ -2446,37 +2096,7 @@ export interface DiscussionCommentEditedEvent {
     updated_at: string;
     body: string;
   };
-  discussion: {
-    repository_url: string;
-    category: {
-      id: number;
-      repository_id: number;
-      emoji: string;
-      name: string;
-      description: string;
-      created_at: string;
-      updated_at: string;
-      slug: string;
-      is_answerable: boolean;
-    };
-    answer_html_url: string | null;
-    answer_chosen_at: string | null;
-    answer_chosen_by: string | null;
-    html_url: string;
-    id: number;
-    node_id: string;
-    number: number;
-    title: string;
-    user: User;
-    state: "open";
-    locked: boolean;
-    comments: number;
-    created_at: string;
-    updated_at: string;
-    author_association: AuthorAssociation;
-    active_lock_reason: string | null;
-    body: string;
-  };
+  discussion: Discussion;
   repository: Repository;
   sender: User;
   installation: InstallationLite;
