@@ -10,10 +10,19 @@
         { "$ref": "common/discussion.schema.json" },
         {
           "type": "object",
-          "required": ["state", "locked"],
+          "required": [
+            "state",
+            "locked",
+            "answer_html_url",
+            "answer_chosen_at",
+            "answer_chosen_by"
+          ],
           "properties": {
             "state": { "type": "string", "enum": ["open"] },
-            "locked": { "type": "boolean", "enum": [false] }
+            "locked": { "type": "boolean", "enum": [false] },
+            "answer_html_url": { "type": "null" },
+            "answer_chosen_at": { "type": "null" },
+            "answer_chosen_by": { "type": "null" }
           },
           "tsAdditionalProperties": false
         }
