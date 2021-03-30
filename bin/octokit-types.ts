@@ -56,8 +56,16 @@ const compileSchema = async (): Promise<string> => {
   const schema: JSONSchema4 = JSON.parse(
     await fs.readFile("./schema.json", "utf-8"),
     (key, value: unknown) => {
-      if (isJsonSchemaObject(value) && "tsAdditionalProperties" in value) {
-        value.additionalProperties = value.tsAdditionalProperties;
+      if (isJsonSchemaObject(value)) {
+        // $refs with a description result in a duplicate interface being made
+        // in an attempt to preserve the description as a JSDoc
+        if ("$ref" in value && "description" in value) {
+          delete value.description;
+        }
+
+        if ("tsAdditionalProperties" in value) {
+          value.additionalProperties = value.tsAdditionalProperties;
+        }
       }
 
       return value;
