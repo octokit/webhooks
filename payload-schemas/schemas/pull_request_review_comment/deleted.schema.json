@@ -107,7 +107,7 @@
         },
         "start_side": {
           "type": ["string", "null"],
-          "enum": ["LEFT", "RIGHT"],
+          "enum": ["LEFT", "RIGHT", null],
           "default": "RIGHT",
           "description": "The side of the first line of the range for a multi-line comment."
         },
