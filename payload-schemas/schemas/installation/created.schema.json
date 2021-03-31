@@ -31,7 +31,7 @@
         "additionalProperties": false
       }
     },
-    "requester": { "type": "null" },
+    "requester": { "$ref": "common/user.schema.json" },
     "sender": { "$ref": "common/user.schema.json" }
   },
   "additionalProperties": false,
