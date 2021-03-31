@@ -2,8 +2,17 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "discussion$transfered",
   "type": "object",
-  "required": ["action", "discussion", "repository", "sender"],
+  "required": ["action", "changes", "discussion", "repository", "sender"],
   "properties": {
+    "changes": {
+      "type": "object",
+      "required": ["new_discussion", "new_repository"],
+      "properties": {
+        "new_discussion": { "$ref": "common/discussion.schema.json" },
+        "new_repository": { "$ref": "common/repository.schema.json" }
+      },
+      "additionalProperties": false
+    },
     "action": { "type": "string", "enum": ["transferred"] },
     "discussion": { "$ref": "common/discussion.schema.json" },
     "repository": { "$ref": "common/repository.schema.json" },
