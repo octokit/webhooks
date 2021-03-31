@@ -2086,7 +2086,7 @@ export interface DiscussionCommentCreatedEvent {
     id: number;
     node_id: string;
     html_url: string;
-    parent_id: null;
+    parent_id: number | null;
     child_comment_count: number;
     repository_url: string;
     discussion_id: number;
@@ -2108,7 +2108,7 @@ export interface DiscussionCommentDeletedEvent {
     id: number;
     node_id: string;
     html_url: string;
-    parent_id: null;
+    parent_id: number | null;
     child_comment_count: number;
     repository_url: string;
     discussion_id: number;
@@ -2135,7 +2135,7 @@ export interface DiscussionCommentEditedEvent {
     id: number;
     node_id: string;
     html_url: string;
-    parent_id: null;
+    parent_id: number | null;
     child_comment_count: number;
     repository_url: string;
     discussion_id: number;

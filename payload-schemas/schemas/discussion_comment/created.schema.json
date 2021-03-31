@@ -32,7 +32,7 @@
         "id": { "type": "integer" },
         "node_id": { "type": "string" },
         "html_url": { "type": "string" },
-        "parent_id": { "type": "null" },
+        "parent_id": { "type": ["integer", "null"] },
         "child_comment_count": { "type": "integer" },
         "repository_url": { "type": "string" },
         "discussion_id": { "type": "integer" },
