@@ -2021,6 +2021,10 @@ export interface DiscussionPinnedEvent {
   organization?: Organization;
 }
 export interface DiscussionTransferredEvent {
+  changes: {
+    new_discussion: Discussion;
+    new_repository: Repository;
+  };
   action: "transferred";
   discussion: Discussion;
   repository: Repository;
