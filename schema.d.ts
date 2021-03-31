@@ -2119,6 +2119,7 @@ export interface InstallationRepositoriesAddedEvent {
    * An array of repository objects, which were removed from the installation.
    */
   repositories_removed: [];
+  requester?: User;
   sender: User;
 }
 export interface InstallationRepositoriesRemovedEvent {
