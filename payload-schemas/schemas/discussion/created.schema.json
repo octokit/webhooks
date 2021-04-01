@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "discussion$created",
+  "type": "object",
+  "required": ["action", "discussion", "repository", "sender"],
+  "properties": {
+    "action": { "type": "string", "enum": ["created"] },
+    "discussion": {
+      "allOf": [
+        { "$ref": "common/discussion.schema.json" },
+        {
+          "type": "object",
+          "required": [
+            "state",
+            "locked",
+            "answer_html_url",
+            "answer_chosen_at",
+            "answer_chosen_by"
+          ],
+          "properties": {
+            "state": { "type": "string", "enum": ["open"] },
+            "locked": { "type": "boolean", "enum": [false] },
+            "answer_html_url": { "type": "null" },
+            "answer_chosen_at": { "type": "null" },
+            "answer_chosen_by": { "type": "null" }
+          },
+          "tsAdditionalProperties": false
+        }
+      ]
+    },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
+  },
+  "additionalProperties": false,
+  "title": "discussion created event"
+}

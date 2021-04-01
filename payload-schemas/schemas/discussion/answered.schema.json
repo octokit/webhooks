@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "discussion$answered",
+  "type": "object",
+  "required": ["action", "discussion", "answer", "repository", "sender"],
+  "properties": {
+    "action": { "type": "string", "enum": ["answered"] },
+    "discussion": {
+      "allOf": [
+        { "$ref": "common/discussion.schema.json" },
+        {
+          "type": "object",
+          "required": [
+            "category",
+            "answer_html_url",
+            "answer_chosen_at",
+            "answer_chosen_by"
+          ],
+          "properties": {
+            "category": {
+              "type": "object",
+              "required": ["is_answerable"],
+              "properties": {
+                "is_answerable": { "type": "boolean", "enum": [true] }
+              },
+              "tsAdditionalProperties": false
+            },
+            "answer_html_url": { "type": "string", "format": "uri" },
+            "answer_chosen_at": { "type": "string", "format": "date-time" },
+            "answer_chosen_by": { "$ref": "common/user.schema.json" }
+          },
+          "tsAdditionalProperties": false
+        }
+      ]
+    },
+    "answer": {
+      "type": "object",
+      "required": [
+        "id",
+        "node_id",
+        "html_url",
+        "parent_id",
+        "child_comment_count",
+        "repository_url",
+        "discussion_id",
+        "author_association",
+        "user",
+        "created_at",
+        "updated_at",
+        "body"
+      ],
+      "properties": {
+        "id": { "type": "integer" },
+        "node_id": { "type": "string" },
+        "html_url": { "type": "string" },
+        "parent_id": { "type": "null" },
+        "child_comment_count": { "type": "integer" },
+        "repository_url": { "type": "string" },
+        "discussion_id": { "type": "integer" },
+        "author_association": {
+          "$ref": "common/author_association.schema.json"
+        },
+        "user": { "$ref": "common/user.schema.json" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "body": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
+  },
+  "additionalProperties": false,
+  "title": "discussion answered event"
+}

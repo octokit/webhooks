@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "discussion$pinned",
+  "type": "object",
+  "required": ["action", "discussion", "repository", "sender"],
+  "properties": {
+    "action": { "type": "string", "enum": ["pinned"] },
+    "discussion": { "$ref": "common/discussion.schema.json" },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
+  },
+  "additionalProperties": false,
+  "title": "discussion pinned event"
+}

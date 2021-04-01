@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "discussion_comment$deleted",
+  "type": "object",
+  "required": [
+    "action",
+    "comment",
+    "discussion",
+    "repository",
+    "sender",
+    "installation"
+  ],
+  "properties": {
+    "action": { "type": "string", "enum": ["deleted"] },
+    "comment": {
+      "type": "object",
+      "required": [
+        "id",
+        "node_id",
+        "html_url",
+        "parent_id",
+        "child_comment_count",
+        "repository_url",
+        "discussion_id",
+        "author_association",
+        "user",
+        "created_at",
+        "updated_at",
+        "body"
+      ],
+      "properties": {
+        "id": { "type": "integer" },
+        "node_id": { "type": "string" },
+        "html_url": { "type": "string" },
+        "parent_id": { "type": ["integer", "null"] },
+        "child_comment_count": { "type": "integer" },
+        "repository_url": { "type": "string" },
+        "discussion_id": { "type": "integer" },
+        "author_association": {
+          "$ref": "common/author_association.schema.json"
+        },
+        "user": { "$ref": "common/user.schema.json" },
+        "created_at": { "type": "string" },
+        "updated_at": { "type": "string" },
+        "body": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "discussion": { "$ref": "common/discussion.schema.json" },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
+  },
+  "additionalProperties": false,
+  "title": "discussion_comment deleted event"
+}

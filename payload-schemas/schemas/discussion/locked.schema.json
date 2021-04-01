@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "discussion$locked",
+  "type": "object",
+  "required": ["action", "discussion", "repository", "sender"],
+  "properties": {
+    "action": { "type": "string", "enum": ["locked"] },
+    "discussion": {
+      "allOf": [
+        { "$ref": "common/discussion.schema.json" },
+        {
+          "type": "object",
+          "required": ["state", "locked"],
+          "properties": {
+            "state": { "type": "string", "enum": ["locked"] },
+            "locked": { "type": "boolean", "enum": [true] }
+          },
+          "tsAdditionalProperties": false
+        }
+      ]
+    },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
+  },
+  "additionalProperties": false,
+  "title": "discussion locked event"
+}

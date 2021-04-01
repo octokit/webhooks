@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "discussion$transfered",
+  "type": "object",
+  "required": ["action", "changes", "discussion", "repository", "sender"],
+  "properties": {
+    "changes": {
+      "type": "object",
+      "required": ["new_discussion", "new_repository"],
+      "properties": {
+        "new_discussion": { "$ref": "common/discussion.schema.json" },
+        "new_repository": { "$ref": "common/repository.schema.json" }
+      },
+      "additionalProperties": false
+    },
+    "action": { "type": "string", "enum": ["transferred"] },
+    "discussion": { "$ref": "common/discussion.schema.json" },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
+  },
+  "additionalProperties": false,
+  "title": "discussion transferred event"
+}

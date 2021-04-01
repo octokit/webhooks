@@ -16,6 +16,8 @@ export type Schema =
   | DeployKeyEvent
   | DeploymentEvent
   | DeploymentStatusEvent
+  | DiscussionEvent
+  | DiscussionCommentEvent
   | ForkEvent
   | GithubAppAuthorizationEvent
   | GollumEvent
@@ -90,6 +92,22 @@ export type ContentReferenceEvent = ContentReferenceCreatedEvent;
 export type DeployKeyEvent = DeployKeyCreatedEvent | DeployKeyDeletedEvent;
 export type DeploymentEvent = DeploymentCreatedEvent;
 export type DeploymentStatusEvent = DeploymentStatusCreatedEvent;
+export type DiscussionEvent =
+  | DiscussionAnsweredEvent
+  | DiscussionCategoryChangedEvent
+  | DiscussionCreatedEvent
+  | DiscussionDeletedEvent
+  | DiscussionEditedEvent
+  | DiscussionLockedEvent
+  | DiscussionPinnedEvent
+  | DiscussionTransferredEvent
+  | DiscussionUnansweredEvent
+  | DiscussionUnlockedEvent
+  | DiscussionUnpinnedEvent;
+export type DiscussionCommentEvent =
+  | DiscussionCommentCreatedEvent
+  | DiscussionCommentDeletedEvent
+  | DiscussionCommentEditedEvent;
 export type GithubAppAuthorizationEvent = GithubAppAuthorizationRevokedEvent;
 export type InstallationEvent =
   | InstallationCreatedEvent
@@ -1860,6 +1878,277 @@ export interface DeploymentStatusCreatedEvent {
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionAnsweredEvent {
+  action: "answered";
+  discussion: Discussion & {
+    category: {
+      is_answerable: true;
+    };
+    answer_html_url: string;
+    answer_chosen_at: string;
+    answer_chosen_by: User;
+  };
+  answer: {
+    id: number;
+    node_id: string;
+    html_url: string;
+    parent_id: null;
+    child_comment_count: number;
+    repository_url: string;
+    discussion_id: number;
+    author_association: AuthorAssociation;
+    user: User;
+    created_at: string;
+    updated_at: string;
+    body: string;
+  };
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface Discussion {
+  repository_url: string;
+  category: {
+    id: number;
+    repository_id: number;
+    emoji: string;
+    name: string;
+    description: string;
+    created_at: string;
+    updated_at: string;
+    slug: string;
+    is_answerable: boolean;
+  };
+  answer_html_url: string | null;
+  answer_chosen_at: string | null;
+  answer_chosen_by: User | null;
+  html_url: string;
+  id: number;
+  node_id: string;
+  number: number;
+  title: string;
+  user: User;
+  state: "open" | "locked";
+  locked: boolean;
+  comments: number;
+  created_at: string;
+  updated_at: string;
+  author_association: AuthorAssociation;
+  active_lock_reason: string | null;
+  body: string;
+}
+export interface DiscussionCategoryChangedEvent {
+  changes: {
+    category: {
+      from: {
+        id: number;
+        repository_id: number;
+        emoji: string;
+        name: string;
+        description: string;
+        created_at: string;
+        updated_at: string;
+        slug: string;
+        is_answerable: boolean;
+      };
+    };
+  };
+  action: "category_changed";
+  discussion: Discussion;
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionCreatedEvent {
+  action: "created";
+  discussion: Discussion & {
+    state: "open";
+    locked: false;
+    answer_html_url: null;
+    answer_chosen_at: null;
+    answer_chosen_by: null;
+  };
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionDeletedEvent {
+  action: "deleted";
+  discussion: Discussion;
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionEditedEvent {
+  changes?: {
+    title?: {
+      from: string;
+    };
+    body?: {
+      from: string;
+    };
+  };
+  action: "edited";
+  discussion: Discussion;
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionLockedEvent {
+  action: "locked";
+  discussion: Discussion & {
+    state: "locked";
+    locked: true;
+  };
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionPinnedEvent {
+  action: "pinned";
+  discussion: Discussion;
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionTransferredEvent {
+  changes: {
+    new_discussion: Discussion;
+    new_repository: Repository;
+  };
+  action: "transferred";
+  discussion: Discussion;
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionUnansweredEvent {
+  action: "unanswered";
+  discussion: Discussion & {
+    category: {
+      is_answerable: true;
+    };
+    answer_html_url: null;
+    answer_chosen_at: null;
+    answer_chosen_by: null;
+  };
+  old_answer: {
+    id: number;
+    node_id: string;
+    html_url: string;
+    parent_id: null;
+    child_comment_count: number;
+    repository_url: string;
+    discussion_id: number;
+    author_association: AuthorAssociation;
+    user: User;
+    created_at: string;
+    updated_at: string;
+    body: string;
+  };
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionUnlockedEvent {
+  action: "unlocked";
+  discussion: Discussion & {
+    state: "open";
+    locked: false;
+  };
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionUnpinnedEvent {
+  action: "unpinned";
+  discussion: Discussion;
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionCommentCreatedEvent {
+  action: "created";
+  comment: {
+    id: number;
+    node_id: string;
+    html_url: string;
+    parent_id: number | null;
+    child_comment_count: number;
+    repository_url: string;
+    discussion_id: number;
+    author_association: AuthorAssociation;
+    user: User;
+    created_at: string;
+    updated_at: string;
+    body: string;
+  };
+  discussion: Discussion;
+  repository: Repository;
+  sender: User;
+  installation: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionCommentDeletedEvent {
+  action: "deleted";
+  comment: {
+    id: number;
+    node_id: string;
+    html_url: string;
+    parent_id: number | null;
+    child_comment_count: number;
+    repository_url: string;
+    discussion_id: number;
+    author_association: AuthorAssociation;
+    user: User;
+    created_at: string;
+    updated_at: string;
+    body: string;
+  };
+  discussion: Discussion;
+  repository: Repository;
+  sender: User;
+  installation: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionCommentEditedEvent {
+  changes: {
+    body: {
+      from: string;
+    };
+  };
+  action: "edited";
+  comment: {
+    id: number;
+    node_id: string;
+    html_url: string;
+    parent_id: number | null;
+    child_comment_count: number;
+    repository_url: string;
+    discussion_id: number;
+    author_association: AuthorAssociation;
+    user: User;
+    created_at: string;
+    updated_at: string;
+    body: string;
+  };
+  discussion: Discussion;
+  repository: Repository;
+  sender: User;
+  installation: InstallationLite;
   organization?: Organization;
 }
 /**
@@ -5666,6 +5955,8 @@ export interface EventPayloadMap {
   deploy_key: DeployKeyEvent;
   deployment: DeploymentEvent;
   deployment_status: DeploymentStatusEvent;
+  discussion: DiscussionEvent;
+  discussion_comment: DiscussionCommentEvent;
   fork: ForkEvent;
   github_app_authorization: GithubAppAuthorizationEvent;
   gollum: GollumEvent;

@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "discussion$category_changed",
+  "type": "object",
+  "required": ["action", "changes", "discussion", "repository", "sender"],
+  "properties": {
+    "changes": {
+      "type": "object",
+      "required": ["category"],
+      "properties": {
+        "category": {
+          "type": "object",
+          "required": ["from"],
+          "properties": {
+            "from": {
+              "type": "object",
+              "required": [
+                "id",
+                "repository_id",
+                "emoji",
+                "name",
+                "description",
+                "created_at",
+                "updated_at",
+                "slug",
+                "is_answerable"
+              ],
+              "properties": {
+                "id": { "type": "integer" },
+                "repository_id": { "type": "integer" },
+                "emoji": { "type": "string" },
+                "name": { "type": "string" },
+                "description": { "type": "string" },
+                "created_at": { "type": "string", "format": "date-time" },
+                "updated_at": { "type": "string" },
+                "slug": { "type": "string" },
+                "is_answerable": { "type": "boolean" }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "action": { "type": "string", "enum": ["category_changed"] },
+    "discussion": { "$ref": "common/discussion.schema.json" },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
+  },
+  "additionalProperties": false,
+  "title": "discussion category changed event"
+}
