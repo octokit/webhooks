@@ -52,5 +52,5 @@
     "organization": { "$ref": "common/organization.schema.json" }
   },
   "additionalProperties": false,
-  "title": "discussion created event"
+  "title": "discussion category changed event"
 }

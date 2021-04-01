@@ -94,8 +94,8 @@ export type DeploymentEvent = DeploymentCreatedEvent;
 export type DeploymentStatusEvent = DeploymentStatusCreatedEvent;
 export type DiscussionEvent =
   | DiscussionAnsweredEvent
+  | DiscussionCategoryChangedEvent
   | DiscussionCreatedEvent
-  | DiscussionCreatedEvent1
   | DiscussionDeletedEvent
   | DiscussionEditedEvent
   | DiscussionLockedEvent
@@ -1940,7 +1940,7 @@ export interface Discussion {
   active_lock_reason: string | null;
   body: string;
 }
-export interface DiscussionCreatedEvent {
+export interface DiscussionCategoryChangedEvent {
   changes: {
     category: {
       from: {
@@ -1963,7 +1963,7 @@ export interface DiscussionCreatedEvent {
   installation?: InstallationLite;
   organization?: Organization;
 }
-export interface DiscussionCreatedEvent1 {
+export interface DiscussionCreatedEvent {
   action: "created";
   discussion: Discussion & {
     state: "open";
