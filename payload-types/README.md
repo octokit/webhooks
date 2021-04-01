@@ -15,10 +15,7 @@ This package ships with types for the webhook events generated from the
 respective json schemas, which you can use like so:
 
 ```typescript
-import {
-  WebhookEvent,
-  IssuesOpenedEvent,
-} from "@octokit/webhooks-types";
+import { WebhookEvent, IssuesOpenedEvent } from "@octokit/webhooks-types";
 
 const handleWebhookEvent = (event: WebhookEvent) => {
   if ("action" in event && event.action === "completed") {

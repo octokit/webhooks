@@ -9,7 +9,6 @@
 Download the latest specification at
 [unpkg.com/@octokit/webhooks-schemas/schema.json](https://unpkg.com/@octokit/webhooks-schemas/schema.json)
 
-
 ## Usage as Node module
 
 To get the JSON schema for webhook payloads, require the `@octokit/webhooks-schemas` package.
