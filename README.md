@@ -256,6 +256,30 @@ const SCHEMA = require("@octokit/webhooks-definitions/schema.json");
 import SCHEMA from "@octokit/webhooks-definitions/schema.json";
 ```
 
+### Usage with `ajv` in `strict` mode
+
+When running in `strict` mode, `ajv` will throw an "unknown keyword" error if it
+encounters any keywords that have not been defined.
+
+This schema currently uses custom keywords provided by `ajv-formats`, along with
+the custom keyword `tsAdditionalProperties`.
+
+Here is an example of how you can set this up:
+
+```ts
+import type { WebhookEvent } from "@octokit/webhooks-definitions/schema";
+import * as githubWebhookSchema from "@octokit/webhooks-definitions/schema.json";
+import Ajv from "ajv";
+import addFormats from "ajv-formats";
+
+const ajv = new Ajv({ strict: true });
+
+addFormats(ajv);
+ajv.addKeyword("tsAdditionalProperties");
+
+const validate = ajv.compile<WebhookEvent>(githubWebhookSchema);
+```
+
 ## Importing types
 
 This package ships with types for the webhook events generated from the

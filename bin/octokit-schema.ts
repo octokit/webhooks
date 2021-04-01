@@ -125,6 +125,10 @@ async function run() {
       "schema.json",
       format(
         JSON.stringify(schema, (key, value: unknown) => {
+          if (key === "$id") {
+            return undefined;
+          }
+
           if (typeof value === "string" && value.endsWith(".schema.json")) {
             const { base } = path.parse(value);
 
