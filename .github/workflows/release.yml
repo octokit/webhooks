@@ -25,24 +25,24 @@ jobs:
       - run: npm publish payload-examples
         env:
           NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
-        if: ${{ github.ref == 'refs/head/master' }}
+        if: ${{ github.ref == 'refs/heads/master' }}
       - run: npm publish payload-examples --tag beta
         env:
           NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
-        if: ${{ github.ref == 'refs/head/beta' }}
+        if: ${{ github.ref == 'refs/heads/beta' }}
       - run: npm publish payload-schemas
         env:
           NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
-        if: ${{ github.ref == 'refs/head/master' }}
+        if: ${{ github.ref == 'refs/heads/master' }}
       - run: npm publish payload-schemas --tag beta
         env:
           NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
-        if: ${{ github.ref == 'refs/head/beta' }}
+        if: ${{ github.ref == 'refs/heads/beta' }}
       - run: npm publish payload-types
         env:
           NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
-        if: ${{ github.ref == 'refs/head/master' }}
+        if: ${{ github.ref == 'refs/heads/master' }}
       - run: npm publish payload-types --tag beta
         env:
           NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
-        if: ${{ github.ref == 'refs/head/beta' }}
+        if: ${{ github.ref == 'refs/heads/beta' }}
