@@ -8,7 +8,9 @@
     "description",
     "monthly_price_in_cents",
     "monthly_price_in_dollars",
-    "name"
+    "name",
+    "is_one_time",
+    "is_custom_ammount"
   ],
   "type": "object",
   "properties": {
@@ -17,7 +19,9 @@
     "description": { "type": "string" },
     "monthly_price_in_cents": { "type": "integer" },
     "monthly_price_in_dollars": { "type": "integer" },
-    "name": { "type": "string" }
+    "name": { "type": "string" },
+    "is_one_time": { "type": "boolean" },
+    "is_custom_ammount": { "type": "boolean" }
   },
   "additionalProperties": false,
   "title": "Sponsorship Tier"
