@@ -53469,7 +53469,9 @@
             "description": "foo",
             "monthly_price_in_cents": 500,
             "monthly_price_in_dollars": 5,
-            "name": "$5 a month"
+            "name": "$5 a month",
+            "is_one_time": false,
+            "is_custom_ammount": false
           }
         },
         "sender": {
@@ -53545,7 +53547,9 @@
             "description": "foo",
             "monthly_price_in_cents": 500,
             "monthly_price_in_dollars": 5,
-            "name": "$5 a month"
+            "name": "$5 a month",
+            "is_one_time": false,
+            "is_custom_ammount": false
           }
         },
         "changes": {
@@ -53556,7 +53560,9 @@
               "description": "bar",
               "monthly_price_in_cents": 1000,
               "monthly_price_in_dollars": 10,
-              "name": "$10 a month"
+              "name": "$10 a month",
+              "is_one_time": false,
+              "is_custom_ammount": false
             }
           }
         },
