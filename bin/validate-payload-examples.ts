@@ -3,7 +3,7 @@
 import { DefinedError, ErrorObject } from "ajv";
 import path from "path";
 import { inspect } from "util";
-import { ajv, validate } from "../payload-schemas";
+import { ajv, validate } from "../payload-schemas/index";
 import { forEachJsonFile, parseArgv, pathToPayloads } from "./utils";
 
 const [, { continueOnError = false }] = parseArgv(

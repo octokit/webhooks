@@ -15,7 +15,34 @@ jobs:
           node-version: 12.x
       - run: npm ci
       - run: npm run build:schema
+      - run: cp payload-examples/index.{d.ts,json} ./
+      - run: cp payload-schemas/schema.json ./schema.json
+      - run: cp payload-types/schema.d.ts ./schema.d.ts
       - run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.OCTOKITBOT_PAT }}
           NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
+      - run: npm publish payload-examples
+        env:
+          NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
+        if: ${{ github.ref == 'refs/head/master' }}
+      - run: npm publish payload-examples --tag beta
+        env:
+          NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
+        if: ${{ github.ref == 'refs/head/beta' }}
+      - run: npm publish payload-schemas
+        env:
+          NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
+        if: ${{ github.ref == 'refs/head/master' }}
+      - run: npm publish payload-schemas --tag beta
+        env:
+          NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
+        if: ${{ github.ref == 'refs/head/beta' }}
+      - run: npm publish payload-types
+        env:
+          NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
+        if: ${{ github.ref == 'refs/head/master' }}
+      - run: npm publish payload-types --tag beta
+        env:
+          NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
+        if: ${{ github.ref == 'refs/head/beta' }}

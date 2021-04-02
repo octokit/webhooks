@@ -10,7 +10,7 @@ import {
   getSections,
   toWebhook,
 } from ".";
-import currentWebhooks from "../index.json";
+import currentWebhooks from "../payload-examples/index.json";
 
 const isNotNull = <T>(value: T | null): value is T => value !== null;
 
@@ -63,7 +63,7 @@ export const checkOrUpdateWebhooks = async ({
   }
 
   writeFileSync(
-    "index.json",
+    "./payload-examples/index.json",
     prettier.format(JSON.stringify(webhooks, null, 2), {
       parser: "json",
     })
