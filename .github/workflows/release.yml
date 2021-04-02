@@ -22,3 +22,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.OCTOKITBOT_PAT }}
           NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
+      - run: cd payload-examples && npm publish
+        env:
+          NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
+      - run: cd payload-types && npm publish
+        env:
+          NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
+      - run: cd payload-schemas && npm publish
+        env:
+          NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
