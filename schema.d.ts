@@ -5526,6 +5526,8 @@ export interface SponsorshipTier {
   monthly_price_in_cents: number;
   monthly_price_in_dollars: number;
   name: string;
+  is_one_time: boolean;
+  is_custom_ammount: boolean;
 }
 export interface SponsorshipCreatedEvent {
   action: "created";
