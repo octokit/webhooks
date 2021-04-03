@@ -22,12 +22,27 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.OCTOKITBOT_PAT }}
           NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
-      - run: cd payload-examples && npx semantic-release -p @semantic-release/commit-analyzer,@semantic-release/npm && cd ..
+      - run: npm publish payload-examples
         env:
           NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
-      - run: cd payload-schemas && npx semantic-release -p @semantic-release/commit-analyzer,@semantic-release/npm && cd ..
+        if: ${{ github.ref == 'refs/heads/master' }}
+      - run: npm publish payload-examples --tag beta
         env:
           NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
-      - run: cd payload-types && npx semantic-release -p @semantic-release/commit-analyzer,@semantic-release/npm && cd ..
+        if: ${{ github.ref == 'refs/heads/beta' }}
+      - run: npm publish payload-schemas
         env:
           NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
+        if: ${{ github.ref == 'refs/heads/master' }}
+      - run: npm publish payload-schemas --tag beta
+        env:
+          NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
+        if: ${{ github.ref == 'refs/heads/beta' }}
+      - run: npm publish payload-types
+        env:
+          NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
+        if: ${{ github.ref == 'refs/heads/master' }}
+      - run: npm publish payload-types --tag beta
+        env:
+          NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
+        if: ${{ github.ref == 'refs/heads/beta' }}

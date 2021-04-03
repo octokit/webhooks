@@ -65,7 +65,16 @@
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
       "@semantic-release/github",
-      "@semantic-release/npm"
+      "@semantic-release/npm",
+      [
+        "semantic-release-plugin-update-version-in-files",
+        {
+          "files": [
+            "payload-*/package.json"
+          ],
+          "placeholder": "0.0.0-development"
+        }
+      ]
     ]
   },
   "renovate": {

@@ -13,16 +13,8 @@
   ],
   "scripts": {},
   "dependencies": {},
-  "devDependencies": {
-    "semantic-release": "^17.4.2"
-  },
+  "devDependencies": {},
   "publishConfig": {
     "access": "public"
-  },
-  "releases": {
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/npm"
-    ]
   }
 }
