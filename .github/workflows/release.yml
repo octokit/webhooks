@@ -22,12 +22,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.OCTOKITBOT_PAT }}
           NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
-      - run: cd payload-examples && npx semantic-release && cd ..
+      - run: cd payload-examples && npx semantic-release -p @semantic-release/commit-analyzer,@semantic-release/npm && cd ..
         env:
           NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
-      - run: cd payload-schemas && npx semantic-release && cd ..
+      - run: cd payload-schemas && npx semantic-release -p @semantic-release/commit-analyzer,@semantic-release/npm && cd ..
         env:
           NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
-      - run: cd payload-types && npx semantic-release && cd ..
+      - run: cd payload-types && npx semantic-release -p @semantic-release/commit-analyzer,@semantic-release/npm && cd ..
         env:
           NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
