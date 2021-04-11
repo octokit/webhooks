@@ -2693,7 +2693,7 @@ export interface IssueCommentEditedEvent {
      * Contents of the issue comment
      */
     body: string;
-    performed_via_github_app: null | App;
+    performed_via_github_app: App | null;
   };
   repository: Repository;
   sender: User;

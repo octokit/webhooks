@@ -103,7 +103,7 @@
           "description": "Contents of the issue comment"
         },
         "performed_via_github_app": {
-          "oneOf": [{ "type": "null" }, { "$ref": "common/app.schema.json" }]
+          "oneOf": [{ "$ref": "common/app.schema.json" }, { "type": "null" }]
         }
       },
       "additionalProperties": false
