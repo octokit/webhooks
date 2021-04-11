@@ -3649,6 +3649,11 @@ export interface ProjectReopenedEvent {
 }
 export interface ProjectCardConvertedEvent {
   action: "converted";
+  changes: {
+    note: {
+      from: string;
+    };
+  };
   project_card: ProjectCard;
   repository: Repository;
   sender: User;
@@ -3665,7 +3670,7 @@ export interface ProjectCard {
    */
   id: number;
   node_id: string;
-  note: string;
+  note: string | null;
   /**
    * Whether or not the card is archived
    */
@@ -3693,6 +3698,11 @@ export interface ProjectCardDeletedEvent {
 }
 export interface ProjectCardEditedEvent {
   action: "edited";
+  changes: {
+    note: {
+      from: string;
+    };
+  };
   project_card: ProjectCard;
   repository: Repository;
   sender: User;
@@ -3701,7 +3711,14 @@ export interface ProjectCardEditedEvent {
 }
 export interface ProjectCardMovedEvent {
   action: "moved";
-  project_card: ProjectCard;
+  changes: {
+    column_id: {
+      from: number;
+    };
+  };
+  project_card: ProjectCard & {
+    after_id: null;
+  };
   repository: Repository;
   sender: User;
   organization?: Organization;
