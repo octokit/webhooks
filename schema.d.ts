@@ -4819,9 +4819,7 @@ export interface Commit {
    * URL that points to the commit API resource.
    */
   url: string;
-  author: Committer & {
-    username: string;
-  };
+  author: Committer;
   committer: Committer;
   /**
    * An array of files added in the commit.
