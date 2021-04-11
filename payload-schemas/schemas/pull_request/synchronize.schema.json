@@ -2,10 +2,20 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "pull_request$synchronize",
   "type": "object",
-  "required": ["action", "number", "pull_request", "repository", "sender"],
+  "required": [
+    "action",
+    "number",
+    "before",
+    "after",
+    "pull_request",
+    "repository",
+    "sender"
+  ],
   "properties": {
     "action": { "type": "string", "enum": ["synchronize"] },
     "number": { "type": "integer", "description": "The pull request number." },
+    "before": { "type": "string" },
+    "after": { "type": "string" },
     "pull_request": { "$ref": "common/pull-request.schema.json" },
     "repository": { "$ref": "common/repository.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },
