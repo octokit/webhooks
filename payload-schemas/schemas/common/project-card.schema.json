@@ -23,7 +23,7 @@
     "column_id": { "type": "integer" },
     "id": { "type": "integer", "description": "The project card's ID" },
     "node_id": { "type": "string" },
-    "note": { "type": "string" },
+    "note": { "type": ["string", "null"] },
     "archived": {
       "type": "boolean",
       "description": "Whether or not the card is archived"
@@ -31,7 +31,8 @@
     "creator": { "$ref": "user.schema.json" },
     "created_at": { "type": "string", "format": "date-time" },
     "updated_at": { "type": "string", "format": "date-time" },
-    "content_url": { "type": "string", "format": "uri" }
+    "content_url": { "type": "string", "format": "uri" },
+    "after_id": { "type": "null" }
   },
   "additionalProperties": false,
   "title": "Project Card"
