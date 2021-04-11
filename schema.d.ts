@@ -4822,9 +4822,7 @@ export interface Commit {
   author: Committer & {
     username: string;
   };
-  committer: Committer & {
-    username: string;
-  };
+  committer: Committer;
   /**
    * An array of files added in the commit.
    */
