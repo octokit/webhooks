@@ -31,7 +31,8 @@
     "creator": { "$ref": "user.schema.json" },
     "created_at": { "type": "string", "format": "date-time" },
     "updated_at": { "type": "string", "format": "date-time" },
-    "content_url": { "type": "string", "format": "uri" }
+    "content_url": { "type": "string", "format": "uri" },
+    "after_id": { "type": "null" }
   },
   "additionalProperties": false,
   "title": "Project Card"
