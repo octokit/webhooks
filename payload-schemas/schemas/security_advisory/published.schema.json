@@ -21,7 +21,15 @@
         "vulnerabilities"
       ],
       "properties": {
-        "cvss": { "type": "string" },
+        "cvss": {
+          "type": "object",
+          "required": ["vector_string", "score"],
+          "properties": {
+            "vector_string": { "type": "string" },
+            "score": { "type": "number" }
+          },
+          "additionalProperties": false
+        },
         "ghsa_id": { "type": "string" },
         "summary": { "type": "string" },
         "description": { "type": "string" },
