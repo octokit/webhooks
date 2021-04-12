@@ -140,7 +140,8 @@
     "pushed_at": {
       "oneOf": [
         { "type": "integer" },
-        { "type": "string", "format": "date-time" }
+        { "type": "string", "format": "date-time" },
+        { "type": "null" }
       ]
     },
     "git_url": { "type": "string", "format": "uri" },
