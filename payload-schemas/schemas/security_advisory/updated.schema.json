@@ -9,6 +9,8 @@
       "type": "object",
       "description": "The details of the security advisory, including summary, description, and severity.",
       "required": [
+        "cvss",
+        "cwes",
         "ghsa_id",
         "summary",
         "description",
@@ -29,6 +31,18 @@
             "score": { "type": "number" }
           },
           "additionalProperties": false
+        },
+        "cwes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["cwe_id", "name"],
+            "properties": {
+              "cwe_id": { "type": "string" },
+              "name": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
         },
         "ghsa_id": { "type": "string" },
         "summary": { "type": "string" },
