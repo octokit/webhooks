@@ -23,6 +23,16 @@
         "vulnerable_version_range": "<= 0.29.0",
         "first_patched_version": null
       }
+    ],
+    "cvss": {
+      "vector_string": "",
+      "score": 7.9
+    },
+    "cwes": [
+      {
+        "cwe_id": "CWE-0000",
+        "name": ""
+      }
     ]
   }
 }
