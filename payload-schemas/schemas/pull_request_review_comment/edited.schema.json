@@ -242,6 +242,7 @@
             { "type": "null" }
           ]
         },
+        "draft": { "type": "boolean" },
         "commits_url": { "type": "string", "format": "uri" },
         "review_comments_url": { "type": "string", "format": "uri" },
         "review_comment_url": { "type": "string", "format": "uri-template" },
