@@ -111,7 +111,10 @@
               "type": "string",
               "description": "The SHA of the head commit that is being checked."
             },
-            "status": { "type": "string", "enum": ["queued", "in_progress", "completed"] },
+            "status": {
+              "type": "string",
+              "enum": ["queued", "in_progress", "completed"]
+            },
             "conclusion": { "type": "null" },
             "url": { "type": "string", "format": "uri" },
             "before": { "type": ["string", "null"] },
