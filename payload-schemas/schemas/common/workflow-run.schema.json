@@ -5,6 +5,7 @@
     "artifacts_url",
     "cancel_url",
     "check_suite_url",
+    "check_suite_id",
     "check_suite_node_id",
     "conclusion",
     "created_at",
