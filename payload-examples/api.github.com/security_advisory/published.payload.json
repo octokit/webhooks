@@ -27,15 +27,7 @@
         "first_patched_version": { "identifier": "1.11.10" }
       }
     ],
-    "cvss": {
-      "vector_string": "",
-      "score": 7.9
-    },
-    "cwes": [
-      {
-        "cwe_id": "CWE-0000",
-        "name": ""
-      }
-    ]
+    "cvss": { "vector_string": "", "score": 7.9 },
+    "cwes": [{ "cwe_id": "CWE-0000", "name": "" }]
   }
 }
