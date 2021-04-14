@@ -18,11 +18,7 @@
       "tags": null,
       "help": null
     },
-    "tool": {
-      "name": "CodeQL",
-      "guid": null,
-      "version": null
-    },
+    "tool": { "name": "CodeQL", "guid": null, "version": null },
     "instances": [
       {
         "ref": "refs/heads/code-feature",
@@ -30,9 +26,7 @@
         "environment": "{}",
         "state": "open",
         "commit_sha": "788437584c2522f27feab10d8e631bab3e9e783a",
-        "message": {
-          "text": ""
-        },
+        "message": { "text": "" },
         "location": {
           "path": "src/main/java/com/github/demo/service/BookService.java",
           "start_line": 84,

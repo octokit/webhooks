@@ -15,9 +15,7 @@
         {
           "type": "object",
           "required": ["conclusion"],
-          "properties": {
-            "conclusion": { "type": "string" }
-          },
+          "properties": { "conclusion": { "type": "string" } },
           "tsAdditionalProperties": false
         }
       ]

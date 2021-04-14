@@ -24,9 +24,7 @@
     "commit_sha": { "type": "string" },
     "message": {
       "type": "object",
-      "properties": {
-        "text": { "type": "string" }
-      },
+      "properties": { "text": { "type": "string" } },
       "additionalProperties": false
     },
     "location": {
