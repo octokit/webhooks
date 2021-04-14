@@ -1,10 +1,6 @@
 {
   "action": "moved",
-  "changes": {
-    "column_id": {
-      "from": 9999467
-    }
-  },
+  "changes": { "column_id": { "from": 9999467 } },
   "project_card": {
     "url": "https://api.github.com/projects/columns/cards/21567453",
     "project_url": "https://api.github.com/projects/2640902",

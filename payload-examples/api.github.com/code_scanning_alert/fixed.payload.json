@@ -18,20 +18,14 @@
       "tags": null,
       "help": null
     },
-    "tool": {
-      "name": "CodeQL",
-      "guid": null,
-      "version": null
-    },
+    "tool": { "name": "CodeQL", "guid": null, "version": null },
     "most_recent_instance": {
       "ref": "refs/pull/11/merge",
       "analysis_key": ".github/workflows/code-scanning.yml:build",
       "environment": "{}",
       "state": "fixed",
       "commit_sha": "0048a27ccd962b83b1bd781bbc6f7e8fd1b2caea",
-      "message": {
-        "text": ""
-      },
+      "message": { "text": "" },
       "location": {
         "path": "src/main/java/com/github/demo/service/BookService.java",
         "start_line": 84,
@@ -49,9 +43,7 @@
         "environment": "{}",
         "state": "fixed",
         "commit_sha": "0048a27ccd962b83b1bd781bbc6f7e8fd1b2caea",
-        "message": {
-          "text": ""
-        },
+        "message": { "text": "" },
         "location": {
           "path": "src/main/java/com/github/demo/service/BookService.java",
           "start_line": 84,

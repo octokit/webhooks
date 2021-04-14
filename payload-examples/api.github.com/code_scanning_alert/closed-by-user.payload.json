@@ -49,9 +49,7 @@
         "environment": "{}",
         "state": "dismissed",
         "commit_sha": "b30b5f3b935825766a22ab1bce14788bf9627f6c",
-        "message": {
-          "text": ""
-        },
+        "message": { "text": "" },
         "location": {
           "path": "/usr/local/jetty/lib/http2/http2-hpack-9.4.27.v20200227.jar",
           "start_line": 1,
