@@ -37,7 +37,7 @@
         "details_url": { "type": "string", "format": "uri" },
         "status": {
           "type": "string",
-          "enum": ["queued", "in_progress"],
+          "enum": ["queued", "in_progress", "completed"],
           "description": "The current status of the check run. Can be `queued`, `in_progress`, or `completed`."
         },
         "conclusion": {
