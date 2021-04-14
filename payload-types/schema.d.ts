@@ -1028,7 +1028,7 @@ export interface Committer {
   /**
    * The git author's email address.
    */
-  email: string;
+  email: string | null;
   date?: string;
   username?: string;
 }

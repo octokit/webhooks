@@ -7,9 +7,8 @@
   "properties": {
     "name": { "type": "string", "description": "The git author's name." },
     "email": {
-      "type": "string",
-      "format": "email",
-      "description": "The git author's email address."
+      "description": "The git author's email address.",
+      "oneOf": [{ "type": "string", "format": "email" }, { "type": "null" }]
     },
     "date": { "type": "string", "format": "date-time" },
     "username": { "type": "string" }
