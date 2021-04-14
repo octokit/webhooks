@@ -2,7 +2,14 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "deployment$created",
   "type": "object",
-  "required": ["action", "deployment", "repository", "sender"],
+  "required": [
+    "action",
+    "deployment",
+    "workflow",
+    "workflow_run",
+    "repository",
+    "sender"
+  ],
   "properties": {
     "action": { "type": "string", "enum": ["created"] },
     "deployment": {
@@ -51,6 +58,8 @@
       },
       "additionalProperties": false
     },
+    "workflow": { "type": "null" },
+    "workflow_run": { "type": "null" },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },

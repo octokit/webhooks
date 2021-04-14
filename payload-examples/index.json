@@ -8419,6 +8419,8 @@
           "statuses_url": "https://api.github.com/repos/Codertocat/Hello-World/deployments/145988746/statuses",
           "repository_url": "https://api.github.com/repos/Codertocat/Hello-World"
         },
+        "workflow": null,
+        "workflow_run": null,
         "repository": {
           "id": 186853002,
           "node_id": "MDEwOlJlcG9zaXRvcnkxODY4NTMwMDI=",
@@ -8572,6 +8574,8 @@
           "statuses_url": "https://api.github.com/repos/Codertocat/Hello-World/deployments/145988746/statuses",
           "repository_url": "https://api.github.com/repos/Codertocat/Hello-World"
         },
+        "workflow": null,
+        "workflow_run": null,
         "repository": {
           "id": 186853002,
           "node_id": "MDEwOlJlcG9zaXRvcnkxODY4NTMwMDI=",

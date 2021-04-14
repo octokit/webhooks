@@ -1830,6 +1830,8 @@ export interface DeploymentCreatedEvent {
     repository_url: string;
     performed_via_github_app?: App | null;
   };
+  workflow: null;
+  workflow_run: null;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
