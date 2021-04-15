@@ -5,6 +5,7 @@ export enum versions {
   "GHES-220" = "enterprise-server@2.20",
   "GHES-221" = "enterprise-server@2.21",
   "GHES-222" = "enterprise-server@2.22",
+  "GITHUB.AE" = "github-ae@latest",
   "api.github.com" = "free-pro-team@latest",
 }
 export interface State {
