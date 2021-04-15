@@ -32,7 +32,7 @@ readdirSync(`${schemaDir}/common`).forEach((filename) =>
 );
 readdirSync(schemaDir, { withFileTypes: true })
   .filter((entity) => entity.isDirectory())
-  .map(entity => entity.name)
+  .map((entity) => entity.name)
   .filter((dir) => dir !== "common")
   .forEach((eventName) => {
     const addedSchemas = readdirSync(`${schemaDir}/${eventName}`).map(
