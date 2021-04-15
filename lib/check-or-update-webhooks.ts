@@ -10,18 +10,19 @@ import {
   getSections,
   toWebhook,
 } from ".";
-import currentWebhooks from "../payload-examples/index.json";
 
 const isNotNull = <T>(value: T | null): value is T => value !== null;
 
 export const checkOrUpdateWebhooks = async ({
   cached,
   checkOnly,
+  version,
 }: State): Promise<void> => {
-  const html = await getHtml({ cached });
+  const currentWebhooks = await import(`../payload-examples/${version?.toLowerCase()}/index.json`);
+  const html = await getHtml({ cached, version });
   const sections = getSections(html);
   const webhooksFromScrapingDocs = sections.map(toWebhook).filter(isNotNull);
-  const webhooksFromPayloadExamplesByName = getActionsAndExamplesFromPayloads();
+  const webhooksFromPayloadExamplesByName = getActionsAndExamplesFromPayloads(version);
 
   const webhooks = webhooksFromScrapingDocs.map((webhook) => {
     const name = webhook.name;
@@ -63,10 +64,10 @@ export const checkOrUpdateWebhooks = async ({
   }
 
   writeFileSync(
-    "./payload-examples/index.json",
+    `./payload-examples/${version!.toLowerCase()}/index.json`,
     prettier.format(JSON.stringify(webhooks, null, 2), {
       parser: "json",
     })
   );
-  console.log("✏️  index.json written");
+  console.log(`✏️  ${version}/index.json, written`);
 };

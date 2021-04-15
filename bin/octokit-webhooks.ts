@@ -1,7 +1,7 @@
 #!/usr/bin/env ts-node-transpile-only
 
 import yargs from "yargs";
-import { checkOrUpdateWebhooks } from "../lib";
+import { checkOrUpdateWebhooks, versions } from "../lib";
 
 interface Options {
   cached: boolean;
@@ -44,9 +44,11 @@ if (!["update", "check"].includes(command.toString())) {
   process.exit(1);
 }
 
-checkOrUpdateWebhooks({ cached, checkOnly: command === "check" }).catch(
-  (error: Error) => {
-    console.log(error.stack);
-    process.exit(1);
-  }
-);
+for (let version of Object.keys(versions)) {
+  checkOrUpdateWebhooks({ cached, checkOnly: command === "check", version: version as keyof typeof versions }).catch(
+    (error: Error) => {
+      console.log(error.stack);
+      process.exit(1);
+    }
+  );
+}
