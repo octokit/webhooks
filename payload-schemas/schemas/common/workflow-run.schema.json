@@ -17,6 +17,7 @@
     "jobs_url",
     "logs_url",
     "node_id",
+    "name",
     "pull_requests",
     "repository",
     "rerun_url",
@@ -45,6 +46,7 @@
     "jobs_url": { "type": "string", "format": "uri" },
     "logs_url": { "type": "string", "format": "uri" },
     "node_id": { "type": "string" },
+    "name": { "type": "string" },
     "pull_requests": {
       "type": "array",
       "items": { "$ref": "pull-request.schema.json" }

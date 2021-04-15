@@ -2262,10 +2262,12 @@ export interface Installation {
     issues?: "read" | "write";
     organization_administration?: "read" | "write";
     pages?: "read" | "write";
+    packages?: "read" | "write";
     pull_requests?: "read" | "write";
     repository_hooks?: "read" | "write";
     repository_projects?: "read" | "write";
     statuses?: "read" | "write";
+    members?: "read" | "write";
     metadata?: "read" | "write";
     vulnerability_alerts?: "read" | "write";
   };
@@ -2691,6 +2693,7 @@ export interface IssueCommentEditedEvent {
      * Contents of the issue comment
      */
     body: string;
+    performed_via_github_app: App | null;
   };
   repository: Repository;
   sender: User;
@@ -3646,6 +3649,11 @@ export interface ProjectReopenedEvent {
 }
 export interface ProjectCardConvertedEvent {
   action: "converted";
+  changes: {
+    note: {
+      from: string;
+    };
+  };
   project_card: ProjectCard;
   repository: Repository;
   sender: User;
@@ -3662,7 +3670,7 @@ export interface ProjectCard {
    */
   id: number;
   node_id: string;
-  note: string;
+  note: string | null;
   /**
    * Whether or not the card is archived
    */
@@ -3671,6 +3679,7 @@ export interface ProjectCard {
   created_at: string;
   updated_at: string;
   content_url: string;
+  after_id?: null;
 }
 export interface ProjectCardCreatedEvent {
   action: "created";
@@ -3690,6 +3699,11 @@ export interface ProjectCardDeletedEvent {
 }
 export interface ProjectCardEditedEvent {
   action: "edited";
+  changes: {
+    note: {
+      from: string;
+    };
+  };
   project_card: ProjectCard;
   repository: Repository;
   sender: User;
@@ -3698,7 +3712,14 @@ export interface ProjectCardEditedEvent {
 }
 export interface ProjectCardMovedEvent {
   action: "moved";
-  project_card: ProjectCard;
+  changes: {
+    column_id: {
+      from: number;
+    };
+  };
+  project_card: ProjectCard & {
+    after_id: null;
+  };
   repository: Repository;
   sender: User;
   organization?: Organization;
@@ -4071,6 +4092,8 @@ export interface PullRequestSynchronizeEvent {
    * The pull request number.
    */
   number: number;
+  before: string;
+  after: string;
   pull_request: PullRequest;
   repository: Repository;
   installation?: InstallationLite;
@@ -4819,12 +4842,8 @@ export interface Commit {
    * URL that points to the commit API resource.
    */
   url: string;
-  author: Committer & {
-    username: string;
-  };
-  committer: Committer & {
-    username: string;
-  };
+  author: Committer;
+  committer: Committer;
   /**
    * An array of files added in the commit.
    */
@@ -5411,6 +5430,7 @@ export interface SecurityAdvisoryPerformedEvent {
    * The details of the security advisory, including summary, description, and severity.
    */
   security_advisory: {
+    cvss?: string;
     ghsa_id: string;
     summary: string;
     description: string;
@@ -5444,6 +5464,7 @@ export interface SecurityAdvisoryPublishedEvent {
    * The details of the security advisory, including summary, description, and severity.
    */
   security_advisory: {
+    cvss?: string;
     ghsa_id: string;
     summary: string;
     description: string;
@@ -5477,6 +5498,7 @@ export interface SecurityAdvisoryUpdatedEvent {
    * The details of the security advisory, including summary, description, and severity.
    */
   security_advisory: {
+    cvss?: string;
     ghsa_id: string;
     summary: string;
     description: string;
@@ -5868,6 +5890,7 @@ export interface WorkflowRun {
   jobs_url: string;
   logs_url: string;
   node_id: string;
+  name: string;
   pull_requests: PullRequest[];
   repository: RepositoryLite;
   rerun_url: string;
