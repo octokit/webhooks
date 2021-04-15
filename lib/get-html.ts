@@ -4,8 +4,9 @@ import prettier from "prettier";
 import { State, cache, versions } from ".";
 
 export const getHtml = async (state: State): Promise<string> => {
-  const WEBHOOKS_DOCS_URL =
-  `https://docs.github.com/en/${versions[state.version!]}/developers/webhooks-and-events/webhook-events-and-payloads`;
+  const WEBHOOKS_DOCS_URL = `https://docs.github.com/en/${
+    versions[state.version!]
+  }/developers/webhooks-and-events/webhook-events-and-payloads`;
   const cacheFilePath = `${state.version}/webhook-events-and-payloads.html`;
 
   try {

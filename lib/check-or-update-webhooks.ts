@@ -18,11 +18,15 @@ export const checkOrUpdateWebhooks = async ({
   checkOnly,
   version,
 }: State): Promise<void> => {
-  const currentWebhooks = await import(`../payload-examples/${version?.toLowerCase()}/index.json`);
+  const currentWebhooks = await import(
+    `../payload-examples/${version?.toLowerCase()}/index.json`
+  );
   const html = await getHtml({ cached, version });
   const sections = getSections(html);
   const webhooksFromScrapingDocs = sections.map(toWebhook).filter(isNotNull);
-  const webhooksFromPayloadExamplesByName = getActionsAndExamplesFromPayloads(version);
+  const webhooksFromPayloadExamplesByName = getActionsAndExamplesFromPayloads(
+    version
+  );
 
   const webhooks = webhooksFromScrapingDocs.map((webhook) => {
     const name = webhook.name;

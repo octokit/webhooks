@@ -5,12 +5,12 @@ export enum versions {
   "GHES-220" = "enterprise-server@2.20",
   "GHES-221" = "enterprise-server@2.21",
   "GHES-222" = "enterprise-server@2.22",
-  "api.github.com" = "free-pro-team@latest"
+  "api.github.com" = "free-pro-team@latest",
 }
 export interface State {
   cached?: boolean;
   checkOnly?: boolean;
-  version?: keyof typeof versions
+  version?: keyof typeof versions;
 }
 
 export interface Webhook<TExample extends object = object> {
