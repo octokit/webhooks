@@ -1,12 +1,12 @@
 import { JSONSchema7TypeName } from "json-schema";
 
 export enum versions {
-  "GHES-219" = "enterprise-server@2.19",
-  "GHES-220" = "enterprise-server@2.20",
-  "GHES-221" = "enterprise-server@2.21",
-  "GHES-222" = "enterprise-server@2.22",
-  "GHES-300" = "enterprise-server@3.0",
-  "GITHUB.AE" = "github-ae@latest",
+  "ghes-219" = "enterprise-server@2.19",
+  "ghes-220" = "enterprise-server@2.20",
+  "ghes-221" = "enterprise-server@2.21",
+  "ghes-222" = "enterprise-server@2.22",
+  "ghes-30" = "enterprise-server@3.0",
+  "github.ae" = "github-ae@latest",
   "api.github.com" = "free-pro-team@latest",
 }
 export interface State {

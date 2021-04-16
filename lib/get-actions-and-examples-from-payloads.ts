@@ -9,7 +9,7 @@ interface ActionsAndExamples {
 export const getActionsAndExamplesFromPayloads = (
   version: State["version"]
 ): Record<string, ActionsAndExamples> => {
-  const pathToPayloads = `payload-examples/${version?.toLowerCase()}`;
+  const pathToPayloads = `payload-examples/${version}`;
   const eventsByName: Record<string, ActionsAndExamples> = {};
 
   readdirSync(pathToPayloads, { withFileTypes: true })
