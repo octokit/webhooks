@@ -45,12 +45,14 @@ if (!["update", "check"].includes(command.toString())) {
 }
 
 for (let version of Object.keys(versions)) {
-  checkOrUpdateWebhooks({
-    cached,
-    checkOnly: command === "check",
-    version: version as keyof typeof versions,
-  }).catch((error: Error) => {
-    console.log(error.stack);
+  try {
+    checkOrUpdateWebhooks({
+      cached,
+      checkOnly: command === "check",
+      version: version as keyof typeof versions,
+    });
+  } catch (e) {
+    console.log(e.stack);
     process.exit(1);
-  });
+  }
 }

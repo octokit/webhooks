@@ -18,9 +18,9 @@ export const checkOrUpdateWebhooks = async ({
   checkOnly,
   version,
 }: State): Promise<void> => {
-  const currentWebhooks = JSON.parse(readFileSync(
-    `./payload-examples/${version}/index.json`
-  ).toString());
+  const currentWebhooks = JSON.parse(
+    readFileSync(`./payload-examples/${version}/index.json`).toString()
+  );
   const html = await getHtml({ cached, version });
   const sections = getSections(html);
   const webhooksFromScrapingDocs = sections.map(toWebhook).filter(isNotNull);
