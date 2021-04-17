@@ -32,7 +32,7 @@ export const checkOrUpdateWebhooks = async ({
     const name = webhook.name;
 
     if (!(name in webhooksFromPayloadExamplesByName)) {
-      console.warn(`No payload examples for ${name}`);
+      console.warn(`[${version}] No payload examples for ${name}`);
 
       return webhook;
     }
@@ -53,12 +53,12 @@ export const checkOrUpdateWebhooks = async ({
   applyWorkarounds(webhooks as WorkableWebhook[]);
 
   if (!diff(currentWebhooks, webhooks)) {
-    console.log("✅  webhooks are up-to-date");
+    console.log(`✅  webhooks ${version} are up-to-date`);
 
     return;
   }
 
-  console.log("❌  webhooks are not up-to-date");
+  console.log(`❌  webhooks ${version} are not up-to-date`);
   console.log(diffString(currentWebhooks, webhooks));
 
   if (checkOnly) {
