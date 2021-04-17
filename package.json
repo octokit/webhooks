@@ -71,12 +71,21 @@
       "@semantic-release/github",
       "@semantic-release/npm",
       [
-        "semantic-release-plugin-update-version-in-files",
+        "@semantic-release/npm",
         {
-          "files": [
-            "payload-*/package.json"
-          ],
-          "placeholder": "0.0.0-development"
+          "pkgRoot": "./payload-examples"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "./payload-schemas"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "./payload-types"
         }
       ]
     ]
