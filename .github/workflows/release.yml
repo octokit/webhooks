@@ -22,27 +22,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.OCTOKITBOT_PAT }}
           NPM_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
-      - run: npm publish payload-examples | exit 0
-        env:
-          NPM_CONFIG_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
-        if: ${{ github.ref == 'refs/heads/master' }}
-      - run: npm publish payload-examples --tag beta | exit 0
-        env:
-          NPM_CONFIG_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
-        if: ${{ github.ref == 'refs/heads/beta' }}
-      - run: npm publish payload-schemas | exit 0
-        env:
-          NPM_CONFIG_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
-        if: ${{ github.ref == 'refs/heads/master' }}
-      - run: npm publish payload-schemas --tag beta | exit 0
-        env:
-          NPM_CONFIG_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
-        if: ${{ github.ref == 'refs/heads/beta' }}
-      - run: npm publish payload-types | exit 0
-        env:
-          NPM_CONFIG_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
-        if: ${{ github.ref == 'refs/heads/master' }}
-      - run: npm publish payload-types --tag beta | exit 0
-        env:
-          NPM_CONFIG_TOKEN: ${{ secrets.OCTOKITBOT_NPM_TOKEN }}
-        if: ${{ github.ref == 'refs/heads/beta' }}
