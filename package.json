@@ -61,7 +61,10 @@
     "access": "public"
   },
   "release": {
-    "branches": ["master", "beta"],
+    "branches": [
+      "master",
+      "beta"
+    ],
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
