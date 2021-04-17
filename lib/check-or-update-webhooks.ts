@@ -1,4 +1,4 @@
-import { writeFileSync } from "fs";
+import { writeFileSync, readFileSync } from "fs";
 import { diff, diffString } from "json-diff";
 import prettier from "prettier";
 import {
@@ -18,9 +18,9 @@ export const checkOrUpdateWebhooks = async ({
   checkOnly,
   version,
 }: State): Promise<void> => {
-  const currentWebhooks = await import(
-    `../payload-examples/${version}/index.json`
-  );
+  const currentWebhooks = JSON.parse(readFileSync(
+    `./payload-examples/${version}/index.json`
+  ).toString());
   const html = await getHtml({ cached, version });
   const sections = getSections(html);
   const webhooksFromScrapingDocs = sections.map(toWebhook).filter(isNotNull);
