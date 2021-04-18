@@ -1,0 +1,19 @@
+{
+  "name": "@octokit/webhooks-schemas",
+  "version": "0.0.0-development",
+  "description": "Community contributed webhook payload schemas in JSON schema format",
+  "keywords": [],
+  "repository": "github:octokit/webhooks",
+  "license": "MIT",
+  "author": "Gregor Martynus (https://github.com/gr2m)",
+  "main": "schema.json",
+  "files": [
+    "schema.json"
+  ],
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {},
+  "publishConfig": {
+    "access": "public"
+  }
+}

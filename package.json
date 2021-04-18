@@ -19,8 +19,8 @@
     "build:schema": "ts-node -T bin/octokit-schema.ts",
     "build:types": "ts-node -T bin/octokit-types.ts",
     "build:webhooks": "ts-node -T bin/octokit-webhooks.ts update",
-    "lint": "prettier --check '{bin,lib}/*.ts' '*.{ts,md}' '{payload-examples,payload-schemas}/**/*.json' 'payload-schemas/*.ts' *.md package.json index.json",
-    "lint:fix": "prettier --write '{bin,lib}/*.ts' '*.{ts,md}' '{payload-examples,payload-schemas}/**/*.json' 'payload-schemas/*.ts' *.md package.json index.json",
+    "lint": "prettier --check '{bin,lib}/*.ts' '*.{ts,md}' '{payload-examples,payload-schemas,payload-types}/**/*.md' '{payload-examples,payload-schemas}/**/*.json' 'payload-schemas/*.ts' 'payload-types/*.d.ts' *.md package.json",
+    "lint:fix": "prettier --write '{bin,lib}/*.ts' '*.{ts,md}' '{payload-examples,payload-schemas,payload-types}/**/*.md' '{payload-examples,payload-schemas,payload-types}/**/*.json' 'payload-schemas/*.ts' 'payload-types/*.d.ts' *.md package.json",
     "octokit-schema": "ts-node -T bin/octokit-schema.ts",
     "octokit-webhooks": "ts-node -T bin/octokit-webhooks.ts",
     "pretest": "npm run -s lint",
@@ -58,6 +58,35 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "release": {
+    "branches": [
+      "master",
+      "beta"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github",
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "payload-examples"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "payload-schemas"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "payload-types"
+        }
+      ]
+    ]
   },
   "renovate": {
     "extends": [

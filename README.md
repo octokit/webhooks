@@ -7,7 +7,7 @@
 ## Download
 
 Download the latest specification at
-[octokit.github.io/webhooks/index.json](https://octokit.github.io/webhooks/index.json)
+[octokit.github.io/webhooks/index.json](https://octokit.github.io/webhooks/payload-examples/index.json)
 
 ## Example
 
@@ -229,31 +229,31 @@ Example webhook definition
 ## Download webhook definitions and webhook payloads schema
 
 You can download the latest `index.json` and `schema.json` files from
-[unpkg](https://unpkg.com/browse/@octokit/webhooks-definitions@3.24.0/)
+[unpkg](https://unpkg.com/)
 
-- [`index.json`](https://unpkg.com/@octokit/webhooks-definitions/index.json)
-- [`schema.json`](https://unpkg.com/@octokit/webhooks-definitions/schema.json)
+- [`index.json`](https://unpkg.com/@octokit/webhooks-examples/index.json)
+- [`schema.json`](https://unpkg.com/@octokit/webhooks-schemas/schema.json)
 
 ## Usage as Node module
 
-To get an array of all webhook definition objects, require the `index.json` file
+To get an array of all webhook definition objects, require the `@octokit/webhooks-examples` package.
 
 ```js
 // Use Node.js require:
-const WEBHOOKS = require("@octokit/webhooks-definitions/index.json");
+const WEBHOOKS = require("@octokit/webhooks-examples/index.json");
 
 // Or ESM/TypeScript import:
-import WEBHOOKS from "@octokit/webhooks-definitions/index.json";
+import WEBHOOKS from "@octokit/webhooks-examples/index.json";
 ```
 
-To get the JSON schema for webhook payloads, require the `schema.json` file
+To get the JSON schema for webhook payloads, require the `@octokit/webhooks-schemas` package.
 
 ```js
 // Use Node.js require:
-const SCHEMA = require("@octokit/webhooks-definitions/schema.json");
+const SCHEMA = require("@octokit/webhooks-schemas");
 
 // Or ESM/TypeScript import:
-import SCHEMA from "@octokit/webhooks-definitions/schema.json";
+import SCHEMA from "@octokit/webhooks-schemas";
 ```
 
 ### Usage with `ajv` in `strict` mode
@@ -267,8 +267,8 @@ the custom keyword `tsAdditionalProperties`.
 Here is an example of how you can set this up:
 
 ```ts
-import type { WebhookEvent } from "@octokit/webhooks-definitions/schema";
-import * as githubWebhookSchema from "@octokit/webhooks-definitions/schema.json";
+import type { WebhookEvent } from "@octokit/webhooks-types";
+import * as githubWebhookSchema from "@octokit/webhooks-schemas";
 import Ajv from "ajv";
 import addFormats from "ajv-formats";
 
@@ -286,10 +286,7 @@ This package ships with types for the webhook events generated from the
 respective json schemas, which you can use like so:
 
 ```typescript
-import {
-  WebhookEvent,
-  IssuesOpenedEvent,
-} from "@octokit/webhooks-definitions/schema";
+import { WebhookEvent, IssuesOpenedEvent } from "@octokit/webhooks-types";
 
 const handleWebhookEvent = (event: WebhookEvent) => {
   if ("action" in event && event.action === "completed") {

@@ -14,7 +14,7 @@ addFormats(ajv);
 ajv.addKeyword("tsAdditionalProperties");
 
 const schema = JSON.parse(
-  readFileSync(resolve(__dirname, "../schema.json"), "utf-8")
+  readFileSync(resolve(__dirname, "../payload-schemas/schema.json"), "utf-8")
 );
 
 // if this is invalid, an error will be thrown
