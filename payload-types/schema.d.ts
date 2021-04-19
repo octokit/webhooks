@@ -4358,7 +4358,7 @@ export interface PullRequestReviewCommentCreatedEvent {
     /**
      * The line index in the diff to which the comment applies.
      */
-    position: number;
+    position: number | null;
     /**
      * The index of the original line in the diff to which the comment applies.
      */
@@ -4516,7 +4516,7 @@ export interface PullRequestReviewCommentDeletedEvent {
     /**
      * The line index in the diff to which the comment applies.
      */
-    position: number;
+    position: number | null;
     /**
      * The index of the original line in the diff to which the comment applies.
      */
@@ -4685,7 +4685,7 @@ export interface PullRequestReviewCommentEditedEvent {
     /**
      * The line index in the diff to which the comment applies.
      */
-    position: number;
+    position: number | null;
     /**
      * The index of the original line in the diff to which the comment applies.
      */
