@@ -55,7 +55,7 @@
           "description": "The relative path of the file to which the comment applies."
         },
         "position": {
-          "type": "integer",
+          "type": ["integer", "null"],
           "description": "The line index in the diff to which the comment applies."
         },
         "original_position": {
@@ -217,6 +217,7 @@
             { "type": "null" }
           ]
         },
+        "draft": { "type": "boolean" },
         "commits_url": { "type": "string", "format": "uri" },
         "review_comments_url": { "type": "string", "format": "uri" },
         "review_comment_url": { "type": "string", "format": "uri-template" },

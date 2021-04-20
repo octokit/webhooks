@@ -8419,6 +8419,8 @@
           "statuses_url": "https://api.github.com/repos/Codertocat/Hello-World/deployments/145988746/statuses",
           "repository_url": "https://api.github.com/repos/Codertocat/Hello-World"
         },
+        "workflow": null,
+        "workflow_run": null,
         "repository": {
           "id": 186853002,
           "node_id": "MDEwOlJlcG9zaXRvcnkxODY4NTMwMDI=",
@@ -8572,6 +8574,8 @@
           "statuses_url": "https://api.github.com/repos/Codertocat/Hello-World/deployments/145988746/statuses",
           "repository_url": "https://api.github.com/repos/Codertocat/Hello-World"
         },
+        "workflow": null,
+        "workflow_run": null,
         "repository": {
           "id": 186853002,
           "node_id": "MDEwOlJlcG9zaXRvcnkxODY4NTMwMDI=",
@@ -8991,7 +8995,8 @@
           "created_at": "2019-05-15T15:20:53Z",
           "updated_at": "2019-05-15T15:20:55Z",
           "statuses_url": "https://api.github.com/repos/Codertocat/Hello-World/deployments/145988746/statuses",
-          "repository_url": "https://api.github.com/repos/Codertocat/Hello-World"
+          "repository_url": "https://api.github.com/repos/Codertocat/Hello-World",
+          "performed_via_github_app": null
         },
         "repository": {
           "id": 186853002,
@@ -9177,7 +9182,8 @@
           "created_at": "2019-05-15T15:20:53Z",
           "updated_at": "2019-05-15T15:20:55Z",
           "statuses_url": "https://api.github.com/repos/Codertocat/Hello-World/deployments/145988746/statuses",
-          "repository_url": "https://api.github.com/repos/Codertocat/Hello-World"
+          "repository_url": "https://api.github.com/repos/Codertocat/Hello-World",
+          "performed_via_github_app": null
         },
         "repository": {
           "id": 186853002,
@@ -54164,6 +54170,16 @@
                 "identifier": "1.11.10"
               }
             }
+          ],
+          "cvss": {
+            "vector_string": "",
+            "score": 7.9
+          },
+          "cwes": [
+            {
+              "cwe_id": "CWE-0000",
+              "name": ""
+            }
           ]
         }
       },
@@ -54204,6 +54220,16 @@
               "severity": "moderate",
               "vulnerable_version_range": "<= 0.29.0",
               "first_patched_version": null
+            }
+          ],
+          "cvss": {
+            "vector_string": "",
+            "score": 7.9
+          },
+          "cwes": [
+            {
+              "cwe_id": "CWE-0000",
+              "name": ""
             }
           ]
         }
@@ -57956,6 +57982,7 @@
           "cancel_url": "https://api.github.com/repos/octo-org/octo-repo/actions/runs/289782451/cancel",
           "check_suite_url": "https://api.github.com/repos/octo-org/octo-repo/check-suites/1291536064",
           "check_suite_id": 1291536064,
+          "check_suite_node_id": 1291536064,
           "conclusion": "success",
           "created_at": "2020-10-05T16:33:24Z",
           "event": "repository_dispatch",
@@ -58277,6 +58304,8 @@
           "artifacts_url": "https://api.github.com/repos/octo-org/octo-repo/actions/runs/289782451/artifacts",
           "cancel_url": "https://api.github.com/repos/octo-org/octo-repo/actions/runs/289782451/cancel",
           "check_suite_url": "https://api.github.com/repos/octo-org/octo-repo/check-suites/1291536064",
+          "check_suite_id": 1291536064,
+          "check_suite_node_id": 1291536064,
           "conclusion": null,
           "created_at": "2020-10-05T16:33:24Z",
           "event": "repository_dispatch",

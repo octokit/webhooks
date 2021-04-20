@@ -27,7 +27,6 @@
     "avatar_url": { "type": ["string", "null"], "format": "uri" },
     "target_url": {
       "type": ["string", "null"],
-      "format": "uri",
       "description": "The optional link added to the status."
     },
     "context": { "type": "string" },

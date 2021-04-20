@@ -296,6 +296,7 @@ export interface CheckRunCompletedEvent {
       | "timed_out"
       | "action_required"
       | "stale"
+      | "skipped"
       | null;
     /**
      * The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
@@ -327,7 +328,7 @@ export interface CheckRunCompletedEvent {
        * The SHA of the head commit that is being checked.
        */
       head_sha: string;
-      status: "in_progress" | "completed";
+      status: "in_progress" | "completed" | "queued";
       conclusion:
         | "success"
         | "failure"
@@ -542,7 +543,7 @@ export interface Repository {
   deployments_url: string;
   created_at: number | string;
   updated_at: string;
-  pushed_at: number | string;
+  pushed_at: number | string | null;
   git_url: string;
   ssh_url: string;
   clone_url: string;
@@ -670,7 +671,7 @@ export interface CheckRunCreatedEvent {
     /**
      * The current status of the check run. Can be `queued`, `in_progress`, or `completed`.
      */
-    status: "queued" | "in_progress";
+    status: "queued" | "in_progress" | "completed";
     /**
      * The result of the completed check run. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has completed.
      */
@@ -682,6 +683,7 @@ export interface CheckRunCreatedEvent {
       | "timed_out"
       | "action_required"
       | "stale"
+      | "skipped"
       | null;
     /**
      * The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
@@ -713,7 +715,7 @@ export interface CheckRunCreatedEvent {
        * The SHA of the head commit that is being checked.
        */
       head_sha: string;
-      status: "queued" | "in_progress";
+      status: "queued" | "in_progress" | "completed";
       conclusion: null;
       url: string;
       before: string | null;
@@ -778,6 +780,7 @@ export interface CheckRunRequestedActionEvent {
       | "timed_out"
       | "action_required"
       | "stale"
+      | "skipped"
       | null;
     /**
      * The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
@@ -882,6 +885,7 @@ export interface CheckRunRerequestedEvent {
       | "timed_out"
       | "action_required"
       | "stale"
+      | "skipped"
       | null;
     /**
      * The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
@@ -1024,7 +1028,7 @@ export interface Committer {
   /**
    * The git author's email address.
    */
-  email: string;
+  email: string | null;
   date?: string;
   username?: string;
 }
@@ -1156,6 +1160,7 @@ export interface CodeScanningAlertAppearedInBranchEvent {
      */
     html_url: string;
     instances: AlertInstance[];
+    most_recent_instance?: AlertInstance;
     /**
      * State of a code scanning alert.
      */
@@ -1281,6 +1286,7 @@ export interface CodeScanningAlertClosedByUserEvent {
     instances: (AlertInstance & {
       state: "dismissed";
     })[];
+    most_recent_instance?: AlertInstance;
     /**
      * State of a code scanning alert.
      */
@@ -1359,6 +1365,7 @@ export interface CodeScanningAlertCreatedEvent {
     instances: (AlertInstance & {
       state: "open" | "dismissed";
     })[];
+    most_recent_instance?: AlertInstance;
     /**
      * State of a code scanning alert.
      */
@@ -1517,6 +1524,7 @@ export interface CodeScanningAlertReopenedEvent {
     instances: (AlertInstance & {
       state: "open";
     })[];
+    most_recent_instance?: AlertInstance;
     /**
      * State of a code scanning alert.
      */
@@ -1595,6 +1603,7 @@ export interface CodeScanningAlertReopenedByUserEvent {
     instances: (AlertInstance & {
       state: "open";
     })[];
+    most_recent_instance?: AlertInstance;
     /**
      * State of a code scanning alert.
      */
@@ -1821,6 +1830,8 @@ export interface DeploymentCreatedEvent {
     repository_url: string;
     performed_via_github_app?: App | null;
   };
+  workflow: null;
+  workflow_run: null;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -1874,6 +1885,7 @@ export interface DeploymentStatusCreatedEvent {
     updated_at: string;
     statuses_url: string;
     repository_url: string;
+    performed_via_github_app: App | null;
   };
   repository: Repository;
   sender: User;
@@ -2259,6 +2271,7 @@ export interface Installation {
     checks?: "read" | "write";
     contents?: "read" | "write";
     deployments?: "read" | "write";
+    discussions?: "read" | "write";
     issues?: "read" | "write";
     organization_administration?: "read" | "write";
     pages?: "read" | "write";
@@ -4345,7 +4358,7 @@ export interface PullRequestReviewCommentCreatedEvent {
     /**
      * The line index in the diff to which the comment applies.
      */
-    position: number;
+    position: number | null;
     /**
      * The index of the original line in the diff to which the comment applies.
      */
@@ -4433,6 +4446,7 @@ export interface PullRequestReviewCommentCreatedEvent {
     requested_teams: Team[];
     labels: Label[];
     milestone: Milestone | null;
+    draft?: boolean;
     commits_url: string;
     review_comments_url: string;
     review_comment_url: string;
@@ -4502,7 +4516,7 @@ export interface PullRequestReviewCommentDeletedEvent {
     /**
      * The line index in the diff to which the comment applies.
      */
-    position: number;
+    position: number | null;
     /**
      * The index of the original line in the diff to which the comment applies.
      */
@@ -4590,6 +4604,7 @@ export interface PullRequestReviewCommentDeletedEvent {
     requested_teams: Team[];
     labels: Label[];
     milestone: Milestone | null;
+    draft?: boolean;
     commits_url: string;
     review_comments_url: string;
     review_comment_url: string;
@@ -4670,7 +4685,7 @@ export interface PullRequestReviewCommentEditedEvent {
     /**
      * The line index in the diff to which the comment applies.
      */
-    position: number;
+    position: number | null;
     /**
      * The index of the original line in the diff to which the comment applies.
      */
@@ -4758,6 +4773,7 @@ export interface PullRequestReviewCommentEditedEvent {
     requested_teams: Team[];
     labels: Label[];
     milestone: Milestone | null;
+    draft?: boolean;
     commits_url: string;
     review_comments_url: string;
     review_comment_url: string;
@@ -5430,7 +5446,14 @@ export interface SecurityAdvisoryPerformedEvent {
    * The details of the security advisory, including summary, description, and severity.
    */
   security_advisory: {
-    cvss?: string;
+    cvss: {
+      vector_string: string;
+      score: number;
+    };
+    cwes: {
+      cwe_id: string;
+      name: string;
+    }[];
     ghsa_id: string;
     summary: string;
     description: string;
@@ -5464,7 +5487,14 @@ export interface SecurityAdvisoryPublishedEvent {
    * The details of the security advisory, including summary, description, and severity.
    */
   security_advisory: {
-    cvss?: string;
+    cvss: {
+      vector_string: string;
+      score: number;
+    };
+    cwes: {
+      cwe_id: string;
+      name: string;
+    }[];
     ghsa_id: string;
     summary: string;
     description: string;
@@ -5498,7 +5528,14 @@ export interface SecurityAdvisoryUpdatedEvent {
    * The details of the security advisory, including summary, description, and severity.
    */
   security_advisory: {
-    cvss?: string;
+    cvss: {
+      vector_string: string;
+      score: number;
+    };
+    cwes: {
+      cwe_id: string;
+      name: string;
+    }[];
     ghsa_id: string;
     summary: string;
     description: string;
@@ -5877,7 +5914,8 @@ export interface WorkflowRun {
   artifacts_url: string;
   cancel_url: string;
   check_suite_url: string;
-  check_suite_id?: number;
+  check_suite_id: number;
+  check_suite_node_id: number;
   conclusion: string | null;
   created_at: string;
   event: string;

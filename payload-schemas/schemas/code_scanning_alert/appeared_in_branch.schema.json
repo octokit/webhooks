@@ -41,6 +41,7 @@
           "type": "array",
           "items": { "$ref": "common/alert-instance.schema.json" }
         },
+        "most_recent_instance": { "$ref": "common/alert-instance.schema.json" },
         "state": {
           "type": "string",
           "description": "State of a code scanning alert.",
