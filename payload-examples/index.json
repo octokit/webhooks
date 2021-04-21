@@ -54707,7 +54707,7 @@
   },
   {
     "name": "sponsorship",
-    "description": "Activity related to a sponsorship listing. The type of activity is specified in the `action` property of the payload object. For more information, see \"[About GitHub Sponsors](https://docs.github.com/en/github/supporting-the-open-source-community-with-github-sponsors/about-github-sponsors)\".\n\nYou can only create a sponsorship webhook on GitHub. For more information, see \"[Configuring webhooks for events in your sponsored account](https://docs.github.com/en/github/supporting-the-open-source-community-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)\".",
+    "description": "Activity related to a sponsorship listing. The type of activity is specified in the `action` property of the payload object. For more information, see \"[About GitHub Sponsors](https://docs.github.com/en/sponsors/getting-started-with-github-sponsors/about-github-sponsors)\".\n\nYou can only create a sponsorship webhook on GitHub. For more information, see \"[Configuring webhooks for events in your sponsored account](/en/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)\".",
     "actions": [
       "cancelled",
       "created",
