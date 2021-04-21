@@ -4528,7 +4528,7 @@
   },
   {
     "name": "code_scanning_alert",
-    "description": "Activity related to code scanning alerts in a repository. The type of activity is specified in the action property of the payload object. For more information, see “[About code scanning](/en/github/finding-security-vulnerabilities-and-errors-in-your-code/about-code-scanning).”",
+    "description": "Activity related to code scanning alerts in a repository. The type of activity is specified in the action property of the payload object. For more information, see “[About code scanning](https://docs.github.com/en/github/finding-security-vulnerabilities-and-errors-in-your-code/about-code-scanning).”",
     "actions": [
       "appeared_in_branch",
       "closed_by_user",
@@ -6471,7 +6471,7 @@
   },
   {
     "name": "content_reference",
-    "description": "A new content reference is `created`. A new content reference is created when the body or comment of an issue or pull request includes a URL that matches a configured content reference domain. For more information, see \"[Using content attachments](/en/apps/using-content-attachments)\" to learn more about content references and attachments.\n\nWebhook events are triggered based on the specificity of the domain you register. For example, if you register a subdomain (`https://subdomain.example.com`) then only URLs for the subdomain trigger this event. If you register a domain (`https://example.com`) then URLs for domain and all subdomains trigger this event. See \"[Create a content attachment](https://docs.github.com/en/rest/reference/apps#create-a-content-attachment)\" to create a new content attachment.",
+    "description": "A new content reference is `created`. A new content reference is created when the body or comment of an issue or pull request includes a URL that matches a configured content reference domain. For more information, see \"[Using content attachments](https://docs.github.com/en/apps/using-content-attachments)\" to learn more about content references and attachments.\n\nWebhook events are triggered based on the specificity of the domain you register. For example, if you register a subdomain (`https://subdomain.example.com`) then only URLs for the subdomain trigger this event. If you register a domain (`https://example.com`) then URLs for domain and all subdomains trigger this event. See \"[Create a content attachment](https://docs.github.com/en/rest/reference/apps#create-a-content-attachment)\" to create a new content attachment.",
     "actions": ["created"],
     "properties": {},
     "examples": [
@@ -9308,7 +9308,7 @@
   },
   {
     "name": "discussion",
-    "description": "Activity related to a discussion. For more information, see the \"[Using the GraphQL API for discussions](/en/graphql/guides/using-the-graphql-api-for-discussions).\"",
+    "description": "Activity related to a discussion. For more information, see the \"[Using the GraphQL API for discussions](https://docs.github.com/en/graphql/guides/using-the-graphql-api-for-discussions).\"",
     "actions": [
       "answered",
       "category_changed",
@@ -9325,15 +9325,15 @@
     "properties": {
       "discussion": {
         "type": "object",
-        "description": "The [`discussion`](/en/graphql/guides/using-the-graphql-api-for-discussions#discussion) resource."
+        "description": "The [`discussion`](https://docs.github.com/en/graphql/guides/using-the-graphql-api-for-discussions#discussion) resource."
       },
       "repository": {
         "type": "object",
-        "description": "The [`repository`](/en/graphql/reference/objects#repository) where the event occurred."
+        "description": "The [`repository`](https://docs.github.com/en/graphql/reference/objects#repository) where the event occurred."
       },
       "organization": {
         "type": "object",
-        "description": "Webhook payloads contain the [`organization`](/en/graphql/reference/objects#organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+        "description": "Webhook payloads contain the [`organization`](https://docs.github.com/en/graphql/reference/objects#organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
       },
       "sender": {
         "type": "object",
@@ -11145,24 +11145,24 @@
   },
   {
     "name": "discussion_comment",
-    "description": "Activity related to a comment in a discussion. For more information, see \"[Using the GraphQL API for discussions](/en/graphql/guides/using-the-graphql-api-for-discussions).\"",
+    "description": "Activity related to a comment in a discussion. For more information, see \"[Using the GraphQL API for discussions](https://docs.github.com/en/graphql/guides/using-the-graphql-api-for-discussions).\"",
     "actions": ["created", "deleted", "edited"],
     "properties": {
       "comment": {
         "type": "object",
-        "description": "The [`discussion comment`](/en/graphql/guides/using-the-graphql-api-for-discussions#discussioncomment) resource."
+        "description": "The [`discussion comment`](https://docs.github.com/en/graphql/guides/using-the-graphql-api-for-discussions#discussioncomment) resource."
       },
       "discussion": {
         "type": "object",
-        "description": "The [`discussion`](/en/graphql/guides/using-the-graphql-api-for-discussions#discussion) resource."
+        "description": "The [`discussion`](https://docs.github.com/en/graphql/guides/using-the-graphql-api-for-discussions#discussion) resource."
       },
       "repository": {
         "type": "object",
-        "description": "The [`repository`](/en/graphql/reference/objects#repository) where the event occurred."
+        "description": "The [`repository`](https://docs.github.com/en/graphql/reference/objects#repository) where the event occurred."
       },
       "organization": {
         "type": "object",
-        "description": "Webhook payloads contain the [`organization`](/en/graphql/reference/objects#organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+        "description": "Webhook payloads contain the [`organization`](https://docs.github.com/en/graphql/reference/objects#organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
       },
       "sender": {
         "type": "object",
@@ -12671,7 +12671,7 @@
   },
   {
     "name": "github_app_authorization",
-    "description": "When someone revokes their authorization of a GitHub App, this event occurs. A GitHub App receives this webhook by default and cannot unsubscribe from this event.\n\nAnyone can revoke their authorization of a GitHub App from their [GitHub account settings page](https://github.com/settings/apps/authorizations). Revoking the authorization of a GitHub App does not uninstall the GitHub App. You should program your GitHub App so that when it receives this webhook, it stops calling the API on behalf of the person who revoked the token. If your GitHub App continues to use a revoked access token, it will receive the `401 Bad Credentials` error. For details about user-to-server requests, which require GitHub App authorization, see \"[Identifying and authorizing users for GitHub Apps](/en/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps).\"",
+    "description": "When someone revokes their authorization of a GitHub App, this event occurs. A GitHub App receives this webhook by default and cannot unsubscribe from this event.\n\nAnyone can revoke their authorization of a GitHub App from their [GitHub account settings page](https://github.com/settings/apps/authorizations). Revoking the authorization of a GitHub App does not uninstall the GitHub App. You should program your GitHub App so that when it receives this webhook, it stops calling the API on behalf of the person who revoked the token. If your GitHub App continues to use a revoked access token, it will receive the `401 Bad Credentials` error. For details about user-to-server requests, which require GitHub App authorization, see \"[Identifying and authorizing users for GitHub Apps](https://docs.github.com/en/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps).\"",
     "actions": ["revoked"],
     "properties": {
       "sender": {
@@ -12730,7 +12730,7 @@
   },
   {
     "name": "gollum",
-    "description": "A wiki page is created or updated. For more information, see the \"[About wikis](/en/communities/documenting-your-project-with-wikis/about-wikis)\".",
+    "description": "A wiki page is created or updated. For more information, see the \"[About wikis](https://docs.github.com/en/communities/documenting-your-project-with-wikis/about-wikis)\".",
     "actions": [],
     "properties": {
       "pages": {
@@ -22835,7 +22835,7 @@
   },
   {
     "name": "marketplace_purchase",
-    "description": "Activity related to a GitHub Marketplace purchase. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[GitHub Marketplace](/en/marketplace).\"",
+    "description": "Activity related to a GitHub Marketplace purchase. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[GitHub Marketplace](https://docs.github.com/en/marketplace).\"",
     "actions": [
       "cancelled",
       "changed",
@@ -25574,7 +25574,7 @@
   },
   {
     "name": "package",
-    "description": "Activity related to GitHub Packages. The type of activity is specified in the `action` property of the payload object. For more information, see \"[Managing packages with GitHub Packages](/en/github/managing-packages-with-github-packages)\" to learn more about GitHub Packages.",
+    "description": "Activity related to GitHub Packages. The type of activity is specified in the `action` property of the payload object. For more information, see \"[Managing packages with GitHub Packages](https://docs.github.com/en/github/managing-packages-with-github-packages)\" to learn more about GitHub Packages.",
     "actions": ["published", "updated"],
     "properties": {
       "package": {
@@ -26571,7 +26571,7 @@
       },
       "hook[app_id]": {
         "type": "integer",
-        "description": "When you register a new GitHub App, GitHub sends a ping event to the **webhook URL** you specified during registration. The event contains the `app_id`, which is required for [authenticating](/en/apps/building-integrations/setting-up-and-registering-github-apps/about-authentication-options-for-github-apps) an app."
+        "description": "When you register a new GitHub App, GitHub sends a ping event to the **webhook URL** you specified during registration. The event contains the `app_id`, which is required for [authenticating](https://docs.github.com/en/apps/building-integrations/setting-up-and-registering-github-apps/about-authentication-options-for-github-apps) an app."
       },
       "repository": {
         "type": "object",
@@ -52782,7 +52782,7 @@
   },
   {
     "name": "repository_import",
-    "description": "Activity related to a repository being imported to GitHub. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[source imports](https://docs.github.com/en/rest/reference/migrations#source-imports)\" REST API. To receive this event for a personal repository, you must create an empty repository prior to the import. This event can be triggered using either the [GitHub Importer](/en/articles/importing-a-repository-with-github-importer) or the [Source imports API](https://docs.github.com/en/rest/reference/migrations#source-imports).",
+    "description": "Activity related to a repository being imported to GitHub. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[source imports](https://docs.github.com/en/rest/reference/migrations#source-imports)\" REST API. To receive this event for a personal repository, you must create an empty repository prior to the import. This event can be triggered using either the [GitHub Importer](https://docs.github.com/en/articles/importing-a-repository-with-github-importer) or the [Source imports API](https://docs.github.com/en/rest/reference/migrations#source-imports).",
     "actions": [],
     "properties": {
       "status": {
@@ -53067,7 +53067,7 @@
   },
   {
     "name": "repository_vulnerability_alert",
-    "description": "Activity related to security vulnerability alerts in a repository. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[About alerts for vulnerable dependencies](/en/github/managing-security-vulnerabilities/about-alerts-for-vulnerable-dependencies)\".",
+    "description": "Activity related to security vulnerability alerts in a repository. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[About alerts for vulnerable dependencies](https://docs.github.com/en/github/managing-security-vulnerabilities/about-alerts-for-vulnerable-dependencies)\".",
     "actions": ["create", "dismiss", "resolve"],
     "properties": {
       "alert": {
@@ -53757,7 +53757,7 @@
   },
   {
     "name": "secret_scanning_alert",
-    "description": "Activity related to secret scanning alerts in a repository. The type of activity is specified in the action property of the payload object. For more information, see “[About secret scanning](/en/github/administering-a-repository/about-secret-scanning).”",
+    "description": "Activity related to secret scanning alerts in a repository. The type of activity is specified in the action property of the payload object. For more information, see “[About secret scanning](https://docs.github.com/en/github/administering-a-repository/about-secret-scanning).”",
     "actions": ["created", "reopened", "resolved"],
     "properties": {
       "alert": {
@@ -54062,7 +54062,7 @@
   },
   {
     "name": "security_advisory",
-    "description": "Activity related to a security advisory. A security advisory provides information about security-related vulnerabilities in software on GitHub. The security advisory dataset also powers the GitHub security alerts, see \"[About alerts for vulnerable dependencies](/en/github/managing-security-vulnerabilities/about-alerts-for-vulnerable-dependencies).\"",
+    "description": "Activity related to a security advisory. A security advisory provides information about security-related vulnerabilities in software on GitHub. The security advisory dataset also powers the GitHub security alerts, see \"[About alerts for vulnerable dependencies](https://docs.github.com/en/github/managing-security-vulnerabilities/about-alerts-for-vulnerable-dependencies).\"",
     "actions": ["performed", "published", "updated"],
     "properties": {
       "security_advisory": {
@@ -54238,7 +54238,7 @@
   },
   {
     "name": "sponsorship",
-    "description": "Activity related to a sponsorship listing. The type of activity is specified in the `action` property of the payload object. For more information, see \"[About GitHub Sponsors](/en/github/supporting-the-open-source-community-with-github-sponsors/about-github-sponsors)\".\n\nYou can only create a sponsorship webhook on GitHub. For more information, see \"[Configuring webhooks for events in your sponsored account](/en/github/supporting-the-open-source-community-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)\".",
+    "description": "Activity related to a sponsorship listing. The type of activity is specified in the `action` property of the payload object. For more information, see \"[About GitHub Sponsors](https://docs.github.com/en/github/supporting-the-open-source-community-with-github-sponsors/about-github-sponsors)\".\n\nYou can only create a sponsorship webhook on GitHub. For more information, see \"[Configuring webhooks for events in your sponsored account](https://docs.github.com/en/github/supporting-the-open-source-community-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)\".",
     "actions": [
       "cancelled",
       "created",
@@ -54254,7 +54254,7 @@
       },
       "changes[tier][from]": {
         "type": "object",
-        "description": "The `tier_changed` and `pending_tier_change` will include the original tier before the change or pending change. For more information, see the [pending tier change payload](/en/webhooks/event-payloads#webhook-payload-example-when-someone-downgrades-a-sponsorship)."
+        "description": "The `tier_changed` and `pending_tier_change` will include the original tier before the change or pending change. For more information, see the [pending tier change payload](https://docs.github.com/en/webhooks/event-payloads#webhook-payload-example-when-someone-downgrades-a-sponsorship)."
       },
       "changes[privacy_level][from]": {
         "type": "string",
@@ -57400,7 +57400,7 @@
   },
   {
     "name": "workflow_dispatch",
-    "description": "This event occurs when someone triggers a workflow run on GitHub or sends a `POST` request to the \"[Create a workflow dispatch event](https://docs.github.com/en/rest/reference/actions/#create-a-workflow-dispatch-event)\" endpoint. For more information, see \"[Events that trigger workflows](/en/actions/reference/events-that-trigger-workflows#workflow_dispatch).\"",
+    "description": "This event occurs when someone triggers a workflow run on GitHub or sends a `POST` request to the \"[Create a workflow dispatch event](https://docs.github.com/en/rest/reference/actions/#create-a-workflow-dispatch-event)\" endpoint. For more information, see \"[Events that trigger workflows](https://docs.github.com/en/actions/reference/events-that-trigger-workflows#workflow_dispatch).\"",
     "actions": [],
     "properties": {},
     "examples": [
@@ -57672,7 +57672,7 @@
   },
   {
     "name": "workflow_run",
-    "description": "When a GitHub Actions workflow run is requested or completed. For more information, see \"[Events that trigger workflows](/en/actions/reference/events-that-trigger-workflows#workflow_run).\"",
+    "description": "When a GitHub Actions workflow run is requested or completed. For more information, see \"[Events that trigger workflows](https://docs.github.com/en/actions/reference/events-that-trigger-workflows#workflow_run).\"",
     "actions": ["completed", "requested"],
     "properties": {
       "workflow_run": {
