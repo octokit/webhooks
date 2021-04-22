@@ -112,7 +112,7 @@
           "description": "The side of the first line of the range for a multi-line comment."
         },
         "line": {
-          "type": "integer",
+          "type": ["integer", "null"],
           "description": "The line of the blob to which the comment applies. The last line of the range for a multi-line comment"
         },
         "original_line": {
