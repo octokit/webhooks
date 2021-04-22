@@ -47,7 +47,13 @@
       "pull_request": {
         "href": "https://api.github.com/repos/Codertocat/Hello-World/pulls/2"
       }
-    }
+    },
+    "start_line": null,
+    "original_start_line": null,
+    "start_side": null,
+    "line": 265,
+    "original_line": 265,
+    "side": "RIGHT"
   },
   "pull_request": {
     "url": "https://api.github.com/repos/Codertocat/Hello-World/pulls/2",

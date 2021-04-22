@@ -51,7 +51,13 @@
         "html_url",
         "pull_request_url",
         "author_association",
-        "_links"
+        "_links",
+        "start_line",
+        "original_start_line",
+        "original_line",
+        "line",
+        "start_side",
+        "side"
       ],
       "properties": {
         "url": {
