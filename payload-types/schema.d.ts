@@ -716,7 +716,15 @@ export interface CheckRunCreatedEvent {
        */
       head_sha: string;
       status: "queued" | "in_progress" | "completed";
-      conclusion: null;
+      conclusion:
+        | "success"
+        | "failure"
+        | "neutral"
+        | "cancelled"
+        | "timed_out"
+        | "action_required"
+        | "stale"
+        | null;
       url: string;
       before: string | null;
       after: string | null;
@@ -4243,12 +4251,13 @@ export interface SimplePullRequest {
     statuses: Link;
   };
   author_association: AuthorAssociation;
+  auto_merge: null;
   active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
 }
 export interface PullRequestReviewEditedEvent {
   action: "edited";
   changes: {
-    body: {
+    body?: {
       /**
        * The previous version of the body if the action was `edited`.
        */
@@ -4395,27 +4404,27 @@ export interface PullRequestReviewCommentCreatedEvent {
     /**
      * The first line of the range for a multi-line comment.
      */
-    start_line?: number | null;
+    start_line: number | null;
     /**
      * The first line of the range for a multi-line comment.
      */
-    original_start_line?: number | null;
+    original_start_line: number | null;
     /**
      * The side of the first line of the range for a multi-line comment.
      */
-    start_side?: "LEFT" | "RIGHT" | null;
+    start_side: "LEFT" | "RIGHT" | null;
     /**
      * The line of the blob to which the comment applies. The last line of the range for a multi-line comment
      */
-    line?: number;
+    line: number | null;
     /**
      * The line of the blob to which the comment applies. The last line of the range for a multi-line comment
      */
-    original_line?: number;
+    original_line: number;
     /**
      * The side of the first line of the range for a multi-line comment.
      */
-    side?: "LEFT" | "RIGHT";
+    side: "LEFT" | "RIGHT";
     /**
      * The comment ID to reply to.
      */
@@ -4476,6 +4485,7 @@ export interface PullRequestReviewCommentCreatedEvent {
       commits: Link;
       statuses: Link;
     };
+    auto_merge?: null;
     author_association: AuthorAssociation;
   };
   repository: Repository;
@@ -4553,27 +4563,27 @@ export interface PullRequestReviewCommentDeletedEvent {
     /**
      * The first line of the range for a multi-line comment.
      */
-    start_line?: number | null;
+    start_line: number | null;
     /**
      * The first line of the range for a multi-line comment.
      */
-    original_start_line?: number | null;
+    original_start_line: number | null;
     /**
      * The side of the first line of the range for a multi-line comment.
      */
-    start_side?: "LEFT" | "RIGHT" | null;
+    start_side: "LEFT" | "RIGHT" | null;
     /**
      * The line of the blob to which the comment applies. The last line of the range for a multi-line comment
      */
-    line?: number;
+    line: number | null;
     /**
      * The line of the blob to which the comment applies. The last line of the range for a multi-line comment
      */
-    original_line?: number;
+    original_line: number;
     /**
      * The side of the first line of the range for a multi-line comment.
      */
-    side?: "LEFT" | "RIGHT";
+    side: "LEFT" | "RIGHT";
     /**
      * The comment ID to reply to.
      */
@@ -4634,6 +4644,7 @@ export interface PullRequestReviewCommentDeletedEvent {
       commits: Link;
       statuses: Link;
     };
+    auto_merge?: null;
     author_association: AuthorAssociation;
   };
   repository: Repository;
@@ -4722,27 +4733,27 @@ export interface PullRequestReviewCommentEditedEvent {
     /**
      * The first line of the range for a multi-line comment.
      */
-    start_line?: number | null;
+    start_line: number | null;
     /**
      * The first line of the range for a multi-line comment.
      */
-    original_start_line?: number | null;
+    original_start_line: number | null;
     /**
      * The side of the first line of the range for a multi-line comment.
      */
-    start_side?: "LEFT" | "RIGHT" | null;
+    start_side: "LEFT" | "RIGHT" | null;
     /**
      * The line of the blob to which the comment applies. The last line of the range for a multi-line comment
      */
-    line?: number;
+    line: number | null;
     /**
      * The line of the blob to which the comment applies. The last line of the range for a multi-line comment
      */
-    original_line?: number;
+    original_line: number;
     /**
      * The side of the first line of the range for a multi-line comment.
      */
-    side?: "LEFT" | "RIGHT";
+    side: "LEFT" | "RIGHT";
     /**
      * The comment ID to reply to.
      */
@@ -4803,6 +4814,7 @@ export interface PullRequestReviewCommentEditedEvent {
       commits: Link;
       statuses: Link;
     };
+    auto_merge?: null;
     author_association: AuthorAssociation;
   };
   repository: Repository;
@@ -5447,7 +5459,7 @@ export interface SecurityAdvisoryPerformedEvent {
    */
   security_advisory: {
     cvss: {
-      vector_string: string;
+      vector_string: string | null;
       score: number;
     };
     cwes: {
@@ -5488,7 +5500,7 @@ export interface SecurityAdvisoryPublishedEvent {
    */
   security_advisory: {
     cvss: {
-      vector_string: string;
+      vector_string: string | null;
       score: number;
     };
     cwes: {
@@ -5529,7 +5541,7 @@ export interface SecurityAdvisoryUpdatedEvent {
    */
   security_advisory: {
     cvss: {
-      vector_string: string;
+      vector_string: string | null;
       score: number;
     };
     cwes: {
@@ -5915,7 +5927,7 @@ export interface WorkflowRun {
   cancel_url: string;
   check_suite_url: string;
   check_suite_id: number;
-  check_suite_node_id: number;
+  check_suite_node_id: string;
   conclusion: string | null;
   created_at: string;
   event: string;

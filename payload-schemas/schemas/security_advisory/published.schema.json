@@ -27,7 +27,7 @@
           "type": "object",
           "required": ["vector_string", "score"],
           "properties": {
-            "vector_string": { "type": "string" },
+            "vector_string": { "type": ["string", "null"] },
             "score": { "type": "number" }
           },
           "additionalProperties": false

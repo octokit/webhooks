@@ -115,7 +115,19 @@
               "type": "string",
               "enum": ["queued", "in_progress", "completed"]
             },
-            "conclusion": { "type": "null" },
+            "conclusion": {
+              "type": ["string", "null"],
+              "enum": [
+                "success",
+                "failure",
+                "neutral",
+                "cancelled",
+                "timed_out",
+                "action_required",
+                "stale",
+                null
+              ]
+            },
             "url": { "type": "string", "format": "uri" },
             "before": { "type": ["string", "null"] },
             "after": { "type": ["string", "null"] },
