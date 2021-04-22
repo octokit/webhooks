@@ -296,6 +296,7 @@
           },
           "additionalProperties": false
         },
+        "auto_merge": { "type": "null" },
         "author_association": {
           "$ref": "common/author_association.schema.json"
         }
