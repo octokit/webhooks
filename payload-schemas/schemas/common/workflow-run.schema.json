@@ -36,7 +36,7 @@
     "cancel_url": { "type": "string", "format": "uri" },
     "check_suite_url": { "type": "string", "format": "uri" },
     "check_suite_id": { "type": "integer" },
-    "check_suite_node_id": { "type": "integer" },
+    "check_suite_node_id": { "type": "string" },
     "conclusion": { "type": ["string", "null"] },
     "created_at": { "type": "string", "format": "date-time" },
     "event": { "type": "string" },
