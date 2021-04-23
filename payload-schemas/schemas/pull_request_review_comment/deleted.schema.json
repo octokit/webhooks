@@ -5,138 +5,7 @@
   "required": ["action", "comment", "pull_request", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["deleted"] },
-    "comment": {
-      "type": "object",
-      "description": "The [comment](https://docs.github.com/en/rest/reference/pulls#comments) itself.",
-      "required": [
-        "url",
-        "pull_request_review_id",
-        "id",
-        "node_id",
-        "diff_hunk",
-        "path",
-        "position",
-        "original_position",
-        "commit_id",
-        "original_commit_id",
-        "user",
-        "body",
-        "created_at",
-        "updated_at",
-        "html_url",
-        "pull_request_url",
-        "author_association",
-        "_links",
-        "start_line",
-        "original_start_line",
-        "original_line",
-        "line",
-        "start_side",
-        "side"
-      ],
-      "properties": {
-        "url": {
-          "type": "string",
-          "description": "URL for the pull request review comment",
-          "format": "uri"
-        },
-        "pull_request_review_id": {
-          "type": "integer",
-          "description": "The ID of the pull request review to which the comment belongs."
-        },
-        "id": {
-          "type": "integer",
-          "description": "The ID of the pull request review comment."
-        },
-        "node_id": {
-          "type": "string",
-          "description": "The node ID of the pull request review comment."
-        },
-        "diff_hunk": {
-          "type": "string",
-          "description": "The diff of the line that the comment refers to."
-        },
-        "path": {
-          "type": "string",
-          "description": "The relative path of the file to which the comment applies."
-        },
-        "position": {
-          "type": ["integer", "null"],
-          "description": "The line index in the diff to which the comment applies."
-        },
-        "original_position": {
-          "type": "integer",
-          "description": "The index of the original line in the diff to which the comment applies."
-        },
-        "commit_id": {
-          "type": "string",
-          "description": "The SHA of the commit to which the comment applies."
-        },
-        "original_commit_id": {
-          "type": "string",
-          "description": "The SHA of the original commit to which the comment applies."
-        },
-        "user": { "$ref": "common/user.schema.json" },
-        "body": { "type": "string", "description": "The text of the comment." },
-        "created_at": { "type": "string", "format": "date-time" },
-        "updated_at": { "type": "string", "format": "date-time" },
-        "html_url": {
-          "type": "string",
-          "format": "uri",
-          "description": "HTML URL for the pull request review comment."
-        },
-        "pull_request_url": {
-          "type": "string",
-          "format": "uri",
-          "description": "URL for the pull request that the review comment belongs to."
-        },
-        "author_association": {
-          "$ref": "common/author_association.schema.json"
-        },
-        "_links": {
-          "type": "object",
-          "required": ["self", "html", "pull_request"],
-          "properties": {
-            "self": { "$ref": "common/link.schema.json" },
-            "html": { "$ref": "common/link.schema.json" },
-            "pull_request": { "$ref": "common/link.schema.json" }
-          },
-          "additionalProperties": false
-        },
-        "start_line": {
-          "type": ["integer", "null"],
-          "description": "The first line of the range for a multi-line comment."
-        },
-        "original_start_line": {
-          "type": ["integer", "null"],
-          "description": "The first line of the range for a multi-line comment."
-        },
-        "start_side": {
-          "type": ["string", "null"],
-          "enum": ["LEFT", "RIGHT", null],
-          "default": "RIGHT",
-          "description": "The side of the first line of the range for a multi-line comment."
-        },
-        "line": {
-          "type": ["integer", "null"],
-          "description": "The line of the blob to which the comment applies. The last line of the range for a multi-line comment"
-        },
-        "original_line": {
-          "type": "integer",
-          "description": "The line of the blob to which the comment applies. The last line of the range for a multi-line comment"
-        },
-        "side": {
-          "type": "string",
-          "enum": ["LEFT", "RIGHT"],
-          "description": "The side of the first line of the range for a multi-line comment."
-        },
-        "in_reply_to_id": {
-          "type": "integer",
-          "description": "The comment ID to reply to."
-        }
-      },
-      "additionalProperties": false
-    },
+    "comment": { "$ref": "common/pull-request-review-comment.schema.json" },
     "pull_request": {
       "type": "object",
       "required": [
@@ -172,7 +41,8 @@
         "head",
         "base",
         "_links",
-        "author_association"
+        "author_association",
+        "active_lock_reason"
       ],
       "properties": {
         "url": { "type": "string", "format": "uri" },
@@ -280,6 +150,10 @@
         "auto_merge": { "type": "null" },
         "author_association": {
           "$ref": "common/author_association.schema.json"
+        },
+        "active_lock_reason": {
+          "type": ["string", "null"],
+          "enum": ["resolved", "off-topic", "too heated", "spam", null]
         }
       },
       "additionalProperties": false
