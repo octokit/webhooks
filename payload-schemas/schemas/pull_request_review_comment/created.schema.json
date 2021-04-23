@@ -172,7 +172,8 @@
         "head",
         "base",
         "_links",
-        "author_association"
+        "author_association",
+        "active_lock_reason"
       ],
       "properties": {
         "url": { "type": "string", "format": "uri" },
@@ -280,6 +281,10 @@
         "auto_merge": { "type": "null" },
         "author_association": {
           "$ref": "common/author_association.schema.json"
+        },
+        "active_lock_reason": {
+          "type": ["string", "null"],
+          "enum": ["resolved", "off-topic", "too heated", "spam", null]
         }
       },
       "additionalProperties": false
