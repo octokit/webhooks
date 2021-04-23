@@ -5,9 +5,14 @@
   "required": ["inputs", "ref", "repository", "sender", "workflow"],
   "properties": {
     "inputs": {
-      "type": "object",
-      "properties": {},
-      "additionalProperties": true
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {},
+          "additionalProperties": true
+        },
+        { "type": "null" }
+      ]
     },
     "ref": { "type": "string" },
     "repository": { "$ref": "common/repository.schema.json" },
