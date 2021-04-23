@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/issue-comment.schema.json",
+  "required": [
+    "url",
+    "html_url",
+    "issue_url",
+    "id",
+    "node_id",
+    "user",
+    "created_at",
+    "updated_at",
+    "author_association",
+    "performed_via_github_app",
+    "body"
+  ],
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL for the issue comment"
+    },
+    "html_url": { "type": "string", "format": "uri" },
+    "issue_url": { "type": "string", "format": "uri" },
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier of the issue comment"
+    },
+    "node_id": { "type": "string" },
+    "user": { "$ref": "user.schema.json" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "author_association": { "$ref": "author_association.schema.json" },
+    "body": {
+      "type": "string",
+      "description": "Contents of the issue comment"
+    },
+    "performed_via_github_app": {
+      "oneOf": [{ "$ref": "app.schema.json" }, { "type": "null" }]
+    }
+  },
+  "additionalProperties": false,
+  "description": "The [comment](https://docs.github.com/en/rest/reference/issues#comments) itself.",
+  "title": "issue comment"
+}

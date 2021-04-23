@@ -2487,31 +2487,7 @@ export interface IssueCommentCreatedEvent {
       patch_url: string;
     };
   };
-  /**
-   * The [comment](https://docs.github.com/en/rest/reference/issues#comments) itself.
-   */
-  comment: {
-    /**
-     * URL for the issue comment
-     */
-    url: string;
-    html_url: string;
-    issue_url: string;
-    /**
-     * Unique identifier of the issue comment
-     */
-    id: number;
-    node_id: string;
-    user: User;
-    created_at: string;
-    updated_at: string;
-    author_association: AuthorAssociation;
-    /**
-     * Contents of the issue comment
-     */
-    body: string;
-    performed_via_github_app?: App | null;
-  };
+  comment: IssueComment;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2610,6 +2586,31 @@ export interface Milestone {
   due_on: string | null;
   closed_at: string | null;
 }
+/**
+ * The [comment](https://docs.github.com/en/rest/reference/issues#comments) itself.
+ */
+export interface IssueComment {
+  /**
+   * URL for the issue comment
+   */
+  url: string;
+  html_url: string;
+  issue_url: string;
+  /**
+   * Unique identifier of the issue comment
+   */
+  id: number;
+  node_id: string;
+  user: User;
+  created_at: string;
+  updated_at: string;
+  author_association: AuthorAssociation;
+  /**
+   * Contents of the issue comment
+   */
+  body: string;
+  performed_via_github_app: App | null;
+}
 export interface IssueCommentDeletedEvent {
   action: "deleted";
   /**
@@ -2631,30 +2632,7 @@ export interface IssueCommentDeletedEvent {
       patch_url: string;
     };
   };
-  /**
-   * The [comment](https://docs.github.com/en/rest/reference/issues#comments) itself.
-   */
-  comment: {
-    /**
-     * URL for the issue comment
-     */
-    url: string;
-    html_url: string;
-    issue_url: string;
-    /**
-     * Unique identifier of the issue comment
-     */
-    id: number;
-    node_id: string;
-    user: User;
-    created_at: string;
-    updated_at: string;
-    author_association: AuthorAssociation;
-    /**
-     * Contents of the issue comment
-     */
-    body: string;
-  };
+  comment: IssueComment;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2691,31 +2669,7 @@ export interface IssueCommentEditedEvent {
       patch_url: string;
     };
   };
-  /**
-   * The [comment](https://docs.github.com/en/rest/reference/issues#comments) itself.
-   */
-  comment: {
-    /**
-     * URL for the issue comment
-     */
-    url: string;
-    html_url: string;
-    issue_url: string;
-    /**
-     * Unique identifier of the issue comment
-     */
-    id: number;
-    node_id: string;
-    user: User;
-    created_at: string;
-    updated_at: string;
-    author_association: AuthorAssociation;
-    /**
-     * Contents of the issue comment
-     */
-    body: string;
-    performed_via_github_app: App | null;
-  };
+  comment: IssueComment;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
