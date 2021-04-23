@@ -4487,6 +4487,7 @@ export interface PullRequestReviewCommentCreatedEvent {
     };
     auto_merge?: null;
     author_association: AuthorAssociation;
+    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
   };
   repository: Repository;
   installation?: InstallationLite;
@@ -4646,6 +4647,7 @@ export interface PullRequestReviewCommentDeletedEvent {
     };
     auto_merge?: null;
     author_association: AuthorAssociation;
+    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
   };
   repository: Repository;
   installation?: InstallationLite;
@@ -4816,6 +4818,7 @@ export interface PullRequestReviewCommentEditedEvent {
     };
     auto_merge?: null;
     author_association: AuthorAssociation;
+    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
   };
   repository: Repository;
   installation?: InstallationLite;
@@ -5891,7 +5894,7 @@ export interface WatchStartedEvent {
 export interface WorkflowDispatchEvent {
   inputs: {
     [k: string]: unknown;
-  };
+  } | null;
   ref: string;
   repository: Repository;
   sender: User;
