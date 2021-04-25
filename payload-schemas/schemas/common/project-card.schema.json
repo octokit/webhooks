@@ -12,8 +12,7 @@
     "archived",
     "creator",
     "created_at",
-    "updated_at",
-    "content_url"
+    "updated_at"
   ],
   "type": "object",
   "properties": {

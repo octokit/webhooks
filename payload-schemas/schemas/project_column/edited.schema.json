@@ -2,9 +2,21 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "project_column$edited",
   "type": "object",
-  "required": ["action", "project_column", "repository", "sender"],
+  "required": ["action", "changes", "project_column", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["edited"] },
+    "changes": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "object",
+          "required": ["from"],
+          "properties": { "from": { "type": "string" } },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
     "project_column": { "$ref": "common/project-column.schema.json" },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
