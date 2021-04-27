@@ -33,7 +33,7 @@
     "created": { "type": "boolean" },
     "deleted": { "type": "boolean" },
     "forced": { "type": "boolean" },
-    "base_ref": { "type": "null" },
+    "base_ref": { "type": ["string", "null"] },
     "compare": { "type": "string" },
     "commits": {
       "type": "array",

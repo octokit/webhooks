@@ -4615,7 +4615,7 @@ export interface PushEvent {
   created: boolean;
   deleted: boolean;
   forced: boolean;
-  base_ref: null;
+  base_ref: string | null;
   compare: string;
   /**
    * An array of commit objects describing the pushed commits.
