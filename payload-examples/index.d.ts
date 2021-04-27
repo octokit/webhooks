@@ -1,8 +1,26 @@
-type WebhookExample = {
-  [key: string]: any;
-};
-export type WebhookDefinition = {
-  name: string;
+import { WebhookEventName, WebhookEventMap } from "@octokit/webhooks-types";
+export type WebhookDefinition<
+  TName extends WebhookEventName = WebhookEventName
+> = {
+  name: TName;
   actions: string[];
-  examples: WebhookExample[];
+  description: string;
+  examples: WebhookEventMap[TName];
+  properties: Record<
+    string,
+    {
+      description: string;
+      type:
+        | "string"
+        | "number"
+        | "boolean"
+        | "object"
+        | "integer"
+        | "array"
+        | "null";
+    }
+  >;
 };
+
+declare const WebhookDefinitions: WebhookDefinition[];
+export default WebhookDefinitions;
