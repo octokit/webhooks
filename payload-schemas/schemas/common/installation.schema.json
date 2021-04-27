@@ -57,6 +57,7 @@
         "pull_requests": { "type": "string", "enum": ["read", "write"] },
         "repository_hooks": { "type": "string", "enum": ["read", "write"] },
         "repository_projects": { "type": "string", "enum": ["read", "write"] },
+        "security_events": { "type": "string", "enum": ["read", "write"] },
         "statuses": { "type": "string", "enum": ["read", "write"] },
         "members": { "type": "string", "enum": ["read", "write"] },
         "metadata": { "type": "string", "enum": ["read", "write"] },
