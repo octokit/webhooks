@@ -28,6 +28,7 @@ jobs:
         with:
           node-version: 12.x
       - run: npm ci
+      - run: cd payload-examples && npm i && cd ..
       - run: npm run typecheck
   do-types-need-regenerating:
     name: Do types need to be regenerated?
