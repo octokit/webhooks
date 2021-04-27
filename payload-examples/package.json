@@ -12,7 +12,9 @@
     "index.json"
   ],
   "scripts": {},
-  "dependencies": {},
+  "dependencies": {
+    "@octokit/webhooks-types": "^3.70.0"
+  },
   "devDependencies": {},
   "publishConfig": {
     "access": "public"
