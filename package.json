@@ -51,6 +51,7 @@
     "prettier": "^2.0.5",
     "prettier-plugin-packagejson": "^2.2.9",
     "semantic-release": "^17.0.0",
+    "semantic-release-plugin-update-version-in-files": "^1.1.0",
     "ts-node": "^9.1.1",
     "turndown": "^7.0.0",
     "typescript": "^4.1.3",
@@ -72,6 +73,20 @@
       "@semantic-release/release-notes-generator",
       "@semantic-release/github",
       [
+        "semantic-release-plugin-update-version-in-files",
+        {
+          "files": [
+            "payload-examples/package.json"
+          ]
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "payload-types"
+        }
+      ],
+      [
         "@semantic-release/npm",
         {
           "pkgRoot": "payload-examples"
@@ -81,12 +96,6 @@
         "@semantic-release/npm",
         {
           "pkgRoot": "payload-schemas"
-        }
-      ],
-      [
-        "@semantic-release/npm",
-        {
-          "pkgRoot": "payload-types"
         }
       ]
     ]
