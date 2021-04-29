@@ -50,6 +50,8 @@
         "discussions": { "type": "string", "enum": ["read", "write"] },
         "environments": { "type": "string", "enum": ["read", "write"] },
         "issues": { "type": "string", "enum": ["read", "write"] },
+        "members": { "type": "string", "enum": ["read", "write"] },
+        "metadata": { "type": "string", "enum": ["read", "write"] },
         "organization_administration": {
           "type": "string",
           "enum": ["read", "write"]
@@ -71,8 +73,6 @@
         "security_events": { "type": "string", "enum": ["read", "write"] },
         "single_file": { "type": "string", "enum": ["read", "write"] },
         "statuses": { "type": "string", "enum": ["read", "write"] },
-        "members": { "type": "string", "enum": ["read", "write"] },
-        "metadata": { "type": "string", "enum": ["read", "write"] },
         "workflows": { "type": "string", "enum": ["read", "write"] },
         "vulnerability_alerts": { "type": "string", "enum": ["read", "write"] }
       },

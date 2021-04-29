@@ -2283,6 +2283,8 @@ export interface Installation {
     discussions?: "read" | "write";
     environments?: "read" | "write";
     issues?: "read" | "write";
+    members?: "read" | "write";
+    metadata?: "read" | "write";
     organization_administration?: "read" | "write";
     organization_packages?: "read" | "write";
     pages?: "read" | "write";
@@ -2295,8 +2297,6 @@ export interface Installation {
     security_events?: "read" | "write";
     single_file?: "read" | "write";
     statuses?: "read" | "write";
-    members?: "read" | "write";
-    metadata?: "read" | "write";
     workflows?: "read" | "write";
     vulnerability_alerts?: "read" | "write";
   };
