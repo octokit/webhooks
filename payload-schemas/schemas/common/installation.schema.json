@@ -56,7 +56,22 @@
           "type": "string",
           "enum": ["read", "write"]
         },
+        "organization_hooks": { "type": "string", "enum": ["read", "write"] },
         "organization_packages": {
+          "type": "string",
+          "enum": ["read", "write"]
+        },
+        "organization_plan": { "type": "string", "enum": ["read", "write"] },
+        "organization_projects": {
+          "type": "string",
+          "enum": ["read", "write"]
+        },
+        "organization_secrets": { "type": "string", "enum": ["read", "write"] },
+        "organization_self_hosted_runners": {
+          "type": "string",
+          "enum": ["read", "write"]
+        },
+        "organization_user_blocking": {
           "type": "string",
           "enum": ["read", "write"]
         },
@@ -73,6 +88,7 @@
         "security_events": { "type": "string", "enum": ["read", "write"] },
         "single_file": { "type": "string", "enum": ["read", "write"] },
         "statuses": { "type": "string", "enum": ["read", "write"] },
+        "team_discussions": { "type": "string", "enum": ["read", "write"] },
         "workflows": { "type": "string", "enum": ["read", "write"] },
         "vulnerability_alerts": { "type": "string", "enum": ["read", "write"] }
       },

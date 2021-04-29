@@ -2286,7 +2286,13 @@ export interface Installation {
     members?: "read" | "write";
     metadata?: "read" | "write";
     organization_administration?: "read" | "write";
+    organization_hooks?: "read" | "write";
     organization_packages?: "read" | "write";
+    organization_plan?: "read" | "write";
+    organization_projects?: "read" | "write";
+    organization_secrets?: "read" | "write";
+    organization_self_hosted_runners?: "read" | "write";
+    organization_user_blocking?: "read" | "write";
     pages?: "read" | "write";
     packages?: "read" | "write";
     pull_requests?: "read" | "write";
@@ -2297,6 +2303,7 @@ export interface Installation {
     security_events?: "read" | "write";
     single_file?: "read" | "write";
     statuses?: "read" | "write";
+    team_discussions?: "read" | "write";
     workflows?: "read" | "write";
     vulnerability_alerts?: "read" | "write";
   };
