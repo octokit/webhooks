@@ -2413,7 +2413,10 @@ export interface InstallationNewPermissionsAcceptedEvent {
 }
 export interface InstallationSuspendEvent {
   action: "suspend";
-  installation: Installation;
+  installation: Installation & {
+    suspended_by: User;
+    suspended_at: string;
+  };
   /**
    * An array of repository objects that the installation can access.
    */
