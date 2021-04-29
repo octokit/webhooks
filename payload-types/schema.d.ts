@@ -999,7 +999,7 @@ export interface CheckSuiteCompletedEvent {
      * URL that points to the check suite API resource.
      */
     url: string;
-    before: string;
+    before: string | null;
     after: string;
     /**
      * An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.
@@ -1076,7 +1076,7 @@ export interface CheckSuiteRequestedEvent {
      * URL that points to the check suite API resource.
      */
     url: string;
-    before: string;
+    before: string | null;
     after: string;
     /**
      * An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.
@@ -1130,7 +1130,7 @@ export interface CheckSuiteRerequestedEvent {
      * URL that points to the check suite API resource.
      */
     url: string;
-    before: string;
+    before: string | null;
     after: string;
     /**
      * An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.
@@ -2278,27 +2278,87 @@ export interface Installation {
     administration?: "read" | "write";
     checks?: "read" | "write";
     contents?: "read" | "write";
+    content_references?: "read" | "write";
     deployments?: "read" | "write";
     discussions?: "read" | "write";
+    environments?: "read" | "write";
     issues?: "read" | "write";
+    members?: "read" | "write";
+    metadata?: "read" | "write";
     organization_administration?: "read" | "write";
+    organization_hooks?: "read" | "write";
+    organization_packages?: "read" | "write";
+    organization_plan?: "read" | "write";
+    organization_projects?: "read" | "write";
+    organization_secrets?: "read" | "write";
+    organization_self_hosted_runners?: "read" | "write";
+    organization_user_blocking?: "read" | "write";
     pages?: "read" | "write";
     packages?: "read" | "write";
     pull_requests?: "read" | "write";
     repository_hooks?: "read" | "write";
     repository_projects?: "read" | "write";
+    secrets?: "read" | "write";
+    secret_scanning_alerts?: "read" | "write";
+    security_events?: "read" | "write";
+    single_file?: "read" | "write";
     statuses?: "read" | "write";
-    members?: "read" | "write";
-    metadata?: "read" | "write";
+    team_discussions?: "read" | "write";
+    workflows?: "read" | "write";
     vulnerability_alerts?: "read" | "write";
   };
-  events: string[];
+  events: (
+    | "check_run"
+    | "check_suite"
+    | "code_scanning_alert"
+    | "commit_comment"
+    | "content_reference"
+    | "create"
+    | "delete"
+    | "deployment"
+    | "deployment_review"
+    | "deployment_status"
+    | "deploy_key"
+    | "discussion"
+    | "discussion_comment"
+    | "fork"
+    | "gollum"
+    | "issues"
+    | "issue_comment"
+    | "label"
+    | "member"
+    | "membership"
+    | "milestone"
+    | "organization"
+    | "org_block"
+    | "page_build"
+    | "project"
+    | "project_card"
+    | "project_column"
+    | "public"
+    | "pull_request"
+    | "pull_request_review"
+    | "pull_request_review_comment"
+    | "push"
+    | "registry_package"
+    | "release"
+    | "repository"
+    | "repository_dispatch"
+    | "secret_scanning_alert"
+    | "star"
+    | "status"
+    | "team"
+    | "team_add"
+    | "watch"
+    | "workflow_dispatch"
+    | "workflow_run"
+  )[];
   created_at: string | number;
   updated_at: string | number;
   single_file_name: string | null;
   has_multiple_single_files?: boolean;
   single_file_paths?: string[];
-  suspended_by?: string | null;
+  suspended_by?: User | null;
   suspended_at?: string | null;
 }
 export interface InstallationDeletedEvent {
@@ -2353,7 +2413,10 @@ export interface InstallationNewPermissionsAcceptedEvent {
 }
 export interface InstallationSuspendEvent {
   action: "suspend";
-  installation: Installation;
+  installation: Installation & {
+    suspended_by: User;
+    suspended_at: string;
+  };
   /**
    * An array of repository objects that the installation can access.
    */
@@ -2378,7 +2441,10 @@ export interface InstallationSuspendEvent {
 }
 export interface InstallationUnsuspendEvent {
   action: "unsuspend";
-  installation: Installation;
+  installation: Installation & {
+    suspended_by: null;
+    suspended_at: null;
+  };
   /**
    * An array of repository objects that the installation can access.
    */
@@ -4615,7 +4681,7 @@ export interface PushEvent {
   created: boolean;
   deleted: boolean;
   forced: boolean;
-  base_ref: null;
+  base_ref: string | null;
   compare: string;
   /**
    * An array of commit objects describing the pushed commits.

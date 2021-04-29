@@ -45,10 +45,33 @@
         "administration": { "type": "string", "enum": ["read", "write"] },
         "checks": { "type": "string", "enum": ["read", "write"] },
         "contents": { "type": "string", "enum": ["read", "write"] },
+        "content_references": { "type": "string", "enum": ["read", "write"] },
         "deployments": { "type": "string", "enum": ["read", "write"] },
         "discussions": { "type": "string", "enum": ["read", "write"] },
+        "environments": { "type": "string", "enum": ["read", "write"] },
         "issues": { "type": "string", "enum": ["read", "write"] },
+        "members": { "type": "string", "enum": ["read", "write"] },
+        "metadata": { "type": "string", "enum": ["read", "write"] },
         "organization_administration": {
+          "type": "string",
+          "enum": ["read", "write"]
+        },
+        "organization_hooks": { "type": "string", "enum": ["read", "write"] },
+        "organization_packages": {
+          "type": "string",
+          "enum": ["read", "write"]
+        },
+        "organization_plan": { "type": "string", "enum": ["read", "write"] },
+        "organization_projects": {
+          "type": "string",
+          "enum": ["read", "write"]
+        },
+        "organization_secrets": { "type": "string", "enum": ["read", "write"] },
+        "organization_self_hosted_runners": {
+          "type": "string",
+          "enum": ["read", "write"]
+        },
+        "organization_user_blocking": {
           "type": "string",
           "enum": ["read", "write"]
         },
@@ -57,14 +80,72 @@
         "pull_requests": { "type": "string", "enum": ["read", "write"] },
         "repository_hooks": { "type": "string", "enum": ["read", "write"] },
         "repository_projects": { "type": "string", "enum": ["read", "write"] },
+        "secrets": { "type": "string", "enum": ["read", "write"] },
+        "secret_scanning_alerts": {
+          "type": "string",
+          "enum": ["read", "write"]
+        },
+        "security_events": { "type": "string", "enum": ["read", "write"] },
+        "single_file": { "type": "string", "enum": ["read", "write"] },
         "statuses": { "type": "string", "enum": ["read", "write"] },
-        "members": { "type": "string", "enum": ["read", "write"] },
-        "metadata": { "type": "string", "enum": ["read", "write"] },
+        "team_discussions": { "type": "string", "enum": ["read", "write"] },
+        "workflows": { "type": "string", "enum": ["read", "write"] },
         "vulnerability_alerts": { "type": "string", "enum": ["read", "write"] }
       },
       "additionalProperties": false
     },
-    "events": { "type": "array", "items": { "type": "string" } },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "check_run",
+          "check_suite",
+          "code_scanning_alert",
+          "commit_comment",
+          "content_reference",
+          "create",
+          "delete",
+          "deployment",
+          "deployment_review",
+          "deployment_status",
+          "deploy_key",
+          "discussion",
+          "discussion_comment",
+          "fork",
+          "gollum",
+          "issues",
+          "issue_comment",
+          "label",
+          "member",
+          "membership",
+          "milestone",
+          "organization",
+          "org_block",
+          "page_build",
+          "project",
+          "project_card",
+          "project_column",
+          "public",
+          "pull_request",
+          "pull_request_review",
+          "pull_request_review_comment",
+          "push",
+          "registry_package",
+          "release",
+          "repository",
+          "repository_dispatch",
+          "secret_scanning_alert",
+          "star",
+          "status",
+          "team",
+          "team_add",
+          "watch",
+          "workflow_dispatch",
+          "workflow_run"
+        ]
+      }
+    },
     "created_at": {
       "oneOf": [
         { "type": "string", "format": "date-time" },
@@ -80,7 +161,9 @@
     "single_file_name": { "type": ["string", "null"] },
     "has_multiple_single_files": { "type": "boolean" },
     "single_file_paths": { "type": "array", "items": { "type": "string" } },
-    "suspended_by": { "type": ["string", "null"] },
+    "suspended_by": {
+      "oneOf": [{ "$ref": "user.schema.json" }, { "type": "null" }]
+    },
     "suspended_at": { "type": ["string", "null"], "format": "date-time" }
   },
   "additionalProperties": false,

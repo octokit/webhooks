@@ -5,7 +5,20 @@
   "required": ["action", "installation", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["suspend"] },
-    "installation": { "$ref": "common/installation.schema.json" },
+    "installation": {
+      "allOf": [
+        { "$ref": "common/installation.schema.json" },
+        {
+          "type": "object",
+          "required": ["suspended_by", "suspended_at"],
+          "properties": {
+            "suspended_by": { "$ref": "common/user.schema.json" },
+            "suspended_at": { "type": "string", "format": "date-time" }
+          },
+          "tsAdditionalProperties": false
+        }
+      ]
+    },
     "repositories": {
       "type": "array",
       "description": "An array of repository objects that the installation can access.",

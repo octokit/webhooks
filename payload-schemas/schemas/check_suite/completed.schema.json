@@ -61,7 +61,7 @@
           "format": "uri",
           "description": "URL that points to the check suite API resource."
         },
-        "before": { "type": "string" },
+        "before": { "type": ["string", "null"] },
         "after": { "type": "string" },
         "pull_requests": {
           "type": "array",
