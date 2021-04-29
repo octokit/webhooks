@@ -81,7 +81,7 @@
         "repository_hooks": { "type": "string", "enum": ["read", "write"] },
         "repository_projects": { "type": "string", "enum": ["read", "write"] },
         "secrets": { "type": "string", "enum": ["read", "write"] },
-        "secret_scanning_alert": {
+        "secret_scanning_alerts": {
           "type": "string",
           "enum": ["read", "write"]
         },

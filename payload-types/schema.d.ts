@@ -2299,7 +2299,7 @@ export interface Installation {
     repository_hooks?: "read" | "write";
     repository_projects?: "read" | "write";
     secrets?: "read" | "write";
-    secret_scanning_alert?: "read" | "write";
+    secret_scanning_alerts?: "read" | "write";
     security_events?: "read" | "write";
     single_file?: "read" | "write";
     statuses?: "read" | "write";
