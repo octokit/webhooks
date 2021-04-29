@@ -45,10 +45,16 @@
         "administration": { "type": "string", "enum": ["read", "write"] },
         "checks": { "type": "string", "enum": ["read", "write"] },
         "contents": { "type": "string", "enum": ["read", "write"] },
+        "content_references": { "type": "string", "enum": ["read", "write"] },
         "deployments": { "type": "string", "enum": ["read", "write"] },
         "discussions": { "type": "string", "enum": ["read", "write"] },
+        "environments": { "type": "string", "enum": ["read", "write"] },
         "issues": { "type": "string", "enum": ["read", "write"] },
         "organization_administration": {
+          "type": "string",
+          "enum": ["read", "write"]
+        },
+        "organization_packages": {
           "type": "string",
           "enum": ["read", "write"]
         },
@@ -57,10 +63,17 @@
         "pull_requests": { "type": "string", "enum": ["read", "write"] },
         "repository_hooks": { "type": "string", "enum": ["read", "write"] },
         "repository_projects": { "type": "string", "enum": ["read", "write"] },
+        "secrets": { "type": "string", "enum": ["read", "write"] },
+        "secret_scanning_alert": {
+          "type": "string",
+          "enum": ["read", "write"]
+        },
         "security_events": { "type": "string", "enum": ["read", "write"] },
+        "single_file": { "type": "string", "enum": ["read", "write"] },
         "statuses": { "type": "string", "enum": ["read", "write"] },
         "members": { "type": "string", "enum": ["read", "write"] },
         "metadata": { "type": "string", "enum": ["read", "write"] },
+        "workflows": { "type": "string", "enum": ["read", "write"] },
         "vulnerability_alerts": { "type": "string", "enum": ["read", "write"] }
       },
       "additionalProperties": false
