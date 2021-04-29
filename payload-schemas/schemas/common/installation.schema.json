@@ -161,7 +161,9 @@
     "single_file_name": { "type": ["string", "null"] },
     "has_multiple_single_files": { "type": "boolean" },
     "single_file_paths": { "type": "array", "items": { "type": "string" } },
-    "suspended_by": { "type": ["string", "null"] },
+    "suspended_by": {
+      "oneOf": [{ "$ref": "user.schema.json" }, { "type": "null" }]
+    },
     "suspended_at": { "type": ["string", "null"], "format": "date-time" }
   },
   "additionalProperties": false,

@@ -2358,7 +2358,7 @@ export interface Installation {
   single_file_name: string | null;
   has_multiple_single_files?: boolean;
   single_file_paths?: string[];
-  suspended_by?: string | null;
+  suspended_by?: User | null;
   suspended_at?: string | null;
 }
 export interface InstallationDeletedEvent {
