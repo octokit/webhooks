@@ -5,7 +5,7 @@ export type WebhookDefinition<
   name: TName;
   actions: string[];
   description: string;
-  examples: WebhookEventMap[TName];
+  examples: WebhookEventMap[TName][];
   properties: Record<
     string,
     {
