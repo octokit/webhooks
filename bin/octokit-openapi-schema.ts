@@ -12,6 +12,9 @@ import {
   OpenApiMap,
   OpenApiReference,
   OpenApiPath,
+  OpenApiInfo,
+  OpenApiPaths,
+  OpenApiRequestBody
 } from "@tstypes/openapi-v3";
 import yaml from "yaml";
 
@@ -46,9 +49,14 @@ const listEvents = () => {
     .map((entity) => entity.name);
 };
 
-type EventSchema = OpenApi & {
-  components: { schemas: OpenApiMap<OpenApiSchema | OpenApiReference> };
-  webhooks: Record<string, OpenApiPath>;
+// In OpenApi 3.1 you do not need a `paths` property anymore, so we omit it and re-add it as optional
+type EventSchema = Omit<OpenApi, 'paths'> & {
+  paths?: OpenApiPaths;
+  components: {
+    schemas: OpenApiMap<OpenApiSchema | OpenApiReference>;
+    requestBodies: OpenApiMap<OpenApiRequestBody | OpenApiReference>
+  }
+  webhooks: Record<string, OpenApiReference | OpenApiPath>;
 };
 
 const combineEventSchemas = () => {
@@ -60,6 +68,7 @@ const combineEventSchemas = () => {
     },
     components: {
       schemas: {},
+      requestBodies: {}
     },
     webhooks: {},
   };
@@ -80,8 +89,15 @@ const combineEventSchemas = () => {
         schemas: {
           ...eventSchema.components.schemas,
           ...(schema.definitions as any),
-          [eventName]: schema,
         },
+        requestBodies: {
+          ...eventSchema.components.requestBodies,
+          [eventName]: {
+            content: {
+              "application/json": {schema}
+            },
+          }
+        }
       };
 
       delete schema.definitions;
@@ -92,7 +108,7 @@ const combineEventSchemas = () => {
           requestBody: {
             content: {
               "application/json": {
-                schema: { $ref: `#/components/schemas/${eventName}` },
+                schema: { $ref: `#/components/requestBodies/${eventName}` },
               },
             },
           },
@@ -115,8 +131,15 @@ const combineEventSchemas = () => {
         schemas: {
           ...eventSchema.components.schemas,
           ...(schema.definitions as any),
-          [actionEventName]: schema,
         },
+        requestBodies: {
+          ...eventSchema.components.requestBodies,
+          [actionEventName]: {
+            content: {
+              "application/json": { schema },
+            }
+          },
+        }
       };
 
       delete schema.definitions;
@@ -130,12 +153,21 @@ const combineEventSchemas = () => {
     eventSchema.components = {
       schemas: {
         ...eventSchema.components.schemas,
+      },
+      requestBodies: {
+        ...eventSchema.components.requestBodies,
         [eventName]: {
-          oneOf: eventActions.map((eventAction) => ({
-            $ref: `#/components/schemas/${eventAction}`,
-          })),
-          discriminator: {
-            propertyName: "action",
+          content: {
+            'application/json': {
+              schema: {
+                oneOf: eventActions.map((eventAction) => ({
+                  $ref: `#/components/requestBodies/${eventAction}`,
+                })),
+                discriminator: {
+                  propertyName: "action",
+                },
+              },
+            },
           },
         },
       },
@@ -144,11 +176,7 @@ const combineEventSchemas = () => {
     eventSchema.webhooks[event] = {
       post: {
         requestBody: {
-          content: {
-            "application/json": {
-              schema: { $ref: `#/components/schemas/${eventName}` },
-            },
-          },
+          $ref: `#/components/requestBodies/${eventName}`
         },
         responses: {
           "200": { description: "foo" },
@@ -173,6 +201,9 @@ async function run() {
         ...schema.components.schemas,
         ...commonSchemaDefinitions,
       },
+      requestBodies: {
+        ...schema.components.requestBodies
+      }
     };
 
     fs.writeFileSync(
@@ -184,9 +215,9 @@ async function run() {
           }
 
           if (typeof value === "string" && value.endsWith(".schema.json")) {
-            const { base } = path.parse(value);
+            const { dir, base } = path.parse(value);
 
-            return `#/components/schemas/${removeExtension(
+            return `#/components/${dir.includes("common") ? "schemas" : "requestBodies"}/${removeExtension(
               base,
               ".schema.json"
             )}`;
