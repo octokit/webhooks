@@ -74,7 +74,8 @@
           { "$ref": "#/components/schemas/branch_protection_rule$created" },
           { "$ref": "#/components/schemas/branch_protection_rule$deleted" },
           { "$ref": "#/components/schemas/branch_protection_rule$edited" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "check_run$completed": {
         "type": "object",
@@ -800,7 +801,8 @@
           { "$ref": "#/components/schemas/check_run$created" },
           { "$ref": "#/components/schemas/check_run$requested_action" },
           { "$ref": "#/components/schemas/check_run$rerequested" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "check_suite$completed": {
         "type": "object",
@@ -1086,7 +1088,8 @@
           { "$ref": "#/components/schemas/check_suite$completed" },
           { "$ref": "#/components/schemas/check_suite$requested" },
           { "$ref": "#/components/schemas/check_suite$rerequested" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "code_scanning_alert$appeared_in_branch": {
         "type": "object",
@@ -1914,7 +1917,8 @@
           {
             "$ref": "#/components/schemas/code_scanning_alert$reopened_by_user"
           }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "commit_comment$created": {
         "type": "object",
@@ -1993,7 +1997,8 @@
         "title": "commit_comment created event"
       },
       "commit_comment_event": {
-        "oneOf": [{ "$ref": "#/components/schemas/commit_comment$created" }]
+        "oneOf": [{ "$ref": "#/components/schemas/commit_comment$created" }],
+        "discriminator": { "propertyName": "action" }
       },
       "content_reference$created": {
         "type": "object",
@@ -2025,7 +2030,8 @@
         "title": "content_reference created event"
       },
       "content_reference_event": {
-        "oneOf": [{ "$ref": "#/components/schemas/content_reference$created" }]
+        "oneOf": [{ "$ref": "#/components/schemas/content_reference$created" }],
+        "discriminator": { "propertyName": "action" }
       },
       "create$event": {
         "type": "object",
@@ -2171,7 +2177,8 @@
         "oneOf": [
           { "$ref": "#/components/schemas/deploy_key$created" },
           { "$ref": "#/components/schemas/deploy_key$deleted" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "deployment$created": {
         "type": "object",
@@ -2247,7 +2254,8 @@
         "title": "deployment created event"
       },
       "deployment_event": {
-        "oneOf": [{ "$ref": "#/components/schemas/deployment$created" }]
+        "oneOf": [{ "$ref": "#/components/schemas/deployment$created" }],
+        "discriminator": { "propertyName": "action" }
       },
       "deployment_status$created": {
         "type": "object",
@@ -2368,7 +2376,8 @@
         "title": "deployment_status created event"
       },
       "deployment_status_event": {
-        "oneOf": [{ "$ref": "#/components/schemas/deployment_status$created" }]
+        "oneOf": [{ "$ref": "#/components/schemas/deployment_status$created" }],
+        "discriminator": { "propertyName": "action" }
       },
       "discussion$answered": {
         "type": "object",
@@ -2815,7 +2824,8 @@
           { "$ref": "#/components/schemas/discussion$unlabeled" },
           { "$ref": "#/components/schemas/discussion$unlocked" },
           { "$ref": "#/components/schemas/discussion$unpinned" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "discussion_comment$created": {
         "type": "object",
@@ -3007,7 +3017,8 @@
           { "$ref": "#/components/schemas/discussion_comment$created" },
           { "$ref": "#/components/schemas/discussion_comment$deleted" },
           { "$ref": "#/components/schemas/discussion_comment$edited" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "fork$event": {
         "type": "object",
@@ -3046,7 +3057,8 @@
       "github_app_authorization_event": {
         "oneOf": [
           { "$ref": "#/components/schemas/github_app_authorization$revoked" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "gollum$event": {
         "type": "object",
@@ -3322,7 +3334,8 @@
           },
           { "$ref": "#/components/schemas/installation$suspend" },
           { "$ref": "#/components/schemas/installation$unsuspend" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "installation_repositories$added": {
         "type": "object",
@@ -3489,7 +3502,8 @@
         "oneOf": [
           { "$ref": "#/components/schemas/installation_repositories$added" },
           { "$ref": "#/components/schemas/installation_repositories$removed" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "issue_comment$created": {
         "type": "object",
@@ -3683,7 +3697,8 @@
           { "$ref": "#/components/schemas/issue_comment$created" },
           { "$ref": "#/components/schemas/issue_comment$deleted" },
           { "$ref": "#/components/schemas/issue_comment$edited" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "issues$assigned": {
         "type": "object",
@@ -4108,7 +4123,8 @@
           { "$ref": "#/components/schemas/issues$unlabeled" },
           { "$ref": "#/components/schemas/issues$unlocked" },
           { "$ref": "#/components/schemas/issues$unpinned" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "label$created": {
         "type": "object",
@@ -4206,7 +4222,8 @@
           { "$ref": "#/components/schemas/label$created" },
           { "$ref": "#/components/schemas/label$deleted" },
           { "$ref": "#/components/schemas/label$edited" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "marketplace_purchase$cancelled": {
         "type": "object",
@@ -4584,7 +4601,8 @@
             "$ref": "#/components/schemas/marketplace_purchase$pending_change_cancelled"
           },
           { "$ref": "#/components/schemas/marketplace_purchase$purchased" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "member$added": {
         "type": "object",
@@ -4673,7 +4691,8 @@
           { "$ref": "#/components/schemas/member$added" },
           { "$ref": "#/components/schemas/member$edited" },
           { "$ref": "#/components/schemas/member$removed" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "membership$added": {
         "type": "object",
@@ -4755,7 +4774,8 @@
         "oneOf": [
           { "$ref": "#/components/schemas/membership$added" },
           { "$ref": "#/components/schemas/membership$removed" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "meta$deleted": {
         "type": "object",
@@ -4811,7 +4831,8 @@
         "title": "meta deleted event"
       },
       "meta_event": {
-        "oneOf": [{ "$ref": "#/components/schemas/meta$deleted" }]
+        "oneOf": [{ "$ref": "#/components/schemas/meta$deleted" }],
+        "discriminator": { "propertyName": "action" }
       },
       "milestone$closed": {
         "type": "object",
@@ -4969,7 +4990,8 @@
           { "$ref": "#/components/schemas/milestone$deleted" },
           { "$ref": "#/components/schemas/milestone$edited" },
           { "$ref": "#/components/schemas/milestone$opened" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "org_block$blocked": {
         "type": "object",
@@ -5007,7 +5029,8 @@
         "oneOf": [
           { "$ref": "#/components/schemas/org_block$blocked" },
           { "$ref": "#/components/schemas/org_block$unblocked" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "organization$deleted": {
         "type": "object",
@@ -5117,7 +5140,8 @@
           { "$ref": "#/components/schemas/organization$member_invited" },
           { "$ref": "#/components/schemas/organization$member_removed" },
           { "$ref": "#/components/schemas/organization$renamed" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "package$published": {
         "type": "object",
@@ -5463,7 +5487,8 @@
         "oneOf": [
           { "$ref": "#/components/schemas/package$published" },
           { "$ref": "#/components/schemas/package$updated" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "page_build$event": {
         "description": "Page Build",
@@ -5690,7 +5715,8 @@
           { "$ref": "#/components/schemas/project$deleted" },
           { "$ref": "#/components/schemas/project$edited" },
           { "$ref": "#/components/schemas/project$reopened" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "project_card$converted": {
         "type": "object",
@@ -5836,7 +5862,8 @@
           { "$ref": "#/components/schemas/project_card$deleted" },
           { "$ref": "#/components/schemas/project_card$edited" },
           { "$ref": "#/components/schemas/project_card$moved" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "project_column$created": {
         "type": "object",
@@ -5912,7 +5939,8 @@
           { "$ref": "#/components/schemas/project_column$deleted" },
           { "$ref": "#/components/schemas/project_column$edited" },
           { "$ref": "#/components/schemas/project_column$moved" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "public$event": {
         "type": "object",
@@ -6600,7 +6628,8 @@
           { "$ref": "#/components/schemas/pull_request$unassigned" },
           { "$ref": "#/components/schemas/pull_request$unlabeled" },
           { "$ref": "#/components/schemas/pull_request$unlocked" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "pull_request_review$dismissed": {
         "type": "object",
@@ -6841,7 +6870,8 @@
           { "$ref": "#/components/schemas/pull_request_review$dismissed" },
           { "$ref": "#/components/schemas/pull_request_review$edited" },
           { "$ref": "#/components/schemas/pull_request_review$submitted" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "pull_request_review_comment$created": {
         "type": "object",
@@ -7411,7 +7441,8 @@
             "$ref": "#/components/schemas/pull_request_review_comment$deleted"
           },
           { "$ref": "#/components/schemas/pull_request_review_comment$edited" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "push$event": {
         "type": "object",
@@ -7654,7 +7685,8 @@
           { "$ref": "#/components/schemas/release$published" },
           { "$ref": "#/components/schemas/release$released" },
           { "$ref": "#/components/schemas/release$unpublished" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "repository$archived": {
         "type": "object",
@@ -7915,7 +7947,8 @@
           { "$ref": "#/components/schemas/repository$renamed" },
           { "$ref": "#/components/schemas/repository$transferred" },
           { "$ref": "#/components/schemas/repository$unarchived" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "repository_dispatch$event": {
         "type": "object",
@@ -8090,7 +8123,8 @@
           {
             "$ref": "#/components/schemas/repository_vulnerability_alert$resolve"
           }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "secret_scanning_alert$created": {
         "type": "object",
@@ -8200,7 +8234,8 @@
           { "$ref": "#/components/schemas/secret_scanning_alert$created" },
           { "$ref": "#/components/schemas/secret_scanning_alert$reopened" },
           { "$ref": "#/components/schemas/secret_scanning_alert$resolved" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "security_advisory$performed": {
         "type": "object",
@@ -8660,7 +8695,8 @@
           { "$ref": "#/components/schemas/security_advisory$published" },
           { "$ref": "#/components/schemas/security_advisory$updated" },
           { "$ref": "#/components/schemas/security_advisory$withdrawn" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "sponsorship$cancelled": {
         "type": "object",
@@ -8905,7 +8941,8 @@
           { "$ref": "#/components/schemas/sponsorship$pending_cancellation" },
           { "$ref": "#/components/schemas/sponsorship$pending_tier_change" },
           { "$ref": "#/components/schemas/sponsorship$tier_changed" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "star$created": {
         "type": "object",
@@ -8945,7 +8982,8 @@
         "oneOf": [
           { "$ref": "#/components/schemas/star$created" },
           { "$ref": "#/components/schemas/star$deleted" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "status$event": {
         "type": "object",
@@ -9292,7 +9330,8 @@
           { "$ref": "#/components/schemas/team$deleted" },
           { "$ref": "#/components/schemas/team$edited" },
           { "$ref": "#/components/schemas/team$removed_from_repository" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "team_add$event": {
         "type": "object",
@@ -9321,7 +9360,8 @@
         "title": "watch started event"
       },
       "watch_event": {
-        "oneOf": [{ "$ref": "#/components/schemas/watch$started" }]
+        "oneOf": [{ "$ref": "#/components/schemas/watch$started" }],
+        "discriminator": { "propertyName": "action" }
       },
       "workflow_dispatch$event": {
         "type": "object",
@@ -9512,7 +9552,8 @@
           { "$ref": "#/components/schemas/workflow_job$in_progress" },
           { "$ref": "#/components/schemas/workflow_job$queued" },
           { "$ref": "#/components/schemas/workflow_job$started" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "workflow_run$completed": {
         "type": "object",
@@ -9583,7 +9624,8 @@
         "oneOf": [
           { "$ref": "#/components/schemas/workflow_run$completed" },
           { "$ref": "#/components/schemas/workflow_run$requested" }
-        ]
+        ],
+        "discriminator": { "propertyName": "action" }
       },
       "alert-instance": {
         "required": ["ref", "analysis_key", "environment", "state"],

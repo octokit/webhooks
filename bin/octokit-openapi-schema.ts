@@ -135,6 +135,9 @@ const combineEventSchemas = () => {
           oneOf: eventActions.map((eventAction) => ({
             $ref: `#/components/schemas/${eventAction}`,
           })),
+          discriminator: {
+            propertyName: 'action'
+          }
         },
       },
     };
