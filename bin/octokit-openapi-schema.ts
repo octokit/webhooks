@@ -13,6 +13,7 @@ import {
   OpenApiReference,
   OpenApiPath,
 } from "@tstypes/openapi-v3";
+import yaml from "yaml";
 
 parseArgv(__filename, []);
 
@@ -196,6 +197,9 @@ async function run() {
         { parser: "json" }
       )
     );
+    const yamlDoc = new yaml.Document();
+    yamlDoc.contents = JSON.parse(fs.readFileSync("./payload-schemas/openapi-schema.json").toString());
+    fs.writeFileSync('./payload-schemas/openapi-schema.yml', yamlDoc.toString())
   } catch (err) {
     console.error(err);
   }
