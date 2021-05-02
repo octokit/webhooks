@@ -13,6 +13,7 @@
     "build": "ts-node -T bin/octokit-webhooks.ts check --cached",
     "build:all": "npm run -s build:webhooks && npm run -s build:schema && npm run -s build:types",
     "build:schema": "ts-node -T bin/octokit-schema.ts",
+    "build:openapi": "ts-node -T bin/octokit-openapi-schema.ts",
     "build:types": "ts-node -T bin/octokit-types.ts",
     "build:webhooks": "ts-node -T bin/octokit-webhooks.ts update",
     "lint": "prettier --check '{bin,lib}/**/*.ts' '*.{md,json}' 'bin/docs/*.md' '{payload-examples,payload-schemas,payload-types}/**/*.{ts,md,json,d.ts}'",
@@ -30,6 +31,7 @@
   "dependencies": {},
   "devDependencies": {
     "@octokit/request": "^5.0.0",
+    "@tstypes/openapi-v3": "^1.0.1",
     "@types/cheerio": "^0.22.23",
     "@types/json-diff": "^0.5.0",
     "@types/json-schema": "^7.0.6",
