@@ -29,9 +29,7 @@ const buildCommonSchemasDefinitionSchema = (): Record<string, JSONSchema7> => {
   commonSchemas.forEach((schemaName) => {
     const schema = require(`../${pathToSchemas}/common/${schemaName}`);
     delete schema.$schema;
-    definitions[
-      removeExtension(schemaName, ".schema.json")
-    ] = schema;
+    definitions[removeExtension(schemaName, ".schema.json")] = schema;
   });
 
   return definitions;
@@ -98,7 +96,7 @@ const combineEventSchemas = () => {
             },
           },
           responses: {
-            "200": { "description": "foo"}
+            "200": { description: "foo" },
           },
         },
       };
@@ -136,8 +134,8 @@ const combineEventSchemas = () => {
             $ref: `#/components/schemas/${eventAction}`,
           })),
           discriminator: {
-            propertyName: 'action'
-          }
+            propertyName: "action",
+          },
         },
       },
     };
@@ -152,7 +150,7 @@ const combineEventSchemas = () => {
           },
         },
         responses: {
-          "200": { "description": "foo"}
+          "200": { description: "foo" },
         },
       },
     };
@@ -173,7 +171,7 @@ async function run() {
       schemas: {
         ...schema.components.schemas,
         ...commonSchemaDefinitions,
-      }
+      },
     };
 
     fs.writeFileSync(
@@ -187,7 +185,10 @@ async function run() {
           if (typeof value === "string" && value.endsWith(".schema.json")) {
             const { base } = path.parse(value);
 
-            return `#/components/schemas/${removeExtension(base, ".schema.json")}`;
+            return `#/components/schemas/${removeExtension(
+              base,
+              ".schema.json"
+            )}`;
           }
 
           return value;
