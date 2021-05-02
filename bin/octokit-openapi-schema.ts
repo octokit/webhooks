@@ -65,6 +65,10 @@ const combineEventSchemas = () => {
     info: {
       title: "webhooks",
       version: "1.0.0",
+      license: {
+        name: "MIT",
+        url: "https://spdx.org/licenses/MIT"
+      },
     },
     components: {
       schemas: {},
@@ -230,7 +234,7 @@ async function run() {
     );
     const yamlDoc = new yaml.Document();
     yamlDoc.contents = JSON.parse(fs.readFileSync("./payload-schemas/openapi-schema.json").toString());
-    fs.writeFileSync('./payload-schemas/openapi-schema.yml', yamlDoc.toString())
+    fs.writeFileSync('./payload-schemas/openapi-schema.yml', format(yaml.stringify(yamlDoc), { parser: 'yaml' }))
   } catch (err) {
     console.error(err);
   }
