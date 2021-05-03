@@ -219,9 +219,9 @@ async function run() {
           }
 
           if (typeof value === "string" && value.endsWith(".schema.json")) {
-            const { dir, base } = path.parse(value);
+            const { base } = path.parse(value);
 
-            return `#/components/${dir.includes("common") ? "schemas" : "requestBodies"}/${removeExtension(
+            return `#/components/schemas/${removeExtension(
               base,
               ".schema.json"
             )}`;
