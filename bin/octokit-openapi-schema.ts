@@ -56,7 +56,7 @@ type EventSchema = Omit<OpenApi, 'paths'> & {
     schemas: OpenApiMap<OpenApiSchema | OpenApiReference>;
     requestBodies: OpenApiMap<OpenApiRequestBody | OpenApiReference>
   }
-  webhooks: Record<string, OpenApiReference | OpenApiPath>;
+  webhooks: OpenApiMap<OpenApiReference | OpenApiPath>;
 };
 
 const combineEventSchemas = () => {
