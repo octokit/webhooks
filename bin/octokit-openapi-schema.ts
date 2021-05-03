@@ -14,7 +14,7 @@ import {
   OpenApiPath,
   OpenApiInfo,
   OpenApiPaths,
-  OpenApiRequestBody
+  OpenApiRequestBody,
 } from "@tstypes/openapi-v3";
 import yaml from "yaml";
 
@@ -50,12 +50,12 @@ const listEvents = () => {
 };
 
 // In OpenApi 3.1 you do not need a `paths` property anymore, so we omit it and re-add it as optional
-type EventSchema = Omit<OpenApi, 'paths'> & {
+type EventSchema = Omit<OpenApi, "paths"> & {
   paths?: OpenApiPaths;
   components: {
     schemas: OpenApiMap<OpenApiSchema | OpenApiReference>;
-    requestBodies: OpenApiMap<OpenApiRequestBody | OpenApiReference>
-  }
+    requestBodies: OpenApiMap<OpenApiRequestBody | OpenApiReference>;
+  };
   webhooks: OpenApiMap<OpenApiReference | OpenApiPath>;
 };
 
@@ -67,12 +67,12 @@ const combineEventSchemas = () => {
       version: "1.0.0",
       license: {
         name: "MIT",
-        url: "https://spdx.org/licenses/MIT"
+        url: "https://spdx.org/licenses/MIT",
       },
     },
     components: {
       schemas: {},
-      requestBodies: {}
+      requestBodies: {},
     },
     webhooks: {},
   };
@@ -98,10 +98,10 @@ const combineEventSchemas = () => {
           ...eventSchema.components.requestBodies,
           [eventName]: {
             content: {
-              "application/json": {schema}
+              "application/json": { schema },
             },
-          }
-        }
+          },
+        },
       };
 
       delete schema.definitions;
@@ -141,9 +141,9 @@ const combineEventSchemas = () => {
           [actionEventName]: {
             content: {
               "application/json": { schema },
-            }
+            },
           },
-        }
+        },
       };
 
       delete schema.definitions;
@@ -162,7 +162,7 @@ const combineEventSchemas = () => {
         ...eventSchema.components.requestBodies,
         [eventName]: {
           content: {
-            'application/json': {
+            "application/json": {
               schema: {
                 oneOf: eventActions.map((eventAction) => ({
                   $ref: `#/components/requestBodies/${eventAction}`,
@@ -180,7 +180,7 @@ const combineEventSchemas = () => {
     eventSchema.webhooks[event] = {
       post: {
         requestBody: {
-          $ref: `#/components/requestBodies/${eventName}`
+          $ref: `#/components/requestBodies/${eventName}`,
         },
         responses: {
           "200": { description: "foo" },
@@ -206,8 +206,8 @@ async function run() {
         ...commonSchemaDefinitions,
       },
       requestBodies: {
-        ...schema.components.requestBodies
-      }
+        ...schema.components.requestBodies,
+      },
     };
 
     fs.writeFileSync(
@@ -233,8 +233,13 @@ async function run() {
       )
     );
     const yamlDoc = new yaml.Document();
-    yamlDoc.contents = JSON.parse(fs.readFileSync("./payload-schemas/openapi-schema.json").toString());
-    fs.writeFileSync('./payload-schemas/openapi-schema.yml', format(yaml.stringify(yamlDoc), { parser: 'yaml' }))
+    yamlDoc.contents = JSON.parse(
+      fs.readFileSync("./payload-schemas/openapi-schema.json").toString()
+    );
+    fs.writeFileSync(
+      "./payload-schemas/openapi-schema.yml",
+      format(yaml.stringify(yamlDoc), { parser: "yaml" })
+    );
   } catch (err) {
     console.error(err);
   }
