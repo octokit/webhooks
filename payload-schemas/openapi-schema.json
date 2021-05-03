@@ -74,7 +74,7 @@
             "type": "string"
           },
           "node_id": { "type": "string" },
-          "owner": { "$ref": "#/components/requestBodies/user" },
+          "owner": { "$ref": "#/components/schemas/user" },
           "name": {
             "description": "The name of the GitHub app",
             "type": "string"
@@ -263,7 +263,7 @@
           "commit_message"
         ],
         "properties": {
-          "enabled_by": { "$ref": "#/components/requestBodies/user" },
+          "enabled_by": { "$ref": "#/components/schemas/user" },
           "merge_method": {
             "type": "string",
             "enum": ["merge", "squash", "rebase"],
@@ -419,7 +419,7 @@
             "properties": {
               "ref": { "type": "string" },
               "sha": { "type": "string" },
-              "repo": { "$ref": "#/components/requestBodies/repo-ref" }
+              "repo": { "$ref": "#/components/schemas/repo-ref" }
             },
             "additionalProperties": false
           },
@@ -429,7 +429,7 @@
             "properties": {
               "ref": { "type": "string" },
               "sha": { "type": "string" },
-              "repo": { "$ref": "#/components/requestBodies/repo-ref" }
+              "repo": { "$ref": "#/components/schemas/repo-ref" }
             },
             "additionalProperties": false
           }
@@ -452,8 +452,8 @@
           "tree_id": { "type": "string" },
           "message": { "type": "string" },
           "timestamp": { "type": "string" },
-          "author": { "$ref": "#/components/requestBodies/committer" },
-          "committer": { "$ref": "#/components/requestBodies/committer" }
+          "author": { "$ref": "#/components/schemas/committer" },
+          "committer": { "$ref": "#/components/schemas/committer" }
         },
         "additionalProperties": false,
         "title": "SimpleCommit"
@@ -491,8 +491,8 @@
             "format": "uri",
             "description": "URL that points to the commit API resource."
           },
-          "author": { "$ref": "#/components/requestBodies/committer" },
-          "committer": { "$ref": "#/components/requestBodies/committer" },
+          "author": { "$ref": "#/components/schemas/committer" },
+          "committer": { "$ref": "#/components/schemas/committer" },
           "added": {
             "type": "array",
             "items": { "type": "string" },
@@ -589,21 +589,17 @@
           "html_url": { "type": "string", "format": "uri" },
           "pull_requests": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/requestBodies/check-run-pull-request"
-            }
+            "items": { "$ref": "#/components/schemas/check-run-pull-request" }
           },
           "created_at": { "type": "string", "format": "date-time" },
           "updated_at": { "type": "string", "format": "date-time" },
-          "actor": { "$ref": "#/components/requestBodies/user" },
-          "triggering_actor": { "$ref": "#/components/requestBodies/user" },
+          "actor": { "$ref": "#/components/schemas/user" },
+          "triggering_actor": { "$ref": "#/components/schemas/user" },
           "run_attempt": { "type": "integer" },
           "run_started_at": { "type": "string", "format": "date-time" },
           "referenced_workflows": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/requestBodies/referenced-workflow"
-            }
+            "items": { "$ref": "#/components/schemas/referenced-workflow" }
           }
         },
         "additionalProperties": false,
@@ -663,14 +659,14 @@
             "description": "Specifies if the given environment is one that end-users directly interact with. Default: false."
           },
           "description": { "type": ["string", "null"] },
-          "creator": { "$ref": "#/components/requestBodies/user" },
+          "creator": { "$ref": "#/components/schemas/user" },
           "created_at": { "type": "string", "format": "date-time" },
           "updated_at": { "type": "string", "format": "date-time" },
           "statuses_url": { "type": "string", "format": "uri" },
           "repository_url": { "type": "string", "format": "uri" },
           "performed_via_github_app": {
             "oneOf": [
-              { "$ref": "#/components/requestBodies/app" },
+              { "$ref": "#/components/schemas/app" },
               { "type": "null" }
             ]
           }
@@ -739,7 +735,7 @@
           },
           "answer_chosen_by": {
             "oneOf": [
-              { "$ref": "#/components/requestBodies/user" },
+              { "$ref": "#/components/schemas/user" },
               { "type": "null" }
             ]
           },
@@ -751,7 +747,7 @@
             "type": "string",
             "description": "The discussion post's title."
           },
-          "user": { "$ref": "#/components/requestBodies/user" },
+          "user": { "$ref": "#/components/schemas/user" },
           "state": {
             "type": "string",
             "enum": ["open", "locked", "converting"]
@@ -761,14 +757,14 @@
           "created_at": { "type": "string", "format": "date-time" },
           "updated_at": { "type": "string", "format": "date-time" },
           "author_association": {
-            "$ref": "#/components/requestBodies/author_association"
+            "$ref": "#/components/schemas/author_association"
           },
           "active_lock_reason": { "type": ["string", "null"] },
           "body": {
             "type": "string",
             "description": "The discussion post's body text."
           },
-          "reactions": { "$ref": "#/components/requestBodies/reactions" }
+          "reactions": { "$ref": "#/components/schemas/reactions" }
         },
         "additionalProperties": false,
         "title": "Discussion"
@@ -911,7 +907,7 @@
             "type": "integer",
             "description": "The ID of the installation."
           },
-          "account": { "$ref": "#/components/requestBodies/user" },
+          "account": { "$ref": "#/components/schemas/user" },
           "repository_selection": {
             "type": "string",
             "enum": ["all", "selected"],
@@ -1176,7 +1172,7 @@
           },
           "suspended_by": {
             "oneOf": [
-              { "$ref": "#/components/requestBodies/user" },
+              { "$ref": "#/components/schemas/user" },
               { "type": "null" }
             ]
           },
@@ -1214,20 +1210,20 @@
             "description": "Unique identifier of the issue comment"
           },
           "node_id": { "type": "string" },
-          "user": { "$ref": "#/components/requestBodies/user" },
+          "user": { "$ref": "#/components/schemas/user" },
           "created_at": { "type": "string", "format": "date-time" },
           "updated_at": { "type": "string", "format": "date-time" },
           "author_association": {
-            "$ref": "#/components/requestBodies/author_association"
+            "$ref": "#/components/schemas/author_association"
           },
           "body": {
             "type": "string",
             "description": "Contents of the issue comment"
           },
-          "reactions": { "$ref": "#/components/requestBodies/reactions" },
+          "reactions": { "$ref": "#/components/schemas/reactions" },
           "performed_via_github_app": {
             "oneOf": [
-              { "$ref": "#/components/requestBodies/app" },
+              { "$ref": "#/components/schemas/app" },
               { "type": "null" }
             ]
           }
@@ -1280,10 +1276,10 @@
             "description": "Number uniquely identifying the issue within its repository"
           },
           "title": { "type": "string", "description": "Title of the issue" },
-          "user": { "$ref": "#/components/requestBodies/user" },
+          "user": { "$ref": "#/components/schemas/user" },
           "labels": {
             "type": "array",
-            "items": { "$ref": "#/components/requestBodies/label" }
+            "items": { "$ref": "#/components/schemas/label" }
           },
           "state": {
             "type": "string",
@@ -1293,17 +1289,17 @@
           "locked": { "type": "boolean" },
           "assignee": {
             "oneOf": [
-              { "$ref": "#/components/requestBodies/user" },
+              { "$ref": "#/components/schemas/user" },
               { "type": "null" }
             ]
           },
           "assignees": {
             "type": "array",
-            "items": { "$ref": "#/components/requestBodies/user" }
+            "items": { "$ref": "#/components/schemas/user" }
           },
           "milestone": {
             "oneOf": [
-              { "$ref": "#/components/requestBodies/milestone" },
+              { "$ref": "#/components/schemas/milestone" },
               { "type": "null" }
             ]
           },
@@ -1312,7 +1308,7 @@
           "updated_at": { "type": "string", "format": "date-time" },
           "closed_at": { "type": ["string", "null"], "format": "date-time" },
           "author_association": {
-            "$ref": "#/components/requestBodies/author_association"
+            "$ref": "#/components/schemas/author_association"
           },
           "active_lock_reason": {
             "type": ["string", "null"],
@@ -1321,7 +1317,7 @@
           "draft": { "type": "boolean" },
           "performed_via_github_app": {
             "oneOf": [
-              { "$ref": "#/components/requestBodies/app" },
+              { "$ref": "#/components/schemas/app" },
               { "type": "null" }
             ]
           },
@@ -1340,7 +1336,7 @@
             "type": ["string", "null"],
             "description": "Contents of the issue"
           },
-          "reactions": { "$ref": "#/components/requestBodies/reactions" },
+          "reactions": { "$ref": "#/components/schemas/reactions" },
           "timeline_url": { "type": "string", "format": "uri" },
           "state_reason": {
             "type": ["string", "null"],
@@ -1486,7 +1482,7 @@
             "description": "The role of the user in the team."
           },
           "organization_url": { "type": "string", "format": "uri" },
-          "user": { "$ref": "#/components/requestBodies/user" }
+          "user": { "$ref": "#/components/schemas/user" }
         },
         "additionalProperties": false,
         "title": "Membership"
@@ -1527,7 +1523,7 @@
             "description": "The title of the milestone."
           },
           "description": { "type": ["string", "null"] },
-          "creator": { "$ref": "#/components/requestBodies/user" },
+          "creator": { "$ref": "#/components/schemas/user" },
           "open_issues": { "type": "integer" },
           "closed_issues": { "type": "integer" },
           "state": {
@@ -1604,7 +1600,7 @@
             "type": "boolean",
             "description": "Whether or not the card is archived"
           },
-          "creator": { "$ref": "#/components/requestBodies/user" },
+          "creator": { "$ref": "#/components/schemas/user" },
           "created_at": { "type": "string", "format": "date-time" },
           "updated_at": { "type": "string", "format": "date-time" },
           "content_url": { "type": "string", "format": "uri" },
@@ -1685,7 +1681,7 @@
             "enum": ["open", "closed"],
             "description": "State of the project; either 'open' or 'closed'"
           },
-          "creator": { "$ref": "#/components/requestBodies/user" },
+          "creator": { "$ref": "#/components/schemas/user" },
           "created_at": { "type": "string", "format": "date-time" },
           "updated_at": { "type": "string", "format": "date-time" }
         },
@@ -1715,7 +1711,7 @@
             "type": "string",
             "enum": ["DraftIssue", "Issue", "PullRequest"]
           },
-          "creator": { "$ref": "#/components/requestBodies/user" },
+          "creator": { "$ref": "#/components/schemas/user" },
           "created_at": { "type": "string", "format": "date-time" },
           "updated_at": { "type": "string", "format": "date-time" },
           "archived_at": { "type": ["string", "null"], "format": "date-time" }
@@ -1794,7 +1790,7 @@
             "type": "string",
             "description": "The SHA of the original commit to which the comment applies."
           },
-          "user": { "$ref": "#/components/requestBodies/user" },
+          "user": { "$ref": "#/components/schemas/user" },
           "body": {
             "type": "string",
             "description": "The text of the comment."
@@ -1812,19 +1808,19 @@
             "description": "URL for the pull request that the review comment belongs to."
           },
           "author_association": {
-            "$ref": "#/components/requestBodies/author_association"
+            "$ref": "#/components/schemas/author_association"
           },
           "_links": {
             "type": "object",
             "required": ["self", "html", "pull_request"],
             "properties": {
-              "self": { "$ref": "#/components/requestBodies/link" },
-              "html": { "$ref": "#/components/requestBodies/link" },
-              "pull_request": { "$ref": "#/components/requestBodies/link" }
+              "self": { "$ref": "#/components/schemas/link" },
+              "html": { "$ref": "#/components/schemas/link" },
+              "pull_request": { "$ref": "#/components/schemas/link" }
             },
             "additionalProperties": false
           },
-          "reactions": { "$ref": "#/components/requestBodies/reactions" },
+          "reactions": { "$ref": "#/components/schemas/reactions" },
           "start_line": {
             "type": ["integer", "null"],
             "description": "The first line of the range for a multi-line comment."
@@ -1935,7 +1931,7 @@
             "type": "string",
             "description": "The title of the pull request."
           },
-          "user": { "$ref": "#/components/requestBodies/user" },
+          "user": { "$ref": "#/components/schemas/user" },
           "body": { "type": ["string", "null"] },
           "created_at": { "type": "string", "format": "date-time" },
           "updated_at": { "type": "string", "format": "date-time" },
@@ -1944,34 +1940,34 @@
           "merge_commit_sha": { "type": ["string", "null"] },
           "assignee": {
             "oneOf": [
-              { "$ref": "#/components/requestBodies/user" },
+              { "$ref": "#/components/schemas/user" },
               { "type": "null" }
             ]
           },
           "assignees": {
             "type": "array",
-            "items": { "$ref": "#/components/requestBodies/user" }
+            "items": { "$ref": "#/components/schemas/user" }
           },
           "requested_reviewers": {
             "type": "array",
             "items": {
               "oneOf": [
-                { "$ref": "#/components/requestBodies/user" },
-                { "$ref": "#/components/requestBodies/team" }
+                { "$ref": "#/components/schemas/user" },
+                { "$ref": "#/components/schemas/team" }
               ]
             }
           },
           "requested_teams": {
             "type": "array",
-            "items": { "$ref": "#/components/requestBodies/team" }
+            "items": { "$ref": "#/components/schemas/team" }
           },
           "labels": {
             "type": "array",
-            "items": { "$ref": "#/components/requestBodies/label" }
+            "items": { "$ref": "#/components/schemas/label" }
           },
           "milestone": {
             "oneOf": [
-              { "$ref": "#/components/requestBodies/milestone" },
+              { "$ref": "#/components/schemas/milestone" },
               { "type": "null" }
             ]
           },
@@ -1987,8 +1983,8 @@
               "label": { "type": "string" },
               "ref": { "type": "string" },
               "sha": { "type": "string" },
-              "user": { "$ref": "#/components/requestBodies/user" },
-              "repo": { "$ref": "#/components/requestBodies/repository" }
+              "user": { "$ref": "#/components/schemas/user" },
+              "repo": { "$ref": "#/components/schemas/repository" }
             },
             "additionalProperties": false
           },
@@ -1999,8 +1995,8 @@
               "label": { "type": "string" },
               "ref": { "type": "string" },
               "sha": { "type": "string" },
-              "user": { "$ref": "#/components/requestBodies/user" },
-              "repo": { "$ref": "#/components/requestBodies/repository" }
+              "user": { "$ref": "#/components/schemas/user" },
+              "repo": { "$ref": "#/components/schemas/repository" }
             },
             "additionalProperties": false
           },
@@ -2017,23 +2013,23 @@
               "statuses"
             ],
             "properties": {
-              "self": { "$ref": "#/components/requestBodies/link" },
-              "html": { "$ref": "#/components/requestBodies/link" },
-              "issue": { "$ref": "#/components/requestBodies/link" },
-              "comments": { "$ref": "#/components/requestBodies/link" },
-              "review_comments": { "$ref": "#/components/requestBodies/link" },
-              "review_comment": { "$ref": "#/components/requestBodies/link" },
-              "commits": { "$ref": "#/components/requestBodies/link" },
-              "statuses": { "$ref": "#/components/requestBodies/link" }
+              "self": { "$ref": "#/components/schemas/link" },
+              "html": { "$ref": "#/components/schemas/link" },
+              "issue": { "$ref": "#/components/schemas/link" },
+              "comments": { "$ref": "#/components/schemas/link" },
+              "review_comments": { "$ref": "#/components/schemas/link" },
+              "review_comment": { "$ref": "#/components/schemas/link" },
+              "commits": { "$ref": "#/components/schemas/link" },
+              "statuses": { "$ref": "#/components/schemas/link" }
             },
             "additionalProperties": false
           },
           "author_association": {
-            "$ref": "#/components/requestBodies/author_association"
+            "$ref": "#/components/schemas/author_association"
           },
           "auto_merge": {
             "oneOf": [
-              { "$ref": "#/components/requestBodies/auto-merge" },
+              { "$ref": "#/components/schemas/auto-merge" },
               { "type": "null" }
             ]
           },
@@ -2051,7 +2047,7 @@
           "mergeable_state": { "type": "string" },
           "merged_by": {
             "oneOf": [
-              { "$ref": "#/components/requestBodies/user" },
+              { "$ref": "#/components/schemas/user" },
               { "type": "null" }
             ]
           },
@@ -2147,7 +2143,7 @@
           "download_count": { "type": "integer" },
           "created_at": { "type": "string", "format": "date-time" },
           "updated_at": { "type": "string", "format": "date-time" },
-          "uploader": { "$ref": "#/components/requestBodies/user" }
+          "uploader": { "$ref": "#/components/schemas/user" }
         },
         "additionalProperties": false,
         "title": "Release Asset"
@@ -2194,7 +2190,7 @@
             "type": "boolean",
             "description": "Wether the release is a draft or published"
           },
-          "author": { "$ref": "#/components/requestBodies/user" },
+          "author": { "$ref": "#/components/schemas/user" },
           "prerelease": {
             "type": "boolean",
             "description": "Whether the release is identified as a prerelease or a full release."
@@ -2203,13 +2199,13 @@
           "published_at": { "type": ["string", "null"], "format": "date-time" },
           "assets": {
             "type": "array",
-            "items": { "$ref": "#/components/requestBodies/release-asset" }
+            "items": { "$ref": "#/components/schemas/release-asset" }
           },
           "tarball_url": { "type": ["string", "null"], "format": "uri" },
           "zipball_url": { "type": ["string", "null"], "format": "uri" },
           "body": { "type": "string" },
           "mentions_count": { "type": "integer" },
-          "reactions": { "$ref": "#/components/requestBodies/reactions" },
+          "reactions": { "$ref": "#/components/schemas/reactions" },
           "discussion_url": { "type": "string", "format": "uri" }
         },
         "additionalProperties": false,
@@ -2442,7 +2438,7 @@
             "format": "uri-template",
             "description": "A template for the API URL to get information about notifications on the repository."
           },
-          "owner": { "$ref": "#/components/requestBodies/user" },
+          "owner": { "$ref": "#/components/schemas/user" },
           "private": {
             "type": "boolean",
             "description": "Whether the repository is private or public."
@@ -2524,7 +2520,7 @@
           "state": { "type": "string", "enum": ["open", "dismissed", "fixed"] },
           "affected_range": { "type": "string" },
           "affected_package_name": { "type": "string" },
-          "dismisser": { "$ref": "#/components/requestBodies/user" },
+          "dismisser": { "$ref": "#/components/schemas/user" },
           "dismiss_reason": { "type": "string" },
           "dismissed_at": { "type": "string", "format": "date-time" },
           "severity": { "type": "string" },
@@ -2642,7 +2638,7 @@
             "type": "boolean",
             "description": "Whether the repository is private or public."
           },
-          "owner": { "$ref": "#/components/requestBodies/user" },
+          "owner": { "$ref": "#/components/schemas/user" },
           "html_url": {
             "type": "string",
             "format": "uri",
@@ -2899,7 +2895,7 @@
           "open_issues_count": { "type": "integer" },
           "license": {
             "oneOf": [
-              { "$ref": "#/components/requestBodies/license" },
+              { "$ref": "#/components/schemas/license" },
               { "type": "null" }
             ]
           },
@@ -3020,7 +3016,7 @@
           "state": { "type": "string", "enum": ["open", "closed"] },
           "locked": { "type": "boolean" },
           "title": { "type": "string" },
-          "user": { "$ref": "#/components/requestBodies/user" },
+          "user": { "$ref": "#/components/schemas/user" },
           "body": { "type": ["string", "null"] },
           "created_at": { "type": "string", "format": "date-time" },
           "updated_at": { "type": "string", "format": "date-time" },
@@ -3039,34 +3035,34 @@
           "merge_commit_sha": { "type": ["string", "null"] },
           "assignee": {
             "oneOf": [
-              { "$ref": "#/components/requestBodies/user" },
+              { "$ref": "#/components/schemas/user" },
               { "type": "null" }
             ]
           },
           "assignees": {
             "type": "array",
-            "items": { "$ref": "#/components/requestBodies/user" }
+            "items": { "$ref": "#/components/schemas/user" }
           },
           "requested_reviewers": {
             "type": "array",
             "items": {
               "oneOf": [
-                { "$ref": "#/components/requestBodies/user" },
-                { "$ref": "#/components/requestBodies/team" }
+                { "$ref": "#/components/schemas/user" },
+                { "$ref": "#/components/schemas/team" }
               ]
             }
           },
           "requested_teams": {
             "type": "array",
-            "items": { "$ref": "#/components/requestBodies/team" }
+            "items": { "$ref": "#/components/schemas/team" }
           },
           "labels": {
             "type": "array",
-            "items": { "$ref": "#/components/requestBodies/label" }
+            "items": { "$ref": "#/components/schemas/label" }
           },
           "milestone": {
             "oneOf": [
-              { "$ref": "#/components/requestBodies/milestone" },
+              { "$ref": "#/components/schemas/milestone" },
               { "type": "null" }
             ]
           },
@@ -3083,8 +3079,8 @@
               "label": { "type": "string" },
               "ref": { "type": "string" },
               "sha": { "type": "string" },
-              "user": { "$ref": "#/components/requestBodies/user" },
-              "repo": { "$ref": "#/components/requestBodies/repository" }
+              "user": { "$ref": "#/components/schemas/user" },
+              "repo": { "$ref": "#/components/schemas/repository" }
             },
             "additionalProperties": false
           },
@@ -3095,8 +3091,8 @@
               "label": { "type": "string" },
               "ref": { "type": "string" },
               "sha": { "type": "string" },
-              "user": { "$ref": "#/components/requestBodies/user" },
-              "repo": { "$ref": "#/components/requestBodies/repository" }
+              "user": { "$ref": "#/components/schemas/user" },
+              "repo": { "$ref": "#/components/schemas/repository" }
             },
             "additionalProperties": false
           },
@@ -3113,23 +3109,23 @@
               "statuses"
             ],
             "properties": {
-              "self": { "$ref": "#/components/requestBodies/link" },
-              "html": { "$ref": "#/components/requestBodies/link" },
-              "issue": { "$ref": "#/components/requestBodies/link" },
-              "comments": { "$ref": "#/components/requestBodies/link" },
-              "review_comments": { "$ref": "#/components/requestBodies/link" },
-              "review_comment": { "$ref": "#/components/requestBodies/link" },
-              "commits": { "$ref": "#/components/requestBodies/link" },
-              "statuses": { "$ref": "#/components/requestBodies/link" }
+              "self": { "$ref": "#/components/schemas/link" },
+              "html": { "$ref": "#/components/schemas/link" },
+              "issue": { "$ref": "#/components/schemas/link" },
+              "comments": { "$ref": "#/components/schemas/link" },
+              "review_comments": { "$ref": "#/components/schemas/link" },
+              "review_comment": { "$ref": "#/components/schemas/link" },
+              "commits": { "$ref": "#/components/schemas/link" },
+              "statuses": { "$ref": "#/components/schemas/link" }
             },
             "additionalProperties": false
           },
           "author_association": {
-            "$ref": "#/components/requestBodies/author_association"
+            "$ref": "#/components/schemas/author_association"
           },
           "auto_merge": {
             "oneOf": [
-              { "$ref": "#/components/requestBodies/auto-merge" },
+              { "$ref": "#/components/schemas/auto-merge" },
               { "type": "null" }
             ]
           },
@@ -3417,7 +3413,7 @@
           },
           "steps": {
             "type": "array",
-            "items": { "$ref": "#/components/requestBodies/workflow-step" }
+            "items": { "$ref": "#/components/schemas/workflow-step" }
           },
           "conclusion": {
             "type": ["string", "null"],
@@ -3532,10 +3528,8 @@
           "created_at": { "type": "string", "format": "date-time" },
           "event": { "type": "string" },
           "head_branch": { "type": "string" },
-          "head_commit": { "$ref": "#/components/requestBodies/commit-simple" },
-          "head_repository": {
-            "$ref": "#/components/requestBodies/repository-lite"
-          },
+          "head_commit": { "$ref": "#/components/schemas/commit-simple" },
+          "head_repository": { "$ref": "#/components/schemas/repository-lite" },
           "head_sha": {
             "type": "string",
             "description": "The SHA of the head commit that points to the version of the workflow being run."
@@ -3579,7 +3573,7 @@
                   "properties": {
                     "ref": { "type": "string" },
                     "sha": { "type": "string" },
-                    "repo": { "$ref": "#/components/requestBodies/repo-ref" }
+                    "repo": { "$ref": "#/components/schemas/repo-ref" }
                   },
                   "additionalProperties": false
                 },
@@ -3589,7 +3583,7 @@
                   "properties": {
                     "ref": { "type": "string" },
                     "sha": { "type": "string" },
-                    "repo": { "$ref": "#/components/requestBodies/repo-ref" }
+                    "repo": { "$ref": "#/components/schemas/repo-ref" }
                   },
                   "additionalProperties": false
                 }
@@ -3597,9 +3591,7 @@
               "additionalProperties": false
             }
           },
-          "repository": {
-            "$ref": "#/components/requestBodies/repository-lite"
-          },
+          "repository": { "$ref": "#/components/schemas/repository-lite" },
           "rerun_url": {
             "type": "string",
             "format": "uri",
@@ -3640,9 +3632,7 @@
           },
           "referenced_workflows": {
             "type": "array",
-            "items": {
-              "$ref": "#/components/requestBodies/referenced-workflow"
-            }
+            "items": { "$ref": "#/components/schemas/referenced-workflow" }
           },
           "run_started_at": {
             "type": "string",
@@ -3653,8 +3643,8 @@
             "description": "The URL to the previous attempted run of this workflow, if one exists.",
             "oneOf": [{ "type": "string", "format": "uri" }, { "type": "null" }]
           },
-          "actor": { "$ref": "#/components/requestBodies/user" },
-          "triggering_actor": { "$ref": "#/components/requestBodies/user" }
+          "actor": { "$ref": "#/components/schemas/user" },
+          "triggering_actor": { "$ref": "#/components/schemas/user" }
         },
         "additionalProperties": false,
         "title": "Workflow Run"
@@ -3707,8 +3697,8 @@
       "workflow-step": {
         "type": "object",
         "oneOf": [
-          { "$ref": "#/components/requestBodies/workflow-step-in_progress" },
-          { "$ref": "#/components/requestBodies/workflow-step-completed" }
+          { "$ref": "#/components/schemas/workflow-step-in_progress" },
+          { "$ref": "#/components/schemas/workflow-step-completed" }
         ],
         "title": "Workflow Step"
       },

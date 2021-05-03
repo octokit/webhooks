@@ -20,12 +20,14 @@ components:
           description: The full Git reference, formatted as `refs/heads/<branch name>`.
         analysis_key:
           type: string
-          description: Identifies the configuration under which the analysis was executed.
+          description:
+            Identifies the configuration under which the analysis was executed.
             For example, in GitHub Actions this includes the workflow filename
             and job name.
         environment:
           type: string
-          description: Identifies the variable values associated with the environment in
+          description:
+            Identifies the variable values associated with the environment in
             which the analysis that generated this alert instance was performed,
             such as the language that was analyzed.
         state:
@@ -64,7 +66,8 @@ components:
       additionalProperties: false
       title: Alert Instance
     app:
-      description: GitHub apps are a new way to extend GitHub. They can be installed
+      description:
+        GitHub apps are a new way to extend GitHub. They can be installed
         directly on organizations and user accounts and granted access to
         specific repositories. They come with granular permissions and built-in
         webhooks. GitHub apps are first class actors within GitHub.
@@ -89,7 +92,7 @@ components:
         node_id:
           type: string
         owner:
-          $ref: "#/components/requestBodies/user"
+          $ref: "#/components/schemas/user"
         name:
           description: The name of the GitHub app
           type: string
@@ -375,7 +378,7 @@ components:
         - commit_message
       properties:
         enabled_by:
-          $ref: "#/components/requestBodies/user"
+          $ref: "#/components/schemas/user"
         merge_method:
           type: string
           enum:
@@ -394,7 +397,8 @@ components:
       description: The status of auto merging a pull request.
     branch-protection-rule:
       type: object
-      description: The branch protection rule. Includes a `name` and all the [branch
+      description:
+        The branch protection rule. Includes a `name` and all the [branch
         protection
         settings](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings)
         applied to branches that match the name. Binary settings are boolean.
@@ -597,7 +601,7 @@ components:
             sha:
               type: string
             repo:
-              $ref: "#/components/requestBodies/repo-ref"
+              $ref: "#/components/schemas/repo-ref"
           additionalProperties: false
         base:
           type: object
@@ -611,7 +615,7 @@ components:
             sha:
               type: string
             repo:
-              $ref: "#/components/requestBodies/repo-ref"
+              $ref: "#/components/schemas/repo-ref"
           additionalProperties: false
       additionalProperties: false
       title: Check Run Pull Request
@@ -634,9 +638,9 @@ components:
         timestamp:
           type: string
         author:
-          $ref: "#/components/requestBodies/committer"
+          $ref: "#/components/schemas/committer"
         committer:
-          $ref: "#/components/requestBodies/committer"
+          $ref: "#/components/schemas/committer"
       additionalProperties: false
       title: SimpleCommit
     commit:
@@ -660,7 +664,8 @@ components:
           type: string
         distinct:
           type: boolean
-          description: Whether this commit is distinct from any that have been pushed
+          description:
+            Whether this commit is distinct from any that have been pushed
             before.
         message:
           type: string
@@ -674,9 +679,9 @@ components:
           format: uri
           description: URL that points to the commit API resource.
         author:
-          $ref: "#/components/requestBodies/committer"
+          $ref: "#/components/schemas/committer"
         committer:
-          $ref: "#/components/requestBodies/committer"
+          $ref: "#/components/schemas/committer"
         added:
           type: array
           items:
@@ -793,7 +798,7 @@ components:
         pull_requests:
           type: array
           items:
-            $ref: "#/components/requestBodies/check-run-pull-request"
+            $ref: "#/components/schemas/check-run-pull-request"
         created_at:
           type: string
           format: date-time
@@ -801,9 +806,9 @@ components:
           type: string
           format: date-time
         actor:
-          $ref: "#/components/requestBodies/user"
+          $ref: "#/components/schemas/user"
         triggering_actor:
-          $ref: "#/components/requestBodies/user"
+          $ref: "#/components/schemas/user"
         run_attempt:
           type: integer
         run_started_at:
@@ -812,7 +817,7 @@ components:
         referenced_workflows:
           type: array
           items:
-            $ref: "#/components/requestBodies/referenced-workflow"
+            $ref: "#/components/schemas/referenced-workflow"
       additionalProperties: false
       title: Deployment Workflow Run
     deployment:
@@ -861,18 +866,20 @@ components:
           description: Name of the target deployment environment.
         transient_environment:
           type: boolean
-          description: "Specifies if the given environment will no longer exist at some
+          description:
+            "Specifies if the given environment will no longer exist at some
             point in the future. Default: false."
         production_environment:
           type: boolean
-          description: "Specifies if the given environment is one that end-users directly
+          description:
+            "Specifies if the given environment is one that end-users directly
             interact with. Default: false."
         description:
           type:
             - string
             - "null"
         creator:
-          $ref: "#/components/requestBodies/user"
+          $ref: "#/components/schemas/user"
         created_at:
           type: string
           format: date-time
@@ -887,7 +894,7 @@ components:
           format: uri
         performed_via_github_app:
           oneOf:
-            - $ref: "#/components/requestBodies/app"
+            - $ref: "#/components/schemas/app"
             - type: "null"
       additionalProperties: false
       description: The
@@ -963,7 +970,7 @@ components:
             - type: "null"
         answer_chosen_by:
           oneOf:
-            - $ref: "#/components/requestBodies/user"
+            - $ref: "#/components/schemas/user"
             - type: "null"
         html_url:
           type: string
@@ -977,7 +984,7 @@ components:
           type: string
           description: The discussion post's title.
         user:
-          $ref: "#/components/requestBodies/user"
+          $ref: "#/components/schemas/user"
         state:
           type: string
           enum:
@@ -995,7 +1002,7 @@ components:
           type: string
           format: date-time
         author_association:
-          $ref: "#/components/requestBodies/author_association"
+          $ref: "#/components/schemas/author_association"
         active_lock_reason:
           type:
             - string
@@ -1004,7 +1011,7 @@ components:
           type: string
           description: The discussion post's body text.
         reactions:
-          $ref: "#/components/requestBodies/reactions"
+          $ref: "#/components/schemas/reactions"
       additionalProperties: false
       title: Discussion
     github-org:
@@ -1141,13 +1148,14 @@ components:
           type: integer
           description: The ID of the installation.
         account:
-          $ref: "#/components/requestBodies/user"
+          $ref: "#/components/schemas/user"
         repository_selection:
           type: string
           enum:
             - all
             - selected
-          description: Describe whether all repositories have been selected or there's a
+          description:
+            Describe whether all repositories have been selected or there's a
             selection involved
         access_tokens_url:
           type: string
@@ -1179,21 +1187,24 @@ components:
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token for GitHub
+              description:
+                The level of permission granted to the access token for GitHub
                 Actions workflows, workflow runs, and artifacts.
             administration:
               type: string
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token for repository
+              description:
+                The level of permission granted to the access token for repository
                 creation, deletion, settings, teams, and collaborators creation.
             checks:
               type: string
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token for checks on
+              description:
+                The level of permission granted to the access token for checks on
                 code.
             content_references:
               type: string
@@ -1205,14 +1216,16 @@ components:
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token for repository
+              description:
+                The level of permission granted to the access token for repository
                 contents, commits, branches, downloads, releases, and merges.
             deployments:
               type: string
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token for deployments
+              description:
+                The level of permission granted to the access token for deployments
                 and deployment statuses.
             discussions:
               type: string
@@ -1229,28 +1242,32 @@ components:
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token for managing
+              description:
+                The level of permission granted to the access token for managing
                 repository environments.
             issues:
               type: string
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token for issues and
+              description:
+                The level of permission granted to the access token for issues and
                 related comments, assignees, labels, and milestones.
             members:
               type: string
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token for
+              description:
+                The level of permission granted to the access token for
                 organization teams and members.
             metadata:
               type: string
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token to search
+              description:
+                The level of permission granted to the access token to search
                 repositories, list collaborators, and access repository
                 metadata.
             organization_administration:
@@ -1258,7 +1275,8 @@ components:
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token to manage
+              description:
+                The level of permission granted to the access token to manage
                 access to an organization.
             organization_events:
               type: string
@@ -1270,42 +1288,48 @@ components:
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token to manage the
+              description:
+                The level of permission granted to the access token to manage the
                 post-receive hooks for an organization.
             organization_packages:
               type: string
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token for
+              description:
+                The level of permission granted to the access token for
                 organization packages published to GitHub Packages.
             organization_plan:
               type: string
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token for viewing an
+              description:
+                The level of permission granted to the access token for viewing an
                 organization's plan.
             organization_projects:
               type: string
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token to manage
+              description:
+                The level of permission granted to the access token to manage
                 organization projects and projects beta (where available).
             organization_secrets:
               type: string
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token to manage
+              description:
+                The level of permission granted to the access token to manage
                 organization secrets.
             organization_self_hosted_runners:
               type: string
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token to view and
+              description:
+                The level of permission granted to the access token to view and
                 manage GitHub Actions self-hosted runners available to an
                 organization.
             organization_user_blocking:
@@ -1313,21 +1337,24 @@ components:
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token to view and
+              description:
+                The level of permission granted to the access token to view and
                 manage users blocked by the organization.
             packages:
               type: string
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token for packages
+              description:
+                The level of permission granted to the access token for packages
                 published to GitHub Packages.
             pages:
               type: string
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token to retrieve
+              description:
+                The level of permission granted to the access token to retrieve
                 Pages statuses, configuration, and builds, as well as create new
                 builds.
             pull_requests:
@@ -1335,7 +1362,8 @@ components:
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token for pull
+              description:
+                The level of permission granted to the access token for pull
                 requests and related comments, assignees, labels, milestones,
                 and merges.
             repository_hooks:
@@ -1343,35 +1371,40 @@ components:
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token to manage the
+              description:
+                The level of permission granted to the access token to manage the
                 post-receive hooks for a repository.
             repository_projects:
               type: string
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token to manage
+              description:
+                The level of permission granted to the access token to manage
                 repository projects, columns, and cards.
             secret_scanning_alerts:
               type: string
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token to view and
+              description:
+                The level of permission granted to the access token to view and
                 manage secret scanning alerts.
             secrets:
               type: string
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token to manage
+              description:
+                The level of permission granted to the access token to manage
                 repository secrets.
             security_events:
               type: string
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token to view and
+              description:
+                The level of permission granted to the access token to view and
                 manage security events like code scanning alerts.
             security_scanning_alert:
               type: string
@@ -1383,35 +1416,40 @@ components:
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token to manage just
+              description:
+                The level of permission granted to the access token to manage just
                 a single file.
             statuses:
               type: string
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token for commit
+              description:
+                The level of permission granted to the access token for commit
                 statuses.
             team_discussions:
               type: string
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token to manage team
+              description:
+                The level of permission granted to the access token to manage team
                 discussions and related comments.
             vulnerability_alerts:
               type: string
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token to manage
+              description:
+                The level of permission granted to the access token to manage
                 Dependabot alerts.
             workflows:
               type: string
               enum:
                 - read
                 - write
-              description: The level of permission granted to the access token to update
+              description:
+                The level of permission granted to the access token to update
                 GitHub Actions workflow files.
           additionalProperties: false
         events:
@@ -1491,7 +1529,7 @@ components:
             type: string
         suspended_by:
           oneOf:
-            - $ref: "#/components/requestBodies/user"
+            - $ref: "#/components/schemas/user"
             - type: "null"
         suspended_at:
           type:
@@ -1532,7 +1570,7 @@ components:
         node_id:
           type: string
         user:
-          $ref: "#/components/requestBodies/user"
+          $ref: "#/components/schemas/user"
         created_at:
           type: string
           format: date-time
@@ -1540,15 +1578,15 @@ components:
           type: string
           format: date-time
         author_association:
-          $ref: "#/components/requestBodies/author_association"
+          $ref: "#/components/schemas/author_association"
         body:
           type: string
           description: Contents of the issue comment
         reactions:
-          $ref: "#/components/requestBodies/reactions"
+          $ref: "#/components/schemas/reactions"
         performed_via_github_app:
           oneOf:
-            - $ref: "#/components/requestBodies/app"
+            - $ref: "#/components/schemas/app"
             - type: "null"
       additionalProperties: false
       description: The
@@ -1611,11 +1649,11 @@ components:
           type: string
           description: Title of the issue
         user:
-          $ref: "#/components/requestBodies/user"
+          $ref: "#/components/schemas/user"
         labels:
           type: array
           items:
-            $ref: "#/components/requestBodies/label"
+            $ref: "#/components/schemas/label"
         state:
           type: string
           enum:
@@ -1626,15 +1664,15 @@ components:
           type: boolean
         assignee:
           oneOf:
-            - $ref: "#/components/requestBodies/user"
+            - $ref: "#/components/schemas/user"
             - type: "null"
         assignees:
           type: array
           items:
-            $ref: "#/components/requestBodies/user"
+            $ref: "#/components/schemas/user"
         milestone:
           oneOf:
-            - $ref: "#/components/requestBodies/milestone"
+            - $ref: "#/components/schemas/milestone"
             - type: "null"
         comments:
           type: integer
@@ -1650,7 +1688,7 @@ components:
             - "null"
           format: date-time
         author_association:
-          $ref: "#/components/requestBodies/author_association"
+          $ref: "#/components/schemas/author_association"
         active_lock_reason:
           type:
             - string
@@ -1665,7 +1703,7 @@ components:
           type: boolean
         performed_via_github_app:
           oneOf:
-            - $ref: "#/components/requestBodies/app"
+            - $ref: "#/components/schemas/app"
             - type: "null"
         pull_request:
           type: object
@@ -1694,7 +1732,7 @@ components:
             - "null"
           description: Contents of the issue
         reactions:
-          $ref: "#/components/requestBodies/reactions"
+          $ref: "#/components/schemas/reactions"
         timeline_url:
           type: string
           format: uri
@@ -1861,7 +1899,8 @@ components:
         - organization_url
         - user
       type: object
-      description: The membership between the user and the organization. Not present
+      description:
+        The membership between the user and the organization. Not present
         when the action is `member_invited`.
       properties:
         url:
@@ -1877,7 +1916,7 @@ components:
           type: string
           format: uri
         user:
-          $ref: "#/components/requestBodies/user"
+          $ref: "#/components/schemas/user"
       additionalProperties: false
       title: Membership
     milestone:
@@ -1925,7 +1964,7 @@ components:
             - string
             - "null"
         creator:
-          $ref: "#/components/requestBodies/user"
+          $ref: "#/components/schemas/user"
         open_issues:
           type: integer
         closed_issues:
@@ -2048,7 +2087,7 @@ components:
           type: boolean
           description: Whether or not the card is archived
         creator:
-          $ref: "#/components/requestBodies/user"
+          $ref: "#/components/schemas/user"
         created_at:
           type: string
           format: date-time
@@ -2152,7 +2191,7 @@ components:
             - closed
           description: State of the project; either 'open' or 'closed'
         creator:
-          $ref: "#/components/requestBodies/user"
+          $ref: "#/components/schemas/user"
         created_at:
           type: string
           format: date-time
@@ -2162,7 +2201,8 @@ components:
       additionalProperties: false
       title: Project
     projects_v2_item:
-      description: The project item itself. To find more information about the project
+      description:
+        The project item itself. To find more information about the project
         item, you can use `node_id` (the node ID of the project item) and
         `project_node_id` (the node ID of the project) to query information in
         the GraphQL API. For more information, see "[Using the API to manage
@@ -2195,7 +2235,7 @@ components:
             - Issue
             - PullRequest
         creator:
-          $ref: "#/components/requestBodies/user"
+          $ref: "#/components/schemas/user"
         created_at:
           type: string
           format: date-time
@@ -2264,7 +2304,8 @@ components:
           description: The line index in the diff to which the comment applies.
         original_position:
           type: integer
-          description: The index of the original line in the diff to which the comment
+          description:
+            The index of the original line in the diff to which the comment
             applies.
         commit_id:
           type: string
@@ -2273,7 +2314,7 @@ components:
           type: string
           description: The SHA of the original commit to which the comment applies.
         user:
-          $ref: "#/components/requestBodies/user"
+          $ref: "#/components/schemas/user"
         body:
           type: string
           description: The text of the comment.
@@ -2292,7 +2333,7 @@ components:
           format: uri
           description: URL for the pull request that the review comment belongs to.
         author_association:
-          $ref: "#/components/requestBodies/author_association"
+          $ref: "#/components/schemas/author_association"
         _links:
           type: object
           required:
@@ -2301,14 +2342,14 @@ components:
             - pull_request
           properties:
             self:
-              $ref: "#/components/requestBodies/link"
+              $ref: "#/components/schemas/link"
             html:
-              $ref: "#/components/requestBodies/link"
+              $ref: "#/components/schemas/link"
             pull_request:
-              $ref: "#/components/requestBodies/link"
+              $ref: "#/components/schemas/link"
           additionalProperties: false
         reactions:
-          $ref: "#/components/requestBodies/reactions"
+          $ref: "#/components/schemas/reactions"
         start_line:
           type:
             - integer
@@ -2333,11 +2374,13 @@ components:
           type:
             - integer
             - "null"
-          description: The line of the blob to which the comment applies. The last line of
+          description:
+            The line of the blob to which the comment applies. The last line of
             the range for a multi-line comment
         original_line:
           type: integer
-          description: The line of the blob to which the comment applies. The last line of
+          description:
+            The line of the blob to which the comment applies. The last line of
             the range for a multi-line comment
         side:
           type: string
@@ -2439,7 +2482,7 @@ components:
           type: string
           description: The title of the pull request.
         user:
-          $ref: "#/components/requestBodies/user"
+          $ref: "#/components/schemas/user"
         body:
           type:
             - string
@@ -2466,29 +2509,29 @@ components:
             - "null"
         assignee:
           oneOf:
-            - $ref: "#/components/requestBodies/user"
+            - $ref: "#/components/schemas/user"
             - type: "null"
         assignees:
           type: array
           items:
-            $ref: "#/components/requestBodies/user"
+            $ref: "#/components/schemas/user"
         requested_reviewers:
           type: array
           items:
             oneOf:
-              - $ref: "#/components/requestBodies/user"
-              - $ref: "#/components/requestBodies/team"
+              - $ref: "#/components/schemas/user"
+              - $ref: "#/components/schemas/team"
         requested_teams:
           type: array
           items:
-            $ref: "#/components/requestBodies/team"
+            $ref: "#/components/schemas/team"
         labels:
           type: array
           items:
-            $ref: "#/components/requestBodies/label"
+            $ref: "#/components/schemas/label"
         milestone:
           oneOf:
-            - $ref: "#/components/requestBodies/milestone"
+            - $ref: "#/components/schemas/milestone"
             - type: "null"
         commits_url:
           type: string
@@ -2521,9 +2564,9 @@ components:
             sha:
               type: string
             user:
-              $ref: "#/components/requestBodies/user"
+              $ref: "#/components/schemas/user"
             repo:
-              $ref: "#/components/requestBodies/repository"
+              $ref: "#/components/schemas/repository"
           additionalProperties: false
         base:
           type: object
@@ -2541,9 +2584,9 @@ components:
             sha:
               type: string
             user:
-              $ref: "#/components/requestBodies/user"
+              $ref: "#/components/schemas/user"
             repo:
-              $ref: "#/components/requestBodies/repository"
+              $ref: "#/components/schemas/repository"
           additionalProperties: false
         _links:
           type: object
@@ -2558,27 +2601,27 @@ components:
             - statuses
           properties:
             self:
-              $ref: "#/components/requestBodies/link"
+              $ref: "#/components/schemas/link"
             html:
-              $ref: "#/components/requestBodies/link"
+              $ref: "#/components/schemas/link"
             issue:
-              $ref: "#/components/requestBodies/link"
+              $ref: "#/components/schemas/link"
             comments:
-              $ref: "#/components/requestBodies/link"
+              $ref: "#/components/schemas/link"
             review_comments:
-              $ref: "#/components/requestBodies/link"
+              $ref: "#/components/schemas/link"
             review_comment:
-              $ref: "#/components/requestBodies/link"
+              $ref: "#/components/schemas/link"
             commits:
-              $ref: "#/components/requestBodies/link"
+              $ref: "#/components/schemas/link"
             statuses:
-              $ref: "#/components/requestBodies/link"
+              $ref: "#/components/schemas/link"
           additionalProperties: false
         author_association:
-          $ref: "#/components/requestBodies/author_association"
+          $ref: "#/components/schemas/author_association"
         auto_merge:
           oneOf:
-            - $ref: "#/components/requestBodies/auto-merge"
+            - $ref: "#/components/schemas/auto-merge"
             - type: "null"
         active_lock_reason:
           type:
@@ -2609,7 +2652,7 @@ components:
           type: string
         merged_by:
           oneOf:
-            - $ref: "#/components/requestBodies/user"
+            - $ref: "#/components/schemas/user"
             - type: "null"
         comments:
           type: integer
@@ -2732,7 +2775,7 @@ components:
           type: string
           format: date-time
         uploader:
-          $ref: "#/components/requestBodies/user"
+          $ref: "#/components/schemas/user"
       additionalProperties: false
       title: Release Asset
     release:
@@ -2778,7 +2821,8 @@ components:
           description: The name of the tag.
         target_commitish:
           type: string
-          description: Specifies the commitish value that determines where the Git tag is
+          description:
+            Specifies the commitish value that determines where the Git tag is
             created from.
         name:
           type: string
@@ -2786,7 +2830,7 @@ components:
           type: boolean
           description: Wether the release is a draft or published
         author:
-          $ref: "#/components/requestBodies/user"
+          $ref: "#/components/schemas/user"
         prerelease:
           type: boolean
           description: Whether the release is identified as a prerelease or a full release.
@@ -2803,7 +2847,7 @@ components:
         assets:
           type: array
           items:
-            $ref: "#/components/requestBodies/release-asset"
+            $ref: "#/components/schemas/release-asset"
         tarball_url:
           type:
             - string
@@ -2819,7 +2863,7 @@ components:
         mentions_count:
           type: integer
         reactions:
-          $ref: "#/components/requestBodies/reactions"
+          $ref: "#/components/schemas/reactions"
         discussion_url:
           type: string
           format: uri
@@ -2901,32 +2945,38 @@ components:
         assignees_url:
           type: string
           format: uri-template
-          description: A template for the API URL to list the available assignees for
+          description:
+            A template for the API URL to list the available assignees for
             issues in the repository.
         blobs_url:
           type: string
           format: uri-template
-          description: A template for the API URL to create or retrieve a raw Git blob in
+          description:
+            A template for the API URL to create or retrieve a raw Git blob in
             the repository.
         branches_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about branches in the
+          description:
+            A template for the API URL to get information about branches in the
             repository.
         collaborators_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about collaborators
+          description:
+            A template for the API URL to get information about collaborators
             of the repository.
         comments_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about comments on the
+          description:
+            A template for the API URL to get information about comments on the
             repository.
         commits_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about commits on the
+          description:
+            A template for the API URL to get information about commits on the
             repository.
         compare_url:
           type: string
@@ -2939,7 +2989,8 @@ components:
         contributors_url:
           type: string
           format: uri
-          description: A template for the API URL to list the contributors to the
+          description:
+            A template for the API URL to list the contributors to the
             repository.
         deployments_url:
           type: string
@@ -2971,17 +3022,20 @@ components:
         git_commits_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about Git commits of
+          description:
+            A template for the API URL to get information about Git commits of
             the repository.
         git_refs_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about Git refs of the
+          description:
+            A template for the API URL to get information about Git refs of the
             repository.
         git_tags_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about Git tags of the
+          description:
+            A template for the API URL to get information about Git tags of the
             repository.
         hooks_url:
           type: string
@@ -2997,27 +3051,32 @@ components:
         issue_comment_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about issue comments
+          description:
+            A template for the API URL to get information about issue comments
             on the repository.
         issue_events_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about issue events on
+          description:
+            A template for the API URL to get information about issue events on
             the repository.
         issues_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about issues on the
+          description:
+            A template for the API URL to get information about issues on the
             repository.
         keys_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about deploy keys on
+          description:
+            A template for the API URL to get information about deploy keys on
             the repository.
         labels_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about labels of the
+          description:
+            A template for the API URL to get information about labels of the
             repository.
         languages_url:
           type: string
@@ -3030,7 +3089,8 @@ components:
         milestones_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about milestones of
+          description:
+            A template for the API URL to get information about milestones of
             the repository.
         name:
           type: string
@@ -3041,22 +3101,25 @@ components:
         notifications_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about notifications
+          description:
+            A template for the API URL to get information about notifications
             on the repository.
         owner:
-          $ref: "#/components/requestBodies/user"
+          $ref: "#/components/schemas/user"
         private:
           type: boolean
           description: Whether the repository is private or public.
         pulls_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about pull requests
+          description:
+            A template for the API URL to get information about pull requests
             on the repository.
         releases_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about releases on the
+          description:
+            A template for the API URL to get information about releases on the
             repository.
         stargazers_url:
           type: string
@@ -3065,7 +3128,8 @@ components:
         statuses_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about statuses of a
+          description:
+            A template for the API URL to get information about statuses of a
             commit.
         subscribers_url:
           type: string
@@ -3086,12 +3150,14 @@ components:
         trees_url:
           type: string
           format: uri-template
-          description: A template for the API URL to create or retrieve a raw Git tree of
+          description:
+            A template for the API URL to create or retrieve a raw Git tree of
             the repository.
         url:
           type: string
           format: uri
-          description: The URL to get more information about the repository from the
+          description:
+            The URL to get more information about the repository from the
             GitHub API.
       additionalProperties: false
       title: Repository Lite
@@ -3128,7 +3194,7 @@ components:
         affected_package_name:
           type: string
         dismisser:
-          $ref: "#/components/requestBodies/user"
+          $ref: "#/components/schemas/user"
         dismiss_reason:
           type: string
         dismissed_at:
@@ -3253,7 +3319,7 @@ components:
           type: boolean
           description: Whether the repository is private or public.
         owner:
-          $ref: "#/components/requestBodies/user"
+          $ref: "#/components/schemas/user"
         html_url:
           type: string
           format: uri
@@ -3269,7 +3335,8 @@ components:
         url:
           type: string
           format: uri
-          description: The URL to get more information about the repository from the
+          description:
+            The URL to get more information about the repository from the
             GitHub API.
         forks_url:
           type: string
@@ -3278,12 +3345,14 @@ components:
         keys_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about deploy keys on
+          description:
+            A template for the API URL to get information about deploy keys on
             the repository.
         collaborators_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about collaborators
+          description:
+            A template for the API URL to get information about collaborators
             of the repository.
         teams_url:
           type: string
@@ -3296,7 +3365,8 @@ components:
         issue_events_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about issue events on
+          description:
+            A template for the API URL to get information about issue events on
             the repository.
         events_url:
           type: string
@@ -3305,12 +3375,14 @@ components:
         assignees_url:
           type: string
           format: uri-template
-          description: A template for the API URL to list the available assignees for
+          description:
+            A template for the API URL to list the available assignees for
             issues in the repository.
         branches_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about branches in the
+          description:
+            A template for the API URL to get information about branches in the
             repository.
         tags_url:
           type: string
@@ -3319,27 +3391,32 @@ components:
         blobs_url:
           type: string
           format: uri-template
-          description: A template for the API URL to create or retrieve a raw Git blob in
+          description:
+            A template for the API URL to create or retrieve a raw Git blob in
             the repository.
         git_tags_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about Git tags of the
+          description:
+            A template for the API URL to get information about Git tags of the
             repository.
         git_refs_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about Git refs of the
+          description:
+            A template for the API URL to get information about Git refs of the
             repository.
         trees_url:
           type: string
           format: uri-template
-          description: A template for the API URL to create or retrieve a raw Git tree of
+          description:
+            A template for the API URL to create or retrieve a raw Git tree of
             the repository.
         statuses_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about statuses of a
+          description:
+            A template for the API URL to get information about statuses of a
             commit.
         languages_url:
           type: string
@@ -3352,7 +3429,8 @@ components:
         contributors_url:
           type: string
           format: uri
-          description: A template for the API URL to list the contributors to the
+          description:
+            A template for the API URL to list the contributors to the
             repository.
         subscribers_url:
           type: string
@@ -3365,22 +3443,26 @@ components:
         commits_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about commits on the
+          description:
+            A template for the API URL to get information about commits on the
             repository.
         git_commits_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about Git commits of
+          description:
+            A template for the API URL to get information about Git commits of
             the repository.
         comments_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about comments on the
+          description:
+            A template for the API URL to get information about comments on the
             repository.
         issue_comment_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about issue comments
+          description:
+            A template for the API URL to get information about issue comments
             on the repository.
         contents_url:
           type: string
@@ -3405,32 +3487,38 @@ components:
         issues_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about issues on the
+          description:
+            A template for the API URL to get information about issues on the
             repository.
         pulls_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about pull requests
+          description:
+            A template for the API URL to get information about pull requests
             on the repository.
         milestones_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about milestones of
+          description:
+            A template for the API URL to get information about milestones of
             the repository.
         notifications_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about notifications
+          description:
+            A template for the API URL to get information about notifications
             on the repository.
         labels_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about labels of the
+          description:
+            A template for the API URL to get information about labels of the
             repository.
         releases_url:
           type: string
           format: uri-template
-          description: A template for the API URL to get information about releases on the
+          description:
+            A template for the API URL to get information about releases on the
             repository.
         deployments_url:
           type: string
@@ -3511,7 +3599,7 @@ components:
           type: integer
         license:
           oneOf:
-            - $ref: "#/components/requestBodies/license"
+            - $ref: "#/components/schemas/license"
             - type: "null"
         forks:
           type: integer
@@ -3662,7 +3750,7 @@ components:
         title:
           type: string
         user:
-          $ref: "#/components/requestBodies/user"
+          $ref: "#/components/schemas/user"
         body:
           type:
             - string
@@ -3689,29 +3777,29 @@ components:
             - "null"
         assignee:
           oneOf:
-            - $ref: "#/components/requestBodies/user"
+            - $ref: "#/components/schemas/user"
             - type: "null"
         assignees:
           type: array
           items:
-            $ref: "#/components/requestBodies/user"
+            $ref: "#/components/schemas/user"
         requested_reviewers:
           type: array
           items:
             oneOf:
-              - $ref: "#/components/requestBodies/user"
-              - $ref: "#/components/requestBodies/team"
+              - $ref: "#/components/schemas/user"
+              - $ref: "#/components/schemas/team"
         requested_teams:
           type: array
           items:
-            $ref: "#/components/requestBodies/team"
+            $ref: "#/components/schemas/team"
         labels:
           type: array
           items:
-            $ref: "#/components/requestBodies/label"
+            $ref: "#/components/schemas/label"
         milestone:
           oneOf:
-            - $ref: "#/components/requestBodies/milestone"
+            - $ref: "#/components/schemas/milestone"
             - type: "null"
         draft:
           type: boolean
@@ -3746,9 +3834,9 @@ components:
             sha:
               type: string
             user:
-              $ref: "#/components/requestBodies/user"
+              $ref: "#/components/schemas/user"
             repo:
-              $ref: "#/components/requestBodies/repository"
+              $ref: "#/components/schemas/repository"
           additionalProperties: false
         base:
           type: object
@@ -3766,9 +3854,9 @@ components:
             sha:
               type: string
             user:
-              $ref: "#/components/requestBodies/user"
+              $ref: "#/components/schemas/user"
             repo:
-              $ref: "#/components/requestBodies/repository"
+              $ref: "#/components/schemas/repository"
           additionalProperties: false
         _links:
           type: object
@@ -3783,27 +3871,27 @@ components:
             - statuses
           properties:
             self:
-              $ref: "#/components/requestBodies/link"
+              $ref: "#/components/schemas/link"
             html:
-              $ref: "#/components/requestBodies/link"
+              $ref: "#/components/schemas/link"
             issue:
-              $ref: "#/components/requestBodies/link"
+              $ref: "#/components/schemas/link"
             comments:
-              $ref: "#/components/requestBodies/link"
+              $ref: "#/components/schemas/link"
             review_comments:
-              $ref: "#/components/requestBodies/link"
+              $ref: "#/components/schemas/link"
             review_comment:
-              $ref: "#/components/requestBodies/link"
+              $ref: "#/components/schemas/link"
             commits:
-              $ref: "#/components/requestBodies/link"
+              $ref: "#/components/schemas/link"
             statuses:
-              $ref: "#/components/requestBodies/link"
+              $ref: "#/components/schemas/link"
           additionalProperties: false
         author_association:
-          $ref: "#/components/requestBodies/author_association"
+          $ref: "#/components/schemas/author_association"
         auto_merge:
           oneOf:
-            - $ref: "#/components/requestBodies/auto-merge"
+            - $ref: "#/components/schemas/auto-merge"
             - type: "null"
         active_lock_reason:
           type:
@@ -3852,7 +3940,8 @@ components:
       additionalProperties: false
       title: Sponsorship Tier
     team:
-      description: Groups of organization members that gives permissions on specified
+      description:
+        Groups of organization members that gives permissions on specified
         repositories.
       type: object
       required:
@@ -4129,7 +4218,8 @@ components:
         - runner_name
         - runner_group_id
         - runner_group_name
-      description: The workflow job. Many `workflow_job` keys, such as `head_sha`,
+      description:
+        The workflow job. Many `workflow_job` keys, such as `head_sha`,
         `conclusion`, and `started_at` are the same as those in a
         [`check_run`](#check_run) object.
       type: object
@@ -4164,12 +4254,13 @@ components:
             - queued
             - in_progress
             - completed
-          description: The current status of the job. Can be `queued`, `in_progress`, or
+          description:
+            The current status of the job. Can be `queued`, `in_progress`, or
             `completed`.
         steps:
           type: array
           items:
-            $ref: "#/components/requestBodies/workflow-step"
+            $ref: "#/components/schemas/workflow-step"
         conclusion:
           type:
             - string
@@ -4191,25 +4282,29 @@ components:
           type:
             - integer
             - "null"
-          description: The ID of the runner that is running this job. This will be `null`
+          description:
+            The ID of the runner that is running this job. This will be `null`
             as long as `workflow_job[status]` is `queued`.
         runner_name:
           type:
             - string
             - "null"
-          description: The name of the runner that is running this job. This will be
+          description:
+            The name of the runner that is running this job. This will be
             `null` as long as `workflow_job[status]` is `queued`.
         runner_group_id:
           type:
             - integer
             - "null"
-          description: The ID of the runner group that is running this job. This will be
+          description:
+            The ID of the runner group that is running this job. This will be
             `null` as long as `workflow_job[status]` is `queued`.
         runner_group_name:
           type:
             - string
             - "null"
-          description: The name of the runner group that is running this job. This will be
+          description:
+            The name of the runner group that is running this job. This will be
             `null` as long as `workflow_job[status]` is `queued`.
         started_at:
           type: string
@@ -4297,12 +4392,13 @@ components:
         head_branch:
           type: string
         head_commit:
-          $ref: "#/components/requestBodies/commit-simple"
+          $ref: "#/components/schemas/commit-simple"
         head_repository:
-          $ref: "#/components/requestBodies/repository-lite"
+          $ref: "#/components/schemas/repository-lite"
         head_sha:
           type: string
-          description: The SHA of the head commit that points to the version of the
+          description:
+            The SHA of the head commit that points to the version of the
             workflow being run.
         path:
           type: string
@@ -4356,7 +4452,7 @@ components:
                   sha:
                     type: string
                   repo:
-                    $ref: "#/components/requestBodies/repo-ref"
+                    $ref: "#/components/schemas/repo-ref"
                 additionalProperties: false
               base:
                 type: object
@@ -4370,11 +4466,11 @@ components:
                   sha:
                     type: string
                   repo:
-                    $ref: "#/components/requestBodies/repo-ref"
+                    $ref: "#/components/schemas/repo-ref"
                 additionalProperties: false
             additionalProperties: false
         repository:
-          $ref: "#/components/requestBodies/repository-lite"
+          $ref: "#/components/schemas/repository-lite"
         rerun_url:
           type: string
           format: uri
@@ -4406,27 +4502,29 @@ components:
           description: The URL to the workflow.
         run_attempt:
           type: integer
-          description: Attempt number of the run, 1 for first attempt and higher if the
+          description:
+            Attempt number of the run, 1 for first attempt and higher if the
             workflow was re-run.
         referenced_workflows:
           type: array
           items:
-            $ref: "#/components/requestBodies/referenced-workflow"
+            $ref: "#/components/schemas/referenced-workflow"
         run_started_at:
           type: string
           format: date-time
           description: The start time of the latest run. Resets on re-run.
         previous_attempt_url:
-          description: The URL to the previous attempted run of this workflow, if one
+          description:
+            The URL to the previous attempted run of this workflow, if one
             exists.
           oneOf:
             - type: string
               format: uri
             - type: "null"
         actor:
-          $ref: "#/components/requestBodies/user"
+          $ref: "#/components/schemas/user"
         triggering_actor:
-          $ref: "#/components/requestBodies/user"
+          $ref: "#/components/schemas/user"
       additionalProperties: false
       title: Workflow Run
     workflow-step-completed:
@@ -4491,8 +4589,8 @@ components:
     workflow-step:
       type: object
       oneOf:
-        - $ref: "#/components/requestBodies/workflow-step-in_progress"
-        - $ref: "#/components/requestBodies/workflow-step-completed"
+        - $ref: "#/components/schemas/workflow-step-in_progress"
+        - $ref: "#/components/schemas/workflow-step-completed"
       title: Workflow Step
     workflow:
       required:
@@ -4541,7 +4639,8 @@ components:
         application/json:
           schema:
             type: object
-            description: Activity related to a branch protection rule. For more information,
+            description:
+              Activity related to a branch protection rule. For more information,
               see "[About branch protection
               rules](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-rules)."
             required:
@@ -4571,7 +4670,8 @@ components:
         application/json:
           schema:
             type: object
-            description: Activity related to a branch protection rule. For more information,
+            description:
+              Activity related to a branch protection rule. For more information,
               see "[About branch protection
               rules](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-rules)."
             required:
@@ -4601,7 +4701,8 @@ components:
         application/json:
           schema:
             type: object
-            description: Activity related to a branch protection rule. For more information,
+            description:
+              Activity related to a branch protection rule. For more information,
               see "[About branch protection
               rules](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-rules)."
             required:
@@ -4728,7 +4829,8 @@ components:
                     type: string
                     enum:
                       - completed
-                    description: The current status of the check run. Can be `queued`,
+                    description:
+                      The current status of the check run. Can be `queued`,
                       `in_progress`, or `completed`.
                   conclusion:
                     type:
@@ -4744,20 +4846,23 @@ components:
                       - stale
                       - skipped
                       - null
-                    description: The result of the completed check run. Can be one of `success`,
+                    description:
+                      The result of the completed check run. Can be one of `success`,
                       `failure`, `neutral`, `cancelled`, `timed_out`,
                       `action_required` or `stale`. This value will be `null`
                       until the check run has completed.
                   started_at:
                     type: string
                     format: date-time
-                    description: "The time that the check run began. This is a timestamp in [ISO
+                    description:
+                      "The time that the check run began. This is a timestamp in [ISO
                       8601](https://en.wikipedia.org/wiki/ISO_8601) format:
                       `YYYY-MM-DDTHH:MM:SSZ`."
                   completed_at:
                     type: string
                     format: date-time
-                    description: "The time the check completed. This is a timestamp in [ISO
+                    description:
+                      "The time the check completed. This is a timestamp in [ISO
                       8601](https://en.wikipedia.org/wiki/ISO_8601) format:
                       `YYYY-MM-DDTHH:MM:SSZ`."
                   output:
@@ -4963,7 +5068,8 @@ components:
                       - in_progress
                       - completed
                       - waiting
-                    description: The current status of the check run. Can be `queued`,
+                    description:
+                      The current status of the check run. Can be `queued`,
                       `in_progress`, or `completed`.
                   conclusion:
                     type:
@@ -4979,14 +5085,16 @@ components:
                       - stale
                       - skipped
                       - null
-                    description: The result of the completed check run. Can be one of `success`,
+                    description:
+                      The result of the completed check run. Can be one of `success`,
                       `failure`, `neutral`, `cancelled`, `timed_out`,
                       `action_required` or `stale`. This value will be `null`
                       until the check run has completed.
                   started_at:
                     type: string
                     format: date-time
-                    description: "The time that the check run began. This is a timestamp in [ISO
+                    description:
+                      "The time that the check run began. This is a timestamp in [ISO
                       8601](https://en.wikipedia.org/wiki/ISO_8601) format:
                       `YYYY-MM-DDTHH:MM:SSZ`."
                   completed_at:
@@ -4994,7 +5102,8 @@ components:
                       - type: string
                         format: date-time
                       - type: "null"
-                    description: "The time the check completed. This is a timestamp in [ISO
+                    description:
+                      "The time the check completed. This is a timestamp in [ISO
                       8601](https://en.wikipedia.org/wiki/ISO_8601) format:
                       `YYYY-MM-DDTHH:MM:SSZ`."
                   output:
@@ -5200,7 +5309,8 @@ components:
                       - queued
                       - in_progress
                       - completed
-                    description: The current status of the check run. Can be `queued`,
+                    description:
+                      The current status of the check run. Can be `queued`,
                       `in_progress`, or `completed`.
                   conclusion:
                     type:
@@ -5216,14 +5326,16 @@ components:
                       - stale
                       - skipped
                       - null
-                    description: The result of the completed check run. Can be one of `success`,
+                    description:
+                      The result of the completed check run. Can be one of `success`,
                       `failure`, `neutral`, `cancelled`, `timed_out`,
                       `action_required` or `stale`. This value will be `null`
                       until the check run has completed.
                   started_at:
                     type: string
                     format: date-time
-                    description: "The time that the check run began. This is a timestamp in [ISO
+                    description:
+                      "The time that the check run began. This is a timestamp in [ISO
                       8601](https://en.wikipedia.org/wiki/ISO_8601) format:
                       `YYYY-MM-DDTHH:MM:SSZ`."
                   completed_at:
@@ -5231,7 +5343,8 @@ components:
                       - type: string
                         format: date-time
                       - type: "null"
-                    description: "The time the check completed. This is a timestamp in [ISO
+                    description:
+                      "The time the check completed. This is a timestamp in [ISO
                       8601](https://en.wikipedia.org/wiki/ISO_8601) format:
                       `YYYY-MM-DDTHH:MM:SSZ`."
                   output:
@@ -5448,20 +5561,23 @@ components:
                       - stale
                       - skipped
                       - null
-                    description: The result of the completed check run. Can be one of `success`,
+                    description:
+                      The result of the completed check run. Can be one of `success`,
                       `failure`, `neutral`, `cancelled`, `timed_out`,
                       `action_required` or `stale`. This value will be `null`
                       until the check run has `completed`.
                   started_at:
                     type: string
                     format: date-time
-                    description: "The time that the check run began. This is a timestamp in [ISO
+                    description:
+                      "The time that the check run began. This is a timestamp in [ISO
                       8601](https://en.wikipedia.org/wiki/ISO_8601) format:
                       `YYYY-MM-DDTHH:MM:SSZ`."
                   completed_at:
                     type: string
                     format: date-time
-                    description: "The time the check completed. This is a timestamp in [ISO
+                    description:
+                      "The time the check completed. This is a timestamp in [ISO
                       8601](https://en.wikipedia.org/wiki/ISO_8601) format:
                       `YYYY-MM-DDTHH:MM:SSZ`."
                   output:
@@ -5671,7 +5787,8 @@ components:
                       - completed
                       - queued
                       - null
-                    description: The summary status for all check runs that are part of the check
+                    description:
+                      The summary status for all check runs that are part of the check
                       suite. Can be `requested`, `in_progress`, or `completed`.
                   conclusion:
                     type:
@@ -5686,7 +5803,8 @@ components:
                       - action_required
                       - stale
                       - null
-                    description: The summary conclusion for all check runs that are part of the
+                    description:
+                      The summary conclusion for all check runs that are part of the
                       check suite. Can be one of `success`, `failure`,
                       `neutral`, `cancelled`, `timed_out`, `action_required` or
                       `stale`. This value will be `null` until the check run has
@@ -5707,7 +5825,8 @@ components:
                     type: array
                     items:
                       $ref: "#/components/schemas/check-run-pull-request"
-                    description: An array of pull requests that match this check suite. A pull
+                    description:
+                      An array of pull requests that match this check suite. A pull
                       request matches a check suite if they have the same
                       `head_sha` and `head_branch`. When the check suite's
                       `head_branch` is in a forked repository it will be `null`
@@ -5801,10 +5920,12 @@ components:
                       - completed
                       - queued
                       - null
-                    description: The summary status for all check runs that are part of the check
+                    description:
+                      The summary status for all check runs that are part of the check
                       suite. Can be `requested`, `in_progress`, or `completed`.
                   conclusion:
-                    description: The summary conclusion for all check runs that are part of the
+                    description:
+                      The summary conclusion for all check runs that are part of the
                       check suite. Can be one of `success`, `failure`,`
                       neutral`, `cancelled`, `timed_out`, `action_required` or
                       `stale`. This value will be `null` until the check run has
@@ -5837,7 +5958,8 @@ components:
                     type: array
                     items:
                       $ref: "#/components/schemas/check-run-pull-request"
-                    description: An array of pull requests that match this check suite. A pull
+                    description:
+                      An array of pull requests that match this check suite. A pull
                       request matches a check suite if they have the same
                       `head_sha` and `head_branch`. When the check suite's
                       `head_branch` is in a forked repository it will be `null`
@@ -5931,13 +6053,15 @@ components:
                       - completed
                       - queued
                       - null
-                    description: The summary status for all check runs that are part of the check
+                    description:
+                      The summary status for all check runs that are part of the check
                       suite. Can be `requested`, `in_progress`, or `completed`.
                   conclusion:
                     type:
                       - string
                       - "null"
-                    description: The summary conclusion for all check runs that are part of the
+                    description:
+                      The summary conclusion for all check runs that are part of the
                       check suite. Can be one of `success`, `failure`,`
                       neutral`, `cancelled`, `timed_out`, `action_required` or
                       `stale`. This value will be `null` until the check run has
@@ -5967,7 +6091,8 @@ components:
                     type: array
                     items:
                       $ref: "#/components/schemas/check-run-pull-request"
-                    description: An array of pull requests that match this check suite. A pull
+                    description:
+                      An array of pull requests that match this check suite. A pull
                       request matches a check suite if they have the same
                       `head_sha` and `head_branch`. When the check suite's
                       `head_branch` is in a forked repository it will be `null`
@@ -6047,7 +6172,8 @@ components:
                   created_at:
                     type: string
                     format: date-time
-                    description: "The time that the alert was created in ISO 8601 format:
+                    description:
+                      "The time that the alert was created in ISO 8601 format:
                       `YYYY-MM-DDTHH:MM:SSZ.`"
                   url:
                     type: string
@@ -6079,7 +6205,8 @@ components:
                       - string
                       - "null"
                     format: date-time
-                    description: "The time that the alert was dismissed in ISO 8601 format:
+                    description:
+                      "The time that the alert was dismissed in ISO 8601 format:
                       `YYYY-MM-DDTHH:MM:SSZ`."
                   dismissed_reason:
                     type:
@@ -6090,7 +6217,8 @@ components:
                       - won't fix
                       - used in tests
                       - null
-                    description: "The reason for dismissing or closing the alert. Can be one of:
+                    description:
+                      "The reason for dismissing or closing the alert. Can be one of:
                       `false positive`, `won't fix`, and `used in tests`."
                   rule:
                     type: object
@@ -6125,7 +6253,8 @@ components:
                     properties:
                       name:
                         type: string
-                        description: The name of the tool used to generate the code scanning analysis
+                        description:
+                          The name of the tool used to generate the code scanning analysis
                           alert.
                       version:
                         type:
@@ -6136,12 +6265,14 @@ components:
                 additionalProperties: false
               ref:
                 type: string
-                description: The Git reference of the code scanning alert. When the action is
+                description:
+                  The Git reference of the code scanning alert. When the action is
                   `reopened_by_user` or `closed_by_user`, the event was
                   triggered by the `sender` and this value will be empty.
               commit_oid:
                 type: string
-                description: The commit SHA of the code scanning alert. When the action is
+                description:
+                  The commit SHA of the code scanning alert. When the action is
                   `reopened_by_user` or `closed_by_user`, the event was
                   triggered by the `sender` and this value will be empty.
               repository:
@@ -6193,7 +6324,8 @@ components:
                   created_at:
                     type: string
                     format: date-time
-                    description: "The time that the alert was created in ISO 8601 format:
+                    description:
+                      "The time that the alert was created in ISO 8601 format:
                       `YYYY-MM-DDTHH:MM:SSZ.`"
                   url:
                     type: string
@@ -6229,7 +6361,8 @@ components:
                   dismissed_at:
                     type: string
                     format: date-time
-                    description: "The time that the alert was dismissed in ISO 8601 format:
+                    description:
+                      "The time that the alert was dismissed in ISO 8601 format:
                       `YYYY-MM-DDTHH:MM:SSZ`."
                   dismissed_reason:
                     type:
@@ -6240,7 +6373,8 @@ components:
                       - won't fix
                       - used in tests
                       - null
-                    description: "The reason for dismissing or closing the alert. Can be one of:
+                    description:
+                      "The reason for dismissing or closing the alert. Can be one of:
                       `false positive`, `won't fix`, and `used in tests`."
                   rule:
                     type: object
@@ -6283,7 +6417,8 @@ components:
                     properties:
                       name:
                         type: string
-                        description: The name of the tool used to generate the code scanning analysis
+                        description:
+                          The name of the tool used to generate the code scanning analysis
                           alert.
                       version:
                         type:
@@ -6298,12 +6433,14 @@ components:
                 additionalProperties: false
               ref:
                 type: string
-                description: The Git reference of the code scanning alert. When the action is
+                description:
+                  The Git reference of the code scanning alert. When the action is
                   `reopened_by_user` or `closed_by_user`, the event was
                   triggered by the `sender` and this value will be empty.
               commit_oid:
                 type: string
-                description: The commit SHA of the code scanning alert. When the action is
+                description:
+                  The commit SHA of the code scanning alert. When the action is
                   `reopened_by_user` or `closed_by_user`, the event was
                   triggered by the `sender` and this value will be empty.
               repository:
@@ -6355,7 +6492,8 @@ components:
                   created_at:
                     type: string
                     format: date-time
-                    description: "The time that the alert was created in ISO 8601 format:
+                    description:
+                      "The time that the alert was created in ISO 8601 format:
                       `YYYY-MM-DDTHH:MM:SSZ.`"
                   url:
                     type: string
@@ -6392,11 +6530,13 @@ components:
                     type: "null"
                   dismissed_at:
                     type: "null"
-                    description: "The time that the alert was dismissed in ISO 8601 format:
+                    description:
+                      "The time that the alert was dismissed in ISO 8601 format:
                       `YYYY-MM-DDTHH:MM:SSZ`."
                   dismissed_reason:
                     type: "null"
-                    description: "The reason for dismissing or closing the alert. Can be one of:
+                    description:
+                      "The reason for dismissing or closing the alert. Can be one of:
                       `false positive`, `won't fix`, and `used in tests`."
                   rule:
                     type: object
@@ -6439,7 +6579,8 @@ components:
                     properties:
                       name:
                         type: string
-                        description: The name of the tool used to generate the code scanning analysis
+                        description:
+                          The name of the tool used to generate the code scanning analysis
                           alert.
                       version:
                         type:
@@ -6454,12 +6595,14 @@ components:
                 additionalProperties: false
               ref:
                 type: string
-                description: The Git reference of the code scanning alert. When the action is
+                description:
+                  The Git reference of the code scanning alert. When the action is
                   `reopened_by_user` or `closed_by_user`, the event was
                   triggered by the `sender` and this value will be empty.
               commit_oid:
                 type: string
-                description: The commit SHA of the code scanning alert. When the action is
+                description:
+                  The commit SHA of the code scanning alert. When the action is
                   `reopened_by_user` or `closed_by_user`, the event was
                   triggered by the `sender` and this value will be empty.
               repository:
@@ -6511,7 +6654,8 @@ components:
                   created_at:
                     type: string
                     format: date-time
-                    description: "The time that the alert was created in ISO 8601 format:
+                    description:
+                      "The time that the alert was created in ISO 8601 format:
                       `YYYY-MM-DDTHH:MM:SSZ.`"
                   url:
                     type: string
@@ -6549,7 +6693,8 @@ components:
                       - string
                       - "null"
                     format: date-time
-                    description: "The time that the alert was dismissed in ISO 8601 format:
+                    description:
+                      "The time that the alert was dismissed in ISO 8601 format:
                       `YYYY-MM-DDTHH:MM:SSZ`."
                   dismissed_reason:
                     type:
@@ -6560,7 +6705,8 @@ components:
                       - won't fix
                       - used in tests
                       - null
-                    description: "The reason for dismissing or closing the alert. Can be one of:
+                    description:
+                      "The reason for dismissing or closing the alert. Can be one of:
                       `false positive`, `won't fix`, and `used in tests`."
                   rule:
                     type: object
@@ -6603,7 +6749,8 @@ components:
                     properties:
                       name:
                         type: string
-                        description: The name of the tool used to generate the code scanning analysis
+                        description:
+                          The name of the tool used to generate the code scanning analysis
                           alert.
                       version:
                         type:
@@ -6623,12 +6770,14 @@ components:
                 additionalProperties: false
               ref:
                 type: string
-                description: The Git reference of the code scanning alert. When the action is
+                description:
+                  The Git reference of the code scanning alert. When the action is
                   `reopened_by_user` or `closed_by_user`, the event was
                   triggered by the `sender` and this value will be empty.
               commit_oid:
                 type: string
-                description: The commit SHA of the code scanning alert. When the action is
+                description:
+                  The commit SHA of the code scanning alert. When the action is
                   `reopened_by_user` or `closed_by_user`, the event was
                   triggered by the `sender` and this value will be empty.
               repository:
@@ -6680,7 +6829,8 @@ components:
                   created_at:
                     type: string
                     format: date-time
-                    description: "The time that the alert was created in ISO 8601 format:
+                    description:
+                      "The time that the alert was created in ISO 8601 format:
                       `YYYY-MM-DDTHH:MM:SSZ.`"
                   url:
                     type: string
@@ -6717,11 +6867,13 @@ components:
                     type: "null"
                   dismissed_at:
                     type: "null"
-                    description: "The time that the alert was dismissed in ISO 8601 format:
+                    description:
+                      "The time that the alert was dismissed in ISO 8601 format:
                       `YYYY-MM-DDTHH:MM:SSZ`."
                   dismissed_reason:
                     type: "null"
-                    description: "The reason for dismissing or closing the alert. Can be one of:
+                    description:
+                      "The reason for dismissing or closing the alert. Can be one of:
                       `false positive`, `won't fix`, and `used in tests`."
                   rule:
                     type: object
@@ -6764,7 +6916,8 @@ components:
                     properties:
                       name:
                         type: string
-                        description: The name of the tool used to generate the code scanning analysis
+                        description:
+                          The name of the tool used to generate the code scanning analysis
                           alert.
                       version:
                         type:
@@ -6779,12 +6932,14 @@ components:
                 additionalProperties: false
               ref:
                 type: string
-                description: The Git reference of the code scanning alert. When the action is
+                description:
+                  The Git reference of the code scanning alert. When the action is
                   `reopened_by_user` or `closed_by_user`, the event was
                   triggered by the `sender` and this value will be empty.
               commit_oid:
                 type: string
-                description: The commit SHA of the code scanning alert. When the action is
+                description:
+                  The commit SHA of the code scanning alert. When the action is
                   `reopened_by_user` or `closed_by_user`, the event was
                   triggered by the `sender` and this value will be empty.
               repository:
@@ -6836,7 +6991,8 @@ components:
                   created_at:
                     type: string
                     format: date-time
-                    description: "The time that the alert was created in ISO 8601 format:
+                    description:
+                      "The time that the alert was created in ISO 8601 format:
                       `YYYY-MM-DDTHH:MM:SSZ.`"
                   url:
                     type: string
@@ -6871,11 +7027,13 @@ components:
                     type: "null"
                   dismissed_at:
                     type: "null"
-                    description: "The time that the alert was dismissed in ISO 8601 format:
+                    description:
+                      "The time that the alert was dismissed in ISO 8601 format:
                       `YYYY-MM-DDTHH:MM:SSZ`."
                   dismissed_reason:
                     type: "null"
-                    description: "The reason for dismissing or closing the alert. Can be one of:
+                    description:
+                      "The reason for dismissing or closing the alert. Can be one of:
                       `false positive`, `won't fix`, and `used in tests`."
                   rule:
                     type: object
@@ -6910,7 +7068,8 @@ components:
                     properties:
                       name:
                         type: string
-                        description: The name of the tool used to generate the code scanning analysis
+                        description:
+                          The name of the tool used to generate the code scanning analysis
                           alert.
                       version:
                         type:
@@ -6921,12 +7080,14 @@ components:
                 additionalProperties: false
               ref:
                 type: string
-                description: The Git reference of the code scanning alert. When the action is
+                description:
+                  The Git reference of the code scanning alert. When the action is
                   `reopened_by_user` or `closed_by_user`, the event was
                   triggered by the `sender` and this value will be empty.
               commit_oid:
                 type: string
-                description: The commit SHA of the code scanning alert. When the action is
+                description:
+                  The commit SHA of the code scanning alert. When the action is
                   `reopened_by_user` or `closed_by_user`, the event was
                   triggered by the `sender` and this value will be empty.
               repository:
@@ -6957,7 +7118,8 @@ components:
         application/json:
           schema:
             type: object
-            description: "A commit comment is created. The type of activity is specified in
+            description:
+              "A commit comment is created. The type of activity is specified in
               the `action` property. "
             required:
               - action
@@ -7013,7 +7175,8 @@ components:
                     type:
                       - integer
                       - "null"
-                    description: The line of the blob to which the comment applies. The last line of
+                    description:
+                      The line of the blob to which the comment applies. The last line of
                       the range for a multi-line comment
                   path:
                     type:
@@ -7078,7 +7241,8 @@ components:
                 enum:
                   - tag
                   - branch
-                description: The type of Git ref object created in the repository. Can be either
+                description:
+                  The type of Git ref object created in the repository. Can be either
                   `branch` or `tag`.
               master_branch:
                 type: string
@@ -7090,7 +7254,8 @@ components:
                 description: The repository's current description.
               pusher_type:
                 type: string
-                description: The pusher type for the event. Can be either `user` or a deploy
+                description:
+                  The pusher type for the event. Can be either `user` or a deploy
                   key.
               repository:
                 $ref: "#/components/schemas/repository"
@@ -7125,11 +7290,13 @@ components:
                 enum:
                   - tag
                   - branch
-                description: The type of Git ref object deleted in the repository. Can be either
+                description:
+                  The type of Git ref object deleted in the repository. Can be either
                   `branch` or `tag`.
               pusher_type:
                 type: string
-                description: The pusher type for the event. Can be either `user` or a deploy
+                description:
+                  The pusher type for the event. Can be either `user` or a deploy
                   key.
               repository:
                 $ref: "#/components/schemas/repository"
@@ -7435,7 +7602,8 @@ components:
                       - in_progress
                       - completed
                       - waiting
-                    description: The current status of the check run. Can be `queued`,
+                    description:
+                      The current status of the check run. Can be `queued`,
                       `in_progress`, or `completed`.
                   conclusion:
                     type:
@@ -7451,7 +7619,8 @@ components:
                       - stale
                       - skipped
                       - null
-                    description: The result of the completed check run. Can be one of `success`,
+                    description:
+                      The result of the completed check run. Can be one of `success`,
                       `failure`, `neutral`, `cancelled`, `timed_out`,
                       `action_required` or `stale`. This value will be `null`
                       until the check run has completed.
@@ -8492,7 +8661,8 @@ components:
                       enum:
                         - created
                         - edited
-                      description: The action that was performed on the page. Can be `created` or
+                      description:
+                        The action that was performed on the page. Can be `created` or
                         `edited`.
                     sha:
                       type: string
@@ -8812,11 +8982,13 @@ components:
                 enum:
                   - all
                   - selected
-                description: Describe whether all repositories have been selected or there's a
+                description:
+                  Describe whether all repositories have been selected or there's a
                   selection involved
               repositories_added:
                 type: array
-                description: An array of repository objects, which were added to the
+                description:
+                  An array of repository objects, which were added to the
                   installation.
                 items:
                   type: object
@@ -8843,7 +9015,8 @@ components:
                   additionalProperties: false
               repositories_removed:
                 type: array
-                description: An array of repository objects, which were removed from the
+                description:
+                  An array of repository objects, which were removed from the
                   installation.
                 items:
                   type: object
@@ -8896,11 +9069,13 @@ components:
                 enum:
                   - all
                   - selected
-                description: Describe whether all repositories have been selected or there's a
+                description:
+                  Describe whether all repositories have been selected or there's a
                   selection involved
               repositories_added:
                 type: array
-                description: An array of repository objects, which were added to the
+                description:
+                  An array of repository objects, which were added to the
                   installation.
                 items:
                   type: object
@@ -8928,7 +9103,8 @@ components:
                 maxItems: 0
               repositories_removed:
                 type: array
-                description: An array of repository objects, which were removed from the
+                description:
+                  An array of repository objects, which were removed from the
                   installation.
                 items:
                   type: object
@@ -8987,7 +9163,8 @@ components:
                 enum:
                   - created
               issue:
-                description: The [issue](https://docs.github.com/en/rest/reference/issues) the
+                description:
+                  The [issue](https://docs.github.com/en/rest/reference/issues) the
                   comment belongs to.
                 allOf:
                   - $ref: "#/components/schemas/issue"
@@ -9044,7 +9221,8 @@ components:
                 enum:
                   - deleted
               issue:
-                description: The [issue](https://docs.github.com/en/rest/reference/issues) the
+                description:
+                  The [issue](https://docs.github.com/en/rest/reference/issues) the
                   comment belongs to.
                 allOf:
                   - $ref: "#/components/schemas/issue"
@@ -9116,7 +9294,8 @@ components:
                     additionalProperties: false
                 additionalProperties: false
               issue:
-                description: The [issue](https://docs.github.com/en/rest/reference/issues) the
+                description:
+                  The [issue](https://docs.github.com/en/rest/reference/issues) the
                   comment belongs to.
                 allOf:
                   - $ref: "#/components/schemas/issue"
@@ -9171,7 +9350,8 @@ components:
         application/json:
           schema:
             type: object
-            description: Activity related to an issue. The type of activity is specified in
+            description:
+              Activity related to an issue. The type of activity is specified in
               the action property.
             required:
               - action
@@ -9218,7 +9398,8 @@ components:
                   - closed
                 description: The action that was performed.
               issue:
-                description: The [issue](https://docs.github.com/en/rest/reference/issues)
+                description:
+                  The [issue](https://docs.github.com/en/rest/reference/issues)
                   itself.
                 allOf:
                   - $ref: "#/components/schemas/issue"
@@ -10448,7 +10629,8 @@ components:
         application/json:
           schema:
             type: object
-            description: Activity related to repository collaborators. The type of activity
+            description:
+              Activity related to repository collaborators. The type of activity
               is specified in the action property.
             required:
               - action
@@ -10520,7 +10702,8 @@ components:
                     properties:
                       from:
                         type: string
-                        description: The previous permissions of the collaborator if the action was
+                        description:
+                          The previous permissions of the collaborator if the action was
                           edited.
                     additionalProperties: false
                 additionalProperties: false
@@ -10596,13 +10779,15 @@ components:
                 description: The scope of the membership. Currently, can only be `team`.
               member:
                 $ref: "#/components/schemas/user"
-                description: The [user](https://docs.github.com/en/rest/reference/users) that
+                description:
+                  The [user](https://docs.github.com/en/rest/reference/users) that
                   was added or removed.
               sender:
                 $ref: "#/components/schemas/user"
               team:
                 $ref: "#/components/schemas/team"
-                description: The [team](https://docs.github.com/en/rest/reference/teams) for the
+                description:
+                  The [team](https://docs.github.com/en/rest/reference/teams) for the
                   membership.
               organization:
                 $ref: "#/components/schemas/organization"
@@ -10635,12 +10820,14 @@ components:
                 description: The scope of the membership. Currently, can only be `team`.
               member:
                 $ref: "#/components/schemas/user"
-                description: The [user](https://docs.github.com/en/rest/reference/users) that
+                description:
+                  The [user](https://docs.github.com/en/rest/reference/users) that
                   was added or removed.
               sender:
                 $ref: "#/components/schemas/user"
               team:
-                description: The [team](https://docs.github.com/en/rest/reference/teams) for the
+                description:
+                  The [team](https://docs.github.com/en/rest/reference/teams) for the
                   membership.
                 oneOf:
                   - $ref: "#/components/schemas/team"
@@ -10692,7 +10879,8 @@ components:
                 description: The id of the modified webhook.
               hook:
                 type: object
-                description: "The modified webhook. This will contain different keys based on
+                description:
+                  "The modified webhook. This will contain different keys based on
                   the type of webhook it is: repository, organization, business,
                   app, or GitHub Marketplace."
                 required:
@@ -10728,11 +10916,13 @@ components:
                         enum:
                           - json
                           - form
-                        description: The media type used to serialize the payloads. Supported values
+                        description:
+                          The media type used to serialize the payloads. Supported values
                           include `json` and `form`. The default is `form`.
                       secret:
                         type: string
-                        description: If provided, the `secret` will be used as the `key` to generate the
+                        description:
+                          If provided, the `secret` will be used as the `key` to generate the
                           HMAC hex digest value for [delivery signature
                           headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).
                       url:
@@ -10741,7 +10931,8 @@ components:
                         description: The URL to which the payloads will be delivered.
                       insecure_ssl:
                         type: string
-                        description: Determines whether the SSL certificate of the host for `url` will
+                        description:
+                          Determines whether the SSL certificate of the host for `url` will
                           be verified when delivering payloads. Supported values
                           include `0` (verification is performed) and `1`
                           (verification is not performed). The default is `0`.
@@ -11117,7 +11308,8 @@ components:
                   - member_invited
               invitation:
                 type: object
-                description: The invitation for the user or email if the action is
+                description:
+                  The invitation for the user or email if the action is
                   `member_invited`.
                 required:
                   - id
@@ -11291,7 +11483,8 @@ components:
                       - docker
                       - nuget
                       - container
-                    description: The type of supported package. Packages in GitHub's Gradle registry
+                    description:
+                      The type of supported package. Packages in GitHub's Gradle registry
                       have the type `maven`. Docker images pushed to GitHub's
                       Container registry (`ghcr.io`) have the type `container`.
                       You can use the type `docker` to find images that were
@@ -11887,7 +12080,8 @@ components:
                     type: boolean
                   app_id:
                     type: integer
-                    description: When you register a new GitHub App, GitHub sends a ping event to
+                    description:
+                      When you register a new GitHub App, GitHub sends a ping event to
                       the **webhook URL** you specified during registration. The
                       event contains the `app_id`, which is required for
                       [authenticating](https://docs.github.com/en/apps/building-integrations/setting-up-and-registering-github-apps/about-authentication-options-for-github-apps)
@@ -11907,11 +12101,13 @@ components:
                         enum:
                           - json
                           - form
-                        description: The media type used to serialize the payloads. Supported values
+                        description:
+                          The media type used to serialize the payloads. Supported values
                           include `json` and `form`. The default is `form`.
                       secret:
                         type: string
-                        description: If provided, the `secret` will be used as the `key` to generate the
+                        description:
+                          If provided, the `secret` will be used as the `key` to generate the
                           HMAC hex digest value for [delivery signature
                           headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).
                       url:
@@ -11920,7 +12116,8 @@ components:
                         description: The URL to which the payloads will be delivered.
                       insecure_ssl:
                         type: string
-                        description: Determines whether the SSL certificate of the host for `url` will
+                        description:
+                          Determines whether the SSL certificate of the host for `url` will
                           be verified when delivering payloads. Supported values
                           include `0` (verification is performed) and `1`
                           (verification is not performed). The default is `0`.
@@ -14784,7 +14981,8 @@ components:
             properties:
               ref:
                 type: string
-                description: "The full git ref that was pushed. Example: `refs/heads/main` or
+                description:
+                  "The full git ref that was pushed. Example: `refs/heads/main` or
                   `refs/tags/v3.14.1`."
               before:
                 type: string
@@ -14807,7 +15005,8 @@ components:
                   - "null"
               compare:
                 type: string
-                description: URL that shows the changes in this `ref` update, from the `before`
+                description:
+                  URL that shows the changes in this `ref` update, from the `before`
                   commit to the `after` commit. For a newly created `ref` that
                   is directly based on the default branch, this is the
                   comparison between the head of the default branch and the
@@ -14815,7 +15014,8 @@ components:
                   `after` commit.
               commits:
                 type: array
-                description: An array of commit objects describing the pushed commits. (Pushed
+                description:
+                  An array of commit objects describing the pushed commits. (Pushed
                   commits are all commits that are included in the `compare`
                   between the `before` commit and the `after` commit.) The array
                   includes a maximum of 20 commits. If necessary, you can use
@@ -14829,7 +15029,8 @@ components:
                 oneOf:
                   - $ref: "#/components/schemas/commit"
                   - type: "null"
-                description: For pushes where `after` is or points to a commit object, an
+                description:
+                  For pushes where `after` is or points to a commit object, an
                   expanded representation of that commit. For pushes where
                   `after` refers to an annotated tag object, an expanded
                   representation of the commit pointed to by the annotated tag.
@@ -14975,7 +15176,8 @@ components:
                         type: boolean
                         enum:
                           - true
-                        description: Whether the release is identified as a prerelease or a full
+                        description:
+                          Whether the release is identified as a prerelease or a full
                           release.
                     tsAdditionalProperties: false
               repository:
@@ -15841,7 +16043,8 @@ components:
                   - performed
               security_advisory:
                 type: object
-                description: The details of the security advisory, including summary,
+                description:
+                  The details of the security advisory, including summary,
                   description, and severity.
                 required:
                   - cvss
@@ -15980,7 +16183,8 @@ components:
                   - published
               security_advisory:
                 type: object
-                description: The details of the security advisory, including summary,
+                description:
+                  The details of the security advisory, including summary,
                   description, and severity.
                 required:
                   - cvss
@@ -16119,7 +16323,8 @@ components:
                   - updated
               security_advisory:
                 type: object
-                description: The details of the security advisory, including summary,
+                description:
+                  The details of the security advisory, including summary,
                   description, and severity.
                 required:
                   - cvss
@@ -16258,7 +16463,8 @@ components:
                   - withdrawn
               security_advisory:
                 type: object
-                description: The details of the security advisory, including summary,
+                description:
+                  The details of the security advisory, including summary,
                   description, and severity.
                 required:
                   - cvss
@@ -16524,7 +16730,8 @@ components:
                     properties:
                       from:
                         type: string
-                        description: The `edited` event types include the details about the change when
+                        description:
+                          The `edited` event types include the details about the change when
                           someone edits a sponsorship to change the privacy.
                     additionalProperties: false
                 additionalProperties: false
@@ -16572,7 +16779,8 @@ components:
                 additionalProperties: false
               effective_date:
                 type: string
-                description: The `pending_cancellation` and `pending_tier_change` event types
+                description:
+                  The `pending_cancellation` and `pending_tier_change` event types
                   will include the date the cancellation or tier change will
                   take effect.
               sender:
@@ -16620,7 +16828,8 @@ components:
                 additionalProperties: false
               effective_date:
                 type: string
-                description: The `pending_cancellation` and `pending_tier_change` event types
+                description:
+                  The `pending_cancellation` and `pending_tier_change` event types
                   will include the date the cancellation or tier change will
                   take effect.
               changes:
@@ -16729,7 +16938,8 @@ components:
               starred_at:
                 type: string
                 format: date-time
-                description: "The time the star was created. This is a timestamp in ISO 8601
+                description:
+                  "The time the star was created. This is a timestamp in ISO 8601
                   format: `YYYY-MM-DDTHH:MM:SSZ`. Will be `null` for the
                   `deleted` action."
               repository:
@@ -16759,7 +16969,8 @@ components:
                   - deleted
               starred_at:
                 type: "null"
-                description: "The time the star was created. This is a timestamp in ISO 8601
+                description:
+                  "The time the star was created. This is a timestamp in ISO 8601
                   format: `YYYY-MM-DDTHH:MM:SSZ`. Will be `null` for the
                   `deleted` action."
               repository:
@@ -16975,7 +17186,8 @@ components:
                 additionalProperties: false
               branches:
                 type: array
-                description: An array of branch objects containing the status' SHA. Each branch
+                description:
+                  An array of branch objects containing the status' SHA. Each branch
                   contains the given SHA, but the SHA may or may not be the head
                   of the branch. The array includes a maximum of 10 branches.
                 items:
@@ -17145,7 +17357,8 @@ components:
                     properties:
                       from:
                         type: string
-                        description: The previous version of the team's privacy if the action was
+                        description:
+                          The previous version of the team's privacy if the action was
                           `edited`.
                     additionalProperties: false
                   repository:
@@ -17163,15 +17376,18 @@ components:
                             properties:
                               admin:
                                 type: boolean
-                                description: The previous version of the team member's `admin` permission on a
+                                description:
+                                  The previous version of the team member's `admin` permission on a
                                   repository, if the action was `edited`.
                               pull:
                                 type: boolean
-                                description: The previous version of the team member's `pull` permission on a
+                                description:
+                                  The previous version of the team member's `pull` permission on a
                                   repository, if the action was `edited`.
                               push:
                                 type: boolean
-                                description: The previous version of the team member's `push` permission on a
+                                description:
+                                  The previous version of the team member's `push` permission on a
                                   repository, if the action was `edited`.
                             additionalProperties: false
                         additionalProperties: false
@@ -17296,7 +17512,8 @@ components:
               - workflow
             properties:
               inputs:
-                description: Inputs to the workflow. Each key represents the name of the input
+                description:
+                  Inputs to the workflow. Each key represents the name of the input
                   while it's value represents the value of that input.
                 oneOf:
                   - type: object
