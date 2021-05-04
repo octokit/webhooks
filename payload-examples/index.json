@@ -4544,11 +4544,11 @@
       },
       "ref": {
         "type": "string",
-        "description": "The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user` , the event was triggered by the `sender` and this value will be empty."
+        "description": "The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
       },
       "commit_oid": {
         "type": "string",
-        "description": "The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user` , the event was triggered by the `sender` and this value will be empty."
+        "description": "The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
       },
       "repository": {
         "type": "object",
@@ -53566,6 +53566,7 @@
           "fixed_in": "2.0.6",
           "external_reference": "https://nvd.nist.gov/vuln/detail/CVE-2018-16470",
           "external_identifier": "CVE-2018-16470",
+          "severity": "moderate",
           "ghsa_id": "GHSA-hg78-4f6x-99wq",
           "created_at": "2021-03-01T01:23:45Z"
         },
@@ -54707,7 +54708,7 @@
   },
   {
     "name": "sponsorship",
-    "description": "Activity related to a sponsorship listing. The type of activity is specified in the `action` property of the payload object. For more information, see \"[About GitHub Sponsors](https://docs.github.com/en/github/supporting-the-open-source-community-with-github-sponsors/about-github-sponsors)\".\n\nYou can only create a sponsorship webhook on GitHub. For more information, see \"[Configuring webhooks for events in your sponsored account](https://docs.github.com/en/github/supporting-the-open-source-community-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)\".",
+    "description": "Activity related to a sponsorship listing. The type of activity is specified in the `action` property of the payload object. For more information, see \"[About GitHub Sponsors](https://docs.github.com/en/sponsors/getting-started-with-github-sponsors/about-github-sponsors)\".\n\nYou can only create a sponsorship webhook on GitHub. For more information, see \"[Configuring webhooks for events in your sponsored account](https://docs.github.com/en/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account)\".",
     "actions": [
       "cancelled",
       "created",
