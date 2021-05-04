@@ -11,7 +11,7 @@
         { "$ref": "common/issue.schema.json" },
         {
           "type": "object",
-          "required": ["labels", "state", "locked", "assignee", "closed_at"],
+          "required": ["labels", "state", "locked", "assignee"],
           "properties": {
             "assignee": {
               "oneOf": [
