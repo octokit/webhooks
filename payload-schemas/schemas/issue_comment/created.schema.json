@@ -11,7 +11,7 @@
         { "$ref": "common/issue.schema.json" },
         {
           "type": "object",
-          "required": ["labels", "state", "locked", "assignee", "closed_at"],
+          "required": ["labels", "state", "locked", "assignee"],
           "properties": {
             "assignee": {
               "oneOf": [
@@ -24,7 +24,6 @@
               "enum": ["open", "closed"],
               "description": "State of the issue; either 'open' or 'closed'"
             },
-            "closed_at": { "type": "null" },
             "locked": { "type": "boolean" },
             "labels": {
               "type": "array",

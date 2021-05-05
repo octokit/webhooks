@@ -2497,7 +2497,7 @@ export interface InstallationRepositoriesAddedEvent {
    * An array of repository objects, which were removed from the installation.
    */
   repositories_removed: [];
-  requester?: User;
+  requester: User | null;
   sender: User;
 }
 export interface InstallationRepositoriesRemovedEvent {
@@ -2543,7 +2543,6 @@ export interface IssueCommentCreatedEvent {
      * State of the issue; either 'open' or 'closed'
      */
     state: "open" | "closed";
-    closed_at: null;
     locked: boolean;
     labels: Label[];
     pull_request?: {
@@ -2688,7 +2687,6 @@ export interface IssueCommentDeletedEvent {
      * State of the issue; either 'open' or 'closed'
      */
     state: "open" | "closed";
-    closed_at: null;
     locked: boolean;
     labels: Label[];
     pull_request?: {
