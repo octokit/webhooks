@@ -1,0 +1,113 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "security_advisory$withdrawn",
+  "type": "object",
+  "required": ["action", "security_advisory"],
+  "properties": {
+    "action": { "type": "string", "enum": ["withdrawn"] },
+    "security_advisory": {
+      "type": "object",
+      "description": "The details of the security advisory, including summary, description, and severity.",
+      "required": [
+        "cvss",
+        "cwes",
+        "ghsa_id",
+        "summary",
+        "description",
+        "severity",
+        "identifiers",
+        "references",
+        "published_at",
+        "updated_at",
+        "withdrawn_at",
+        "vulnerabilities"
+      ],
+      "properties": {
+        "cvss": {
+          "type": "object",
+          "required": ["vector_string", "score"],
+          "properties": {
+            "vector_string": { "type": ["string", "null"] },
+            "score": { "type": "number" }
+          },
+          "additionalProperties": false
+        },
+        "cwes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["cwe_id", "name"],
+            "properties": {
+              "cwe_id": { "type": "string" },
+              "name": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "ghsa_id": { "type": "string" },
+        "summary": { "type": "string" },
+        "description": { "type": "string" },
+        "severity": { "type": "string" },
+        "identifiers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["value", "type"],
+            "properties": {
+              "value": { "type": "string" },
+              "type": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["url"],
+            "properties": { "url": { "type": "string", "format": "uri" } },
+            "additionalProperties": false
+          }
+        },
+        "published_at": { "type": "string" },
+        "updated_at": { "type": "string" },
+        "withdrawn_at": { "type": "string" },
+        "vulnerabilities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "package",
+              "severity",
+              "vulnerable_version_range",
+              "first_patched_version"
+            ],
+            "properties": {
+              "package": {
+                "type": "object",
+                "required": ["ecosystem", "name"],
+                "properties": {
+                  "ecosystem": { "type": "string" },
+                  "name": { "type": "string" }
+                },
+                "additionalProperties": false
+              },
+              "severity": { "type": "string" },
+              "vulnerable_version_range": { "type": "string" },
+              "first_patched_version": {
+                "type": ["object", "null"],
+                "required": ["identifier"],
+                "properties": { "identifier": { "type": "string" } },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "title": "security_advisory withdrawn event"
+}
