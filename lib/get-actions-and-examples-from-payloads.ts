@@ -1,5 +1,4 @@
 import { readdirSync } from "fs";
-import { State, versions } from "./types";
 
 interface ActionsAndExamples {
   actions: string[];
@@ -7,9 +6,9 @@ interface ActionsAndExamples {
 }
 
 export const getActionsAndExamplesFromPayloads = (
-  version: State["version"]
+  folderName: string
 ): Record<string, ActionsAndExamples> => {
-  const pathToPayloads = `payload-examples/${version}`;
+  const pathToPayloads = `payload-examples/${folderName}`;
   const eventsByName: Record<string, ActionsAndExamples> = {};
 
   readdirSync(pathToPayloads, { withFileTypes: true })

@@ -16,23 +16,53 @@ const isNotNull = <T>(value: T | null): value is T => value !== null;
 export const checkOrUpdateWebhooks = async ({
   cached,
   checkOnly,
-  version,
+  ghe,
+  githubAE,
 }: State): Promise<void> => {
+  const [baseUrl, folderName] = ghe
+    ? [
+        `https://docs.github.com/en/enterprise-server@${ghe}/developers/webhooks-and-events/webhook-events-and-payloads`,
+        `ghes-${ghe.replace(".", "")}`,
+      ]
+    : githubAE
+    ? [
+        "https://docs.github.com/en/github-ae@latest/developers/webhooks-and-events/webhook-events-and-payloads",
+        "github.ae",
+      ]
+    : [
+        "https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/webhook-events-and-payloads",
+        "api.github.com",
+      ];
+
+  if (ghe === "") {
+    const gheVersions = ["2.19", "2.20", "2.21", "2.22", "3.0"];
+
+    for (let gheVersion of gheVersions) {
+      await checkOrUpdateWebhooks({
+        cached,
+        checkOnly,
+        ghe: gheVersion,
+      });
+    }
+
+    return;
+  }
+
   const currentWebhooks = JSON.parse(
-    readFileSync(`./payload-examples/${version}/index.json`).toString()
+    readFileSync(`./payload-examples/${folderName}/index.json`).toString()
   );
-  const html = await getHtml({ cached, version });
+  const html = await getHtml({ cached, baseUrl, folderName });
   const sections = getSections(html);
   const webhooksFromScrapingDocs = sections.map(toWebhook).filter(isNotNull);
   const webhooksFromPayloadExamplesByName = getActionsAndExamplesFromPayloads(
-    version
+    folderName
   );
 
   const webhooks = webhooksFromScrapingDocs.map((webhook) => {
     const name = webhook.name;
 
     if (!(name in webhooksFromPayloadExamplesByName)) {
-      console.warn(`[${version}] No payload examples for ${name}`);
+      console.warn(`[${folderName}] No payload examples for ${name}`);
 
       return webhook;
     }
@@ -53,12 +83,12 @@ export const checkOrUpdateWebhooks = async ({
   applyWorkarounds(webhooks as WorkableWebhook[]);
 
   if (!diff(currentWebhooks, webhooks)) {
-    console.log(`✅  webhooks ${version} are up-to-date`);
+    console.log(`✅  webhooks ${folderName} are up-to-date`);
 
     return;
   }
 
-  console.log(`❌  webhooks ${version} are not up-to-date`);
+  console.log(`❌  webhooks ${folderName} are not up-to-date`);
   console.log(diffString(currentWebhooks, webhooks));
 
   if (checkOnly) {
@@ -68,8 +98,8 @@ export const checkOrUpdateWebhooks = async ({
   }
 
   writeFileSync(
-    `./payload-examples/${version}/index.json`,
+    `./payload-examples/${folderName}/index.json`,
     prettier.format(JSON.stringify(webhooks, null, 2), { parser: "json" })
   );
-  console.log(`✏️  ${version}/index.json, written`);
+  console.log(`✏️  ${folderName}/index.json, written`);
 };

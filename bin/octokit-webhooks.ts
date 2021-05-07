@@ -1,37 +1,43 @@
 #!/usr/bin/env ts-node-transpile-only
 
 import yargs from "yargs";
-import { checkOrUpdateWebhooks, versions } from "../lib";
+import { checkOrUpdateWebhooks } from "../lib";
 
 interface Options {
   cached: boolean;
+  ghe?: string;
+  githubAE?: boolean;
 }
+
+const options: Record<string, yargs.Options> = {
+  cached: {
+    describe: "Load HTML from local cache",
+    type: "boolean",
+    default: false,
+  },
+  ghe: {
+    describe:
+      'GitHub Enterprise. To load a specific version set it the version, e.g. "2.20"',
+    type: "string",
+  },
+  githubAE: {
+    describe: "Fetch webhooks for GitHub AE",
+    type: "boolean",
+    default: false,
+  },
+};
 
 const {
   cached,
+  ghe,
+  githubAE,
   _: [command],
 } = yargs
   .command("update", "Update webhooks", (yargs) => {
-    yargs
-      .options({
-        cached: {
-          describe: "Load HTML from local cache",
-          type: "boolean",
-          default: false,
-        },
-      })
-      .example("$0 update --cached", "");
+    yargs.options(options).example("$0 update --cached", "");
   })
   .command("check", "Check if webhooks are up-to-date", (yargs) => {
-    yargs
-      .options({
-        cached: {
-          describe: "Load HTML from local cache",
-          type: "boolean",
-          default: false,
-        },
-      })
-      .example("$0 check --cached", "");
+    yargs.options(options).example("$0 check --cached", "");
   })
   .help("h")
   .alias("h", ["help", "usage"])
@@ -44,15 +50,12 @@ if (!["update", "check"].includes(command.toString())) {
   process.exit(1);
 }
 
-for (let version of Object.keys(versions)) {
-  try {
-    checkOrUpdateWebhooks({
-      cached,
-      checkOnly: command === "check",
-      version: version as keyof typeof versions,
-    });
-  } catch (e) {
-    console.log(e.stack);
-    process.exit(1);
-  }
-}
+checkOrUpdateWebhooks({
+  cached,
+  ghe,
+  githubAE,
+  checkOnly: command === "check",
+}).catch((error: Error) => {
+  console.log(error.stack);
+  process.exit(1);
+});

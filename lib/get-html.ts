@@ -1,13 +1,13 @@
 import { request } from "@octokit/request";
 import cheerio from "cheerio";
 import prettier from "prettier";
-import { State, cache, versions } from ".";
+import { State, cache } from ".";
 
-export const getHtml = async (state: State): Promise<string> => {
-  const WEBHOOKS_DOCS_URL = `https://docs.github.com/en/${
-    versions[state.version!]
-  }/developers/webhooks-and-events/webhook-events-and-payloads`;
-  const cacheFilePath = `${state.version}/webhook-events-and-payloads.html`;
+export const getHtml = async (
+  state: State & { baseUrl: string; folderName: string }
+): Promise<string> => {
+  const WEBHOOKS_DOCS_URL = state.baseUrl;
+  const cacheFilePath = `${state.folderName}/webhook-events-and-payloads.html`;
 
   try {
     if (state.cached) {
