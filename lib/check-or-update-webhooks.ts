@@ -18,7 +18,25 @@ export const checkOrUpdateWebhooks = async ({
   checkOnly,
   ghe,
   githubAE,
+  updateAll,
 }: State): Promise<void> => {
+  if (updateAll) {
+    await checkOrUpdateWebhooks({
+      cached,
+      checkOnly,
+    });
+    await checkOrUpdateWebhooks({
+      cached,
+      checkOnly,
+      ghe: "",
+    });
+    await checkOrUpdateWebhooks({
+      cached,
+      checkOnly,
+      githubAE: true,
+    });
+  }
+
   const [baseUrl, folderName] = ghe
     ? [
         `https://docs.github.com/en/enterprise-server@${ghe}/developers/webhooks-and-events/webhook-events-and-payloads`,

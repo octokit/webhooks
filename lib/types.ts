@@ -5,6 +5,7 @@ export interface State {
   checkOnly?: boolean;
   ghe?: string;
   githubAE?: boolean;
+  updateAll?: boolean;
 }
 
 export interface Webhook<TExample extends object = object> {
