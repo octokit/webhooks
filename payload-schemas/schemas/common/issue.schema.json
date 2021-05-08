@@ -76,7 +76,10 @@
       },
       "additionalProperties": false
     },
-    "body": { "type": "string", "description": "Contents of the issue" }
+    "body": {
+      "type": ["string", "null"],
+      "description": "Contents of the issue"
+    }
   },
   "additionalProperties": false,
   "title": "Issue"

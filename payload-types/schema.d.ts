@@ -2602,7 +2602,7 @@ export interface Issue {
   /**
    * Contents of the issue
    */
-  body: string;
+  body: string | null;
 }
 export interface Label {
   id: number;
