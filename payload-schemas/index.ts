@@ -33,9 +33,9 @@ readdirSync(`${schemaDir}/common`).forEach((filename) =>
 readdirSync(schemaDir)
   .filter((dir) => dir !== "common")
   .forEach((eventName) => {
-    const addedSchemas = readdirSync(
-      `${schemaDir}/${eventName}`
-    ).map((filename) => requireSchema(eventName, filename));
+    const addedSchemas = readdirSync(`${schemaDir}/${eventName}`).map(
+      (filename) => requireSchema(eventName, filename)
+    );
 
     ajv.addSchema(
       {
