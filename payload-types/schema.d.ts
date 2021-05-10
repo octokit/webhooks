@@ -398,13 +398,13 @@ export interface CheckRunCompletedEvent {
        * An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.
        */
       pull_requests: CheckRunPullRequest[];
+      deployment?: CheckRunDeployment;
       app: App;
       created_at: string;
       updated_at: string;
     };
     app: App;
     pull_requests: CheckRunPullRequest[];
-    deployment?: CheckRunDeployment;
   };
   /**
    * The action requested by the user.
@@ -439,6 +439,22 @@ export interface RepoRef {
   id: number;
   url: string;
   name: string;
+}
+/**
+ * A deployment to a repository environment. This will only be populated if the check run was created by a GitHub Actions workflow job that references an environment.
+ */
+export interface CheckRunDeployment {
+  url: string;
+  id: number;
+  node_id: string;
+  task: string;
+  original_environment: string;
+  environment: string;
+  description: string | null;
+  created_at: string;
+  updated_at: string;
+  statuses_url: string;
+  repository_url: string;
 }
 /**
  * GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
@@ -563,22 +579,6 @@ export interface User {
   received_events_url: string;
   type: "Bot" | "User" | "Organization";
   site_admin: boolean;
-}
-/**
- * A deployment to a repository environment. This will only be populated if the check run was created by a GitHub Actions workflow job that references an environment.
- */
-export interface CheckRunDeployment {
-  url: string;
-  id: number;
-  node_id: string;
-  task: string;
-  original_environment: string;
-  environment: string;
-  description: string | null;
-  created_at: string;
-  updated_at: string;
-  statuses_url: string;
-  repository_url: string;
 }
 /**
  * A git repository
@@ -830,13 +830,13 @@ export interface CheckRunCreatedEvent {
        * An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.
        */
       pull_requests: CheckRunPullRequest[];
+      deployment?: CheckRunDeployment;
       app: App;
       created_at: string;
       updated_at: string;
     };
     app: App;
     pull_requests: CheckRunPullRequest[];
-    deployment?: CheckRunDeployment;
   };
   /**
    * The action requested by the user.
@@ -935,13 +935,13 @@ export interface CheckRunRequestedActionEvent {
        * An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.
        */
       pull_requests: CheckRunPullRequest[];
+      deployment?: CheckRunDeployment;
       app: App;
       created_at: string;
       updated_at: string;
     };
     app: App;
     pull_requests: CheckRunPullRequest[];
-    deployment?: CheckRunDeployment;
   };
   /**
    * The action requested by the user.
@@ -1039,13 +1039,13 @@ export interface CheckRunRerequestedEvent {
        * An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.
        */
       pull_requests: CheckRunPullRequest[];
+      deployment?: CheckRunDeployment;
       app: App;
       created_at: string;
       updated_at: string;
     };
     app: App;
     pull_requests: CheckRunPullRequest[];
-    deployment?: CheckRunDeployment;
   };
   /**
    * The action requested by the user.
