@@ -99,10 +99,12 @@ const getActions = ($: cheerio.Root): string[] => {
 
   assert.ok(desc, `${descriptionEl} has no description!`);
 
-  const actions: string[] = (cheerio
-    .load(desc)("code")
-    .map((index, el) => $(el).text().trim())
-    .get() as string[])
+  const actions: string[] = (
+    cheerio
+      .load(desc)("code")
+      .map((index, el) => $(el).text().trim())
+      .get() as string[]
+  )
     .filter((action) => !unwantedActions.includes(action))
     .sort((a, b) => a.localeCompare(b));
 
