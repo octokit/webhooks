@@ -26,6 +26,10 @@
         "id": { "type": "integer" },
         "name": { "type": "string" },
         "active": { "type": "boolean" },
+        "app_id": {
+          "type": "integer",
+          "description": "When you register a new GitHub App, GitHub sends a ping event to the **webhook URL** you specified during registration. The event contains the `app_id`, which is required for [authenticating](https://docs.github.com/en/apps/building-integrations/setting-up-and-registering-github-apps/about-authentication-options-for-github-apps) an app."
+        },
         "events": { "type": "array", "items": { "type": "string" } },
         "config": {
           "type": "object",
