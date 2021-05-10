@@ -27,7 +27,7 @@
         "id": { "type": "integer" },
         "name": { "type": "string" },
         "active": { "type": "boolean" },
-        "events": { "type": "array", "items": { "type": "string" } },
+        "events": { "$ref": "common/webhook-events.schema.json" },
         "config": {
           "type": "object",
           "required": ["content_type", "insecure_ssl", "url"],
