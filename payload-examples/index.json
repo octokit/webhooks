@@ -14193,6 +14193,7 @@
             "private": false
           }
         ],
+        "requester": null,
         "sender": {
           "login": "octocat",
           "id": 1,

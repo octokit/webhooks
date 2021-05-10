@@ -8,6 +8,7 @@
     "repository_selection",
     "repositories_added",
     "repositories_removed",
+    "requester",
     "sender"
   ],
   "properties": {
@@ -68,6 +69,9 @@
         },
         "additionalProperties": false
       }
+    },
+    "requester": {
+      "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": "null" }]
     },
     "sender": { "$ref": "common/user.schema.json" }
   },
