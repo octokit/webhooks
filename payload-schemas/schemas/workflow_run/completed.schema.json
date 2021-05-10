@@ -15,7 +15,20 @@
         {
           "type": "object",
           "required": ["conclusion"],
-          "properties": { "conclusion": { "type": "string" } },
+          "properties": {
+            "conclusion": {
+              "type": "string",
+              "enum": [
+                "success",
+                "failure",
+                "neutral",
+                "cancelled",
+                "timed_out",
+                "action_required",
+                "stale"
+              ]
+            }
+          },
           "tsAdditionalProperties": false
         }
       ]
