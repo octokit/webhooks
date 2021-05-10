@@ -5,7 +5,10 @@
   "required": ["zen", "hook_id", "hook"],
   "properties": {
     "zen": { "type": "string" },
-    "hook_id": { "type": "integer" },
+    "hook_id": {
+      "type": "integer",
+      "description": "The ID of the webhook that triggered the ping."
+    },
     "hook": {
       "type": "object",
       "description": "The [webhook configuration](https://docs.github.com/en/rest/reference/repos#get-a-repository-webhook).",
