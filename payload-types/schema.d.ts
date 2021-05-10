@@ -155,6 +155,58 @@ export type MemberEvent =
   | MemberRemovedEvent;
 export type MembershipEvent = MembershipAddedEvent | MembershipRemovedEvent;
 export type MetaEvent = MetaDeletedEvent;
+export type WebhookEvents =
+  | (
+      | "check_run"
+      | "check_suite"
+      | "code_scanning_alert"
+      | "commit_comment"
+      | "content_reference"
+      | "create"
+      | "delete"
+      | "deployment"
+      | "deployment_review"
+      | "deployment_status"
+      | "deploy_key"
+      | "discussion"
+      | "discussion_comment"
+      | "fork"
+      | "gollum"
+      | "issues"
+      | "issue_comment"
+      | "label"
+      | "member"
+      | "membership"
+      | "meta"
+      | "milestone"
+      | "organization"
+      | "org_block"
+      | "page_build"
+      | "project"
+      | "project_card"
+      | "project_column"
+      | "public"
+      | "pull_request"
+      | "pull_request_review"
+      | "pull_request_review_comment"
+      | "push"
+      | "registry_package"
+      | "release"
+      | "repository"
+      | "repository_dispatch"
+      | "repository_import"
+      | "repository_vulnerability_alert"
+      | "secret_scanning_alert"
+      | "star"
+      | "status"
+      | "team"
+      | "team_add"
+      | "watch"
+      | "workflow_dispatch"
+      | "workflow_run"
+    )[]
+  | []
+  | ["*"];
 export type MilestoneEvent =
   | MilestoneClosedEvent
   | MilestoneCreatedEvent
@@ -443,7 +495,52 @@ export interface App {
   /**
    * The list of events for the GitHub app
    */
-  events?: string[];
+  events?: (
+    | "check_run"
+    | "check_suite"
+    | "code_scanning_alert"
+    | "commit_comment"
+    | "content_reference"
+    | "create"
+    | "delete"
+    | "deployment"
+    | "deployment_review"
+    | "deployment_status"
+    | "deploy_key"
+    | "discussion"
+    | "discussion_comment"
+    | "fork"
+    | "gollum"
+    | "issues"
+    | "issue_comment"
+    | "label"
+    | "member"
+    | "membership"
+    | "milestone"
+    | "organization"
+    | "org_block"
+    | "page_build"
+    | "project"
+    | "project_card"
+    | "project_column"
+    | "public"
+    | "pull_request"
+    | "pull_request_review"
+    | "pull_request_review_comment"
+    | "push"
+    | "registry_package"
+    | "release"
+    | "repository"
+    | "repository_dispatch"
+    | "secret_scanning_alert"
+    | "star"
+    | "status"
+    | "team"
+    | "team_add"
+    | "watch"
+    | "workflow_dispatch"
+    | "workflow_run"
+  )[];
 }
 export interface User {
   login: string;
@@ -2531,6 +2628,7 @@ export interface InstallationRepositoriesRemovedEvent {
      */
     private: boolean;
   }[];
+  requester: User | null;
   sender: User;
 }
 export interface IssueCommentCreatedEvent {
@@ -3262,9 +3360,9 @@ export interface MetaDeletedEvent {
     id: number;
     name: string;
     active: boolean;
-    events: string[];
+    events: WebhookEvents;
     config: {
-      content_type: string;
+      content_type: "json" | "form";
       insecure_ssl: string;
       url: string;
     };
@@ -3575,6 +3673,9 @@ export interface PageBuildEvent {
 }
 export interface PingEvent {
   zen: string;
+  /**
+   * The ID of the webhook that triggered the ping.
+   */
   hook_id: number;
   /**
    * The [webhook configuration](https://docs.github.com/en/rest/reference/repos#get-a-repository-webhook).
@@ -3584,9 +3685,13 @@ export interface PingEvent {
     id: number;
     name: string;
     active: boolean;
-    events: string[];
+    /**
+     * When you register a new GitHub App, GitHub sends a ping event to the **webhook URL** you specified during registration. The event contains the `app_id`, which is required for [authenticating](https://docs.github.com/en/apps/building-integrations/setting-up-and-registering-github-apps/about-authentication-options-for-github-apps) an app.
+     */
+    app_id?: number;
+    events: WebhookEvents;
     config: {
-      content_type: string;
+      content_type: "json" | "form";
       secret?: string;
       url: string;
       insecure_ssl: string;
@@ -5789,7 +5894,14 @@ export interface WorkflowRunCompletedEvent {
   sender: User;
   workflow: Workflow;
   workflow_run: WorkflowRun & {
-    conclusion: string;
+    conclusion:
+      | "success"
+      | "failure"
+      | "neutral"
+      | "cancelled"
+      | "timed_out"
+      | "action_required"
+      | "stale";
   };
   installation?: InstallationLite;
 }
@@ -5811,7 +5923,15 @@ export interface WorkflowRun {
   check_suite_url: string;
   check_suite_id: number;
   check_suite_node_id: string;
-  conclusion: string | null;
+  conclusion:
+    | "success"
+    | "failure"
+    | "neutral"
+    | "cancelled"
+    | "timed_out"
+    | "action_required"
+    | "stale"
+    | null;
   created_at: string;
   event: string;
   head_branch: string;
@@ -5828,7 +5948,7 @@ export interface WorkflowRun {
   repository: RepositoryLite;
   rerun_url: string;
   run_number: number;
-  status: string;
+  status: "requested" | "in_progress" | "completed" | "queued";
   updated_at: string;
   url: string;
   workflow_id: number;
@@ -5897,9 +6017,7 @@ export interface WorkflowRunRequestedEvent {
   repository: Repository;
   sender: User;
   workflow: Workflow;
-  workflow_run: WorkflowRun & {
-    conclusion: null;
-  };
+  workflow_run: WorkflowRun;
   installation?: InstallationLite;
 }
 
