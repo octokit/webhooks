@@ -13,10 +13,17 @@
   "properties": {
     "account": {
       "type": "object",
-      "required": ["type", "id", "login", "organization_billing_email"],
+      "required": [
+        "type",
+        "id",
+        "node_id",
+        "login",
+        "organization_billing_email"
+      ],
       "properties": {
         "type": { "type": "string" },
         "id": { "type": "integer" },
+        "node_id": { "type": "string" },
         "login": { "type": "string" },
         "organization_billing_email": { "type": "string" }
       },

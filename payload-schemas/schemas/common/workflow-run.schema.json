@@ -37,7 +37,19 @@
     "check_suite_url": { "type": "string", "format": "uri" },
     "check_suite_id": { "type": "integer" },
     "check_suite_node_id": { "type": "string" },
-    "conclusion": { "type": ["string", "null"] },
+    "conclusion": {
+      "type": ["string", "null"],
+      "enum": [
+        "success",
+        "failure",
+        "neutral",
+        "cancelled",
+        "timed_out",
+        "action_required",
+        "stale",
+        null
+      ]
+    },
     "created_at": { "type": "string", "format": "date-time" },
     "event": { "type": "string" },
     "head_branch": { "type": "string" },
@@ -57,7 +69,10 @@
     "repository": { "$ref": "repository-lite.schema.json" },
     "rerun_url": { "type": "string", "format": "uri" },
     "run_number": { "type": "integer" },
-    "status": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["requested", "in_progress", "completed", "queued"]
+    },
     "updated_at": { "type": "string", "format": "date-time" },
     "url": { "type": "string", "format": "uri" },
     "workflow_id": { "type": "integer" },
