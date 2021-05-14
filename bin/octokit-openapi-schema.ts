@@ -12,9 +12,7 @@ import {
   OpenApiMap,
   OpenApiReference,
   OpenApiPath,
-  OpenApiInfo,
   OpenApiPaths,
-  OpenApiRequestBody,
 } from "@tstypes/openapi-v3";
 import yaml from "yaml";
 
@@ -52,10 +50,7 @@ const listEvents = () => {
 // In OpenApi 3.1 you do not need a `paths` property anymore, so we omit it and re-add it as optional
 type EventSchema = Omit<OpenApi, "paths"> & {
   paths?: OpenApiPaths;
-  components: {
-    schemas: OpenApiMap<OpenApiSchema | OpenApiReference>;
-    requestBodies: OpenApiMap<OpenApiRequestBody | OpenApiReference>;
-  };
+  components: { schemas: OpenApiMap<OpenApiSchema | OpenApiReference> };
   webhooks: OpenApiMap<OpenApiReference | OpenApiPath>;
 };
 
@@ -72,7 +67,6 @@ const combineEventSchemas = () => {
     },
     components: {
       schemas: {},
-      requestBodies: {},
     },
     webhooks: {},
   };
@@ -84,7 +78,8 @@ const combineEventSchemas = () => {
 
     if (schemas.length === 1 && schemas[0] === "event.schema.json") {
       // schemas without any actions are just called "event"
-      const schema = require(`../${pathToSchemas}/${event}/event.schema.json`) as JSONSchema7;
+      const schema =
+        require(`../${pathToSchemas}/${event}/event.schema.json`) as JSONSchema7;
       const eventName = schema.$id;
 
       assert.ok(eventName, `${event}/event.schema.json does not have an $id`);
@@ -93,14 +88,7 @@ const combineEventSchemas = () => {
         schemas: {
           ...eventSchema.components.schemas,
           ...(schema.definitions as any),
-        },
-        requestBodies: {
-          ...eventSchema.components.requestBodies,
-          [eventName]: {
-            content: {
-              "application/json": { schema },
-            },
-          },
+          [eventName]: schema,
         },
       };
 
@@ -112,7 +100,7 @@ const combineEventSchemas = () => {
           requestBody: {
             content: {
               "application/json": {
-                schema: { $ref: `#/components/requestBodies/${eventName}` },
+                schema: { $ref: `#/components/schemas/${eventName}` },
               },
             },
           },
@@ -126,7 +114,8 @@ const combineEventSchemas = () => {
     }
 
     const eventActions = schemas.map((schemaName) => {
-      const schema = require(`../${pathToSchemas}/${event}/${schemaName}`) as JSONSchema7;
+      const schema =
+        require(`../${pathToSchemas}/${event}/${schemaName}`) as JSONSchema7;
       const actionEventName = schema.$id;
 
       assert.ok(actionEventName, `${event}/${schemaName} does not have an $id`);
@@ -135,14 +124,7 @@ const combineEventSchemas = () => {
         schemas: {
           ...eventSchema.components.schemas,
           ...(schema.definitions as any),
-        },
-        requestBodies: {
-          ...eventSchema.components.requestBodies,
-          [actionEventName]: {
-            content: {
-              "application/json": { schema },
-            },
-          },
+          [actionEventName]: schema,
         },
       };
 
@@ -157,21 +139,12 @@ const combineEventSchemas = () => {
     eventSchema.components = {
       schemas: {
         ...eventSchema.components.schemas,
-      },
-      requestBodies: {
-        ...eventSchema.components.requestBodies,
         [eventName]: {
-          content: {
-            "application/json": {
-              schema: {
-                oneOf: eventActions.map((eventAction) => ({
-                  $ref: `#/components/requestBodies/${eventAction}`,
-                })),
-                discriminator: {
-                  propertyName: "action",
-                },
-              },
-            },
+          oneOf: eventActions.map((eventAction) => ({
+            $ref: `#/components/schemas/${eventAction}`,
+          })),
+          discriminator: {
+            propertyName: "action",
           },
         },
       },
@@ -180,7 +153,11 @@ const combineEventSchemas = () => {
     eventSchema.webhooks[event] = {
       post: {
         requestBody: {
-          $ref: `#/components/requestBodies/${eventName}`,
+          content: {
+            "application/json": {
+              schema: { $ref: `#/components/schemas/${eventName}` },
+            },
+          },
         },
         responses: {
           "200": { description: "foo" },
@@ -195,18 +172,13 @@ const combineEventSchemas = () => {
 async function run() {
   try {
     const schema: EventSchema = combineEventSchemas();
-    const commonSchemaDefinitions = buildCommonSchemasDefinitionSchema() as Record<
-      string,
-      JSONSchema7
-    >;
+    const commonSchemaDefinitions =
+      buildCommonSchemasDefinitionSchema() as Record<string, JSONSchema7>;
 
     schema.components = {
       schemas: {
         ...schema.components.schemas,
         ...commonSchemaDefinitions,
-      },
-      requestBodies: {
-        ...schema.components.requestBodies,
       },
     };
 
