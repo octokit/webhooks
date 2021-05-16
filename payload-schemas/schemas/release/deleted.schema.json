@@ -5,63 +5,7 @@
   "required": ["action", "release", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["deleted"] },
-    "release": {
-      "type": "object",
-      "description": "The [release](https://docs.github.com/en/rest/reference/repos/#get-a-release) object.",
-      "required": [
-        "url",
-        "assets_url",
-        "upload_url",
-        "html_url",
-        "id",
-        "node_id",
-        "tag_name",
-        "target_commitish",
-        "name",
-        "draft",
-        "author",
-        "prerelease",
-        "created_at",
-        "published_at",
-        "assets",
-        "tarball_url",
-        "zipball_url",
-        "body"
-      ],
-      "properties": {
-        "url": { "type": "string", "format": "uri" },
-        "assets_url": { "type": "string", "format": "uri" },
-        "upload_url": { "type": "string", "format": "uri-template" },
-        "html_url": { "type": "string", "format": "uri" },
-        "id": { "type": "integer" },
-        "node_id": { "type": "string" },
-        "tag_name": { "type": "string", "description": "The name of the tag." },
-        "target_commitish": {
-          "type": "string",
-          "description": "Specifies the commitish value that determines where the Git tag is created from."
-        },
-        "name": { "type": "null" },
-        "draft": {
-          "type": "boolean",
-          "description": "true to create a draft (unpublished) release, false to create a published one."
-        },
-        "author": { "$ref": "common/user.schema.json" },
-        "prerelease": {
-          "type": "boolean",
-          "description": "Whether the release is identified as a prerelease or a full release."
-        },
-        "created_at": { "type": ["string", "null"], "format": "date-time" },
-        "published_at": { "type": ["string", "null"], "format": "date-time" },
-        "assets": {
-          "type": "array",
-          "items": { "$ref": "common/release-asset.schema.json" }
-        },
-        "tarball_url": { "type": ["string", "null"], "format": "uri" },
-        "zipball_url": { "type": ["string", "null"], "format": "uri" },
-        "body": { "type": ["string", "null"] }
-      },
-      "additionalProperties": false
-    },
+    "release": { "$ref": "common/release.schema.json" },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },

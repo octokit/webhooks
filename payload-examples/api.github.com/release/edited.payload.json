@@ -1,5 +1,13 @@
 {
-  "action": "created",
+  "action": "edited",
+  "changes": {
+    "name": {
+      "from": "FOO"
+    },
+    "body": {
+      "from": ""
+    }
+  },
   "release": {
     "url": "https://api.github.com/repos/Codertocat/Hello-World/releases/17372790",
     "assets_url": "https://api.github.com/repos/Codertocat/Hello-World/releases/17372790/assets",

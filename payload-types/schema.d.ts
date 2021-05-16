@@ -3970,7 +3970,7 @@ export interface PullRequest {
    */
   title: string;
   user: User;
-  body: string;
+  body: string | null;
   created_at: string;
   updated_at: string;
   closed_at: string | null;
@@ -4835,45 +4835,46 @@ export interface Commit {
 }
 export interface ReleaseCreatedEvent {
   action: "created";
-  /**
-   * The [release](https://docs.github.com/en/rest/reference/repos/#get-a-release) object.
-   */
-  release: {
-    url: string;
-    assets_url: string;
-    upload_url: string;
-    html_url: string;
-    id: number;
-    node_id: string;
-    /**
-     * The name of the tag.
-     */
-    tag_name: string;
-    /**
-     * Specifies the commitish value that determines where the Git tag is created from.
-     */
-    target_commitish: string;
-    name: null;
-    /**
-     * true to create a draft (unpublished) release, false to create a published one.
-     */
-    draft: boolean;
-    author: User;
-    /**
-     * Whether the release is identified as a prerelease or a full release.
-     */
-    prerelease: boolean;
-    created_at: string | null;
-    published_at: string | null;
-    assets: ReleaseAsset[];
-    tarball_url: string | null;
-    zipball_url: string | null;
-    body: string | null;
-  };
+  release: Release;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
+}
+/**
+ * The [release](https://docs.github.com/en/rest/reference/repos/#get-a-release) object.
+ */
+export interface Release {
+  url: string;
+  assets_url: string;
+  upload_url: string;
+  html_url: string;
+  id: number;
+  node_id: string;
+  /**
+   * The name of the tag.
+   */
+  tag_name: string;
+  /**
+   * Specifies the commitish value that determines where the Git tag is created from.
+   */
+  target_commitish: string;
+  name: string;
+  /**
+   * Wether the release is a draft or published
+   */
+  draft: boolean;
+  author: User;
+  /**
+   * Whether the release is identified as a prerelease or a full release.
+   */
+  prerelease: boolean;
+  created_at: string | null;
+  published_at: string | null;
+  assets: ReleaseAsset[];
+  tarball_url: string | null;
+  zipball_url: string | null;
+  body: string;
 }
 /**
  * Data related to a release.
@@ -4901,41 +4902,7 @@ export interface ReleaseAsset {
 }
 export interface ReleaseDeletedEvent {
   action: "deleted";
-  /**
-   * The [release](https://docs.github.com/en/rest/reference/repos/#get-a-release) object.
-   */
-  release: {
-    url: string;
-    assets_url: string;
-    upload_url: string;
-    html_url: string;
-    id: number;
-    node_id: string;
-    /**
-     * The name of the tag.
-     */
-    tag_name: string;
-    /**
-     * Specifies the commitish value that determines where the Git tag is created from.
-     */
-    target_commitish: string;
-    name: null;
-    /**
-     * true to create a draft (unpublished) release, false to create a published one.
-     */
-    draft: boolean;
-    author: User;
-    /**
-     * Whether the release is identified as a prerelease or a full release.
-     */
-    prerelease: boolean;
-    created_at: string | null;
-    published_at: string | null;
-    assets: ReleaseAsset[];
-    tarball_url: string | null;
-    zipball_url: string | null;
-    body: string | null;
-  };
+  release: Release;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -4957,41 +4924,7 @@ export interface ReleaseEditedEvent {
       from: string;
     };
   };
-  /**
-   * The [release](https://docs.github.com/en/rest/reference/repos/#get-a-release) object.
-   */
-  release: {
-    url: string;
-    assets_url: string;
-    upload_url: string;
-    html_url: string;
-    id: number;
-    node_id: string;
-    /**
-     * The name of the tag.
-     */
-    tag_name: string;
-    /**
-     * Specifies the commitish value that determines where the Git tag is created from.
-     */
-    target_commitish: string;
-    name: null;
-    /**
-     * true to create a draft (unpublished) release, false to create a published one.
-     */
-    draft: boolean;
-    author: User;
-    /**
-     * Whether the release is identified as a prerelease or a full release.
-     */
-    prerelease: boolean;
-    created_at: string | null;
-    published_at: string | null;
-    assets: ReleaseAsset[];
-    tarball_url: string | null;
-    zipball_url: string | null;
-    body: string | null;
-  };
+  release: Release;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -4999,40 +4932,11 @@ export interface ReleaseEditedEvent {
 }
 export interface ReleasePrereleasedEvent {
   action: "prereleased";
-  /**
-   * The [release](https://docs.github.com/en/rest/reference/repos/#get-a-release) object.
-   */
-  release: {
-    url: string;
-    assets_url: string;
-    upload_url: string;
-    html_url: string;
-    id: number;
-    node_id: string;
-    /**
-     * The name of the tag.
-     */
-    tag_name: string;
-    /**
-     * Specifies the commitish value that determines where the Git tag is created from.
-     */
-    target_commitish: string;
-    name: null;
-    /**
-     * true to create a draft (unpublished) release, false to create a published one.
-     */
-    draft: boolean;
-    author: User;
+  release: Release & {
     /**
      * Whether the release is identified as a prerelease or a full release.
      */
     prerelease: true;
-    created_at: string | null;
-    published_at: string | null;
-    assets: ReleaseAsset[];
-    tarball_url: string | null;
-    zipball_url: string | null;
-    body: string | null;
   };
   repository: Repository;
   sender: User;
@@ -5041,40 +4945,8 @@ export interface ReleasePrereleasedEvent {
 }
 export interface ReleasePublishedEvent {
   action: "published";
-  /**
-   * The [release](https://docs.github.com/en/rest/reference/repos/#get-a-release) object.
-   */
-  release: {
-    url: string;
-    assets_url: string;
-    upload_url: string;
-    html_url: string;
-    id: number;
-    node_id: string;
-    /**
-     * The name of the tag.
-     */
-    tag_name: string;
-    /**
-     * Specifies the commitish value that determines where the Git tag is created from.
-     */
-    target_commitish: string;
-    name: null;
-    /**
-     * true to create a draft (unpublished) release, false to create a published one.
-     */
-    draft: boolean;
-    author: User;
-    /**
-     * Whether the release is identified as a prerelease or a full release.
-     */
-    prerelease: boolean;
-    created_at: string | null;
-    published_at: string | null;
-    assets: ReleaseAsset[];
-    tarball_url: string | null;
-    zipball_url: string | null;
-    body: string | null;
+  release: Release & {
+    published_at: string;
   };
   repository: Repository;
   sender: User;
@@ -5083,41 +4955,7 @@ export interface ReleasePublishedEvent {
 }
 export interface ReleaseReleasedEvent {
   action: "released";
-  /**
-   * The [release](https://docs.github.com/en/rest/reference/repos/#get-a-release) object.
-   */
-  release: {
-    url: string;
-    assets_url: string;
-    upload_url: string;
-    html_url: string;
-    id: number;
-    node_id: string;
-    /**
-     * The name of the tag.
-     */
-    tag_name: string;
-    /**
-     * Specifies the commitish value that determines where the Git tag is created from.
-     */
-    target_commitish: string;
-    name: null;
-    /**
-     * true to create a draft (unpublished) release, false to create a published one.
-     */
-    draft: boolean;
-    author: User;
-    /**
-     * Whether the release is identified as a prerelease or a full release.
-     */
-    prerelease: boolean;
-    created_at: string | null;
-    published_at: string | null;
-    assets: ReleaseAsset[];
-    tarball_url: string | null;
-    zipball_url: string | null;
-    body: string | null;
-  };
+  release: Release;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -5125,40 +4963,8 @@ export interface ReleaseReleasedEvent {
 }
 export interface ReleaseUnpublishedEvent {
   action: "unpublished";
-  /**
-   * The [release](https://docs.github.com/en/rest/reference/repos/#get-a-release) object.
-   */
-  release: {
-    url: string;
-    assets_url: string;
-    upload_url: string;
-    html_url: string;
-    id: number;
-    node_id: string;
-    /**
-     * The name of the tag.
-     */
-    tag_name: string;
-    /**
-     * Specifies the commitish value that determines where the Git tag is created from.
-     */
-    target_commitish: string;
-    name: null;
-    /**
-     * true to create a draft (unpublished) release, false to create a published one.
-     */
-    draft: boolean;
-    author: User;
-    /**
-     * Whether the release is identified as a prerelease or a full release.
-     */
-    prerelease: boolean;
-    created_at: string | null;
-    published_at: string | null;
-    assets: ReleaseAsset[];
-    tarball_url: string | null;
-    zipball_url: string | null;
-    body: string | null;
+  release: Release & {
+    published_at: null;
   };
   repository: Repository;
   sender: User;

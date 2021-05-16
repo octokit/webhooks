@@ -75,7 +75,7 @@
       "description": "The title of the pull request."
     },
     "user": { "$ref": "user.schema.json" },
-    "body": { "type": "string" },
+    "body": { "type": ["string", "null"] },
     "created_at": { "type": "string", "format": "date-time" },
     "updated_at": { "type": "string", "format": "date-time" },
     "closed_at": { "type": ["string", "null"], "format": "date-time" },
