@@ -3970,7 +3970,7 @@ export interface PullRequest {
    */
   title: string;
   user: User;
-  body: string;
+  body: string | null;
   created_at: string;
   updated_at: string;
   closed_at: string | null;
