@@ -34,7 +34,7 @@
       "type": "string",
       "description": "Specifies the commitish value that determines where the Git tag is created from."
     },
-    "name": { "type": ["string"] },
+    "name": { "type": ["string", "null"] },
     "draft": {
       "type": "boolean",
       "description": "Wether the release is a draft or published"
