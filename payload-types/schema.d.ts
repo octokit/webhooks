@@ -4859,7 +4859,7 @@ export interface Release {
    * Specifies the commitish value that determines where the Git tag is created from.
    */
   target_commitish: string;
-  name: string | null;
+  name: string;
   /**
    * Wether the release is a draft or published
    */
@@ -4874,7 +4874,7 @@ export interface Release {
   assets: ReleaseAsset[];
   tarball_url: string | null;
   zipball_url: string | null;
-  body: string | null;
+  body: string;
 }
 /**
  * Data related to a release.

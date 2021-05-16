@@ -34,7 +34,7 @@
       "type": "string",
       "description": "Specifies the commitish value that determines where the Git tag is created from."
     },
-    "name": { "type": ["string", "null"] },
+    "name": { "type": "string" },
     "draft": {
       "type": "boolean",
       "description": "Wether the release is a draft or published"
@@ -52,7 +52,7 @@
     },
     "tarball_url": { "type": ["string", "null"], "format": "uri" },
     "zipball_url": { "type": ["string", "null"], "format": "uri" },
-    "body": { "type": ["string", "null"] }
+    "body": { "type": "string" }
   },
   "additionalProperties": false,
   "description": "The [release](https://docs.github.com/en/rest/reference/repos/#get-a-release) object.",
