@@ -10,10 +10,7 @@
       "enum": ["assigned"],
       "description": "The action that was performed."
     },
-    "issue": {
-      "$ref": "common/issue.schema.json",
-      "description": "The [issue](https://docs.github.com/en/rest/reference/issues) itself."
-    },
+    "issue": { "$ref": "common/issue.schema.json" },
     "assignee": {
       "description": "The optional user who was assigned or unassigned from the issue.",
       "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": "null" }]

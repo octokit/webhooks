@@ -2657,6 +2657,9 @@ export interface IssueCommentCreatedEvent {
   installation?: InstallationLite;
   organization?: Organization;
 }
+/**
+ * The [issue](https://docs.github.com/en/rest/reference/issues) itself.
+ */
 export interface Issue {
   /**
    * URL for the issue
