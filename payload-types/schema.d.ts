@@ -2883,7 +2883,10 @@ export interface IssuesDeletedEvent {
 }
 export interface IssuesDemilestonedEvent {
   action: "demilestoned";
-  issue: Issue;
+  issue: Issue & {
+    milestone: null;
+  };
+  milestone: Milestone;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2937,7 +2940,10 @@ export interface IssuesLockedEvent {
 }
 export interface IssuesMilestonedEvent {
   action: "milestoned";
-  issue: Issue;
+  issue: Issue & {
+    milestone: Milestone;
+  };
+  milestone: Milestone;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;

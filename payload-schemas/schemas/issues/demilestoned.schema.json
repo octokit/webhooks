@@ -2,13 +2,21 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "issues$demilestoned",
   "type": "object",
-  "required": ["action", "issue", "repository", "sender"],
+  "required": ["action", "issue", "milestone", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["demilestoned"] },
     "issue": {
-      "$ref": "common/issue.schema.json",
-      "description": "The [issue](https://docs.github.com/en/rest/reference/issues) itself."
+      "allOf": [
+        { "$ref": "common/issue.schema.json" },
+        {
+          "type": "object",
+          "required": ["milestone"],
+          "properties": { "milestone": { "type": "null" } },
+          "tsAdditionalProperties": false
+        }
+      ]
     },
+    "milestone": { "$ref": "common/milestone.schema.json" },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },
