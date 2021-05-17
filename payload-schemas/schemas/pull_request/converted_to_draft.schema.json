@@ -14,7 +14,6 @@
           "required": [
             "closed_at",
             "merged_at",
-            "merge_commit_sha",
             "draft",
             "merged",
             "merged_by"
@@ -22,7 +21,6 @@
           "properties": {
             "closed_at": { "type": "null" },
             "merged_at": { "type": "null" },
-            "merge_commit_sha": { "type": "null" },
             "draft": {
               "type": "boolean",
               "enum": [true],
