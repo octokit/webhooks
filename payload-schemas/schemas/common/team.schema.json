@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "comon/team.schema.json",
+  "$id": "common/team.schema.json",
   "description": "Groups of organization members that gives permissions on specified repositories.",
   "type": "object",
   "required": [
