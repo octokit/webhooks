@@ -205,7 +205,6 @@ export type WebhookEvents =
       | "workflow_dispatch"
       | "workflow_run"
     )[]
-  | []
   | ["*"];
 export type MilestoneEvent =
   | MilestoneClosedEvent
@@ -256,6 +255,60 @@ export type PullRequestEvent =
   | PullRequestUnassignedEvent
   | PullRequestUnlabeledEvent
   | PullRequestUnlockedEvent;
+export type PullRequestReviewRequestRemovedEvent =
+  | {
+      action: "review_request_removed";
+      /**
+       * The pull request number.
+       */
+      number: number;
+      pull_request: PullRequest;
+      requested_reviewer: User;
+      repository: Repository;
+      installation?: InstallationLite;
+      organization?: Organization;
+      sender: User;
+    }
+  | {
+      action: "review_request_removed";
+      /**
+       * The pull request number.
+       */
+      number: number;
+      pull_request: PullRequest;
+      requested_team: Team;
+      repository: Repository;
+      installation?: InstallationLite;
+      organization?: Organization;
+      sender: User;
+    };
+export type PullRequestReviewRequestedEvent =
+  | {
+      action: "review_requested";
+      /**
+       * The pull request number.
+       */
+      number: number;
+      pull_request: PullRequest;
+      requested_reviewer: User;
+      repository: Repository;
+      installation?: InstallationLite;
+      organization?: Organization;
+      sender: User;
+    }
+  | {
+      action: "review_requested";
+      /**
+       * The pull request number.
+       */
+      number: number;
+      pull_request: PullRequest;
+      requested_team: Team;
+      repository: Repository;
+      installation?: InstallationLite;
+      organization?: Organization;
+      sender: User;
+    };
 export type PullRequestReviewEvent =
   | PullRequestReviewDismissedEvent
   | PullRequestReviewEditedEvent
@@ -507,6 +560,7 @@ export interface App {
     statuses?: "read" | "write";
     team_discussions?: "read" | "write";
     vulnerability_alerts?: "read" | "write";
+    workflows?: "read" | "write";
   };
   /**
    * The list of events for the GitHub app
@@ -3873,7 +3927,7 @@ export interface ProjectCardMovedEvent {
     };
   };
   project_card: ProjectCard & {
-    after_id: null;
+    after_id: number | null;
   };
   repository: Repository;
   sender: User;
@@ -4213,32 +4267,6 @@ export interface PullRequestReopenedEvent {
     merged: boolean;
     merged_by: null;
   };
-  repository: Repository;
-  installation?: InstallationLite;
-  organization?: Organization;
-  sender: User;
-}
-export interface PullRequestReviewRequestRemovedEvent {
-  action: "review_request_removed";
-  /**
-   * The pull request number.
-   */
-  number: number;
-  pull_request: PullRequest;
-  requested_reviewer: User;
-  repository: Repository;
-  installation?: InstallationLite;
-  organization?: Organization;
-  sender: User;
-}
-export interface PullRequestReviewRequestedEvent {
-  action: "review_requested";
-  /**
-   * The pull request number.
-   */
-  number: number;
-  pull_request: PullRequest;
-  requested_reviewer: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
