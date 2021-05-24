@@ -70,7 +70,8 @@
         "security_events": { "type": "string", "enum": ["read", "write"] },
         "statuses": { "type": "string", "enum": ["read", "write"] },
         "team_discussions": { "type": "string", "enum": ["read", "write"] },
-        "vulnerability_alerts": { "type": "string", "enum": ["read", "write"] }
+        "vulnerability_alerts": { "type": "string", "enum": ["read", "write"] },
+        "workflows": { "type": "string", "enum": ["read", "write"] }
       },
       "additionalProperties": false
     },
