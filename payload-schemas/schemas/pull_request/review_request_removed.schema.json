@@ -1,25 +1,57 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "pull_request$review_request_removed",
-  "type": "object",
-  "required": [
-    "action",
-    "number",
-    "pull_request",
-    "requested_reviewer",
-    "repository",
-    "sender"
+  "oneOf": [
+    {
+      "type": "object",
+      "required": [
+        "action",
+        "number",
+        "pull_request",
+        "requested_reviewer",
+        "repository",
+        "sender"
+      ],
+      "properties": {
+        "action": { "type": "string", "enum": ["review_request_removed"] },
+        "number": {
+          "type": "integer",
+          "description": "The pull request number."
+        },
+        "pull_request": { "$ref": "common/pull-request.schema.json" },
+        "requested_reviewer": { "$ref": "common/user.schema.json" },
+        "repository": { "$ref": "common/repository.schema.json" },
+        "installation": { "$ref": "common/installation-lite.schema.json" },
+        "organization": { "$ref": "common/organization.schema.json" },
+        "sender": { "$ref": "common/user.schema.json" }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": [
+        "action",
+        "number",
+        "pull_request",
+        "requested_team",
+        "repository",
+        "sender"
+      ],
+      "properties": {
+        "action": { "type": "string", "enum": ["review_request_removed"] },
+        "number": {
+          "type": "integer",
+          "description": "The pull request number."
+        },
+        "pull_request": { "$ref": "common/pull-request.schema.json" },
+        "requested_team": { "$ref": "common/team.schema.json" },
+        "repository": { "$ref": "common/repository.schema.json" },
+        "installation": { "$ref": "common/installation-lite.schema.json" },
+        "organization": { "$ref": "common/organization.schema.json" },
+        "sender": { "$ref": "common/user.schema.json" }
+      },
+      "additionalProperties": false
+    }
   ],
-  "properties": {
-    "action": { "type": "string", "enum": ["review_request_removed"] },
-    "number": { "type": "integer", "description": "The pull request number." },
-    "pull_request": { "$ref": "common/pull-request.schema.json" },
-    "requested_reviewer": { "$ref": "common/user.schema.json" },
-    "repository": { "$ref": "common/repository.schema.json" },
-    "installation": { "$ref": "common/installation-lite.schema.json" },
-    "organization": { "$ref": "common/organization.schema.json" },
-    "sender": { "$ref": "common/user.schema.json" }
-  },
-  "additionalProperties": false,
   "title": "pull_request review_request_removed event"
 }

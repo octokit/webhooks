@@ -205,7 +205,6 @@ export type WebhookEvents =
       | "workflow_dispatch"
       | "workflow_run"
     )[]
-  | []
   | ["*"];
 export type MilestoneEvent =
   | MilestoneClosedEvent
@@ -256,6 +255,60 @@ export type PullRequestEvent =
   | PullRequestUnassignedEvent
   | PullRequestUnlabeledEvent
   | PullRequestUnlockedEvent;
+export type PullRequestReviewRequestRemovedEvent =
+  | {
+      action: "review_request_removed";
+      /**
+       * The pull request number.
+       */
+      number: number;
+      pull_request: PullRequest;
+      requested_reviewer: User;
+      repository: Repository;
+      installation?: InstallationLite;
+      organization?: Organization;
+      sender: User;
+    }
+  | {
+      action: "review_request_removed";
+      /**
+       * The pull request number.
+       */
+      number: number;
+      pull_request: PullRequest;
+      requested_team: Team;
+      repository: Repository;
+      installation?: InstallationLite;
+      organization?: Organization;
+      sender: User;
+    };
+export type PullRequestReviewRequestedEvent =
+  | {
+      action: "review_requested";
+      /**
+       * The pull request number.
+       */
+      number: number;
+      pull_request: PullRequest;
+      requested_reviewer: User;
+      repository: Repository;
+      installation?: InstallationLite;
+      organization?: Organization;
+      sender: User;
+    }
+  | {
+      action: "review_requested";
+      /**
+       * The pull request number.
+       */
+      number: number;
+      pull_request: PullRequest;
+      requested_team: Team;
+      repository: Repository;
+      installation?: InstallationLite;
+      organization?: Organization;
+      sender: User;
+    };
 export type PullRequestReviewEvent =
   | PullRequestReviewDismissedEvent
   | PullRequestReviewEditedEvent
@@ -507,6 +560,7 @@ export interface App {
     statuses?: "read" | "write";
     team_discussions?: "read" | "write";
     vulnerability_alerts?: "read" | "write";
+    workflows?: "read" | "write";
   };
   /**
    * The list of events for the GitHub app
@@ -2657,6 +2711,9 @@ export interface IssueCommentCreatedEvent {
   installation?: InstallationLite;
   organization?: Organization;
 }
+/**
+ * The [issue](https://docs.github.com/en/rest/reference/issues) itself.
+ */
 export interface Issue {
   /**
    * URL for the issue
@@ -2883,7 +2940,10 @@ export interface IssuesDeletedEvent {
 }
 export interface IssuesDemilestonedEvent {
   action: "demilestoned";
-  issue: Issue;
+  issue: Issue & {
+    milestone: null;
+  };
+  milestone: Milestone;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2937,7 +2997,10 @@ export interface IssuesLockedEvent {
 }
 export interface IssuesMilestonedEvent {
   action: "milestoned";
-  issue: Issue;
+  issue: Issue & {
+    milestone: Milestone;
+  };
+  milestone: Milestone;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -3488,7 +3551,20 @@ export interface OrganizationMemberInvitedEvent {
   /**
    * The invitation for the user or email if the action is `member_invited`.
    */
-  invitation: {};
+  invitation: {
+    id: number;
+    node_id: string;
+    login: string;
+    email: string | null;
+    role: string;
+    created_at: string;
+    failed_at: string | null;
+    failed_reason: string | null;
+    inviter: User;
+    team_count: number;
+    invitation_teams_url: string;
+  };
+  user: User;
   sender: User;
   installation?: InstallationLite;
   organization: Organization;
@@ -3864,7 +3940,7 @@ export interface ProjectCardMovedEvent {
     };
   };
   project_card: ProjectCard & {
-    after_id: null;
+    after_id: number | null;
   };
   repository: Repository;
   sender: User;
@@ -4083,12 +4159,11 @@ export interface PullRequestConvertedToDraftEvent {
   pull_request: PullRequest & {
     closed_at: null;
     merged_at: null;
-    merge_commit_sha: null;
     /**
      * Indicates whether or not the pull request is a draft.
      */
     draft: true;
-    merged: boolean;
+    merged: false;
     merged_by: null;
   };
   repository: Repository;
@@ -4179,7 +4254,6 @@ export interface PullRequestReadyForReviewEvent {
     state: "open";
     closed_at: null;
     merged_at: null;
-    merge_commit_sha: null;
     /**
      * Indicates whether or not the pull request is a draft.
      */
@@ -4206,32 +4280,6 @@ export interface PullRequestReopenedEvent {
     merged: boolean;
     merged_by: null;
   };
-  repository: Repository;
-  installation?: InstallationLite;
-  organization?: Organization;
-  sender: User;
-}
-export interface PullRequestReviewRequestRemovedEvent {
-  action: "review_request_removed";
-  /**
-   * The pull request number.
-   */
-  number: number;
-  pull_request: PullRequest;
-  requested_reviewer: User;
-  repository: Repository;
-  installation?: InstallationLite;
-  organization?: Organization;
-  sender: User;
-}
-export interface PullRequestReviewRequestedEvent {
-  action: "review_requested";
-  /**
-   * The pull request number.
-   */
-  number: number;
-  pull_request: PullRequest;
-  requested_reviewer: User;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;

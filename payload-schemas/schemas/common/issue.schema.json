@@ -1,6 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "common/issue.schema.json",
+  "description": "The [issue](https://docs.github.com/en/rest/reference/issues) itself.",
   "required": [
     "url",
     "repository_url",
