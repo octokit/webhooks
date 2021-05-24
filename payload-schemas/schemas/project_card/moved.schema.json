@@ -24,7 +24,7 @@
         {
           "type": "object",
           "required": ["after_id"],
-          "properties": { "after_id": { "type": "null" } },
+          "properties": { "after_id": { "type": ["number", "null"] } },
           "tsAdditionalProperties": false
         }
       ]
