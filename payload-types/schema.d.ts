@@ -541,6 +541,7 @@ export interface App {
     checks?: "read" | "write";
     contents?: "read" | "write";
     deployments?: "read" | "write";
+    discussions?: "read" | "write";
     issues?: "read" | "write";
     members?: "read" | "write";
     emails?: "read" | "write";

@@ -40,6 +40,7 @@
         "checks": { "type": "string", "enum": ["read", "write"] },
         "contents": { "type": "string", "enum": ["read", "write"] },
         "deployments": { "type": "string", "enum": ["read", "write"] },
+        "discussions": { "type": "string", "enum": ["read", "write"] },
         "issues": { "type": "string", "enum": ["read", "write"] },
         "members": { "type": "string", "enum": ["read", "write"] },
         "emails": { "type": "string", "enum": ["read", "write"] },
