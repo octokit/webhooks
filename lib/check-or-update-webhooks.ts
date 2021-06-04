@@ -37,6 +37,20 @@ export const checkOrUpdateWebhooks = async ({
     });
   }
 
+  if (ghe === "") {
+    const gheVersions = ["2.19", "2.20", "2.21", "2.22", "3.0"];
+
+    for (let gheVersion of gheVersions) {
+      await checkOrUpdateWebhooks({
+        cached,
+        checkOnly,
+        ghe: gheVersion,
+      });
+    }
+
+    return;
+  }
+
   const [baseUrl, folderName] = ghe
     ? [
         `https://docs.github.com/en/enterprise-server@${ghe}/developers/webhooks-and-events/webhook-events-and-payloads`,
@@ -51,20 +65,6 @@ export const checkOrUpdateWebhooks = async ({
         "https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/webhook-events-and-payloads",
         "api.github.com",
       ];
-
-  if (ghe === "") {
-    const gheVersions = ["2.19", "2.20", "2.21", "2.22", "3.0"];
-
-    for (let gheVersion of gheVersions) {
-      await checkOrUpdateWebhooks({
-        cached,
-        checkOnly,
-        ghe: gheVersion,
-      });
-    }
-
-    return;
-  }
 
   const currentWebhooks = JSON.parse(
     readFileSync(`./payload-examples/${folderName}/index.json`).toString()
