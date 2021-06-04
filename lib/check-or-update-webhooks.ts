@@ -72,9 +72,8 @@ export const checkOrUpdateWebhooks = async ({
   const html = await getHtml({ cached, baseUrl, folderName });
   const sections = getSections(html);
   const webhooksFromScrapingDocs = sections.map(toWebhook).filter(isNotNull);
-  const webhooksFromPayloadExamplesByName = getActionsAndExamplesFromPayloads(
-    folderName
-  );
+  const webhooksFromPayloadExamplesByName =
+    getActionsAndExamplesFromPayloads(folderName);
 
   const webhooks = webhooksFromScrapingDocs.map((webhook) => {
     const name = webhook.name;
