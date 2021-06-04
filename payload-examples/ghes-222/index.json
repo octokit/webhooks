@@ -6400,7 +6400,7 @@
   },
   {
     "name": "issue_comment",
-    "description": "Activity related to an issue comment. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[issue comments](https://docs.github.com/en/enterprise-server@2.22/rest/reference/issues#comments)\" REST API.",
+    "description": "Activity related to an issue or pull request comment. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[issue comments](https://docs.github.com/en/enterprise-server@2.22/rest/reference/issues#comments)\" REST API.",
     "actions": ["created", "deleted", "edited"],
     "properties": {
       "changes": {
