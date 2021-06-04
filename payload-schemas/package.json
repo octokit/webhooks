@@ -6,9 +6,9 @@
   "repository": "github:octokit/webhooks",
   "license": "MIT",
   "author": "Gregor Martynus (https://github.com/gr2m)",
-  "main": "schema.json",
+  "main": "api.github.com/schema.json",
   "files": [
-    "schema.json"
+    "api.github.com/schema.json"
   ],
   "scripts": {},
   "dependencies": {},

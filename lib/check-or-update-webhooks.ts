@@ -1,4 +1,4 @@
-import { writeFileSync } from "fs";
+import { writeFileSync, readFileSync } from "fs";
 import { diff, diffString } from "json-diff";
 import prettier from "prettier";
 import {
@@ -10,24 +10,76 @@ import {
   getSections,
   toWebhook,
 } from ".";
-import currentWebhooks from "../payload-examples/index.json";
 
 const isNotNull = <T>(value: T | null): value is T => value !== null;
 
 export const checkOrUpdateWebhooks = async ({
   cached,
   checkOnly,
+  ghe,
+  githubAE,
+  updateAll,
 }: State): Promise<void> => {
-  const html = await getHtml({ cached });
+  if (updateAll) {
+    await checkOrUpdateWebhooks({
+      cached,
+      checkOnly,
+    });
+    await checkOrUpdateWebhooks({
+      cached,
+      checkOnly,
+      ghe: "",
+    });
+    await checkOrUpdateWebhooks({
+      cached,
+      checkOnly,
+      githubAE: true,
+    });
+  }
+
+  if (ghe === "") {
+    const gheVersions = ["2.19", "2.20", "2.21", "2.22", "3.0", "3.1"];
+
+    for (let gheVersion of gheVersions) {
+      await checkOrUpdateWebhooks({
+        cached,
+        checkOnly,
+        ghe: gheVersion,
+      });
+    }
+
+    return;
+  }
+
+  const [baseUrl, folderName] = ghe
+    ? [
+        `https://docs.github.com/en/enterprise-server@${ghe}/developers/webhooks-and-events/webhook-events-and-payloads`,
+        `ghes-${ghe.replace(".", "")}`,
+      ]
+    : githubAE
+    ? [
+        "https://docs.github.com/en/github-ae@latest/developers/webhooks-and-events/webhook-events-and-payloads",
+        "github.ae",
+      ]
+    : [
+        "https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/webhook-events-and-payloads",
+        "api.github.com",
+      ];
+
+  const currentWebhooks = JSON.parse(
+    readFileSync(`./payload-examples/${folderName}/index.json`).toString()
+  );
+  const html = await getHtml({ cached, baseUrl, folderName });
   const sections = getSections(html);
   const webhooksFromScrapingDocs = sections.map(toWebhook).filter(isNotNull);
-  const webhooksFromPayloadExamplesByName = getActionsAndExamplesFromPayloads();
+  const webhooksFromPayloadExamplesByName =
+    getActionsAndExamplesFromPayloads(folderName);
 
   const webhooks = webhooksFromScrapingDocs.map((webhook) => {
     const name = webhook.name;
 
     if (!(name in webhooksFromPayloadExamplesByName)) {
-      console.warn(`No payload examples for ${name}`);
+      console.warn(`[${folderName}] No payload examples for ${name}`);
 
       return webhook;
     }
@@ -48,12 +100,12 @@ export const checkOrUpdateWebhooks = async ({
   applyWorkarounds(webhooks as WorkableWebhook[]);
 
   if (!diff(currentWebhooks, webhooks)) {
-    console.log("✅  webhooks are up-to-date");
+    console.log(`✅  webhooks ${folderName} are up-to-date`);
 
     return;
   }
 
-  console.log("❌  webhooks are not up-to-date");
+  console.log(`❌  webhooks ${folderName} are not up-to-date`);
   console.log(diffString(currentWebhooks, webhooks));
 
   if (checkOnly) {
@@ -63,10 +115,8 @@ export const checkOrUpdateWebhooks = async ({
   }
 
   writeFileSync(
-    "./payload-examples/index.json",
-    prettier.format(JSON.stringify(webhooks, null, 2), {
-      parser: "json",
-    })
+    `./payload-examples/${folderName}/index.json`,
+    prettier.format(JSON.stringify(webhooks, null, 2), { parser: "json" })
   );
-  console.log("✏️  index.json written");
+  console.log(`✏️  ${folderName}/index.json, written`);
 };

@@ -3,6 +3,9 @@ import { JSONSchema7TypeName } from "json-schema";
 export interface State {
   cached?: boolean;
   checkOnly?: boolean;
+  ghe?: string;
+  githubAE?: boolean;
+  updateAll?: boolean;
 }
 
 export interface Webhook<TExample extends object = object> {

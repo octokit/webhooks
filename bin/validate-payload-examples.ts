@@ -34,6 +34,7 @@ const printAjvErrors = () => {
 };
 
 forEachJsonFile(pathToPayloads, (filePath) => {
+  if (filePath.includes("/index.json")) return;
   const file = require(`../${filePath}`) as unknown;
   const { dir: event, base: filename } = path.parse(
     path.relative(pathToPayloads, filePath)

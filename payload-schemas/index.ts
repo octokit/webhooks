@@ -11,7 +11,7 @@ export const ajv = new Ajv({
 
 addFormats(ajv);
 
-const schemaDir = resolve(__dirname, "schemas");
+const schemaDir = resolve(__dirname, "api.github.com");
 
 const requireSchema = (
   event: string,
@@ -30,7 +30,9 @@ ajv.addKeyword("tsAdditionalProperties");
 readdirSync(`${schemaDir}/common`).forEach((filename) =>
   requireSchema("common", filename)
 );
-readdirSync(schemaDir)
+readdirSync(schemaDir, { withFileTypes: true })
+  .filter((entity) => entity.isDirectory())
+  .map((entity) => entity.name)
   .filter((dir) => dir !== "common")
   .forEach((eventName) => {
     const addedSchemas = readdirSync(`${schemaDir}/${eventName}`).map(

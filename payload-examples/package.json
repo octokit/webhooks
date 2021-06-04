@@ -6,10 +6,10 @@
   "repository": "github:octokit/webhooks",
   "license": "MIT",
   "author": "Gregor Martynus (https://github.com/gr2m)",
-  "main": "index.json",
+  "main": "api.github.com/index.json",
   "files": [
     "index.d.ts",
-    "index.json"
+    "api.github.com/index.json"
   ],
   "scripts": {},
   "dependencies": {
