@@ -11,8 +11,10 @@ type Join<T extends unknown[], D extends string> = T extends []
   ? `${T[0]}${D}${Join<U, D>}`
   : string;
 
-type CapitalizeIf<Condition extends boolean, T extends string> =
-  Condition extends true ? Capitalize<T> : T;
+type CapitalizeIf<
+  Condition extends boolean,
+  T extends string
+> = Condition extends true ? Capitalize<T> : T;
 
 type SplitCamel<
   S extends string,
