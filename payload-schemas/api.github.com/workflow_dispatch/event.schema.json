@@ -6,11 +6,7 @@
   "properties": {
     "inputs": {
       "oneOf": [
-        {
-          "type": "object",
-          "properties": {},
-          "additionalProperties": true
-        },
+        { "type": "object", "properties": {}, "additionalProperties": true },
         { "type": "null" }
       ]
     },
