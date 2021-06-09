@@ -37,7 +37,9 @@
     "events": ["push", "pull_request"],
     "created_at": 1525109898,
     "updated_at": 1525109899,
-    "single_file_name": "config.yml"
+    "single_file_name": "config.yml",
+    "suspended_at": null,
+    "suspended_by": null
   },
   "repository_selection": "selected",
   "repositories_added": [],

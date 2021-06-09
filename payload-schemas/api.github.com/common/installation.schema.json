@@ -16,7 +16,9 @@
     "events",
     "created_at",
     "updated_at",
-    "single_file_name"
+    "single_file_name",
+    "suspended_at",
+    "suspended_by"
   ],
   "type": "object",
   "properties": {
