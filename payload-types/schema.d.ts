@@ -5817,7 +5817,21 @@ export interface WorkflowRun {
   logs_url: string;
   node_id: string;
   name: string;
-  pull_requests: PullRequest[];
+  pull_requests: {
+    url: string;
+    id: number;
+    number: number;
+    head: {
+      ref: string;
+      sha: string;
+      repo: RepoRef;
+    };
+    base: {
+      ref: string;
+      sha: string;
+      repo: RepoRef;
+    };
+  }[];
   repository: RepositoryLite;
   rerun_url: string;
   run_number: number;

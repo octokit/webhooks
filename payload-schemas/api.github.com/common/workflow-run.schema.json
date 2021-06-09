@@ -64,7 +64,36 @@
     "name": { "type": "string" },
     "pull_requests": {
       "type": "array",
-      "items": { "$ref": "pull-request.schema.json" }
+      "items": {
+        "type": "object",
+        "required": ["url", "id", "number", "head", "base"],
+        "properties": {
+          "url": { "type": "string", "format": "uri" },
+          "id": { "type": "number" },
+          "number": { "type": "number" },
+          "head": {
+            "type": "object",
+            "required": ["ref", "sha", "repo"],
+            "properties": {
+              "ref": { "type": "string" },
+              "sha": { "type": "string" },
+              "repo": { "$ref": "repo-ref.schema.json" }
+            },
+            "additionalProperties": false
+          },
+          "base": {
+            "type": "object",
+            "required": ["ref", "sha", "repo"],
+            "properties": {
+              "ref": { "type": "string" },
+              "sha": { "type": "string" },
+              "repo": { "$ref": "repo-ref.schema.json" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
     },
     "repository": { "$ref": "repository-lite.schema.json" },
     "rerun_url": { "type": "string", "format": "uri" },
