@@ -1,7 +1,7 @@
 on:
   schedule:
-    # https://crontab.guru/#0_0_*_*_7
-    - cron: "0 0 * * 7"
+    # https://crontab.guru/#0_0_*_*_0
+    - cron: "0 0 * * 0"
 name: Lint repository contents
 jobs:
   lint_repo:
