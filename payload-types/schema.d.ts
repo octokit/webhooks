@@ -5090,6 +5090,13 @@ export interface RepositoryPublicizedEvent {
 }
 export interface RepositoryRenamedEvent {
   action: "renamed";
+  changes: {
+    repository: {
+      name: {
+        from: string;
+      };
+    };
+  };
   repository: Repository;
   sender: User;
   installation?: InstallationLite;

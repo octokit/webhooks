@@ -2,9 +2,31 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "repository$renamed",
   "type": "object",
-  "required": ["action", "repository", "sender"],
+  "required": ["action", "changes", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["renamed"] },
+    "changes": {
+      "type": "object",
+      "required": ["repository"],
+      "properties": {
+        "repository": {
+          "type": "object",
+          "required": ["name"],
+          "properties": {
+            "name": {
+              "type": "object",
+              "required": ["from"],
+              "properties": {
+                "from": { "type": "string" }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },
