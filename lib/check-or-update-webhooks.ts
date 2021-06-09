@@ -116,7 +116,7 @@ export const checkOrUpdateWebhooks = async ({
 
   writeFileSync(
     `./payload-examples/${folderName}/index.json`,
-    prettier.format(JSON.stringify(webhooks, null, 2), { parser: "json" })
+    prettier.format(JSON.stringify(webhooks), { parser: "json" })
   );
   console.log(`✏️  ${folderName}/index.json, written`);
 };
