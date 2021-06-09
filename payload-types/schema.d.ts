@@ -536,27 +536,36 @@ export interface App {
    * The set of permissions for the GitHub app
    */
   permissions?: {
-    administration?: "read" | "write";
     actions?: "read" | "write";
+    administration?: "read" | "write";
     checks?: "read" | "write";
+    content_references?: "read" | "write";
     contents?: "read" | "write";
     deployments?: "read" | "write";
+    discussions?: "read" | "write";
+    emails?: "read" | "write";
+    environments?: "read" | "write";
     issues?: "read" | "write";
     members?: "read" | "write";
-    emails?: "read" | "write";
     metadata?: "read" | "write";
     organization_administration?: "read" | "write";
     organization_hooks?: "read" | "write";
     organization_packages?: "read" | "write";
     organization_plan?: "read" | "write";
     organization_projects?: "read" | "write";
+    organization_secrets?: "read" | "write";
+    organization_self_hosted_runners?: "read" | "write";
     organization_user_blocking?: "read" | "write";
-    pages?: "read" | "write";
     packages?: "read" | "write";
+    pages?: "read" | "write";
     pull_requests?: "read" | "write";
     repository_hooks?: "read" | "write";
     repository_projects?: "read" | "write";
+    secret_scanning_alerts?: "read" | "write";
+    secrets?: "read" | "write";
     security_events?: "read" | "write";
+    security_scanning_alert?: "read" | "write";
+    single_file?: "read" | "write";
     statuses?: "read" | "write";
     team_discussions?: "read" | "write";
     vulnerability_alerts?: "read" | "write";
@@ -2429,10 +2438,11 @@ export interface Installation {
     actions?: "read" | "write";
     administration?: "read" | "write";
     checks?: "read" | "write";
-    contents?: "read" | "write";
     content_references?: "read" | "write";
+    contents?: "read" | "write";
     deployments?: "read" | "write";
     discussions?: "read" | "write";
+    emails?: "read" | "write";
     environments?: "read" | "write";
     issues?: "read" | "write";
     members?: "read" | "write";
@@ -2445,19 +2455,20 @@ export interface Installation {
     organization_secrets?: "read" | "write";
     organization_self_hosted_runners?: "read" | "write";
     organization_user_blocking?: "read" | "write";
-    pages?: "read" | "write";
     packages?: "read" | "write";
+    pages?: "read" | "write";
     pull_requests?: "read" | "write";
     repository_hooks?: "read" | "write";
     repository_projects?: "read" | "write";
-    secrets?: "read" | "write";
     secret_scanning_alerts?: "read" | "write";
+    secrets?: "read" | "write";
     security_events?: "read" | "write";
+    security_scanning_alert?: "read" | "write";
     single_file?: "read" | "write";
     statuses?: "read" | "write";
     team_discussions?: "read" | "write";
-    workflows?: "read" | "write";
     vulnerability_alerts?: "read" | "write";
+    workflows?: "read" | "write";
   };
   events: (
     | "check_run"
@@ -2510,8 +2521,8 @@ export interface Installation {
   single_file_name: string | null;
   has_multiple_single_files?: boolean;
   single_file_paths?: string[];
-  suspended_by?: User | null;
-  suspended_at?: string | null;
+  suspended_by: User | null;
+  suspended_at: string | null;
 }
 export interface InstallationDeletedEvent {
   action: "deleted";
@@ -4936,7 +4947,7 @@ export interface ReleaseAsset {
    * The file name of the asset.
    */
   name: string;
-  label: string;
+  label: string | null;
   /**
    * State of the release asset.
    */
@@ -5089,6 +5100,13 @@ export interface RepositoryPublicizedEvent {
 }
 export interface RepositoryRenamedEvent {
   action: "renamed";
+  changes: {
+    repository: {
+      name: {
+        from: string;
+      };
+    };
+  };
   repository: Repository;
   sender: User;
   installation?: InstallationLite;

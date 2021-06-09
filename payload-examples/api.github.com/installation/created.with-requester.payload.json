@@ -46,7 +46,9 @@
     "events": [],
     "created_at": 1557933591,
     "updated_at": 1557933591,
-    "single_file_name": null
+    "single_file_name": null,
+    "suspended_at": null,
+    "suspended_by": null
   },
   "repositories": [
     {

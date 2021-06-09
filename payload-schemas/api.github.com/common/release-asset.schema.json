@@ -23,7 +23,7 @@
     "id": { "type": "integer" },
     "node_id": { "type": "string" },
     "name": { "description": "The file name of the asset.", "type": "string" },
-    "label": { "type": "string" },
+    "label": { "type": ["string", "null"] },
     "state": {
       "description": "State of the release asset.",
       "type": "string",
