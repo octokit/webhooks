@@ -60588,10 +60588,7 @@
               "email": "matfax@users.noreply.github.com",
               "name": "Matthias Fax"
             },
-            "committer": {
-              "email": "noreply@github.com",
-              "name": "GitHub"
-            },
+            "committer": { "email": "noreply@github.com", "name": "GitHub" },
             "id": "3484a3fb816e0859fd6e1cea078d76385ff50625",
             "message": "build(test): check workflow run event payload",
             "timestamp": "2020-10-05T16:32:07Z",
