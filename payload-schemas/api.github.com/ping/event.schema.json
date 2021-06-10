@@ -38,10 +38,7 @@
           "type": "object",
           "required": ["content_type", "url", "insecure_ssl"],
           "properties": {
-            "content_type": {
-              "type": "string",
-              "enum": ["json", "form"]
-            },
+            "content_type": { "type": "string", "enum": ["json", "form"] },
             "secret": { "type": "string" },
             "url": { "type": "string", "format": "uri" },
             "insecure_ssl": { "type": "string" }

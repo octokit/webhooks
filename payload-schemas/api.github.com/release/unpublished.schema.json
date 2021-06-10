@@ -11,9 +11,7 @@
         {
           "type": "object",
           "required": ["published_at"],
-          "properties": {
-            "published_at": { "type": "null" }
-          },
+          "properties": { "published_at": { "type": "null" } },
           "tsAdditionalProperties": false
         }
       ]

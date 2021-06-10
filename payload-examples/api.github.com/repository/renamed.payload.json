@@ -1,12 +1,6 @@
 {
   "action": "renamed",
-  "changes": {
-    "repository": {
-      "name": {
-        "from": "Hello-World"
-      }
-    }
-  },
+  "changes": { "repository": { "name": { "from": "Hello-World" } } },
   "repository": {
     "id": 186853261,
     "node_id": "MDEwOlJlcG9zaXRvcnkxODY4NTMyNjE=",

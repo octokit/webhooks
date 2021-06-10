@@ -2107,9 +2107,7 @@
             }
           ]
         },
-        "requested_action": {
-          "identifier": "lgtm|26764"
-        },
+        "requested_action": { "identifier": "lgtm|26764" },
         "repository": {
           "id": 9384267,
           "node_id": "MDEwOlJlcG9zaXRvcnk5Mzg0MjY3",
@@ -4592,10 +4590,7 @@
             "severity": "note",
             "description": "Add the frozen_string_literal comment to the top of files to help transition to frozen string literals by default."
           },
-          "tool": {
-            "name": "Rubocop",
-            "version": null
-          }
+          "tool": { "name": "Rubocop", "version": null }
         },
         "ref": "refs/heads/main",
         "commit_oid": "d6e4c75c141dbacecc279b721b8b9393d5405795",
@@ -4779,9 +4774,7 @@
               "environment": "{}",
               "state": "dismissed",
               "commit_sha": "b30b5f3b935825766a22ab1bce14788bf9627f6c",
-              "message": {
-                "text": ""
-              },
+              "message": { "text": "" },
               "location": {
                 "path": "/usr/local/jetty/lib/http2/http2-hpack-9.4.27.v20200227.jar",
                 "start_line": 1,
@@ -4954,11 +4947,7 @@
             "tags": null,
             "help": null
           },
-          "tool": {
-            "name": "CodeQL",
-            "guid": null,
-            "version": null
-          },
+          "tool": { "name": "CodeQL", "guid": null, "version": null },
           "instances": [
             {
               "ref": "refs/heads/code-feature",
@@ -4966,9 +4955,7 @@
               "environment": "{}",
               "state": "open",
               "commit_sha": "788437584c2522f27feab10d8e631bab3e9e783a",
-              "message": {
-                "text": ""
-              },
+              "message": { "text": "" },
               "location": {
                 "path": "src/main/java/com/github/demo/service/BookService.java",
                 "start_line": 84,
@@ -5141,20 +5128,14 @@
             "tags": null,
             "help": null
           },
-          "tool": {
-            "name": "CodeQL",
-            "guid": null,
-            "version": null
-          },
+          "tool": { "name": "CodeQL", "guid": null, "version": null },
           "most_recent_instance": {
             "ref": "refs/pull/11/merge",
             "analysis_key": ".github/workflows/code-scanning.yml:build",
             "environment": "{}",
             "state": "fixed",
             "commit_sha": "0048a27ccd962b83b1bd781bbc6f7e8fd1b2caea",
-            "message": {
-              "text": ""
-            },
+            "message": { "text": "" },
             "location": {
               "path": "src/main/java/com/github/demo/service/BookService.java",
               "start_line": 84,
@@ -5172,9 +5153,7 @@
               "environment": "{}",
               "state": "fixed",
               "commit_sha": "0048a27ccd962b83b1bd781bbc6f7e8fd1b2caea",
-              "message": {
-                "text": ""
-              },
+              "message": { "text": "" },
               "location": {
                 "path": "src/main/java/com/github/demo/service/BookService.java",
                 "start_line": 84,
@@ -5351,10 +5330,7 @@
             "severity": "note",
             "description": "Add the frozen_string_literal comment to the top of files to help transition to frozen string literals by default."
           },
-          "tool": {
-            "name": "Rubocop",
-            "version": null
-          }
+          "tool": { "name": "Rubocop", "version": null }
         },
         "ref": "refs/heads/master",
         "commit_oid": "d6e4c75c141dbacecc279b721b8b9393d5405795",
@@ -5511,10 +5487,7 @@
             "severity": "note",
             "description": "Add the frozen_string_literal comment to the top of files to help transition to frozen string literals by default."
           },
-          "tool": {
-            "name": "Rubocop",
-            "version": null
-          }
+          "tool": { "name": "Rubocop", "version": null }
         },
         "ref": "refs/heads/master",
         "commit_oid": "d6e4c75c141dbacecc279b721b8b9393d5405795",
@@ -9983,11 +9956,7 @@
           "active_lock_reason": null,
           "body": "TEST edit"
         },
-        "changes": {
-          "title": {
-            "from": "TEST"
-          }
-        },
+        "changes": { "title": { "from": "TEST" } },
         "repository": {
           "id": 186853002,
           "node_id": "MDEwOlJlcG9zaXRvcnkxODY4NTMwMDI=",
@@ -11794,11 +11763,7 @@
       },
       {
         "action": "edited",
-        "changes": {
-          "body": {
-            "from": "ANSWER"
-          }
-        },
+        "changes": { "body": { "from": "ANSWER" } },
         "comment": {
           "id": 550062,
           "node_id": "MDE3OkRpc2N1c3Npb25Db21tZW50NTUwMDYy",
@@ -22766,10 +22731,7 @@
     "description": "Activity related to a label. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[labels](https://docs.github.com/en/rest/reference/issues#labels)\" REST API.",
     "actions": ["created", "deleted", "edited"],
     "properties": {
-      "label": {
-        "type": "object",
-        "description": "The label that was added."
-      },
+      "label": { "type": "object", "description": "The label that was added." },
       "changes": {
         "type": "object",
         "description": "The changes to the label if the action was `edited`."
@@ -23444,11 +23406,7 @@
           "color": "cceeaa",
           "default": false
         },
-        "changes": {
-          "color": {
-            "from": "cb1f00"
-          }
-        },
+        "changes": { "color": { "from": "cb1f00" } },
         "repository": {
           "id": 186853002,
           "node_id": "MDEwOlJlcG9zaXRvcnkxODY4NTMwMDI=",
@@ -24272,11 +24230,7 @@
           "type": "User",
           "site_admin": false
         },
-        "changes": {
-          "old_permission": {
-            "from": "write"
-          }
-        },
+        "changes": { "old_permission": { "from": "write" } },
         "repository": {
           "id": 135493233,
           "node_id": "MDEwOlJlcG9zaXRvcnkxMzU0OTMyMzM=",
@@ -25010,10 +24964,7 @@
     "description": "Activity related to milestones. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[milestones](https://docs.github.com/en/rest/reference/issues#milestones)\" REST API.",
     "actions": ["closed", "created", "deleted", "edited", "opened"],
     "properties": {
-      "milestone": {
-        "type": "object",
-        "description": "The milestone itself."
-      },
+      "milestone": { "type": "object", "description": "The milestone itself." },
       "changes": {
         "type": "object",
         "description": "The changes to the milestone if the action was `edited`."
@@ -26937,9 +26888,7 @@
         "build": {
           "url": "https://api.github.com/repos/Codertocat/Hello-World/pages/builds/130514899",
           "status": "built",
-          "error": {
-            "message": null
-          },
+          "error": { "message": null },
           "pusher": {
             "login": "Codertocat",
             "id": 21031067,
@@ -27085,9 +27034,7 @@
         "build": {
           "url": "https://api.github.com/repos/Codertocat/Hello-World/pages/builds/130514899",
           "status": "built",
-          "error": {
-            "message": null
-          },
+          "error": { "message": null },
           "pusher": {
             "login": "Codertocat",
             "id": 21031067,
@@ -27233,9 +27180,7 @@
         "build": {
           "url": "https://api.github.com/repos/Codertocat/Hello-World/pages/builds/130514899",
           "status": "built",
-          "error": {
-            "message": null
-          },
+          "error": { "message": null },
           "pusher": {
             "login": "Codertocat",
             "id": 21031067,
@@ -27436,11 +27381,7 @@
           "url": "https://api.github.com/repos/Octocoders/Hello-World/hooks/109948940",
           "test_url": "https://api.github.com/repos/Octocoders/Hello-World/hooks/109948940/test",
           "ping_url": "https://api.github.com/repos/Octocoders/Hello-World/hooks/109948940/pings",
-          "last_response": {
-            "code": null,
-            "status": "unused",
-            "message": null
-          }
+          "last_response": { "code": null, "status": "unused", "message": null }
         },
         "repository": {
           "id": 186853261,
@@ -27576,11 +27517,7 @@
           "url": "https://api.github.com/repos/Octocoders/Hello-World/hooks/109948940",
           "test_url": "https://api.github.com/repos/Octocoders/Hello-World/hooks/109948940/test",
           "ping_url": "https://api.github.com/repos/Octocoders/Hello-World/hooks/109948940/pings",
-          "last_response": {
-            "code": null,
-            "status": "unused",
-            "message": null
-          }
+          "last_response": { "code": null, "status": "unused", "message": null }
         },
         "repository": {
           "id": 186853261,
@@ -27717,11 +27654,7 @@
           "url": "https://api.github.com/repos/Octocoders/Hello-World/hooks/109948940",
           "test_url": "https://api.github.com/repos/Octocoders/Hello-World/hooks/109948940/test",
           "ping_url": "https://api.github.com/repos/Octocoders/Hello-World/hooks/109948940/pings",
-          "last_response": {
-            "code": null,
-            "status": "unused",
-            "message": null
-          }
+          "last_response": { "code": null, "status": "unused", "message": null }
         },
         "repository": {
           "id": 186853261,
@@ -29186,11 +29119,7 @@
       },
       {
         "action": "moved",
-        "changes": {
-          "column_id": {
-            "from": 9999467
-          }
-        },
+        "changes": { "column_id": { "from": 9999467 } },
         "project_card": {
           "url": "https://api.github.com/projects/columns/cards/21567453",
           "project_url": "https://api.github.com/projects/2640902",
@@ -29768,11 +29697,7 @@
       },
       {
         "action": "edited",
-        "changes": {
-          "name": {
-            "from": ""
-          }
-        },
+        "changes": { "name": { "from": "" } },
         "project_column": {
           "url": "https://api.github.com/projects/columns/5368157",
           "project_url": "https://api.github.com/projects/2640902",
@@ -50133,11 +50058,7 @@
       },
       {
         "action": "edited",
-        "changes": {
-          "body": {
-            "from": ""
-          }
-        },
+        "changes": { "body": { "from": "" } },
         "comment": {
           "url": "https://api.github.com/repos/Codertocat/Hello-World/pulls/comments/284312630",
           "pull_request_review_id": 237895671,
@@ -52509,14 +52430,7 @@
       },
       {
         "action": "edited",
-        "changes": {
-          "name": {
-            "from": "FOO"
-          },
-          "body": {
-            "from": ""
-          }
-        },
+        "changes": { "name": { "from": "FOO" }, "body": { "from": "" } },
         "release": {
           "url": "https://api.github.com/repos/Codertocat/Hello-World/releases/17372790",
           "assets_url": "https://api.github.com/repos/Codertocat/Hello-World/releases/17372790/assets",
@@ -53839,11 +53753,7 @@
       },
       {
         "action": "edited",
-        "changes": {
-          "description": {
-            "from": "My Repo"
-          }
-        },
+        "changes": { "description": { "from": "My Repo" } },
         "repository": {
           "id": 186853261,
           "node_id": "MDEwOlJlcG9zaXRvcnkxODY4NTMyNjE=",
@@ -53975,11 +53885,7 @@
       },
       {
         "action": "edited",
-        "changes": {
-          "default_branch": {
-            "from": "main"
-          }
-        },
+        "changes": { "default_branch": { "from": "main" } },
         "repository": {
           "id": 186853261,
           "node_id": "MDEwOlJlcG9zaXRvcnkxODY4NTMyNjE=",
@@ -54607,13 +54513,7 @@
       },
       {
         "action": "renamed",
-        "changes": {
-          "repository": {
-            "name": {
-              "from": "Hello-World"
-            }
-          }
-        },
+        "changes": { "repository": { "name": { "from": "Hello-World" } } },
         "repository": {
           "id": 186853261,
           "node_id": "MDEwOlJlcG9zaXRvcnkxODY4NTMyNjE=",
@@ -56496,45 +56396,27 @@
           "description": "django.contrib.auth.forms.AuthenticationForm in Django 2.0 before 2.0.2, and 1.11.8 and 1.11.9, allows remote attackers to obtain potentially sensitive information by leveraging data exposure from the confirm_login_allowed() method, as demonstrated by discovering whether a user account is inactive.",
           "severity": "moderate",
           "identifiers": [
-            {
-              "value": "GHSA-rf4j-j272-fj86",
-              "type": "GHSA"
-            },
-            {
-              "value": "CVE-2018-6188",
-              "type": "CVE"
-            }
+            { "value": "GHSA-rf4j-j272-fj86", "type": "GHSA" },
+            { "value": "CVE-2018-6188", "type": "CVE" }
           ],
           "references": [
-            {
-              "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-6188"
-            }
+            { "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-6188" }
           ],
           "published_at": "2018-10-03T21:13:54Z",
           "updated_at": "2018-10-03T21:13:54Z",
           "withdrawn_at": null,
           "vulnerabilities": [
             {
-              "package": {
-                "ecosystem": "pip",
-                "name": "django"
-              },
+              "package": { "ecosystem": "pip", "name": "django" },
               "severity": "moderate",
               "vulnerable_version_range": ">= 2.0.0, < 2.0.2",
-              "first_patched_version": {
-                "identifier": "2.0.2"
-              }
+              "first_patched_version": { "identifier": "2.0.2" }
             },
             {
-              "package": {
-                "ecosystem": "pip",
-                "name": "django"
-              },
+              "package": { "ecosystem": "pip", "name": "django" },
               "severity": "moderate",
               "vulnerable_version_range": ">= 1.11.8, < 1.11.10",
-              "first_patched_version": {
-                "identifier": "1.11.10"
-              }
+              "first_patched_version": { "identifier": "1.11.10" }
             }
           ]
         }
@@ -56547,57 +56429,31 @@
           "description": "django.contrib.auth.forms.AuthenticationForm in Django 2.0 before 2.0.2, and 1.11.8 and 1.11.9, allows remote attackers to obtain potentially sensitive information by leveraging data exposure from the confirm_login_allowed() method, as demonstrated by discovering whether a user account is inactive.",
           "severity": "moderate",
           "identifiers": [
-            {
-              "value": "GHSA-rf4j-j272-fj86",
-              "type": "GHSA"
-            },
-            {
-              "value": "CVE-2018-6188",
-              "type": "CVE"
-            }
+            { "value": "GHSA-rf4j-j272-fj86", "type": "GHSA" },
+            { "value": "CVE-2018-6188", "type": "CVE" }
           ],
           "references": [
-            {
-              "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-6188"
-            }
+            { "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-6188" }
           ],
           "published_at": "2018-10-03T21:13:54Z",
           "updated_at": "2018-10-03T21:13:54Z",
           "withdrawn_at": null,
           "vulnerabilities": [
             {
-              "package": {
-                "ecosystem": "pip",
-                "name": "django"
-              },
+              "package": { "ecosystem": "pip", "name": "django" },
               "severity": "moderate",
               "vulnerable_version_range": ">= 2.0.0, < 2.0.2",
-              "first_patched_version": {
-                "identifier": "2.0.2"
-              }
+              "first_patched_version": { "identifier": "2.0.2" }
             },
             {
-              "package": {
-                "ecosystem": "pip",
-                "name": "django"
-              },
+              "package": { "ecosystem": "pip", "name": "django" },
               "severity": "moderate",
               "vulnerable_version_range": ">= 1.11.8, < 1.11.10",
-              "first_patched_version": {
-                "identifier": "1.11.10"
-              }
+              "first_patched_version": { "identifier": "1.11.10" }
             }
           ],
-          "cvss": {
-            "vector_string": "",
-            "score": 7.9
-          },
-          "cwes": [
-            {
-              "cwe_id": "CWE-0000",
-              "name": ""
-            }
-          ]
+          "cvss": { "vector_string": "", "score": 7.9 },
+          "cwes": [{ "cwe_id": "CWE-0000", "name": "" }]
         }
       },
       {
@@ -56608,47 +56464,26 @@
           "description": "All versions of `harp` are vulnerable to Unauthorized File Access. If a symlink in the project's base directory points to a file outside of the directory, the file is served. This could allow an attacker to access sensitive files on the server.\n\n\n## Recommendation\n\nNo fix is currently available. Consider using an alternative module until a fix is made available.",
           "severity": "moderate",
           "identifiers": [
-            {
-              "value": "GHSA-6fmm-47qc-p4m4",
-              "type": "GHSA"
-            },
-            {
-              "value": "CVE-2019-5438",
-              "type": "CVE"
-            }
+            { "value": "GHSA-6fmm-47qc-p4m4", "type": "GHSA" },
+            { "value": "CVE-2019-5438", "type": "CVE" }
           ],
           "references": [
-            {
-              "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-5438"
-            },
-            {
-              "url": "https://github.com/advisories/GHSA-6fmm-47qc-p4m4"
-            }
+            { "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-5438" },
+            { "url": "https://github.com/advisories/GHSA-6fmm-47qc-p4m4" }
           ],
           "published_at": "2019-06-13T16:12:26Z",
           "updated_at": "2021-01-08T21:27:28Z",
           "withdrawn_at": null,
           "vulnerabilities": [
             {
-              "package": {
-                "ecosystem": "npm",
-                "name": "harp"
-              },
+              "package": { "ecosystem": "npm", "name": "harp" },
               "severity": "moderate",
               "vulnerable_version_range": "<= 0.29.0",
               "first_patched_version": null
             }
           ],
-          "cvss": {
-            "vector_string": "",
-            "score": 7.9
-          },
-          "cwes": [
-            {
-              "cwe_id": "CWE-0000",
-              "name": ""
-            }
-          ]
+          "cvss": { "vector_string": "", "score": 7.9 },
+          "cwes": [{ "cwe_id": "CWE-0000", "name": "" }]
         }
       },
       {
@@ -56659,32 +56494,19 @@
           "description": "All versions of package static-eval are vulnerable to Arbitrary Code Execution using FunctionExpressions and TemplateLiterals. PoC: var evaluate = require('static-eval'); var parse = require('esprima').parse; var src=\"(function (x) { return ${eval(\"console.log(global.process.mainModule.constructor._load('child_process').execSync('ls').toString())\")} })()\" var ast = parse(src).body[0].expression; evaluate(ast)\n\n# WITHDRAWN\n\nThis was deemed not a vulnerability. See [this issue](https://github.com/browserify/static-eval/issues/34) for details.",
           "severity": "critical",
           "identifiers": [
-            {
-              "value": "GHSA-8v27-2fg9-7h62",
-              "type": "GHSA"
-            },
-            {
-              "value": "CVE-2021-23334",
-              "type": "CVE"
-            }
+            { "value": "GHSA-8v27-2fg9-7h62", "type": "GHSA" },
+            { "value": "CVE-2021-23334", "type": "CVE" }
           ],
           "references": [
-            {
-              "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-23334"
-            },
-            {
-              "url": "https://github.com/advisories/GHSA-8v27-2fg9-7h62"
-            }
+            { "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-23334" },
+            { "url": "https://github.com/advisories/GHSA-8v27-2fg9-7h62" }
           ],
           "published_at": "2021-05-06T16:11:25Z",
           "updated_at": "2021-05-06T16:13:08Z",
           "withdrawn_at": "2021-05-06T16:13:08Z",
           "vulnerabilities": [
             {
-              "package": {
-                "ecosystem": "npm",
-                "name": "static-eval"
-              },
+              "package": { "ecosystem": "npm", "name": "static-eval" },
               "severity": "critical",
               "vulnerable_version_range": "<= 2.1.0",
               "first_patched_version": null
@@ -57464,10 +57286,7 @@
         "type": "integer",
         "description": "The unique identifier of the status."
       },
-      "sha": {
-        "type": "string",
-        "description": "The Commit SHA."
-      },
+      "sha": { "type": "string", "description": "The Commit SHA." },
       "state": {
         "type": "string",
         "description": "The new state. Can be `pending`, `success`, `failure`, or `error`."
@@ -58376,10 +58195,7 @@
       "removed_from_repository"
     ],
     "properties": {
-      "team": {
-        "type": "object",
-        "description": "The team itself."
-      },
+      "team": { "type": "object", "description": "The team itself." },
       "changes": {
         "type": "object",
         "description": "The changes to the team if the action was `edited`."
@@ -58530,11 +58346,7 @@
           "open_issues": 0,
           "watchers": 0,
           "default_branch": "master",
-          "permissions": {
-            "pull": true,
-            "push": false,
-            "admin": false
-          }
+          "permissions": { "pull": true, "push": false, "admin": false }
         },
         "organization": {
           "login": "Octocoders",
@@ -58679,11 +58491,7 @@
           "open_issues": 0,
           "watchers": 0,
           "default_branch": "master",
-          "permissions": {
-            "pull": true,
-            "push": false,
-            "admin": false
-          }
+          "permissions": { "pull": true, "push": false, "admin": false }
         },
         "organization": {
           "login": "Octocoders",
@@ -60460,10 +60268,7 @@
               "email": "matfax@users.noreply.github.com",
               "name": "Matthias Fax"
             },
-            "committer": {
-              "email": "noreply@github.com",
-              "name": "GitHub"
-            },
+            "committer": { "email": "noreply@github.com", "name": "GitHub" },
             "id": "3484a3fb816e0859fd6e1cea078d76385ff50625",
             "message": "build(test): check workflow run event payload",
             "timestamp": "2020-10-05T16:32:07Z",
@@ -61130,10 +60935,7 @@
               "email": "matfax@users.noreply.github.com",
               "name": "Matthias Fax"
             },
-            "committer": {
-              "email": "noreply@github.com",
-              "name": "GitHub"
-            },
+            "committer": { "email": "noreply@github.com", "name": "GitHub" },
             "id": "3484a3fb816e0859fd6e1cea078d76385ff50625",
             "message": "build(test): check workflow run event payload",
             "timestamp": "2020-10-05T16:32:07Z",
@@ -61453,10 +61255,7 @@
               "email": "matfax@users.noreply.github.com",
               "name": "Matthias Fax"
             },
-            "committer": {
-              "email": "noreply@github.com",
-              "name": "GitHub"
-            },
+            "committer": { "email": "noreply@github.com", "name": "GitHub" },
             "id": "3484a3fb816e0859fd6e1cea078d76385ff50625",
             "message": "build(test): check workflow run event payload",
             "timestamp": "2020-10-05T16:32:07Z",

@@ -1,10 +1,6 @@
 {
   "action": "edited",
-  "changes": {
-    "name": {
-      "from": ""
-    }
-  },
+  "changes": { "name": { "from": "" } },
   "project_column": {
     "url": "https://api.github.com/projects/columns/5368157",
     "project_url": "https://api.github.com/projects/2640902",

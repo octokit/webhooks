@@ -1,0 +1,24 @@
+on:
+  push:
+    branches:
+      - master
+name: Lint repository contents
+jobs:
+  lint_repo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.OCTOKITBOT_PAT }}
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 12.x
+      - run: npm ci
+      - run: echo "./node_modules/.bin" >> $GITHUB_PATH
+      - run: "./bin/format-with-prettier.ts"
+      - run: |
+            git config user.email "33075676+octokitbot@users.noreply.github.com"
+            git congig user.name "Octokit Bot"
+            git add .
+            git commit -m "style: lint JSON files"
+            git push
