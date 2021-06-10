@@ -18,7 +18,7 @@ jobs:
       - run: "./bin/format-with-prettier.ts"
       - run: |
             git config user.email "33075676+octokitbot@users.noreply.github.com"
-            git congig user.name "Octokit Bot"
+            git config user.name "Octokit Bot"
             git add .
             git commit -m "style: lint JSON files"
             git push
