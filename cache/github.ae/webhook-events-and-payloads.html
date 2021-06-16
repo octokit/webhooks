@@ -216,11 +216,11 @@
       >Creating webhooks</a
     >."
   </p>
-  <h3 id="webhook-payload-object-common-properties">
+  <h2 id="webhook-payload-object-common-properties">
     <a href="#webhook-payload-object-common-properties"
       >Webhook payload object common properties</a
     >
-  </h3>
+  </h2>
   <p>
     Each webhook event payload also contains properties unique to the event. You
     can find the unique properties in the individual event type sections.
@@ -319,9 +319,9 @@
       delivery.
     </p>
   </div>
-  <h4 id="delivery-headers">
+  <h3 id="delivery-headers">
     <a href="#delivery-headers">Delivery headers</a>
-  </h4>
+  </h3>
   <p>
     HTTP POST payloads that are delivered to your webhook's configured URL
     endpoint will contain several special headers:
@@ -381,9 +381,9 @@
     Also, the <code>User-Agent</code> for the requests will have the prefix
     <code>GitHub-Hookshot/</code>.
   </p>
-  <h4 id="example-delivery">
+  <h3 id="example-delivery">
     <a href="#example-delivery">Example delivery</a>
-  </h4>
+  </h3>
   <pre><code class="hljs language-shell">&gt; POST /payload HTTP/2
 
 &gt; Host: localhost:4567
@@ -419,7 +419,7 @@
 &gt;     ...
 &gt;   }
 &gt; }</code></pre>
-  <h3 id="check_run"><a href="#check_run">check_run</a></h3>
+  <h2 id="check_run"><a href="#check_run">check_run</a></h2>
   <p>
     Check run activity has occurred. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
@@ -447,7 +447,7 @@
       <code>head_branch</code>.
     </p>
   </div>
-  <h4 id="availability"><a href="#availability">Availability</a></h4>
+  <h3 id="availability"><a href="#availability">Availability</a></h3>
   <ul>
     <li>
       Repository webhooks only receive payloads for the <code>created</code> and
@@ -470,9 +470,9 @@
       event.
     </li>
   </ul>
-  <h4 id="webhook-payload-object">
+  <h3 id="webhook-payload-object">
     <a href="#webhook-payload-object">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -629,9 +629,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example">
+  <h3 id="webhook-payload-example">
     <a href="#webhook-payload-example">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"created"</span>,
@@ -1033,7 +1033,7 @@
 }
 </code></pre>
   </div>
-  <h3 id="check_suite"><a href="#check_suite">check_suite</a></h3>
+  <h2 id="check_suite"><a href="#check_suite">check_suite</a></h2>
   <p>
     Check suite activity has occurred. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
@@ -1061,7 +1061,7 @@
       <code>head_branch</code>.
     </p>
   </div>
-  <h4 id="availability-1"><a href="#availability-1">Availability</a></h4>
+  <h3 id="availability-1"><a href="#availability-1">Availability</a></h3>
   <ul>
     <li>
       Repository webhooks only receive payloads for the
@@ -1083,9 +1083,9 @@
       event.
     </li>
   </ul>
-  <h4 id="webhook-payload-object-1">
+  <h3 id="webhook-payload-object-1">
     <a href="#webhook-payload-object-1">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -1226,9 +1226,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-1">
+  <h3 id="webhook-payload-example-1">
     <a href="#webhook-payload-example-1">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"completed"</span>,
@@ -1503,9 +1503,9 @@
 }
 </code></pre>
   </div>
-  <h3 id="code_scanning_alert">
+  <h2 id="code_scanning_alert">
     <a href="#code_scanning_alert">code_scanning_alert</a>
-  </h3>
+  </h2>
   <p>
     Activity related to code scanning alerts in a repository. The type of
     activity is specified in the action property of the payload object. For more
@@ -1514,15 +1514,15 @@
       >About code scanning</a
     >.”
   </p>
-  <h4 id="availability-2"><a href="#availability-2">Availability</a></h4>
+  <h3 id="availability-2"><a href="#availability-2">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>security_events :read</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-2">
+  <h3 id="webhook-payload-object-2">
     <a href="#webhook-payload-object-2">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -1612,9 +1612,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-2">
+  <h3 id="webhook-payload-example-2">
     <a href="#webhook-payload-example-2">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"reopened"</span>,
@@ -1758,7 +1758,7 @@
 }
 </code></pre>
   </div>
-  <h3 id="commit_comment"><a href="#commit_comment">commit_comment</a></h3>
+  <h2 id="commit_comment"><a href="#commit_comment">commit_comment</a></h2>
   <p>
     A commit comment is created. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
@@ -1766,15 +1766,15 @@
       >commit comment</a
     >" REST API.
   </p>
-  <h4 id="availability-3"><a href="#availability-3">Availability</a></h4>
+  <h3 id="availability-3"><a href="#availability-3">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>contents</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-3">
+  <h3 id="webhook-payload-object-3">
     <a href="#webhook-payload-object-3">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -1841,9 +1841,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-3">
+  <h3 id="webhook-payload-example-3">
     <a href="#webhook-payload-example-3">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"created"</span>,
@@ -2014,9 +2014,9 @@
 }
 </code></pre>
   </div>
-  <h3 id="content_reference">
+  <h2 id="content_reference">
     <a href="#content_reference">content_reference</a>
-  </h3>
+  </h2>
   <p>
     A new content reference is <code>created</code>. A new content reference is
     created when the body or comment of an issue or pull request includes a URL
@@ -2036,15 +2036,15 @@
       >Create a content attachment</a
     >" to create a new content attachment.
   </p>
-  <h4 id="availability-4"><a href="#availability-4">Availability</a></h4>
+  <h3 id="availability-4"><a href="#availability-4">Availability</a></h3>
   <ul>
     <li>
       GitHub Apps with the <code>content_references:write</code> permission
     </li>
   </ul>
-  <h4 id="webhook-payload-example-4">
+  <h3 id="webhook-payload-example-4">
     <a href="#webhook-payload-example-4">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"created"</span>,
@@ -2173,7 +2173,7 @@
 }
 </code></pre>
   </div>
-  <h3 id="create"><a href="#create">create</a></h3>
+  <h2 id="create"><a href="#create">create</a></h2>
   <p>
     A Git branch or tag is created. For more information, see the "<a
       href="/en/github-ae@latest/rest/reference/git"
@@ -2197,15 +2197,15 @@
       you push more than three tags at once.
     </p>
   </div>
-  <h4 id="availability-5"><a href="#availability-5">Availability</a></h4>
+  <h3 id="availability-5"><a href="#availability-5">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>contents</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-4">
+  <h3 id="webhook-payload-object-4">
     <a href="#webhook-payload-object-4">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -2295,9 +2295,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-5">
+  <h3 id="webhook-payload-example-5">
     <a href="#webhook-payload-example-5">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"ref"</span>: <span class="hljs-string">"simple-tag"</span>,
@@ -2438,7 +2438,7 @@
 }
 </code></pre>
   </div>
-  <h3 id="delete"><a href="#delete">delete</a></h3>
+  <h2 id="delete"><a href="#delete">delete</a></h2>
   <p>
     A Git branch or tag is deleted. For more information, see the "<a
       href="/en/github-ae@latest/rest/reference/git"
@@ -2462,15 +2462,15 @@
       you delete more than three tags at once.
     </p>
   </div>
-  <h4 id="availability-6"><a href="#availability-6">Availability</a></h4>
+  <h3 id="availability-6"><a href="#availability-6">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>contents</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-5">
+  <h3 id="webhook-payload-object-5">
     <a href="#webhook-payload-object-5">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -2547,9 +2547,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-6">
+  <h3 id="webhook-payload-example-6">
     <a href="#webhook-payload-example-6">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"ref"</span>: <span class="hljs-string">"simple-tag"</span>,
@@ -2688,7 +2688,7 @@
 }
 </code></pre>
   </div>
-  <h3 id="deploy_key"><a href="#deploy_key">deploy_key</a></h3>
+  <h2 id="deploy_key"><a href="#deploy_key">deploy_key</a></h2>
   <p>
     A deploy key is added or removed from a repository. The type of activity is
     specified in the <code>action</code> property of the payload object. For
@@ -2697,14 +2697,14 @@
       >Deploy keys</a
     >" REST API.
   </p>
-  <h4 id="availability-7"><a href="#availability-7">Availability</a></h4>
+  <h3 id="availability-7"><a href="#availability-7">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
   </ul>
-  <h4 id="webhook-payload-object-6">
+  <h3 id="webhook-payload-object-6">
     <a href="#webhook-payload-object-6">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -2764,9 +2764,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-7">
+  <h3 id="webhook-payload-example-7">
     <a href="#webhook-payload-example-7">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"created"</span>,
@@ -2895,7 +2895,7 @@
 }
 </code></pre>
   </div>
-  <h3 id="deployment"><a href="#deployment">deployment</a></h3>
+  <h2 id="deployment"><a href="#deployment">deployment</a></h2>
   <p>
     A deployment is created. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
@@ -2904,15 +2904,15 @@
       >deployment</a
     >" REST API.
   </p>
-  <h4 id="availability-8"><a href="#availability-8">Availability</a></h4>
+  <h3 id="availability-8"><a href="#availability-8">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>deployments</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-7">
+  <h3 id="webhook-payload-object-7">
     <a href="#webhook-payload-object-7">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -2977,9 +2977,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-8">
+  <h3 id="webhook-payload-example-8">
     <a href="#webhook-payload-example-8">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"deployment"</span>: {
@@ -3151,9 +3151,9 @@
 }
 </code></pre>
   </div>
-  <h3 id="deployment_status">
+  <h2 id="deployment_status">
     <a href="#deployment_status">deployment_status</a>
-  </h3>
+  </h2>
   <p>
     A deployment is created. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
@@ -3162,15 +3162,15 @@
       >deployment statuses</a
     >" REST API.
   </p>
-  <h4 id="availability-9"><a href="#availability-9">Availability</a></h4>
+  <h3 id="availability-9"><a href="#availability-9">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>deployments</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-8">
+  <h3 id="webhook-payload-object-8">
     <a href="#webhook-payload-object-8">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -3265,9 +3265,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-9">
+  <h3 id="webhook-payload-example-9">
     <a href="#webhook-payload-example-9">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"deployment_status"</span>: {
@@ -3472,7 +3472,7 @@
 }
 </code></pre>
   </div>
-  <h3 id="enterprise"><a href="#enterprise">enterprise</a></h3>
+  <h2 id="enterprise"><a href="#enterprise">enterprise</a></h2>
   <p>
     A site or repository administrator enables or disables anonymous Git read
     access. See "<a
@@ -3481,7 +3481,7 @@
       repositories</a
     >" for more details. This event is not available in the Events API.
   </p>
-  <h4 id="availability-10"><a href="#availability-10">Availability</a></h4>
+  <h3 id="availability-10"><a href="#availability-10">Availability</a></h3>
   <ul>
     <li>
       GitHub Enterprise webhooks. For more information, "<a
@@ -3490,9 +3490,9 @@
       >."
     </li>
   </ul>
-  <h4 id="webhook-payload-object-9">
+  <h3 id="webhook-payload-object-9">
     <a href="#webhook-payload-object-9">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -3513,9 +3513,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-10">
+  <h3 id="webhook-payload-example-10">
     <a href="#webhook-payload-example-10">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"anonymous_access_enabled"</span>,
@@ -3542,22 +3542,22 @@
 }
 </code></pre>
   </div>
-  <h3 id="fork"><a href="#fork">fork</a></h3>
+  <h2 id="fork"><a href="#fork">fork</a></h2>
   <p>
     A user forks a repository. For more information, see the "<a
       href="/en/github-ae@latest/rest/reference/repos#forks"
       >forks</a
     >" REST API.
   </p>
-  <h4 id="availability-11"><a href="#availability-11">Availability</a></h4>
+  <h3 id="availability-11"><a href="#availability-11">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>contents</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-10">
+  <h3 id="webhook-payload-object-10">
     <a href="#webhook-payload-object-10">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -3618,9 +3618,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-11">
+  <h3 id="webhook-payload-example-11">
     <a href="#webhook-payload-example-11">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"forkee"</span>: {
@@ -3851,9 +3851,9 @@
 }
 </code></pre>
   </div>
-  <h3 id="github_app_authorization">
+  <h2 id="github_app_authorization">
     <a href="#github_app_authorization">github_app_authorization</a>
-  </h3>
+  </h2>
   <p>
     When someone revokes their authorization of a GitHub App, this event occurs.
     A GitHub App receives this webhook by default and cannot unsubscribe from
@@ -3873,13 +3873,13 @@
       >Identifying and authorizing users for GitHub Apps</a
     >."
   </p>
-  <h4 id="availability-12"><a href="#availability-12">Availability</a></h4>
+  <h3 id="availability-12"><a href="#availability-12">Availability</a></h3>
   <ul>
     <li>GitHub Apps</li>
   </ul>
-  <h4 id="webhook-payload-object-11">
+  <h3 id="webhook-payload-object-11">
     <a href="#webhook-payload-object-11">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -3902,9 +3902,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-12">
+  <h3 id="webhook-payload-example-12">
     <a href="#webhook-payload-example-12">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"revoked"</span>,
@@ -3931,22 +3931,22 @@
 }
 </code></pre>
   </div>
-  <h3 id="gollum"><a href="#gollum">gollum</a></h3>
+  <h2 id="gollum"><a href="#gollum">gollum</a></h2>
   <p>
     A wiki page is created or updated. For more information, see the "<a
       href="/en/github-ae@latest/communities/documenting-your-project-with-wikis/about-wikis"
       >About wikis</a
     >".
   </p>
-  <h4 id="availability-13"><a href="#availability-13">Availability</a></h4>
+  <h3 id="availability-13"><a href="#availability-13">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>contents</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-12">
+  <h3 id="webhook-payload-object-12">
     <a href="#webhook-payload-object-12">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -4029,9 +4029,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-13">
+  <h3 id="webhook-payload-example-13">
     <a href="#webhook-payload-example-13">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"pages"</span>: [
@@ -4160,7 +4160,7 @@
 }
 </code></pre>
   </div>
-  <h3 id="installation"><a href="#installation">installation</a></h3>
+  <h2 id="installation"><a href="#installation">installation</a></h2>
   <p>
     Activity related to a GitHub App installation. The type of activity is
     specified in the <code>action</code> property of the payload object. For
@@ -4186,13 +4186,13 @@
       <code>integration_installation</code> event.
     </p>
   </div>
-  <h4 id="availability-14"><a href="#availability-14">Availability</a></h4>
+  <h3 id="availability-14"><a href="#availability-14">Availability</a></h3>
   <ul>
     <li>GitHub Apps</li>
   </ul>
-  <h4 id="webhook-payload-object-13">
+  <h3 id="webhook-payload-object-13">
     <a href="#webhook-payload-object-13">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -4246,9 +4246,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-14">
+  <h3 id="webhook-payload-example-14">
     <a href="#webhook-payload-example-14">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"deleted"</span>,
@@ -4368,9 +4368,9 @@
 }
 </code></pre>
   </div>
-  <h3 id="installation_repositories">
+  <h2 id="installation_repositories">
     <a href="#installation_repositories">installation_repositories</a>
-  </h3>
+  </h2>
   <p>
     Activity related to repositories being added to a GitHub App installation.
     The type of activity is specified in the <code>action</code> property of the
@@ -4396,13 +4396,13 @@
       <code>integration_installation_repositories</code> event.
     </p>
   </div>
-  <h4 id="availability-15"><a href="#availability-15">Availability</a></h4>
+  <h3 id="availability-15"><a href="#availability-15">Availability</a></h3>
   <ul>
     <li>GitHub Apps</li>
   </ul>
-  <h4 id="webhook-payload-object-14">
+  <h3 id="webhook-payload-object-14">
     <a href="#webhook-payload-object-14">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -4456,9 +4456,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-15">
+  <h3 id="webhook-payload-example-15">
     <a href="#webhook-payload-example-15">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"added"</span>,
@@ -4589,7 +4589,7 @@
 }
 </code></pre>
   </div>
-  <h3 id="issue_comment"><a href="#issue_comment">issue_comment</a></h3>
+  <h2 id="issue_comment"><a href="#issue_comment">issue_comment</a></h2>
   <p>
     Activity related to an issue or pull request comment. The type of activity
     is specified in the <code>action</code> property of the payload object. For
@@ -4598,15 +4598,15 @@
       >issue comments</a
     >" REST API.
   </p>
-  <h4 id="availability-16"><a href="#availability-16">Availability</a></h4>
+  <h3 id="availability-16"><a href="#availability-16">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>issues</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-15">
+  <h3 id="webhook-payload-object-15">
     <a href="#webhook-payload-object-15">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -4698,9 +4698,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-16">
+  <h3 id="webhook-payload-example-16">
     <a href="#webhook-payload-example-16">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"created"</span>,
@@ -4997,7 +4997,7 @@
 }
 </code></pre>
   </div>
-  <h3 id="issues"><a href="#issues">issues</a></h3>
+  <h2 id="issues"><a href="#issues">issues</a></h2>
   <p>
     Activity related to an issue. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
@@ -5005,15 +5005,15 @@
       >issues</a
     >" REST API.
   </p>
-  <h4 id="availability-17"><a href="#availability-17">Availability</a></h4>
+  <h3 id="availability-17"><a href="#availability-17">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>issues</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-16">
+  <h3 id="webhook-payload-object-16">
     <a href="#webhook-payload-object-16">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -5117,11 +5117,11 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-when-someone-edits-an-issue">
+  <h3 id="webhook-payload-example-when-someone-edits-an-issue">
     <a href="#webhook-payload-example-when-someone-edits-an-issue"
       >Webhook payload example when someone edits an issue</a
     >
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"edited"</span>,
@@ -5388,7 +5388,7 @@
 }
 </code></pre>
   </div>
-  <h3 id="label"><a href="#label">label</a></h3>
+  <h2 id="label"><a href="#label">label</a></h2>
   <p>
     Activity related to a label. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
@@ -5396,15 +5396,15 @@
       >labels</a
     >" REST API.
   </p>
-  <h4 id="availability-18"><a href="#availability-18">Availability</a></h4>
+  <h3 id="availability-18"><a href="#availability-18">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>metadata</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-17">
+  <h3 id="webhook-payload-object-17">
     <a href="#webhook-payload-object-17">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -5488,9 +5488,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-17">
+  <h3 id="webhook-payload-example-17">
     <a href="#webhook-payload-example-17">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"deleted"</span>,
@@ -5635,7 +5635,7 @@
 }
 </code></pre>
   </div>
-  <h3 id="member"><a href="#member">member</a></h3>
+  <h2 id="member"><a href="#member">member</a></h2>
   <p>
     Activity related to repository collaborators. The type of activity is
     specified in the <code>action</code> property of the payload object. For
@@ -5644,15 +5644,15 @@
       >collaborators</a
     >" REST API.
   </p>
-  <h4 id="availability-19"><a href="#availability-19">Availability</a></h4>
+  <h3 id="availability-19"><a href="#availability-19">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>members</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-18">
+  <h3 id="webhook-payload-object-18">
     <a href="#webhook-payload-object-18">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -5746,9 +5746,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-18">
+  <h3 id="webhook-payload-example-18">
     <a href="#webhook-payload-example-18">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"added"</span>,
@@ -5905,7 +5905,7 @@
 }
 </code></pre>
   </div>
-  <h3 id="membership"><a href="#membership">membership</a></h3>
+  <h2 id="membership"><a href="#membership">membership</a></h2>
   <p>
     Activity related to team membership. The type of activity is specified in
     the <code>action</code> property of the payload object. For more
@@ -5914,14 +5914,14 @@
       >team members</a
     >" REST API.
   </p>
-  <h4 id="availability-20"><a href="#availability-20">Availability</a></h4>
+  <h3 id="availability-20"><a href="#availability-20">Availability</a></h3>
   <ul>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>members</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-19">
+  <h3 id="webhook-payload-object-19">
     <a href="#webhook-payload-object-19">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -5991,9 +5991,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-19">
+  <h3 id="webhook-payload-example-19">
     <a href="#webhook-payload-example-19">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"removed"</span>,
@@ -6080,21 +6080,21 @@
 }
 </code></pre>
   </div>
-  <h3 id="meta"><a href="#meta">meta</a></h3>
+  <h2 id="meta"><a href="#meta">meta</a></h2>
   <p>
     The webhook this event is configured on was deleted. This event will only
     listen for changes to the particular hook the event is installed on.
     Therefore, it must be selected for each hook that you'd like to receive meta
     events for.
   </p>
-  <h4 id="availability-21"><a href="#availability-21">Availability</a></h4>
+  <h3 id="availability-21"><a href="#availability-21">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
   </ul>
-  <h4 id="webhook-payload-object-20">
+  <h3 id="webhook-payload-object-20">
     <a href="#webhook-payload-object-20">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -6154,9 +6154,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-20">
+  <h3 id="webhook-payload-example-20">
     <a href="#webhook-payload-example-20">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"deleted"</span>,
@@ -6293,7 +6293,7 @@
 }
 </code></pre>
   </div>
-  <h3 id="milestone"><a href="#milestone">milestone</a></h3>
+  <h2 id="milestone"><a href="#milestone">milestone</a></h2>
   <p>
     Activity related to milestones. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
@@ -6301,15 +6301,15 @@
       >milestones</a
     >" REST API.
   </p>
-  <h4 id="availability-22"><a href="#availability-22">Availability</a></h4>
+  <h3 id="availability-22"><a href="#availability-22">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>pull_requests</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-21">
+  <h3 id="webhook-payload-object-21">
     <a href="#webhook-payload-object-21">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -6404,9 +6404,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-21">
+  <h3 id="webhook-payload-example-21">
     <a href="#webhook-payload-example-21">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"created"</span>,
@@ -6580,7 +6580,7 @@
 }
 </code></pre>
   </div>
-  <h3 id="organization"><a href="#organization">organization</a></h3>
+  <h2 id="organization"><a href="#organization">organization</a></h2>
   <p>
     Activity related to an organization and its members. The type of activity is
     specified in the <code>action</code> property of the payload object. For
@@ -6589,7 +6589,7 @@
       >organizations</a
     >" REST API.
   </p>
-  <h4 id="availability-23"><a href="#availability-23">Availability</a></h4>
+  <h3 id="availability-23"><a href="#availability-23">Availability</a></h3>
   <ul>
     <li>
       GitHub Enterprise webhooks only receive <code>created</code> and
@@ -6605,9 +6605,9 @@
     </li>
     <li>GitHub Apps with the <code>members</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-22">
+  <h3 id="webhook-payload-object-22">
     <a href="#webhook-payload-object-22">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -6671,9 +6671,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-22">
+  <h3 id="webhook-payload-example-22">
     <a href="#webhook-payload-example-22">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"member_added"</span>,
@@ -6752,7 +6752,7 @@
 }
 </code></pre>
   </div>
-  <h3 id="package"><a href="#package">package</a></h3>
+  <h2 id="package"><a href="#package">package</a></h2>
   <p>
     Activity related to GitHub Packages. The type of activity is specified in
     the <code>action</code> property of the payload object. For more
@@ -6761,14 +6761,14 @@
       >Managing packages with GitHub Packages</a
     >" to learn more about GitHub Packages.
   </p>
-  <h4 id="availability-24"><a href="#availability-24">Availability</a></h4>
+  <h3 id="availability-24"><a href="#availability-24">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
   </ul>
-  <h4 id="webhook-payload-object-23">
+  <h3 id="webhook-payload-object-23">
     <a href="#webhook-payload-object-23">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -6822,9 +6822,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-23">
+  <h3 id="webhook-payload-example-23">
     <a href="#webhook-payload-example-23">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"published"</span>,
@@ -7065,22 +7065,22 @@
 }
 </code></pre>
   </div>
-  <h3 id="page_build"><a href="#page_build">page_build</a></h3>
+  <h2 id="page_build"><a href="#page_build">page_build</a></h2>
   <p>
     Represents an attempted build of a GitHub Pages site, whether successful or
     not. A push to a GitHub Pages enabled branch (<code>gh-pages</code> for
     project pages, the default branch for user and organization pages) triggers
     this event.
   </p>
-  <h4 id="availability-25"><a href="#availability-25">Availability</a></h4>
+  <h3 id="availability-25"><a href="#availability-25">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>pages</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-24">
+  <h3 id="webhook-payload-object-24">
     <a href="#webhook-payload-object-24">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -7147,9 +7147,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-24">
+  <h3 id="webhook-payload-example-24">
     <a href="#webhook-payload-example-24">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"id"</span>: <span class="hljs-number">7</span>,
@@ -7317,7 +7317,7 @@
 }
 </code></pre>
   </div>
-  <h3 id="ping"><a href="#ping">ping</a></h3>
+  <h2 id="ping"><a href="#ping">ping</a></h2>
   <p>
     When you create a new webhook, we'll send you a simple
     <code>ping</code> event to let you know you've set up the webhook correctly.
@@ -7328,7 +7328,7 @@
     >
     endpoint.
   </p>
-  <h4 id="availability-26"><a href="#availability-26">Availability</a></h4>
+  <h3 id="availability-26"><a href="#availability-26">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
@@ -7337,9 +7337,9 @@
       register the app
     </li>
   </ul>
-  <h4 id="webhook-payload-object-25">
+  <h3 id="webhook-payload-object-25">
     <a href="#webhook-payload-object-25">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -7415,9 +7415,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-25">
+  <h3 id="webhook-payload-example-25">
     <a href="#webhook-payload-example-25">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"zen"</span>: <span class="hljs-string">"Non-blocking is better than blocking."</span>,
@@ -7563,7 +7563,7 @@
 }
 </code></pre>
   </div>
-  <h3 id="project_card"><a href="#project_card">project_card</a></h3>
+  <h2 id="project_card"><a href="#project_card">project_card</a></h2>
   <p>
     Activity related to project cards. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
@@ -7571,7 +7571,7 @@
       >project cards</a
     >" REST API.
   </p>
-  <h4 id="availability-27"><a href="#availability-27">Availability</a></h4>
+  <h3 id="availability-27"><a href="#availability-27">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
@@ -7580,9 +7580,9 @@
       <code>organization_projects</code> permission
     </li>
   </ul>
-  <h4 id="webhook-payload-object-26">
+  <h3 id="webhook-payload-object-26">
     <a href="#webhook-payload-object-26">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -7677,9 +7677,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-26">
+  <h3 id="webhook-payload-example-26">
     <a href="#webhook-payload-example-26">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"created"</span>,
@@ -7844,7 +7844,7 @@
 }
 </code></pre>
   </div>
-  <h3 id="project_column"><a href="#project_column">project_column</a></h3>
+  <h2 id="project_column"><a href="#project_column">project_column</a></h2>
   <p>
     Activity related to columns in a project board. The type of activity is
     specified in the <code>action</code> property of the payload object. For
@@ -7853,7 +7853,7 @@
       >project columns</a
     >" REST API.
   </p>
-  <h4 id="availability-28"><a href="#availability-28">Availability</a></h4>
+  <h3 id="availability-28"><a href="#availability-28">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
@@ -7862,9 +7862,9 @@
       <code>organization_projects</code> permission
     </li>
   </ul>
-  <h4 id="webhook-payload-object-27">
+  <h3 id="webhook-payload-object-27">
     <a href="#webhook-payload-object-27">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -7959,9 +7959,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-27">
+  <h3 id="webhook-payload-example-27">
     <a href="#webhook-payload-example-27">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"created"</span>,
@@ -8108,14 +8108,14 @@
 }
 </code></pre>
   </div>
-  <h3 id="project"><a href="#project">project</a></h3>
+  <h2 id="project"><a href="#project">project</a></h2>
   <p>
     Activity related to project boards. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
     see the "<a href="/en/github-ae@latest/rest/reference/projects">projects</a
     >" REST API.
   </p>
-  <h4 id="availability-29"><a href="#availability-29">Availability</a></h4>
+  <h3 id="availability-29"><a href="#availability-29">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
@@ -8124,9 +8124,9 @@
       <code>organization_projects</code> permission
     </li>
   </ul>
-  <h4 id="webhook-payload-object-28">
+  <h3 id="webhook-payload-object-28">
     <a href="#webhook-payload-object-28">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -8217,9 +8217,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-28">
+  <h3 id="webhook-payload-example-28">
     <a href="#webhook-payload-example-28">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"created"</span>,
@@ -8390,7 +8390,7 @@
 }
 </code></pre>
   </div>
-  <h3 id="pull_request"><a href="#pull_request">pull_request</a></h3>
+  <h2 id="pull_request"><a href="#pull_request">pull_request</a></h2>
   <p>
     Activity related to pull requests. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
@@ -8398,15 +8398,15 @@
       >pull requests</a
     >" REST API.
   </p>
-  <h4 id="availability-30"><a href="#availability-30">Availability</a></h4>
+  <h3 id="availability-30"><a href="#availability-30">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>pull_requests</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-29">
+  <h3 id="webhook-payload-object-29">
     <a href="#webhook-payload-object-29">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -8529,9 +8529,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-29">
+  <h3 id="webhook-payload-example-29">
     <a href="#webhook-payload-example-29">Webhook payload example</a>
-  </h4>
+  </h3>
   <p>
     Deliveries for <code>review_requested</code> and
     <code>review_request_removed</code> events will have an additional field
@@ -9002,9 +9002,9 @@
 }
 </code></pre>
   </div>
-  <h3 id="pull_request_review">
+  <h2 id="pull_request_review">
     <a href="#pull_request_review">pull_request_review</a>
-  </h3>
+  </h2>
   <p>
     Activity related to pull request reviews. The type of activity is specified
     in the <code>action</code> property of the payload object. For more
@@ -9013,15 +9013,15 @@
       >pull request reviews</a
     >" REST API.
   </p>
-  <h4 id="availability-31"><a href="#availability-31">Availability</a></h4>
+  <h3 id="availability-31"><a href="#availability-31">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>pull_requests</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-30">
+  <h3 id="webhook-payload-object-30">
     <a href="#webhook-payload-object-30">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -9108,9 +9108,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-30">
+  <h3 id="webhook-payload-example-30">
     <a href="#webhook-payload-example-30">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"submitted"</span>,
@@ -9601,9 +9601,9 @@
 }
 </code></pre>
   </div>
-  <h3 id="pull_request_review_comment">
+  <h2 id="pull_request_review_comment">
     <a href="#pull_request_review_comment">pull_request_review_comment</a>
-  </h3>
+  </h2>
   <p>
     Activity related to pull request review comments in the pull request's
     unified diff. The type of activity is specified in the
@@ -9612,15 +9612,15 @@
       >pull request review comments</a
     >" REST API.
   </p>
-  <h4 id="availability-32"><a href="#availability-32">Availability</a></h4>
+  <h3 id="availability-32"><a href="#availability-32">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>pull_requests</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-31">
+  <h3 id="webhook-payload-object-31">
     <a href="#webhook-payload-object-31">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -9713,9 +9713,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-31">
+  <h3 id="webhook-payload-example-31">
     <a href="#webhook-payload-example-31">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"created"</span>,
@@ -10216,7 +10216,7 @@
 }
 </code></pre>
   </div>
-  <h3 id="push"><a href="#push">push</a></h3>
+  <h2 id="push"><a href="#push">push</a></h2>
   <p>One or more commits are pushed to a repository branch or tag.</p>
   <div
     class="
@@ -10235,15 +10235,15 @@
       you push more than three tags at once.
     </p>
   </div>
-  <h4 id="availability-33"><a href="#availability-33">Availability</a></h4>
+  <h3 id="availability-33"><a href="#availability-33">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>contents</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-32">
+  <h3 id="webhook-payload-object-32">
     <a href="#webhook-payload-object-32">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -10393,9 +10393,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-32">
+  <h3 id="webhook-payload-example-32">
     <a href="#webhook-payload-example-32">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"ref"</span>: <span class="hljs-string">"refs/tags/simple-tag"</span>,
@@ -10549,7 +10549,7 @@
 }
 </code></pre>
   </div>
-  <h3 id="release"><a href="#release">release</a></h3>
+  <h2 id="release"><a href="#release">release</a></h2>
   <p>
     Activity related to a release. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
@@ -10557,15 +10557,15 @@
       >releases</a
     >" REST API.
   </p>
-  <h4 id="availability-34"><a href="#availability-34">Availability</a></h4>
+  <h3 id="availability-34"><a href="#availability-34">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>contents</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-33">
+  <h3 id="webhook-payload-object-33">
     <a href="#webhook-payload-object-33">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -10675,9 +10675,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-33">
+  <h3 id="webhook-payload-example-33">
     <a href="#webhook-payload-example-33">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"published"</span>,
@@ -10853,9 +10853,9 @@
 }
 </code></pre>
   </div>
-  <h3 id="repository_dispatch">
+  <h2 id="repository_dispatch">
     <a href="#repository_dispatch">repository_dispatch</a>
-  </h3>
+  </h2>
   <p>
     This event occurs when a GitHub App sends a <code>POST</code> request to the
     "<a
@@ -10863,16 +10863,16 @@
       >Create a repository dispatch event</a
     >" endpoint.
   </p>
-  <h4 id="availability-35"><a href="#availability-35">Availability</a></h4>
+  <h3 id="availability-35"><a href="#availability-35">Availability</a></h3>
   <ul>
     <li>
       GitHub Apps must have the <code>contents</code> permission to receive this
       webhook.
     </li>
   </ul>
-  <h4 id="webhook-payload-example-34">
+  <h3 id="webhook-payload-example-34">
     <a href="#webhook-payload-example-34">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"on-demand-test"</span>,
@@ -11015,14 +11015,14 @@
 }
 </code></pre>
   </div>
-  <h3 id="repository"><a href="#repository">repository</a></h3>
+  <h2 id="repository"><a href="#repository">repository</a></h2>
   <p>
     Activity related to a repository. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
     see the "<a href="/en/github-ae@latest/rest/reference/repos">repositories</a
     >" REST API.
   </p>
-  <h4 id="availability-36"><a href="#availability-36">Availability</a></h4>
+  <h3 id="availability-36"><a href="#availability-36">Availability</a></h3>
   <ul>
     <li>
       Repository webhooks receive all event types except <code>deleted</code>
@@ -11033,9 +11033,9 @@
       types except <code>deleted</code>
     </li>
   </ul>
-  <h4 id="webhook-payload-object-34">
+  <h3 id="webhook-payload-object-34">
     <a href="#webhook-payload-object-34">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -11114,9 +11114,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-35">
+  <h3 id="webhook-payload-example-35">
     <a href="#webhook-payload-example-35">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"publicized"</span>,
@@ -11253,13 +11253,13 @@
 }
 </code></pre>
   </div>
-  <h4 id="availability-37"><a href="#availability-37">Availability</a></h4>
+  <h3 id="availability-37"><a href="#availability-37">Availability</a></h3>
   <ul>
     <li>GitHub Apps with the <code>security_events</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-35">
+  <h3 id="webhook-payload-object-35">
     <a href="#webhook-payload-object-35">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -11289,9 +11289,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-36">
+  <h3 id="webhook-payload-example-36">
     <a href="#webhook-payload-example-36">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"published"</span>,
@@ -11346,7 +11346,7 @@
 }
 </code></pre>
   </div>
-  <h3 id="star"><a href="#star">star</a></h3>
+  <h2 id="star"><a href="#star">star</a></h2>
   <p>
     Activity related to a repository being starred. The type of activity is
     specified in the <code>action</code> property of the payload object. For
@@ -11355,14 +11355,14 @@
       >starring</a
     >" REST API.
   </p>
-  <h4 id="availability-38"><a href="#availability-38">Availability</a></h4>
+  <h3 id="availability-38"><a href="#availability-38">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
   </ul>
-  <h4 id="webhook-payload-object-36">
+  <h3 id="webhook-payload-object-36">
     <a href="#webhook-payload-object-36">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -11421,9 +11421,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-37">
+  <h3 id="webhook-payload-example-37">
     <a href="#webhook-payload-example-37">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"created"</span>,
@@ -11545,7 +11545,7 @@
 }
 </code></pre>
   </div>
-  <h3 id="status"><a href="#status">status</a></h3>
+  <h2 id="status"><a href="#status">status</a></h2>
   <p>
     When the status of a Git commit changes. The type of activity is specified
     in the <code>action</code> property of the payload object. For more
@@ -11554,15 +11554,15 @@
       >statuses</a
     >" REST API.
   </p>
-  <h4 id="availability-39"><a href="#availability-39">Availability</a></h4>
+  <h3 id="availability-39"><a href="#availability-39">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>statuses</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-37">
+  <h3 id="webhook-payload-object-37">
     <a href="#webhook-payload-object-37">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -11649,9 +11649,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-38">
+  <h3 id="webhook-payload-example-38">
     <a href="#webhook-payload-example-38">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"id"</span>: <span class="hljs-number">2</span>,
@@ -11876,7 +11876,7 @@
 }
 </code></pre>
   </div>
-  <h3 id="team"><a href="#team">team</a></h3>
+  <h2 id="team"><a href="#team">team</a></h2>
   <p>
     Activity related to an organization's team. The type of activity is
     specified in the <code>action</code> property of the payload object. For
@@ -11885,14 +11885,14 @@
       >teams</a
     >" REST API.
   </p>
-  <h4 id="availability-40"><a href="#availability-40">Availability</a></h4>
+  <h3 id="availability-40"><a href="#availability-40">Availability</a></h3>
   <ul>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>members</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-38">
+  <h3 id="webhook-payload-object-38">
     <a href="#webhook-payload-object-38">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -12002,10 +12002,10 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-39">
+  <h3 id="webhook-payload-example-39">
     <a href="#webhook-payload-example-39">Webhook payload example</a>
-  </h4>
-  <h3 id="team_add"><a href="#team_add">team_add</a></h3>
+  </h3>
+  <h2 id="team_add"><a href="#team_add">team_add</a></h2>
   <p>
     When a
     <a
@@ -12013,15 +12013,15 @@
       >repository is added to a team</a
     >.
   </p>
-  <h4 id="availability-41"><a href="#availability-41">Availability</a></h4>
+  <h3 id="availability-41"><a href="#availability-41">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>members</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-39">
+  <h3 id="webhook-payload-object-39">
     <a href="#webhook-payload-object-39">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -12080,9 +12080,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-40">
+  <h3 id="webhook-payload-example-40">
     <a href="#webhook-payload-example-40">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"team"</span>: {
@@ -12241,9 +12241,9 @@
 }
 </code></pre>
   </div>
-  <h3 id="user"><a href="#user">user</a></h3>
+  <h2 id="user"><a href="#user">user</a></h2>
   <p>When a user is <code>created</code> or <code>deleted</code>.</p>
-  <h4 id="availability-42"><a href="#availability-42">Availability</a></h4>
+  <h3 id="availability-42"><a href="#availability-42">Availability</a></h3>
   <ul>
     <li>
       GitHub Enterprise webhooks. For more information, "<a
@@ -12252,10 +12252,10 @@
       >."
     </li>
   </ul>
-  <h4 id="webhook-payload-example-41">
+  <h3 id="webhook-payload-example-41">
     <a href="#webhook-payload-example-41">Webhook payload example</a>
-  </h4>
-  <h3 id="watch"><a href="#watch">watch</a></h3>
+  </h3>
+  <h2 id="watch"><a href="#watch">watch</a></h2>
   <p>
     When someone stars a repository. The type of activity is specified in the
     <code>action</code> property of the payload object. For more information,
@@ -12270,15 +12270,15 @@
     <a href="/en/github-ae@latest/rest/reference/repos">repository</a> that was
     starred.
   </p>
-  <h4 id="availability-43"><a href="#availability-43">Availability</a></h4>
+  <h3 id="availability-43"><a href="#availability-43">Availability</a></h3>
   <ul>
     <li>Repository webhooks</li>
     <li>Organization webhooks</li>
     <li>GitHub Apps with the <code>metadata</code> permission</li>
   </ul>
-  <h4 id="webhook-payload-object-40">
+  <h3 id="webhook-payload-object-40">
     <a href="#webhook-payload-object-40">Webhook payload object</a>
-  </h4>
+  </h3>
 
   <table>
     <thead>
@@ -12336,9 +12336,9 @@
       </tr>
     </tbody>
   </table>
-  <h4 id="webhook-payload-example-42">
+  <h3 id="webhook-payload-example-42">
     <a href="#webhook-payload-example-42">Webhook payload example</a>
-  </h4>
+  </h3>
   <div class="height-constrained-code-block">
     <pre><code class="hljs language-json">{
   <span class="hljs-attr">"action"</span>: <span class="hljs-string">"started"</span>,

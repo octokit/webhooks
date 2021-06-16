@@ -20,7 +20,7 @@ export const getSections = (html: string): Section[] => {
         $.html($title),
         "\n",
         $title
-          .nextUntil("h3")
+          .nextUntil("h2")
           .map((i, el) => $.html(el))
           .get()
           .join("\n"),
