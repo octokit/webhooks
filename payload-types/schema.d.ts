@@ -3019,6 +3019,10 @@ export interface IssuesMilestonedEvent {
 }
 export interface IssuesOpenedEvent {
   action: "opened";
+  changes?: {
+    old_issue: Issue;
+    old_repository: Repository;
+  };
   issue: Issue & {
     state: "open";
     closed_at: null;
@@ -3048,6 +3052,10 @@ export interface IssuesReopenedEvent {
 }
 export interface IssuesTransferredEvent {
   action: "transferred";
+  changes: {
+    new_issue: Issue;
+    new_repository: Repository;
+  };
   issue: Issue;
   repository: Repository;
   sender: User;
