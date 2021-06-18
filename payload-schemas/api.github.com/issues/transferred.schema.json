@@ -2,9 +2,18 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "issues$transferred",
   "type": "object",
-  "required": ["action", "issue", "repository", "sender"],
+  "required": ["action", "changes", "issue", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["transferred"] },
+    "changes": {
+      "type": "object",
+      "required": ["new_issue", "new_repository"],
+      "properties": {
+        "new_issue": { "$ref": "common/issue.schema.json" },
+        "new_repository": { "$ref": "common/repository.schema.json" }
+      },
+      "additionalProperties": false
+    },
     "issue": { "$ref": "common/issue.schema.json" },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
