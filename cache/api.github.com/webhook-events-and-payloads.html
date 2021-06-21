@@ -1,223 +1,28 @@
-<div class="article-grid-head">
-  <div class="d-flex flex-items-baseline flex-justify-between">
-    <h1 class="my-4 border-bottom-0">Webhook events and payloads</h1>
-    <div class="d-none d-lg-block ml-2">
-      <span
-        aria-label="Print this article"
-        class="
-          Tooltip__TooltipBase-kp39nc-0
-          kavMra
-          tooltipped-n tooltipped-no-delay
-        "
-        ><button class="btn-link Link--muted">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="18"
-            width="18"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
-            ></path>
-          </svg></button
-      ></span>
-    </div>
-  </div>
-  <div class="lead-mktg">
-    <p>
-      For each webhook event, you can review when the event occurs, an example
-      payload, and descriptions about the payload object parameters.
-    </p>
-  </div>
-  <div
-    class="
-      product-callout
-      border
-      rounded-1
-      mb-4
-      p-3
-      color-border-success color-bg-success
-    "
-  >
-    <p>
-      Enterprise accounts are available with GitHub Enterprise Cloud and GitHub
-      Enterprise Server. For more information, see "<a
-        href="/en/articles/about-enterprise-accounts"
-        >About enterprise accounts</a
-      >."
-    </p>
-    <p>
-      Webhooks configured on enterprise accounts or organizations that are part
-      of an enterprise account will include an <code>enterprise</code> account
-      object.
-    </p>
-  </div>
-</div>
-<div
-  class="article-grid-toc border-bottom border-xl-0 pb-4 mb-5 pb-xl-0 mb-xl-0"
->
-  <div class="article-grid-toc-content">
-    <h2 id="in-this-article" class="f5 mb-2">
-      <a class="Link--primary" href="#in-this-article">In this article</a>
-    </h2>
-    <ul class="list-style-none pl-0 f5 mb-0">
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#webhook-payload-object-common-properties"
-          >Webhook payload object common properties</a
-        >
-      </li>
-      <li class="ml-0 mb-2 lh-condensed"><a href="#check_run">check_run</a></li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#check_suite">check_suite</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#code_scanning_alert">code_scanning_alert</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#commit_comment">commit_comment</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#content_reference">content_reference</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed"><a href="#create">create</a></li>
-      <li class="ml-0 mb-2 lh-condensed"><a href="#delete">delete</a></li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#deploy_key">deploy_key</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#deployment">deployment</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#deployment_status">deployment_status</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#discussion">discussion</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#discussion_comment">discussion_comment</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed"><a href="#fork">fork</a></li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#github_app_authorization">github_app_authorization</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed"><a href="#gollum">gollum</a></li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#installation">installation</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#installation_repositories">installation_repositories</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#issue_comment">issue_comment</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed"><a href="#issues">issues</a></li>
-      <li class="ml-0 mb-2 lh-condensed"><a href="#label">label</a></li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#marketplace_purchase">marketplace_purchase</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed"><a href="#member">member</a></li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#membership">membership</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed"><a href="#meta">meta</a></li>
-      <li class="ml-0 mb-2 lh-condensed"><a href="#milestone">milestone</a></li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#organization">organization</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed"><a href="#org_block">org_block</a></li>
-      <li class="ml-0 mb-2 lh-condensed"><a href="#package">package</a></li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#page_build">page_build</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed"><a href="#ping">ping</a></li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#project_card">project_card</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#project_column">project_column</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed"><a href="#project">project</a></li>
-      <li class="ml-0 mb-2 lh-condensed"><a href="#public">public</a></li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#pull_request">pull_request</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#pull_request_review">pull_request_review</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#pull_request_review_comment">pull_request_review_comment</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed"><a href="#push">push</a></li>
-      <li class="ml-0 mb-2 lh-condensed"><a href="#release">release</a></li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#repository_dispatch">repository_dispatch</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#repository">repository</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#repository_import">repository_import</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#repository_vulnerability_alert"
-          >repository_vulnerability_alert</a
-        >
-      </li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#secret_scanning_alert">secret_scanning_alert</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#security_advisory">security_advisory</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#sponsorship">sponsorship</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed"><a href="#star">star</a></li>
-      <li class="ml-0 mb-2 lh-condensed"><a href="#status">status</a></li>
-      <li class="ml-0 mb-2 lh-condensed"><a href="#team">team</a></li>
-      <li class="ml-0 mb-2 lh-condensed"><a href="#team_add">team_add</a></li>
-      <li class="ml-0 mb-2 lh-condensed"><a href="#watch">watch</a></li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#workflow_dispatch">workflow_dispatch</a>
-      </li>
-      <li class="ml-0 mb-2 lh-condensed">
-        <a href="#workflow_run">workflow_run</a>
-      </li>
-    </ul>
-  </div>
-</div>
-<div class="markdown-body">
-  <div id="article-contents" class="article-grid-body">
-    <p>
-      When configuring a webhook, you can use the UI or API to choose which
-      events will send you payloads. Only subscribing to the specific events you
-      plan on handling limits the number of HTTP requests to your server. You
-      can also subscribe to all current and future events. By default, webhooks
-      are only subscribed to the push event. You can change the list of
-      subscribed events anytime.
-    </p>
-    <p>
-      You can create webhooks that subscribe to the events listed on this page.
-      Each webhook event includes a description of the webhook properties and an
-      example payload. For more information, see "<a
-        href="/en/webhooks/creating"
-        >Creating webhooks</a
-      >."
-    </p>
-    <h2 id="webhook-payload-object-common-properties">
-      <a href="#webhook-payload-object-common-properties"
-        >Webhook payload object common properties</a
-      >
-    </h2>
-    <p>
-      Each webhook event payload also contains properties unique to the event.
-      You can find the unique properties in the individual event type sections.
-    </p>
+<div id="article-contents" class="article-grid-body">
+  <p>
+    When configuring a webhook, you can use the UI or API to choose which events
+    will send you payloads. Only subscribing to the specific events you plan on
+    handling limits the number of HTTP requests to your server. You can also
+    subscribe to all current and future events. By default, webhooks are only
+    subscribed to the push event. You can change the list of subscribed events
+    anytime.
+  </p>
+  <p>
+    You can create webhooks that subscribe to the events listed on this page.
+    Each webhook event includes a description of the webhook properties and an
+    example payload. For more information, see "<a href="/en/webhooks/creating"
+      >Creating webhooks</a
+    >."
+  </p>
+  <h2 id="webhook-payload-object-common-properties">
+    <a href="#webhook-payload-object-common-properties"
+      >Webhook payload object common properties</a
+    >
+  </h2>
+  <p>
+    Each webhook event payload also contains properties unique to the event. You
+    can find the unique properties in the individual event type sections.
+  </p>
 
     <table>
       <thead>
