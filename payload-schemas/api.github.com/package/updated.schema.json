@@ -11,6 +11,9 @@
       "required": [
         "id",
         "name",
+        "namespace",
+        "description",
+        "ecosystem",
         "package_type",
         "html_url",
         "created_at",
@@ -22,6 +25,9 @@
       "properties": {
         "id": { "type": "integer" },
         "name": { "type": "string" },
+        "namespace": { "type": "string" },
+        "description": { "type": ["string", "null"] },
+        "ecosystem": { "type": "string" },
         "package_type": { "type": "string" },
         "html_url": { "type": "string", "format": "uri" },
         "created_at": { "type": "string" },
@@ -33,6 +39,8 @@
             "id",
             "version",
             "summary",
+            "name",
+            "description",
             "body",
             "body_html",
             "release",
@@ -46,14 +54,18 @@
             "created_at",
             "updated_at",
             "metadata",
+            "docker_metadata",
             "package_files",
             "author",
+            "source_url",
             "installation_command"
           ],
           "properties": {
             "id": { "type": "integer" },
             "version": { "type": "string" },
             "summary": { "type": "string" },
+            "name": { "type": "string" },
+            "description": { "type": "string" },
             "body": { "type": "string" },
             "body_html": { "type": "string" },
             "release": {
@@ -96,6 +108,7 @@
             "created_at": { "type": "string" },
             "updated_at": { "type": "string" },
             "metadata": { "type": "array", "items": {} },
+            "docker_metadata": { "type": "array", "items": {} },
             "package_files": {
               "type": "array",
               "items": {
@@ -130,6 +143,7 @@
               }
             },
             "author": { "$ref": "common/user.schema.json" },
+            "source_url": { "type": "string", "format": "uri" },
             "installation_command": { "type": "string" }
           },
           "additionalProperties": false
