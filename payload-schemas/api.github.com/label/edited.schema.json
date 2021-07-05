@@ -34,6 +34,17 @@
             }
           },
           "additionalProperties": false
+        },
+        "description": {
+          "type": "object",
+          "required": ["from"],
+          "properties": {
+            "from": {
+              "type": "string",
+              "description": "The previous version of the description if the action was `edited`."
+            }
+          },
+          "additionalProperties": false
         }
       },
       "additionalProperties": false

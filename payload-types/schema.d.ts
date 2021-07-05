@@ -98,10 +98,12 @@ export type DiscussionEvent =
   | DiscussionCreatedEvent
   | DiscussionDeletedEvent
   | DiscussionEditedEvent
+  | DiscussionLabeledEvent
   | DiscussionLockedEvent
   | DiscussionPinnedEvent
   | DiscussionTransferredEvent
   | DiscussionUnansweredEvent
+  | DiscussionUnlabeledEvent
   | DiscussionUnlockedEvent
   | DiscussionUnpinnedEvent;
 export type DiscussionCommentEvent =
@@ -2112,7 +2114,7 @@ export interface Discussion {
   number: number;
   title: string;
   user: User;
-  state: "open" | "locked";
+  state: "open" | "locked" | "converting";
   locked: boolean;
   comments: number;
   created_at: string;
@@ -2147,7 +2149,7 @@ export interface DiscussionCategoryChangedEvent {
 export interface DiscussionCreatedEvent {
   action: "created";
   discussion: Discussion & {
-    state: "open";
+    state: "open" | "converting";
     locked: false;
     answer_html_url: null;
     answer_chosen_at: null;
@@ -2181,6 +2183,33 @@ export interface DiscussionEditedEvent {
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
+}
+export interface DiscussionLabeledEvent {
+  action: "labeled";
+  discussion: Discussion;
+  label: Label;
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface Label {
+  id: number;
+  node_id: string;
+  /**
+   * URL for the label
+   */
+  url: string;
+  /**
+   * The name of the label.
+   */
+  name: string;
+  description: string | null;
+  /**
+   * 6-character hex code, without the leading #, identifying the color
+   */
+  color: string;
+  default: boolean;
 }
 export interface DiscussionLockedEvent {
   action: "locked";
@@ -2237,6 +2266,15 @@ export interface DiscussionUnansweredEvent {
     updated_at: string;
     body: string;
   };
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DiscussionUnlabeledEvent {
+  action: "unlabeled";
+  discussion: Discussion;
+  label: Label;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2770,24 +2808,6 @@ export interface Issue {
    */
   body: string | null;
 }
-export interface Label {
-  id: number;
-  node_id: string;
-  /**
-   * URL for the label
-   */
-  url: string;
-  /**
-   * The name of the label.
-   */
-  name: string;
-  description: string | null;
-  /**
-   * 6-character hex code, without the leading #, identifying the color
-   */
-  color: string;
-  default: boolean;
-}
 /**
  * A collection of related issues and pull requests.
  */
@@ -2999,7 +3019,7 @@ export interface IssuesLockedEvent {
   action: "locked";
   issue: Issue & {
     locked: true;
-    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam";
+    active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
   };
   repository: Repository;
   sender: User;
@@ -3137,6 +3157,12 @@ export interface LabelEditedEvent {
     name?: {
       /**
        * The previous version of the name if the action was `edited`.
+       */
+      from: string;
+    };
+    description?: {
+      /**
+       * The previous version of the description if the action was `edited`.
        */
       from: string;
     };

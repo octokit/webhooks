@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "discussion$unlabeled",
+  "type": "object",
+  "required": ["action", "discussion", "label", "repository", "sender"],
+  "properties": {
+    "action": { "type": "string", "enum": ["unlabeled"] },
+    "discussion": { "$ref": "common/discussion.schema.json" },
+    "label": { "$ref": "common/label.schema.json" },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
+  },
+  "additionalProperties": false,
+  "title": "discussion unlabeled event"
+}

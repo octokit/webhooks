@@ -14,8 +14,8 @@
           "properties": {
             "locked": { "type": "boolean", "enum": [true] },
             "active_lock_reason": {
-              "type": "string",
-              "enum": ["resolved", "off-topic", "too heated", "spam"]
+              "type": ["string", "null"],
+              "enum": ["resolved", "off-topic", "too heated", "spam", null]
             }
           },
           "tsAdditionalProperties": false
