@@ -62,7 +62,7 @@
     "number": { "type": "integer" },
     "title": { "type": "string" },
     "user": { "$ref": "user.schema.json" },
-    "state": { "type": "string", "enum": ["open", "locked"] },
+    "state": { "type": "string", "enum": ["open", "locked", "converting"] },
     "locked": { "type": "boolean" },
     "comments": { "type": "integer" },
     "created_at": { "type": "string", "format": "date-time" },

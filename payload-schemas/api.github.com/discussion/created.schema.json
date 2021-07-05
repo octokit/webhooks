@@ -18,7 +18,7 @@
             "answer_chosen_by"
           ],
           "properties": {
-            "state": { "type": "string", "enum": ["open"] },
+            "state": { "type": "string", "enum": ["open", "converting"] },
             "locked": { "type": "boolean", "enum": [false] },
             "answer_html_url": { "type": "null" },
             "answer_chosen_at": { "type": "null" },
