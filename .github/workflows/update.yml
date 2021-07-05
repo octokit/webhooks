@@ -13,6 +13,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 12.x
+          cache: npm
       - run: git checkout webhooks-update || true
       - run: npm ci
       - name: update .com webhooks
