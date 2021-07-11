@@ -2486,6 +2486,7 @@ export interface Installation {
     members?: "read" | "write";
     metadata?: "read" | "write";
     organization_administration?: "read" | "write";
+    organization_events?: "read" | "write";
     organization_hooks?: "read" | "write";
     organization_packages?: "read" | "write";
     organization_plan?: "read" | "write";
@@ -2529,6 +2530,7 @@ export interface Installation {
     | "label"
     | "member"
     | "membership"
+    | "merge_queue_entry"
     | "milestone"
     | "organization"
     | "org_block"
@@ -3342,6 +3344,11 @@ export interface MarketplacePurchasePurchasedEvent {
  */
 export interface MemberAddedEvent {
   action: "added";
+  changes?: {
+    permission?: {
+      to: "write" | "admin";
+    };
+  };
   member: User;
   repository: Repository;
   installation?: InstallationLite;
@@ -5261,6 +5268,7 @@ export interface RepositoryVulnerabilityAlertResolveEvent {
     dismiss_reason?: string;
     dismissed_at?: string;
     ghsa_id?: string;
+    severity?: string;
     external_reference: string;
     external_identifier: string;
     fixed_in: string;
