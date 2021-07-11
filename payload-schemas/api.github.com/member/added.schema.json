@@ -6,6 +6,20 @@
   "required": ["action", "member", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["added"] },
+    "changes": {
+      "type": "object",
+      "properties": {
+        "permission": {
+          "type": "object",
+          "required": ["to"],
+          "properties": {
+            "to": { "type": "string", "enum": ["write", "admin"] }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
     "member": {
       "$ref": "common/user.schema.json",
       "description": "The user that was added."
