@@ -20680,7 +20680,7 @@
         "description": "The details of the security advisory, including summary, description, and severity."
       }
     },
-    "actions": ["performed", "published", "updated", "withdrawn"],
+    "actions": ["performed", "published", "updated"],
     "examples": [
       {
         "action": "published",
