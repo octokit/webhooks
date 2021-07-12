@@ -8363,10 +8363,9 @@
               <li><code>review_request_removed</code></li>
               <li><code>review_requested</code></li>
               <li>
-                <code>synchronize</code>: Triggered when a pull request's head
-                branch is updated. For example, when the head branch is updated
-                from the base branch, when new commits are pushed to the head
-                branch, or when the base branch is changed.
+                <code>synchronize</code>: Triggered when a pull request's
+                tracking branch is synchronized with the source branch for the
+                pull request, which happens when the source branch is updated.
               </li>
               <li><code>unassigned</code></li>
               <li><code>unlabeled</code></li>
@@ -11238,9 +11237,8 @@
           <td><code>string</code></td>
           <td>
             The action that was performed. The action can be one of
-            <code>published</code>, <code>updated</code>,
-            <code>performed</code>, or <code>withdrawn</code> for all new
-            events.
+            <code>published</code>, <code>updated</code>, or
+            <code>performed</code> for all new events.
           </td>
         </tr>
         <tr>
