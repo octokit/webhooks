@@ -4941,11 +4941,11 @@ export interface Commit {
   /**
    * An array of files modified by the commit.
    */
-  removed: string[];
+  modified: string[];
   /**
    * An array of files removed in the commit.
    */
-  modified: string[];
+  removed: string[];
 }
 export interface ReleaseCreatedEvent {
   action: "created";
@@ -5115,13 +5115,13 @@ export interface RepositoryEditedEvent {
   action: "edited";
   changes: {
     description?: {
-      from: string;
+      from: string | null;
     };
     default_branch?: {
       from: string;
     };
     homepage?: {
-      from: string;
+      from: string | null;
     };
   };
   repository: Repository;
