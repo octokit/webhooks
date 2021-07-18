@@ -11,7 +11,7 @@
         "description": {
           "type": "object",
           "required": ["from"],
-          "properties": { "from": { "type": "string" } },
+          "properties": { "from": { "type": ["string", "null"] } },
           "additionalProperties": false
         },
         "default_branch": {
@@ -23,7 +23,7 @@
         "homepage": {
           "type": "object",
           "required": ["from"],
-          "properties": { "from": { "type": "string" } },
+          "properties": { "from": { "type": ["string", "null"] } },
           "additionalProperties": false
         }
       },

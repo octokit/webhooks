@@ -2486,6 +2486,7 @@ export interface Installation {
     members?: "read" | "write";
     metadata?: "read" | "write";
     organization_administration?: "read" | "write";
+    organization_events?: "read" | "write";
     organization_hooks?: "read" | "write";
     organization_packages?: "read" | "write";
     organization_plan?: "read" | "write";
@@ -2529,6 +2530,7 @@ export interface Installation {
     | "label"
     | "member"
     | "membership"
+    | "merge_queue_entry"
     | "milestone"
     | "organization"
     | "org_block"
@@ -3342,6 +3344,11 @@ export interface MarketplacePurchasePurchasedEvent {
  */
 export interface MemberAddedEvent {
   action: "added";
+  changes?: {
+    permission?: {
+      to: "write" | "admin";
+    };
+  };
   member: User;
   repository: Repository;
   installation?: InstallationLite;
@@ -4934,11 +4941,11 @@ export interface Commit {
   /**
    * An array of files modified by the commit.
    */
-  removed: string[];
+  modified: string[];
   /**
    * An array of files removed in the commit.
    */
-  modified: string[];
+  removed: string[];
 }
 export interface ReleaseCreatedEvent {
   action: "created";
@@ -5108,13 +5115,13 @@ export interface RepositoryEditedEvent {
   action: "edited";
   changes: {
     description?: {
-      from: string;
+      from: string | null;
     };
     default_branch?: {
       from: string;
     };
     homepage?: {
-      from: string;
+      from: string | null;
     };
   };
   repository: Repository;
@@ -5261,6 +5268,7 @@ export interface RepositoryVulnerabilityAlertResolveEvent {
     dismiss_reason?: string;
     dismissed_at?: string;
     ghsa_id?: string;
+    severity?: string;
     external_reference: string;
     external_identifier: string;
     fixed_in: string;
