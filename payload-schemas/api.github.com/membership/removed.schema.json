@@ -7,7 +7,7 @@
     "action": { "type": "string", "enum": ["removed"] },
     "scope": {
       "type": "string",
-      "enum": ["team"],
+      "enum": ["team", "organization"],
       "description": "The scope of the membership. Currently, can only be `team`."
     },
     "member": {
@@ -16,8 +16,20 @@
     },
     "sender": { "$ref": "common/user.schema.json" },
     "team": {
-      "$ref": "common/team.schema.json",
-      "description": "The [team](https://docs.github.com/en/rest/reference/teams) for the membership."
+      "description": "The [team](https://docs.github.com/en/rest/reference/teams) for the membership.",
+      "oneOf": [
+        { "$ref": "common/team.schema.json" },
+        {
+          "type": "object",
+          "required": [ "id", "name" ],
+          "properties": {
+            "id": { "type": "integer" },
+            "name": { "type": "string" },
+            "deleted": { "type": "boolean" }
+          },
+          "additionalProperties": false
+        }
+      ]
     },
     "organization": { "$ref": "common/organization.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" }
