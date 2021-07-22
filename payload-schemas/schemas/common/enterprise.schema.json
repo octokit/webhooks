@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/enterprise.schema.json",
+  "description": "An enterprise account",
+  "type": "object",
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "node_id",
+    "avatar_url",
+    "description",
+    "website_url",
+    "html_url",
+    "created_at",
+    "updated_at"
+  ],
+  "properties": {
+    "id": {
+      "description": "Unique identifier of the enterprise",
+      "type": "integer"
+    },
+    "slug": {
+      "description": "The slug url identifier for the enterprise.",
+      "type": "string"
+    },
+    "name": { "description": "The name of the enterprise.", "type": "string" },
+    "node_id": { "type": "string" },
+    "avatar_url": { "type": "string", "format": "uri" },
+    "description": {
+      "description": "A short description of the enterprise.",
+      "type": ["string", "null"]
+    },
+    "website_url": {
+      "description": "The enterprise's website URL.",
+      "type": ["string", "null"],
+      "format": "uri"
+    },
+    "html_url": { "type": "string", "format": "uri" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false,
+  "title": "Enterprise"
+}
