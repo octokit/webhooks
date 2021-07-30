@@ -5,7 +5,9 @@ import { Section } from ".";
 export const getSections = (html: string): Section[] => {
   const $ = cheerio.load(html);
 
-  const sections = $("#in-this-article").next("ul").find("a")
+  const sections = $("#in-this-article")
+    .next("ul")
+    .find("a")
     .map((index, element) => {
       const url = $(element).attr("href");
 
