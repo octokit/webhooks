@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/workflow-step-in_progress.schema.json",
+  "required": [
+    "name",
+    "status",
+    "conclusion",
+    "number",
+    "started_at",
+    "completed_at"
+  ],
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "status": { "type": "string", "enum": ["in_progress"] },
+    "conclusion": { "type": "null" },
+    "number": { "type": "integer" },
+    "started_at": { "type": "string" },
+    "completed_at": { "type": "null" }
+  },
+  "additionalProperties": false,
+  "title": "Workflow Step (In Progress)"
+}
