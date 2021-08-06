@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "workflow_job$started",
+  "type": "object",
+  "required": ["action", "repository", "sender", "workflow_job"],
+  "properties": {
+    "action": { "type": "string", "enum": ["started"] },
+    "organization": { "$ref": "common/organization.schema.json" },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "workflow_job": {
+      "allOf": [
+        { "$ref": "common/workflow-job.schema.json" },
+        {
+          "type": "object",
+          "required": ["steps", "conclusion", "completed_at"],
+          "properties": {
+            "steps": {
+              "type": "array",
+              "items": {
+                "$ref": "common/workflow-step-in_progress.schema.json"
+              },
+              "minItems": 1,
+              "maxItems": 1
+            },
+            "conclusion": { "type": "null" },
+            "completed_at": { "type": "null" }
+          },
+          "tsAdditionalProperties": false
+        }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "title": "workflow_job started event"
+}

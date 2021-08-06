@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/workflow-job.schema.json",
+  "required": [
+    "id",
+    "run_id",
+    "run_url",
+    "node_id",
+    "head_sha",
+    "url",
+    "html_url",
+    "status",
+    "conclusion",
+    "started_at",
+    "completed_at",
+    "name",
+    "steps",
+    "check_run_url",
+    "labels"
+  ],
+  "type": "object",
+  "properties": {
+    "id": { "type": "integer" },
+    "run_id": { "type": "number" },
+    "head_sha": { "type": "string" },
+    "node_id": { "type": "string" },
+    "name": { "type": "string" },
+    "check_run_url": { "type": "string", "format": "uri" },
+    "run_url": { "type": "string", "format": "uri" },
+    "html_url": { "type": "string", "format": "uri" },
+    "url": { "type": "string", "format": "uri" },
+    "status": { "type": "string", "enum": ["in_progress", "completed"] },
+    "steps": {
+      "type": "array",
+      "items": { "$ref": "workflow-step.schema.json" },
+      "minItems": 1
+    },
+    "conclusion": {
+      "type": ["string", "null"],
+      "enum": ["success", "failure", null]
+    },
+    "labels": { "type": "array", "items": { "type": "string" } },
+    "started_at": { "type": "string" },
+    "completed_at": { "type": ["string", "null"] }
+  },
+  "additionalProperties": false,
+  "title": "Workflow Job"
+}

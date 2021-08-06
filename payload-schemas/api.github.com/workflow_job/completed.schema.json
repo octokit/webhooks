@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "workflow_job$completed",
+  "type": "object",
+  "required": ["action", "repository", "sender", "workflow_job"],
+  "properties": {
+    "action": { "type": "string", "enum": ["completed"] },
+    "organization": { "$ref": "common/organization.schema.json" },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "workflow_job": {
+      "allOf": [
+        { "$ref": "common/workflow-job.schema.json" },
+        {
+          "type": "object",
+          "required": ["conclusion"],
+          "properties": {
+            "conclusion": { "type": "string", "enum": ["success", "failure"] }
+          },
+          "tsAdditionalProperties": false
+        }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "title": "workflow_job completed event"
+}

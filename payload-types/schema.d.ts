@@ -58,6 +58,7 @@ export type Schema =
   | TeamAddEvent
   | WatchEvent
   | WorkflowDispatchEvent
+  | WorkflowJobEvent
   | WorkflowRunEvent;
 export type CheckRunEvent =
   | CheckRunCompletedEvent
@@ -366,6 +367,10 @@ export type TeamEvent =
   | TeamEditedEvent
   | TeamRemovedFromRepositoryEvent;
 export type WatchEvent = WatchStartedEvent;
+export type WorkflowJobEvent =
+  | WorkflowJobCompletedEvent
+  | WorkflowJobStartedEvent;
+export type WorkflowStep = WorkflowStepInProgress | WorkflowStepCompleted;
 export type WorkflowRunEvent =
   | WorkflowRunCompletedEvent
   | WorkflowRunRequestedEvent;
@@ -5816,6 +5821,59 @@ export interface WorkflowDispatchEvent {
   organization?: Organization;
   workflow: string;
 }
+export interface WorkflowJobCompletedEvent {
+  action: "completed";
+  organization?: Organization;
+  repository: Repository;
+  sender: User;
+  workflow_job: WorkflowJob & {
+    conclusion: "success" | "failure";
+  };
+}
+export interface WorkflowJob {
+  id: number;
+  run_id: number;
+  head_sha: string;
+  node_id: string;
+  name: string;
+  check_run_url: string;
+  run_url: string;
+  html_url: string;
+  url: string;
+  status: "in_progress" | "completed";
+  steps: [WorkflowStep, ...WorkflowStep[]];
+  conclusion: "success" | "failure" | null;
+  labels: string[];
+  started_at: string;
+  completed_at: string | null;
+}
+export interface WorkflowStepInProgress {
+  name: string;
+  status: "in_progress";
+  conclusion: null;
+  number: number;
+  started_at: string;
+  completed_at: null;
+}
+export interface WorkflowStepCompleted {
+  name: string;
+  status: "completed";
+  conclusion: "failure" | "skipped" | "success";
+  number: number;
+  started_at: string;
+  completed_at: string;
+}
+export interface WorkflowJobStartedEvent {
+  action: "started";
+  organization?: Organization;
+  repository: Repository;
+  sender: User;
+  workflow_job: WorkflowJob & {
+    steps: [WorkflowStepInProgress];
+    conclusion: null;
+    completed_at: null;
+  };
+}
 export interface WorkflowRunCompletedEvent {
   action: "completed";
   organization?: Organization;
@@ -6017,6 +6075,7 @@ export interface EventPayloadMap {
   team_add: TeamAddEvent;
   watch: WatchEvent;
   workflow_dispatch: WorkflowDispatchEvent;
+  workflow_job: WorkflowJobEvent;
   workflow_run: WorkflowRunEvent;
 }
 
