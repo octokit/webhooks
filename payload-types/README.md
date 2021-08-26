@@ -7,7 +7,7 @@
 ## Download
 
 Download the latest specification at
-[octokit.github.io/webhooks/payload-examples/index.json](https://octokit.github.io/webhooks/payload-examples/index.json)
+[octokit.github.io/webhooks/payload-examples/api.github.com/index.json](https://octokit.github.io/webhooks/payload-examples/api.github.com/index.json)
 
 ## Usage
 
