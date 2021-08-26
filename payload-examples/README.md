@@ -7,7 +7,7 @@
 ## Download
 
 Download the latest specification at
-[octokit.github.io/webhooks/payload-examples/index.json](https://octokit.github.io/webhooks/payload-examples/index.json)
+[octokit.github.io/webhooks/payload-examples/api.github.com/index.json](https://octokit.github.io/webhooks/payload-examples/api.github.com/index.json)
 
 ## Example
 
@@ -229,7 +229,7 @@ Example webhook definition
 ## Download webhook definitions and webhook payloads schema
 
 You can download the latest `index.json` file from
-[unpkg](https://unpkg.com/@octokit/webhooks-examples/index.json)
+[unpkg](https://unpkg.com/@octokit/webhooks-examples/api.github.com/index.json)
 
 ## Usage as Node module
 
@@ -237,10 +237,10 @@ To get an array of all webhook definition objects, require the `@octokit/webhook
 
 ```js
 // Use Node.js require:
-const WEBHOOKS = require("@octokit/webhooks-examples/index.json");
+const WEBHOOKS = require("@octokit/webhooks-examples/api.github.com/index.json");
 
 // Or ESM/TypeScript import:
-import WEBHOOKS from "@octokit/webhooks-examples/index.json";
+import WEBHOOKS from "@octokit/webhooks-examples/api.github.com/index.json";
 ```
 
 ## How it works
