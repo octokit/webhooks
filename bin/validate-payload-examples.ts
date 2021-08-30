@@ -50,7 +50,7 @@ forEachJsonFile(pathToPayloads, (filePath) => {
     } else {
       console.log(`✅ Payload '${event}/${filename}' matches schema`);
     }
-  } catch (err) {
+  } catch (err: any) {
     if (!continueOnError) {
       throw err;
     }
