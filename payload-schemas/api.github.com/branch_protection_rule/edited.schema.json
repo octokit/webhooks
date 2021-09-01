@@ -14,9 +14,7 @@
         "authorized_actors_only": {
           "type": "object",
           "required": ["from"],
-          "properties": {
-            "from": { "type": "boolean" }
-          },
+          "properties": { "from": { "type": "boolean" } },
           "additionalProperties": false
         },
         "authorized_actor_names": {
