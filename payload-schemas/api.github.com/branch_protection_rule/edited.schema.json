@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "branch_protection_rule$edited",
+  "type": "object",
+  "description": "Activity related to a branch protection rule. For more information, see \"[About branch protection rules](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-rules).\"",
+  "required": ["action", "rule", "changes", "repository", "sender"],
+  "properties": {
+    "action": { "type": "string", "enum": ["edited"] },
+    "rule": { "$ref": "common/branch-protection-rule.schema.json" },
+    "changes": {
+      "type": "object",
+      "description": "If the action was `edited`, the changes to the rule.",
+      "properties": {
+        "authorized_actors_only": {
+          "type": "object",
+          "required": ["from"],
+          "properties": {
+            "from": { "type": "boolean" }
+          },
+          "additionalProperties": false
+        },
+        "authorized_actor_names": {
+          "type": "object",
+          "required": ["from"],
+          "properties": {
+            "from": { "type": "array", "items": { "type": "string" } }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
+  },
+  "title": "branch protection rule edited event",
+  "additionalProperties": false
+}
