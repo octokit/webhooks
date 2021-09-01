@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/branch-protection-rule.schema.json",
+  "type": "object",
+  "description": "The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.",
+  "required": [
+    "id",
+    "repository_id",
+    "name",
+    "created_at",
+    "updated_at",
+    "pull_request_reviews_enforcement_level",
+    "required_approving_review_count",
+    "dismiss_stale_reviews_on_push",
+    "require_code_owner_review",
+    "authorized_dismissal_actors_only",
+    "ignore_approvals_from_contributors",
+    "required_status_checks",
+    "required_status_checks_enforcement_level",
+    "strict_required_status_checks_policy",
+    "signature_requirement_enforcement_level",
+    "linear_history_requirement_enforcement_level",
+    "admin_enforced",
+    "allow_force_pushes_enforcement_level",
+    "allow_deletions_enforcement_level",
+    "merge_queue_enforcement_level",
+    "required_deployments_enforcement_level",
+    "required_conversation_resolution_level",
+    "authorized_actors_only",
+    "authorized_actor_names"
+  ],
+  "properties": {
+    "id": { "type": "integer" },
+    "repository_id": { "type": "integer" },
+    "name": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "pull_request_reviews_enforcement_level": {
+      "type": "string",
+      "enum": ["off", "non_admins", "everyone"]
+    },
+    "required_approving_review_count": { "type": "integer" },
+    "dismiss_stale_reviews_on_push": { "type": "boolean" },
+    "require_code_owner_review": { "type": "boolean" },
+    "authorized_dismissal_actors_only": { "type": "boolean" },
+    "ignore_approvals_from_contributors": { "type": "boolean" },
+    "required_status_checks": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "required_status_checks_enforcement_level": {
+      "type": "string",
+      "enum": ["off", "non_admins", "everyone"]
+    },
+    "strict_required_status_checks_policy": { "type": "boolean" },
+    "signature_requirement_enforcement_level": {
+      "type": "string",
+      "enum": ["off", "non_admins", "everyone"]
+    },
+    "linear_history_requirement_enforcement_level": {
+      "type": "string",
+      "enum": ["off", "non_admins", "everyone"]
+    },
+    "admin_enforced": { "type": "boolean" },
+    "allow_force_pushes_enforcement_level": {
+      "type": "string",
+      "enum": ["off", "non_admins", "everyone"]
+    },
+    "allow_deletions_enforcement_level": {
+      "type": "string",
+      "enum": ["off", "non_admins", "everyone"]
+    },
+    "merge_queue_enforcement_level": {
+      "type": "string",
+      "enum": ["off", "non_admins", "everyone"]
+    },
+    "required_deployments_enforcement_level": {
+      "type": "string",
+      "enum": ["off", "non_admins", "everyone"]
+    },
+    "required_conversation_resolution_level": {
+      "type": "string",
+      "enum": ["off", "non_admins", "everyone"]
+    },
+    "authorized_actors_only": { "type": "boolean" },
+    "authorized_actor_names": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": false,
+  "title": "branch protection rule"
+}

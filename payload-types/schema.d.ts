@@ -6,6 +6,7 @@
  */
 
 export type Schema =
+  | BranchProtectionRuleEvent
   | CheckRunEvent
   | CheckSuiteEvent
   | CodeScanningAlertEvent
@@ -60,6 +61,10 @@ export type Schema =
   | WorkflowDispatchEvent
   | WorkflowJobEvent
   | WorkflowRunEvent;
+export type BranchProtectionRuleEvent =
+  | BranchProtectionRuleCreatedEvent
+  | BranchProtectionRuleDeletedEvent
+  | BranchProtectionRuleEditedEvent;
 export type CheckRunEvent =
   | CheckRunCompletedEvent
   | CheckRunCreatedEvent
@@ -375,6 +380,271 @@ export type WorkflowRunEvent =
   | WorkflowRunCompletedEvent
   | WorkflowRunRequestedEvent;
 
+/**
+ * Activity related to a branch protection rule. For more information, see "[About branch protection rules](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-rules)."
+ */
+export interface BranchProtectionRuleCreatedEvent {
+  action: "created";
+  rule: BranchProtectionRule;
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+/**
+ * The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
+ */
+export interface BranchProtectionRule {
+  id: number;
+  repository_id: number;
+  name: string;
+  created_at: string;
+  updated_at: string;
+  pull_request_reviews_enforcement_level: "off" | "non_admins" | "everyone";
+  required_approving_review_count: number;
+  dismiss_stale_reviews_on_push: boolean;
+  require_code_owner_review: boolean;
+  authorized_dismissal_actors_only: boolean;
+  ignore_approvals_from_contributors: boolean;
+  required_status_checks: string[];
+  required_status_checks_enforcement_level: "off" | "non_admins" | "everyone";
+  strict_required_status_checks_policy: boolean;
+  signature_requirement_enforcement_level: "off" | "non_admins" | "everyone";
+  linear_history_requirement_enforcement_level:
+    | "off"
+    | "non_admins"
+    | "everyone";
+  admin_enforced: boolean;
+  allow_force_pushes_enforcement_level: "off" | "non_admins" | "everyone";
+  allow_deletions_enforcement_level: "off" | "non_admins" | "everyone";
+  merge_queue_enforcement_level: "off" | "non_admins" | "everyone";
+  required_deployments_enforcement_level: "off" | "non_admins" | "everyone";
+  required_conversation_resolution_level: "off" | "non_admins" | "everyone";
+  authorized_actors_only: boolean;
+  authorized_actor_names: string[];
+}
+/**
+ * A git repository
+ */
+export interface Repository {
+  /**
+   * Unique identifier of the repository
+   */
+  id: number;
+  node_id: string;
+  /**
+   * The name of the repository.
+   */
+  name: string;
+  full_name: string;
+  /**
+   * Whether the repository is private or public.
+   */
+  private: boolean;
+  owner: User;
+  html_url: string;
+  description: string | null;
+  fork: boolean;
+  url: string;
+  forks_url: string;
+  keys_url: string;
+  collaborators_url: string;
+  teams_url: string;
+  hooks_url: string;
+  issue_events_url: string;
+  events_url: string;
+  assignees_url: string;
+  branches_url: string;
+  tags_url: string;
+  blobs_url: string;
+  git_tags_url: string;
+  git_refs_url: string;
+  trees_url: string;
+  statuses_url: string;
+  languages_url: string;
+  stargazers_url: string;
+  contributors_url: string;
+  subscribers_url: string;
+  subscription_url: string;
+  commits_url: string;
+  git_commits_url: string;
+  comments_url: string;
+  issue_comment_url: string;
+  contents_url: string;
+  compare_url: string;
+  merges_url: string;
+  archive_url: string;
+  downloads_url: string;
+  issues_url: string;
+  pulls_url: string;
+  milestones_url: string;
+  notifications_url: string;
+  labels_url: string;
+  releases_url: string;
+  deployments_url: string;
+  created_at: number | string;
+  updated_at: string;
+  pushed_at: number | string | null;
+  git_url: string;
+  ssh_url: string;
+  clone_url: string;
+  svn_url: string;
+  homepage: string | null;
+  size: number;
+  stargazers_count: number;
+  watchers_count: number;
+  language: string | null;
+  /**
+   * Whether issues are enabled.
+   */
+  has_issues: boolean;
+  /**
+   * Whether projects are enabled.
+   */
+  has_projects: boolean;
+  /**
+   * Whether downloads are enabled.
+   */
+  has_downloads: boolean;
+  /**
+   * Whether the wiki is enabled.
+   */
+  has_wiki: boolean;
+  has_pages: boolean;
+  forks_count: number;
+  mirror_url: string | null;
+  /**
+   * Whether the repository is archived.
+   */
+  archived: boolean;
+  /**
+   * Returns whether or not this repository is disabled.
+   */
+  disabled?: boolean;
+  open_issues_count: number;
+  license: License | null;
+  forks: number;
+  open_issues: number;
+  watchers: number;
+  stargazers?: number;
+  /**
+   * The default branch of the repository.
+   */
+  default_branch: string;
+  /**
+   * Whether to allow squash merges for pull requests.
+   */
+  allow_squash_merge?: boolean;
+  /**
+   * Whether to allow merge commits for pull requests.
+   */
+  allow_merge_commit?: boolean;
+  /**
+   * Whether to allow rebase merges for pull requests.
+   */
+  allow_rebase_merge?: boolean;
+  /**
+   * Whether to delete head branches when pull requests are merged
+   */
+  delete_branch_on_merge?: boolean;
+  master_branch?: string;
+  permissions?: {
+    pull: boolean;
+    push: boolean;
+    admin: boolean;
+    maintain?: boolean;
+    triage?: boolean;
+  };
+  public?: boolean;
+  organization?: string;
+}
+export interface User {
+  login: string;
+  id: number;
+  node_id: string;
+  name?: string;
+  email?: string | null;
+  avatar_url: string;
+  gravatar_id: string;
+  url: string;
+  html_url: string;
+  followers_url: string;
+  following_url: string;
+  gists_url: string;
+  starred_url: string;
+  subscriptions_url: string;
+  organizations_url: string;
+  repos_url: string;
+  events_url: string;
+  received_events_url: string;
+  type: "Bot" | "User" | "Organization";
+  site_admin: boolean;
+}
+export interface License {
+  key: string;
+  name: string;
+  spdx_id: string;
+  url: string | null;
+  node_id: string;
+}
+/**
+ * Installation
+ */
+export interface InstallationLite {
+  /**
+   * The ID of the installation.
+   */
+  id: number;
+  node_id: string;
+}
+export interface Organization {
+  login: string;
+  id: number;
+  node_id: string;
+  url: string;
+  html_url?: string;
+  repos_url: string;
+  events_url: string;
+  hooks_url: string;
+  issues_url: string;
+  members_url: string;
+  public_members_url: string;
+  avatar_url: string;
+  description: string | null;
+}
+/**
+ * Activity related to a branch protection rule. For more information, see "[About branch protection rules](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-rules)."
+ */
+export interface BranchProtectionRuleDeletedEvent {
+  action: "deleted";
+  rule: BranchProtectionRule;
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+/**
+ * Activity related to a branch protection rule. For more information, see "[About branch protection rules](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-rules)."
+ */
+export interface BranchProtectionRuleEditedEvent {
+  action: "edited";
+  rule: BranchProtectionRule;
+  /**
+   * If the action was `edited`, the changes to the rule.
+   */
+  changes: {
+    authorized_actors_only?: {
+      from: boolean;
+    };
+    authorized_actor_names?: {
+      from: string[];
+    };
+  };
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
 export interface CheckRunCompletedEvent {
   action: "completed";
   /**
@@ -627,195 +897,6 @@ export interface App {
     | "workflow_dispatch"
     | "workflow_run"
   )[];
-}
-export interface User {
-  login: string;
-  id: number;
-  node_id: string;
-  name?: string;
-  email?: string | null;
-  avatar_url: string;
-  gravatar_id: string;
-  url: string;
-  html_url: string;
-  followers_url: string;
-  following_url: string;
-  gists_url: string;
-  starred_url: string;
-  subscriptions_url: string;
-  organizations_url: string;
-  repos_url: string;
-  events_url: string;
-  received_events_url: string;
-  type: "Bot" | "User" | "Organization";
-  site_admin: boolean;
-}
-/**
- * A git repository
- */
-export interface Repository {
-  /**
-   * Unique identifier of the repository
-   */
-  id: number;
-  node_id: string;
-  /**
-   * The name of the repository.
-   */
-  name: string;
-  full_name: string;
-  /**
-   * Whether the repository is private or public.
-   */
-  private: boolean;
-  owner: User;
-  html_url: string;
-  description: string | null;
-  fork: boolean;
-  url: string;
-  forks_url: string;
-  keys_url: string;
-  collaborators_url: string;
-  teams_url: string;
-  hooks_url: string;
-  issue_events_url: string;
-  events_url: string;
-  assignees_url: string;
-  branches_url: string;
-  tags_url: string;
-  blobs_url: string;
-  git_tags_url: string;
-  git_refs_url: string;
-  trees_url: string;
-  statuses_url: string;
-  languages_url: string;
-  stargazers_url: string;
-  contributors_url: string;
-  subscribers_url: string;
-  subscription_url: string;
-  commits_url: string;
-  git_commits_url: string;
-  comments_url: string;
-  issue_comment_url: string;
-  contents_url: string;
-  compare_url: string;
-  merges_url: string;
-  archive_url: string;
-  downloads_url: string;
-  issues_url: string;
-  pulls_url: string;
-  milestones_url: string;
-  notifications_url: string;
-  labels_url: string;
-  releases_url: string;
-  deployments_url: string;
-  created_at: number | string;
-  updated_at: string;
-  pushed_at: number | string | null;
-  git_url: string;
-  ssh_url: string;
-  clone_url: string;
-  svn_url: string;
-  homepage: string | null;
-  size: number;
-  stargazers_count: number;
-  watchers_count: number;
-  language: string | null;
-  /**
-   * Whether issues are enabled.
-   */
-  has_issues: boolean;
-  /**
-   * Whether projects are enabled.
-   */
-  has_projects: boolean;
-  /**
-   * Whether downloads are enabled.
-   */
-  has_downloads: boolean;
-  /**
-   * Whether the wiki is enabled.
-   */
-  has_wiki: boolean;
-  has_pages: boolean;
-  forks_count: number;
-  mirror_url: string | null;
-  /**
-   * Whether the repository is archived.
-   */
-  archived: boolean;
-  /**
-   * Returns whether or not this repository is disabled.
-   */
-  disabled?: boolean;
-  open_issues_count: number;
-  license: License | null;
-  forks: number;
-  open_issues: number;
-  watchers: number;
-  stargazers?: number;
-  /**
-   * The default branch of the repository.
-   */
-  default_branch: string;
-  /**
-   * Whether to allow squash merges for pull requests.
-   */
-  allow_squash_merge?: boolean;
-  /**
-   * Whether to allow merge commits for pull requests.
-   */
-  allow_merge_commit?: boolean;
-  /**
-   * Whether to allow rebase merges for pull requests.
-   */
-  allow_rebase_merge?: boolean;
-  /**
-   * Whether to delete head branches when pull requests are merged
-   */
-  delete_branch_on_merge?: boolean;
-  master_branch?: string;
-  permissions?: {
-    pull: boolean;
-    push: boolean;
-    admin: boolean;
-    maintain?: boolean;
-    triage?: boolean;
-  };
-  public?: boolean;
-  organization?: string;
-}
-export interface License {
-  key: string;
-  name: string;
-  spdx_id: string;
-  url: string | null;
-  node_id: string;
-}
-/**
- * Installation
- */
-export interface InstallationLite {
-  /**
-   * The ID of the installation.
-   */
-  id: number;
-  node_id: string;
-}
-export interface Organization {
-  login: string;
-  id: number;
-  node_id: string;
-  url: string;
-  html_url?: string;
-  repos_url: string;
-  events_url: string;
-  hooks_url: string;
-  issues_url: string;
-  members_url: string;
-  public_members_url: string;
-  avatar_url: string;
-  description: string | null;
 }
 export interface CheckRunCreatedEvent {
   action: "created";
@@ -6023,6 +6104,7 @@ export interface WorkflowRunRequestedEvent {
 }
 
 export interface EventPayloadMap {
+  branch_protection_rule: BranchProtectionRuleEvent;
   check_run: CheckRunEvent;
   check_suite: CheckSuiteEvent;
   code_scanning_alert: CodeScanningAlertEvent;

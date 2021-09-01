@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "branch_protection_rule$deleted",
+  "type": "object",
+  "description": "Activity related to a branch protection rule. For more information, see \"[About branch protection rules](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-rules).\"",
+  "required": ["action", "rule", "repository", "sender"],
+  "properties": {
+    "action": { "type": "string", "enum": ["deleted"] },
+    "rule": { "$ref": "common/branch-protection-rule.schema.json" },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
+  },
+  "title": "branch protection rule deleted event",
+  "additionalProperties": false
+}
