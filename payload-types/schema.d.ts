@@ -1506,7 +1506,7 @@ export interface GitHubOrg {
   name?: "GitHub";
   email?: null;
   avatar_url: "https://avatars.githubusercontent.com/u/9919?v=4";
-  gravatar_id: string;
+  gravatar_id: "";
   url: "https://api.github.com/users/github";
   html_url: "https://github.com/github";
   followers_url: "https://api.github.com/users/github/followers";
@@ -1519,7 +1519,7 @@ export interface GitHubOrg {
   events_url: "https://api.github.com/users/github/events{/privacy}";
   received_events_url: "https://api.github.com/users/github/received_events";
   type: "Organization";
-  site_admin: boolean;
+  site_admin: false;
 }
 export interface CodeScanningAlertClosedByUserEvent {
   action: "closed_by_user";
