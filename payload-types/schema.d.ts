@@ -544,6 +544,9 @@ export interface Repository {
    */
   allow_rebase_merge?: boolean;
   /**
+   * Whether to allow auto-merge for pull requests.
+   */
+  allow_auto_merge?: boolean;
   /**
    * Whether to allow private forks
    */

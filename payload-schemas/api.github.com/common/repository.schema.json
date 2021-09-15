@@ -212,6 +212,11 @@
       "description": "Whether to allow rebase merges for pull requests.",
       "default": true
     },
+    "allow_auto_merge": {
+      "type": "boolean",
+      "description": "Whether to allow auto-merge for pull requests.",
+      "default": false
+    },
     "allow_forking": {
       "type": "boolean",
       "description": "Whether to allow private forks"
