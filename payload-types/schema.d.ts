@@ -374,6 +374,7 @@ export type TeamEvent =
 export type WatchEvent = WatchStartedEvent;
 export type WorkflowJobEvent =
   | WorkflowJobCompletedEvent
+  | WorkflowJobQueuedEvent
   | WorkflowJobStartedEvent;
 export type WorkflowStep = WorkflowStepInProgress | WorkflowStepCompleted;
 export type WorkflowRunEvent =
@@ -543,6 +544,14 @@ export interface Repository {
    * Whether to allow rebase merges for pull requests.
    */
   allow_rebase_merge?: boolean;
+  /**
+   * Whether to allow auto-merge for pull requests.
+   */
+  allow_auto_merge?: boolean;
+  /**
+   * Whether to allow private forks
+   */
+  allow_forking?: boolean;
   /**
    * Whether to delete head branches when pull requests are merged
    */
@@ -3541,10 +3550,19 @@ export interface MembershipRemovedEvent {
   /**
    * The scope of the membership. Currently, can only be `team`.
    */
-  scope: "team";
+  scope: "team" | "organization";
   member: User;
   sender: User;
-  team: Team;
+  /**
+   * The [team](https://docs.github.com/en/rest/reference/teams) for the membership.
+   */
+  team:
+    | Team
+    | {
+        id: number;
+        name: string;
+        deleted?: boolean;
+      };
   organization: Organization;
   installation?: InstallationLite;
 }
@@ -5309,6 +5327,7 @@ export interface RepositoryVulnerabilityAlertCreateEvent {
     dismisser?: User;
     dismiss_reason?: string;
     dismissed_at?: string;
+    severity?: string;
     ghsa_id?: string;
     external_reference: string;
     external_identifier: string;
@@ -5331,6 +5350,7 @@ export interface RepositoryVulnerabilityAlertDismissEvent {
     dismisser: User;
     dismiss_reason: string;
     dismissed_at: string;
+    severity?: string;
     ghsa_id?: string;
     external_reference: string;
     external_identifier: string;
@@ -5807,6 +5827,7 @@ export interface TeamAddedToRepositoryEvent {
   repository?: Repository;
   sender: User;
   organization: Organization;
+  installation?: InstallationLite;
 }
 export interface TeamCreatedEvent {
   action: "created";
@@ -5814,6 +5835,7 @@ export interface TeamCreatedEvent {
   repository?: Repository;
   sender: User;
   organization: Organization;
+  installation?: InstallationLite;
 }
 export interface TeamDeletedEvent {
   action: "deleted";
@@ -5821,6 +5843,7 @@ export interface TeamDeletedEvent {
   repository?: Repository;
   sender: User;
   organization: Organization;
+  installation?: InstallationLite;
 }
 export interface TeamEditedEvent {
   action: "edited";
@@ -5869,6 +5892,7 @@ export interface TeamEditedEvent {
   repository?: Repository;
   sender: User;
   organization: Organization;
+  installation?: InstallationLite;
 }
 export interface TeamRemovedFromRepositoryEvent {
   action: "removed_from_repository";
@@ -5876,6 +5900,7 @@ export interface TeamRemovedFromRepositoryEvent {
   repository?: Repository;
   sender: User;
   organization: Organization;
+  installation?: InstallationLite;
 }
 export interface TeamAddEvent {
   team: Team;
@@ -5905,6 +5930,7 @@ export interface WorkflowDispatchEvent {
 export interface WorkflowJobCompletedEvent {
   action: "completed";
   organization?: Organization;
+  installation?: InstallationLite;
   repository: Repository;
   sender: User;
   workflow_job: WorkflowJob & {
@@ -5921,7 +5947,7 @@ export interface WorkflowJob {
   run_url: string;
   html_url: string;
   url: string;
-  status: "in_progress" | "completed";
+  status: "queued" | "in_progress" | "completed";
   steps: [WorkflowStep, ...WorkflowStep[]];
   conclusion: "success" | "failure" | null;
   labels: string[];
@@ -5944,9 +5970,34 @@ export interface WorkflowStepCompleted {
   started_at: string;
   completed_at: string;
 }
+export interface WorkflowJobQueuedEvent {
+  action: "queued";
+  organization?: Organization;
+  installation?: InstallationLite;
+  repository: Repository;
+  sender: User;
+  workflow_job: {
+    id: number;
+    run_id: number;
+    head_sha: string;
+    node_id: string;
+    name: string;
+    check_run_url: string;
+    run_url: string;
+    html_url: string;
+    url: string;
+    status: "queued";
+    steps: WorkflowStep[];
+    conclusion: null;
+    labels: string[];
+    started_at: string;
+    completed_at: null;
+  };
+}
 export interface WorkflowJobStartedEvent {
   action: "started";
   organization?: Organization;
+  installation?: InstallationLite;
   repository: Repository;
   sender: User;
   workflow_job: WorkflowJob & {

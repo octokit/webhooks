@@ -8,7 +8,8 @@
     "team": { "$ref": "common/team.schema.json" },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
-    "organization": { "$ref": "common/organization.schema.json" }
+    "organization": { "$ref": "common/organization.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" }
   },
   "additionalProperties": false,
   "title": "team removed_from_repository event"
