@@ -29,7 +29,10 @@
     "run_url": { "type": "string", "format": "uri" },
     "html_url": { "type": "string", "format": "uri" },
     "url": { "type": "string", "format": "uri" },
-    "status": { "type": "string", "enum": ["in_progress", "completed"] },
+    "status": {
+      "type": "string",
+      "enum": ["queued", "in_progress", "completed"]
+    },
     "steps": {
       "type": "array",
       "items": { "$ref": "workflow-step.schema.json" },
