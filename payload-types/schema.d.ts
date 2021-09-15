@@ -5317,6 +5317,7 @@ export interface RepositoryVulnerabilityAlertCreateEvent {
     dismisser?: User;
     dismiss_reason?: string;
     dismissed_at?: string;
+    severity?: string;
     ghsa_id?: string;
     external_reference: string;
     external_identifier: string;
@@ -5339,6 +5340,7 @@ export interface RepositoryVulnerabilityAlertDismissEvent {
     dismisser: User;
     dismiss_reason: string;
     dismissed_at: string;
+    severity?: string;
     ghsa_id?: string;
     external_reference: string;
     external_identifier: string;
