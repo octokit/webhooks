@@ -5913,6 +5913,7 @@ export interface WorkflowDispatchEvent {
 export interface WorkflowJobCompletedEvent {
   action: "completed";
   organization?: Organization;
+  installation?: InstallationLite;
   repository: Repository;
   sender: User;
   workflow_job: WorkflowJob & {
@@ -5955,6 +5956,7 @@ export interface WorkflowStepCompleted {
 export interface WorkflowJobStartedEvent {
   action: "started";
   organization?: Organization;
+  installation?: InstallationLite;
   repository: Repository;
   sender: User;
   workflow_job: WorkflowJob & {
