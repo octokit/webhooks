@@ -374,6 +374,7 @@ export type TeamEvent =
 export type WatchEvent = WatchStartedEvent;
 export type WorkflowJobEvent =
   | WorkflowJobCompletedEvent
+  | WorkflowJobQueuedEvent
   | WorkflowJobStartedEvent;
 export type WorkflowStep = WorkflowStepInProgress | WorkflowStepCompleted;
 export type WorkflowRunEvent =
@@ -5954,6 +5955,30 @@ export interface WorkflowStepCompleted {
   number: number;
   started_at: string;
   completed_at: string;
+}
+export interface WorkflowJobQueuedEvent {
+  action: "queued";
+  organization?: Organization;
+  installation?: InstallationLite;
+  repository: Repository;
+  sender: User;
+  workflow_job: {
+    id: number;
+    run_id: number;
+    head_sha: string;
+    node_id: string;
+    name: string;
+    check_run_url: string;
+    run_url: string;
+    html_url: string;
+    url: string;
+    status: "queued";
+    steps: WorkflowStep[];
+    conclusion: null;
+    labels: string[];
+    started_at: string;
+    completed_at: null;
+  };
 }
 export interface WorkflowJobStartedEvent {
   action: "started";
