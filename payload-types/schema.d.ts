@@ -3550,10 +3550,19 @@ export interface MembershipRemovedEvent {
   /**
    * The scope of the membership. Currently, can only be `team`.
    */
-  scope: "team";
+  scope: "team" | "organization";
   member: User;
   sender: User;
-  team: Team;
+  /**
+   * The [team](https://docs.github.com/en/rest/reference/teams) for the membership.
+   */
+  team:
+    | Team
+    | {
+        id: number;
+        name: string;
+        deleted?: boolean;
+      };
   organization: Organization;
   installation?: InstallationLite;
 }
@@ -5818,6 +5827,7 @@ export interface TeamAddedToRepositoryEvent {
   repository?: Repository;
   sender: User;
   organization: Organization;
+  installation?: InstallationLite;
 }
 export interface TeamCreatedEvent {
   action: "created";
@@ -5825,6 +5835,7 @@ export interface TeamCreatedEvent {
   repository?: Repository;
   sender: User;
   organization: Organization;
+  installation?: InstallationLite;
 }
 export interface TeamDeletedEvent {
   action: "deleted";
@@ -5832,6 +5843,7 @@ export interface TeamDeletedEvent {
   repository?: Repository;
   sender: User;
   organization: Organization;
+  installation?: InstallationLite;
 }
 export interface TeamEditedEvent {
   action: "edited";
@@ -5880,6 +5892,7 @@ export interface TeamEditedEvent {
   repository?: Repository;
   sender: User;
   organization: Organization;
+  installation?: InstallationLite;
 }
 export interface TeamRemovedFromRepositoryEvent {
   action: "removed_from_repository";
@@ -5887,6 +5900,7 @@ export interface TeamRemovedFromRepositoryEvent {
   repository?: Repository;
   sender: User;
   organization: Organization;
+  installation?: InstallationLite;
 }
 export interface TeamAddEvent {
   team: Team;
