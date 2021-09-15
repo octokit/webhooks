@@ -41,11 +41,7 @@
     "type": "User",
     "site_admin": false
   },
-  "team": {
-    "id": 3253328,
-    "name": "github",
-    "deleted": true
-  },
+  "team": { "id": 3253328, "name": "github", "deleted": true },
   "organization": {
     "login": "Octocoders",
     "id": 38302899,
