@@ -1,4 +1,4 @@
-on:
+"on":
   push:
     branches:
       - master
@@ -12,11 +12,11 @@ jobs:
           token: ${{ secrets.OCTOKITBOT_PAT }}
       - uses: actions/setup-node@v2
         with:
-          node-version: 12.x
+          node-version: 16
           cache: npm
       - run: npm ci
       - run: echo "./node_modules/.bin" >> $GITHUB_PATH
-      - run: "./bin/format-with-prettier.ts"
+      - run: ./bin/format-with-prettier.ts
       - run: git diff-index --quiet HEAD
       - if: failure()
         run: |
