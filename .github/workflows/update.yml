@@ -1,9 +1,9 @@
-on:
+"on":
   schedule:
-    # https://crontab.guru/every-hour
     - cron: 0 * * * *
   repository_dispatch:
-    types: [github-webhooks-update]
+    types:
+      - github-webhooks-update
 name: Update
 jobs:
   update:
@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: 12.x
+          node-version: 16
           cache: npm
       - run: git checkout webhooks-update || true
       - run: npm ci
@@ -26,40 +26,47 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.OCTOKITBOT_PAT }}
         with:
-          title: "🤖📯 Octokit webhooks changed"
-          body: |
-            I found new changes on [GitHub’s Webhooks Event Types & Payloads](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/webhook-events-and-payloads) and want to let you know about it 👋🤖
+          title: 🤖📯 Octokit webhooks changed
+          body: >
+            I found new changes on [GitHub’s Webhooks Event Types &
+            Payloads](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/webhook-events-and-payloads)
+            and want to let you know about it 👋🤖
 
-            I can't tell if the changes are fixes, features or breaking changes. You'll have to figure that out on yourself and adapt the commit messages accordingly to trigger the right release, see [our commit message conventions](https://github.com/octokit/webhooks/blob/master/CONTRIBUTING.md#merging-the-pull-request--releasing-a-new-version).
-          branch: "webhooks-update"
-          author: "Octokit Bot <octokitbot@martynus.net>"
-          path: "cache/"
+
+            I can't tell if the changes are fixes, features or breaking changes.
+            You'll have to figure that out on yourself and adapt the commit
+            messages accordingly to trigger the right release, see [our commit
+            message
+            conventions](https://github.com/octokit/webhooks/blob/master/CONTRIBUTING.md#merging-the-pull-request--releasing-a-new-version).
+          branch: webhooks-update
+          author: Octokit Bot <octokitbot@martynus.net>
+          path: cache/
           commit-message: "build: cache"
-          labels: "maintenance"
+          labels: maintenance
       - name: update .com webhooks
         uses: gr2m/create-or-update-pull-request-action@v1.x
         env:
           GITHUB_TOKEN: ${{ secrets.OCTOKITBOT_PAT }}
         with:
-          branch: "webhooks-update"
-          author: "Octokit Bot <octokitbot@martynus.net>"
-          path: "payload-examples/api.github.com/"
+          branch: webhooks-update
+          author: Octokit Bot <octokitbot@martynus.net>
+          path: payload-examples/api.github.com/
           commit-message: "WIP: api.github.com webhooks update"
       - name: update GHE webhooks
         uses: gr2m/create-or-update-pull-request-action@v1.x
         env:
           GITHUB_TOKEN: ${{ secrets.OCTOKITBOT_PAT }}
         with:
-          branch: "webhooks-update"
-          author: "Octokit Bot <octokitbot@martynus.net>"
-          path: "payload-examples/ghes*"
+          branch: webhooks-update
+          author: Octokit Bot <octokitbot@martynus.net>
+          path: payload-examples/ghes*
           commit-message: "WIP: GHE webhooks update"
       - name: update GitHub.AE webhooks
         uses: gr2m/create-or-update-pull-request-action@v1.x
         env:
           GITHUB_TOKEN: ${{ secrets.OCTOKITBOT_PAT }}
         with:
-          branch: "webhooks-update"
-          author: "Octokit Bot <octokitbot@martynus.net>"
-          path: "payload-examples/github.ae/"
+          branch: webhooks-update
+          author: Octokit Bot <octokitbot@martynus.net>
+          path: payload-examples/github.ae/
           commit-message: "WIP: GitHub.AE webhooks update"
