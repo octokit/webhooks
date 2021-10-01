@@ -343,7 +343,6 @@ export type RepositoryEvent =
   | RepositoryRenamedEvent
   | RepositoryTransferredEvent
   | RepositoryUnarchivedEvent;
-export type RepositoryDispatchEvent = RepositoryDispatchOnDemandTestEvent;
 export type RepositoryVulnerabilityAlertEvent =
   | RepositoryVulnerabilityAlertCreateEvent
   | RepositoryVulnerabilityAlertDismissEvent
@@ -374,6 +373,7 @@ export type TeamEvent =
 export type WatchEvent = WatchStartedEvent;
 export type WorkflowJobEvent =
   | WorkflowJobCompletedEvent
+  | WorkflowJobInProgressEvent
   | WorkflowJobQueuedEvent
   | WorkflowJobStartedEvent;
 export type WorkflowStep = WorkflowStepInProgress | WorkflowStepCompleted;
@@ -552,6 +552,7 @@ export interface Repository {
    * Whether to allow private forks
    */
   allow_forking?: boolean;
+  visibility?: "public" | "private";
   /**
    * Whether to delete head branches when pull requests are merged
    */
@@ -2904,6 +2905,19 @@ export interface Issue {
    * Contents of the issue
    */
   body: string | null;
+  reactions?: {
+    url: string;
+    total_count: number;
+    "+1": number;
+    "-1": number;
+    laugh: number;
+    hooray: number;
+    confused: number;
+    heart: number;
+    rocket: number;
+    eyes: number;
+  };
+  timeline_url?: string;
 }
 /**
  * A collection of related issues and pull requests.
@@ -5297,8 +5311,8 @@ export interface RepositoryUnarchivedEvent {
   installation?: InstallationLite;
   organization?: Organization;
 }
-export interface RepositoryDispatchOnDemandTestEvent {
-  action: "on-demand-test";
+export interface RepositoryDispatchEvent {
+  action: string;
   branch: string;
   client_payload: {
     [k: string]: unknown;
@@ -5951,6 +5965,10 @@ export interface WorkflowJob {
   steps: [WorkflowStep, ...WorkflowStep[]];
   conclusion: "success" | "failure" | null;
   labels: string[];
+  runner_id: number;
+  runner_name: string;
+  runner_group_id: number;
+  runner_group_name: string;
   started_at: string;
   completed_at: string | null;
 }
@@ -5969,6 +5987,17 @@ export interface WorkflowStepCompleted {
   number: number;
   started_at: string;
   completed_at: string;
+}
+export interface WorkflowJobInProgressEvent {
+  action: "in_progress";
+  organization?: Organization;
+  installation?: InstallationLite;
+  repository: Repository;
+  sender: User;
+  workflow_job: WorkflowJob & {
+    status: "in_progress";
+    steps: [WorkflowStepInProgress, ...WorkflowStepInProgress[]];
+  };
 }
 export interface WorkflowJobQueuedEvent {
   action: "queued";
