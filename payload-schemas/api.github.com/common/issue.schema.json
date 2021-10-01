@@ -109,10 +109,7 @@
       },
       "additionalProperties": false
     },
-    "timeline_url": {
-      "type": "string",
-      "format": "uri"
-    }
+    "timeline_url": { "type": "string", "format": "uri" }
   },
   "additionalProperties": false,
   "title": "Issue"

@@ -16,13 +16,12 @@
           "type": "object",
           "required": ["status", "steps"],
           "properties": {
-            "status": {
-              "type": "string",
-              "enum": ["in_progress"]
-            },
+            "status": { "type": "string", "enum": ["in_progress"] },
             "steps": {
               "type": "array",
-              "items": { "$ref": "common/workflow-step-in_progress.schema.json" },
+              "items": {
+                "$ref": "common/workflow-step-in_progress.schema.json"
+              },
               "minItems": 1
             }
           },
