@@ -26,7 +26,11 @@
         "name",
         "steps",
         "check_run_url",
-        "labels"
+        "labels",
+        "runner_id",
+        "runner_name",
+        "runner_group_id",
+        "runner_group_name"
       ],
       "properties": {
         "id": { "type": "integer" },
