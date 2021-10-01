@@ -13652,7 +13652,8 @@
               <a href="/en/github-ae@latest/rest/reference/git#refs"
                 ><code>git ref</code></a
               >
-              that was pushed. Example: <code>refs/heads/main</code>.
+              that was pushed. Example: <code>refs/heads/main</code> or
+              <code>refs/tags/v3.14.1</code>.
             </td>
           </tr>
           <tr>
@@ -13672,17 +13673,57 @@
             </td>
           </tr>
           <tr>
+            <td><code>created</code></td>
+            <td><code>boolean</code></td>
+            <td>Whether this push created the <code>ref</code>.</td>
+          </tr>
+          <tr>
+            <td><code>deleted</code></td>
+            <td><code>boolean</code></td>
+            <td>Whether this push deleted the <code>ref</code>.</td>
+          </tr>
+          <tr>
+            <td><code>forced</code></td>
+            <td><code>boolean</code></td>
+            <td>Whether this push was a force push of the <code>ref</code>.</td>
+          </tr>
+          <tr>
+            <td><code>head_commit</code></td>
+            <td><code>object</code></td>
+            <td>
+              For pushes where <code>after</code> is or points to a commit
+              object, an expanded representation of that commit. For pushes
+              where <code>after</code> refers to an annotated tag object, an
+              expanded representation of the commit pointed to by the annotated
+              tag.
+            </td>
+          </tr>
+          <tr>
+            <td><code>compare</code></td>
+            <td><code>string</code></td>
+            <td>
+              URL that shows the changes in this <code>ref</code> update, from
+              the <code>before</code> commit to the <code>after</code> commit.
+              For a newly created <code>ref</code> that is directly based on the
+              default branch, this is the comparison between the head of the
+              default branch and the <code>after</code> commit. Otherwise, this
+              shows all commits until the <code>after</code> commit.
+            </td>
+          </tr>
+          <tr>
             <td><code>commits</code></td>
             <td><code>array</code></td>
             <td>
-              An array of commit objects describing the pushed commits. (The
-              array includes a maximum of 20 commits. If necessary, you can use
-              the
+              An array of commit objects describing the pushed commits. (Pushed
+              commits are all commits that are included in the
+              <code>compare</code> between the <code>before</code> commit and
+              the <code>after</code> commit.) The array includes a maximum of 20
+              commits. If necessary, you can use the
               <a href="/en/github-ae@latest/rest/reference/repos#commits"
                 >Commits API</a
               >
               to fetch additional commits. This limit is applied to timeline
-              events only and isn't applied to webhook deliveries.)
+              events only and isn't applied to webhook deliveries.
             </td>
           </tr>
           <tr>

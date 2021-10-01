@@ -14811,7 +14811,8 @@
             <td>
               The full
               <a href="/en/rest/reference/git#refs"><code>git ref</code></a>
-              that was pushed. Example: <code>refs/heads/main</code>.
+              that was pushed. Example: <code>refs/heads/main</code> or
+              <code>refs/tags/v3.14.1</code>.
             </td>
           </tr>
           <tr>
@@ -14831,14 +14832,55 @@
             </td>
           </tr>
           <tr>
+            <td><code>created</code></td>
+            <td><code>boolean</code></td>
+            <td>Whether this push created the <code>ref</code>.</td>
+          </tr>
+          <tr>
+            <td><code>deleted</code></td>
+            <td><code>boolean</code></td>
+            <td>Whether this push deleted the <code>ref</code>.</td>
+          </tr>
+          <tr>
+            <td><code>forced</code></td>
+            <td><code>boolean</code></td>
+            <td>Whether this push was a force push of the <code>ref</code>.</td>
+          </tr>
+          <tr>
+            <td><code>head_commit</code></td>
+            <td><code>object</code></td>
+            <td>
+              For pushes where <code>after</code> is or points to a commit
+              object, an expanded representation of that commit. For pushes
+              where <code>after</code> refers to an annotated tag object, an
+              expanded representation of the commit pointed to by the annotated
+              tag.
+            </td>
+          </tr>
+          <tr>
+            <td><code>compare</code></td>
+            <td><code>string</code></td>
+            <td>
+              URL that shows the changes in this <code>ref</code> update, from
+              the <code>before</code> commit to the <code>after</code> commit.
+              For a newly created <code>ref</code> that is directly based on the
+              default branch, this is the comparison between the head of the
+              default branch and the <code>after</code> commit. Otherwise, this
+              shows all commits until the <code>after</code> commit.
+            </td>
+          </tr>
+          <tr>
             <td><code>commits</code></td>
             <td><code>array</code></td>
             <td>
-              An array of commit objects describing the pushed commits. (The
-              array includes a maximum of 20 commits. If necessary, you can use
-              the <a href="/en/rest/reference/repos#commits">Commits API</a> to
+              An array of commit objects describing the pushed commits. (Pushed
+              commits are all commits that are included in the
+              <code>compare</code> between the <code>before</code> commit and
+              the <code>after</code> commit.) The array includes a maximum of 20
+              commits. If necessary, you can use the
+              <a href="/en/rest/reference/repos#commits">Commits API</a> to
               fetch additional commits. This limit is applied to timeline events
-              only and isn't applied to webhook deliveries.)
+              only and isn't applied to webhook deliveries.
             </td>
           </tr>
           <tr>
@@ -14973,15 +15015,37 @@
       <div class="height-constrained-code-block">
         <pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">"ref"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"refs/tags/simple-tag"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"before"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"6113728f27ae82c7b1a177c8d03f9e96e0adf246"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"after"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"0000000000000000000000000000000000000000"</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"created"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">false</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"deleted"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"before"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"0000000000000000000000000000000000000000"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"after"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"6113728f27ae82c7b1a177c8d03f9e96e0adf246"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"created"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"deleted"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">false</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"forced"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">false</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"base_ref"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"compare"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://github.com/Codertocat/Hello-World/compare/6113728f27ae...000000000000"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"base_ref"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"refs/heads/main"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"compare"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://github.com/Codertocat/Hello-World/compare/simple-tag"</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"commits"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">"head_commit"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">null</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"head_commit"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"6113728f27ae82c7b1a177c8d03f9e96e0adf246"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"tree_id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"4b825dc642cb6eb9a060e54bf8d69288fbee4904"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"distinct"</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"message"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Adding a .gitignore file"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"timestamp"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2019-05-15T15:20:41Z"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"url"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"https://github.com/Codertocat/Hello-World/commit/6113728f27ae82c7b1a177c8d03f9e96e0adf246"</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"author"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Codertocat"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"email"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"21031067+Codertocat@users.noreply.github.com"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"username"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Codertocat"</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"committer"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"name"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Codertocat"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"email"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"21031067+Codertocat@users.noreply.github.com"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"username"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"Codertocat"</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"added"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+      <span class="hljs-string">".gitignore"</span>
+    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"removed"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">"modified"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">"repository"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">"id"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">186853002</span><span class="hljs-punctuation">,</span>
     <span class="hljs-attr">"node_id"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"MDEwOlJlcG9zaXRvcnkxODY4NTMwMDI="</span><span class="hljs-punctuation">,</span>
