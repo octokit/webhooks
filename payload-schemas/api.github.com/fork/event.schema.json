@@ -11,7 +11,7 @@
         { "$ref": "common/repository.schema.json" },
         {
           "type": "object",
-          "properties": { "type": "boolean", "fork": { "enum": [true] } },
+          "properties": { "fork": { "type": "boolean",  "enum": [true] } },
           "tsAdditionalProperties": false
         }
       ]
