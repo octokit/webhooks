@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "workflow_job$in_progress",
+  "type": "object",
+  "required": ["action", "repository", "sender", "workflow_job"],
+  "properties": {
+    "action": { "type": "string", "enum": ["in_progress"] },
+    "organization": { "$ref": "common/organization.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "workflow_job": {
+      "allOf": [
+        { "$ref": "common/workflow-job.schema.json" },
+        {
+          "type": "object",
+          "required": ["status", "steps"],
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": ["in_progress"]
+            },
+            "steps": {
+              "type": "array",
+              "items": { "$ref": "workflow-step-in_progress.schema.json" },
+              "minItems": 1
+            }
+          },
+          "tsAdditionalProperties": false
+        }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "title": "workflow_job in_progress event"
+}
