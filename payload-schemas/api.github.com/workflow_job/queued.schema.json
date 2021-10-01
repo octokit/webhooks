@@ -45,6 +45,10 @@
         },
         "conclusion": { "type": "null" },
         "labels": { "type": "array", "items": { "type": "string" } },
+        "runner_id": { "type": "integer" },
+        "runner_name": { "type": "string" },
+        "runner_group_id": { "type": "integer" },
+        "runner_group_name": { "type": "string" },
         "started_at": { "type": "string", "format": "date-time" },
         "completed_at": { "type": "null" }
       },
