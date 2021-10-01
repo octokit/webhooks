@@ -22,7 +22,7 @@
             },
             "steps": {
               "type": "array",
-              "items": { "$ref": "workflow-step-in_progress.schema.json" },
+              "items": { "$ref": "common/workflow-step-in_progress.schema.json" },
               "minItems": 1
             }
           },
