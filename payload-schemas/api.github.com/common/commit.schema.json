@@ -25,6 +25,7 @@
     "message": { "type": "string", "description": "The commit message." },
     "timestamp": {
       "type": "string",
+      "format": "date-time",
       "description": "The ISO 8601 timestamp of the commit."
     },
     "url": {
