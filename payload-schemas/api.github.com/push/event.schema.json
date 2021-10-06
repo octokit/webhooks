@@ -20,7 +20,7 @@
   "properties": {
     "ref": {
       "type": "string",
-      "description": "The full git ref that was pushed. Example: `refs/heads/main`."
+      "description": "The full git ref that was pushed. Example: `refs/heads/main` or `refs/tags/v3.14.1`."
     },
     "before": {
       "type": "string",
@@ -30,18 +30,31 @@
       "type": "string",
       "description": "The SHA of the most recent commit on `ref` after the push."
     },
-    "created": { "type": "boolean" },
-    "deleted": { "type": "boolean" },
-    "forced": { "type": "boolean" },
+    "created": {
+      "type": "boolean",
+      "description": "Whether this push created the `ref`."
+    },
+    "deleted": {
+      "type": "boolean",
+      "description": "Whether this push deleted the `ref`."
+    },
+    "forced": {
+      "type": "boolean",
+      "description": "Whether this push was a force push of the `ref`."
+    },
     "base_ref": { "type": ["string", "null"] },
-    "compare": { "type": "string" },
+    "compare": {
+      "type": "string",
+      "description": "URL that shows the changes in this `ref` update, from the `before` commit to the `after` commit. For a newly created `ref` that is directly based on the default branch, this is the comparison between the head of the default branch and the `after` commit. Otherwise, this shows all commits until the `after` commit."
+    },
     "commits": {
       "type": "array",
-      "description": "An array of commit objects describing the pushed commits.",
+      "description": "An array of commit objects describing the pushed commits. (Pushed commits are all commits that are included in the `compare` between the `before` commit and the `after` commit.) The array includes a maximum of 20 commits. If necessary, you can use the [Commits API](https://docs.github.com/en/rest/reference/repos#commits) to fetch additional commits. This limit is applied to timeline events only and isn't applied to webhook deliveries.",
       "items": { "$ref": "common/commit.schema.json" }
     },
     "head_commit": {
-      "oneOf": [{ "$ref": "common/commit.schema.json" }, { "type": "null" }]
+      "oneOf": [{ "$ref": "common/commit.schema.json" }, { "type": "null" }],
+      "description": "For pushes where `after` is or points to a commit object, an expanded representation of that commit. For pushes where `after` refers to an annotated tag object, an expanded representation of the commit pointed to by the annotated tag."
     },
     "repository": { "$ref": "common/repository.schema.json" },
     "pusher": { "$ref": "common/committer.schema.json" },
