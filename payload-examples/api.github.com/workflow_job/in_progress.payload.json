@@ -1,5 +1,5 @@
 {
-  "action": "completed",
+  "action": "in_progress",
   "workflow_job": {
     "id": 289782451,
     "run_id": 2202229078,
@@ -8,75 +8,19 @@
     "head_sha": "3484a3fb816e0859fd6e1cea078d76385ff50625",
     "url": "https://api.github.com/repos/octo-org/octo-repo/actions/jobs/1291536064",
     "html_url": "https://github.com/octo-org/octo-repo/runs/1291536064",
-    "status": "completed",
-    "conclusion": "success",
-    "started_at": "2021-08-05T10:34:58Z",
-    "completed_at": "2021-08-05T10:38:16Z",
-    "name": "linters",
+    "status": "in_progress",
+    "conclusion": null,
+    "started_at": "2021-09-13T02:21:13Z",
+    "completed_at": null,
+    "name": "Analyze (javascript)",
     "steps": [
       {
         "name": "Set up job",
-        "status": "completed",
-        "conclusion": "success",
+        "status": "in_progress",
+        "conclusion": null,
         "number": 1,
-        "started_at": "2021-08-05T10:26:08.000Z",
-        "completed_at": "2021-08-05T10:26:11.000Z"
-      },
-      {
-        "name": "Checkout Repo",
-        "status": "completed",
-        "conclusion": "success",
-        "number": 2,
-        "started_at": "2021-08-05T10:26:11.000Z",
-        "completed_at": "2021-08-05T10:26:11.000Z"
-      },
-      {
-        "name": "Install Ruby",
-        "status": "completed",
-        "conclusion": "success",
-        "number": 3,
-        "started_at": "2021-08-05T10:26:11.000Z",
-        "completed_at": "2021-08-05T10:26:15.000Z"
-      },
-      {
-        "name": "Run Rubocop",
-        "status": "completed",
-        "conclusion": "success",
-        "number": 4,
-        "started_at": "2021-08-05T10:26:15.000Z",
-        "completed_at": "2021-08-05T10:26:21.000Z"
-      },
-      {
-        "name": "Run Brakeman",
-        "status": "completed",
-        "conclusion": "success",
-        "number": 5,
-        "started_at": "2021-08-05T10:26:21.000Z",
-        "completed_at": "2021-08-05T10:26:25.000Z"
-      },
-      {
-        "name": "Run Bundle Audit",
-        "status": "completed",
-        "conclusion": "success",
-        "number": 6,
-        "started_at": "2021-08-05T10:26:25.000Z",
-        "completed_at": "2021-08-05T10:26:26.000Z"
-      },
-      {
-        "name": "Post Checkout Repo",
-        "status": "completed",
-        "conclusion": "success",
-        "number": 12,
-        "started_at": "2021-08-05T10:26:26.000Z",
-        "completed_at": "2021-08-05T10:26:26.000Z"
-      },
-      {
-        "name": "Complete job",
-        "status": "completed",
-        "conclusion": "success",
-        "number": 13,
-        "started_at": "2021-08-05T10:26:26.000Z",
-        "completed_at": "2021-08-05T10:26:26.000Z"
+        "started_at": "2021-09-13T02:21:13Z",
+        "completed_at": null
       }
     ],
     "check_run_url": "https://api.github.com/repos/octo-org/octo-repo/check-runs/1291536064",
@@ -180,20 +124,6 @@
     "watchers": 0,
     "default_branch": "master"
   },
-  "organization": {
-    "login": "Octocoders",
-    "id": 38302899,
-    "node_id": "MDEyOk9yZ2FuaXphdGlvbjM4MzAyODk5",
-    "url": "https://api.github.com/orgs/Octocoders",
-    "repos_url": "https://api.github.com/orgs/Octocoders/repos",
-    "events_url": "https://api.github.com/orgs/Octocoders/events",
-    "hooks_url": "https://api.github.com/orgs/Octocoders/hooks",
-    "issues_url": "https://api.github.com/orgs/Octocoders/issues",
-    "members_url": "https://api.github.com/orgs/Octocoders/members{/member}",
-    "public_members_url": "https://api.github.com/orgs/Octocoders/public_members{/member}",
-    "avatar_url": "https://avatars1.githubusercontent.com/u/38302899?v=4",
-    "description": ""
-  },
   "sender": {
     "login": "Codertocat",
     "id": 21031067,
@@ -213,5 +143,9 @@
     "received_events_url": "https://api.github.com/users/Codertocat/received_events",
     "type": "User",
     "site_admin": false
+  },
+  "installation": {
+    "id": 1,
+    "node_id": "MDIzOkludGVncmF0aW9uSW5zdGFsbGF0aW9uMQ=="
   }
 }

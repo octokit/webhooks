@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "repository_dispatch$on-demand-test",
+  "$id": "repository_dispatch$event",
   "type": "object",
   "required": [
     "action",
@@ -11,7 +11,7 @@
     "installation"
   ],
   "properties": {
-    "action": { "type": "string", "enum": ["on-demand-test"] },
+    "action": { "type": "string" },
     "branch": { "type": "string" },
     "client_payload": {
       "type": "object",
@@ -24,5 +24,5 @@
     "organization": { "$ref": "common/organization.schema.json" }
   },
   "additionalProperties": false,
-  "title": "repository_dispatch on-demand-test event"
+  "title": "repository_dispatch event"
 }

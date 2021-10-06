@@ -112,7 +112,11 @@
       }
     ],
     "check_run_url": "https://api.github.com/repos/octo-org/octo-repo/check-runs/1291536064",
-    "labels": ["ubuntu-latest"]
+    "labels": ["ubuntu-latest"],
+    "runner_id": 5,
+    "runner_name": "GitHub Actions 5",
+    "runner_group_id": 2,
+    "runner_group_name": "GitHub Actions"
   },
   "repository": {
     "id": 186853002,
