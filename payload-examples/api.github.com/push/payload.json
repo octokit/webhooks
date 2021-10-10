@@ -105,7 +105,8 @@
     "watchers": 0,
     "default_branch": "master",
     "stargazers": 0,
-    "master_branch": "master"
+    "master_branch": "master",
+    "is_template": false
   },
   "pusher": {
     "name": "Codertocat",

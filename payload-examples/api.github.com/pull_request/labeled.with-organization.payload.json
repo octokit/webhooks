@@ -273,7 +273,8 @@
         "forks": 0,
         "open_issues": 2,
         "watchers": 0,
-        "default_branch": "master"
+        "default_branch": "master",
+        "is_template": false
       }
     },
     "base": {
@@ -392,7 +393,8 @@
         "forks": 0,
         "open_issues": 2,
         "watchers": 0,
-        "default_branch": "master"
+        "default_branch": "master",
+        "is_template": false
       }
     },
     "_links": {
@@ -537,7 +539,8 @@
     "forks": 0,
     "open_issues": 2,
     "watchers": 0,
-    "default_branch": "master"
+    "default_branch": "master",
+    "is_template": false
   },
   "installation": {
     "id": 1,

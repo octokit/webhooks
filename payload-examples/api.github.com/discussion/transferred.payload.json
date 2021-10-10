@@ -193,7 +193,8 @@
       "forks": 129,
       "open_issues": 7,
       "watchers": 108,
-      "default_branch": "master"
+      "default_branch": "master",
+      "is_template": false
     }
   },
   "repository": {
@@ -288,7 +289,8 @@
     "forks": 1,
     "open_issues": 2,
     "watchers": 0,
-    "default_branch": "master"
+    "default_branch": "master",
+    "is_template": false
   },
   "sender": {
     "login": "Codertocat",

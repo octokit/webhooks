@@ -112,7 +112,8 @@
       "push": false,
       "maintain": false,
       "admin": false
-    }
+    },
+    "is_template": false
   },
   "organization": {
     "login": "Octocoders",
