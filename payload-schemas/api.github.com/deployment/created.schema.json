@@ -46,6 +46,8 @@
         },
         "original_environment": { "type": "string" },
         "environment": { "type": "string" },
+        "transient_environment": { "type": "boolean" },
+        "production_environment": { "type": "boolean" },
         "description": { "type": "null" },
         "creator": { "$ref": "common/user.schema.json" },
         "created_at": { "type": "string" },
