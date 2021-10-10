@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/reactions.schema.json",
+  "type": "object",
+  "required": [
+    "url",
+    "total_count",
+    "+1",
+    "-1",
+    "laugh",
+    "confused",
+    "heart",
+    "hooray",
+    "eyes",
+    "rocket"
+  ],
+  "properties": {
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "total_count": {
+      "type": "integer"
+    },
+    "+1": {
+      "type": "integer"
+    },
+    "-1": {
+      "type": "integer"
+    },
+    "laugh": {
+      "type": "integer"
+    },
+    "hooray": {
+      "type": "integer"
+    },
+    "confused": {
+      "type": "integer"
+    },
+    "heart": {
+      "type": "integer"
+    },
+    "rocket": {
+      "type": "integer"
+    },
+    "eyes": {
+      "type": "integer"
+    }
+  },
+  "title": "Reactions",
+  "additionalProperties": false
+}
