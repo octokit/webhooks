@@ -2905,18 +2905,7 @@ export interface Issue {
    * Contents of the issue
    */
   body: string | null;
-  reactions?: {
-    url: string;
-    total_count: number;
-    "+1": number;
-    "-1": number;
-    laugh: number;
-    hooray: number;
-    confused: number;
-    heart: number;
-    rocket: number;
-    eyes: number;
-  };
+  reactions: Reactions;
   timeline_url?: string;
 }
 /**
@@ -2949,6 +2938,18 @@ export interface Milestone {
   due_on: string | null;
   closed_at: string | null;
 }
+export interface Reactions {
+  url: string;
+  total_count: number;
+  "+1": number;
+  "-1": number;
+  laugh: number;
+  hooray: number;
+  confused: number;
+  heart: number;
+  rocket: number;
+  eyes: number;
+}
 /**
  * The [comment](https://docs.github.com/en/rest/reference/issues#comments) itself.
  */
@@ -2972,6 +2973,7 @@ export interface IssueComment {
    * Contents of the issue comment
    */
   body: string;
+  reactions: Reactions;
   performed_via_github_app: App | null;
 }
 export interface IssueCommentDeletedEvent {
@@ -4828,6 +4830,7 @@ export interface PullRequestReviewComment {
     html: Link;
     pull_request: Link;
   };
+  reactions: Reactions;
   /**
    * The first line of the range for a multi-line comment.
    */
