@@ -307,7 +307,8 @@
           "forks": 0,
           "open_issues": 39,
           "watchers": 0,
-          "default_branch": "main"
+          "default_branch": "main",
+          "is_template": false
         },
         "organization": {
           "login": "octo-org",
@@ -464,7 +465,8 @@
           "forks": 0,
           "open_issues": 39,
           "watchers": 0,
-          "default_branch": "main"
+          "default_branch": "main",
+          "is_template": false
         },
         "organization": {
           "login": "octo-org",
@@ -625,7 +627,8 @@
           "forks": 0,
           "open_issues": 39,
           "watchers": 0,
-          "default_branch": "main"
+          "default_branch": "main",
+          "is_template": false
         },
         "organization": {
           "login": "octo-org",
@@ -1318,7 +1321,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -1623,7 +1627,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -1928,7 +1933,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -2260,7 +2266,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -2565,7 +2572,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -2871,7 +2879,8 @@
           "forks": 11745,
           "open_issues": 1504,
           "watchers": 87864,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "electron",
@@ -3098,7 +3107,8 @@
           "forks": 0,
           "open_issues": 3,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "github",
@@ -3325,7 +3335,8 @@
           "forks": 0,
           "open_issues": 3,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -3816,7 +3827,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "main"
+          "default_branch": "main",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -4039,7 +4051,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -4262,7 +4275,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -4475,7 +4489,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -4678,7 +4693,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -4919,7 +4935,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "octocoders-linter[bot]",
@@ -5146,7 +5163,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -5551,7 +5569,8 @@
           "forks": 0,
           "open_issues": 10,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Codertocat",
@@ -5732,7 +5751,8 @@
           "forks": 0,
           "open_issues": 11,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Codertocat",
@@ -5930,7 +5950,8 @@
           "forks": 0,
           "open_issues": 11,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -6091,7 +6112,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -6248,7 +6270,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -6597,7 +6620,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -6748,7 +6772,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -6899,7 +6924,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -7068,7 +7094,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -7336,7 +7363,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -7627,7 +7655,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -7748,7 +7777,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -7869,7 +7899,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -7994,7 +8025,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -8283,7 +8315,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -8402,7 +8435,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -8525,7 +8559,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -8814,7 +8849,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -9151,7 +9187,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -9306,7 +9343,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -9728,7 +9766,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -9915,7 +9954,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -10358,7 +10398,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -10544,7 +10585,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -10715,7 +10757,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -10887,7 +10930,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -11067,7 +11111,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -11238,7 +11283,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -11409,7 +11455,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -11631,7 +11678,8 @@
             "forks": 129,
             "open_issues": 7,
             "watchers": 108,
-            "default_branch": "master"
+            "default_branch": "master",
+            "is_template": false
           }
         },
         "repository": {
@@ -11726,7 +11774,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -11930,7 +11979,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -12110,7 +12160,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -12281,7 +12332,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -12728,7 +12780,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -12932,7 +12985,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -13137,7 +13191,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -13498,7 +13553,8 @@
           "open_issues": 0,
           "watchers": 0,
           "default_branch": "master",
-          "public": true
+          "public": true,
+          "is_template": false
         },
         "repository": {
           "id": 186853002,
@@ -13592,7 +13648,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Octocoders",
@@ -13709,7 +13766,8 @@
           "open_issues": 0,
           "watchers": 0,
           "default_branch": "master",
-          "public": true
+          "public": true,
+          "is_template": false
         },
         "repository": {
           "id": 186853002,
@@ -13803,7 +13861,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Octocoders",
@@ -14167,7 +14226,8 @@
           "forks": 0,
           "open_issues": 0,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "rachmari",
@@ -14293,7 +14353,8 @@
           "forks": 0,
           "open_issues": 0,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "rachmari",
@@ -16231,7 +16292,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -16535,7 +16597,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -16857,7 +16920,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -17175,7 +17239,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -17479,7 +17544,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -17802,7 +17868,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -18111,7 +18178,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -18718,7 +18786,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -18998,7 +19067,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -19282,7 +19352,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -19544,7 +19615,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -19792,7 +19864,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -20067,7 +20140,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -20328,7 +20402,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -20611,7 +20686,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -20880,7 +20956,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -21099,7 +21176,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -21304,7 +21382,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -21621,7 +21700,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -21924,7 +22004,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -22198,7 +22279,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -22458,7 +22540,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -22718,7 +22801,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -22908,7 +22992,8 @@
             "forks": 0,
             "open_issues": 39,
             "watchers": 0,
-            "default_branch": "main"
+            "default_branch": "main",
+            "is_template": false
           }
         },
         "issue": {
@@ -23146,7 +23231,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -23338,7 +23424,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -23661,7 +23748,8 @@
             "forks": 0,
             "open_issues": 1,
             "watchers": 0,
-            "default_branch": "master"
+            "default_branch": "master",
+            "is_template": false
           }
         },
         "repository": {
@@ -23756,7 +23844,8 @@
           "forks": 0,
           "open_issues": 39,
           "watchers": 0,
-          "default_branch": "main"
+          "default_branch": "main",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -24036,7 +24125,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -24316,7 +24406,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -24544,7 +24635,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -24758,7 +24850,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -24977,7 +25070,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -25182,7 +25276,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -25485,7 +25580,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -25611,7 +25707,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -25737,7 +25834,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -25867,7 +25965,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -25994,7 +26093,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -26539,7 +26639,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "hacktocat",
@@ -26676,7 +26777,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "hacktocat",
@@ -26817,7 +26919,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -27488,7 +27591,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -27838,7 +27942,8 @@
           "forks": 0,
           "open_issues": 0,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -27992,7 +28097,8 @@
           "forks": 0,
           "open_issues": 0,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -28150,7 +28256,8 @@
           "forks": 0,
           "open_issues": 0,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -28304,7 +28411,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -29395,7 +29503,8 @@
           "forks": 0,
           "open_issues": 0,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -29720,7 +29829,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -29866,7 +29976,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -30179,7 +30290,8 @@
           "forks": 0,
           "open_issues": 0,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -30316,7 +30428,8 @@
           "forks": 0,
           "open_issues": 0,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -30726,7 +30839,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -30876,7 +30990,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -31030,7 +31145,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -31180,7 +31296,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -31344,7 +31461,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -31494,7 +31612,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -31648,7 +31767,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -31814,7 +31934,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -32109,7 +32230,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -32236,7 +32358,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -32368,7 +32491,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -32711,7 +32835,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -32862,7 +32987,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -33123,7 +33249,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -33239,7 +33366,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -34004,7 +34132,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -34123,7 +34252,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -34281,7 +34411,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "installation": {
           "id": 1,
@@ -34528,7 +34659,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -34647,7 +34779,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -34819,7 +34952,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "installation": {
           "id": 1,
@@ -35066,7 +35200,8 @@
               "forks": 0,
               "open_issues": 1,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -35185,7 +35320,8 @@
               "forks": 0,
               "open_issues": 1,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -35323,7 +35459,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "installation": {
           "id": 1,
@@ -35570,7 +35707,8 @@
               "forks": 0,
               "open_issues": 1,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -35689,7 +35827,8 @@
               "forks": 0,
               "open_issues": 1,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -35827,7 +35966,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "installation": {
           "id": 1,
@@ -36088,7 +36228,8 @@
               "forks": 0,
               "open_issues": 1,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -36207,7 +36348,8 @@
               "forks": 0,
               "open_issues": 1,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -36345,7 +36487,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -36588,7 +36731,8 @@
               "forks": 0,
               "open_issues": 1,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -36707,7 +36851,8 @@
               "forks": 0,
               "open_issues": 1,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -36845,7 +36990,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -37092,7 +37238,8 @@
               "forks": 0,
               "open_issues": 1,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -37211,7 +37358,8 @@
               "forks": 0,
               "open_issues": 1,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -37349,7 +37497,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "hellomouse",
@@ -37661,7 +37810,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -37780,7 +37930,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -37927,7 +38078,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "installation": {
           "id": 1,
@@ -38229,7 +38381,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -38348,7 +38501,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -38495,7 +38649,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "installation": {
           "id": 1,
@@ -38756,7 +38911,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -38875,7 +39031,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -39013,7 +39170,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "installation": {
           "id": 1,
@@ -39260,7 +39418,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -39379,7 +39538,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -39517,7 +39677,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "installation": {
           "id": 1,
@@ -39778,7 +39939,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -39897,7 +40059,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -40035,7 +40198,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "installation": {
           "id": 1,
@@ -40282,7 +40446,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -40401,7 +40566,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -40539,7 +40705,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "installation": {
           "id": 1,
@@ -40786,7 +40953,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -40905,7 +41073,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -41043,7 +41212,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "installation": {
           "id": 1,
@@ -41304,7 +41474,8 @@
               "forks": 0,
               "open_issues": 1,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -41423,7 +41594,8 @@
               "forks": 0,
               "open_issues": 1,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -41561,7 +41733,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -41804,7 +41977,8 @@
               "forks": 0,
               "open_issues": 1,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -41923,7 +42097,8 @@
               "forks": 0,
               "open_issues": 1,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -42061,7 +42236,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -42308,7 +42484,8 @@
               "forks": 0,
               "open_issues": 1,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -42427,7 +42604,8 @@
               "forks": 0,
               "open_issues": 1,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -42565,7 +42743,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "hellomouse",
@@ -42822,7 +43001,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -42941,7 +43121,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -43079,7 +43260,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "installation": {
           "id": 1,
@@ -43326,7 +43508,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -43445,7 +43628,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -43583,7 +43767,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "installation": {
           "id": 1,
@@ -43844,7 +44029,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -43963,7 +44149,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -44101,7 +44288,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "installation": {
           "id": 1,
@@ -44382,7 +44570,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -44501,7 +44690,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -44639,7 +44829,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "installation": {
           "id": 1,
@@ -44920,7 +45111,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -45039,7 +45231,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -45179,7 +45372,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "installation": {
           "id": 1,
@@ -45460,7 +45654,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -45579,7 +45774,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -45737,7 +45933,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "installation": {
           "id": 1,
@@ -46018,7 +46215,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -46137,7 +46335,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -46295,7 +46494,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "installation": {
           "id": 1,
@@ -46535,7 +46735,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -46654,7 +46855,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -46801,7 +47003,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "installation": {
           "id": 1,
@@ -47027,7 +47230,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -47146,7 +47350,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -47293,7 +47498,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "installation": {
           "id": 1,
@@ -47533,7 +47739,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -47652,7 +47859,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -47790,7 +47998,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "installation": {
           "id": 1,
@@ -48016,7 +48225,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -48135,7 +48345,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -48273,7 +48484,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "installation": {
           "id": 1,
@@ -49089,7 +49301,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -49208,7 +49421,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -49333,7 +49547,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -49633,7 +49848,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -49752,7 +49968,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -49877,7 +50094,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -50163,7 +50381,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -50282,7 +50501,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -50407,7 +50627,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -51264,7 +51485,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -51383,7 +51605,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -51507,7 +51730,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "installation": {
           "id": 1,
@@ -51820,7 +52044,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -51939,7 +52164,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -52063,7 +52289,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "installation": {
           "id": 1,
@@ -52390,7 +52617,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -52509,7 +52737,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -52633,7 +52862,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "installation": {
           "id": 1,
@@ -52947,7 +53177,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "base": {
@@ -53066,7 +53297,8 @@
               "forks": 0,
               "open_issues": 2,
               "watchers": 0,
-              "default_branch": "master"
+              "default_branch": "master",
+              "is_template": false
             }
           },
           "_links": {
@@ -53190,7 +53422,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "installation": {
           "id": 1,
@@ -53588,7 +53821,8 @@
           "default_branch": "master",
           "stargazers": 0,
           "master_branch": "master",
-          "organization": "Octocoders"
+          "organization": "Octocoders",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -53736,7 +53970,8 @@
           "watchers": 0,
           "default_branch": "master",
           "stargazers": 0,
-          "master_branch": "master"
+          "master_branch": "master",
+          "is_template": false
         },
         "pusher": {
           "name": "Codertocat",
@@ -53870,7 +54105,8 @@
           "watchers": 0,
           "default_branch": "master",
           "stargazers": 0,
-          "master_branch": "master"
+          "master_branch": "master",
+          "is_template": false
         },
         "pusher": {
           "name": "Codertocat",
@@ -54001,7 +54237,8 @@
           "watchers": 0,
           "default_branch": "master",
           "stargazers": 0,
-          "master_branch": "master"
+          "master_branch": "master",
+          "is_template": false
         },
         "pusher": {
           "name": "Codertocat",
@@ -54181,7 +54418,8 @@
           "watchers": 0,
           "default_branch": "master",
           "stargazers": 0,
-          "master_branch": "master"
+          "master_branch": "master",
+          "is_template": false
         },
         "pusher": {
           "name": "Codertocat",
@@ -54366,7 +54604,8 @@
           "watchers": 0,
           "default_branch": "master",
           "stargazers": 0,
-          "master_branch": "master"
+          "master_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -54741,7 +54980,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -54897,7 +55137,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -55057,7 +55298,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -55218,7 +55460,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -55374,7 +55617,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -55530,7 +55774,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -55686,7 +55931,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -55948,7 +56194,8 @@
           "forks": 1,
           "open_issues": 23,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "octo-org",
@@ -56235,7 +56482,8 @@
           "forks": 0,
           "open_issues": 0,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -56366,7 +56614,8 @@
           "forks": 0,
           "open_issues": 0,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -56502,7 +56751,8 @@
           "forks": 0,
           "open_issues": 0,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -56634,7 +56884,8 @@
           "forks": 0,
           "open_issues": 0,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -56765,7 +57016,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -56882,7 +57134,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -57013,7 +57266,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -57130,7 +57384,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -57262,7 +57517,8 @@
           "forks": 0,
           "open_issues": 0,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -57423,7 +57679,8 @@
           "forks": 0,
           "open_issues": 0,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -57566,7 +57823,8 @@
           "forks": 0,
           "open_issues": 0,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -57713,7 +57971,8 @@
           "forks": 0,
           "open_issues": 0,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -57998,7 +58257,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -58290,7 +58550,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "github",
@@ -58417,7 +58678,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "github",
@@ -58542,7 +58804,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -58703,7 +58966,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "github",
@@ -58994,7 +59258,8 @@
           "forks": 0,
           "open_issues": 3,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Codertocat",
@@ -59790,7 +60055,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 1,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -59908,7 +60174,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -60402,7 +60669,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -60586,7 +60854,8 @@
           "forks": 0,
           "open_issues": 1,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -60810,7 +61079,8 @@
           "forks": 1,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -61147,7 +61417,8 @@
           "open_issues": 0,
           "watchers": 0,
           "default_branch": "master",
-          "permissions": { "pull": true, "push": false, "admin": false }
+          "permissions": { "pull": true, "push": false, "admin": false },
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -61465,7 +61736,8 @@
             "push": false,
             "maintain": false,
             "admin": false
-          }
+          },
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -61784,7 +62056,8 @@
           "forks": 0,
           "open_issues": 0,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -61927,7 +62200,8 @@
           "forks": 0,
           "open_issues": 0,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -62204,7 +62478,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 1,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -62321,7 +62596,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 1,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -62582,7 +62858,8 @@
           "forks": 1,
           "open_issues": 23,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "octo-org",
@@ -63005,7 +63282,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -63222,7 +63500,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -63383,7 +63662,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -63525,7 +63805,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "sender": {
           "login": "Codertocat",
@@ -63676,7 +63957,8 @@
           "forks": 0,
           "open_issues": 2,
           "watchers": 0,
-          "default_branch": "master"
+          "default_branch": "master",
+          "is_template": false
         },
         "organization": {
           "login": "Octocoders",
@@ -63987,7 +64269,8 @@
           "updated_at": "2020-10-05T16:32:10Z",
           "url": "https://api.github.com/repos/octo-org/octo-repo",
           "watchers": 1,
-          "watchers_count": 1
+          "watchers_count": 1,
+          "is_template": false
         },
         "sender": {
           "avatar_url": "https://avatars0.githubusercontent.com/u/15669918?v=4",
@@ -64307,7 +64590,8 @@
           "updated_at": "2020-10-05T16:32:10Z",
           "url": "https://api.github.com/repos/octo-org/octo-repo",
           "watchers": 1,
-          "watchers_count": 1
+          "watchers_count": 1,
+          "is_template": false
         },
         "sender": {
           "avatar_url": "https://avatars0.githubusercontent.com/u/15669918?v=4",
@@ -64651,7 +64935,8 @@
           "updated_at": "2020-10-05T16:32:10Z",
           "url": "https://api.github.com/repos/octo-org/octo-repo",
           "watchers": 1,
-          "watchers_count": 1
+          "watchers_count": 1,
+          "is_template": false
         },
         "sender": {
           "avatar_url": "https://avatars0.githubusercontent.com/u/15669918?v=4",
@@ -64971,7 +65256,8 @@
           "updated_at": "2020-10-05T16:32:10Z",
           "url": "https://api.github.com/repos/octo-org/octo-repo",
           "watchers": 1,
-          "watchers_count": 1
+          "watchers_count": 1,
+          "is_template": false
         },
         "sender": {
           "avatar_url": "https://avatars0.githubusercontent.com/u/15669918?v=4",
