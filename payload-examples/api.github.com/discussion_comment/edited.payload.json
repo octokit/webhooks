@@ -32,7 +32,19 @@
     },
     "created_at": "2021-03-30T20:21:30Z",
     "updated_at": "2021-03-30T20:21:30Z",
-    "body": "ANSWER"
+    "body": "ANSWER",
+    "reactions": {
+      "url": "https://api.github.com/repos/Codertocat/Hello-World/discussions/comments/21031067/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    }
   },
   "discussion": {
     "repository_url": "https://api.github.com/repos/Codertocat/Hello-World",
