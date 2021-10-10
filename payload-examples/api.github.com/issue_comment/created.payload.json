@@ -129,7 +129,19 @@
     "closed_at": null,
     "author_association": "OWNER",
     "active_lock_reason": null,
-    "body": "It looks like you accidently spelled 'commit' with two 't's."
+    "body": "It looks like you accidently spelled 'commit' with two 't's.",
+    "reactions": {
+      "url": "https://api.github.com/repos/Codertocat/Hello-World/issues/1/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    }
   },
   "comment": {
     "url": "https://api.github.com/repos/Codertocat/Hello-World/issues/comments/492700400",
@@ -161,7 +173,19 @@
     "updated_at": "2019-05-15T15:20:21Z",
     "author_association": "OWNER",
     "performed_via_github_app": null,
-    "body": "You are totally right! I'll get this fixed right away."
+    "body": "You are totally right! I'll get this fixed right away.",
+    "reactions": {
+      "url": "https://api.github.com/repos/Codertocat/Hello-World/issues/comments/492700400/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    }
   },
   "repository": {
     "id": 186853002,
