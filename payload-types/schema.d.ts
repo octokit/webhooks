@@ -3708,7 +3708,7 @@ export interface OrgBlockUnblockedEvent {
 }
 export interface OrganizationDeletedEvent {
   action: "deleted";
-  membership: Membership;
+  membership?: Membership;
   sender: User;
   installation?: InstallationLite;
   organization: Organization;
@@ -4149,7 +4149,7 @@ export interface ProjectCardMovedEvent {
 export interface ProjectColumnCreatedEvent {
   action: "created";
   project_column: ProjectColumn;
-  repository: Repository;
+  repository?: Repository;
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
@@ -4173,7 +4173,7 @@ export interface ProjectColumn {
 export interface ProjectColumnDeletedEvent {
   action: "deleted";
   project_column: ProjectColumn;
-  repository: Repository;
+  repository?: Repository;
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
@@ -4186,7 +4186,7 @@ export interface ProjectColumnEditedEvent {
     };
   };
   project_column: ProjectColumn;
-  repository: Repository;
+  repository?: Repository;
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
@@ -4194,7 +4194,7 @@ export interface ProjectColumnEditedEvent {
 export interface ProjectColumnMovedEvent {
   action: "moved";
   project_column: ProjectColumn;
-  repository: Repository;
+  repository?: Repository;
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
