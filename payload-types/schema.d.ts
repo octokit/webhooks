@@ -552,6 +552,7 @@ export interface Repository {
    * Whether to allow private forks
    */
   allow_forking?: boolean;
+  is_template: boolean;
   visibility?: "public" | "private";
   /**
    * Whether to delete head branches when pull requests are merged
