@@ -42,6 +42,7 @@
           "description": "The optional human-readable description added to the status."
         },
         "environment": { "type": "string" },
+        "environment_url": { "type": "string", "format": "uri" },
         "target_url": {
           "type": "string",
           "description": "The optional link added to the status."
