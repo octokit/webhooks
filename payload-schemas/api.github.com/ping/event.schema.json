@@ -22,7 +22,8 @@
         "updated_at",
         "created_at",
         "url",
-        "ping_url"
+        "ping_url",
+        "deliveries_url"
       ],
       "properties": {
         "type": { "type": "string" },
@@ -50,6 +51,7 @@
         "url": { "type": "string", "format": "uri" },
         "test_url": { "type": "string", "format": "uri" },
         "ping_url": { "type": "string", "format": "uri" },
+        "deliveries_url": { "type": "string", "format": "uri" },
         "last_response": {
           "type": "object",
           "required": ["code", "status", "message"],
