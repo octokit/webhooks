@@ -2089,6 +2089,8 @@ export interface DeploymentCreatedEvent {
     payload: {};
     original_environment: string;
     environment: string;
+    transient_environment?: boolean;
+    production_environment?: boolean;
     description: null;
     creator: User;
     created_at: string;
@@ -2123,6 +2125,7 @@ export interface DeploymentStatusCreatedEvent {
      */
     description: string;
     environment: string;
+    environment_url?: string;
     /**
      * The optional link added to the status.
      */
