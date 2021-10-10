@@ -165,15 +165,14 @@ export type MembershipEvent = MembershipAddedEvent | MembershipRemovedEvent;
 export type MetaEvent = MetaDeletedEvent;
 export type WebhookEvents =
   | (
+      | "branch_protection_rule"
       | "check_run"
       | "check_suite"
       | "code_scanning_alert"
       | "commit_comment"
-      | "content_reference"
       | "create"
       | "delete"
       | "deployment"
-      | "deployment_review"
       | "deployment_status"
       | "deploy_key"
       | "discussion"
@@ -189,6 +188,7 @@ export type WebhookEvents =
       | "milestone"
       | "organization"
       | "org_block"
+      | "package"
       | "page_build"
       | "project"
       | "project_card"
@@ -197,11 +197,11 @@ export type WebhookEvents =
       | "pull_request"
       | "pull_request_review"
       | "pull_request_review_comment"
+      | "pull_request_review_thread"
       | "push"
       | "registry_package"
       | "release"
       | "repository"
-      | "repository_dispatch"
       | "repository_import"
       | "repository_vulnerability_alert"
       | "secret_scanning_alert"
@@ -210,7 +210,7 @@ export type WebhookEvents =
       | "team"
       | "team_add"
       | "watch"
-      | "workflow_dispatch"
+      | "workflow_job"
       | "workflow_run"
     )[]
   | ["*"];
@@ -3612,6 +3612,7 @@ export interface MetaDeletedEvent {
       content_type: "json" | "form";
       insecure_ssl: string;
       url: string;
+      secret: string;
     };
     updated_at: string;
     created_at: string;
@@ -3975,6 +3976,7 @@ export interface PingEvent {
     url: string;
     test_url?: string;
     ping_url: string;
+    deliveries_url: string;
     last_response?: {
       code: null;
       status: string;
