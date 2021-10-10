@@ -10,7 +10,8 @@
     "config": {
       "content_type": "json",
       "insecure_ssl": "0",
-      "url": "http://example.com/hook"
+      "url": "http://example.com/hook",
+      "secret": "********"
     },
     "updated_at": "2019-04-10T03:57:12Z",
     "created_at": "2019-04-10T03:57:12Z"
