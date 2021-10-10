@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "organization$deleted",
   "type": "object",
-  "required": ["action", "membership", "organization", "sender"],
+  "required": ["action", "organization", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["deleted"] },
     "membership": { "$ref": "common/membership.schema.json" },
