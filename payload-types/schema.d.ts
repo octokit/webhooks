@@ -2222,6 +2222,19 @@ export interface Discussion {
   author_association: AuthorAssociation;
   active_lock_reason: string | null;
   body: string;
+  reactions?: Reactions;
+}
+export interface Reactions {
+  url: string;
+  total_count: number;
+  "+1": number;
+  "-1": number;
+  laugh: number;
+  hooray: number;
+  confused: number;
+  heart: number;
+  rocket: number;
+  eyes: number;
 }
 export interface DiscussionCategoryChangedEvent {
   changes: {
@@ -2414,6 +2427,7 @@ export interface DiscussionCommentCreatedEvent {
     created_at: string;
     updated_at: string;
     body: string;
+    reactions: Reactions;
   };
   discussion: Discussion;
   repository: Repository;
@@ -2436,6 +2450,7 @@ export interface DiscussionCommentDeletedEvent {
     created_at: string;
     updated_at: string;
     body: string;
+    reactions: Reactions;
   };
   discussion: Discussion;
   repository: Repository;
@@ -2463,6 +2478,7 @@ export interface DiscussionCommentEditedEvent {
     created_at: string;
     updated_at: string;
     body: string;
+    reactions: Reactions;
   };
   discussion: Discussion;
   repository: Repository;
@@ -2941,18 +2957,6 @@ export interface Milestone {
   updated_at: string;
   due_on: string | null;
   closed_at: string | null;
-}
-export interface Reactions {
-  url: string;
-  total_count: number;
-  "+1": number;
-  "-1": number;
-  laugh: number;
-  hooray: number;
-  confused: number;
-  heart: number;
-  rocket: number;
-  eyes: number;
 }
 /**
  * The [comment](https://docs.github.com/en/rest/reference/issues#comments) itself.
@@ -5129,6 +5133,8 @@ export interface Release {
   tarball_url: string | null;
   zipball_url: string | null;
   body: string;
+  reactions?: Reactions;
+  discussion_url?: string;
 }
 /**
  * Data related to a release.
