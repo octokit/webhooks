@@ -52,7 +52,9 @@
     },
     "tarball_url": { "type": ["string", "null"], "format": "uri" },
     "zipball_url": { "type": ["string", "null"], "format": "uri" },
-    "body": { "type": "string" }
+    "body": { "type": "string" },
+    "reactions": { "$ref": "reactions.schema.json" },
+    "discussion_url": { "type": "string", "format": "uri" }
   },
   "additionalProperties": false,
   "description": "The [release](https://docs.github.com/en/rest/reference/repos/#get-a-release) object.",
