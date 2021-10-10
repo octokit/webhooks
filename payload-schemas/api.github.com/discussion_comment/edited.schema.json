@@ -40,7 +40,8 @@
         "user",
         "created_at",
         "updated_at",
-        "body"
+        "body",
+        "reactions"
       ],
       "properties": {
         "id": { "type": "integer" },
@@ -56,7 +57,8 @@
         "user": { "$ref": "common/user.schema.json" },
         "created_at": { "type": "string" },
         "updated_at": { "type": "string" },
-        "body": { "type": "string" }
+        "body": { "type": "string" },
+        "reactions": { "$ref": "common/reactions.schema.json" }
       },
       "additionalProperties": false
     },
