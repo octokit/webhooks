@@ -15,37 +15,16 @@
     "rocket"
   ],
   "properties": {
-    "url": {
-      "type": "string",
-      "format": "uri"
-    },
-    "total_count": {
-      "type": "integer"
-    },
-    "+1": {
-      "type": "integer"
-    },
-    "-1": {
-      "type": "integer"
-    },
-    "laugh": {
-      "type": "integer"
-    },
-    "hooray": {
-      "type": "integer"
-    },
-    "confused": {
-      "type": "integer"
-    },
-    "heart": {
-      "type": "integer"
-    },
-    "rocket": {
-      "type": "integer"
-    },
-    "eyes": {
-      "type": "integer"
-    }
+    "url": { "type": "string", "format": "uri" },
+    "total_count": { "type": "integer" },
+    "+1": { "type": "integer" },
+    "-1": { "type": "integer" },
+    "laugh": { "type": "integer" },
+    "hooray": { "type": "integer" },
+    "confused": { "type": "integer" },
+    "heart": { "type": "integer" },
+    "rocket": { "type": "integer" },
+    "eyes": { "type": "integer" }
   },
   "title": "Reactions",
   "additionalProperties": false
