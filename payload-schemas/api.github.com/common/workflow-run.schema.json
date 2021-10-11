@@ -28,7 +28,10 @@
     "updated_at",
     "url",
     "workflow_id",
-    "workflow_url"
+    "workflow_url",
+    "run_attempt",
+    "run_started_at",
+    "previous_attempt_url"
   ],
   "type": "object",
   "properties": {
@@ -105,7 +108,12 @@
     "updated_at": { "type": "string", "format": "date-time" },
     "url": { "type": "string", "format": "uri" },
     "workflow_id": { "type": "integer" },
-    "workflow_url": { "type": "string", "format": "uri" }
+    "workflow_url": { "type": "string", "format": "uri" },
+    "run_attempt": { "type": "integer" },
+    "run_started_at": { "type": "string", "format": "date-time" },
+    "previous_attempt_url": {
+      "oneOf": [{ "type": "string", "format": "uri" }, { "type": "null" }]
+    }
   },
   "additionalProperties": false,
   "title": "Workflow Run"
