@@ -553,6 +553,7 @@ export interface Repository {
    */
   allow_forking?: boolean;
   is_template: boolean;
+  topics?: string[];
   visibility?: "public" | "private";
   /**
    * Whether to delete head branches when pull requests are merged
@@ -834,6 +835,7 @@ export interface App {
     emails?: "read" | "write";
     environments?: "read" | "write";
     issues?: "read" | "write";
+    keys?: "read, write";
     members?: "read" | "write";
     metadata?: "read" | "write";
     organization_administration?: "read" | "write";
@@ -6173,6 +6175,9 @@ export interface WorkflowRun {
   url: string;
   workflow_id: number;
   workflow_url: string;
+  run_attempt: number;
+  run_started_at: string;
+  previous_attempt_url: string | null;
 }
 export interface RepositoryLite {
   archive_url: string;
