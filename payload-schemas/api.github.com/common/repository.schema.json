@@ -76,7 +76,8 @@
     "open_issues",
     "watchers",
     "default_branch",
-    "is_template"
+    "is_template",
+    "topics"
   ],
   "properties": {
     "id": {
@@ -223,6 +224,7 @@
       "description": "Whether to allow private forks"
     },
     "is_template": { "type": "boolean" },
+    "topics": { "type": "array", "items": { "type": "string" } },
     "visibility": { "type": "string", "enum": ["public", "private"] },
     "delete_branch_on_merge": {
       "type": "boolean",
