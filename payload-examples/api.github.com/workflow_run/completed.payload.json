@@ -113,7 +113,8 @@
     "url": "https://api.github.com/repos/octo-org/octo-repo",
     "watchers": 1,
     "watchers_count": 1,
-    "is_template": false
+    "is_template": false,
+    "topics": []
   },
   "sender": {
     "avatar_url": "https://avatars0.githubusercontent.com/u/15669918?v=4",

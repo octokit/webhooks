@@ -295,7 +295,8 @@
       "open_issues": 1,
       "watchers": 0,
       "default_branch": "master",
-      "is_template": false
+      "is_template": false,
+      "topics": []
     }
   },
   "repository": {
@@ -391,7 +392,8 @@
     "open_issues": 39,
     "watchers": 0,
     "default_branch": "main",
-    "is_template": false
+    "is_template": false,
+    "topics": []
   },
   "sender": {
     "login": "Codertocat",

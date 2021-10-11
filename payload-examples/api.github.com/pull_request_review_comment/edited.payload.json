@@ -286,7 +286,8 @@
         "open_issues": 2,
         "watchers": 0,
         "default_branch": "master",
-        "is_template": false
+        "is_template": false,
+        "topics": []
       }
     },
     "base": {
@@ -406,7 +407,8 @@
         "open_issues": 2,
         "watchers": 0,
         "default_branch": "master",
-        "is_template": false
+        "is_template": false,
+        "topics": []
       }
     },
     "_links": {
@@ -529,7 +531,8 @@
     "open_issues": 2,
     "watchers": 0,
     "default_branch": "master",
-    "is_template": false
+    "is_template": false,
+    "topics": []
   },
   "installation": {
     "id": 1,

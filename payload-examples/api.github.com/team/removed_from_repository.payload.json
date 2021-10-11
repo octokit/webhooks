@@ -113,7 +113,8 @@
       "maintain": false,
       "admin": false
     },
-    "is_template": false
+    "is_template": false,
+    "topics": []
   },
   "organization": {
     "login": "Octocoders",

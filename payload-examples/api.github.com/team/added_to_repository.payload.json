@@ -107,7 +107,8 @@
     "watchers": 0,
     "default_branch": "master",
     "permissions": { "pull": true, "push": false, "admin": false },
-    "is_template": false
+    "is_template": false,
+    "topics": []
   },
   "organization": {
     "login": "Octocoders",

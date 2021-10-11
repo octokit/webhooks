@@ -283,7 +283,8 @@
     "open_issues": 1,
     "watchers": 0,
     "default_branch": "master",
-    "is_template": false
+    "is_template": false,
+    "topics": []
   },
   "organization": {
     "login": "Octocoders",

@@ -276,7 +276,8 @@
     "open_issues": 2,
     "watchers": 0,
     "default_branch": "master",
-    "is_template": false
+    "is_template": false,
+    "topics": []
   },
   "sender": {
     "login": "Codertocat",

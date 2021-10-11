@@ -107,7 +107,8 @@
     "stargazers": 0,
     "master_branch": "master",
     "organization": "Octocoders",
-    "is_template": false
+    "is_template": false,
+    "topics": []
   },
   "organization": {
     "login": "Octocoders",

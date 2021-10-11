@@ -99,7 +99,8 @@
     "default_branch": "master",
     "stargazers": 0,
     "master_branch": "master",
-    "is_template": false
+    "is_template": false,
+    "topics": []
   },
   "pusher": {
     "name": "Codertocat",
