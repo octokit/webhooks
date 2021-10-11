@@ -106,7 +106,8 @@
     "default_branch": "master",
     "stargazers": 0,
     "master_branch": "master",
-    "organization": "Octocoders"
+    "organization": "Octocoders",
+    "is_template": false
   },
   "organization": {
     "login": "Octocoders",

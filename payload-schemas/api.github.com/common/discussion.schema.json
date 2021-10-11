@@ -69,7 +69,8 @@
     "updated_at": { "type": "string", "format": "date-time" },
     "author_association": { "$ref": "author_association.schema.json" },
     "active_lock_reason": { "type": ["string", "null"] },
-    "body": { "type": "string" }
+    "body": { "type": "string" },
+    "reactions": { "$ref": "reactions.schema.json" }
   },
   "additionalProperties": false,
   "title": "Discussion"

@@ -165,15 +165,14 @@ export type MembershipEvent = MembershipAddedEvent | MembershipRemovedEvent;
 export type MetaEvent = MetaDeletedEvent;
 export type WebhookEvents =
   | (
+      | "branch_protection_rule"
       | "check_run"
       | "check_suite"
       | "code_scanning_alert"
       | "commit_comment"
-      | "content_reference"
       | "create"
       | "delete"
       | "deployment"
-      | "deployment_review"
       | "deployment_status"
       | "deploy_key"
       | "discussion"
@@ -189,6 +188,7 @@ export type WebhookEvents =
       | "milestone"
       | "organization"
       | "org_block"
+      | "package"
       | "page_build"
       | "project"
       | "project_card"
@@ -197,11 +197,11 @@ export type WebhookEvents =
       | "pull_request"
       | "pull_request_review"
       | "pull_request_review_comment"
+      | "pull_request_review_thread"
       | "push"
       | "registry_package"
       | "release"
       | "repository"
-      | "repository_dispatch"
       | "repository_import"
       | "repository_vulnerability_alert"
       | "secret_scanning_alert"
@@ -210,7 +210,7 @@ export type WebhookEvents =
       | "team"
       | "team_add"
       | "watch"
-      | "workflow_dispatch"
+      | "workflow_job"
       | "workflow_run"
     )[]
   | ["*"];
@@ -552,6 +552,7 @@ export interface Repository {
    * Whether to allow private forks
    */
   allow_forking?: boolean;
+  is_template: boolean;
   visibility?: "public" | "private";
   /**
    * Whether to delete head branches when pull requests are merged
@@ -2089,6 +2090,8 @@ export interface DeploymentCreatedEvent {
     payload: {};
     original_environment: string;
     environment: string;
+    transient_environment?: boolean;
+    production_environment?: boolean;
     description: null;
     creator: User;
     created_at: string;
@@ -2123,6 +2126,7 @@ export interface DeploymentStatusCreatedEvent {
      */
     description: string;
     environment: string;
+    environment_url?: string;
     /**
      * The optional link added to the status.
      */
@@ -2218,6 +2222,19 @@ export interface Discussion {
   author_association: AuthorAssociation;
   active_lock_reason: string | null;
   body: string;
+  reactions?: Reactions;
+}
+export interface Reactions {
+  url: string;
+  total_count: number;
+  "+1": number;
+  "-1": number;
+  laugh: number;
+  hooray: number;
+  confused: number;
+  heart: number;
+  rocket: number;
+  eyes: number;
 }
 export interface DiscussionCategoryChangedEvent {
   changes: {
@@ -2410,6 +2427,7 @@ export interface DiscussionCommentCreatedEvent {
     created_at: string;
     updated_at: string;
     body: string;
+    reactions: Reactions;
   };
   discussion: Discussion;
   repository: Repository;
@@ -2432,6 +2450,7 @@ export interface DiscussionCommentDeletedEvent {
     created_at: string;
     updated_at: string;
     body: string;
+    reactions: Reactions;
   };
   discussion: Discussion;
   repository: Repository;
@@ -2459,6 +2478,7 @@ export interface DiscussionCommentEditedEvent {
     created_at: string;
     updated_at: string;
     body: string;
+    reactions: Reactions;
   };
   discussion: Discussion;
   repository: Repository;
@@ -2606,6 +2626,7 @@ export interface Installation {
     workflows?: "read" | "write";
   };
   events: (
+    | "branch_protection_rule"
     | "check_run"
     | "check_suite"
     | "code_scanning_alert"
@@ -2638,6 +2659,7 @@ export interface Installation {
     | "pull_request"
     | "pull_request_review"
     | "pull_request_review_comment"
+    | "pull_request_review_thread"
     | "push"
     | "registry_package"
     | "release"
@@ -2650,6 +2672,7 @@ export interface Installation {
     | "team_add"
     | "watch"
     | "workflow_dispatch"
+    | "workflow_job"
     | "workflow_run"
   )[];
   created_at: string | number;
@@ -2905,18 +2928,7 @@ export interface Issue {
    * Contents of the issue
    */
   body: string | null;
-  reactions?: {
-    url: string;
-    total_count: number;
-    "+1": number;
-    "-1": number;
-    laugh: number;
-    hooray: number;
-    confused: number;
-    heart: number;
-    rocket: number;
-    eyes: number;
-  };
+  reactions: Reactions;
   timeline_url?: string;
 }
 /**
@@ -2972,6 +2984,7 @@ export interface IssueComment {
    * Contents of the issue comment
    */
   body: string;
+  reactions: Reactions;
   performed_via_github_app: App | null;
 }
 export interface IssueCommentDeletedEvent {
@@ -3599,6 +3612,7 @@ export interface MetaDeletedEvent {
       content_type: "json" | "form";
       insecure_ssl: string;
       url: string;
+      secret: string;
     };
     updated_at: string;
     created_at: string;
@@ -3694,7 +3708,7 @@ export interface OrgBlockUnblockedEvent {
 }
 export interface OrganizationDeletedEvent {
   action: "deleted";
-  membership: Membership;
+  membership?: Membership;
   sender: User;
   installation?: InstallationLite;
   organization: Organization;
@@ -3962,6 +3976,7 @@ export interface PingEvent {
     url: string;
     test_url?: string;
     ping_url: string;
+    deliveries_url: string;
     last_response?: {
       code: null;
       status: string;
@@ -4134,7 +4149,7 @@ export interface ProjectCardMovedEvent {
 export interface ProjectColumnCreatedEvent {
   action: "created";
   project_column: ProjectColumn;
-  repository: Repository;
+  repository?: Repository;
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
@@ -4158,7 +4173,7 @@ export interface ProjectColumn {
 export interface ProjectColumnDeletedEvent {
   action: "deleted";
   project_column: ProjectColumn;
-  repository: Repository;
+  repository?: Repository;
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
@@ -4171,7 +4186,7 @@ export interface ProjectColumnEditedEvent {
     };
   };
   project_column: ProjectColumn;
-  repository: Repository;
+  repository?: Repository;
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
@@ -4179,7 +4194,7 @@ export interface ProjectColumnEditedEvent {
 export interface ProjectColumnMovedEvent {
   action: "moved";
   project_column: ProjectColumn;
-  repository: Repository;
+  repository?: Repository;
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
@@ -4828,6 +4843,7 @@ export interface PullRequestReviewComment {
     html: Link;
     pull_request: Link;
   };
+  reactions: Reactions;
   /**
    * The first line of the range for a multi-line comment.
    */
@@ -5122,6 +5138,8 @@ export interface Release {
   tarball_url: string | null;
   zipball_url: string | null;
   body: string;
+  reactions?: Reactions;
+  discussion_url?: string;
 }
 /**
  * Data related to a release.

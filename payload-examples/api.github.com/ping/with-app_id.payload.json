@@ -18,6 +18,7 @@
     "url": "https://api.github.com/repos/Octocoders/Hello-World/hooks/109948940",
     "test_url": "https://api.github.com/repos/Octocoders/Hello-World/hooks/109948940/test",
     "ping_url": "https://api.github.com/repos/Octocoders/Hello-World/hooks/109948940/pings",
+    "deliveries_url": "https://api.github.com/repos/Octocoders/Hello-World/hooks/109948940/deliveries",
     "last_response": { "code": null, "status": "unused", "message": null }
   },
   "repository": {
@@ -112,7 +113,8 @@
     "forks": 0,
     "open_issues": 0,
     "watchers": 0,
-    "default_branch": "master"
+    "default_branch": "master",
+    "is_template": false
   },
   "sender": {
     "login": "Codertocat",

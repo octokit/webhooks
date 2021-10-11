@@ -12,7 +12,8 @@
     "updated_at",
     "author_association",
     "performed_via_github_app",
-    "body"
+    "body",
+    "reactions"
   ],
   "type": "object",
   "properties": {
@@ -36,6 +37,7 @@
       "type": "string",
       "description": "Contents of the issue comment"
     },
+    "reactions": { "$ref": "reactions.schema.json" },
     "performed_via_github_app": {
       "oneOf": [{ "$ref": "app.schema.json" }, { "type": "null" }]
     }

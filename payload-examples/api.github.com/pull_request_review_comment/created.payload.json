@@ -48,6 +48,18 @@
         "href": "https://api.github.com/repos/Codertocat/Hello-World/pulls/2"
       }
     },
+    "reactions": {
+      "url": "https://api.github.com/repos/Codertocat/Hello-World/pulls/comments/284312630/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
     "start_line": null,
     "original_start_line": null,
     "start_side": null,
@@ -272,7 +284,8 @@
         "forks": 0,
         "open_issues": 2,
         "watchers": 0,
-        "default_branch": "master"
+        "default_branch": "master",
+        "is_template": false
       }
     },
     "base": {
@@ -391,7 +404,8 @@
         "forks": 0,
         "open_issues": 2,
         "watchers": 0,
-        "default_branch": "master"
+        "default_branch": "master",
+        "is_template": false
       }
     },
     "_links": {
@@ -513,7 +527,8 @@
     "forks": 0,
     "open_issues": 2,
     "watchers": 0,
-    "default_branch": "master"
+    "default_branch": "master",
+    "is_template": false
   },
   "installation": {
     "id": 1,

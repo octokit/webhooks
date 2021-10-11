@@ -92,7 +92,8 @@
     "forks": 0,
     "open_issues": 2,
     "watchers": 1,
-    "default_branch": "master"
+    "default_branch": "master",
+    "is_template": false
   },
   "sender": {
     "login": "Codertocat",

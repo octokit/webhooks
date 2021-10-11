@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "project_column$created",
   "type": "object",
-  "required": ["action", "project_column", "repository", "sender"],
+  "required": ["action", "project_column", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["created"] },
     "project_column": { "$ref": "common/project-column.schema.json" },
