@@ -4078,7 +4078,7 @@ export interface ProjectCardConvertedEvent {
     };
   };
   project_card: ProjectCard;
-  repository: Repository;
+  repository?: Repository;
   sender: User;
   organization?: Organization;
   installation?: InstallationLite;
@@ -4107,7 +4107,7 @@ export interface ProjectCard {
 export interface ProjectCardCreatedEvent {
   action: "created";
   project_card: ProjectCard;
-  repository: Repository;
+  repository?: Repository;
   sender: User;
   organization?: Organization;
   installation?: InstallationLite;
@@ -4115,7 +4115,7 @@ export interface ProjectCardCreatedEvent {
 export interface ProjectCardDeletedEvent {
   action: "deleted";
   project_card: ProjectCard;
-  repository: Repository;
+  repository?: Repository;
   sender: User;
   organization?: Organization;
   installation?: InstallationLite;
@@ -4128,7 +4128,7 @@ export interface ProjectCardEditedEvent {
     };
   };
   project_card: ProjectCard;
-  repository: Repository;
+  repository?: Repository;
   sender: User;
   organization?: Organization;
   installation?: InstallationLite;
@@ -4143,7 +4143,7 @@ export interface ProjectCardMovedEvent {
   project_card: ProjectCard & {
     after_id: number | null;
   };
-  repository: Repository;
+  repository?: Repository;
   sender: User;
   organization?: Organization;
   installation?: InstallationLite;
