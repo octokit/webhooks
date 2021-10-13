@@ -153,7 +153,8 @@
       "watchers": 0,
       "default_branch": "main",
       "is_template": false,
-      "topics": []
+      "topics": [],
+      "visibility": "public"
     }
   },
   "issue": {
@@ -393,7 +394,8 @@
     "watchers": 0,
     "default_branch": "master",
     "is_template": false,
-    "topics": []
+    "topics": [],
+    "visibility": "public"
   },
   "sender": {
     "login": "Codertocat",

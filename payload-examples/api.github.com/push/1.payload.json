@@ -108,7 +108,8 @@
     "master_branch": "master",
     "organization": "Octocoders",
     "is_template": false,
-    "topics": []
+    "topics": [],
+    "visibility": "public"
   },
   "organization": {
     "login": "Octocoders",

@@ -254,7 +254,8 @@
         "watchers": 0,
         "default_branch": "master",
         "is_template": false,
-        "topics": []
+        "topics": [],
+        "visibility": "public"
       }
     },
     "base": {
@@ -375,7 +376,8 @@
         "watchers": 0,
         "default_branch": "master",
         "is_template": false,
-        "topics": []
+        "topics": [],
+        "visibility": "public"
       }
     },
     "_links": {
@@ -533,7 +535,8 @@
     "watchers": 0,
     "default_branch": "master",
     "is_template": false,
-    "topics": []
+    "topics": [],
+    "visibility": "public"
   },
   "installation": {
     "id": 1,

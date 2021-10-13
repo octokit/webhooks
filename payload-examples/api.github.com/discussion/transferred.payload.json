@@ -195,7 +195,8 @@
       "watchers": 108,
       "default_branch": "master",
       "is_template": false,
-      "topics": []
+      "topics": [],
+      "visibility": "public"
     }
   },
   "repository": {
@@ -292,7 +293,8 @@
     "watchers": 0,
     "default_branch": "master",
     "is_template": false,
-    "topics": []
+    "topics": [],
+    "visibility": "public"
   },
   "sender": {
     "login": "Codertocat",
