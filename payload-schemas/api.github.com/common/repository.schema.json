@@ -225,7 +225,7 @@
     },
     "is_template": { "type": "boolean" },
     "topics": { "type": "array", "items": { "type": "string" } },
-    "visibility": { "type": "string", "enum": ["public", "private"] },
+    "visibility": { "type": "string", "enum": ["public", "private", "internal"] },
     "delete_branch_on_merge": {
       "type": "boolean",
       "description": "Whether to delete head branches when pull requests are merged",
