@@ -77,7 +77,8 @@
     "watchers",
     "default_branch",
     "is_template",
-    "topics"
+    "topics",
+    "visibility"
   ],
   "properties": {
     "id": {

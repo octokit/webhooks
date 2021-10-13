@@ -554,7 +554,7 @@ export interface Repository {
   allow_forking?: boolean;
   is_template: boolean;
   topics: string[];
-  visibility?: "public" | "private" | "internal";
+  visibility: "public" | "private" | "internal";
   /**
    * Whether to delete head branches when pull requests are merged
    */
