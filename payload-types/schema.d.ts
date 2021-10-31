@@ -865,6 +865,7 @@ export interface App {
    * The list of events for the GitHub app
    */
   events?: (
+    | "branch_protection_rule"
     | "check_run"
     | "check_suite"
     | "code_scanning_alert"
@@ -5992,11 +5993,12 @@ export interface WorkflowJobCompletedEvent {
 export interface WorkflowJob {
   id: number;
   run_id: number;
+  run_attempt: number;
+  run_url: string;
   head_sha: string;
   node_id: string;
   name: string;
   check_run_url: string;
-  run_url: string;
   html_url: string;
   url: string;
   /**
@@ -6064,11 +6066,12 @@ export interface WorkflowJobQueuedEvent {
   workflow_job: {
     id: number;
     run_id: number;
+    run_url: string;
+    run_attempt: number;
     head_sha: string;
     node_id: string;
     name: string;
     check_run_url: string;
-    run_url: string;
     html_url: string;
     url: string;
     status: "queued";
