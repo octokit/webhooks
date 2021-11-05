@@ -15,6 +15,7 @@ import {
   OpenApiPaths,
 } from "@tstypes/openapi-v3";
 import yaml from "yaml";
+import { eventNames } from "process";
 
 parseArgv(__filename, []);
 
@@ -145,10 +146,19 @@ const combineEventSchemas = () => {
           })),
           discriminator: {
             propertyName: "action",
+            mapping: {},
           },
         },
       },
     };
+
+    eventActions.forEach((eventAction) => {
+      (
+        eventSchema.components.schemas[eventName] as OpenApiSchema
+      ).discriminator!.mapping![
+        eventAction.split("$")[1]
+      ] = `#/components/schemas/${eventAction}`;
+    });
 
     eventSchema.webhooks[event] = {
       post: {

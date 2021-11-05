@@ -79,7 +79,14 @@
           { "$ref": "#/components/schemas/branch_protection_rule$deleted" },
           { "$ref": "#/components/schemas/branch_protection_rule$edited" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "created": "#/components/schemas/branch_protection_rule$created",
+            "deleted": "#/components/schemas/branch_protection_rule$deleted",
+            "edited": "#/components/schemas/branch_protection_rule$edited"
+          }
+        }
       },
       "check_run$completed": {
         "type": "object",
@@ -806,7 +813,15 @@
           { "$ref": "#/components/schemas/check_run$requested_action" },
           { "$ref": "#/components/schemas/check_run$rerequested" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "completed": "#/components/schemas/check_run$completed",
+            "created": "#/components/schemas/check_run$created",
+            "requested_action": "#/components/schemas/check_run$requested_action",
+            "rerequested": "#/components/schemas/check_run$rerequested"
+          }
+        }
       },
       "check_suite$completed": {
         "type": "object",
@@ -1093,7 +1108,14 @@
           { "$ref": "#/components/schemas/check_suite$requested" },
           { "$ref": "#/components/schemas/check_suite$rerequested" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "completed": "#/components/schemas/check_suite$completed",
+            "requested": "#/components/schemas/check_suite$requested",
+            "rerequested": "#/components/schemas/check_suite$rerequested"
+          }
+        }
       },
       "code_scanning_alert$appeared_in_branch": {
         "type": "object",
@@ -1922,7 +1944,17 @@
             "$ref": "#/components/schemas/code_scanning_alert$reopened_by_user"
           }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "appeared_in_branch": "#/components/schemas/code_scanning_alert$appeared_in_branch",
+            "closed_by_user": "#/components/schemas/code_scanning_alert$closed_by_user",
+            "created": "#/components/schemas/code_scanning_alert$created",
+            "fixed": "#/components/schemas/code_scanning_alert$fixed",
+            "reopened": "#/components/schemas/code_scanning_alert$reopened",
+            "reopened_by_user": "#/components/schemas/code_scanning_alert$reopened_by_user"
+          }
+        }
       },
       "commit_comment$created": {
         "type": "object",
@@ -2002,7 +2034,12 @@
       },
       "commit_comment_event": {
         "oneOf": [{ "$ref": "#/components/schemas/commit_comment$created" }],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "created": "#/components/schemas/commit_comment$created"
+          }
+        }
       },
       "content_reference$created": {
         "type": "object",
@@ -2035,7 +2072,12 @@
       },
       "content_reference_event": {
         "oneOf": [{ "$ref": "#/components/schemas/content_reference$created" }],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "created": "#/components/schemas/content_reference$created"
+          }
+        }
       },
       "create$event": {
         "type": "object",
@@ -2182,7 +2224,13 @@
           { "$ref": "#/components/schemas/deploy_key$created" },
           { "$ref": "#/components/schemas/deploy_key$deleted" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "created": "#/components/schemas/deploy_key$created",
+            "deleted": "#/components/schemas/deploy_key$deleted"
+          }
+        }
       },
       "deployment$created": {
         "type": "object",
@@ -2259,7 +2307,10 @@
       },
       "deployment_event": {
         "oneOf": [{ "$ref": "#/components/schemas/deployment$created" }],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": { "created": "#/components/schemas/deployment$created" }
+        }
       },
       "deployment_status$created": {
         "type": "object",
@@ -2381,7 +2432,12 @@
       },
       "deployment_status_event": {
         "oneOf": [{ "$ref": "#/components/schemas/deployment_status$created" }],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "created": "#/components/schemas/deployment_status$created"
+          }
+        }
       },
       "discussion$answered": {
         "type": "object",
@@ -2829,7 +2885,24 @@
           { "$ref": "#/components/schemas/discussion$unlocked" },
           { "$ref": "#/components/schemas/discussion$unpinned" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "answered": "#/components/schemas/discussion$answered",
+            "category_changed": "#/components/schemas/discussion$category_changed",
+            "created": "#/components/schemas/discussion$created",
+            "deleted": "#/components/schemas/discussion$deleted",
+            "edited": "#/components/schemas/discussion$edited",
+            "labeled": "#/components/schemas/discussion$labeled",
+            "locked": "#/components/schemas/discussion$locked",
+            "pinned": "#/components/schemas/discussion$pinned",
+            "transferred": "#/components/schemas/discussion$transferred",
+            "unanswered": "#/components/schemas/discussion$unanswered",
+            "unlabeled": "#/components/schemas/discussion$unlabeled",
+            "unlocked": "#/components/schemas/discussion$unlocked",
+            "unpinned": "#/components/schemas/discussion$unpinned"
+          }
+        }
       },
       "discussion_comment$created": {
         "type": "object",
@@ -3022,7 +3095,14 @@
           { "$ref": "#/components/schemas/discussion_comment$deleted" },
           { "$ref": "#/components/schemas/discussion_comment$edited" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "created": "#/components/schemas/discussion_comment$created",
+            "deleted": "#/components/schemas/discussion_comment$deleted",
+            "edited": "#/components/schemas/discussion_comment$edited"
+          }
+        }
       },
       "fork$event": {
         "type": "object",
@@ -3062,7 +3142,12 @@
         "oneOf": [
           { "$ref": "#/components/schemas/github_app_authorization$revoked" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "revoked": "#/components/schemas/github_app_authorization$revoked"
+          }
+        }
       },
       "gollum$event": {
         "type": "object",
@@ -3339,7 +3424,16 @@
           { "$ref": "#/components/schemas/installation$suspend" },
           { "$ref": "#/components/schemas/installation$unsuspend" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "created": "#/components/schemas/installation$created",
+            "deleted": "#/components/schemas/installation$deleted",
+            "new_permissions_accepted": "#/components/schemas/installation$new_permissions_accepted",
+            "suspend": "#/components/schemas/installation$suspend",
+            "unsuspend": "#/components/schemas/installation$unsuspend"
+          }
+        }
       },
       "installation_repositories$added": {
         "type": "object",
@@ -3507,7 +3601,13 @@
           { "$ref": "#/components/schemas/installation_repositories$added" },
           { "$ref": "#/components/schemas/installation_repositories$removed" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "added": "#/components/schemas/installation_repositories$added",
+            "removed": "#/components/schemas/installation_repositories$removed"
+          }
+        }
       },
       "issue_comment$created": {
         "type": "object",
@@ -3702,7 +3802,14 @@
           { "$ref": "#/components/schemas/issue_comment$deleted" },
           { "$ref": "#/components/schemas/issue_comment$edited" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "created": "#/components/schemas/issue_comment$created",
+            "deleted": "#/components/schemas/issue_comment$deleted",
+            "edited": "#/components/schemas/issue_comment$edited"
+          }
+        }
       },
       "issues$assigned": {
         "type": "object",
@@ -4128,7 +4235,27 @@
           { "$ref": "#/components/schemas/issues$unlocked" },
           { "$ref": "#/components/schemas/issues$unpinned" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "assigned": "#/components/schemas/issues$assigned",
+            "closed": "#/components/schemas/issues$closed",
+            "deleted": "#/components/schemas/issues$deleted",
+            "demilestoned": "#/components/schemas/issues$demilestoned",
+            "edited": "#/components/schemas/issues$edited",
+            "labeled": "#/components/schemas/issues$labeled",
+            "locked": "#/components/schemas/issues$locked",
+            "milestoned": "#/components/schemas/issues$milestoned",
+            "opened": "#/components/schemas/issues$opened",
+            "pinned": "#/components/schemas/issues$pinned",
+            "reopened": "#/components/schemas/issues$reopened",
+            "transferred": "#/components/schemas/issues$transferred",
+            "unassigned": "#/components/schemas/issues$unassigned",
+            "unlabeled": "#/components/schemas/issues$unlabeled",
+            "unlocked": "#/components/schemas/issues$unlocked",
+            "unpinned": "#/components/schemas/issues$unpinned"
+          }
+        }
       },
       "label$created": {
         "type": "object",
@@ -4227,7 +4354,14 @@
           { "$ref": "#/components/schemas/label$deleted" },
           { "$ref": "#/components/schemas/label$edited" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "created": "#/components/schemas/label$created",
+            "deleted": "#/components/schemas/label$deleted",
+            "edited": "#/components/schemas/label$edited"
+          }
+        }
       },
       "marketplace_purchase$cancelled": {
         "type": "object",
@@ -4606,7 +4740,16 @@
           },
           { "$ref": "#/components/schemas/marketplace_purchase$purchased" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "cancelled": "#/components/schemas/marketplace_purchase$cancelled",
+            "changed": "#/components/schemas/marketplace_purchase$changed",
+            "pending_change": "#/components/schemas/marketplace_purchase$pending_change",
+            "pending_change_cancelled": "#/components/schemas/marketplace_purchase$pending_change_cancelled",
+            "purchased": "#/components/schemas/marketplace_purchase$purchased"
+          }
+        }
       },
       "member$added": {
         "type": "object",
@@ -4696,7 +4839,14 @@
           { "$ref": "#/components/schemas/member$edited" },
           { "$ref": "#/components/schemas/member$removed" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "added": "#/components/schemas/member$added",
+            "edited": "#/components/schemas/member$edited",
+            "removed": "#/components/schemas/member$removed"
+          }
+        }
       },
       "membership$added": {
         "type": "object",
@@ -4779,7 +4929,13 @@
           { "$ref": "#/components/schemas/membership$added" },
           { "$ref": "#/components/schemas/membership$removed" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "added": "#/components/schemas/membership$added",
+            "removed": "#/components/schemas/membership$removed"
+          }
+        }
       },
       "meta$deleted": {
         "type": "object",
@@ -4836,7 +4992,10 @@
       },
       "meta_event": {
         "oneOf": [{ "$ref": "#/components/schemas/meta$deleted" }],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": { "deleted": "#/components/schemas/meta$deleted" }
+        }
       },
       "milestone$closed": {
         "type": "object",
@@ -4995,7 +5154,16 @@
           { "$ref": "#/components/schemas/milestone$edited" },
           { "$ref": "#/components/schemas/milestone$opened" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "closed": "#/components/schemas/milestone$closed",
+            "created": "#/components/schemas/milestone$created",
+            "deleted": "#/components/schemas/milestone$deleted",
+            "edited": "#/components/schemas/milestone$edited",
+            "opened": "#/components/schemas/milestone$opened"
+          }
+        }
       },
       "org_block$blocked": {
         "type": "object",
@@ -5034,7 +5202,13 @@
           { "$ref": "#/components/schemas/org_block$blocked" },
           { "$ref": "#/components/schemas/org_block$unblocked" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "blocked": "#/components/schemas/org_block$blocked",
+            "unblocked": "#/components/schemas/org_block$unblocked"
+          }
+        }
       },
       "organization$deleted": {
         "type": "object",
@@ -5145,7 +5319,16 @@
           { "$ref": "#/components/schemas/organization$member_removed" },
           { "$ref": "#/components/schemas/organization$renamed" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "deleted": "#/components/schemas/organization$deleted",
+            "member_added": "#/components/schemas/organization$member_added",
+            "member_invited": "#/components/schemas/organization$member_invited",
+            "member_removed": "#/components/schemas/organization$member_removed",
+            "renamed": "#/components/schemas/organization$renamed"
+          }
+        }
       },
       "package$published": {
         "type": "object",
@@ -5492,7 +5675,13 @@
           { "$ref": "#/components/schemas/package$published" },
           { "$ref": "#/components/schemas/package$updated" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "published": "#/components/schemas/package$published",
+            "updated": "#/components/schemas/package$updated"
+          }
+        }
       },
       "page_build$event": {
         "description": "Page Build",
@@ -5720,7 +5909,16 @@
           { "$ref": "#/components/schemas/project$edited" },
           { "$ref": "#/components/schemas/project$reopened" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "closed": "#/components/schemas/project$closed",
+            "created": "#/components/schemas/project$created",
+            "deleted": "#/components/schemas/project$deleted",
+            "edited": "#/components/schemas/project$edited",
+            "reopened": "#/components/schemas/project$reopened"
+          }
+        }
       },
       "project_card$converted": {
         "type": "object",
@@ -5867,7 +6065,16 @@
           { "$ref": "#/components/schemas/project_card$edited" },
           { "$ref": "#/components/schemas/project_card$moved" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "converted": "#/components/schemas/project_card$converted",
+            "created": "#/components/schemas/project_card$created",
+            "deleted": "#/components/schemas/project_card$deleted",
+            "edited": "#/components/schemas/project_card$edited",
+            "moved": "#/components/schemas/project_card$moved"
+          }
+        }
       },
       "project_column$created": {
         "type": "object",
@@ -5944,7 +6151,15 @@
           { "$ref": "#/components/schemas/project_column$edited" },
           { "$ref": "#/components/schemas/project_column$moved" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "created": "#/components/schemas/project_column$created",
+            "deleted": "#/components/schemas/project_column$deleted",
+            "edited": "#/components/schemas/project_column$edited",
+            "moved": "#/components/schemas/project_column$moved"
+          }
+        }
       },
       "public$event": {
         "type": "object",
@@ -6633,7 +6848,28 @@
           { "$ref": "#/components/schemas/pull_request$unlabeled" },
           { "$ref": "#/components/schemas/pull_request$unlocked" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "assigned": "#/components/schemas/pull_request$assigned",
+            "auto_merge_disabled": "#/components/schemas/pull_request$auto_merge_disabled",
+            "auto_merge_enabled": "#/components/schemas/pull_request$auto_merge_enabled",
+            "closed": "#/components/schemas/pull_request$closed",
+            "converted_to_draft": "#/components/schemas/pull_request$converted_to_draft",
+            "edited": "#/components/schemas/pull_request$edited",
+            "labeled": "#/components/schemas/pull_request$labeled",
+            "locked": "#/components/schemas/pull_request$locked",
+            "opened": "#/components/schemas/pull_request$opened",
+            "ready_for_review": "#/components/schemas/pull_request$ready_for_review",
+            "reopened": "#/components/schemas/pull_request$reopened",
+            "review_request_removed": "#/components/schemas/pull_request$review_request_removed",
+            "review_requested": "#/components/schemas/pull_request$review_requested",
+            "synchronize": "#/components/schemas/pull_request$synchronize",
+            "unassigned": "#/components/schemas/pull_request$unassigned",
+            "unlabeled": "#/components/schemas/pull_request$unlabeled",
+            "unlocked": "#/components/schemas/pull_request$unlocked"
+          }
+        }
       },
       "pull_request_review$dismissed": {
         "type": "object",
@@ -6875,7 +7111,14 @@
           { "$ref": "#/components/schemas/pull_request_review$edited" },
           { "$ref": "#/components/schemas/pull_request_review$submitted" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "dismissed": "#/components/schemas/pull_request_review$dismissed",
+            "edited": "#/components/schemas/pull_request_review$edited",
+            "submitted": "#/components/schemas/pull_request_review$submitted"
+          }
+        }
       },
       "pull_request_review_comment$created": {
         "type": "object",
@@ -7446,7 +7689,14 @@
           },
           { "$ref": "#/components/schemas/pull_request_review_comment$edited" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "created": "#/components/schemas/pull_request_review_comment$created",
+            "deleted": "#/components/schemas/pull_request_review_comment$deleted",
+            "edited": "#/components/schemas/pull_request_review_comment$edited"
+          }
+        }
       },
       "push$event": {
         "type": "object",
@@ -7690,7 +7940,18 @@
           { "$ref": "#/components/schemas/release$released" },
           { "$ref": "#/components/schemas/release$unpublished" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "created": "#/components/schemas/release$created",
+            "deleted": "#/components/schemas/release$deleted",
+            "edited": "#/components/schemas/release$edited",
+            "prereleased": "#/components/schemas/release$prereleased",
+            "published": "#/components/schemas/release$published",
+            "released": "#/components/schemas/release$released",
+            "unpublished": "#/components/schemas/release$unpublished"
+          }
+        }
       },
       "repository$archived": {
         "type": "object",
@@ -7952,7 +8213,20 @@
           { "$ref": "#/components/schemas/repository$transferred" },
           { "$ref": "#/components/schemas/repository$unarchived" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "archived": "#/components/schemas/repository$archived",
+            "created": "#/components/schemas/repository$created",
+            "deleted": "#/components/schemas/repository$deleted",
+            "edited": "#/components/schemas/repository$edited",
+            "privatized": "#/components/schemas/repository$privatized",
+            "publicized": "#/components/schemas/repository$publicized",
+            "renamed": "#/components/schemas/repository$renamed",
+            "transferred": "#/components/schemas/repository$transferred",
+            "unarchived": "#/components/schemas/repository$unarchived"
+          }
+        }
       },
       "repository_dispatch$event": {
         "type": "object",
@@ -8128,7 +8402,14 @@
             "$ref": "#/components/schemas/repository_vulnerability_alert$resolve"
           }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "create": "#/components/schemas/repository_vulnerability_alert$create",
+            "dismiss": "#/components/schemas/repository_vulnerability_alert$dismiss",
+            "resolve": "#/components/schemas/repository_vulnerability_alert$resolve"
+          }
+        }
       },
       "secret_scanning_alert$created": {
         "type": "object",
@@ -8239,7 +8520,14 @@
           { "$ref": "#/components/schemas/secret_scanning_alert$reopened" },
           { "$ref": "#/components/schemas/secret_scanning_alert$resolved" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "created": "#/components/schemas/secret_scanning_alert$created",
+            "reopened": "#/components/schemas/secret_scanning_alert$reopened",
+            "resolved": "#/components/schemas/secret_scanning_alert$resolved"
+          }
+        }
       },
       "security_advisory$performed": {
         "type": "object",
@@ -8700,7 +8988,15 @@
           { "$ref": "#/components/schemas/security_advisory$updated" },
           { "$ref": "#/components/schemas/security_advisory$withdrawn" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "performed": "#/components/schemas/security_advisory$performed",
+            "published": "#/components/schemas/security_advisory$published",
+            "updated": "#/components/schemas/security_advisory$updated",
+            "withdrawn": "#/components/schemas/security_advisory$withdrawn"
+          }
+        }
       },
       "sponsorship$cancelled": {
         "type": "object",
@@ -8946,7 +9242,17 @@
           { "$ref": "#/components/schemas/sponsorship$pending_tier_change" },
           { "$ref": "#/components/schemas/sponsorship$tier_changed" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "cancelled": "#/components/schemas/sponsorship$cancelled",
+            "created": "#/components/schemas/sponsorship$created",
+            "edited": "#/components/schemas/sponsorship$edited",
+            "pending_cancellation": "#/components/schemas/sponsorship$pending_cancellation",
+            "pending_tier_change": "#/components/schemas/sponsorship$pending_tier_change",
+            "tier_changed": "#/components/schemas/sponsorship$tier_changed"
+          }
+        }
       },
       "star$created": {
         "type": "object",
@@ -8987,7 +9293,13 @@
           { "$ref": "#/components/schemas/star$created" },
           { "$ref": "#/components/schemas/star$deleted" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "created": "#/components/schemas/star$created",
+            "deleted": "#/components/schemas/star$deleted"
+          }
+        }
       },
       "status$event": {
         "type": "object",
@@ -9335,7 +9647,16 @@
           { "$ref": "#/components/schemas/team$edited" },
           { "$ref": "#/components/schemas/team$removed_from_repository" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "added_to_repository": "#/components/schemas/team$added_to_repository",
+            "created": "#/components/schemas/team$created",
+            "deleted": "#/components/schemas/team$deleted",
+            "edited": "#/components/schemas/team$edited",
+            "removed_from_repository": "#/components/schemas/team$removed_from_repository"
+          }
+        }
       },
       "team_add$event": {
         "type": "object",
@@ -9365,7 +9686,10 @@
       },
       "watch_event": {
         "oneOf": [{ "$ref": "#/components/schemas/watch$started" }],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": { "started": "#/components/schemas/watch$started" }
+        }
       },
       "workflow_dispatch$event": {
         "type": "object",
@@ -9557,7 +9881,15 @@
           { "$ref": "#/components/schemas/workflow_job$queued" },
           { "$ref": "#/components/schemas/workflow_job$started" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "completed": "#/components/schemas/workflow_job$completed",
+            "in_progress": "#/components/schemas/workflow_job$in_progress",
+            "queued": "#/components/schemas/workflow_job$queued",
+            "started": "#/components/schemas/workflow_job$started"
+          }
+        }
       },
       "workflow_run$completed": {
         "type": "object",
@@ -9629,7 +9961,13 @@
           { "$ref": "#/components/schemas/workflow_run$completed" },
           { "$ref": "#/components/schemas/workflow_run$requested" }
         ],
-        "discriminator": { "propertyName": "action" }
+        "discriminator": {
+          "propertyName": "action",
+          "mapping": {
+            "completed": "#/components/schemas/workflow_run$completed",
+            "requested": "#/components/schemas/workflow_run$requested"
+          }
+        }
       },
       "alert-instance": {
         "required": ["ref", "analysis_key", "environment", "state"],
