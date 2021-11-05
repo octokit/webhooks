@@ -145,10 +145,19 @@ const combineEventSchemas = () => {
           })),
           discriminator: {
             propertyName: "action",
+            mapping: {},
           },
         },
       },
     };
+
+    eventActions.forEach((eventAction) => {
+      (
+        eventSchema.components.schemas[eventName] as OpenApiSchema
+      ).discriminator!.mapping![
+        eventAction.split("$")[1]
+      ] = `#/components/schemas/${eventAction}`;
+    });
 
     eventSchema.webhooks[event] = {
       post: {
