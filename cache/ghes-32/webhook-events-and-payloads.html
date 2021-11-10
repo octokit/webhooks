@@ -240,7 +240,7 @@
     <p>
       Enterprise accounts are available with GitHub Enterprise Cloud and GitHub
       Enterprise Server. For more information, see "<a
-        href="/en/enterprise-server@3.1/admin/overview/about-enterprise-accounts"
+        href="/en/enterprise-server@3.2/admin/overview/about-enterprise-accounts"
         >About enterprise accounts</a
       >."
     </p>
@@ -266,7 +266,7 @@
         You can create webhooks that subscribe to the events listed on this
         page. Each webhook event includes a description of the webhook
         properties and an example payload. For more information, see "<a
-          href="/en/enterprise-server@3.1/webhooks/creating"
+          href="/en/enterprise-server@3.2/webhooks/creating"
           >Creating webhooks</a
         >."
       </p>
@@ -333,7 +333,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred. Webhook payloads contain the
@@ -347,7 +347,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -362,7 +362,7 @@
               The GitHub App installation. Webhook payloads contain the
               <code>installation</code> property when the event is configured
               for and sent to a GitHub App. For more information, see "<a
-                href="/en/enterprise-server@3.1/apps/building-github-apps"
+                href="/en/enterprise-server@3.2/apps/building-github-apps"
                 >Building GitHub App</a
               >."
             </td>
@@ -372,7 +372,7 @@
       <p>
         The unique properties for a webhook event are the same properties you'll
         find in the <code>payload</code> property when using the
-        <a href="/en/enterprise-server@3.1/rest/reference/activity#events"
+        <a href="/en/enterprise-server@3.2/rest/reference/activity#events"
           >Events API</a
         >. One exception is the <a href="#push"><code>push</code> event</a>. The
         unique properties of the <code>push</code> event webhook payload and the
@@ -471,7 +471,7 @@
             <td>
               This header is sent if the webhook is configured with a
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#create-hook-config-params"
+                href="/en/enterprise-server@3.2/rest/reference/repos#create-hook-config-params"
                 ><code>secret</code></a
               >. This is the HMAC hex digest of the request body, and is
               generated using the SHA-1 hash function and the
@@ -486,7 +486,7 @@
             <td>
               This header is sent if the webhook is configured with a
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#create-hook-config-params"
+                href="/en/enterprise-server@3.2/rest/reference/repos#create-hook-config-params"
                 ><code>secret</code></a
               >. This is the HMAC hex digest of the request body, and is
               generated using the SHA-256 hash function and the
@@ -587,7 +587,7 @@
         Check run activity has occurred. The type of activity is specified in
         the <code>action</code> property of the payload object. For more
         information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/checks#runs"
+          href="/en/enterprise-server@3.2/rest/reference/checks#runs"
           >check runs</a
         >" REST API.
       </p>
@@ -712,12 +712,12 @@
                 <li>
                   <code>rerequested</code> - Someone requested to re-run your
                   check run from the pull request UI. See "<a
-                    href="/en/enterprise-server@3.1/articles/about-status-checks#checks"
+                    href="/en/enterprise-server@3.2/articles/about-status-checks#checks"
                     >About status checks</a
                   >" for more details about the GitHub UI. When you receive a
                   <code>rerequested</code> action, you'll need to
                   <a
-                    href="/en/enterprise-server@3.1/rest/reference/checks#create-a-check-run"
+                    href="/en/enterprise-server@3.2/rest/reference/checks#create-a-check-run"
                     >create a new check run</a
                   >. Only the GitHub App that someone requests to re-run the
                   check will receive the <code>rerequested</code> payload.
@@ -728,7 +728,7 @@
                   requests to perform an action will receive the
                   <code>requested_action</code> payload. To learn more about
                   check runs and requested actions, see "<a
-                    href="/en/enterprise-server@3.1/rest/reference/checks#check-runs-and-requested-actions"
+                    href="/en/enterprise-server@3.2/rest/reference/checks#check-runs-and-requested-actions"
                     >Check runs and requested actions</a
                   >."
                 </li>
@@ -741,7 +741,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/checks#get-a-check-run"
+                href="/en/enterprise-server@3.2/rest/reference/checks#get-a-check-run"
                 >check_run</a
               >.
             </td>
@@ -815,7 +815,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -827,7 +827,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -1295,7 +1295,7 @@
         Check suite activity has occurred. The type of activity is specified in
         the <code>action</code> property of the payload object. For more
         information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/checks#suites"
+          href="/en/enterprise-server@3.2/rest/reference/checks#suites"
           >check suites</a
         >" REST API.
       </p>
@@ -1418,7 +1418,7 @@
                   app's repository. When you receive the
                   <code>requested</code> action events, you'll need to
                   <a
-                    href="/en/enterprise-server@3.1/rest/reference/checks#create-a-check-run"
+                    href="/en/enterprise-server@3.2/rest/reference/checks#create-a-check-run"
                     >create a new check run</a
                   >.
                 </li>
@@ -1428,10 +1428,10 @@
                   you receive the <code>rerequested</code> action events, you'll
                   need to
                   <a
-                    href="/en/enterprise-server@3.1/rest/reference/checks#create-a-check-run"
+                    href="/en/enterprise-server@3.2/rest/reference/checks#create-a-check-run"
                     >create a new check run</a
                   >. See "<a
-                    href="/en/enterprise-server@3.1/articles/about-status-checks#checks"
+                    href="/en/enterprise-server@3.2/articles/about-status-checks#checks"
                     >About status checks</a
                   >" for more details about the GitHub UI.
                 </li>
@@ -1443,7 +1443,7 @@
             <td><code>object</code></td>
             <td>
               The
-              <a href="/en/enterprise-server@3.1/rest/reference/checks#suites"
+              <a href="/en/enterprise-server@3.2/rest/reference/checks#suites"
                 >check_suite</a
               >.
             </td>
@@ -1503,7 +1503,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -1515,7 +1515,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -1869,7 +1869,7 @@
         Activity related to code scanning alerts in a repository. The type of
         activity is specified in the action property of the payload object. For
         more information, see "<a
-          href="/en/enterprise-server@3.1/github/finding-security-vulnerabilities-and-errors-in-your-code/about-code-scanning"
+          href="/en/enterprise-server@3.2/github/finding-security-vulnerabilities-and-errors-in-your-code/about-code-scanning"
           >About code scanning</a
         >."
       </p>
@@ -1983,7 +1983,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -1995,7 +1995,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -2224,7 +2224,7 @@
         A commit comment is created. The type of activity is specified in the
         <code>action</code> property of the payload object. For more
         information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/repos#comments"
+          href="/en/enterprise-server@3.2/rest/reference/repos#comments"
           >commit comment</a
         >" REST API.
       </p>
@@ -2306,7 +2306,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-commit-comment"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-commit-comment"
                 >commit comment</a
               >
               resource.
@@ -2318,7 +2318,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -2330,7 +2330,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -2581,7 +2581,7 @@
         is created when the body or comment of an issue or pull request includes
         a URL that matches a configured content reference domain. For more
         information, see "<a
-          href="/en/enterprise-server@3.1/apps/using-content-attachments"
+          href="/en/enterprise-server@3.2/apps/using-content-attachments"
           >Using content attachments</a
         >" to learn more about content references and attachments.
       </p>
@@ -2592,7 +2592,7 @@
         subdomain trigger this event. If you register a domain
         (<code>https://example.com</code>) then URLs for domain and all
         subdomains trigger this event. See "<a
-          href="/en/enterprise-server@3.1/rest/reference/apps#create-a-content-attachment"
+          href="/en/enterprise-server@3.2/rest/reference/apps#create-a-content-attachment"
           >Create a content attachment</a
         >" to create a new content attachment.
       </p>
@@ -2805,7 +2805,7 @@
       </h2>
       <p>
         A Git branch or tag is created. For more information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/git"
+          href="/en/enterprise-server@3.2/rest/reference/git"
           >Git data</a
         >" REST API.
       </p>
@@ -2899,7 +2899,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/git#get-a-reference"
+                href="/en/enterprise-server@3.2/rest/reference/git#get-a-reference"
                 ><code>git ref</code></a
               >
               resource.
@@ -2918,7 +2918,7 @@
             <td><code>string</code></td>
             <td>
               The name of the repository's default branch (usually
-              <code>master</code>).
+              <code>main</code>).
             </td>
           </tr>
           <tr>
@@ -2940,7 +2940,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -2952,7 +2952,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -3166,7 +3166,7 @@
       </h2>
       <p>
         A Git branch or tag is deleted. For more information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/git"
+          href="/en/enterprise-server@3.2/rest/reference/git"
           >Git data</a
         >" REST API.
       </p>
@@ -3260,7 +3260,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/git#get-a-reference"
+                href="/en/enterprise-server@3.2/rest/reference/git#get-a-reference"
                 ><code>git ref</code></a
               >
               resource.
@@ -3288,7 +3288,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -3300,7 +3300,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -3514,7 +3514,7 @@
         A deploy key is added or removed from a repository. The type of activity
         is specified in the <code>action</code> property of the payload object.
         For more information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/repos#keys"
+          href="/en/enterprise-server@3.2/rest/reference/repos#keys"
           >Deploy keys</a
         >" REST API.
       </p>
@@ -3598,7 +3598,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-deploy-key"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-deploy-key"
                 ><code>deploy key</code></a
               >
               resource.
@@ -3610,7 +3610,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -3622,7 +3622,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -3817,7 +3817,7 @@
         A deployment is created. The type of activity is specified in the
         <code>action</code> property of the payload object. For more
         information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/repos#list-deployments"
+          href="/en/enterprise-server@3.2/rest/reference/repos#list-deployments"
           >deployment</a
         >" REST API.
       </p>
@@ -3899,7 +3899,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#list-deployments"
+                href="/en/enterprise-server@3.2/rest/reference/repos#list-deployments"
                 >deployment</a
               >.
             </td>
@@ -3910,7 +3910,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -3922,7 +3922,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -4173,7 +4173,7 @@
         A deployment is created. The type of activity is specified in the
         <code>action</code> property of the payload object. For more
         information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/repos#list-deployment-statuses"
+          href="/en/enterprise-server@3.2/rest/reference/repos#list-deployment-statuses"
           >deployment statuses</a
         >" REST API.
       </p>
@@ -4255,7 +4255,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#list-deployment-statuses"
+                href="/en/enterprise-server@3.2/rest/reference/repos#list-deployment-statuses"
                 >deployment status</a
               >.
             </td>
@@ -4286,7 +4286,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#list-deployments"
+                href="/en/enterprise-server@3.2/rest/reference/repos#list-deployments"
                 >deployment</a
               >
               that this status is associated with.
@@ -4298,7 +4298,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -4310,7 +4310,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -4589,7 +4589,7 @@
       <p>
         A site or repository administrator enables or disables anonymous Git
         read access. See "<a
-          href="/en/enterprise-server@3.1/admin/user-management/allowing-admins-to-enable-anonymous-git-read-access-to-public-repositories"
+          href="/en/enterprise-server@3.2/admin/user-management/allowing-admins-to-enable-anonymous-git-read-access-to-public-repositories"
           >Allowing admins to enable anonymous Git read access to public
           repositories</a
         >" for more details. This event is not available in the Events API.
@@ -4623,7 +4623,7 @@
       <ul>
         <li>
           GitHub Enterprise webhooks. For more information, "<a
-            href="/en/enterprise-server@3.1/rest/reference/enterprise-admin#global-webhooks"
+            href="/en/enterprise-server@3.2/rest/reference/enterprise-admin#global-webhooks"
             >Global webhooks</a
           >."
         </li>
@@ -4751,7 +4751,7 @@
       </h2>
       <p>
         A user forks a repository. For more information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/repos#forks"
+          href="/en/enterprise-server@3.2/rest/reference/repos#forks"
           >forks</a
         >" REST API.
       </p>
@@ -4828,7 +4828,7 @@
             <td>
               The created
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               resource.
@@ -4840,7 +4840,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -4852,7 +4852,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -5174,7 +5174,7 @@
         token, it will receive the <code>401 Bad Credentials</code> error. For
         details about user-to-server requests, which require GitHub App
         authorization, see "<a
-          href="/en/enterprise-server@3.1/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps"
+          href="/en/enterprise-server@3.2/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps"
           >Identifying and authorizing users for GitHub Apps</a
         >."
       </p>
@@ -5331,7 +5331,7 @@
       </h2>
       <p>
         A wiki page is created or updated. For more information, see the "<a
-          href="/en/enterprise-server@3.1/communities/documenting-your-project-with-wikis/about-wikis"
+          href="/en/enterprise-server@3.2/communities/documenting-your-project-with-wikis/about-wikis"
           >About wikis</a
         >".
       </p>
@@ -5441,7 +5441,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -5453,7 +5453,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -5661,7 +5661,7 @@
         Activity related to a GitHub App installation. The type of activity is
         specified in the <code>action</code> property of the payload object. For
         more information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/apps"
+          href="/en/enterprise-server@3.2/rest/reference/apps"
           >GitHub App installation</a
         >" REST API.
       </p>
@@ -5950,7 +5950,7 @@
         installation. The type of activity is specified in the
         <code>action</code> property of the payload object. For more
         information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/apps"
+          href="/en/enterprise-server@3.2/rest/reference/apps"
           >GitHub App installation</a
         >" REST API.
       </p>
@@ -6249,7 +6249,7 @@
         Activity related to an issue or pull request comment. The type of
         activity is specified in the <code>action</code> property of the payload
         object. For more information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/issues#comments"
+          href="/en/enterprise-server@3.2/rest/reference/issues#comments"
           >issue comments</a
         >" REST API.
       </p>
@@ -6349,7 +6349,7 @@
             <td><code>object</code></td>
             <td>
               The
-              <a href="/en/enterprise-server@3.1/rest/reference/issues"
+              <a href="/en/enterprise-server@3.2/rest/reference/issues"
                 >issue</a
               >
               the comment belongs to.
@@ -6360,7 +6360,7 @@
             <td><code>object</code></td>
             <td>
               The
-              <a href="/en/enterprise-server@3.1/rest/reference/issues#comments"
+              <a href="/en/enterprise-server@3.2/rest/reference/issues#comments"
                 >comment</a
               >
               itself.
@@ -6372,7 +6372,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -6384,7 +6384,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -6756,7 +6756,7 @@
         Activity related to an issue. The type of activity is specified in the
         <code>action</code> property of the payload object. For more
         information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/issues#comments"
+          href="/en/enterprise-server@3.2/rest/reference/issues#comments"
           >issues</a
         >" REST API.
       </p>
@@ -6845,7 +6845,7 @@
             <td><code>object</code></td>
             <td>
               The
-              <a href="/en/enterprise-server@3.1/rest/reference/issues"
+              <a href="/en/enterprise-server@3.2/rest/reference/issues"
                 >issue</a
               >
               itself.
@@ -6894,7 +6894,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -6906,7 +6906,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -7248,7 +7248,7 @@
         Activity related to a label. The type of activity is specified in the
         <code>action</code> property of the payload object. For more
         information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/issues#labels"
+          href="/en/enterprise-server@3.2/rest/reference/issues#labels"
           >labels</a
         >" REST API.
       </p>
@@ -7361,7 +7361,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -7373,7 +7373,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -7593,7 +7593,7 @@
         Activity related to repository collaborators. The type of activity is
         specified in the <code>action</code> property of the payload object. For
         more information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/repos#collaborators"
+          href="/en/enterprise-server@3.2/rest/reference/repos#collaborators"
           >collaborators</a
         >" REST API.
       </p>
@@ -7690,7 +7690,7 @@
             <td><code>object</code></td>
             <td>
               The
-              <a href="/en/enterprise-server@3.1/rest/reference/users">user</a>
+              <a href="/en/enterprise-server@3.2/rest/reference/users">user</a>
               that was added.
             </td>
           </tr>
@@ -7716,7 +7716,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -7728,7 +7728,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -7960,7 +7960,7 @@
         Activity related to team membership. The type of activity is specified
         in the <code>action</code> property of the payload object. For more
         information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/teams#members"
+          href="/en/enterprise-server@3.2/rest/reference/teams#members"
           >team members</a
         >" REST API.
       </p>
@@ -8051,7 +8051,7 @@
             <td><code>object</code></td>
             <td>
               The
-              <a href="/en/enterprise-server@3.1/rest/reference/users">user</a>
+              <a href="/en/enterprise-server@3.2/rest/reference/users">user</a>
               that was added or removed.
             </td>
           </tr>
@@ -8060,7 +8060,7 @@
             <td><code>object</code></td>
             <td>
               The
-              <a href="/en/enterprise-server@3.1/rest/reference/teams">team</a>
+              <a href="/en/enterprise-server@3.2/rest/reference/teams">team</a>
               for the membership.
             </td>
           </tr>
@@ -8070,7 +8070,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -8325,7 +8325,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -8337,7 +8337,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -8540,7 +8540,7 @@
         Activity related to milestones. The type of activity is specified in the
         <code>action</code> property of the payload object. For more
         information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/issues#milestones"
+          href="/en/enterprise-server@3.2/rest/reference/issues#milestones"
           >milestones</a
         >" REST API.
       </p>
@@ -8663,7 +8663,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -8675,7 +8675,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -8928,7 +8928,7 @@
         Activity related to an organization and its members. The type of
         activity is specified in the <code>action</code> property of the payload
         object. For more information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/orgs"
+          href="/en/enterprise-server@3.2/rest/reference/orgs"
           >organizations</a
         >" REST API.
       </p>
@@ -8962,7 +8962,7 @@
         <li>
           GitHub Enterprise webhooks only receive <code>created</code> and
           <code>deleted</code> events. For more information, "<a
-            href="/en/enterprise-server@3.1/rest/reference/enterprise-admin#global-webhooks"
+            href="/en/enterprise-server@3.2/rest/reference/enterprise-admin#global-webhooks"
             >Global webhooks</a
           >.
         </li>
@@ -9041,7 +9041,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -9275,7 +9275,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#list-github-pages-builds"
+                href="/en/enterprise-server@3.2/rest/reference/repos#list-github-pages-builds"
                 >List GitHub Pages builds</a
               >
               itself.
@@ -9287,7 +9287,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -9299,7 +9299,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -9543,7 +9543,7 @@
         <code>ping</code> event to let you know you've set up the webhook
         correctly. This event isn't stored so it isn't retrievable via the
         <a
-          href="/en/enterprise-server@3.1/rest/reference/activity#ping-a-repository-webhook"
+          href="/en/enterprise-server@3.2/rest/reference/activity#ping-a-repository-webhook"
           >Events API</a
         >
         endpoint.
@@ -9634,7 +9634,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository-webhook"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository-webhook"
                 >webhook configuration</a
               >.
             </td>
@@ -9648,7 +9648,7 @@
               during registration. The event contains the <code>app_id</code>,
               which is required for
               <a
-                href="/en/enterprise-server@3.1/apps/building-integrations/setting-up-and-registering-github-apps/about-authentication-options-for-github-apps"
+                href="/en/enterprise-server@3.2/apps/building-integrations/setting-up-and-registering-github-apps/about-authentication-options-for-github-apps"
                 >authenticating</a
               >
               an app.
@@ -9660,7 +9660,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -9672,7 +9672,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -9888,7 +9888,7 @@
         Activity related to project cards. The type of activity is specified in
         the <code>action</code> property of the payload object. For more
         information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/projects#cards"
+          href="/en/enterprise-server@3.2/rest/reference/projects#cards"
           >project cards</a
         >" REST API.
       </p>
@@ -10001,7 +10001,7 @@
             <td><code>object</code></td>
             <td>
               The
-              <a href="/en/enterprise-server@3.1/rest/reference/projects#cards"
+              <a href="/en/enterprise-server@3.2/rest/reference/projects#cards"
                 >project card</a
               >
               itself.
@@ -10013,7 +10013,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -10025,7 +10025,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -10269,7 +10269,7 @@
         Activity related to columns in a project board. The type of activity is
         specified in the <code>action</code> property of the payload object. For
         more information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/projects#columns"
+          href="/en/enterprise-server@3.2/rest/reference/projects#columns"
           >project columns</a
         >" REST API.
       </p>
@@ -10383,7 +10383,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/projects#columns"
+                href="/en/enterprise-server@3.2/rest/reference/projects#columns"
                 >project column</a
               >
               itself.
@@ -10395,7 +10395,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -10407,7 +10407,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -10629,7 +10629,7 @@
         Activity related to project boards. The type of activity is specified in
         the <code>action</code> property of the payload object. For more
         information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/projects"
+          href="/en/enterprise-server@3.2/rest/reference/projects"
           >projects</a
         >" REST API.
       </p>
@@ -10740,7 +10740,7 @@
             <td><code>object</code></td>
             <td>
               The
-              <a href="/en/enterprise-server@3.1/rest/reference/projects"
+              <a href="/en/enterprise-server@3.2/rest/reference/projects"
                 >project</a
               >
               itself.
@@ -10752,7 +10752,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -10764,7 +10764,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -11083,7 +11083,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -11095,7 +11095,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -11310,7 +11310,7 @@
         Activity related to pull requests. The type of activity is specified in
         the <code>action</code> property of the payload object. For more
         information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/pulls"
+          href="/en/enterprise-server@3.2/rest/reference/pulls"
           >pull requests</a
         >" REST API.
       </p>
@@ -11451,7 +11451,7 @@
             <td><code>object</code></td>
             <td>
               The
-              <a href="/en/enterprise-server@3.1/rest/reference/pulls"
+              <a href="/en/enterprise-server@3.2/rest/reference/pulls"
                 >pull request</a
               >
               itself.
@@ -11463,7 +11463,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -11475,7 +11475,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -12025,7 +12025,7 @@
         Activity related to pull request reviews. The type of activity is
         specified in the <code>action</code> property of the payload object. For
         more information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/pulls#reviews"
+          href="/en/enterprise-server@3.2/rest/reference/pulls#reviews"
           >pull request reviews</a
         >" REST API.
       </p>
@@ -12118,7 +12118,7 @@
             <td><code>object</code></td>
             <td>
               The
-              <a href="/en/enterprise-server@3.1/rest/reference/pulls"
+              <a href="/en/enterprise-server@3.2/rest/reference/pulls"
                 >pull request</a
               >
               the review pertains to.
@@ -12143,7 +12143,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -12155,7 +12155,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -12726,7 +12726,7 @@
         unified diff. The type of activity is specified in the
         <code>action</code> property of the payload object. For more
         information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/pulls#comments"
+          href="/en/enterprise-server@3.2/rest/reference/pulls#comments"
           >pull request review comments</a
         >" REST API.
       </p>
@@ -12826,7 +12826,7 @@
             <td><code>object</code></td>
             <td>
               The
-              <a href="/en/enterprise-server@3.1/rest/reference/pulls"
+              <a href="/en/enterprise-server@3.2/rest/reference/pulls"
                 >pull request</a
               >
               the comment belongs to.
@@ -12837,7 +12837,7 @@
             <td><code>object</code></td>
             <td>
               The
-              <a href="/en/enterprise-server@3.1/rest/reference/pulls#comments"
+              <a href="/en/enterprise-server@3.2/rest/reference/pulls#comments"
                 >comment</a
               >
               itself.
@@ -12849,7 +12849,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -12861,7 +12861,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -13523,7 +13523,7 @@
             <td><code>string</code></td>
             <td>
               The full
-              <a href="/en/enterprise-server@3.1/rest/reference/git#refs"
+              <a href="/en/enterprise-server@3.2/rest/reference/git#refs"
                 ><code>git ref</code></a
               >
               that was pushed. Example: <code>refs/heads/main</code> or
@@ -13593,7 +13593,7 @@
               <code>compare</code> between the <code>before</code> commit and
               the <code>after</code> commit.) The array includes a maximum of 20
               commits. If necessary, you can use the
-              <a href="/en/enterprise-server@3.1/rest/reference/repos#commits"
+              <a href="/en/enterprise-server@3.2/rest/reference/repos#commits"
                 >Commits API</a
               >
               to fetch additional commits. This limit is applied to timeline
@@ -13669,7 +13669,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -13681,7 +13681,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -13910,7 +13910,7 @@
         Activity related to a release. The type of activity is specified in the
         <code>action</code> property of the payload object. For more
         information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/repos#releases"
+          href="/en/enterprise-server@3.2/rest/reference/repos#releases"
           >releases</a
         >" REST API.
       </p>
@@ -14037,7 +14037,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos/#get-a-release"
+                href="/en/enterprise-server@3.2/rest/reference/repos/#get-a-release"
                 >release</a
               >
               object.
@@ -14049,7 +14049,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -14061,7 +14061,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -14315,7 +14315,7 @@
       <p>
         This event occurs when a GitHub App sends a <code>POST</code> request to
         the "<a
-          href="/en/enterprise-server@3.1/rest/reference/repos#create-a-repository-dispatch-event"
+          href="/en/enterprise-server@3.2/rest/reference/repos#create-a-repository-dispatch-event"
           >Create a repository dispatch event</a
         >" endpoint.
       </p>
@@ -14545,7 +14545,7 @@
         Activity related to a repository. The type of activity is specified in
         the <code>action</code> property of the payload object. For more
         information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/repos"
+          href="/en/enterprise-server@3.2/rest/reference/repos"
           >repositories</a
         >" REST API.
       </p>
@@ -14635,11 +14635,11 @@
                 <li>
                   <code>anonymous_access_enabled</code> - A repository is
                   <a
-                    href="/en/enterprise-server@3.1/rest/overview/api-previews#anonymous-git-access-to-repositories"
+                    href="/en/enterprise-server@3.2/rest/overview/api-previews#anonymous-git-access-to-repositories"
                     >enabled for anonymous Git access</a
                   >, <code>anonymous_access_disabled</code> - A repository is
                   <a
-                    href="/en/enterprise-server@3.1/rest/overview/api-previews#anonymous-git-access-to-repositories"
+                    href="/en/enterprise-server@3.2/rest/overview/api-previews#anonymous-git-access-to-repositories"
                     >disabled for anonymous Git access</a
                   >
                 </li>
@@ -14659,7 +14659,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -14671,7 +14671,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -14887,7 +14887,7 @@
         Activity related to secret scanning alerts in a repository. The type of
         activity is specified in the action property of the payload object. For
         more information, see "<a
-          href="/en/enterprise-server@3.1/github/administering-a-repository/about-secret-scanning"
+          href="/en/enterprise-server@3.2/github/administering-a-repository/about-secret-scanning"
           >About secret scanning</a
         >."
       </p>
@@ -14981,7 +14981,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -14993,7 +14993,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -15220,7 +15220,7 @@
         information about security-related vulnerabilities in software on
         GitHub. The security advisory dataset also powers the GitHub security
         alerts, see "<a
-          href="/en/enterprise-server@3.1/github/managing-security-vulnerabilities/about-alerts-for-vulnerable-dependencies"
+          href="/en/enterprise-server@3.2/github/managing-security-vulnerabilities/about-alerts-for-vulnerable-dependencies"
           >About alerts for vulnerable dependencies</a
         >."
       </p>
@@ -15415,7 +15415,7 @@
         Activity related to a repository being starred. The type of activity is
         specified in the <code>action</code> property of the payload object. For
         more information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/activity#starring"
+          href="/en/enterprise-server@3.2/rest/reference/activity#starring"
           >starring</a
         >" REST API.
       </p>
@@ -15509,7 +15509,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -15521,7 +15521,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -15709,7 +15709,7 @@
         When the status of a Git commit changes. The type of activity is
         specified in the <code>action</code> property of the payload object. For
         more information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/repos#statuses"
+          href="/en/enterprise-server@3.2/rest/reference/repos#statuses"
           >statuses</a
         >" REST API.
       </p>
@@ -15825,7 +15825,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -15837,7 +15837,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -16137,7 +16137,7 @@
         Activity related to an organization's team. The type of activity is
         specified in the <code>action</code> property of the payload object. For
         more information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/teams"
+          href="/en/enterprise-server@3.2/rest/reference/teams"
           >teams</a
         >" REST API.
       </p>
@@ -16297,7 +16297,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -16527,7 +16527,7 @@
       <p>
         When a
         <a
-          href="/en/enterprise-server@3.1/rest/reference/teams#add-or-update-team-repository-permissions"
+          href="/en/enterprise-server@3.2/rest/reference/teams#add-or-update-team-repository-permissions"
           >repository is added to a team</a
         >.
       </p>
@@ -16603,7 +16603,7 @@
             <td><code>object</code></td>
             <td>
               The
-              <a href="/en/enterprise-server@3.1/rest/reference/teams">team</a>
+              <a href="/en/enterprise-server@3.2/rest/reference/teams">team</a>
               that was modified. <strong>Note:</strong> Older events may not
               include this in the payload.
             </td>
@@ -16614,7 +16614,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -16626,7 +16626,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -16886,7 +16886,7 @@
       <ul>
         <li>
           GitHub Enterprise webhooks. For more information, "<a
-            href="/en/enterprise-server@3.1/rest/reference/enterprise-admin#global-webhooks"
+            href="/en/enterprise-server@3.2/rest/reference/enterprise-admin#global-webhooks"
             >Global webhooks</a
           >."
         </li>
@@ -17001,15 +17001,15 @@
         When someone stars a repository. The type of activity is specified in
         the <code>action</code> property of the payload object. For more
         information, see the "<a
-          href="/en/enterprise-server@3.1/rest/reference/activity#starring"
+          href="/en/enterprise-server@3.2/rest/reference/activity#starring"
           >starring</a
         >" REST API.
       </p>
       <p>
         The event’s actor is the
-        <a href="/en/enterprise-server@3.1/rest/reference/users">user</a> who
+        <a href="/en/enterprise-server@3.2/rest/reference/users">user</a> who
         starred a repository, and the event’s repository is the
-        <a href="/en/enterprise-server@3.1/rest/reference/repos">repository</a>
+        <a href="/en/enterprise-server@3.2/rest/reference/repos">repository</a>
         that was starred.
       </p>
       <h3 id="availability-44">
@@ -17093,7 +17093,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
@@ -17105,7 +17105,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -17320,10 +17320,10 @@
       <p>
         This event occurs when someone triggers a workflow run on GitHub or
         sends a <code>POST</code> request to the "<a
-          href="/en/enterprise-server@3.1/rest/reference/actions/#create-a-workflow-dispatch-event"
+          href="/en/enterprise-server@3.2/rest/reference/actions/#create-a-workflow-dispatch-event"
           >Create a workflow dispatch event</a
         >" endpoint. For more information, see "<a
-          href="/en/enterprise-server@3.1/actions/reference/events-that-trigger-workflows#workflow_dispatch"
+          href="/en/enterprise-server@3.2/actions/reference/events-that-trigger-workflows#workflow_dispatch"
           >Events that trigger workflows</a
         >."
       </p>
@@ -17551,7 +17551,7 @@
       <p>
         When a GitHub Actions workflow run is requested or completed. For more
         information, see "<a
-          href="/en/enterprise-server@3.1/actions/reference/events-that-trigger-workflows#workflow_run"
+          href="/en/enterprise-server@3.2/actions/reference/events-that-trigger-workflows#workflow_run"
           >Events that trigger workflows</a
         >."
       </p>
@@ -17652,7 +17652,7 @@
             <td>
               Webhook payloads contain the
               <a
-                href="/en/enterprise-server@3.1/rest/reference/orgs#get-an-organization"
+                href="/en/enterprise-server@3.2/rest/reference/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -17666,7 +17666,7 @@
             <td>
               The
               <a
-                href="/en/enterprise-server@3.1/rest/reference/repos#get-a-repository"
+                href="/en/enterprise-server@3.2/rest/reference/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred.
