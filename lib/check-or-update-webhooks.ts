@@ -24,10 +24,6 @@ export const checkOrUpdateWebhooks = async ({
     await checkOrUpdateWebhooks({
       cached,
       checkOnly,
-    });
-    await checkOrUpdateWebhooks({
-      cached,
-      checkOnly,
       ghe: "",
     });
     await checkOrUpdateWebhooks({
@@ -38,7 +34,7 @@ export const checkOrUpdateWebhooks = async ({
   }
 
   if (ghe === "") {
-    const gheVersions = ["2.21", "2.22", "3.0", "3.1"];
+    const gheVersions = ["2.21", "2.22", "3.0", "3.1", "3.2", "3.3"];
 
     for (let gheVersion of gheVersions) {
       await checkOrUpdateWebhooks({
