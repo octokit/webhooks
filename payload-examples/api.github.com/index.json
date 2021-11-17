@@ -64327,6 +64327,30 @@
         "type": "object",
         "description": "The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`, and `started_at` are the same as those in a [`check_run`](#check_run) object."
       },
+      "workflow_job[status]": {
+        "type": "string",
+        "description": "The current status of the job. Can be `queued`, `in_progress`, or `completed`."
+      },
+      "workflow_job[labels]": {
+        "type": "array",
+        "description": "Custom labels for the job. Specified by the [`\"runs-on\"` attribute](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) in the workflow YAML."
+      },
+      "workflow_job[runner_id]": {
+        "type": "integer",
+        "description": "The ID of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
+      },
+      "workflow_job[runner_name]": {
+        "type": "string",
+        "description": "The name of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
+      },
+      "workflow_job[runner_group_id]": {
+        "type": "integer",
+        "description": "The ID of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
+      },
+      "workflow_job[runner_group_name]": {
+        "type": "string",
+        "description": "The name of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
+      },
       "repository": {
         "type": "object",
         "description": "The [`repository`](https://docs.github.com/en/rest/reference/repos#get-a-repository) where the event occurred."
@@ -64342,7 +64366,7 @@
     },
     "examples": [
       {
-        "action": "queued",
+        "action": "in_progress",
         "workflow_job": {
           "id": 2832853555,
           "run_id": 940463255,
@@ -64351,12 +64375,21 @@
           "head_sha": "e3103f8eb03e1ad7f2331c5446b23c070fc54055",
           "url": "https://api.github.com/repos/octo-org/example-workflow/actions/jobs/2832853555",
           "html_url": "https://github.com/octo-org/example-workflow/runs/2832853555",
-          "status": "queued",
+          "status": "in_progress",
           "conclusion": null,
           "started_at": "2021-06-15T19:22:27Z",
           "completed_at": null,
           "name": "Test workflow",
-          "steps": [],
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "in_progress",
+              "conclusion": null,
+              "number": 1,
+              "started_at": "2021-06-15T19:22:27.000Z",
+              "completed_at": null
+            }
+          ],
           "check_run_url": "https://api.github.com/repos/octo-org/example-workflow/check-runs/2832853555",
           "labels": ["gpu", "db-app", "dc-03"],
           "runner_id": 1,
