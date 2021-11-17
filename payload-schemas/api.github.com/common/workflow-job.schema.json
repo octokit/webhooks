@@ -22,6 +22,7 @@
     "runner_group_id",
     "runner_group_name"
   ],
+  "description": "The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`, and `started_at` are the same as those in a [`check_run`](#check_run) object.",
   "type": "object",
   "properties": {
     "id": { "type": "integer" },
@@ -35,7 +36,8 @@
     "url": { "type": "string", "format": "uri" },
     "status": {
       "type": "string",
-      "enum": ["queued", "in_progress", "completed"]
+      "enum": ["queued", "in_progress", "completed"],
+      "description": "The current status of the job. Can be `queued`, `in_progress`, or `completed`."
     },
     "steps": {
       "type": "array",
@@ -46,11 +48,27 @@
       "type": ["string", "null"],
       "enum": ["success", "failure", null]
     },
-    "labels": { "type": "array", "items": { "type": "string" } },
-    "runner_id": { "type": "integer" },
-    "runner_name": { "type": "string" },
-    "runner_group_id": { "type": "integer" },
-    "runner_group_name": { "type": "string" },
+    "labels": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Custom labels for the job. Specified by the [`\"runs-on\"` attribute](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) in the workflow YAML."
+    },
+    "runner_id": {
+      "type": ["integer", "null"],
+      "description": "The ID of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
+    },
+    "runner_name": {
+      "type": ["string", "null"],
+      "description": "The name of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
+    },
+    "runner_group_id": {
+      "type": ["integer", "null"],
+      "description": "The ID of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
+    },
+    "runner_group_name": {
+      "type": ["string", "null"],
+      "description": "The name of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
+    },
     "started_at": { "type": "string" },
     "completed_at": { "type": ["string", "null"] }
   },

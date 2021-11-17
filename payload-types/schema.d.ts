@@ -5984,6 +5984,9 @@ export interface WorkflowJobCompletedEvent {
     conclusion: "success" | "failure";
   };
 }
+/**
+ * The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`, and `started_at` are the same as those in a [`check_run`](#check_run) object.
+ */
 export interface WorkflowJob {
   id: number;
   run_id: number;
@@ -5994,14 +5997,32 @@ export interface WorkflowJob {
   run_url: string;
   html_url: string;
   url: string;
+  /**
+   * The current status of the job. Can be `queued`, `in_progress`, or `completed`.
+   */
   status: "queued" | "in_progress" | "completed";
   steps: [WorkflowStep, ...WorkflowStep[]];
   conclusion: "success" | "failure" | null;
+  /**
+   * Custom labels for the job. Specified by the [`"runs-on"` attribute](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) in the workflow YAML.
+   */
   labels: string[];
-  runner_id: number;
-  runner_name: string;
-  runner_group_id: number;
-  runner_group_name: string;
+  /**
+   * The ID of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`.
+   */
+  runner_id: number | null;
+  /**
+   * The name of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`.
+   */
+  runner_name: string | null;
+  /**
+   * The ID of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`.
+   */
+  runner_group_id: number | null;
+  /**
+   * The name of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`.
+   */
+  runner_group_name: string | null;
   started_at: string;
   completed_at: string | null;
 }
