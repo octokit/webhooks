@@ -552,6 +552,7 @@ export interface Repository {
    * Whether to allow private forks
    */
   allow_forking?: boolean;
+  allow_update_branch?: boolean;
   is_template: boolean;
   topics: string[];
   visibility: "public" | "private" | "internal";

@@ -224,6 +224,7 @@
       "type": "boolean",
       "description": "Whether to allow private forks"
     },
+    "allow_update_branch": { "type": "boolean" },
     "is_template": { "type": "boolean" },
     "topics": { "type": "array", "items": { "type": "string" } },
     "visibility": {
