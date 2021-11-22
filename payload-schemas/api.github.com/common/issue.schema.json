@@ -23,7 +23,8 @@
     "author_association",
     "active_lock_reason",
     "body",
-    "reactions"
+    "reactions",
+    "draft"
   ],
   "type": "object",
   "properties": {
@@ -65,6 +66,7 @@
       "type": ["string", "null"],
       "enum": ["resolved", "off-topic", "too heated", "spam", null]
     },
+    "draft": { "type": "boolean" },
     "performed_via_github_app": {
       "oneOf": [{ "$ref": "app.schema.json" }, { "type": "null" }]
     },
