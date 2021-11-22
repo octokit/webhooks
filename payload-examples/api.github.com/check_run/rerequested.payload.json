@@ -185,7 +185,9 @@
     "open_issues": 3,
     "watchers": 0,
     "default_branch": "master",
-    "is_template": false
+    "is_template": false,
+    "topics": [],
+    "visibility": "public"
   },
   "organization": {
     "login": "github",

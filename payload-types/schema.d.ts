@@ -552,8 +552,10 @@ export interface Repository {
    * Whether to allow private forks
    */
   allow_forking?: boolean;
+  allow_update_branch?: boolean;
   is_template: boolean;
-  visibility?: "public" | "private";
+  topics: string[];
+  visibility: "public" | "private" | "internal";
   /**
    * Whether to delete head branches when pull requests are merged
    */
@@ -834,6 +836,7 @@ export interface App {
     emails?: "read" | "write";
     environments?: "read" | "write";
     issues?: "read" | "write";
+    keys?: "read" | "write";
     members?: "read" | "write";
     metadata?: "read" | "write";
     organization_administration?: "read" | "write";
@@ -863,6 +866,7 @@ export interface App {
    * The list of events for the GitHub app
    */
   events?: (
+    | "branch_protection_rule"
     | "check_run"
     | "check_suite"
     | "code_scanning_alert"
@@ -1260,7 +1264,7 @@ export interface CheckSuiteCompletedEvent {
      */
     url: string;
     before: string | null;
-    after: string;
+    after: string | null;
     /**
      * An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.
      */
@@ -1337,7 +1341,7 @@ export interface CheckSuiteRequestedEvent {
      */
     url: string;
     before: string | null;
-    after: string;
+    after: string | null;
     /**
      * An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.
      */
@@ -1391,7 +1395,7 @@ export interface CheckSuiteRerequestedEvent {
      */
     url: string;
     before: string | null;
-    after: string;
+    after: string | null;
     /**
      * An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.
      */
@@ -2917,6 +2921,7 @@ export interface Issue {
   closed_at: string | null;
   author_association: AuthorAssociation;
   active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
+  draft: boolean;
   performed_via_github_app?: App | null;
   pull_request?: {
     url?: string;
@@ -4076,7 +4081,7 @@ export interface ProjectCardConvertedEvent {
     };
   };
   project_card: ProjectCard;
-  repository: Repository;
+  repository?: Repository;
   sender: User;
   organization?: Organization;
   installation?: InstallationLite;
@@ -4105,7 +4110,7 @@ export interface ProjectCard {
 export interface ProjectCardCreatedEvent {
   action: "created";
   project_card: ProjectCard;
-  repository: Repository;
+  repository?: Repository;
   sender: User;
   organization?: Organization;
   installation?: InstallationLite;
@@ -4113,7 +4118,7 @@ export interface ProjectCardCreatedEvent {
 export interface ProjectCardDeletedEvent {
   action: "deleted";
   project_card: ProjectCard;
-  repository: Repository;
+  repository?: Repository;
   sender: User;
   organization?: Organization;
   installation?: InstallationLite;
@@ -4126,7 +4131,7 @@ export interface ProjectCardEditedEvent {
     };
   };
   project_card: ProjectCard;
-  repository: Repository;
+  repository?: Repository;
   sender: User;
   organization?: Organization;
   installation?: InstallationLite;
@@ -4141,7 +4146,7 @@ export interface ProjectCardMovedEvent {
   project_card: ProjectCard & {
     after_id: number | null;
   };
-  repository: Repository;
+  repository?: Repository;
   sender: User;
   organization?: Organization;
   installation?: InstallationLite;
@@ -5990,11 +5995,12 @@ export interface WorkflowJobCompletedEvent {
 export interface WorkflowJob {
   id: number;
   run_id: number;
+  run_attempt: number;
+  run_url: string;
   head_sha: string;
   node_id: string;
   name: string;
   check_run_url: string;
-  run_url: string;
   html_url: string;
   url: string;
   /**
@@ -6062,11 +6068,12 @@ export interface WorkflowJobQueuedEvent {
   workflow_job: {
     id: number;
     run_id: number;
+    run_url: string;
+    run_attempt: number;
     head_sha: string;
     node_id: string;
     name: string;
     check_run_url: string;
-    run_url: string;
     html_url: string;
     url: string;
     status: "queued";
@@ -6173,6 +6180,9 @@ export interface WorkflowRun {
   url: string;
   workflow_id: number;
   workflow_url: string;
+  run_attempt: number;
+  run_started_at: string;
+  previous_attempt_url: string | null;
 }
 export interface RepositoryLite {
   archive_url: string;

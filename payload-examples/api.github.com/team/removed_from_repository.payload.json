@@ -113,7 +113,9 @@
       "maintain": false,
       "admin": false
     },
-    "is_template": false
+    "is_template": false,
+    "topics": [],
+    "visibility": "public"
   },
   "organization": {
     "login": "Octocoders",

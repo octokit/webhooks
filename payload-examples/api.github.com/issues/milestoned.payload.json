@@ -147,7 +147,8 @@
       "heart": 0,
       "rocket": 0,
       "eyes": 0
-    }
+    },
+    "draft": false
   },
   "milestone": {
     "url": "https://api.github.com/repos/Codertocat/Hello-World/milestones/1",
@@ -279,7 +280,9 @@
     "open_issues": 2,
     "watchers": 0,
     "default_branch": "master",
-    "is_template": false
+    "is_template": false,
+    "topics": [],
+    "visibility": "public"
   },
   "sender": {
     "login": "Codertocat",

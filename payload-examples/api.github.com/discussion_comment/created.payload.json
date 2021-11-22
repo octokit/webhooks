@@ -33,7 +33,7 @@
     "updated_at": "2021-03-30T20:21:30Z",
     "body": "ANSWER",
     "reactions": {
-      "url": "https://api.github.com/repos/Codertocat/Hello-World/discussions/4/reactions",
+      "url": "https://api.github.com/repos/Codertocat/Hello-World/discussions/comments/21031067/reactions",
       "total_count": 0,
       "+1": 0,
       "-1": 0,
@@ -188,7 +188,9 @@
     "open_issues": 2,
     "watchers": 0,
     "default_branch": "master",
-    "is_template": false
+    "is_template": false,
+    "topics": [],
+    "visibility": "public"
   },
   "sender": {
     "login": "Codertocat",

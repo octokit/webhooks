@@ -141,7 +141,8 @@
       "heart": 0,
       "rocket": 0,
       "eyes": 0
-    }
+    },
+    "draft": false
   },
   "comment": {
     "url": "https://api.github.com/repos/Codertocat/Hello-World/issues/comments/492700400",
@@ -280,7 +281,9 @@
     "open_issues": 1,
     "watchers": 0,
     "default_branch": "master",
-    "is_template": false
+    "is_template": false,
+    "topics": [],
+    "visibility": "public"
   },
   "organization": {
     "login": "Octocoders",

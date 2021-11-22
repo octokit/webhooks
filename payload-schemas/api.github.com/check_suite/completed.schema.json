@@ -62,7 +62,7 @@
           "description": "URL that points to the check suite API resource."
         },
         "before": { "type": ["string", "null"] },
-        "after": { "type": "string" },
+        "after": { "type": ["string", "null"] },
         "pull_requests": {
           "type": "array",
           "items": { "$ref": "common/check-run-pull-request.schema.json" },

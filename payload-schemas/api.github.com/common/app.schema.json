@@ -45,6 +45,7 @@
         "emails": { "type": "string", "enum": ["read", "write"] },
         "environments": { "type": "string", "enum": ["read", "write"] },
         "issues": { "type": "string", "enum": ["read", "write"] },
+        "keys": { "type": "string", "enum": ["read", "write"] },
         "members": { "type": "string", "enum": ["read", "write"] },
         "metadata": { "type": "string", "enum": ["read", "write"] },
         "organization_administration": {
@@ -99,6 +100,7 @@
       "items": {
         "type": "string",
         "enum": [
+          "branch_protection_rule",
           "check_run",
           "check_suite",
           "code_scanning_alert",

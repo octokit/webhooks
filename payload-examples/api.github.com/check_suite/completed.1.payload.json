@@ -173,7 +173,9 @@
     "open_issues": 2,
     "watchers": 0,
     "default_branch": "main",
-    "is_template": false
+    "is_template": false,
+    "topics": [],
+    "visibility": "public"
   },
   "sender": {
     "login": "Codertocat",

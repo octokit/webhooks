@@ -141,7 +141,8 @@
       "heart": 0,
       "rocket": 0,
       "eyes": 0
-    }
+    },
+    "draft": false
   },
   "label": {
     "id": 1362934389,
@@ -245,7 +246,9 @@
     "open_issues": 1,
     "watchers": 0,
     "default_branch": "master",
-    "is_template": false
+    "is_template": false,
+    "topics": [],
+    "visibility": "public"
   },
   "sender": {
     "login": "Codertocat",

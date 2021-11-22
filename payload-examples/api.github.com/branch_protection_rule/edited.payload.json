@@ -123,7 +123,9 @@
     "open_issues": 39,
     "watchers": 0,
     "default_branch": "main",
-    "is_template": false
+    "is_template": false,
+    "topics": [],
+    "visibility": "public"
   },
   "organization": {
     "login": "octo-org",

@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "project_card$converted",
   "type": "object",
-  "required": ["action", "changes", "project_card", "repository", "sender"],
+  "required": ["action", "changes", "project_card", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["converted"] },
     "changes": {
