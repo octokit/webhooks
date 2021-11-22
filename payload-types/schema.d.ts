@@ -835,7 +835,7 @@ export interface App {
     emails?: "read" | "write";
     environments?: "read" | "write";
     issues?: "read" | "write";
-    keys?: "read, write";
+    keys?: "read" | "write";
     members?: "read" | "write";
     metadata?: "read" | "write";
     organization_administration?: "read" | "write";
