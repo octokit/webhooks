@@ -73,7 +73,8 @@
       "heart": 0,
       "rocket": 0,
       "eyes": 0
-    }
+    },
+    "draft": false
   },
   "repository": {
     "id": 186853002,

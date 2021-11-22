@@ -56,7 +56,8 @@
       "heart": 0,
       "rocket": 0,
       "eyes": 0
-    }
+    },
+    "draft": false
   },
   "changes": {
     "new_issue": {
@@ -188,6 +189,7 @@
       "closed_at": null,
       "author_association": "OWNER",
       "active_lock_reason": null,
+      "draft": false,
       "body": "It looks like you accidently spelled 'commit' with two 't's.",
       "reactions": {
         "url": "https://api.github.com/repos/Codertocat/Hello-World/issues/1/reactions",

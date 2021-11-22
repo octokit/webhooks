@@ -16561,7 +16561,8 @@
             "rocket": 0,
             "eyes": 0
           },
-          "performed_via_github_app": null
+          "performed_via_github_app": null,
+          "draft": false
         },
         "comment": {
           "url": "https://api.github.com/repos/Codertocat/Hello-World/issues/comments/492700400",
@@ -16882,7 +16883,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "comment": {
           "url": "https://api.github.com/repos/Codertocat/Hello-World/issues/comments/492700400",
@@ -17189,7 +17191,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "comment": {
           "url": "https://api.github.com/repos/Codertocat/Hello-World/issues/comments/492700400",
@@ -17514,7 +17517,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "comment": {
           "url": "https://api.github.com/repos/Codertocat/Hello-World/issues/comments/492700400",
@@ -17835,7 +17839,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "comment": {
           "url": "https://api.github.com/repos/Codertocat/Hello-World/issues/comments/492700400",
@@ -18142,7 +18147,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "comment": {
           "url": "https://api.github.com/repos/Codertocat/Hello-World/issues/comments/492700400",
@@ -18468,7 +18474,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "comment": {
           "url": "https://api.github.com/repos/Codertocat/Hello-World/issues/comments/492700400",
@@ -18780,7 +18787,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "comment": {
           "url": "https://api.github.com/repos/Codertocat/Hello-World/issues/comments/492700400",
@@ -19414,7 +19422,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "assignee": {
           "login": "Codertocat",
@@ -19697,7 +19706,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "assignee": {
           "login": "Codertocat",
@@ -19984,7 +19994,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "assignee": {
           "login": "Codertocat",
@@ -20232,7 +20243,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "milestone": {
           "url": "https://api.github.com/repos/Codertocat/Hello-World/milestones/1",
@@ -20483,7 +20495,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "milestone": {
           "url": "https://api.github.com/repos/Codertocat/Hello-World/milestones/1",
@@ -20797,7 +20810,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "changes": {},
         "repository": {
@@ -21061,7 +21075,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "changes": {},
         "repository": {
@@ -21339,7 +21354,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "label": {
           "id": 1362934389,
@@ -21611,7 +21627,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "label": {
           "id": 1362934389,
@@ -21842,7 +21859,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "repository": {
           "id": 186853002,
@@ -22050,7 +22068,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "repository": {
           "id": 186853002,
@@ -22333,7 +22352,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "milestone": {
           "url": "https://api.github.com/repos/Codertocat/Hello-World/milestones/1",
@@ -22639,7 +22659,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "milestone": {
           "url": "https://api.github.com/repos/Codertocat/Hello-World/milestones/1",
@@ -22953,7 +22974,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "repository": {
           "id": 186853002,
@@ -23216,7 +23238,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "repository": {
           "id": 186853002,
@@ -23479,7 +23502,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "repository": {
           "id": 186853002,
@@ -23659,6 +23683,7 @@
             "closed_at": null,
             "author_association": "OWNER",
             "active_lock_reason": null,
+            "draft": false,
             "body": "",
             "performed_via_github_app": null,
             "reactions": {
@@ -23913,7 +23938,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "repository": {
           "id": 186853002,
@@ -24108,7 +24134,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "repository": {
           "id": 186853002,
@@ -24290,7 +24317,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "changes": {
           "new_issue": {
@@ -24422,6 +24450,7 @@
             "closed_at": null,
             "author_association": "OWNER",
             "active_lock_reason": null,
+            "draft": false,
             "body": "It looks like you accidently spelled 'commit' with two 't's.",
             "reactions": {
               "url": "https://api.github.com/repos/Codertocat/Hello-World/issues/1/reactions",
@@ -24795,7 +24824,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "assignee": {
           "login": "Codertocat",
@@ -25078,7 +25108,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "assignee": {
           "login": "Codertocat",
@@ -25320,7 +25351,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "label": {
           "id": 1362934389,
@@ -25537,7 +25569,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "label": {
           "id": 1362934389,
@@ -25768,7 +25801,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "repository": {
           "id": 186853002,
@@ -25976,7 +26010,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "repository": {
           "id": 186853002,

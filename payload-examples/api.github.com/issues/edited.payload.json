@@ -141,7 +141,8 @@
       "heart": 0,
       "rocket": 0,
       "eyes": 0
-    }
+    },
+    "draft": false
   },
   "changes": {},
   "repository": {

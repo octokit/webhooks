@@ -44,6 +44,7 @@
       "closed_at": null,
       "author_association": "OWNER",
       "active_lock_reason": null,
+      "draft": false,
       "body": "",
       "performed_via_github_app": null,
       "reactions": {
@@ -298,7 +299,8 @@
       "heart": 0,
       "rocket": 0,
       "eyes": 0
-    }
+    },
+    "draft": false
   },
   "repository": {
     "id": 186853002,

@@ -66,7 +66,8 @@
       "rocket": 0,
       "eyes": 0
     },
-    "performed_via_github_app": null
+    "performed_via_github_app": null,
+    "draft": false
   },
   "comment": {
     "url": "https://api.github.com/repos/Codertocat/Hello-World/issues/comments/492700400",
