@@ -20293,6 +20293,7 @@
             "rocket": 0,
             "eyes": 0
           },
+          "draft": false,
           "timeline_url": "https://api.github.com/repos/Codertocat/Hello-World/issues/1/timeline",
           "performed_via_github_app": null
         },
@@ -20390,7 +20391,8 @@
           "watchers": 0,
           "default_branch": "master",
           "is_template": false,
-          "topics": []
+          "topics": [],
+          "visibility": "public"
         },
         "sender": {
           "login": "Codertocat",
@@ -24671,6 +24673,7 @@
             "rocket": 0,
             "eyes": 0
           },
+          "draft": false,
           "timeline_url": "https://api.github.com/repos/Codertocat/Hello-World/issues/1/timeline",
           "performed_via_github_app": null
         },
@@ -24768,7 +24771,8 @@
           "watchers": 0,
           "default_branch": "master",
           "is_template": false,
-          "topics": []
+          "topics": [],
+          "visibility": "public"
         },
         "sender": {
           "login": "Codertocat",
@@ -26756,7 +26760,8 @@
             "heart": 0,
             "rocket": 0,
             "eyes": 0
-          }
+          },
+          "draft": false
         },
         "repository": {
           "id": 186853002,
@@ -26851,7 +26856,9 @@
           "open_issues": 1,
           "watchers": 0,
           "default_branch": "master",
-          "is_template": false
+          "is_template": false,
+          "topics": [],
+          "visibility": "public"
         },
         "sender": {
           "login": "Codertocat",
