@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "pull_request_review_thread$resolved",
+  "type": "object",
+  "required": ["action", "thread", "pull_request", "repository", "sender"],
+  "properties": {
+    "action": { "type": "string", "enum": ["resolved"] },
+    "thread": {
+      "type": "object",
+      "required": ["node_id", "comments"],
+      "properties": {
+        "node_id": { "type": "string" },
+        "comments": {
+          "type": "array",
+          "items": { "$ref": "common/pull-request-review-comment.schema.json" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "pull_request": { "$ref": "common/simple-pull-request.schema.json" },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" }
+  },
+  "additionalProperties": false,
+  "title": "pull_request_review_thread resolved event"
+}

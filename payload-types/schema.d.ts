@@ -44,6 +44,7 @@ export type Schema =
   | PullRequestEvent
   | PullRequestReviewEvent
   | PullRequestReviewCommentEvent
+  | PullRequestReviewThreadEvent
   | PushEvent
   | ReleaseEvent
   | RepositoryEvent
@@ -325,6 +326,9 @@ export type PullRequestReviewCommentEvent =
   | PullRequestReviewCommentCreatedEvent
   | PullRequestReviewCommentDeletedEvent
   | PullRequestReviewCommentEditedEvent;
+export type PullRequestReviewThreadEvent =
+  | PullRequestReviewThreadResolvedEvent
+  | PullRequestReviewThreadUnresolvedEvent;
 export type ReleaseEvent =
   | ReleaseCreatedEvent
   | ReleaseDeletedEvent
@@ -5023,6 +5027,30 @@ export interface PullRequestReviewCommentEditedEvent {
   organization?: Organization;
   sender: User;
 }
+export interface PullRequestReviewThreadResolvedEvent {
+  action: "resolved";
+  thread: {
+    node_id: string;
+    comments: PullRequestReviewComment[];
+  };
+  pull_request: SimplePullRequest;
+  repository: Repository;
+  installation?: InstallationLite;
+  organization?: Organization;
+  sender: User;
+}
+export interface PullRequestReviewThreadUnresolvedEvent {
+  action: "resolved";
+  thread: {
+    node_id: string;
+    comments: PullRequestReviewComment[];
+  };
+  pull_request: SimplePullRequest;
+  repository: Repository;
+  installation?: InstallationLite;
+  organization?: Organization;
+  sender: User;
+}
 export interface PushEvent {
   /**
    * The full git ref that was pushed. Example: `refs/heads/main` or `refs/tags/v3.14.1`.
@@ -6290,6 +6318,7 @@ export interface EventPayloadMap {
   pull_request: PullRequestEvent;
   pull_request_review: PullRequestReviewEvent;
   pull_request_review_comment: PullRequestReviewCommentEvent;
+  pull_request_review_thread: PullRequestReviewThreadEvent;
   push: PushEvent;
   release: ReleaseEvent;
   repository: RepositoryEvent;
