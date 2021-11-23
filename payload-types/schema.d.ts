@@ -5040,7 +5040,7 @@ export interface PullRequestReviewThreadResolvedEvent {
   sender: User;
 }
 export interface PullRequestReviewThreadUnresolvedEvent {
-  action: "resolved";
+  action: "unresolved";
   thread: {
     node_id: string;
     comments: PullRequestReviewComment[];
