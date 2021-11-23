@@ -370,7 +370,9 @@
       }
     },
     "author_association": "OWNER",
-    "active_lock_reason": null
+    "active_lock_reason": null,
+    "draft": false,
+    "auto_merge": null
   },
   "thread": {
     "node_id": "PRRT_kwDOFd42Pc4rQOUv",
