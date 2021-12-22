@@ -956,7 +956,7 @@
     "properties": {
       "comment": {
         "type": "object",
-        "description": "The [commit comment](https://docs.github.com/en/enterprise-server@3.2/rest/reference/repos#get-a-commit-comment) resource."
+        "description": "The [commit comment](https://docs.github.com/en/enterprise-server@3.2/rest/reference/commits#get-a-commit-comment) resource."
       },
       "repository": {
         "type": "object",
@@ -1639,7 +1639,7 @@
     "properties": {
       "key": {
         "type": "object",
-        "description": "The [`deploy key`](https://docs.github.com/en/enterprise-server@3.2/rest/reference/repos#get-a-deploy-key) resource."
+        "description": "The [`deploy key`](https://docs.github.com/en/enterprise-server@3.2/rest/reference/deployments#get-a-deploy-key) resource."
       },
       "repository": {
         "type": "object",
@@ -1785,11 +1785,11 @@
   },
   {
     "name": "deployment",
-    "description": "A deployment is created. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[deployment](https://docs.github.com/en/enterprise-server@3.2/rest/reference/repos#list-deployments)\" REST API.",
+    "description": "A deployment is created. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[deployment](https://docs.github.com/en/enterprise-server@3.2/rest/reference/deployments#list-deployments)\" REST API.",
     "properties": {
       "deployment": {
         "type": "object",
-        "description": "The [deployment](https://docs.github.com/en/enterprise-server@3.2/rest/reference/repos#list-deployments)."
+        "description": "The [deployment](https://docs.github.com/en/enterprise-server@3.2/rest/reference/deployments#list-deployments)."
       },
       "repository": {
         "type": "object",
@@ -1982,11 +1982,11 @@
   },
   {
     "name": "deployment_status",
-    "description": "A deployment is created. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[deployment statuses](https://docs.github.com/en/enterprise-server@3.2/rest/reference/repos#list-deployment-statuses)\" REST API.",
+    "description": "A deployment is created. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[deployment statuses](https://docs.github.com/en/enterprise-server@3.2/rest/reference/deployments#list-deployment-statuses)\" REST API.",
     "properties": {
       "deployment_status": {
         "type": "object",
-        "description": "The [deployment status](https://docs.github.com/en/enterprise-server@3.2/rest/reference/repos#list-deployment-statuses)."
+        "description": "The [deployment status](https://docs.github.com/en/enterprise-server@3.2/rest/reference/deployments#list-deployment-statuses)."
       },
       "deployment_status[\"state\"]": {
         "type": "string",
@@ -2002,7 +2002,7 @@
       },
       "deployment": {
         "type": "object",
-        "description": "The [deployment](https://docs.github.com/en/enterprise-server@3.2/rest/reference/repos#list-deployments) that this status is associated with."
+        "description": "The [deployment](https://docs.github.com/en/enterprise-server@3.2/rest/reference/deployments#list-deployments) that this status is associated with."
       },
       "repository": {
         "type": "object",
@@ -4663,7 +4663,7 @@
       },
       "build": {
         "type": "object",
-        "description": "The [List GitHub Pages builds](https://docs.github.com/en/enterprise-server@3.2/rest/reference/repos#list-github-pages-builds) itself."
+        "description": "The [List GitHub Pages builds](https://docs.github.com/en/enterprise-server@3.2/rest/reference/pages#list-github-pages-builds) itself."
       },
       "repository": {
         "type": "object",
@@ -4862,7 +4862,7 @@
       },
       "hook": {
         "type": "object",
-        "description": "The [webhook configuration](https://docs.github.com/en/enterprise-server@3.2/rest/reference/repos#get-a-repository-webhook)."
+        "description": "The [webhook configuration](https://docs.github.com/en/enterprise-server@3.2/rest/reference/webhooks#get-a-repository-webhook)."
       },
       "hook[app_id]": {
         "type": "integer",
@@ -8316,7 +8316,7 @@
   },
   {
     "name": "security_advisory",
-    "description": "Activity related to a security advisory. A security advisory provides information about security-related vulnerabilities in software on GitHub. The security advisory dataset also powers the GitHub security alerts, see \"[About alerts for vulnerable dependencies](https://docs.github.com/en/enterprise-server@3.2/github/managing-security-vulnerabilities/about-alerts-for-vulnerable-dependencies).\"",
+    "description": "Activity related to a security advisory that has been reviewed by GitHub. A GitHub-reviewed security advisory provides information about security-related vulnerabilities in software on GitHub.\n\nThe security advisory dataset also powers the GitHub Dependabot alerts. For more information, see \"[About alerts for vulnerable dependencies](https://docs.github.com/en/enterprise-server@3.2/github/managing-security-vulnerabilities/about-alerts-for-vulnerable-dependencies).\"",
     "properties": {
       "security_advisory": {
         "type": "object",
