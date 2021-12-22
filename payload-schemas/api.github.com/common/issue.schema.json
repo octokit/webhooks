@@ -75,7 +75,8 @@
         "url": { "type": "string", "format": "uri" },
         "html_url": { "type": "string", "format": "uri" },
         "diff_url": { "type": "string", "format": "uri" },
-        "patch_url": { "type": "string", "format": "uri" }
+        "patch_url": { "type": "string", "format": "uri" },
+        "merged_at": { "type": ["string", "null"], "format": "date-time" }
       },
       "additionalProperties": false
     },
