@@ -2096,7 +2096,9 @@ export interface DeploymentCreatedEvent {
     sha: string;
     ref: string;
     task: string;
-    payload: {};
+    payload: {
+      [k: string]: unknown;
+    };
     original_environment: string;
     environment: string;
     transient_environment?: boolean;

@@ -42,7 +42,7 @@
         "payload": {
           "type": "object",
           "required": [],
-          "additionalProperties": false
+          "additionalProperties": true
         },
         "original_environment": { "type": "string" },
         "environment": { "type": "string" },
