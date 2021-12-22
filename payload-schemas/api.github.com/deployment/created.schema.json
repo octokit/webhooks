@@ -14,7 +14,7 @@
     "action": { "type": "string", "enum": ["created"] },
     "deployment": {
       "type": "object",
-      "description": "The [deployment](https://docs.github.com/en/rest/reference/repos#list-deployments).",
+      "description": "The [deployment](https://docs.github.com/en/rest/reference/deployments#list-deployments).",
       "required": [
         "url",
         "id",

@@ -2072,7 +2072,7 @@ export interface DeployKeyDeletedEvent {
 export interface DeploymentCreatedEvent {
   action: "created";
   /**
-   * The [deployment](https://docs.github.com/en/rest/reference/repos#list-deployments).
+   * The [deployment](https://docs.github.com/en/rest/reference/deployments#list-deployments).
    */
   deployment: {
     url: string;

@@ -13,7 +13,7 @@
     "action": { "type": "string", "enum": ["created"] },
     "deployment_status": {
       "type": "object",
-      "description": "The [deployment status](https://docs.github.com/en/rest/reference/repos#list-deployment-statuses).",
+      "description": "The [deployment status](https://docs.github.com/en/rest/reference/deployments#list-deployment-statuses).",
       "required": [
         "url",
         "id",
