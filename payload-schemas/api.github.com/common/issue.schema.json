@@ -23,8 +23,7 @@
     "author_association",
     "active_lock_reason",
     "body",
-    "reactions",
-    "draft"
+    "reactions"
   ],
   "type": "object",
   "properties": {
