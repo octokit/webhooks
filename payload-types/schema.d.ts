@@ -11,7 +11,6 @@ export type Schema =
   | CheckSuiteEvent
   | CodeScanningAlertEvent
   | CommitCommentEvent
-  | ContentReferenceEvent
   | CreateEvent
   | DeleteEvent
   | DeployKeyEvent
@@ -95,7 +94,6 @@ export type AuthorAssociation =
   | "MEMBER"
   | "NONE"
   | "OWNER";
-export type ContentReferenceEvent = ContentReferenceCreatedEvent;
 export type DeployKeyEvent = DeployKeyCreatedEvent | DeployKeyDeletedEvent;
 export type DeploymentEvent = DeploymentCreatedEvent;
 export type DeploymentStatusEvent = DeploymentStatusCreatedEvent;
@@ -1984,18 +1982,6 @@ export interface CommitCommentCreatedEvent {
   installation?: InstallationLite;
   organization?: Organization;
 }
-export interface ContentReferenceCreatedEvent {
-  action: "created";
-  content_reference: {
-    id: number;
-    node_id: string;
-    reference: string;
-  };
-  repository: Repository;
-  sender: User;
-  installation: InstallationLite;
-  organization?: Organization;
-}
 /**
  * A Git branch or tag is created.
  */
@@ -2049,7 +2035,7 @@ export interface DeleteEvent {
 export interface DeployKeyCreatedEvent {
   action: "created";
   /**
-   * The [`deploy key`](https://docs.github.com/en/rest/reference/repos#get-a-deploy-key) resource.
+   * The [`deploy key`](https://docs.github.com/en/rest/reference/deployments#get-a-deploy-key) resource.
    */
   key: {
     id: number;
@@ -2068,7 +2054,7 @@ export interface DeployKeyCreatedEvent {
 export interface DeployKeyDeletedEvent {
   action: "deleted";
   /**
-   * The [`deploy key`](https://docs.github.com/en/rest/reference/repos#get-a-deploy-key) resource.
+   * The [`deploy key`](https://docs.github.com/en/rest/reference/deployments#get-a-deploy-key) resource.
    */
   key: {
     id: number;
@@ -2087,7 +2073,7 @@ export interface DeployKeyDeletedEvent {
 export interface DeploymentCreatedEvent {
   action: "created";
   /**
-   * The [deployment](https://docs.github.com/en/rest/reference/repos#list-deployments).
+   * The [deployment](https://docs.github.com/en/rest/reference/deployments#list-deployments).
    */
   deployment: {
     url: string;
@@ -2121,7 +2107,7 @@ export interface DeploymentCreatedEvent {
 export interface DeploymentStatusCreatedEvent {
   action: "created";
   /**
-   * The [deployment status](https://docs.github.com/en/rest/reference/repos#list-deployment-statuses).
+   * The [deployment status](https://docs.github.com/en/rest/reference/deployments#list-deployment-statuses).
    */
   deployment_status: {
     url: string;
@@ -6297,7 +6283,6 @@ export interface EventPayloadMap {
   check_suite: CheckSuiteEvent;
   code_scanning_alert: CodeScanningAlertEvent;
   commit_comment: CommitCommentEvent;
-  content_reference: ContentReferenceEvent;
   create: CreateEvent;
   delete: DeleteEvent;
   deploy_key: DeployKeyEvent;
