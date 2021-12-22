@@ -2034,7 +2034,7 @@ export interface DeleteEvent {
 export interface DeployKeyCreatedEvent {
   action: "created";
   /**
-   * The [`deploy key`](https://docs.github.com/en/rest/reference/repos#get-a-deploy-key) resource.
+   * The [`deploy key`](https://docs.github.com/en/rest/reference/deployments#get-a-deploy-key) resource.
    */
   key: {
     id: number;
@@ -2053,7 +2053,7 @@ export interface DeployKeyCreatedEvent {
 export interface DeployKeyDeletedEvent {
   action: "deleted";
   /**
-   * The [`deploy key`](https://docs.github.com/en/rest/reference/repos#get-a-deploy-key) resource.
+   * The [`deploy key`](https://docs.github.com/en/rest/reference/deployments#get-a-deploy-key) resource.
    */
   key: {
     id: number;

@@ -7,7 +7,7 @@
     "action": { "type": "string", "enum": ["deleted"] },
     "key": {
       "type": "object",
-      "description": "The [`deploy key`](https://docs.github.com/en/rest/reference/repos#get-a-deploy-key) resource.",
+      "description": "The [`deploy key`](https://docs.github.com/en/rest/reference/deployments#get-a-deploy-key) resource.",
       "required": [
         "id",
         "key",
