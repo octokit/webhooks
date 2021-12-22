@@ -2104,7 +2104,7 @@ export interface DeploymentCreatedEvent {
 export interface DeploymentStatusCreatedEvent {
   action: "created";
   /**
-   * The [deployment status](https://docs.github.com/en/rest/reference/repos#list-deployment-statuses).
+   * The [deployment status](https://docs.github.com/en/rest/reference/deployments#list-deployment-statuses).
    */
   deployment_status: {
     url: string;
