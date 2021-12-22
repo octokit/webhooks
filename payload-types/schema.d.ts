@@ -1276,6 +1276,7 @@ export interface CheckSuiteCompletedEvent {
     app: App;
     created_at: string;
     updated_at: string;
+    rerequestable?: boolean;
     latest_check_runs_count: number;
     check_runs_url: string;
     head_commit: SimpleCommit;
@@ -2135,6 +2136,7 @@ export interface DeploymentStatusCreatedEvent {
     description: string;
     environment: string;
     environment_url?: string;
+    log_url?: string;
     /**
      * The optional link added to the status.
      */
@@ -2925,13 +2927,14 @@ export interface Issue {
   closed_at: string | null;
   author_association: AuthorAssociation;
   active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-  draft: boolean;
+  draft?: boolean;
   performed_via_github_app?: App | null;
   pull_request?: {
     url?: string;
     html_url?: string;
     diff_url?: string;
     patch_url?: string;
+    merged_at?: string | null;
   };
   /**
    * Contents of the issue
@@ -4401,6 +4404,14 @@ export interface PullRequestEditedEvent {
        */
       from: string;
     };
+    base?: {
+      ref: {
+        from: string;
+      };
+      sha: {
+        from: string;
+      };
+    };
   };
   pull_request: PullRequest;
   repository: Repository;
@@ -4484,7 +4495,6 @@ export interface PullRequestReopenedEvent {
     state: "open";
     closed_at: null;
     merged_at: null;
-    merge_commit_sha: null;
     merged: boolean;
     merged_by: null;
   };
@@ -6108,10 +6118,10 @@ export interface WorkflowJobQueuedEvent {
     steps: WorkflowStep[];
     conclusion: null;
     labels: string[];
-    runner_id: number;
-    runner_name: string;
-    runner_group_id: number;
-    runner_group_name: string;
+    runner_id: number | null;
+    runner_name: string | null;
+    runner_group_id: number | null;
+    runner_group_name: string | null;
     started_at: string;
     completed_at: null;
   };
