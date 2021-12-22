@@ -11,7 +11,6 @@ export type Schema =
   | CheckSuiteEvent
   | CodeScanningAlertEvent
   | CommitCommentEvent
-  | ContentReferenceEvent
   | CreateEvent
   | DeleteEvent
   | DeployKeyEvent
@@ -95,7 +94,6 @@ export type AuthorAssociation =
   | "MEMBER"
   | "NONE"
   | "OWNER";
-export type ContentReferenceEvent = ContentReferenceCreatedEvent;
 export type DeployKeyEvent = DeployKeyCreatedEvent | DeployKeyDeletedEvent;
 export type DeploymentEvent = DeploymentCreatedEvent;
 export type DeploymentStatusEvent = DeploymentStatusCreatedEvent;
@@ -1981,18 +1979,6 @@ export interface CommitCommentCreatedEvent {
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
-  organization?: Organization;
-}
-export interface ContentReferenceCreatedEvent {
-  action: "created";
-  content_reference: {
-    id: number;
-    node_id: string;
-    reference: string;
-  };
-  repository: Repository;
-  sender: User;
-  installation: InstallationLite;
   organization?: Organization;
 }
 /**
@@ -6285,7 +6271,6 @@ export interface EventPayloadMap {
   check_suite: CheckSuiteEvent;
   code_scanning_alert: CodeScanningAlertEvent;
   commit_comment: CommitCommentEvent;
-  content_reference: ContentReferenceEvent;
   create: CreateEvent;
   delete: DeleteEvent;
   deploy_key: DeployKeyEvent;
