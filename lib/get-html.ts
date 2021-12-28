@@ -28,6 +28,7 @@ export const getHtml = async (
   const $ = cheerio.load(body);
 
   // get only the HTML we care about to avoid unnecessary cache updates
+  $('[data-testid="callout"]').remove();
   const html = $("#article-contents").parent().parent().html() ?? "";
 
   await cache.write(cacheFilePath, prettier.format(html, { parser: "html" }));
