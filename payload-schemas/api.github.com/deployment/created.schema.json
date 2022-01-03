@@ -16,7 +16,12 @@
     "workflow": {
       "oneOf": [{ "$ref": "common/workflow.schema.json" }, { "type": "null" }]
     },
-    "workflow_run": { "type": "null" },
+    "workflow_run": {
+      "oneOf": [
+        { "$ref": "common/deployment-workflow-run.schema.json" },
+        { "type": "null" }
+      ]
+    },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },
