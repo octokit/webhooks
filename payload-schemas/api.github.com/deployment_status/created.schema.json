@@ -58,53 +58,7 @@
       },
       "additionalProperties": false
     },
-    "deployment": {
-      "type": "object",
-      "description": "The [deployment](https://docs.github.com/en/rest/reference/repos#list-deployments) that this status is associated with.",
-      "required": [
-        "url",
-        "id",
-        "node_id",
-        "sha",
-        "ref",
-        "task",
-        "payload",
-        "original_environment",
-        "environment",
-        "description",
-        "creator",
-        "created_at",
-        "updated_at",
-        "statuses_url",
-        "repository_url",
-        "performed_via_github_app"
-      ],
-      "properties": {
-        "url": { "type": "string", "format": "uri" },
-        "id": { "type": "integer" },
-        "node_id": { "type": "string" },
-        "sha": { "type": "string" },
-        "ref": { "type": "string" },
-        "task": { "type": "string" },
-        "payload": {
-          "type": "object",
-          "required": [],
-          "additionalProperties": false
-        },
-        "original_environment": { "type": "string" },
-        "environment": { "type": "string" },
-        "description": { "type": "null" },
-        "creator": { "$ref": "common/user.schema.json" },
-        "created_at": { "type": "string" },
-        "updated_at": { "type": "string" },
-        "statuses_url": { "type": "string", "format": "uri" },
-        "repository_url": { "type": "string", "format": "uri" },
-        "performed_via_github_app": {
-          "oneOf": [{ "$ref": "common/app.schema.json" }, { "type": "null" }]
-        }
-      },
-      "additionalProperties": false
-    },
+    "deployment": { "$ref": "common/deployment.schema.json" },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },

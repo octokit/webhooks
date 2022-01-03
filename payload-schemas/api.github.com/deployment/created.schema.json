@@ -12,54 +12,7 @@
   ],
   "properties": {
     "action": { "type": "string", "enum": ["created"] },
-    "deployment": {
-      "type": "object",
-      "description": "The [deployment](https://docs.github.com/en/rest/reference/deployments#list-deployments).",
-      "required": [
-        "url",
-        "id",
-        "node_id",
-        "sha",
-        "ref",
-        "task",
-        "payload",
-        "original_environment",
-        "environment",
-        "description",
-        "creator",
-        "created_at",
-        "updated_at",
-        "statuses_url",
-        "repository_url"
-      ],
-      "properties": {
-        "url": { "type": "string", "format": "uri" },
-        "id": { "type": "integer" },
-        "node_id": { "type": "string" },
-        "sha": { "type": "string" },
-        "ref": { "type": "string" },
-        "task": { "type": "string" },
-        "payload": {
-          "type": "object",
-          "required": [],
-          "additionalProperties": true
-        },
-        "original_environment": { "type": "string" },
-        "environment": { "type": "string" },
-        "transient_environment": { "type": "boolean" },
-        "production_environment": { "type": "boolean" },
-        "description": { "type": "null" },
-        "creator": { "$ref": "common/user.schema.json" },
-        "created_at": { "type": "string" },
-        "updated_at": { "type": "string" },
-        "statuses_url": { "type": "string", "format": "uri" },
-        "repository_url": { "type": "string", "format": "uri" },
-        "performed_via_github_app": {
-          "oneOf": [{ "$ref": "common/app.schema.json" }, { "type": "null" }]
-        }
-      },
-      "additionalProperties": false
-    },
+    "deployment": { "$ref": "common/deployment.schema.json" },
     "workflow": { "type": "null" },
     "workflow_run": { "type": "null" },
     "repository": { "$ref": "common/repository.schema.json" },
