@@ -140,7 +140,8 @@
         "pull_requests": {
           "type": "array",
           "items": { "$ref": "common/check-run-pull-request.schema.json" }
-        }
+        },
+        "deployment": { "$ref": "common/check-run-deployment.schema.json" }
       },
       "additionalProperties": false
     },

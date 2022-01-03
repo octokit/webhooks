@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/deployment-workflow-run.schema.json",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "node_id",
+    "head_branch",
+    "head_sha",
+    "run_number",
+    "event",
+    "status",
+    "conclusion",
+    "workflow_id",
+    "check_suite_id",
+    "check_suite_node_id",
+    "url",
+    "html_url",
+    "pull_requests",
+    "created_at",
+    "updated_at",
+    "run_attempt",
+    "run_started_at"
+  ],
+  "properties": {
+    "id": { "type": "integer" },
+    "name": { "type": "string" },
+    "node_id": { "type": "string" },
+    "head_branch": { "type": "string" },
+    "head_sha": { "type": "string" },
+    "run_number": { "type": "integer" },
+    "event": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["requested", "in_progress", "completed", "queued"]
+    },
+    "conclusion": {
+      "type": ["string", "null"],
+      "enum": [
+        "success",
+        "failure",
+        "neutral",
+        "cancelled",
+        "timed_out",
+        "action_required",
+        "stale",
+        null
+      ]
+    },
+    "workflow_id": { "type": "integer" },
+    "check_suite_id": { "type": "integer" },
+    "check_suite_node_id": { "type": "string" },
+    "url": { "type": "string", "format": "uri" },
+    "html_url": { "type": "string", "format": "uri" },
+    "pull_requests": {
+      "type": "array",
+      "items": { "$ref": "check-run-pull-request.schema.json" }
+    },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "run_attempt": { "type": "integer" },
+    "run_started_at": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false,
+  "title": "Deployment Workflow Run"
+}

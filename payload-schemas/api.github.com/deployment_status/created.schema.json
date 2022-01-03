@@ -42,7 +42,12 @@
           "description": "The optional human-readable description added to the status."
         },
         "environment": { "type": "string" },
-        "environment_url": { "type": "string", "format": "uri" },
+        "environment_url": {
+          "oneOf": [
+            { "type": "string", "format": "uri" },
+            { "type": "string", "enum": [""] }
+          ]
+        },
         "log_url": { "type": "string", "format": "uri" },
         "target_url": {
           "type": "string",
@@ -58,53 +63,64 @@
       },
       "additionalProperties": false
     },
-    "deployment": {
+    "deployment": { "$ref": "common/deployment.schema.json" },
+    "check_run": {
       "type": "object",
-      "description": "The [deployment](https://docs.github.com/en/rest/reference/repos#list-deployments) that this status is associated with.",
       "required": [
-        "url",
         "id",
+        "name",
         "node_id",
-        "sha",
-        "ref",
-        "task",
-        "payload",
-        "original_environment",
-        "environment",
-        "description",
-        "creator",
-        "created_at",
-        "updated_at",
-        "statuses_url",
-        "repository_url",
-        "performed_via_github_app"
+        "head_sha",
+        "external_id",
+        "url",
+        "html_url",
+        "details_url",
+        "status",
+        "conclusion",
+        "started_at",
+        "completed_at"
       ],
       "properties": {
-        "url": { "type": "string", "format": "uri" },
-        "id": { "type": "integer" },
-        "node_id": { "type": "string" },
-        "sha": { "type": "string" },
-        "ref": { "type": "string" },
-        "task": { "type": "string" },
-        "payload": {
-          "type": "object",
-          "required": [],
-          "additionalProperties": false
+        "id": { "type": "integer", "description": "The id of the check." },
+        "name": {
+          "type": "string",
+          "description": "The name of the check run."
         },
-        "original_environment": { "type": "string" },
-        "environment": { "type": "string" },
-        "description": { "type": "null" },
-        "creator": { "$ref": "common/user.schema.json" },
-        "created_at": { "type": "string" },
-        "updated_at": { "type": "string" },
-        "statuses_url": { "type": "string", "format": "uri" },
-        "repository_url": { "type": "string", "format": "uri" },
-        "performed_via_github_app": {
-          "oneOf": [{ "$ref": "common/app.schema.json" }, { "type": "null" }]
-        }
+        "node_id": { "type": "string" },
+        "head_sha": {
+          "type": "string",
+          "description": "The SHA of the commit that is being checked."
+        },
+        "external_id": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "html_url": { "type": "string", "format": "uri" },
+        "details_url": { "type": "string", "format": "uri" },
+        "status": {
+          "type": "string",
+          "enum": ["queued", "in_progress", "completed"],
+          "description": "The current status of the check run. Can be `queued`, `in_progress`, or `completed`."
+        },
+        "conclusion": {
+          "type": ["string", "null"],
+          "enum": [
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "timed_out",
+            "action_required",
+            "stale",
+            "skipped",
+            null
+          ],
+          "description": "The result of the completed check run. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has completed."
+        },
+        "started_at": { "type": "string", "format": "date-time" },
+        "completed_at": { "type": ["string", "null"], "format": "date-time" }
       },
       "additionalProperties": false
     },
+    "workflow_run": { "$ref": "common/deployment-workflow-run.schema.json" },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },

@@ -750,6 +750,7 @@ export interface CheckRunCompletedEvent {
     };
     app: App;
     pull_requests: CheckRunPullRequest[];
+    deployment?: CheckRunDeployment;
   };
   /**
    * The action requested by the user.
@@ -1005,6 +1006,7 @@ export interface CheckRunCreatedEvent {
     };
     app: App;
     pull_requests: CheckRunPullRequest[];
+    deployment?: CheckRunDeployment;
   };
   /**
    * The action requested by the user.
@@ -1110,6 +1112,7 @@ export interface CheckRunRequestedActionEvent {
     };
     app: App;
     pull_requests: CheckRunPullRequest[];
+    deployment?: CheckRunDeployment;
   };
   /**
    * The action requested by the user.
@@ -1214,6 +1217,7 @@ export interface CheckRunRerequestedEvent {
     };
     app: App;
     pull_requests: CheckRunPullRequest[];
+    deployment?: CheckRunDeployment;
   };
   /**
    * The action requested by the user.
@@ -2072,37 +2076,79 @@ export interface DeployKeyDeletedEvent {
 }
 export interface DeploymentCreatedEvent {
   action: "created";
-  /**
-   * The [deployment](https://docs.github.com/en/rest/reference/deployments#list-deployments).
-   */
-  deployment: {
-    url: string;
-    id: number;
-    node_id: string;
-    sha: string;
-    ref: string;
-    task: string;
-    payload: {
-      [k: string]: unknown;
-    };
-    original_environment: string;
-    environment: string;
-    transient_environment?: boolean;
-    production_environment?: boolean;
-    description: null;
-    creator: User;
-    created_at: string;
-    updated_at: string;
-    statuses_url: string;
-    repository_url: string;
-    performed_via_github_app?: App | null;
-  };
-  workflow: null;
-  workflow_run: null;
+  deployment: Deployment;
+  workflow: Workflow | null;
+  workflow_run: DeploymentWorkflowRun | null;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
+}
+/**
+ * The [deployment](https://docs.github.com/en/rest/reference/deployments#list-deployments).
+ */
+export interface Deployment {
+  url: string;
+  id: number;
+  node_id: string;
+  sha: string;
+  ref: string;
+  task: string;
+  payload: {
+    [k: string]: unknown;
+  };
+  original_environment: string;
+  environment: string;
+  transient_environment?: boolean;
+  production_environment?: boolean;
+  description: string | null;
+  creator: User;
+  created_at: string;
+  updated_at: string;
+  statuses_url: string;
+  repository_url: string;
+  performed_via_github_app?: App | null;
+}
+export interface Workflow {
+  badge_url: string;
+  created_at: string;
+  html_url: string;
+  id: number;
+  name: string;
+  node_id: string;
+  path: string;
+  state: string;
+  updated_at: string;
+  url: string;
+}
+export interface DeploymentWorkflowRun {
+  id: number;
+  name: string;
+  node_id: string;
+  head_branch: string;
+  head_sha: string;
+  run_number: number;
+  event: string;
+  status: "requested" | "in_progress" | "completed" | "queued";
+  conclusion:
+    | "success"
+    | "failure"
+    | "neutral"
+    | "cancelled"
+    | "timed_out"
+    | "action_required"
+    | "stale"
+    | null;
+  workflow_id: number;
+  check_suite_id: number;
+  check_suite_node_id: string;
+  url: string;
+  html_url: string;
+  pull_requests: CheckRunPullRequest[];
+  created_at: string;
+  updated_at: string;
+  run_attempt: number;
+  run_started_at: string;
 }
 export interface DeploymentStatusCreatedEvent {
   action: "created";
@@ -2123,7 +2169,7 @@ export interface DeploymentStatusCreatedEvent {
      */
     description: string;
     environment: string;
-    environment_url?: string;
+    environment_url?: string | "";
     log_url?: string;
     /**
      * The optional link added to the status.
@@ -2135,27 +2181,46 @@ export interface DeploymentStatusCreatedEvent {
     repository_url: string;
     performed_via_github_app?: App | null;
   };
-  /**
-   * The [deployment](https://docs.github.com/en/rest/reference/repos#list-deployments) that this status is associated with.
-   */
-  deployment: {
-    url: string;
+  deployment: Deployment;
+  check_run?: {
+    /**
+     * The id of the check.
+     */
     id: number;
+    /**
+     * The name of the check run.
+     */
+    name: string;
     node_id: string;
-    sha: string;
-    ref: string;
-    task: string;
-    payload: {};
-    original_environment: string;
-    environment: string;
-    description: null;
-    creator: User;
-    created_at: string;
-    updated_at: string;
-    statuses_url: string;
-    repository_url: string;
-    performed_via_github_app: App | null;
+    /**
+     * The SHA of the commit that is being checked.
+     */
+    head_sha: string;
+    external_id: string;
+    url: string;
+    html_url: string;
+    details_url: string;
+    /**
+     * The current status of the check run. Can be `queued`, `in_progress`, or `completed`.
+     */
+    status: "queued" | "in_progress" | "completed";
+    /**
+     * The result of the completed check run. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has completed.
+     */
+    conclusion:
+      | "success"
+      | "failure"
+      | "neutral"
+      | "cancelled"
+      | "timed_out"
+      | "action_required"
+      | "stale"
+      | "skipped"
+      | null;
+    started_at: string;
+    completed_at: string | null;
   };
+  workflow_run?: DeploymentWorkflowRun;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -6143,18 +6208,6 @@ export interface WorkflowRunCompletedEvent {
       | "stale";
   };
   installation?: InstallationLite;
-}
-export interface Workflow {
-  badge_url: string;
-  created_at: string;
-  html_url: string;
-  id: number;
-  name: string;
-  node_id: string;
-  path: string;
-  state: string;
-  updated_at: string;
-  url: string;
 }
 export interface WorkflowRun {
   artifacts_url: string;
