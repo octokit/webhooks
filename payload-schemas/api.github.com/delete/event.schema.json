@@ -3,7 +3,7 @@
   "$id": "delete$event",
   "type": "object",
   "description": "A Git branch or tag is deleted.",
-  "required": ["ref", "ref_type", "pusher_type", "repository", "sender"],
+  "required": ["ref", "ref_type"],
   "properties": {
     "ref": {
       "type": "string",
