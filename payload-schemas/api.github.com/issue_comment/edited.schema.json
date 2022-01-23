@@ -46,17 +46,6 @@
             "labels": {
               "type": "array",
               "items": { "$ref": "common/label.schema.json" }
-            },
-            "pull_request": {
-              "type": "object",
-              "required": ["url", "html_url", "diff_url", "patch_url"],
-              "properties": {
-                "url": { "type": "string", "format": "uri" },
-                "html_url": { "type": "string", "format": "uri" },
-                "diff_url": { "type": "string", "format": "uri" },
-                "patch_url": { "type": "string", "format": "uri" }
-              },
-              "additionalProperties": false
             }
           },
           "tsAdditionalProperties": false
