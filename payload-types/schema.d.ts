@@ -376,8 +376,7 @@ export type WatchEvent = WatchStartedEvent;
 export type WorkflowJobEvent =
   | WorkflowJobCompletedEvent
   | WorkflowJobInProgressEvent
-  | WorkflowJobQueuedEvent
-  | WorkflowJobStartedEvent;
+  | WorkflowJobQueuedEvent;
 export type WorkflowStep = WorkflowStepInProgress | WorkflowStepCompleted;
 export type WorkflowRunEvent =
   | WorkflowRunCompletedEvent
@@ -1278,6 +1277,7 @@ export interface CheckSuiteCompletedEvent {
     app: App;
     created_at: string;
     updated_at: string;
+    runs_rerequestable?: boolean;
     rerequestable?: boolean;
     latest_check_runs_count: number;
     check_runs_url: string;
@@ -2221,6 +2221,7 @@ export interface DeploymentStatusCreatedEvent {
     completed_at: string | null;
   };
   workflow_run?: DeploymentWorkflowRun;
+  workflow?: Workflow;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
@@ -2931,12 +2932,6 @@ export interface IssueCommentCreatedEvent {
     state: "open" | "closed";
     locked: boolean;
     labels: Label[];
-    pull_request?: {
-      url: string;
-      html_url: string;
-      diff_url: string;
-      patch_url: string;
-    };
   };
   comment: IssueComment;
   repository: Repository;
@@ -3065,12 +3060,6 @@ export interface IssueCommentDeletedEvent {
     state: "open" | "closed";
     locked: boolean;
     labels: Label[];
-    pull_request?: {
-      url: string;
-      html_url: string;
-      diff_url: string;
-      patch_url: string;
-    };
   };
   comment: IssueComment;
   repository: Repository;
@@ -3102,12 +3091,6 @@ export interface IssueCommentEditedEvent {
     state: "open" | "closed";
     locked: boolean;
     labels: Label[];
-    pull_request?: {
-      url: string;
-      html_url: string;
-      diff_url: string;
-      patch_url: string;
-    };
   };
   comment: IssueComment;
   repository: Repository;
@@ -4165,7 +4148,7 @@ export interface ProjectCard {
   created_at: string;
   updated_at: string;
   content_url?: string;
-  after_id?: null;
+  after_id?: string | null;
 }
 export interface ProjectCardCreatedEvent {
   action: "created";
@@ -5465,6 +5448,7 @@ export interface RepositoryVulnerabilityAlertCreateEvent {
    */
   alert: {
     id: number;
+    node_id: string;
     affected_range: string;
     affected_package_name: string;
     dismisser?: User;
@@ -6176,18 +6160,6 @@ export interface WorkflowJobQueuedEvent {
     runner_group_id: number | null;
     runner_group_name: string | null;
     started_at: string;
-    completed_at: null;
-  };
-}
-export interface WorkflowJobStartedEvent {
-  action: "started";
-  organization?: Organization;
-  installation?: InstallationLite;
-  repository: Repository;
-  sender: User;
-  workflow_job: WorkflowJob & {
-    steps: [WorkflowStepInProgress];
-    conclusion: null;
     completed_at: null;
   };
 }
