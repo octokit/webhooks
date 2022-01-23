@@ -376,8 +376,7 @@ export type WatchEvent = WatchStartedEvent;
 export type WorkflowJobEvent =
   | WorkflowJobCompletedEvent
   | WorkflowJobInProgressEvent
-  | WorkflowJobQueuedEvent
-  | WorkflowJobStartedEvent;
+  | WorkflowJobQueuedEvent;
 export type WorkflowStep = WorkflowStepInProgress | WorkflowStepCompleted;
 export type WorkflowRunEvent =
   | WorkflowRunCompletedEvent
