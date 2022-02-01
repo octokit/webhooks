@@ -270,25 +270,13 @@ export type PullRequestReviewRequestRemovedEvent =
        */
       number: number;
       pull_request: PullRequest;
-      requested_reviewer: User;
+      requested_reviewer?: User;
+      requested_team?: Team;
       repository: Repository;
       installation?: InstallationLite;
       organization?: Organization;
       sender: User;
     }
-  | {
-      action: "review_request_removed";
-      /**
-       * The pull request number.
-       */
-      number: number;
-      pull_request: PullRequest;
-      requested_team: Team;
-      repository: Repository;
-      installation?: InstallationLite;
-      organization?: Organization;
-      sender: User;
-    };
 export type PullRequestReviewRequestedEvent =
   | {
       action: "review_requested";
@@ -297,25 +285,13 @@ export type PullRequestReviewRequestedEvent =
        */
       number: number;
       pull_request: PullRequest;
-      requested_reviewer: User;
+      requested_reviewer?: User;
+      requested_team?: Team;
       repository: Repository;
       installation?: InstallationLite;
       organization?: Organization;
       sender: User;
     }
-  | {
-      action: "review_requested";
-      /**
-       * The pull request number.
-       */
-      number: number;
-      pull_request: PullRequest;
-      requested_team: Team;
-      repository: Repository;
-      installation?: InstallationLite;
-      organization?: Organization;
-      sender: User;
-    };
 export type PullRequestReviewEvent =
   | PullRequestReviewDismissedEvent
   | PullRequestReviewEditedEvent
