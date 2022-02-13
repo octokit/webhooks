@@ -1356,6 +1356,8 @@ export interface CheckSuiteRequestedEvent {
     app: App;
     created_at: string;
     updated_at: string;
+    runs_rerequestable?: boolean;
+    rerequestable?: boolean;
     latest_check_runs_count: number;
     check_runs_url: string;
     head_commit: SimpleCommit;
@@ -4088,7 +4090,7 @@ export interface ProjectEditedEvent {
   /**
    * The changes to the project if the action was `edited`.
    */
-  changes: {
+  changes?: {
     name?: {
       /**
        * The changes to the project if the action was `edited`.
@@ -4335,7 +4337,7 @@ export interface PullRequest {
     statuses: Link;
   };
   author_association: AuthorAssociation;
-  auto_merge: null;
+  auto_merge: PullRequestAutoMerge | null;
   active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
   /**
    * Indicates whether or not the pull request is a draft.
@@ -4359,6 +4361,12 @@ export interface PullRequest {
 }
 export interface Link {
   href: string;
+}
+export interface PullRequestAutoMerge {
+  enabled_by: User;
+  merge_method: "merge" | "squash" | "rebase";
+  commit_title: string;
+  commit_message: string;
 }
 export interface PullRequestAutoMergeDisabledEvent {
   action: "auto_merge_disabled";
@@ -4683,7 +4691,7 @@ export interface SimplePullRequest {
     statuses: Link;
   };
   author_association: AuthorAssociation;
-  auto_merge: null;
+  auto_merge: PullRequestAutoMerge | null;
   active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
 }
 export interface PullRequestReviewEditedEvent {
@@ -4824,7 +4832,7 @@ export interface PullRequestReviewCommentCreatedEvent {
       commits: Link;
       statuses: Link;
     };
-    auto_merge?: null;
+    auto_merge?: PullRequestAutoMerge | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
   };
@@ -4986,7 +4994,7 @@ export interface PullRequestReviewCommentDeletedEvent {
       commits: Link;
       statuses: Link;
     };
-    auto_merge?: null;
+    auto_merge?: PullRequestAutoMerge | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
   };
@@ -5064,7 +5072,7 @@ export interface PullRequestReviewCommentEditedEvent {
       commits: Link;
       statuses: Link;
     };
-    auto_merge?: null;
+    auto_merge?: PullRequestAutoMerge | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
   };
