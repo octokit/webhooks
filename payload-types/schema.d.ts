@@ -4362,10 +4362,22 @@ export interface PullRequest {
 export interface Link {
   href: string;
 }
+/**
+ * The status of auto merging a pull request.
+ */
 export interface PullRequestAutoMerge {
   enabled_by: User;
+  /**
+   * The merge method to use.
+   */
   merge_method: "merge" | "squash" | "rebase";
+  /**
+   * Title for the merge commit message.
+   */
   commit_title: string;
+  /**
+   * Commit message for the merge commit.
+   */
   commit_message: string;
 }
 export interface PullRequestAutoMergeDisabledEvent {
