@@ -653,6 +653,9 @@ export interface BranchProtectionRuleEditedEvent {
     authorized_actor_names?: {
       from: string[];
     };
+    required_status_checks?: {
+      from: string[];
+    };
   };
   repository: Repository;
   sender: User;
@@ -4384,6 +4387,7 @@ export interface PullRequestAutoMergeDisabledEvent {
   action: "auto_merge_disabled";
   number: number;
   pull_request: PullRequest;
+  reason: string;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -4393,6 +4397,7 @@ export interface PullRequestAutoMergeEnabledEvent {
   action: "auto_merge_enabled";
   number: number;
   pull_request: PullRequest;
+  reason: string;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
