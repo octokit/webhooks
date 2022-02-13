@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/auto-merge.schema.json",
+  "type": "object",
+  "required": ["enabled_by", "merge_method", "commit_title", "commit_message"],
+  "properties": {
+    "enabled_by": { "$ref": "user.schema.json" },
+    "merge_method": { "type": "string", "enum": ["merge", "squash", "rebase"] },
+    "commit_title": { "type": "string" },
+    "commit_message": { "type": "string" }
+  },
+  "additionalProperties": false,
+  "title": "PullRequestAutoMerge"
+}
