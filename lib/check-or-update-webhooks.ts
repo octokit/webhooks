@@ -49,16 +49,16 @@ export const checkOrUpdateWebhooks = async ({
 
   const [baseUrl, folderName] = ghe
     ? [
-        `https://docs.github.com/en/enterprise-server@${ghe}/developers/webhooks-and-events/webhook-events-and-payloads`,
+        `https://docs.github.com/en/enterprise-server@${ghe}/developers/webhooks-and-events/webhooks/webhook-events-and-payloads`,
         `ghes-${ghe.replace(".", "")}`,
       ]
     : githubAE
     ? [
-        "https://docs.github.com/en/github-ae@latest/developers/webhooks-and-events/webhook-events-and-payloads",
+        "https://docs.github.com/en/github-ae@latest/developers/webhooks-and-events/webhooks/webhook-events-and-payloads",
         "github.ae",
       ]
     : [
-        "https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/webhook-events-and-payloads",
+        "https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/webhooks/webhook-events-and-payloads",
         "api.github.com",
       ];
 
