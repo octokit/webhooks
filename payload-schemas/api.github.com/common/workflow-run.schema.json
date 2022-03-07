@@ -31,7 +31,9 @@
     "workflow_url",
     "run_attempt",
     "run_started_at",
-    "previous_attempt_url"
+    "previous_attempt_url",
+    "actor",
+    "triggering_actor"
   ],
   "type": "object",
   "properties": {
@@ -113,7 +115,9 @@
     "run_started_at": { "type": "string", "format": "date-time" },
     "previous_attempt_url": {
       "oneOf": [{ "type": "string", "format": "uri" }, { "type": "null" }]
-    }
+    },
+    "actor": { "$ref": "user.schema.json" },
+    "triggering_actor": { "$ref": "user.schema.json" }
   },
   "additionalProperties": false,
   "title": "Workflow Run"
