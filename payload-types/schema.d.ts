@@ -2152,6 +2152,8 @@ export interface DeploymentWorkflowRun {
   pull_requests: CheckRunPullRequest[];
   created_at: string;
   updated_at: string;
+  actor: User;
+  triggering_actor: User;
   run_attempt: number;
   run_started_at: string;
 }
@@ -6259,6 +6261,8 @@ export interface WorkflowRun {
   run_attempt: number;
   run_started_at: string;
   previous_attempt_url: string | null;
+  actor: User;
+  triggering_actor: User;
 }
 export interface RepositoryLite {
   archive_url: string;
