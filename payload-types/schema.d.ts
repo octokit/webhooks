@@ -348,6 +348,7 @@ export type RepositoryEvent =
 export type RepositoryVulnerabilityAlertEvent =
   | RepositoryVulnerabilityAlertCreateEvent
   | RepositoryVulnerabilityAlertDismissEvent
+  | RepositoryVulnerabilityAlertReopenEvent
   | RepositoryVulnerabilityAlertResolveEvent;
 export type SecretScanningAlertEvent =
   | SecretScanningAlertCreatedEvent
@@ -5470,72 +5471,65 @@ export interface RepositoryImportEvent {
 }
 export interface RepositoryVulnerabilityAlertCreateEvent {
   action: "create";
-  /**
-   * The security alert of the vulnerable dependency.
-   */
-  alert: {
-    id: number;
-    node_id: string;
-    affected_range: string;
-    affected_package_name: string;
-    dismisser?: User;
-    dismiss_reason?: string;
-    dismissed_at?: string;
-    severity?: string;
-    ghsa_id?: string;
-    external_reference: string;
-    external_identifier: string;
-    fixed_in: string;
-    created_at?: string;
+  alert: RepositoryVulnerabilityAlertAlert & {
+    state: "open";
   };
   repository: Repository;
-  sender: User;
+  sender: GitHubOrg;
   organization?: Organization;
+}
+/**
+ * The security alert of the vulnerable dependency.
+ */
+export interface RepositoryVulnerabilityAlertAlert {
+  id: number;
+  number: number;
+  node_id: string;
+  state: "open" | "dismissed" | "fixed";
+  affected_range: string;
+  affected_package_name: string;
+  dismisser?: User;
+  dismiss_reason?: string;
+  dismissed_at?: string;
+  severity: string;
+  ghsa_id: string;
+  external_reference: string;
+  external_identifier: string;
+  fixed_in: string;
+  fixed_at?: string;
+  fix_reason?: string;
+  created_at: string;
 }
 export interface RepositoryVulnerabilityAlertDismissEvent {
   action: "dismiss";
-  /**
-   * The security alert of the vulnerable dependency.
-   */
-  alert: {
-    id: number;
-    affected_range: string;
-    affected_package_name: string;
+  alert: RepositoryVulnerabilityAlertAlert & {
     dismisser: User;
     dismiss_reason: string;
     dismissed_at: string;
-    severity?: string;
-    ghsa_id?: string;
-    external_reference: string;
-    external_identifier: string;
-    fixed_in: string;
-    created_at?: string;
+    state: "dismissed";
   };
   repository: Repository;
-  sender: User;
+  sender: GitHubOrg;
+  organization?: Organization;
+}
+export interface RepositoryVulnerabilityAlertReopenEvent {
+  action: "reopen";
+  alert: RepositoryVulnerabilityAlertAlert & {
+    state: "open";
+  };
+  repository: Repository;
+  sender: GitHubOrg;
   organization?: Organization;
 }
 export interface RepositoryVulnerabilityAlertResolveEvent {
   action: "resolve";
-  /**
-   * The security alert of the vulnerable dependency.
-   */
-  alert: {
-    id: number;
-    affected_range: string;
-    affected_package_name: string;
-    dismisser?: User;
-    dismiss_reason?: string;
-    dismissed_at?: string;
-    ghsa_id?: string;
-    severity?: string;
-    external_reference: string;
-    external_identifier: string;
-    fixed_in: string;
-    created_at?: string;
+  alert: RepositoryVulnerabilityAlertAlert & {
+    state: "fixed";
+    fixed_at: string;
+    fix_reason: string;
   };
   repository: Repository;
-  sender: User;
+  sender: GitHubOrg;
   organization?: Organization;
 }
 export interface SecretScanningAlertCreatedEvent {
