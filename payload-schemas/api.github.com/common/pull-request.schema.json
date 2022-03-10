@@ -156,7 +156,9 @@
       "additionalProperties": false
     },
     "author_association": { "$ref": "author_association.schema.json" },
-    "auto_merge": { "type": "null" },
+    "auto_merge": {
+      "oneOf": [{ "$ref": "auto-merge.schema.json" }, { "type": "null" }]
+    },
     "active_lock_reason": {
       "type": ["string", "null"],
       "enum": ["resolved", "off-topic", "too heated", "spam", null]

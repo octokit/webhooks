@@ -321,6 +321,46 @@
     "updated_at": "2020-10-05T16:33:24Z",
     "url": "https://api.github.com/repos/octo-org/octo-repo/actions/runs/289782451",
     "workflow_id": 2823525,
-    "workflow_url": "https://api.github.com/repos/octo-org/octo-repo/actions/workflows/2823525"
+    "workflow_url": "https://api.github.com/repos/octo-org/octo-repo/actions/workflows/2823525",
+    "actor": {
+      "avatar_url": "https://avatars0.githubusercontent.com/u/15669918?v=4",
+      "events_url": "https://api.github.com/users/Codertocat/events{/privacy}",
+      "followers_url": "https://api.github.com/users/Codertocat/followers",
+      "following_url": "https://api.github.com/users/Codertocat/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Codertocat/gists{/gist_id}",
+      "gravatar_id": "",
+      "html_url": "https://github.com/Codertocat",
+      "id": 15669918,
+      "login": "Codertocat",
+      "node_id": "MDQ6VXNlcjE1NjY5OTE4",
+      "organizations_url": "https://api.github.com/users/Codertocat/orgs",
+      "received_events_url": "https://api.github.com/users/Codertocat/received_events",
+      "repos_url": "https://api.github.com/users/Codertocat/repos",
+      "site_admin": false,
+      "starred_url": "https://api.github.com/users/Codertocat/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Codertocat/subscriptions",
+      "type": "User",
+      "url": "https://api.github.com/users/Codertocat"
+    },
+    "triggering_actor": {
+      "avatar_url": "https://avatars0.githubusercontent.com/u/15669918?v=4",
+      "events_url": "https://api.github.com/users/Codertocat/events{/privacy}",
+      "followers_url": "https://api.github.com/users/Codertocat/followers",
+      "following_url": "https://api.github.com/users/Codertocat/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Codertocat/gists{/gist_id}",
+      "gravatar_id": "",
+      "html_url": "https://github.com/Codertocat",
+      "id": 15669918,
+      "login": "Codertocat",
+      "node_id": "MDQ6VXNlcjE1NjY5OTE4",
+      "organizations_url": "https://api.github.com/users/Codertocat/orgs",
+      "received_events_url": "https://api.github.com/users/Codertocat/received_events",
+      "repos_url": "https://api.github.com/users/Codertocat/repos",
+      "site_admin": false,
+      "starred_url": "https://api.github.com/users/Codertocat/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Codertocat/subscriptions",
+      "type": "User",
+      "url": "https://api.github.com/users/Codertocat"
+    }
   }
 }

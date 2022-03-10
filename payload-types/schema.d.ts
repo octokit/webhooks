@@ -348,6 +348,7 @@ export type RepositoryEvent =
 export type RepositoryVulnerabilityAlertEvent =
   | RepositoryVulnerabilityAlertCreateEvent
   | RepositoryVulnerabilityAlertDismissEvent
+  | RepositoryVulnerabilityAlertReopenEvent
   | RepositoryVulnerabilityAlertResolveEvent;
 export type SecretScanningAlertEvent =
   | SecretScanningAlertCreatedEvent
@@ -651,6 +652,9 @@ export interface BranchProtectionRuleEditedEvent {
       from: boolean;
     };
     authorized_actor_names?: {
+      from: string[];
+    };
+    required_status_checks?: {
       from: string[];
     };
   };
@@ -1356,6 +1360,8 @@ export interface CheckSuiteRequestedEvent {
     app: App;
     created_at: string;
     updated_at: string;
+    runs_rerequestable?: boolean;
+    rerequestable?: boolean;
     latest_check_runs_count: number;
     check_runs_url: string;
     head_commit: SimpleCommit;
@@ -2147,6 +2153,8 @@ export interface DeploymentWorkflowRun {
   pull_requests: CheckRunPullRequest[];
   created_at: string;
   updated_at: string;
+  actor: User;
+  triggering_actor: User;
   run_attempt: number;
   run_started_at: string;
 }
@@ -4088,7 +4096,7 @@ export interface ProjectEditedEvent {
   /**
    * The changes to the project if the action was `edited`.
    */
-  changes: {
+  changes?: {
     name?: {
       /**
        * The changes to the project if the action was `edited`.
@@ -4335,7 +4343,7 @@ export interface PullRequest {
     statuses: Link;
   };
   author_association: AuthorAssociation;
-  auto_merge: null;
+  auto_merge: PullRequestAutoMerge | null;
   active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
   /**
    * Indicates whether or not the pull request is a draft.
@@ -4360,10 +4368,29 @@ export interface PullRequest {
 export interface Link {
   href: string;
 }
+/**
+ * The status of auto merging a pull request.
+ */
+export interface PullRequestAutoMerge {
+  enabled_by: User;
+  /**
+   * The merge method to use.
+   */
+  merge_method: "merge" | "squash" | "rebase";
+  /**
+   * Title for the merge commit message.
+   */
+  commit_title: string;
+  /**
+   * Commit message for the merge commit.
+   */
+  commit_message: string;
+}
 export interface PullRequestAutoMergeDisabledEvent {
   action: "auto_merge_disabled";
   number: number;
   pull_request: PullRequest;
+  reason: string;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -4373,6 +4400,7 @@ export interface PullRequestAutoMergeEnabledEvent {
   action: "auto_merge_enabled";
   number: number;
   pull_request: PullRequest;
+  reason: string;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -4683,7 +4711,7 @@ export interface SimplePullRequest {
     statuses: Link;
   };
   author_association: AuthorAssociation;
-  auto_merge: null;
+  auto_merge: PullRequestAutoMerge | null;
   active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
 }
 export interface PullRequestReviewEditedEvent {
@@ -4824,7 +4852,7 @@ export interface PullRequestReviewCommentCreatedEvent {
       commits: Link;
       statuses: Link;
     };
-    auto_merge?: null;
+    auto_merge?: PullRequestAutoMerge | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
   };
@@ -4986,7 +5014,7 @@ export interface PullRequestReviewCommentDeletedEvent {
       commits: Link;
       statuses: Link;
     };
-    auto_merge?: null;
+    auto_merge?: PullRequestAutoMerge | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
   };
@@ -5064,7 +5092,7 @@ export interface PullRequestReviewCommentEditedEvent {
       commits: Link;
       statuses: Link;
     };
-    auto_merge?: null;
+    auto_merge?: PullRequestAutoMerge | null;
     author_association: AuthorAssociation;
     active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
   };
@@ -5443,72 +5471,65 @@ export interface RepositoryImportEvent {
 }
 export interface RepositoryVulnerabilityAlertCreateEvent {
   action: "create";
-  /**
-   * The security alert of the vulnerable dependency.
-   */
-  alert: {
-    id: number;
-    node_id: string;
-    affected_range: string;
-    affected_package_name: string;
-    dismisser?: User;
-    dismiss_reason?: string;
-    dismissed_at?: string;
-    severity?: string;
-    ghsa_id?: string;
-    external_reference: string;
-    external_identifier: string;
-    fixed_in: string;
-    created_at?: string;
+  alert: RepositoryVulnerabilityAlertAlert & {
+    state: "open";
   };
   repository: Repository;
-  sender: User;
+  sender: GitHubOrg;
   organization?: Organization;
+}
+/**
+ * The security alert of the vulnerable dependency.
+ */
+export interface RepositoryVulnerabilityAlertAlert {
+  id: number;
+  number: number;
+  node_id: string;
+  state: "open" | "dismissed" | "fixed";
+  affected_range: string;
+  affected_package_name: string;
+  dismisser?: User;
+  dismiss_reason?: string;
+  dismissed_at?: string;
+  severity: string;
+  ghsa_id: string;
+  external_reference: string;
+  external_identifier: string;
+  fixed_in: string;
+  fixed_at?: string;
+  fix_reason?: string;
+  created_at: string;
 }
 export interface RepositoryVulnerabilityAlertDismissEvent {
   action: "dismiss";
-  /**
-   * The security alert of the vulnerable dependency.
-   */
-  alert: {
-    id: number;
-    affected_range: string;
-    affected_package_name: string;
+  alert: RepositoryVulnerabilityAlertAlert & {
     dismisser: User;
     dismiss_reason: string;
     dismissed_at: string;
-    severity?: string;
-    ghsa_id?: string;
-    external_reference: string;
-    external_identifier: string;
-    fixed_in: string;
-    created_at?: string;
+    state: "dismissed";
   };
   repository: Repository;
-  sender: User;
+  sender: GitHubOrg;
+  organization?: Organization;
+}
+export interface RepositoryVulnerabilityAlertReopenEvent {
+  action: "reopen";
+  alert: RepositoryVulnerabilityAlertAlert & {
+    state: "open";
+  };
+  repository: Repository;
+  sender: GitHubOrg;
   organization?: Organization;
 }
 export interface RepositoryVulnerabilityAlertResolveEvent {
   action: "resolve";
-  /**
-   * The security alert of the vulnerable dependency.
-   */
-  alert: {
-    id: number;
-    affected_range: string;
-    affected_package_name: string;
-    dismisser?: User;
-    dismiss_reason?: string;
-    dismissed_at?: string;
-    ghsa_id?: string;
-    severity?: string;
-    external_reference: string;
-    external_identifier: string;
-    fixed_in: string;
-    created_at?: string;
+  alert: RepositoryVulnerabilityAlertAlert & {
+    state: "fixed";
+    fixed_at: string;
+    fix_reason: string;
   };
   repository: Repository;
-  sender: User;
+  sender: GitHubOrg;
   organization?: Organization;
 }
 export interface SecretScanningAlertCreatedEvent {
@@ -6234,6 +6255,8 @@ export interface WorkflowRun {
   run_attempt: number;
   run_started_at: string;
   previous_attempt_url: string | null;
+  actor: User;
+  triggering_actor: User;
 }
 export interface RepositoryLite {
   archive_url: string;

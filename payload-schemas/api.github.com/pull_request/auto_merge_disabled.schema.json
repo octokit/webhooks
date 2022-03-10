@@ -2,11 +2,19 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "pull_request$auto_merge_disabled",
   "type": "object",
-  "required": ["action", "number", "pull_request", "repository", "sender"],
+  "required": [
+    "action",
+    "number",
+    "pull_request",
+    "reason",
+    "repository",
+    "sender"
+  ],
   "properties": {
     "action": { "type": "string", "enum": ["auto_merge_disabled"] },
     "number": { "type": "integer" },
     "pull_request": { "$ref": "common/pull-request.schema.json" },
+    "reason": { "type": "string" },
     "repository": { "$ref": "common/repository.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },
     "organization": { "$ref": "common/organization.schema.json" },

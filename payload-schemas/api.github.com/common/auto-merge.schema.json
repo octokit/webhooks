@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/auto-merge.schema.json",
+  "type": "object",
+  "required": ["enabled_by", "merge_method", "commit_title", "commit_message"],
+  "properties": {
+    "enabled_by": { "$ref": "user.schema.json" },
+    "merge_method": {
+      "type": "string",
+      "enum": ["merge", "squash", "rebase"],
+      "description": "The merge method to use."
+    },
+    "commit_title": {
+      "type": "string",
+      "description": "Title for the merge commit message."
+    },
+    "commit_message": {
+      "type": "string",
+      "description": "Commit message for the merge commit."
+    }
+  },
+  "additionalProperties": false,
+  "title": "PullRequestAutoMerge",
+  "description": "The status of auto merging a pull request."
+}
