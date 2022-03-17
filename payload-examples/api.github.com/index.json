@@ -54191,7 +54191,7 @@
   },
   {
     "name": "repository_vulnerability_alert",
-    "description": "Activity related to security vulnerability alerts in a repository. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[About alerts for vulnerable dependencies](https://docs.github.com/en/github/managing-security-vulnerabilities/about-alerts-for-vulnerable-dependencies)\".",
+    "description": "Activity related to security vulnerability alerts in a repository. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[About Dependabot alerts](https://docs.github.com/en/github/managing-security-vulnerabilities/about-alerts-for-vulnerable-dependencies)\".",
     "actions": ["create", "dismiss", "resolve"],
     "properties": {
       "alert": {
@@ -54824,7 +54824,7 @@
   },
   {
     "name": "security_advisory",
-    "description": "Activity related to a security advisory that has been reviewed by GitHub. A GitHub-reviewed security advisory provides information about security-related vulnerabilities in software on GitHub.\n\nThe security advisory dataset also powers the GitHub Dependabot alerts. For more information, see \"[About alerts for vulnerable dependencies](https://docs.github.com/en/github/managing-security-vulnerabilities/about-alerts-for-vulnerable-dependencies).\"",
+    "description": "Activity related to a security advisory that has been reviewed by GitHub. A GitHub-reviewed security advisory provides information about security-related vulnerabilities in software on GitHub.\n\nThe security advisory dataset also powers the GitHub Dependabot alerts. For more information, see \"[About Dependabot alerts](https://docs.github.com/en/github/managing-security-vulnerabilities/about-alerts-for-vulnerable-dependencies).\"",
     "actions": ["performed", "published", "updated", "withdrawn"],
     "properties": {
       "security_advisory": {
