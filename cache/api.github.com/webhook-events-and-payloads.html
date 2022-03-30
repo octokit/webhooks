@@ -1818,10 +1818,19 @@
             <td>
               An array of pull requests that match this check suite. A pull
               request matches a check suite if they have the same
-              <code>head_sha</code> and <code>head_branch</code>. When the check
-              suite's <code>head_branch</code> is in a forked repository it will
-              be <code>null</code> and the <code>pull_requests</code> array will
-              be empty.
+              <code>head_branch</code>.<br /><br /><strong>Note:</strong>
+              <ul>
+                <li>
+                  The <code>head_sha</code> of the check suite can differ from
+                  the <code>sha</code> of the pull request if subsequent pushes
+                  are made into the PR.
+                </li>
+                <li>
+                  When the check suite's <code>head_branch</code> is in a forked
+                  repository it will be <code>null</code> and the
+                  <code>pull_requests</code> array will be empty.
+                </li>
+              </ul>
             </td>
           </tr>
           <tr>
@@ -2442,10 +2451,19 @@
             <td>
               An array of pull requests that match this check suite. A pull
               request matches a check suite if they have the same
-              <code>head_sha</code> and <code>head_branch</code>. When the check
-              suite's <code>head_branch</code> is in a forked repository it will
-              be <code>null</code> and the <code>pull_requests</code> array will
-              be empty.
+              <code>head_branch</code>.<br /><br /><strong>Note:</strong>
+              <ul>
+                <li>
+                  The <code>head_sha</code> of the check suite can differ from
+                  the <code>sha</code> of the pull request if subsequent pushes
+                  are made into the PR.
+                </li>
+                <li>
+                  When the check suite's <code>head_branch</code> is in a forked
+                  repository it will be <code>null</code> and the
+                  <code>pull_requests</code> array will be empty.
+                </li>
+              </ul>
             </td>
           </tr>
           <tr>
