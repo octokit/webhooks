@@ -52,6 +52,7 @@
         "timed_out",
         "action_required",
         "stale",
+        "skipped",
         null
       ]
     },
