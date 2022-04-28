@@ -54,7 +54,7 @@
       },
       "check_run[check_suite][pull_requests]": {
         "type": "array",
-        "description": "An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty."
+        "description": "An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_branch`.  \n  \n**Note:**\n\n*   The `head_sha` of the check suite can differ from the `sha` of the pull request if subsequent pushes are made into the PR.\n*   When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty."
       },
       "check_run[check_suite][deployment]": {
         "type": "object",
@@ -915,7 +915,7 @@
       },
       "check_suite[pull_requests]": {
         "type": "array",
-        "description": "An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty."
+        "description": "An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_branch`.  \n  \n**Note:**\n\n*   The `head_sha` of the check suite can differ from the `sha` of the pull request if subsequent pushes are made into the PR.\n*   When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty."
       },
       "repository": {
         "type": "object",
