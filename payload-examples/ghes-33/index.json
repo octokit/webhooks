@@ -1232,6 +1232,38 @@
     "examples": []
   },
   {
+    "name": "pull_request_review_thread",
+    "description": "Activity related to a comment thread on a pull request being marked as resolved or unresolved. The type of activity is specified in the `action` property of the payload object.",
+    "properties": {
+      "pull_request": {
+        "type": "object",
+        "description": "The [pull request](https://docs.github.com/en/enterprise-server@3.3/rest/reference/pulls) the thread pertains to."
+      },
+      "thread": {
+        "type": "object",
+        "description": "The thread that was affected."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](https://docs.github.com/en/enterprise-server@3.3/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](https://docs.github.com/en/enterprise-server@3.3/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
+    "actions": ["resolved", "unresolved"],
+    "examples": []
+  },
+  {
     "name": "push",
     "description": "One or more commits are pushed to a repository branch or tag.",
     "properties": {
