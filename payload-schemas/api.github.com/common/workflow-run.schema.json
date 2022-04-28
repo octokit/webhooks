@@ -105,7 +105,7 @@
     "run_number": { "type": "integer" },
     "status": {
       "type": "string",
-      "enum": ["requested", "in_progress", "completed", "queued"]
+      "enum": ["requested", "in_progress", "completed", "queued", "waiting"]
     },
     "updated_at": { "type": "string", "format": "date-time" },
     "url": { "type": "string", "format": "uri" },

@@ -119,7 +119,7 @@
             },
             "status": {
               "type": "string",
-              "enum": ["queued", "in_progress", "completed"]
+              "enum": ["queued", "in_progress", "completed", "waiting"]
             },
             "conclusion": {
               "type": ["string", "null"],
