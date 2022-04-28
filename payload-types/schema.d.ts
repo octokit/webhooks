@@ -743,7 +743,12 @@ export interface CheckRunCompletedEvent {
       before: string | null;
       after: string | null;
       /**
-       * An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.
+       * An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_branch`.
+       *
+       * **Note:**
+       *
+       * *   The `head_sha` of the check suite can differ from the `sha` of the pull request if subsequent pushes are made into the PR.
+       * *   When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.
        */
       pull_requests: CheckRunPullRequest[];
       deployment?: CheckRunDeployment;
@@ -941,7 +946,7 @@ export interface CheckRunCreatedEvent {
     /**
      * The current status of the check run. Can be `queued`, `in_progress`, or `completed`.
      */
-    status: "queued" | "in_progress" | "completed";
+    status: "queued" | "in_progress" | "completed" | "waiting";
     /**
      * The result of the completed check run. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has completed.
      */
@@ -999,7 +1004,12 @@ export interface CheckRunCreatedEvent {
       before: string | null;
       after: string | null;
       /**
-       * An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.
+       * An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_branch`.
+       *
+       * **Note:**
+       *
+       * *   The `head_sha` of the check suite can differ from the `sha` of the pull request if subsequent pushes are made into the PR.
+       * *   When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.
        */
       pull_requests: CheckRunPullRequest[];
       deployment?: CheckRunDeployment;
@@ -1091,7 +1101,7 @@ export interface CheckRunRequestedActionEvent {
        * The SHA of the head commit that is being checked.
        */
       head_sha: string;
-      status: "queued" | "in_progress" | "completed";
+      status: "queued" | "in_progress" | "completed" | "waiting";
       conclusion:
         | "success"
         | "failure"
@@ -1105,7 +1115,12 @@ export interface CheckRunRequestedActionEvent {
       before: string | null;
       after: string | null;
       /**
-       * An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.
+       * An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_branch`.
+       *
+       * **Note:**
+       *
+       * *   The `head_sha` of the check suite can differ from the `sha` of the pull request if subsequent pushes are made into the PR.
+       * *   When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.
        */
       pull_requests: CheckRunPullRequest[];
       deployment?: CheckRunDeployment;
@@ -1210,7 +1225,12 @@ export interface CheckRunRerequestedEvent {
       before: string | null;
       after: string | null;
       /**
-       * An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.
+       * An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_branch`.
+       *
+       * **Note:**
+       *
+       * *   The `head_sha` of the check suite can differ from the `sha` of the pull request if subsequent pushes are made into the PR.
+       * *   When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty.
        */
       pull_requests: CheckRunPullRequest[];
       deployment?: CheckRunDeployment;
@@ -2211,7 +2231,7 @@ export interface DeploymentStatusCreatedEvent {
     /**
      * The current status of the check run. Can be `queued`, `in_progress`, or `completed`.
      */
-    status: "queued" | "in_progress" | "completed";
+    status: "queued" | "in_progress" | "completed" | "waiting";
     /**
      * The result of the completed check run. Can be one of `success`, `failure`, `neutral`, `cancelled`, `timed_out`, `action_required` or `stale`. This value will be `null` until the check run has completed.
      */
@@ -6198,7 +6218,8 @@ export interface WorkflowRunCompletedEvent {
       | "cancelled"
       | "timed_out"
       | "action_required"
-      | "stale";
+      | "stale"
+      | "skipped";
   };
   installation?: InstallationLite;
 }
@@ -6216,6 +6237,7 @@ export interface WorkflowRun {
     | "timed_out"
     | "action_required"
     | "stale"
+    | "skipped"
     | null;
   created_at: string;
   event: string;
@@ -6247,7 +6269,7 @@ export interface WorkflowRun {
   repository: RepositoryLite;
   rerun_url: string;
   run_number: number;
-  status: "requested" | "in_progress" | "completed" | "queued";
+  status: "requested" | "in_progress" | "completed" | "queued" | "waiting";
   updated_at: string;
   url: string;
   workflow_id: number;

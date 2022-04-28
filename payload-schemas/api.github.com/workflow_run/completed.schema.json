@@ -25,7 +25,8 @@
                 "cancelled",
                 "timed_out",
                 "action_required",
-                "stale"
+                "stale",
+                "skipped"
               ]
             }
           },
