@@ -2,10 +2,10 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "projects_v2_item$deleted",
   "type": "object",
-  "required": ["action", "project_v2_item", "sender"],
+  "required": ["action", "projects_v2_item", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["created"] },
-    "project_v2_item": { "$ref": "common/projects_v2_item.schema.json" },
+    "projects_v2_item": { "$ref": "common/projects_v2_item.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "organization": { "$ref": "common/organization.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" }

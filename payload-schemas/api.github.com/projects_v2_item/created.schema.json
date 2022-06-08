@@ -2,10 +2,10 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "projects_v2_item$created",
   "type": "object",
-  "required": ["action", "project_v2_item", "sender"],
+  "required": ["action", "projects_v2_item", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["created"] },
-    "project_v2_item": {
+    "projects_v2_item": {
       "allOf": [
         { "$ref": "common/projects_v2_item.schema.json" },
         {

@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "projects_v2_item$restored",
   "type": "object",
-  "required": ["changes", "action", "project_v2_item", "sender"],
+  "required": ["changes", "action", "projects_v2_item", "sender"],
   "properties": {
     "changes": {
       "type": "object",
@@ -26,7 +26,7 @@
       "additionalProperties": false
     },
     "action": { "type": "string", "enum": ["restored"] },
-    "project_v2_item": {
+    "projects_v2_item": {
       "allOf": [
         { "$ref": "common/projects_v2_item.schema.json" },
         {

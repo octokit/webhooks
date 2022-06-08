@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "projects_v2_item$reordered",
   "type": "object",
-  "required": ["changes", "action", "project_v2_item", "sender"],
+  "required": ["changes", "action", "projects_v2_item", "sender"],
   "properties": {
     "changes": {
       "type": "object",
@@ -21,7 +21,7 @@
       "additionalProperties": false
     },
     "action": { "type": "string", "enum": ["reordered"] },
-    "project_v2_item": { "$ref": "common/projects_v2_item.schema.json" },
+    "projects_v2_item": { "$ref": "common/projects_v2_item.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "organization": { "$ref": "common/organization.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" }

@@ -4292,7 +4292,7 @@ export interface ProjectsV2ItemArchivedEvent {
     };
   };
   action: "archived";
-  project_v2_item: ProjectsV2Item & {
+  projects_v2_item: ProjectsV2Item & {
     archived_at: string;
   };
   sender: User;
@@ -4321,7 +4321,7 @@ export interface ProjectsV2ItemConvertedEvent {
     };
   };
   action: "converted";
-  project_v2_item: ProjectsV2Item & {
+  projects_v2_item: ProjectsV2Item & {
     content_type: "Issue";
   };
   sender: User;
@@ -4330,7 +4330,7 @@ export interface ProjectsV2ItemConvertedEvent {
 }
 export interface ProjectsV2ItemCreatedEvent {
   action: "created";
-  project_v2_item: ProjectsV2Item & {
+  projects_v2_item: ProjectsV2Item & {
     archived_at: null;
   };
   sender: User;
@@ -4339,7 +4339,7 @@ export interface ProjectsV2ItemCreatedEvent {
 }
 export interface ProjectsV2ItemDeletedEvent {
   action: "created";
-  project_v2_item: ProjectsV2Item;
+  projects_v2_item: ProjectsV2Item;
   sender: User;
   organization?: Organization;
   installation?: InstallationLite;
@@ -4350,7 +4350,7 @@ export interface ProjectsV2ItemEditedEvent {
     field_node_id: string;
   };
   action: "edited";
-  project_v2_item: ProjectsV2Item;
+  projects_v2_item: ProjectsV2Item;
   sender: User;
   organization?: Organization;
   installation?: InstallationLite;
@@ -4363,7 +4363,7 @@ export interface ProjectsV2ItemReorderedEvent {
     };
   };
   action: "reordered";
-  project_v2_item: ProjectsV2Item;
+  projects_v2_item: ProjectsV2Item;
   sender: User;
   organization?: Organization;
   installation?: InstallationLite;
@@ -4376,7 +4376,7 @@ export interface ProjectsV2ItemRestoredEvent {
     };
   };
   action: "restored";
-  project_v2_item: ProjectsV2Item & {
+  projects_v2_item: ProjectsV2Item & {
     archived_at: null;
   };
   sender: User;
