@@ -23,7 +23,7 @@
       "type": "string",
       "enum": ["DraftIssue", "Issue", "PullRequest"]
     },
-    "creator": { "$ref": "common/user.schema.json" },
+    "creator": { "$ref": "user.schema.json" },
     "created_at": { "type": "string", "format": "date-time" },
     "updated_at": { "type": "string", "format": "date-time" },
     "archived_at": { "type": ["string", "null"], "format": "date-time" }
