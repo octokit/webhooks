@@ -6748,7 +6748,7 @@
       },
       "ref_type": {
         "type": "string",
-        "description": "The type of Git ref oject deleted in the repository. Can be `branch` or `tag`."
+        "description": "The type of Git ref object deleted in the repository. Can be either `branch` or `tag`."
       },
       "pusher_type": {
         "type": "string",
@@ -30044,6 +30044,42 @@
         }
       }
     ]
+  },
+  {
+    "name": "projects_v2_item",
+    "description": "Activity related to items in a Projects (beta) project. The type of activity is specified in the `action` property of the payload object. For more information, see \"[About projects (beta)](https://docs.github.com/en/issues/trying-out-the-new-projects-experience/about-projects).\"",
+    "properties": {
+      "projects_v2_item": {
+        "type": "object",
+        "description": "The project item itself. To find more information about the project item, you can use `node_id` (the node ID of the project item) and `project_node_id` (the node ID of the project) to query information in the GraphQL API. For more information, see \"[Using the API to manage projects (beta)](https://docs.github.com/en/issues/trying-out-the-new-projects-experience/using-the-api-to-manage-projects).\""
+      },
+      "changes": {
+        "type": "object",
+        "description": "The changes to the project item."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](https://docs.github.com/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
+    "actions": [
+      "archived",
+      "converted",
+      "created",
+      "deleted",
+      "edited",
+      "reordered",
+      "restored"
+    ],
+    "examples": []
   },
   {
     "name": "public",
@@ -58234,7 +58270,32 @@
     "name": "workflow_dispatch",
     "description": "This event occurs when someone triggers a workflow run on GitHub or sends a `POST` request to the \"[Create a workflow dispatch event](https://docs.github.com/en/rest/reference/actions/#create-a-workflow-dispatch-event)\" endpoint. For more information, see \"[Events that trigger workflows](https://docs.github.com/en/actions/reference/events-that-trigger-workflows#workflow_dispatch).\"",
     "actions": [],
-    "properties": {},
+    "properties": {
+      "inputs": {
+        "type": "object",
+        "description": "Inputs to the workflow. Each key represents the name of the input while it's value represents the value of that input."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](https://docs.github.com/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "ref": {
+        "type": "string",
+        "description": "The branch ref from which the workflow was run."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](https://docs.github.com/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      },
+      "workflow": {
+        "type": "string",
+        "description": "Relative path to the workflow file which contains the workflow."
+      }
+    },
     "examples": [
       {
         "inputs": {},
