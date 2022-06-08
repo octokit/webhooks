@@ -4346,8 +4346,10 @@ export interface ProjectsV2ItemDeletedEvent {
 }
 export interface ProjectsV2ItemEditedEvent {
   changes: {
-    field_type: "single_select" | "date" | "number" | "text" | "iteration";
-    field_node_id: string;
+    field_value: {
+      field_type: "single_select" | "date" | "number" | "text" | "iteration";
+      field_node_id: string;
+    };
   };
   action: "edited";
   projects_v2_item: ProjectsV2Item;
@@ -4359,7 +4361,7 @@ export interface ProjectsV2ItemReorderedEvent {
   changes: {
     previous_projects_v2_item_node_id: {
       from: string;
-      to: null;
+      to: string | null;
     };
   };
   action: "reordered";
