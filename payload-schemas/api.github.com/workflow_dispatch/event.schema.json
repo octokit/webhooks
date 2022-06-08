@@ -19,7 +19,10 @@
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },
     "organization": { "$ref": "common/organization.schema.json" },
-    "workflow": { "type": "string" }
+    "workflow": {
+      "description": "Relative path to the workflow file which contains the workflow.",
+      "type": "string"
+    }
   },
   "additionalProperties": false,
   "title": "workflow_dispatch event"
