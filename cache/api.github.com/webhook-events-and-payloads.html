@@ -640,6 +640,24 @@
             >
               <div class="lh-condensed d-block width-full">
                 <div>
+                  <a class="d-block width-auto" href="#projects_v2_item"
+                    >projects_v2_item</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <ul>
+        <li tabindex="-1" class="Item__StyledItem-sc-yeql7o-2 jlTLRg">
+          <div class="Item__DividedContent-sc-yeql7o-0 jUHGRC">
+            <div
+              style="--main-content-flex-direction: row"
+              class="Item__MainContent-sc-yeql7o-1 hxusas"
+            >
+              <div class="lh-condensed d-block width-full">
+                <div>
                   <a class="d-block width-auto" href="#public">public</a>
                 </div>
               </div>
@@ -13071,11 +13089,27 @@
               fill-rule="evenodd"
               d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"
             ></path></svg></a
-        >public
+        >projects_v2_item
       </h2>
+      <div
+        class="extended-markdown note border rounded-1 mb-4 p-3 color-border-accent-emphasis color-bg-accent f5"
+      >
+        <p>
+          <strong>Note:</strong> Webhook events for Projects (beta) are
+          currently in beta and subject to change. To share feedback about
+          Projects (beta) webhooks with GitHub, see the
+          <a href="https://github.com/github/feedback/discussions/17405"
+            >Projects (beta) webhook feedback discussion</a
+          >.
+        </p>
+      </div>
       <p>
-        When a private repository is made public. Without a doubt: the best
-        GitHub event.
+        Activity related to items in a Projects (beta) project. The type of
+        activity is specified in the <code>action</code> property of the payload
+        object. For more information, see "<a
+          href="/en/issues/trying-out-the-new-projects-experience/about-projects"
+          >About projects (beta)</a
+        >."
       </p>
       <h3 id="availability-34">
         <a
@@ -13104,9 +13138,10 @@
         >Availability
       </h3>
       <ul>
-        <li>Repository webhooks</li>
         <li>Organization webhooks</li>
-        <li>GitHub Apps with the <code>metadata</code> permission</li>
+        <li>
+          GitHub Apps with the <code>organization_projects</code> permission
+        </li>
       </ul>
       <h3 id="webhook-payload-object-34">
         <a
@@ -13114,6 +13149,256 @@
           tabindex="-1"
           class="doctocat-link"
           href="#webhook-payload-object-34"
+          ><svg
+            aria-hidden=""
+            role="img"
+            class="octicon-link"
+            viewBox="0 0 16 16"
+            width="16"
+            height="16"
+            fill="currentColor"
+            style="
+              display: inline-block;
+              user-select: none;
+              vertical-align: middle;
+            "
+          >
+            <path
+              fill-rule="evenodd"
+              d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"
+            ></path></svg></a
+        >Webhook payload object
+      </h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>action</code></td>
+            <td><code>string</code></td>
+            <td>
+              The action that was performed on the project item. Can be one of
+              <code>archived</code>, <code>converted</code>,
+              <code>created</code>, <code>edited</code>, <code>restored</code>,
+              <code>deleted</code>, or <code>reordered</code>.
+            </td>
+          </tr>
+          <tr>
+            <td><code>projects_v2_item</code></td>
+            <td><code>object</code></td>
+            <td>
+              The project item itself. To find more information about the
+              project item, you can use <code>node_id</code> (the node ID of the
+              project item) and <code>project_node_id</code> (the node ID of the
+              project) to query information in the GraphQL API. For more
+              information, see "<a
+                href="/en/issues/trying-out-the-new-projects-experience/using-the-api-to-manage-projects"
+                >Using the API to manage projects (beta)</a
+              >."
+            </td>
+          </tr>
+          <tr>
+            <td><code>changes</code></td>
+            <td><code>object</code></td>
+            <td>The changes to the project item.</td>
+          </tr>
+          <tr>
+            <td><code>organization</code></td>
+            <td><code>object</code></td>
+            <td>
+              Webhook payloads contain the
+              <a href="/en/rest/reference/orgs#get-an-organization"
+                ><code>organization</code></a
+              >
+              object when the webhook is configured for an organization or the
+              event occurs from activity in a repository owned by an
+              organization.
+            </td>
+          </tr>
+          <tr>
+            <td><code>installation</code></td>
+            <td><code>object</code></td>
+            <td>
+              The GitHub App installation. Webhook payloads contain the
+              <code>installation</code> property when the event is configured
+              for and sent to a GitHub App.
+            </td>
+          </tr>
+          <tr>
+            <td><code>sender</code></td>
+            <td><code>object</code></td>
+            <td>The user that triggered the event.</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 id="webhook-payload-example-32">
+        <a
+          aria-hidden=""
+          tabindex="-1"
+          class="doctocat-link"
+          href="#webhook-payload-example-32"
+          ><svg
+            aria-hidden=""
+            role="img"
+            class="octicon-link"
+            viewBox="0 0 16 16"
+            width="16"
+            height="16"
+            fill="currentColor"
+            style="
+              display: inline-block;
+              user-select: none;
+              vertical-align: middle;
+            "
+          >
+            <path
+              fill-rule="evenodd"
+              d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"
+            ></path></svg></a
+        >Webhook payload example
+      </h3>
+      <div class="height-constrained-code-block" data-highlight="json">
+        <pre><code>{
+  "event": "projects_v2_item",
+  "payload": {
+    "action": "created",
+    "projects_v2_item": {
+      "id": 15,
+      "node_id": "PVTI_lAAEAQ8",
+      "project_node_id": "PVT_kwAEAQ",
+      "content_node_id": "DI_lAAEAQo",
+      "content_type": "DraftIssue",
+      "creator": {
+        "login": "monalisa",
+        "id": 2,
+        "node_id": "U_kgAC",
+        "avatar_url": "http://alambic.github.com/avatars/u/2?",
+        "gravatar_id": "",
+        "url": "http://api.github.com/users/monalisa",
+        "html_url": "http://github.com/monalisa",
+        "followers_url": "http://api.github.com/users/monalisa/followers",
+        "following_url": "http://api.github.com/users/monalisa/following{/other_user}",
+        "gists_url": "http://api.github.com/users/monalisa/gists{/gist_id}",
+        "starred_url": "http://api.github.com/users/monalisa/starred{/owner}{/repo}",
+        "subscriptions_url": "http://api.github.com/users/monalisa/subscriptions",
+        "organizations_url": "http://api.github.com/users/monalisa/orgs",
+        "repos_url": "http://api.github.com/users/monalisa/repos",
+        "events_url": "http://api.github.com/users/monalisa/events{/privacy}",
+        "received_events_url": "http://api.github.com/users/monalisa/received_events",
+        "type": "User",
+        "site_admin": true
+      },
+      "created_at": "2022-05-20T21:20:57Z",
+      "updated_at": "2022-05-20T21:20:57Z",
+      "archived_at": null
+    },
+    "organization": {
+      "login": "github",
+      "id": 4,
+      "node_id": "O_kgAE",
+      "url": "http://api.github.com/orgs/github",
+      "repos_url": "http://api.github.com/orgs/github/repos",
+      "events_url": "http://api.github.com/orgs/github/events",
+      "hooks_url": "http://api.github.com/orgs/github/hooks",
+      "issues_url": "http://api.github.com/orgs/github/issues",
+      "members_url": "http://api.github.com/orgs/github/members{/member}",
+      "public_members_url": "http://api.github.com/orgs/github/public_members{/member}",
+      "avatar_url": "http://alambic.github.com/avatars/u/4?",
+      "description": null
+    },
+    "sender": {
+      "login": "monalisa",
+      "id": 2,
+      "node_id": "U_kgAC",
+      "avatar_url": "http://alambic.github.com/avatars/u/2?",
+      "gravatar_id": "",
+      "url": "http://api.github.com/users/monalisa",
+      "html_url": "http://github.com/monalisa",
+      "followers_url": "http://api.github.com/users/monalisa/followers",
+      "following_url": "http://api.github.com/users/monalisa/following{/other_user}",
+      "gists_url": "http://api.github.com/users/monalisa/gists{/gist_id}",
+      "starred_url": "http://api.github.com/users/monalisa/starred{/owner}{/repo}",
+      "subscriptions_url": "http://api.github.com/users/monalisa/subscriptions",
+      "organizations_url": "http://api.github.com/users/monalisa/orgs",
+      "repos_url": "http://api.github.com/users/monalisa/repos",
+      "events_url": "http://api.github.com/users/monalisa/events{/privacy}",
+      "received_events_url": "http://api.github.com/users/monalisa/received_events",
+      "type": "User",
+      "site_admin": true
+    }
+  }
+}
+</code></pre>
+      </div>
+      <h2 id="public">
+        <a aria-hidden="" tabindex="-1" class="doctocat-link" href="#public"
+          ><svg
+            aria-hidden=""
+            role="img"
+            class="octicon-link"
+            viewBox="0 0 16 16"
+            width="16"
+            height="16"
+            fill="currentColor"
+            style="
+              display: inline-block;
+              user-select: none;
+              vertical-align: middle;
+            "
+          >
+            <path
+              fill-rule="evenodd"
+              d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"
+            ></path></svg></a
+        >public
+      </h2>
+      <p>
+        When a private repository is made public. Without a doubt: the best
+        GitHub event.
+      </p>
+      <h3 id="availability-35">
+        <a
+          aria-hidden=""
+          tabindex="-1"
+          class="doctocat-link"
+          href="#availability-35"
+          ><svg
+            aria-hidden=""
+            role="img"
+            class="octicon-link"
+            viewBox="0 0 16 16"
+            width="16"
+            height="16"
+            fill="currentColor"
+            style="
+              display: inline-block;
+              user-select: none;
+              vertical-align: middle;
+            "
+          >
+            <path
+              fill-rule="evenodd"
+              d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"
+            ></path></svg></a
+        >Availability
+      </h3>
+      <ul>
+        <li>Repository webhooks</li>
+        <li>Organization webhooks</li>
+        <li>GitHub Apps with the <code>metadata</code> permission</li>
+      </ul>
+      <h3 id="webhook-payload-object-35">
+        <a
+          aria-hidden=""
+          tabindex="-1"
+          class="doctocat-link"
+          href="#webhook-payload-object-35"
           ><svg
             aria-hidden=""
             role="img"
