@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/projects_v2_item.schema.json",
+  "description": "The project item itself. To find more information about the project item, you can use `node_id` (the node ID of the project item) and `project_node_id` (the node ID of the project) to query information in the GraphQL API. For more information, see \"[Using the API to manage projects (beta)](https://docs.github.com/en/issues/trying-out-the-new-projects-experience/using-the-api-to-manage-projects).\"",
+  "type": "object",
+  "required": [
+    "id",
+    "node_id",
+    "project_node_id",
+    "content_node_id",
+    "content_type",
+    "creator",
+    "created_at",
+    "updated_at",
+    "archived_at"
+  ],
+  "properties": {
+    "id": { "type": "number" },
+    "node_id": { "type": "string" },
+    "project_node_id": { "type": "string" },
+    "content_node_id": { "type": "string" },
+    "content_type": {
+      "type": "string",
+      "enum": ["DraftIssue", "Issue", "PullRequest"]
+    },
+    "creator": { "$ref": "common/user.schema.json" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "archived_at": { "type": ["string", "null"], "format": "date-time" }
+  },
+  "additionalProperties": false
+}
