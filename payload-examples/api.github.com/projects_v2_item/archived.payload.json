@@ -31,10 +31,7 @@
     "archived_at": "2022-06-08T21:19:35Z"
   },
   "changes": {
-    "archived_at": {
-      "from": null,
-      "to": "2022-06-08T17:19:35-04:00"
-    }
+    "archived_at": { "from": null, "to": "2022-06-08T17:19:35-04:00" }
   },
   "organization": {
     "login": "Octocoders",

@@ -12,14 +12,8 @@
           "type": "object",
           "required": ["from", "to"],
           "properties": {
-            "from": {
-              "type": "string",
-              "enum": ["DraftIssue"]
-            },
-            "to": {
-              "type": "string",
-              "enum": ["Issue"]
-            }
+            "from": { "type": "string", "enum": ["DraftIssue"] },
+            "to": { "type": "string", "enum": ["Issue"] }
           },
           "additionalProperties": false
         }

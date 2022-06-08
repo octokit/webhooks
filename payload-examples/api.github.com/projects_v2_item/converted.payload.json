@@ -30,12 +30,7 @@
     "updated_at": "2022-06-08T21:14:17Z",
     "archived_at": null
   },
-  "changes": {
-    "content_type": {
-      "from": "DraftIssue",
-      "to": "Issue"
-    }
-  },
+  "changes": { "content_type": { "from": "DraftIssue", "to": "Issue" } },
   "organization": {
     "login": "Octocoders",
     "id": 38302899,

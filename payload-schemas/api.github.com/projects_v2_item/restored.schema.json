@@ -12,13 +12,8 @@
           "type": "object",
           "required": ["from", "to"],
           "properties": {
-            "from": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "to": {
-              "type": "null"
-            }
+            "from": { "type": "string", "format": "date-time" },
+            "to": { "type": "null" }
           },
           "additionalProperties": false
         }
@@ -32,9 +27,7 @@
         {
           "type": "object",
           "required": ["archived_at"],
-          "properties": {
-            "archived_at": { "type": "null" }
-          },
+          "properties": { "archived_at": { "type": "null" } },
           "tsAdditionalProperties": false
         }
       ]

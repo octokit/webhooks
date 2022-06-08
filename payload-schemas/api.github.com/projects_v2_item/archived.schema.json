@@ -12,13 +12,8 @@
           "type": "object",
           "required": ["from", "to"],
           "properties": {
-            "from": {
-              "type": "null"
-            },
-            "to": {
-              "type": "string",
-              "format": "date-time"
-            }
+            "from": { "type": "null" },
+            "to": { "type": "string", "format": "date-time" }
           },
           "additionalProperties": false
         }
