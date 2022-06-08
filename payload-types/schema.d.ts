@@ -6209,6 +6209,9 @@ export interface WorkflowDispatchEvent {
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
+  /**
+   * Relative path to the workflow file which contains the workflow.
+   */
   workflow: string;
 }
 export interface WorkflowJobCompletedEvent {
