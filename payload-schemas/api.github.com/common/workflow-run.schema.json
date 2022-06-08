@@ -62,6 +62,7 @@
     "head_commit": { "$ref": "commit-simple.schema.json" },
     "head_repository": { "$ref": "repository-lite.schema.json" },
     "head_sha": { "type": "string" },
+    "path": { "type": "string" },
     "html_url": { "type": "string", "format": "uri" },
     "id": { "type": "integer" },
     "jobs_url": { "type": "string", "format": "uri" },
