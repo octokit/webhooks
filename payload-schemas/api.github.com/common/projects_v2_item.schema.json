@@ -28,5 +28,6 @@
     "updated_at": { "type": "string", "format": "date-time" },
     "archived_at": { "type": ["string", "null"], "format": "date-time" }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "title": "Projects v2 Item"
 }
