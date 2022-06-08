@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "projects_v2_item$deleted",
+  "type": "object",
+  "required": ["action", "projects_v2_item", "sender"],
+  "properties": {
+    "action": { "type": "string", "enum": ["deleted"] },
+    "projects_v2_item": { "$ref": "common/projects_v2_item.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" }
+  },
+  "additionalProperties": false,
+  "title": "projects_v2_item deleted event"
+}

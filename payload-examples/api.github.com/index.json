@@ -6748,7 +6748,7 @@
       },
       "ref_type": {
         "type": "string",
-        "description": "The type of Git ref oject deleted in the repository. Can be `branch` or `tag`."
+        "description": "The type of Git ref object deleted in the repository. Can be either `branch` or `tag`."
       },
       "pusher_type": {
         "type": "string",
@@ -30021,6 +30021,476 @@
           "is_template": false,
           "topics": [],
           "visibility": "public"
+        },
+        "sender": {
+          "login": "Codertocat",
+          "id": 21031067,
+          "node_id": "MDQ6VXNlcjIxMDMxMDY3",
+          "avatar_url": "https://avatars1.githubusercontent.com/u/21031067?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/Codertocat",
+          "html_url": "https://github.com/Codertocat",
+          "followers_url": "https://api.github.com/users/Codertocat/followers",
+          "following_url": "https://api.github.com/users/Codertocat/following{/other_user}",
+          "gists_url": "https://api.github.com/users/Codertocat/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/Codertocat/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/Codertocat/subscriptions",
+          "organizations_url": "https://api.github.com/users/Codertocat/orgs",
+          "repos_url": "https://api.github.com/users/Codertocat/repos",
+          "events_url": "https://api.github.com/users/Codertocat/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/Codertocat/received_events",
+          "type": "User",
+          "site_admin": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "projects_v2_item",
+    "description": "Activity related to items in a Projects (beta) project. The type of activity is specified in the `action` property of the payload object. For more information, see \"[About projects (beta)](https://docs.github.com/en/issues/trying-out-the-new-projects-experience/about-projects).\"",
+    "actions": [
+      "archived",
+      "converted",
+      "created",
+      "deleted",
+      "edited",
+      "reordered",
+      "restored"
+    ],
+    "properties": {
+      "projects_v2_item": {
+        "type": "object",
+        "description": "The project item itself. To find more information about the project item, you can use `node_id` (the node ID of the project item) and `project_node_id` (the node ID of the project) to query information in the GraphQL API. For more information, see \"[Using the API to manage projects (beta)](https://docs.github.com/en/issues/trying-out-the-new-projects-experience/using-the-api-to-manage-projects).\""
+      },
+      "changes": {
+        "type": "object",
+        "description": "The changes to the project item."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](https://docs.github.com/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "installation": {
+        "type": "object",
+        "description": "The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured for and sent to a GitHub App."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      }
+    },
+    "examples": [
+      {
+        "action": "archived",
+        "projects_v2_item": {
+          "id": 5679898,
+          "node_id": "PVTI_lADOAWcTxs4ACgDdzgBWqxo",
+          "project_node_id": "PVT_kwDOAWcTxs4ACgDd",
+          "content_node_id": "I_kwDOCG5vGM5La0aB",
+          "content_type": "Issue",
+          "creator": {
+            "login": "Codertocat",
+            "id": 21031067,
+            "node_id": "MDQ6VXNlcjIxMDMxMDY3",
+            "avatar_url": "https://avatars1.githubusercontent.com/u/21031067?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/Codertocat",
+            "html_url": "https://github.com/Codertocat",
+            "followers_url": "https://api.github.com/users/Codertocat/followers",
+            "following_url": "https://api.github.com/users/Codertocat/following{/other_user}",
+            "gists_url": "https://api.github.com/users/Codertocat/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/Codertocat/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/Codertocat/subscriptions",
+            "organizations_url": "https://api.github.com/users/Codertocat/orgs",
+            "repos_url": "https://api.github.com/users/Codertocat/repos",
+            "events_url": "https://api.github.com/users/Codertocat/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/Codertocat/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "created_at": "2022-06-08T21:14:07Z",
+          "updated_at": "2022-06-08T21:19:35Z",
+          "archived_at": "2022-06-08T21:19:35Z"
+        },
+        "changes": {
+          "archived_at": { "from": null, "to": "2022-06-08T17:19:35-04:00" }
+        },
+        "organization": {
+          "login": "Octocoders",
+          "id": 38302899,
+          "node_id": "MDEyOk9yZ2FuaXphdGlvbjM4MzAyODk5",
+          "url": "https://api.github.com/orgs/Octocoders",
+          "repos_url": "https://api.github.com/orgs/Octocoders/repos",
+          "events_url": "https://api.github.com/orgs/Octocoders/events",
+          "hooks_url": "https://api.github.com/orgs/Octocoders/hooks",
+          "issues_url": "https://api.github.com/orgs/Octocoders/issues",
+          "members_url": "https://api.github.com/orgs/Octocoders/members{/member}",
+          "public_members_url": "https://api.github.com/orgs/Octocoders/public_members{/member}",
+          "avatar_url": "https://avatars1.githubusercontent.com/u/38302899?v=4",
+          "description": ""
+        },
+        "sender": {
+          "login": "Codertocat",
+          "id": 21031067,
+          "node_id": "MDQ6VXNlcjIxMDMxMDY3",
+          "avatar_url": "https://avatars1.githubusercontent.com/u/21031067?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/Codertocat",
+          "html_url": "https://github.com/Codertocat",
+          "followers_url": "https://api.github.com/users/Codertocat/followers",
+          "following_url": "https://api.github.com/users/Codertocat/following{/other_user}",
+          "gists_url": "https://api.github.com/users/Codertocat/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/Codertocat/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/Codertocat/subscriptions",
+          "organizations_url": "https://api.github.com/users/Codertocat/orgs",
+          "repos_url": "https://api.github.com/users/Codertocat/repos",
+          "events_url": "https://api.github.com/users/Codertocat/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/Codertocat/received_events",
+          "type": "User",
+          "site_admin": false
+        }
+      },
+      {
+        "action": "converted",
+        "projects_v2_item": {
+          "id": 5679898,
+          "node_id": "PVTI_lADOAWcTxs4ACgDdzgBWqxo",
+          "project_node_id": "PVT_kwDOAWcTxs4ACgDd",
+          "content_node_id": "I_kwDOCG5vGM5La0aB",
+          "content_type": "Issue",
+          "creator": {
+            "login": "Codertocat",
+            "id": 21031067,
+            "node_id": "MDQ6VXNlcjIxMDMxMDY3",
+            "avatar_url": "https://avatars1.githubusercontent.com/u/21031067?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/Codertocat",
+            "html_url": "https://github.com/Codertocat",
+            "followers_url": "https://api.github.com/users/Codertocat/followers",
+            "following_url": "https://api.github.com/users/Codertocat/following{/other_user}",
+            "gists_url": "https://api.github.com/users/Codertocat/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/Codertocat/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/Codertocat/subscriptions",
+            "organizations_url": "https://api.github.com/users/Codertocat/orgs",
+            "repos_url": "https://api.github.com/users/Codertocat/repos",
+            "events_url": "https://api.github.com/users/Codertocat/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/Codertocat/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "created_at": "2022-06-08T21:14:07Z",
+          "updated_at": "2022-06-08T21:14:17Z",
+          "archived_at": null
+        },
+        "changes": { "content_type": { "from": "DraftIssue", "to": "Issue" } },
+        "organization": {
+          "login": "Octocoders",
+          "id": 38302899,
+          "node_id": "MDEyOk9yZ2FuaXphdGlvbjM4MzAyODk5",
+          "url": "https://api.github.com/orgs/Octocoders",
+          "repos_url": "https://api.github.com/orgs/Octocoders/repos",
+          "events_url": "https://api.github.com/orgs/Octocoders/events",
+          "hooks_url": "https://api.github.com/orgs/Octocoders/hooks",
+          "issues_url": "https://api.github.com/orgs/Octocoders/issues",
+          "members_url": "https://api.github.com/orgs/Octocoders/members{/member}",
+          "public_members_url": "https://api.github.com/orgs/Octocoders/public_members{/member}",
+          "avatar_url": "https://avatars1.githubusercontent.com/u/38302899?v=4",
+          "description": ""
+        },
+        "sender": {
+          "login": "Codertocat",
+          "id": 21031067,
+          "node_id": "MDQ6VXNlcjIxMDMxMDY3",
+          "avatar_url": "https://avatars1.githubusercontent.com/u/21031067?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/Codertocat",
+          "html_url": "https://github.com/Codertocat",
+          "followers_url": "https://api.github.com/users/Codertocat/followers",
+          "following_url": "https://api.github.com/users/Codertocat/following{/other_user}",
+          "gists_url": "https://api.github.com/users/Codertocat/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/Codertocat/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/Codertocat/subscriptions",
+          "organizations_url": "https://api.github.com/users/Codertocat/orgs",
+          "repos_url": "https://api.github.com/users/Codertocat/repos",
+          "events_url": "https://api.github.com/users/Codertocat/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/Codertocat/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "installation": {
+          "id": 1,
+          "node_id": "MDIzOkludGVncmF0aW9uSW5zdGFsbGF0aW9uMQ=="
+        }
+      },
+      {
+        "action": "created",
+        "projects_v2_item": {
+          "id": 5678510,
+          "node_id": "PVTI_lADOAWcTxs07G84AVqWu",
+          "project_node_id": "PVT_kwDOAWcTxs07Gw",
+          "content_node_id": "DI_lADOAWcTxs07G84AIjOy",
+          "content_type": "DraftIssue",
+          "creator": {
+            "login": "Codertocat",
+            "id": 21031067,
+            "node_id": "MDQ6VXNlcjIxMDMxMDY3",
+            "avatar_url": "https://avatars1.githubusercontent.com/u/21031067?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/Codertocat",
+            "html_url": "https://github.com/Codertocat",
+            "followers_url": "https://api.github.com/users/Codertocat/followers",
+            "following_url": "https://api.github.com/users/Codertocat/following{/other_user}",
+            "gists_url": "https://api.github.com/users/Codertocat/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/Codertocat/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/Codertocat/subscriptions",
+            "organizations_url": "https://api.github.com/users/Codertocat/orgs",
+            "repos_url": "https://api.github.com/users/Codertocat/repos",
+            "events_url": "https://api.github.com/users/Codertocat/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/Codertocat/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "created_at": "2022-06-08T20:34:26Z",
+          "updated_at": "2022-06-08T20:34:26Z",
+          "archived_at": null
+        },
+        "organization": {
+          "login": "Octocoders",
+          "id": 38302899,
+          "node_id": "MDEyOk9yZ2FuaXphdGlvbjM4MzAyODk5",
+          "url": "https://api.github.com/orgs/Octocoders",
+          "repos_url": "https://api.github.com/orgs/Octocoders/repos",
+          "events_url": "https://api.github.com/orgs/Octocoders/events",
+          "hooks_url": "https://api.github.com/orgs/Octocoders/hooks",
+          "issues_url": "https://api.github.com/orgs/Octocoders/issues",
+          "members_url": "https://api.github.com/orgs/Octocoders/members{/member}",
+          "public_members_url": "https://api.github.com/orgs/Octocoders/public_members{/member}",
+          "avatar_url": "https://avatars1.githubusercontent.com/u/38302899?v=4",
+          "description": ""
+        },
+        "sender": {
+          "login": "Codertocat",
+          "id": 21031067,
+          "node_id": "MDQ6VXNlcjIxMDMxMDY3",
+          "avatar_url": "https://avatars1.githubusercontent.com/u/21031067?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/Codertocat",
+          "html_url": "https://github.com/Codertocat",
+          "followers_url": "https://api.github.com/users/Codertocat/followers",
+          "following_url": "https://api.github.com/users/Codertocat/following{/other_user}",
+          "gists_url": "https://api.github.com/users/Codertocat/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/Codertocat/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/Codertocat/subscriptions",
+          "organizations_url": "https://api.github.com/users/Codertocat/orgs",
+          "repos_url": "https://api.github.com/users/Codertocat/repos",
+          "events_url": "https://api.github.com/users/Codertocat/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/Codertocat/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "installation": {
+          "id": 1,
+          "node_id": "MDIzOkludGVncmF0aW9uSW5zdGFsbGF0aW9uMQ=="
+        }
+      },
+      {
+        "action": "edited",
+        "projects_v2_item": {
+          "id": 5678510,
+          "node_id": "PVTI_lADOAWcTxs07G84AVqWu",
+          "project_node_id": "PVT_kwDOAWcTxs07Gw",
+          "content_node_id": "DI_lADOAWcTxs07G84AIjOy",
+          "content_type": "DraftIssue",
+          "creator": {
+            "login": "wolfy1339",
+            "id": 4595477,
+            "node_id": "MDQ6VXNlcjQ1OTU0Nzc=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/4595477?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/wolfy1339",
+            "html_url": "https://github.com/wolfy1339",
+            "followers_url": "https://api.github.com/users/wolfy1339/followers",
+            "following_url": "https://api.github.com/users/wolfy1339/following{/other_user}",
+            "gists_url": "https://api.github.com/users/wolfy1339/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/wolfy1339/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/wolfy1339/subscriptions",
+            "organizations_url": "https://api.github.com/users/wolfy1339/orgs",
+            "repos_url": "https://api.github.com/users/wolfy1339/repos",
+            "events_url": "https://api.github.com/users/wolfy1339/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/wolfy1339/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "created_at": "2022-06-08T20:34:26Z",
+          "updated_at": "2022-06-08T20:34:26Z",
+          "archived_at": null
+        },
+        "changes": {
+          "field_value": {
+            "field_node_id": "PVTF_lADOAWcTxs07G84AAali",
+            "field_type": "single_select"
+          }
+        },
+        "organization": {
+          "login": "Octocoders",
+          "id": 38302899,
+          "node_id": "MDEyOk9yZ2FuaXphdGlvbjM4MzAyODk5",
+          "url": "https://api.github.com/orgs/Octocoders",
+          "repos_url": "https://api.github.com/orgs/Octocoders/repos",
+          "events_url": "https://api.github.com/orgs/Octocoders/events",
+          "hooks_url": "https://api.github.com/orgs/Octocoders/hooks",
+          "issues_url": "https://api.github.com/orgs/Octocoders/issues",
+          "members_url": "https://api.github.com/orgs/Octocoders/members{/member}",
+          "public_members_url": "https://api.github.com/orgs/Octocoders/public_members{/member}",
+          "avatar_url": "https://avatars1.githubusercontent.com/u/38302899?v=4",
+          "description": ""
+        },
+        "sender": {
+          "login": "wolfy1339",
+          "id": 4595477,
+          "node_id": "MDQ6VXNlcjQ1OTU0Nzc=",
+          "avatar_url": "https://avatars.githubusercontent.com/u/4595477?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/wolfy1339",
+          "html_url": "https://github.com/wolfy1339",
+          "followers_url": "https://api.github.com/users/wolfy1339/followers",
+          "following_url": "https://api.github.com/users/wolfy1339/following{/other_user}",
+          "gists_url": "https://api.github.com/users/wolfy1339/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/wolfy1339/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/wolfy1339/subscriptions",
+          "organizations_url": "https://api.github.com/users/wolfy1339/orgs",
+          "repos_url": "https://api.github.com/users/wolfy1339/repos",
+          "events_url": "https://api.github.com/users/wolfy1339/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/wolfy1339/received_events",
+          "type": "User",
+          "site_admin": false
+        }
+      },
+      {
+        "action": "reordered",
+        "projects_v2_item": {
+          "id": 5679898,
+          "node_id": "PVTI_lADOAWcTxs4ACgDdzgBWqxo",
+          "project_node_id": "PVT_kwDOAWcTxs4ACgDd",
+          "content_node_id": "I_kwDOCG5vGM5La0aB",
+          "content_type": "Issue",
+          "creator": {
+            "login": "Codertocat",
+            "id": 21031067,
+            "node_id": "MDQ6VXNlcjIxMDMxMDY3",
+            "avatar_url": "https://avatars1.githubusercontent.com/u/21031067?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/Codertocat",
+            "html_url": "https://github.com/Codertocat",
+            "followers_url": "https://api.github.com/users/Codertocat/followers",
+            "following_url": "https://api.github.com/users/Codertocat/following{/other_user}",
+            "gists_url": "https://api.github.com/users/Codertocat/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/Codertocat/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/Codertocat/subscriptions",
+            "organizations_url": "https://api.github.com/users/Codertocat/orgs",
+            "repos_url": "https://api.github.com/users/Codertocat/repos",
+            "events_url": "https://api.github.com/users/Codertocat/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/Codertocat/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "created_at": "2022-06-08T21:14:07Z",
+          "updated_at": "2022-06-08T21:14:17Z",
+          "archived_at": null
+        },
+        "changes": {
+          "previous_projects_v2_item_node_id": {
+            "from": "PVTI_lADOAWcTxs4ACgDdzgBWqwI",
+            "to": "PVTI_lADOAWcTxs4ACgDdzgBWqwI"
+          }
+        },
+        "organization": {
+          "login": "Octocoders",
+          "id": 38302899,
+          "node_id": "MDEyOk9yZ2FuaXphdGlvbjM4MzAyODk5",
+          "url": "https://api.github.com/orgs/Octocoders",
+          "repos_url": "https://api.github.com/orgs/Octocoders/repos",
+          "events_url": "https://api.github.com/orgs/Octocoders/events",
+          "hooks_url": "https://api.github.com/orgs/Octocoders/hooks",
+          "issues_url": "https://api.github.com/orgs/Octocoders/issues",
+          "members_url": "https://api.github.com/orgs/Octocoders/members{/member}",
+          "public_members_url": "https://api.github.com/orgs/Octocoders/public_members{/member}",
+          "avatar_url": "https://avatars1.githubusercontent.com/u/38302899?v=4",
+          "description": ""
+        },
+        "sender": {
+          "login": "Codertocat",
+          "id": 21031067,
+          "node_id": "MDQ6VXNlcjIxMDMxMDY3",
+          "avatar_url": "https://avatars1.githubusercontent.com/u/21031067?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/Codertocat",
+          "html_url": "https://github.com/Codertocat",
+          "followers_url": "https://api.github.com/users/Codertocat/followers",
+          "following_url": "https://api.github.com/users/Codertocat/following{/other_user}",
+          "gists_url": "https://api.github.com/users/Codertocat/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/Codertocat/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/Codertocat/subscriptions",
+          "organizations_url": "https://api.github.com/users/Codertocat/orgs",
+          "repos_url": "https://api.github.com/users/Codertocat/repos",
+          "events_url": "https://api.github.com/users/Codertocat/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/Codertocat/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "installation": {
+          "id": 249715,
+          "node_id": "MDIzOkludGVncmF0aW9uSW5zdGFsbGF0aW9uMjQ5NzE1"
+        }
+      },
+      {
+        "action": "restored",
+        "projects_v2_item": {
+          "id": 5679898,
+          "node_id": "PVTI_lADOAWcTxs4ACgDdzgBWqxo",
+          "project_node_id": "PVT_kwDOAWcTxs4ACgDd",
+          "content_node_id": "I_kwDOCG5vGM5La0aB",
+          "content_type": "Issue",
+          "creator": {
+            "login": "Codertocat",
+            "id": 21031067,
+            "node_id": "MDQ6VXNlcjIxMDMxMDY3",
+            "avatar_url": "https://avatars1.githubusercontent.com/u/21031067?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/Codertocat",
+            "html_url": "https://github.com/Codertocat",
+            "followers_url": "https://api.github.com/users/Codertocat/followers",
+            "following_url": "https://api.github.com/users/Codertocat/following{/other_user}",
+            "gists_url": "https://api.github.com/users/Codertocat/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/Codertocat/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/Codertocat/subscriptions",
+            "organizations_url": "https://api.github.com/users/Codertocat/orgs",
+            "repos_url": "https://api.github.com/users/Codertocat/repos",
+            "events_url": "https://api.github.com/users/Codertocat/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/Codertocat/received_events",
+            "type": "User",
+            "site_admin": false
+          },
+          "created_at": "2022-06-08T21:14:07Z",
+          "updated_at": "2022-06-08T21:19:43Z",
+          "archived_at": null
+        },
+        "changes": {
+          "archived_at": { "from": "2022-06-08T17:19:35-04:00", "to": null }
+        },
+        "organization": {
+          "login": "Octocoders",
+          "id": 38302899,
+          "node_id": "MDEyOk9yZ2FuaXphdGlvbjM4MzAyODk5",
+          "url": "https://api.github.com/orgs/Octocoders",
+          "repos_url": "https://api.github.com/orgs/Octocoders/repos",
+          "events_url": "https://api.github.com/orgs/Octocoders/events",
+          "hooks_url": "https://api.github.com/orgs/Octocoders/hooks",
+          "issues_url": "https://api.github.com/orgs/Octocoders/issues",
+          "members_url": "https://api.github.com/orgs/Octocoders/members{/member}",
+          "public_members_url": "https://api.github.com/orgs/Octocoders/public_members{/member}",
+          "avatar_url": "https://avatars1.githubusercontent.com/u/38302899?v=4",
+          "description": ""
         },
         "sender": {
           "login": "Codertocat",
@@ -58234,7 +58704,32 @@
     "name": "workflow_dispatch",
     "description": "This event occurs when someone triggers a workflow run on GitHub or sends a `POST` request to the \"[Create a workflow dispatch event](https://docs.github.com/en/rest/reference/actions/#create-a-workflow-dispatch-event)\" endpoint. For more information, see \"[Events that trigger workflows](https://docs.github.com/en/actions/reference/events-that-trigger-workflows#workflow_dispatch).\"",
     "actions": [],
-    "properties": {},
+    "properties": {
+      "inputs": {
+        "type": "object",
+        "description": "Inputs to the workflow. Each key represents the name of the input while it's value represents the value of that input."
+      },
+      "organization": {
+        "type": "object",
+        "description": "Webhook payloads contain the [`organization`](https://docs.github.com/en/rest/reference/orgs#get-an-organization) object when the webhook is configured for an organization or the event occurs from activity in a repository owned by an organization."
+      },
+      "ref": {
+        "type": "string",
+        "description": "The branch ref from which the workflow was run."
+      },
+      "repository": {
+        "type": "object",
+        "description": "The [`repository`](https://docs.github.com/en/rest/reference/repos#get-a-repository) where the event occurred."
+      },
+      "sender": {
+        "type": "object",
+        "description": "The user that triggered the event."
+      },
+      "workflow": {
+        "type": "string",
+        "description": "Relative path to the workflow file which contains the workflow."
+      }
+    },
     "examples": [
       {
         "inputs": {},

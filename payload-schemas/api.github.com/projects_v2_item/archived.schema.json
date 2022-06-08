@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "projects_v2_item$archived",
+  "type": "object",
+  "required": ["changes", "action", "projects_v2_item", "sender"],
+  "properties": {
+    "changes": {
+      "type": "object",
+      "required": ["archived_at"],
+      "properties": {
+        "archived_at": {
+          "type": "object",
+          "required": ["from", "to"],
+          "properties": {
+            "from": { "type": "null" },
+            "to": { "type": "string", "format": "date-time" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "action": { "type": "string", "enum": ["archived"] },
+    "projects_v2_item": {
+      "allOf": [
+        { "$ref": "common/projects_v2_item.schema.json" },
+        {
+          "type": "object",
+          "required": ["archived_at"],
+          "properties": {
+            "archived_at": { "type": "string", "format": "date-time" }
+          },
+          "tsAdditionalProperties": false
+        }
+      ]
+    },
+    "sender": { "$ref": "common/user.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" }
+  },
+  "additionalProperties": false,
+  "title": "projects_v2_item archived event"
+}

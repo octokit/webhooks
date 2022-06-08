@@ -39,6 +39,7 @@ export type Schema =
   | ProjectEvent
   | ProjectCardEvent
   | ProjectColumnEvent
+  | ProjectsV2ItemEvent
   | PublicEvent
   | PullRequestEvent
   | PullRequestReviewEvent
@@ -244,6 +245,14 @@ export type ProjectColumnEvent =
   | ProjectColumnDeletedEvent
   | ProjectColumnEditedEvent
   | ProjectColumnMovedEvent;
+export type ProjectsV2ItemEvent =
+  | ProjectsV2ItemArchivedEvent
+  | ProjectsV2ItemConvertedEvent
+  | ProjectsV2ItemCreatedEvent
+  | ProjectsV2ItemDeletedEvent
+  | ProjectsV2ItemEditedEvent
+  | ProjectsV2ItemReorderedEvent
+  | ProjectsV2ItemRestoredEvent;
 export type PullRequestEvent =
   | PullRequestAssignedEvent
   | PullRequestAutoMergeDisabledEvent
@@ -4275,6 +4284,107 @@ export interface ProjectColumnMovedEvent {
   installation?: InstallationLite;
   organization?: Organization;
 }
+export interface ProjectsV2ItemArchivedEvent {
+  changes: {
+    archived_at: {
+      from: null;
+      to: string;
+    };
+  };
+  action: "archived";
+  projects_v2_item: ProjectsV2Item & {
+    archived_at: string;
+  };
+  sender: User;
+  organization?: Organization;
+  installation?: InstallationLite;
+}
+/**
+ * The project item itself. To find more information about the project item, you can use `node_id` (the node ID of the project item) and `project_node_id` (the node ID of the project) to query information in the GraphQL API. For more information, see "[Using the API to manage projects (beta)](https://docs.github.com/en/issues/trying-out-the-new-projects-experience/using-the-api-to-manage-projects)."
+ */
+export interface ProjectsV2Item {
+  id: number;
+  node_id: string;
+  project_node_id: string;
+  content_node_id: string;
+  content_type: "DraftIssue" | "Issue" | "PullRequest";
+  creator: User;
+  created_at: string;
+  updated_at: string;
+  archived_at: string | null;
+}
+export interface ProjectsV2ItemConvertedEvent {
+  changes: {
+    content_type: {
+      from: "DraftIssue";
+      to: "Issue";
+    };
+  };
+  action: "converted";
+  projects_v2_item: ProjectsV2Item & {
+    content_type: "Issue";
+  };
+  sender: User;
+  organization?: Organization;
+  installation?: InstallationLite;
+}
+export interface ProjectsV2ItemCreatedEvent {
+  action: "created";
+  projects_v2_item: ProjectsV2Item & {
+    archived_at: null;
+  };
+  sender: User;
+  organization?: Organization;
+  installation?: InstallationLite;
+}
+export interface ProjectsV2ItemDeletedEvent {
+  action: "deleted";
+  projects_v2_item: ProjectsV2Item;
+  sender: User;
+  organization?: Organization;
+  installation?: InstallationLite;
+}
+export interface ProjectsV2ItemEditedEvent {
+  changes: {
+    field_value: {
+      field_type: "single_select" | "date" | "number" | "text" | "iteration";
+      field_node_id: string;
+    };
+  };
+  action: "edited";
+  projects_v2_item: ProjectsV2Item;
+  sender: User;
+  organization?: Organization;
+  installation?: InstallationLite;
+}
+export interface ProjectsV2ItemReorderedEvent {
+  changes: {
+    previous_projects_v2_item_node_id: {
+      from: string;
+      to: string | null;
+    };
+  };
+  action: "reordered";
+  projects_v2_item: ProjectsV2Item;
+  sender: User;
+  organization?: Organization;
+  installation?: InstallationLite;
+}
+export interface ProjectsV2ItemRestoredEvent {
+  changes: {
+    archived_at: {
+      from: string;
+      to: null;
+    };
+  };
+  action: "restored";
+  projects_v2_item: ProjectsV2Item & {
+    archived_at: null;
+  };
+  sender: User;
+  organization?: Organization;
+  installation?: InstallationLite;
+}
 /**
  * When a private repository is made public.
  */
@@ -6085,9 +6195,15 @@ export interface WatchStartedEvent {
   organization?: Organization;
 }
 export interface WorkflowDispatchEvent {
+  /**
+   * Inputs to the workflow. Each key represents the name of the input while it's value represents the value of that input.
+   */
   inputs: {
     [k: string]: unknown;
   } | null;
+  /**
+   * The branch ref from which the workflow was run.
+   */
   ref: string;
   repository: Repository;
   sender: User;
@@ -6381,6 +6497,7 @@ export interface EventPayloadMap {
   project: ProjectEvent;
   project_card: ProjectCardEvent;
   project_column: ProjectColumnEvent;
+  projects_v2_item: ProjectsV2ItemEvent;
   public: PublicEvent;
   pull_request: PullRequestEvent;
   pull_request_review: PullRequestReviewEvent;
