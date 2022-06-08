@@ -5,12 +5,13 @@
   "required": ["inputs", "ref", "repository", "sender", "workflow"],
   "properties": {
     "inputs": {
+      "description": "Inputs to the workflow. Each key represents the name of the input while it's value represents the value of that input.",
       "oneOf": [
         { "type": "object", "properties": {}, "additionalProperties": true },
         { "type": "null" }
       ]
     },
-    "ref": { "type": "string" },
+    "ref": { "description": "The branch ref from which the workflow was run.", "type": "string" },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },
