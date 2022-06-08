@@ -16,7 +16,7 @@
           "type": "object",
           "required": ["conclusion"],
           "properties": {
-            "conclusion": { "type": "string", "enum": ["success", "failure"] }
+            "conclusion": { "type": "string", "enum": ["success", "failure", "cancelled"] }
           },
           "tsAdditionalProperties": false
         }
