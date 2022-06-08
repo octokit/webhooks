@@ -13,7 +13,7 @@
           "required": ["from", "to"],
           "properties": {
             "from": { "type": "string" },
-            "to": { "type": "null" }
+            "to": { "type": ["string", "null"] }
           },
           "additionalProperties": false
         }
