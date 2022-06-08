@@ -4338,7 +4338,7 @@ export interface ProjectsV2ItemCreatedEvent {
   installation?: InstallationLite;
 }
 export interface ProjectsV2ItemDeletedEvent {
-  action: "created";
+  action: "deleted";
   projects_v2_item: ProjectsV2Item;
   sender: User;
   organization?: Organization;
