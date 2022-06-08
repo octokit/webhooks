@@ -11,7 +11,10 @@
         { "type": "null" }
       ]
     },
-    "ref": { "description": "The branch ref from which the workflow was run.", "type": "string" },
+    "ref": {
+      "description": "The branch ref from which the workflow was run.",
+      "type": "string"
+    },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },
