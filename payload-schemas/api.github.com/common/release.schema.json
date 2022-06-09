@@ -53,6 +53,7 @@
     "tarball_url": { "type": ["string", "null"], "format": "uri" },
     "zipball_url": { "type": ["string", "null"], "format": "uri" },
     "body": { "type": "string" },
+    "mentions_count": { "type": "integer" },
     "reactions": { "$ref": "reactions.schema.json" },
     "discussion_url": { "type": "string", "format": "uri" }
   },

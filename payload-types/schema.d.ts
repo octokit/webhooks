@@ -427,6 +427,7 @@ export interface BranchProtectionRule {
     | "non_admins"
     | "everyone";
   admin_enforced: boolean;
+  create_protected?: boolean;
   allow_force_pushes_enforcement_level: "off" | "non_admins" | "everyone";
   allow_deletions_enforcement_level: "off" | "non_admins" | "everyone";
   merge_queue_enforcement_level: "off" | "non_admins" | "everyone";
@@ -564,6 +565,7 @@ export interface Repository {
    */
   allow_forking?: boolean;
   allow_update_branch?: boolean;
+  use_squash_pr_title_as_default?: boolean;
   is_template: boolean;
   topics: string[];
   visibility: "public" | "private" | "internal";
@@ -2159,6 +2161,7 @@ export interface Workflow {
 export interface DeploymentWorkflowRun {
   id: number;
   name: string;
+  path?: string;
   node_id: string;
   head_branch: string;
   head_sha: string;
@@ -2754,6 +2757,7 @@ export interface Installation {
     | "org_block"
     | "page_build"
     | "project"
+    | "projects_v2_item"
     | "project_card"
     | "project_column"
     | "public"
@@ -2767,6 +2771,7 @@ export interface Installation {
     | "repository"
     | "repository_dispatch"
     | "secret_scanning_alert"
+    | "secret_scanning_alert_location"
     | "star"
     | "status"
     | "team"
@@ -3027,6 +3032,7 @@ export interface Issue {
   body: string | null;
   reactions: Reactions;
   timeline_url?: string;
+  state_reason?: string | null;
 }
 /**
  * A collection of related issues and pull requests.
@@ -3559,6 +3565,7 @@ export interface MemberAddedEvent {
   member: User;
   repository: Repository;
   installation?: InstallationLite;
+  organization?: Organization;
   sender: User;
 }
 export interface MemberEditedEvent {
@@ -3577,6 +3584,7 @@ export interface MemberEditedEvent {
   };
   repository: Repository;
   installation?: InstallationLite;
+  organization?: Organization;
   sender: User;
 }
 export interface MemberRemovedEvent {
@@ -3584,6 +3592,7 @@ export interface MemberRemovedEvent {
   member: User;
   repository: Repository;
   installation?: InstallationLite;
+  organization?: Organization;
   sender: User;
 }
 export interface MembershipAddedEvent {
@@ -4185,7 +4194,7 @@ export interface ProjectCard {
   created_at: string;
   updated_at: string;
   content_url?: string;
-  after_id?: string | null;
+  after_id?: string | number | null;
 }
 export interface ProjectCardCreatedEvent {
   action: "created";
@@ -4218,7 +4227,7 @@ export interface ProjectCardEditedEvent {
 }
 export interface ProjectCardMovedEvent {
   action: "moved";
-  changes: {
+  changes?: {
     column_id: {
       from: number;
     };
@@ -5375,6 +5384,7 @@ export interface Release {
   tarball_url: string | null;
   zipball_url: string | null;
   body: string;
+  mentions_count?: number;
   reactions?: Reactions;
   discussion_url?: string;
 }
@@ -6221,7 +6231,7 @@ export interface WorkflowJobCompletedEvent {
   repository: Repository;
   sender: User;
   workflow_job: WorkflowJob & {
-    conclusion: "success" | "failure";
+    conclusion: "success" | "failure" | "cancelled" | "skipped";
   };
 }
 /**
@@ -6243,7 +6253,7 @@ export interface WorkflowJob {
    */
   status: "queued" | "in_progress" | "completed";
   steps: [WorkflowStep, ...WorkflowStep[]];
-  conclusion: "success" | "failure" | null;
+  conclusion: "success" | "failure" | "cancelled" | "skipped" | null;
   /**
    * Custom labels for the job. Specified by the [`"runs-on"` attribute](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) in the workflow YAML.
    */
@@ -6291,7 +6301,6 @@ export interface WorkflowJobInProgressEvent {
   sender: User;
   workflow_job: WorkflowJob & {
     status: "in_progress";
-    steps: [WorkflowStepInProgress, ...WorkflowStepInProgress[]];
   };
 }
 export interface WorkflowJobQueuedEvent {
@@ -6364,6 +6373,7 @@ export interface WorkflowRun {
   head_commit: SimpleCommit;
   head_repository: RepositoryLite;
   head_sha: string;
+  path?: string;
   html_url: string;
   id: number;
   jobs_url: string;

@@ -48,7 +48,7 @@
     },
     "conclusion": {
       "type": ["string", "null"],
-      "enum": ["success", "failure", null]
+      "enum": ["success", "failure", "cancelled", "skipped", null]
     },
     "labels": {
       "type": "array",

@@ -85,7 +85,8 @@
       "description": "Contents of the issue"
     },
     "reactions": { "$ref": "reactions.schema.json" },
-    "timeline_url": { "type": "string", "format": "uri" }
+    "timeline_url": { "type": "string", "format": "uri" },
+    "state_reason": { "type": ["string", "null"] }
   },
   "additionalProperties": false,
   "title": "Issue"
