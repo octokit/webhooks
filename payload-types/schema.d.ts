@@ -565,6 +565,7 @@ export interface Repository {
    */
   allow_forking?: boolean;
   allow_update_branch?: boolean;
+  use_squash_pr_title_as_default?: boolean;
   is_template: boolean;
   topics: string[];
   visibility: "public" | "private" | "internal";
