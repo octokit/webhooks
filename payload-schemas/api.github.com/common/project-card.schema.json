@@ -31,7 +31,9 @@
     "created_at": { "type": "string", "format": "date-time" },
     "updated_at": { "type": "string", "format": "date-time" },
     "content_url": { "type": "string", "format": "uri" },
-    "after_id": { "type": ["string", "number", "null"] }
+    "after_id": {
+      "oneOf": [{ "type": "string" }, { "type": "number" }, { "type": "null" }]
+    }
   },
   "additionalProperties": false,
   "title": "Project Card"
