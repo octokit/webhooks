@@ -53,6 +53,7 @@ export type Schema =
   | RepositoryVulnerabilityAlertEvent
   | SecretScanningAlertEvent
   | SecurityAdvisoryEvent
+  | SecurityAndAnalysisEvent
   | SponsorshipEvent
   | StarEvent
   | StatusEvent
@@ -204,6 +205,7 @@ export type WebhookEvents =
       | "repository"
       | "repository_import"
       | "repository_vulnerability_alert"
+      | "security_and_analysis"
       | "secret_scanning_alert"
       | "star"
       | "status"
@@ -5886,6 +5888,33 @@ export interface SecurityAdvisoryWithdrawnEvent {
     }[];
   };
 }
+/**
+ * Activity related to enabling or disabling code security and analysis features for a repository or organization.
+ */
+export interface SecurityAndAnalysisEvent {
+  /**
+   * The changes that were made to the code security and analysis features.
+   */
+  changes: {
+    from: {
+      security_and_analysis: {
+        advanced_security: {
+          status: "enabled" | "disabled";
+        };
+        secret_scanning: {
+          status: "enabled" | "disabled";
+        };
+        secret_scanning_push_protection: {
+          status: "enabled" | "disabled";
+        };
+      };
+    };
+  };
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
 export interface SponsorshipCancelledEvent {
   action: "cancelled";
   sponsorship: {
@@ -6524,6 +6553,7 @@ export interface EventPayloadMap {
   repository_vulnerability_alert: RepositoryVulnerabilityAlertEvent;
   secret_scanning_alert: SecretScanningAlertEvent;
   security_advisory: SecurityAdvisoryEvent;
+  security_and_analysis: SecurityAndAnalysisEvent;
   sponsorship: SponsorshipEvent;
   star: StarEvent;
   status: StatusEvent;
