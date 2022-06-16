@@ -45,7 +45,7 @@ The webhook schemas are [JSON schemas](https://json-schema.org/) that are manual
 
 - Create a new folder for the event, if it doesn't already exist
 - Create a new JSON file named `<action>.schema.json` if the event has an `action` property, otherwise name it `event.schema.json`
-- The `$id` property's value should be in the format `<eventName>$action`, where `<eventName>` is the name of the event, and `action` is the value of the `action` property of the webhook payload or simply `event` if there is no `action` property for the event
+- The `$id` property should start with the event name, followed by the `action` name separated with `$` if the event has an `action` property, e.g. `pull_request$created`. If the event doesn't have an `action` property then simply use `event` instead of the `action` name.
 - the `title` property's value should be in the format `<eventName> <action> event`, where `<eventName>` is the name of the event, and `<action>` is the value of the `action` property of the webhook payload. If there is no action, the it should simply be `<eventName> event`
 - `type` should be `object`
 - Add any required properties in an array in the [`required` property](https://json-schema.org/understanding-json-schema/reference/object.html#required-properties)
