@@ -43,8 +43,8 @@ tests will fail.
 
 The webhook schemas are [JSON schemas](https://json-schema.org/) that are manually created using example payloads for webhook events.
 
-- Create a new folder for the event, if it doesn't already exist
-- Create a new JSON file named `<action>.schema.json` if the event has an `action` property, otherwise name it `event.schema.json`
+- Create a new folder for the event in `payload-schemas/api.github.com/`, if it doesn't already exist
+- Create a new JSON file in that folder named `<action>.schema.json` if the event has an `action` property, otherwise name it `event.schema.json`
 - The `$id` property should start with the event name, followed by the `action` name separated with `$` if the event has an `action` property, e.g. `pull_request$created`. If the event doesn't have an `action` property then simply use `event` instead of the `action` name.
 - the `title` property's value should be in the format `<eventName> <action> event`, where `<eventName>` is the name of the event, and `<action>` is the value of the `action` property of the webhook payload. If there is no action, the it should simply be `<eventName> event`
 - `type` should be `object`
@@ -63,9 +63,15 @@ The webhook schemas are [JSON schemas](https://json-schema.org/) that are manual
 ```
 
 - When a property is a `string`, or `number` and has a defined set of values it can be, add the values in an array in the [`enum`](https://json-schema.org/understanding-json-schema/reference/generic.html#enumerated-values) property of the `property`'s object
-  - If the property may not be present, add `null` to the `enum` array
+  - If the property may have `null` as a value, add `null` to the `enum` array
+  ```json
+  {
+    "type": ["string", "null"],
+    "enum": ["foo", "bar", null]
+  }
+  ```
 - When a property can be of multiple types, use a [`oneOf`](https://json-schema.org/understanding-json-schema/reference/combining.html#oneof) for the decleration of that property, and declare each type in the `oneOf`
-- When it is possible that a property may not be present:
+- When it is possible that a property may have a value of `null`:
 
   - if there is only one other type the property can be, change the `type` property to an array including the type, and the string `null`
 
@@ -83,7 +89,38 @@ The webhook schemas are [JSON schemas](https://json-schema.org/) that are manual
   }
   ```
 
+- Set `additionalProperties` to `false` to prevent the use of other keys without erroring.
 - Repeat until you reach the lowest level of the payload
+
+In the end, you should have a document that resembles the following
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "event_name$action",
+  "type": "object",
+  "required": ["myProp"],
+  "properties": {
+    "myProp": {
+      "type": "string",
+      "enum": ["some", "values"]
+    },
+    "anoptionalProp": {
+      "oneOf": [{ "type": "string" }, { "type": "number" }]
+    },
+    "anObjectProp": {
+      "type": "object",
+      "required": ["nestedProp"],
+      "properties": {
+        "nestedProp": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "title": "event name action"
+}
+```
 
 ## Updating types
 
