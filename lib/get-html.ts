@@ -31,8 +31,8 @@ export const getHtml = async (
   $('[data-testid="callout"]').remove();
   const data = $("#article-contents").parent().parent();
   data.find("*").each((i, el) => {
-    const classes = $(el).attr("class");
-    if (classes && !classes.includes("language-json") && !classes.includes("warning")) {
+    const classes = $(el).attr("class") ?? "";
+    if (!classes.includes("language-json") && !classes.includes("warning")) {
       $(el).removeAttr("class");
     }
   });
