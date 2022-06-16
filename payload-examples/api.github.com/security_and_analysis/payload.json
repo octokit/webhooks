@@ -117,15 +117,9 @@
       "site_admin": false
     },
     "security_and_analysis": {
-      "advanced_security": {
-        "status": "enabled"
-      },
-      "secret_scanning": {
-        "status": "enabled"
-      },
-      "secret_scanning_push_protection": {
-        "status": "disabled"
-      }
+      "advanced_security": { "status": "enabled" },
+      "secret_scanning": { "status": "enabled" },
+      "secret_scanning_push_protection": { "status": "disabled" }
     },
     "network_count": 0,
     "subscribers_count": 0
@@ -133,15 +127,9 @@
   "changes": {
     "from": {
       "security_and_analysis": {
-        "advanced_security": {
-          "status": "enabled"
-        },
-        "secret_scanning": {
-          "status": "disabled"
-        },
-        "secret_scanning_push_protection": {
-          "status": "disabled"
-        }
+        "advanced_security": { "status": "enabled" },
+        "secret_scanning": { "status": "disabled" },
+        "secret_scanning_push_protection": { "status": "disabled" }
       }
     }
   },
