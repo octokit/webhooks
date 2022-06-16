@@ -29,7 +29,14 @@ export const getHtml = async (
 
   // get only the HTML we care about to avoid unnecessary cache updates
   $('[data-testid="callout"]').remove();
-  const html = $("#article-contents").parent().parent().html() ?? "";
+  const data = $("#article-contents").parent().parent();
+  data.find("*").each((i, el) => {
+    const classes = $(el).attr("class");
+    if (classes && !classes.includes("language-json") && !classes.includes("warning")) {
+      $(el).removeAttr("class");
+    }
+  });
+  const html = data.html() ?? "";
 
   await cache.write(cacheFilePath, prettier.format(html, { parser: "html" }));
 
