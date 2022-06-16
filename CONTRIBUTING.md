@@ -39,6 +39,52 @@ When you send a pull request, make sure that the `index.json` file is up-to-date
 with the changes in the `payload-examples/api.github.com/` folder, otherwise the
 tests will fail.
 
+## Creating a new schema
+
+The webhook schemas are [JSON schemas](https://json-schema.org/) that are manually created using example payloads for webhook events.
+
+- Create a new folder for the event, if it doesn't already exist
+- Create a new JSON file named `<action>.schema.json` if the event has an `action` property, otherwise name it `event.schema.json`
+- The `$id` property's value should be in the format `<eventName>$action`, where `<eventName>` is the name of the event, and `action` is the value of the `action` property of the webhook payload or simply `event` if there is no `action` property for the event
+- the `title` property's value should be in the format `<eventName> <action> event`, where `<eventName>` is the name of the event, and `<action>` is the value of the `action` property of the webhook payload. If there is no action, the it should simply be `<eventName> event`
+- `type` should be `object`
+- Add any required properties in an array in the [`required` property](https://json-schema.org/understanding-json-schema/reference/object.html#required-properties)
+- Define properties of the payload in the [`properties` property](https://json-schema.org/understanding-json-schema/reference/object.html#properties) as an object in that property, like so:
+
+```json
+{
+  "properties": {
+    "myproperty": {
+      "type": "int",
+      "description": "My Property's description"
+    }
+  }
+}
+```
+
+- When a property is a `string`, or `number` and has a defined set of values it can be, add the values in an array in the [`enum`](https://json-schema.org/understanding-json-schema/reference/generic.html#enumerated-values) property of the `property`'s object
+  - If the property may not be present, add `null` to the `enum` array
+- When a property can be of multiple types, use a [`oneOf`](https://json-schema.org/understanding-json-schema/reference/combining.html#oneof) for the decleration of that property, and declare each type in the `oneOf`
+- When it is possible that a property may not be present:
+  - if there is only one other type the property can be, change the `type` property to an array including the type, and the string `null`
+  ```json
+  {
+    "type": ["string", "null"]
+  }
+  ```
+  - if there are more than one other type, that the property can be, simply add it to the `oneOf`:
+  ```json
+  {
+    "oneof": [
+      { "type": "string" },
+      { "type": "integer" },
+      { "type": "null" }
+    ]
+  }
+
+  ```
+- Repeat until you reach the lowest level of the payload
+
 ## Updating types
 
 The
