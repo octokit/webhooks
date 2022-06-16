@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "security_and_analysis$event",
+  "type": "object",
+  "required": ["changes", "repository", "sender"],
+  "properties": {
+    "changes": {
+      "type": "object",
+      "required": ["from"],
+      "properties": {
+        "from": {
+          "type": "object",
+          "required": ["security_and_analysis"],
+          "properties": {
+            "security_and_analysis": {
+              "type": "object",
+              "required": ["advanced_security", "secret_scanning", "secret_scanning_push_protection"],
+              "properties": {
+                "advanced_security": {
+                  "type": "object",
+                  "required": ["status"],
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "enum": ["enabled", "disabled"]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "secret_scanning": {
+                  "type": "object",
+                  "required": ["status"],
+                  "properties": {
+                    "status": { "type": "string", "enum": ["enabled", "disabled"] }
+                  },
+                  "additionalProperties": false
+                },
+                "secret_scanning_push_protection": {
+                  "type": "object",
+                  "required": ["status"],
+                  "properties": {
+                    "status": { "type": "string", "enum": ["enabled", "disabled"] }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "description": "The changes that were made to the code security and analysis features.",
+      "additionalProperties": false
+    },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
+  },
+  "additionalProperties": false,
+  "title": "security and analysis event",
+  "description": "Activity related to enabling or disabling code security and analysis features for a repository or organization."
+}

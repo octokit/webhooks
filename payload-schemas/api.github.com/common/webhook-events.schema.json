@@ -46,6 +46,7 @@
           "repository",
           "repository_import",
           "repository_vulnerability_alert",
+          "security_and_analysis",
           "secret_scanning_alert",
           "star",
           "status",
