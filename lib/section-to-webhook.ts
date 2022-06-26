@@ -113,6 +113,6 @@ const getActions = ($: cheerio.Root): string[] => {
 };
 
 const getExamples = ($: cheerio.Root) =>
-  $(".language-json")
+  $('[data-highlight="json"] code')
     .map((index, el) => JSON.parse($(el).text()) as unknown)
     .get() as object[];
