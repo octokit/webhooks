@@ -30,6 +30,9 @@ export const getHtml = async (
   // get only the HTML we care about to avoid unnecessary cache updates
   $('[data-testid="callout"]').remove();
   const data = $("#article-contents").parent().parent();
+  // Remove all classes from the HTML, except the ones that are actively used in the code to get payload examples.
+  // This is done to avoid unnecessary cache updates in order to reduce noise from automated Pull Requests
+  // https://github.com/octokit/webhooks/issues/642
   data.find("*").each((i, el) => {
     const classes = $(el).attr("class");
 
