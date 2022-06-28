@@ -77,6 +77,7 @@
     "watchers",
     "default_branch",
     "is_template",
+    "web_commit_signoff_required",
     "topics",
     "visibility"
   ],
@@ -227,6 +228,7 @@
     "allow_update_branch": { "type": "boolean" },
     "use_squash_pr_title_as_default": { "type": "boolean" },
     "is_template": { "type": "boolean" },
+    "web_commit_signoff_required": { "type": "boolean" },
     "topics": { "type": "array", "items": { "type": "string" } },
     "visibility": {
       "type": "string",
