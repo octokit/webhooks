@@ -34,7 +34,7 @@ export const checkOrUpdateWebhooks = async ({
   }
 
   if (ghe === "") {
-    const gheVersions = ["3.1", "3.2", "3.3"];
+    const gheVersions = ["3.1", "3.2", "3.3", "3.4", "3.5"];
 
     for (let gheVersion of gheVersions) {
       await checkOrUpdateWebhooks({
