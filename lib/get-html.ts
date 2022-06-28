@@ -29,7 +29,28 @@ export const getHtml = async (
 
   // get only the HTML we care about to avoid unnecessary cache updates
   $('[data-testid="callout"]').remove();
-  const html = $("#article-contents").parent().parent().html() ?? "";
+  const data = $("#article-contents").parent().parent();
+  // Remove all classes from the HTML, except the ones that are actively used in the code to get payload examples.
+  // This is done to avoid unnecessary cache updates in order to reduce noise from automated Pull Requests
+  // https://github.com/octokit/webhooks/issues/642
+  data.find("*").each((i, el) => {
+    const classes = $(el).attr("class");
+
+    if (classes) {
+      const filteredClasses = classes
+        .split(" ")
+        .filter((classSelector) =>
+          ["language-json", "warning"].includes(classSelector)
+        );
+
+      if (filteredClasses.length) {
+        $(el).attr("class", filteredClasses.join(" "));
+      } else {
+        $(el).removeAttr("class");
+      }
+    }
+  });
+  const html = data.html() ?? "";
 
   await cache.write(cacheFilePath, prettier.format(html, { parser: "html" }));
 
