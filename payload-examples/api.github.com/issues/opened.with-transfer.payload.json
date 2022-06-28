@@ -155,7 +155,8 @@
       "default_branch": "main",
       "is_template": false,
       "topics": [],
-      "visibility": "public"
+      "visibility": "public",
+      "web_commit_signoff_required": false
     }
   },
   "issue": {
@@ -397,7 +398,8 @@
     "default_branch": "master",
     "is_template": false,
     "topics": [],
-    "visibility": "public"
+    "visibility": "public",
+    "web_commit_signoff_required": false
   },
   "sender": {
     "login": "Codertocat",

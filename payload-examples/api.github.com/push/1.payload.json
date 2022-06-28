@@ -109,7 +109,8 @@
     "organization": "Octocoders",
     "is_template": false,
     "topics": [],
-    "visibility": "public"
+    "visibility": "public",
+    "web_commit_signoff_required": false
   },
   "organization": {
     "login": "Octocoders",
