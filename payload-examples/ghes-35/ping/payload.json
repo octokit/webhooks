@@ -6,9 +6,7 @@
     "id": 30,
     "name": "web",
     "active": true,
-    "events": [
-      "*"
-    ],
+    "events": ["*"],
     "config": {
       "content_type": "json",
       "url": "https://smee.io/YEbF2t8kjvPAn7Ck",
