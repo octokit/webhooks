@@ -13,7 +13,7 @@
   ],
   "scripts": {},
   "dependencies": {
-    "@octokit/webhooks-types": "^5.0.0"
+    "@octokit/webhooks-types": "^6.0.0"
   },
   "devDependencies": {},
   "publishConfig": {
