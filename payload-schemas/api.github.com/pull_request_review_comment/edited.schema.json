@@ -83,10 +83,20 @@
         "title": { "type": "string" },
         "user": { "$ref": "common/user.schema.json" },
         "body": { "type": "string" },
-        "created_at": { "type": "string" },
-        "updated_at": { "type": "string" },
-        "closed_at": { "type": ["string", "null"] },
-        "merged_at": { "type": ["string", "null"] },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "closed_at": {
+          "oneOf": [
+            { "type": "string", "format": "date-time" },
+            { "type": "null" }
+          ]
+        },
+        "merged_at": {
+          "oneOf": [
+            { "type": "string", "format": "date-time" },
+            { "type": "null" }
+          ]
+        },
         "merge_commit_sha": { "type": ["string", "null"] },
         "assignee": {
           "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": "null" }]

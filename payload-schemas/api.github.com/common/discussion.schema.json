@@ -45,14 +45,16 @@
         "name": { "type": "string" },
         "description": { "type": "string" },
         "created_at": { "type": "string", "format": "date-time" },
-        "updated_at": { "type": "string" },
+        "updated_at": { "type": "string", "format": "date-time" },
         "slug": { "type": "string" },
         "is_answerable": { "type": "boolean" }
       },
       "additionalProperties": false
     },
     "answer_html_url": { "type": ["string", "null"] },
-    "answer_chosen_at": { "type": ["string", "null"] },
+    "answer_chosen_at": {
+      "oneOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }]
+    },
     "answer_chosen_by": {
       "oneOf": [{ "$ref": "user.schema.json" }, { "type": "null" }]
     },

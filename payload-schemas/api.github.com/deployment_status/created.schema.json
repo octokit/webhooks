@@ -53,8 +53,8 @@
           "type": "string",
           "description": "The optional link added to the status."
         },
-        "created_at": { "type": "string" },
-        "updated_at": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
         "deployment_url": { "type": "string", "format": "uri" },
         "repository_url": { "type": "string", "format": "uri" },
         "performed_via_github_app": {

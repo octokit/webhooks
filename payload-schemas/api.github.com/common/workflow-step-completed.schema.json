@@ -18,8 +18,8 @@
       "enum": ["failure", "skipped", "success"]
     },
     "number": { "type": "integer" },
-    "started_at": { "type": "string" },
-    "completed_at": { "type": "string" }
+    "started_at": { "type": "string", "format": "date-time" },
+    "completed_at": { "type": "string", "format": "date-time" }
   },
   "additionalProperties": false,
   "title": "Workflow Step (Completed)"

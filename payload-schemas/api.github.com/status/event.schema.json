@@ -179,8 +179,8 @@
         "additionalProperties": false
       }
     },
-    "created_at": { "type": "string" },
-    "updated_at": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },

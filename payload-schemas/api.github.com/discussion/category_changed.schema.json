@@ -32,7 +32,7 @@
                 "name": { "type": "string" },
                 "description": { "type": "string" },
                 "created_at": { "type": "string", "format": "date-time" },
-                "updated_at": { "type": "string" },
+                "updated_at": { "type": "string", "format": "date-time" },
                 "slug": { "type": "string" },
                 "is_answerable": { "type": "boolean" }
               },

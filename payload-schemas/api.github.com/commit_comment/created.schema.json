@@ -56,8 +56,8 @@
           "type": "string",
           "description": "The SHA of the commit to which the comment applies."
         },
-        "created_at": { "type": "string" },
-        "updated_at": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
         "author_association": {
           "$ref": "common/author_association.schema.json"
         },

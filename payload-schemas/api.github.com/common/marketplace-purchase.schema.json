@@ -32,7 +32,9 @@
     "billing_cycle": { "type": "string" },
     "unit_count": { "type": "integer" },
     "on_free_trial": { "type": "boolean" },
-    "free_trial_ends_on": { "type": "null" },
+    "free_trial_ends_on": {
+      "oneOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }]
+    },
     "next_billing_date": { "type": "string" },
     "plan": {
       "type": "object",

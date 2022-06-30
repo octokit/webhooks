@@ -17,7 +17,7 @@
       ],
       "properties": {
         "node_id": { "type": "string" },
-        "created_at": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" },
         "sponsorable": { "$ref": "common/user.schema.json" },
         "sponsor": { "$ref": "common/user.schema.json" },
         "privacy_level": { "type": "string" },

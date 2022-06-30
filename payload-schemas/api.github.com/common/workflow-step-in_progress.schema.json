@@ -15,7 +15,7 @@
     "status": { "type": "string", "enum": ["in_progress"] },
     "conclusion": { "type": "null" },
     "number": { "type": "integer" },
-    "started_at": { "type": "string" },
+    "started_at": { "type": "string", "format": "date-time" },
     "completed_at": { "type": "null" }
   },
   "additionalProperties": false,

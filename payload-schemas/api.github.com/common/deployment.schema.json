@@ -37,8 +37,8 @@
     "production_environment": { "type": "boolean" },
     "description": { "type": ["string", "null"] },
     "creator": { "$ref": "user.schema.json" },
-    "created_at": { "type": "string" },
-    "updated_at": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
     "statuses_url": { "type": "string", "format": "uri" },
     "repository_url": { "type": "string", "format": "uri" },
     "performed_via_github_app": {
