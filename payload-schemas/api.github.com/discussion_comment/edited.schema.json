@@ -55,8 +55,8 @@
           "$ref": "common/author_association.schema.json"
         },
         "user": { "$ref": "common/user.schema.json" },
-        "created_at": { "type": "string" },
-        "updated_at": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
         "body": { "type": "string" },
         "reactions": { "$ref": "common/reactions.schema.json" }
       },

@@ -31,8 +31,8 @@
         "pusher": { "$ref": "common/user.schema.json" },
         "commit": { "type": "string" },
         "duration": { "type": "integer" },
-        "created_at": { "type": "string" },
-        "updated_at": { "type": "string" }
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" }
       },
       "additionalProperties": false
     },

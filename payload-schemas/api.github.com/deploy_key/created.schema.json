@@ -23,7 +23,7 @@
         "url": { "type": "string", "format": "uri" },
         "title": { "type": "string" },
         "verified": { "type": "boolean" },
-        "created_at": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" },
         "read_only": { "type": "boolean" }
       },
       "additionalProperties": false

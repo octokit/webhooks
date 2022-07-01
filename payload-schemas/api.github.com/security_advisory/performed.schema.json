@@ -69,9 +69,14 @@
             "additionalProperties": false
           }
         },
-        "published_at": { "type": "string" },
-        "updated_at": { "type": "string" },
-        "withdrawn_at": { "type": ["string", "null"] },
+        "published_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "withdrawn_at": {
+          "oneOf": [
+            { "type": "string", "format": "date-time" },
+            { "type": "null" }
+          ]
+        },
         "vulnerabilities": {
           "type": "array",
           "items": {

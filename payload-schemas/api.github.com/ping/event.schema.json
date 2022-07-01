@@ -46,8 +46,8 @@
           },
           "additionalProperties": false
         },
-        "updated_at": { "type": "string" },
-        "created_at": { "type": "string" },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "created_at": { "type": "string", "format": "date-time" },
         "url": { "type": "string", "format": "uri" },
         "test_url": { "type": "string", "format": "uri" },
         "ping_url": { "type": "string", "format": "uri" },

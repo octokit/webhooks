@@ -5,7 +5,7 @@
   "required": ["action", "effective_date", "sender", "marketplace_purchase"],
   "properties": {
     "action": { "type": "string", "enum": ["pending_change"] },
-    "effective_date": { "type": "string" },
+    "effective_date": { "type": "string", "format": "date-time" },
     "sender": {
       "type": "object",
       "required": [
@@ -56,7 +56,9 @@
         {
           "type": "object",
           "required": ["next_billing_date"],
-          "properties": { "next_billing_date": { "type": "string" } },
+          "properties": {
+            "next_billing_date": { "type": "string", "format": "date-time" }
+          },
           "tsAdditionalProperties": false
         }
       ]

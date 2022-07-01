@@ -3430,7 +3430,7 @@ export interface MarketplacePurchase {
   billing_cycle: string;
   unit_count: number;
   on_free_trial: boolean;
-  free_trial_ends_on: null;
+  free_trial_ends_on: string | null;
   next_billing_date?: string;
   plan: {
     id: number;

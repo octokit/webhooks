@@ -39,8 +39,8 @@
           },
           "additionalProperties": false
         },
-        "updated_at": { "type": "string" },
-        "created_at": { "type": "string" }
+        "updated_at": { "type": "string", "format": "date-time" },
+        "created_at": { "type": "string", "format": "date-time" }
       },
       "additionalProperties": false
     },

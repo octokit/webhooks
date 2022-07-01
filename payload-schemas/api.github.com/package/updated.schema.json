@@ -30,8 +30,8 @@
         "ecosystem": { "type": "string" },
         "package_type": { "type": "string" },
         "html_url": { "type": "string", "format": "uri" },
-        "created_at": { "type": "string" },
-        "updated_at": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
         "owner": { "$ref": "common/user.schema.json" },
         "package_version": {
           "type": "object",
@@ -93,8 +93,8 @@
                 "draft": { "type": "boolean" },
                 "author": { "$ref": "common/user.schema.json" },
                 "prerelease": { "type": "boolean" },
-                "created_at": { "type": "string" },
-                "published_at": { "type": "string" }
+                "created_at": { "type": "string", "format": "date-time" },
+                "published_at": { "type": "string", "format": "date-time" }
               },
               "additionalProperties": false
             },
@@ -105,8 +105,8 @@
             "target_oid": { "type": "string" },
             "draft": { "type": "boolean" },
             "prerelease": { "type": "boolean" },
-            "created_at": { "type": "string" },
-            "updated_at": { "type": "string" },
+            "created_at": { "type": "string", "format": "date-time" },
+            "updated_at": { "type": "string", "format": "date-time" },
             "metadata": { "type": "array", "items": {} },
             "docker_metadata": { "type": "array", "items": {} },
             "package_files": {
@@ -136,8 +136,8 @@
                   "content_type": { "type": "string" },
                   "state": { "type": "string" },
                   "size": { "type": "integer" },
-                  "created_at": { "type": "string" },
-                  "updated_at": { "type": "string" }
+                  "created_at": { "type": "string", "format": "date-time" },
+                  "updated_at": { "type": "string", "format": "date-time" }
                 },
                 "additionalProperties": false
               }
