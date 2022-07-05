@@ -2923,6 +2923,8 @@ export interface InstallationRepositoriesAddedEvent {
   }[];
   /**
    * An array of repository objects, which were removed from the installation.
+   *
+   * @maxItems 0
    */
   repositories_removed: [];
   requester: User | null;
@@ -2937,6 +2939,8 @@ export interface InstallationRepositoriesRemovedEvent {
   repository_selection: "all" | "selected";
   /**
    * An array of repository objects, which were added to the installation.
+   *
+   * @maxItems 0
    */
   repositories_added: [];
   /**
