@@ -43,8 +43,7 @@
     },
     "steps": {
       "type": "array",
-      "items": { "$ref": "workflow-step.schema.json" },
-      "minItems": 1
+      "items": { "$ref": "workflow-step.schema.json" }
     },
     "conclusion": {
       "type": ["string", "null"],

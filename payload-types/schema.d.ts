@@ -6256,10 +6256,7 @@ export interface WorkflowJob {
    * The current status of the job. Can be `queued`, `in_progress`, or `completed`.
    */
   status: "queued" | "in_progress" | "completed";
-  /**
-   * @minItems 1
-   */
-  steps: [WorkflowStep, ...WorkflowStep[]];
+  steps: WorkflowStep[];
   conclusion: "success" | "failure" | "cancelled" | "skipped" | null;
   /**
    * Custom labels for the job. Specified by the [`"runs-on"` attribute](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) in the workflow YAML.
@@ -6316,27 +6313,8 @@ export interface WorkflowJobQueuedEvent {
   installation?: InstallationLite;
   repository: Repository;
   sender: User;
-  workflow_job: {
-    id: number;
-    run_id: number;
-    run_url: string;
-    run_attempt: number;
-    head_sha: string;
-    node_id: string;
-    name: string;
-    check_run_url: string;
-    html_url: string;
-    url: string;
+  workflow_job: WorkflowJob & {
     status: "queued";
-    steps: WorkflowStep[];
-    conclusion: null;
-    labels: string[];
-    runner_id: number | null;
-    runner_name: string | null;
-    runner_group_id: number | null;
-    runner_group_name: string | null;
-    started_at: string;
-    completed_at: null;
   };
 }
 export interface WorkflowRunCompletedEvent {
