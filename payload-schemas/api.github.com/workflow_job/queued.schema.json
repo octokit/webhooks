@@ -10,55 +10,17 @@
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "workflow_job": {
-      "type": "object",
-      "required": [
-        "id",
-        "run_id",
-        "run_url",
-        "run_attempt",
-        "node_id",
-        "head_sha",
-        "url",
-        "html_url",
-        "status",
-        "conclusion",
-        "started_at",
-        "completed_at",
-        "name",
-        "steps",
-        "check_run_url",
-        "labels",
-        "runner_id",
-        "runner_name",
-        "runner_group_id",
-        "runner_group_name"
-      ],
-      "properties": {
-        "id": { "type": "integer" },
-        "run_id": { "type": "number" },
-        "run_url": { "type": "string", "format": "uri" },
-        "run_attempt": { "type": "integer" },
-        "head_sha": { "type": "string" },
-        "node_id": { "type": "string" },
-        "name": { "type": "string" },
-        "check_run_url": { "type": "string", "format": "uri" },
-        "html_url": { "type": "string", "format": "uri" },
-        "url": { "type": "string", "format": "uri" },
-        "status": { "type": "string", "enum": ["queued"] },
-        "steps": {
-          "type": "array",
-          "items": { "$ref": "common/workflow-step.schema.json" }
-        },
-        "conclusion": { "type": "null" },
-        "labels": { "type": "array", "items": { "type": "string" } },
-        "runner_id": { "type": ["integer", "null"] },
-        "runner_name": { "type": ["string", "null"] },
-        "runner_group_id": { "type": ["integer", "null"] },
-        "runner_group_name": { "type": ["string", "null"] },
-        "started_at": { "type": "string", "format": "date-time" },
-        "completed_at": { "type": "null" }
-      },
-      "additionalProperties": false
+      "allOf": [
+        { "$ref": "common/workflow-job.schema.json" },
+        {
+          "type": "object",
+          "required": ["status"],
+          "properties": {
+            "status": { "type": "string", "enum": ["queued"] }
+          },
+          "tsAdditionalProperties": false
+        }
+      ]
     }
   },
   "additionalProperties": false,
