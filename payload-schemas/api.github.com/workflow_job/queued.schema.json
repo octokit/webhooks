@@ -15,9 +15,7 @@
         {
           "type": "object",
           "required": ["status"],
-          "properties": {
-            "status": { "type": "string", "enum": ["queued"] }
-          },
+          "properties": { "status": { "type": "string", "enum": ["queued"] } },
           "tsAdditionalProperties": false
         }
       ]
