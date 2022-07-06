@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/referenced-workflow.schema.json",
+  "title": "Referenced workflow",
+  "description": "A workflow referenced/reused by the initial caller workflow",
+  "type": "object",
+  "properties": {
+    "path": { "type": "string" },
+    "sha": { "type": "string" },
+    "ref": { "type": "string" }
+  },
+  "required": ["path", "sha"],
+  "additionalProperties": false
+}

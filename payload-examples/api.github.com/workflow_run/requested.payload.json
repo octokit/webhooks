@@ -115,7 +115,8 @@
     "watchers_count": 1,
     "is_template": false,
     "topics": [],
-    "visibility": "public"
+    "visibility": "public",
+    "web_commit_signoff_required": false
   },
   "sender": {
     "avatar_url": "https://avatars0.githubusercontent.com/u/15669918?v=4",

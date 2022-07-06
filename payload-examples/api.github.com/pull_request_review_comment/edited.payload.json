@@ -288,7 +288,8 @@
         "default_branch": "master",
         "is_template": false,
         "topics": [],
-        "visibility": "public"
+        "visibility": "public",
+        "web_commit_signoff_required": false
       }
     },
     "base": {
@@ -410,7 +411,8 @@
         "default_branch": "master",
         "is_template": false,
         "topics": [],
-        "visibility": "public"
+        "visibility": "public",
+        "web_commit_signoff_required": false
       }
     },
     "_links": {
@@ -535,7 +537,8 @@
     "default_branch": "master",
     "is_template": false,
     "topics": [],
-    "visibility": "public"
+    "visibility": "public",
+    "web_commit_signoff_required": false
   },
   "installation": {
     "id": 1,

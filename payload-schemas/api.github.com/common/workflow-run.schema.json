@@ -114,6 +114,10 @@
     "workflow_id": { "type": "integer" },
     "workflow_url": { "type": "string", "format": "uri" },
     "run_attempt": { "type": "integer" },
+    "referenced_workflows": {
+      "type": "array",
+      "items": { "$ref": "referenced-workflow.schema.json" }
+    },
     "run_started_at": { "type": "string", "format": "date-time" },
     "previous_attempt_url": {
       "oneOf": [{ "type": "string", "format": "uri" }, { "type": "null" }]
