@@ -6,8 +6,14 @@
   "description": "The membership between the user and the organization. Not present when the action is `member_invited`.",
   "properties": {
     "url": { "type": "string", "format": "uri" },
-    "state": { "type": "string" },
-    "role": { "type": "string" },
+    "state": {
+      "type": "string",
+      "description": "The state of the user's membership in the team."
+    },
+    "role": {
+      "type": "string",
+      "description": "The role of the user in the team."
+    },
     "organization_url": { "type": "string", "format": "uri" },
     "user": { "$ref": "user.schema.json" }
   },

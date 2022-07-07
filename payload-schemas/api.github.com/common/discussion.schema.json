@@ -62,7 +62,10 @@
     "id": { "type": "integer" },
     "node_id": { "type": "string" },
     "number": { "type": "integer" },
-    "title": { "type": "string" },
+    "title": {
+      "type": "string",
+      "description": "The discussion post's title."
+    },
     "user": { "$ref": "user.schema.json" },
     "state": { "type": "string", "enum": ["open", "locked", "converting"] },
     "locked": { "type": "boolean" },
@@ -71,7 +74,10 @@
     "updated_at": { "type": "string", "format": "date-time" },
     "author_association": { "$ref": "author_association.schema.json" },
     "active_lock_reason": { "type": ["string", "null"] },
-    "body": { "type": "string" },
+    "body": {
+      "type": "string",
+      "description": "The discussion post's body text."
+    },
     "reactions": { "$ref": "reactions.schema.json" }
   },
   "additionalProperties": false,

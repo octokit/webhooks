@@ -39,7 +39,10 @@
     "html_url": { "type": "string", "format": "uri" },
     "id": { "type": "integer" },
     "node_id": { "type": "string" },
-    "number": { "type": "integer" },
+    "number": {
+      "type": "integer",
+      "description": "Number uniquely identifying the issue within its repository"
+    },
     "title": { "type": "string", "description": "Title of the issue" },
     "user": { "$ref": "user.schema.json" },
     "labels": { "type": "array", "items": { "$ref": "label.schema.json" } },
@@ -86,7 +89,10 @@
     },
     "reactions": { "$ref": "reactions.schema.json" },
     "timeline_url": { "type": "string", "format": "uri" },
-    "state_reason": { "type": ["string", "null"] }
+    "state_reason": {
+      "type": ["string", "null"],
+      "description": "The reason for the current state"
+    }
   },
   "additionalProperties": false,
   "title": "Issue"

@@ -43,62 +43,164 @@
       "type": "object",
       "required": [],
       "properties": {
-        "actions": { "type": "string", "enum": ["read", "write"] },
-        "administration": { "type": "string", "enum": ["read", "write"] },
-        "checks": { "type": "string", "enum": ["read", "write"] },
+        "actions": {
+          "type": "string",
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token for GitHub Actions workflows, workflow runs, and artifacts."
+        },
+        "administration": {
+          "type": "string",
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token for repository creation, deletion, settings, teams, and collaborators creation."
+        },
+        "checks": {
+          "type": "string",
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token for checks on code."
+        },
         "content_references": { "type": "string", "enum": ["read", "write"] },
-        "contents": { "type": "string", "enum": ["read", "write"] },
-        "deployments": { "type": "string", "enum": ["read", "write"] },
+        "contents": {
+          "type": "string",
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token for repository contents, commits, branches, downloads, releases, and merges."
+        },
+        "deployments": {
+          "type": "string",
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token for deployments and deployment statuses."
+        },
         "discussions": { "type": "string", "enum": ["read", "write"] },
         "emails": { "type": "string", "enum": ["read", "write"] },
-        "environments": { "type": "string", "enum": ["read", "write"] },
-        "issues": { "type": "string", "enum": ["read", "write"] },
-        "members": { "type": "string", "enum": ["read", "write"] },
-        "metadata": { "type": "string", "enum": ["read", "write"] },
+        "environments": {
+          "type": "string",
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token for managing repository environments."
+        },
+        "issues": {
+          "type": "string",
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token for issues and related comments, assignees, labels, and milestones."
+        },
+        "members": {
+          "type": "string",
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token for organization teams and members."
+        },
+        "metadata": {
+          "type": "string",
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token to search repositories, list collaborators, and access repository metadata."
+        },
         "organization_administration": {
           "type": "string",
-          "enum": ["read", "write"]
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token to manage access to an organization."
         },
         "organization_events": { "type": "string", "enum": ["read", "write"] },
-        "organization_hooks": { "type": "string", "enum": ["read", "write"] },
+        "organization_hooks": {
+          "type": "string",
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token to manage the post-receive hooks for an organization."
+        },
         "organization_packages": {
           "type": "string",
-          "enum": ["read", "write"]
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token for organization packages published to GitHub Packages."
         },
-        "organization_plan": { "type": "string", "enum": ["read", "write"] },
+        "organization_plan": {
+          "type": "string",
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token for viewing an organization's plan."
+        },
         "organization_projects": {
           "type": "string",
-          "enum": ["read", "write"]
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token to manage organization projects and projects beta (where available)."
         },
-        "organization_secrets": { "type": "string", "enum": ["read", "write"] },
+        "organization_secrets": {
+          "type": "string",
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token to manage organization secrets."
+        },
         "organization_self_hosted_runners": {
           "type": "string",
-          "enum": ["read", "write"]
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token to view and manage GitHub Actions self-hosted runners available to an organization."
         },
         "organization_user_blocking": {
           "type": "string",
-          "enum": ["read", "write"]
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token to view and manage users blocked by the organization."
         },
-        "packages": { "type": "string", "enum": ["read", "write"] },
-        "pages": { "type": "string", "enum": ["read", "write"] },
-        "pull_requests": { "type": "string", "enum": ["read", "write"] },
-        "repository_hooks": { "type": "string", "enum": ["read", "write"] },
-        "repository_projects": { "type": "string", "enum": ["read", "write"] },
+        "packages": {
+          "type": "string",
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token for packages published to GitHub Packages."
+        },
+        "pages": {
+          "type": "string",
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token to retrieve Pages statuses, configuration, and builds, as well as create new builds."
+        },
+        "pull_requests": {
+          "type": "string",
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token for pull requests and related comments, assignees, labels, milestones, and merges."
+        },
+        "repository_hooks": {
+          "type": "string",
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token to manage the post-receive hooks for a repository."
+        },
+        "repository_projects": {
+          "type": "string",
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token to manage repository projects, columns, and cards."
+        },
         "secret_scanning_alerts": {
           "type": "string",
-          "enum": ["read", "write"]
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token to view and manage secret scanning alerts."
         },
-        "secrets": { "type": "string", "enum": ["read", "write"] },
-        "security_events": { "type": "string", "enum": ["read", "write"] },
+        "secrets": {
+          "type": "string",
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token to manage repository secrets."
+        },
+        "security_events": {
+          "type": "string",
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token to view and manage security events like code scanning alerts."
+        },
         "security_scanning_alert": {
           "type": "string",
           "enum": ["read", "write"]
         },
-        "single_file": { "type": "string", "enum": ["read", "write"] },
-        "statuses": { "type": "string", "enum": ["read", "write"] },
-        "team_discussions": { "type": "string", "enum": ["read", "write"] },
-        "vulnerability_alerts": { "type": "string", "enum": ["read", "write"] },
-        "workflows": { "type": "string", "enum": ["read", "write"] }
+        "single_file": {
+          "type": "string",
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token to manage just a single file."
+        },
+        "statuses": {
+          "type": "string",
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token for commit statuses."
+        },
+        "team_discussions": {
+          "type": "string",
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token to manage team discussions and related comments."
+        },
+        "vulnerability_alerts": {
+          "type": "string",
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token to manage Dependabot alerts."
+        },
+        "workflows": {
+          "type": "string",
+          "enum": ["read", "write"],
+          "description": "The level of permission granted to the access token to update GitHub Actions workflow files."
+        }
       },
       "additionalProperties": false
     },

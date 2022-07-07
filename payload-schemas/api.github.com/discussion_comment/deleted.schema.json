@@ -43,7 +43,10 @@
         "user": { "$ref": "common/user.schema.json" },
         "created_at": { "type": "string", "format": "date-time" },
         "updated_at": { "type": "string", "format": "date-time" },
-        "body": { "type": "string" },
+        "body": {
+          "type": "string",
+          "description": "The main text of the comment."
+        },
         "reactions": { "$ref": "common/reactions.schema.json" }
       },
       "additionalProperties": false

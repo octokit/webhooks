@@ -86,54 +86,218 @@
       "type": "integer",
       "description": "Unique identifier of the repository"
     },
-    "node_id": { "type": "string" },
+    "node_id": {
+      "type": "string",
+      "description": "The GraphQL identifier of the repository."
+    },
     "name": { "type": "string", "description": "The name of the repository." },
-    "full_name": { "type": "string" },
+    "full_name": {
+      "type": "string",
+      "description": "The full, globally unique, name of the repository."
+    },
     "private": {
       "type": "boolean",
       "description": "Whether the repository is private or public."
     },
     "owner": { "$ref": "user.schema.json" },
-    "html_url": { "type": "string", "format": "uri" },
-    "description": { "type": ["string", "null"] },
-    "fork": { "type": "boolean" },
-    "url": { "type": "string", "format": "uri" },
-    "forks_url": { "type": "string", "format": "uri" },
-    "keys_url": { "type": "string", "format": "uri-template" },
-    "collaborators_url": { "type": "string", "format": "uri-template" },
-    "teams_url": { "type": "string", "format": "uri" },
-    "hooks_url": { "type": "string", "format": "uri" },
-    "issue_events_url": { "type": "string", "format": "uri-template" },
-    "events_url": { "type": "string", "format": "uri" },
-    "assignees_url": { "type": "string", "format": "uri-template" },
-    "branches_url": { "type": "string", "format": "uri-template" },
-    "tags_url": { "type": "string", "format": "uri" },
-    "blobs_url": { "type": "string", "format": "uri-template" },
-    "git_tags_url": { "type": "string", "format": "uri-template" },
-    "git_refs_url": { "type": "string", "format": "uri-template" },
-    "trees_url": { "type": "string", "format": "uri-template" },
-    "statuses_url": { "type": "string", "format": "uri-template" },
-    "languages_url": { "type": "string", "format": "uri" },
-    "stargazers_url": { "type": "string", "format": "uri" },
-    "contributors_url": { "type": "string", "format": "uri" },
-    "subscribers_url": { "type": "string", "format": "uri" },
-    "subscription_url": { "type": "string", "format": "uri" },
-    "commits_url": { "type": "string", "format": "uri-template" },
-    "git_commits_url": { "type": "string", "format": "uri-template" },
-    "comments_url": { "type": "string", "format": "uri-template" },
-    "issue_comment_url": { "type": "string", "format": "uri-template" },
-    "contents_url": { "type": "string", "format": "uri-template" },
-    "compare_url": { "type": "string", "format": "uri-template" },
-    "merges_url": { "type": "string", "format": "uri" },
-    "archive_url": { "type": "string", "format": "uri-template" },
-    "downloads_url": { "type": "string", "format": "uri" },
-    "issues_url": { "type": "string", "format": "uri-template" },
-    "pulls_url": { "type": "string", "format": "uri-template" },
-    "milestones_url": { "type": "string", "format": "uri-template" },
-    "notifications_url": { "type": "string", "format": "uri-template" },
-    "labels_url": { "type": "string", "format": "uri-template" },
-    "releases_url": { "type": "string", "format": "uri-template" },
-    "deployments_url": { "type": "string", "format": "uri" },
+    "html_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL to view the repository on GitHub.com."
+    },
+    "description": {
+      "type": ["string", "null"],
+      "description": "The repository description."
+    },
+    "fork": {
+      "type": "boolean",
+      "description": "Whether the repository is a fork."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL to get more information about the repository from the GitHub API."
+    },
+    "forks_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "The API URL to list the forks of the repository."
+    },
+    "keys_url": {
+      "type": "string",
+      "format": "uri-template",
+      "description": "A template for the API URL to get information about deploy keys on the repository."
+    },
+    "collaborators_url": {
+      "type": "string",
+      "format": "uri-template",
+      "description": "A template for the API URL to get information about collaborators of the repository."
+    },
+    "teams_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "The API URL to list the teams on the repository."
+    },
+    "hooks_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "The API URL to list the hooks on the repository."
+    },
+    "issue_events_url": {
+      "type": "string",
+      "format": "uri-template",
+      "description": "A template for the API URL to get information about issue events on the repository."
+    },
+    "events_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "The API URL to list the events of the repository."
+    },
+    "assignees_url": {
+      "type": "string",
+      "format": "uri-template",
+      "description": "A template for the API URL to list the available assignees for issues in the repository."
+    },
+    "branches_url": {
+      "type": "string",
+      "format": "uri-template",
+      "description": "A template for the API URL to get information about branches in the repository."
+    },
+    "tags_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "The API URL to get information about tags on the repository."
+    },
+    "blobs_url": {
+      "type": "string",
+      "format": "uri-template",
+      "description": "A template for the API URL to create or retrieve a raw Git blob in the repository."
+    },
+    "git_tags_url": {
+      "type": "string",
+      "format": "uri-template",
+      "description": "A template for the API URL to get information about Git tags of the repository."
+    },
+    "git_refs_url": {
+      "type": "string",
+      "format": "uri-template",
+      "description": "A template for the API URL to get information about Git refs of the repository."
+    },
+    "trees_url": {
+      "type": "string",
+      "format": "uri-template",
+      "description": "A template for the API URL to create or retrieve a raw Git tree of the repository."
+    },
+    "statuses_url": {
+      "type": "string",
+      "format": "uri-template",
+      "description": "A template for the API URL to get information about statuses of a commit."
+    },
+    "languages_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "The API URL to get information about the languages of the repository."
+    },
+    "stargazers_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "The API URL to list the stargazers on the repository."
+    },
+    "contributors_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "A template for the API URL to list the contributors to the repository."
+    },
+    "subscribers_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "The API URL to list the subscribers on the repository."
+    },
+    "subscription_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "The API URL to subscribe to notifications for this repository."
+    },
+    "commits_url": {
+      "type": "string",
+      "format": "uri-template",
+      "description": "A template for the API URL to get information about commits on the repository."
+    },
+    "git_commits_url": {
+      "type": "string",
+      "format": "uri-template",
+      "description": "A template for the API URL to get information about Git commits of the repository."
+    },
+    "comments_url": {
+      "type": "string",
+      "format": "uri-template",
+      "description": "A template for the API URL to get information about comments on the repository."
+    },
+    "issue_comment_url": {
+      "type": "string",
+      "format": "uri-template",
+      "description": "A template for the API URL to get information about issue comments on the repository."
+    },
+    "contents_url": {
+      "type": "string",
+      "format": "uri-template",
+      "description": "A template for the API URL to get the contents of the repository."
+    },
+    "compare_url": {
+      "type": "string",
+      "format": "uri-template",
+      "description": "A template for the API URL to compare two commits or refs."
+    },
+    "merges_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "The API URL to merge branches in the repository."
+    },
+    "archive_url": {
+      "type": "string",
+      "format": "uri-template",
+      "description": "A template for the API URL to download the repository as an archive."
+    },
+    "downloads_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "The API URL to list the downloads on the repository."
+    },
+    "issues_url": {
+      "type": "string",
+      "format": "uri-template",
+      "description": "A template for the API URL to get information about issues on the repository."
+    },
+    "pulls_url": {
+      "type": "string",
+      "format": "uri-template",
+      "description": "A template for the API URL to get information about pull requests on the repository."
+    },
+    "milestones_url": {
+      "type": "string",
+      "format": "uri-template",
+      "description": "A template for the API URL to get information about milestones of the repository."
+    },
+    "notifications_url": {
+      "type": "string",
+      "format": "uri-template",
+      "description": "A template for the API URL to get information about notifications on the repository."
+    },
+    "labels_url": {
+      "type": "string",
+      "format": "uri-template",
+      "description": "A template for the API URL to get information about labels of the repository."
+    },
+    "releases_url": {
+      "type": "string",
+      "format": "uri-template",
+      "description": "A template for the API URL to get information about releases on the repository."
+    },
+    "deployments_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "The API URL to list the deployments of the repository."
+    },
     "created_at": {
       "oneOf": [
         { "type": "integer" },

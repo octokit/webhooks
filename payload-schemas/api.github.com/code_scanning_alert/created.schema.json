@@ -31,7 +31,11 @@
           "format": "date-time",
           "description": "The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`"
         },
-        "url": { "type": "string", "format": "uri" },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "The REST API URL of the alert resource."
+        },
         "html_url": {
           "type": "string",
           "format": "uri",

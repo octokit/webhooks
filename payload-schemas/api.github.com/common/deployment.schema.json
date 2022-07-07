@@ -21,20 +21,38 @@
   "type": "object",
   "properties": {
     "url": { "type": "string", "format": "uri" },
-    "id": { "type": "integer" },
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier of the deployment"
+    },
     "node_id": { "type": "string" },
     "sha": { "type": "string" },
-    "ref": { "type": "string" },
-    "task": { "type": "string" },
+    "ref": {
+      "type": "string",
+      "description": "The ref to deploy. This can be a branch, tag, or sha."
+    },
+    "task": {
+      "type": "string",
+      "description": "Parameter to specify a task to execute"
+    },
     "payload": {
       "type": "object",
       "required": [],
       "additionalProperties": true
     },
     "original_environment": { "type": "string" },
-    "environment": { "type": "string" },
-    "transient_environment": { "type": "boolean" },
-    "production_environment": { "type": "boolean" },
+    "environment": {
+      "type": "string",
+      "description": "Name of the target deployment environment."
+    },
+    "transient_environment": {
+      "type": "boolean",
+      "description": "Specifies if the given environment will no longer exist at some point in the future. Default: false."
+    },
+    "production_environment": {
+      "type": "boolean",
+      "description": "Specifies if the given environment is one that end-users directly interact with. Default: false."
+    },
     "description": { "type": ["string", "null"] },
     "creator": { "$ref": "user.schema.json" },
     "created_at": { "type": "string", "format": "date-time" },

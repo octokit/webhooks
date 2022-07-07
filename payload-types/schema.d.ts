@@ -447,56 +447,182 @@ export interface Repository {
    * Unique identifier of the repository
    */
   id: number;
+  /**
+   * The GraphQL identifier of the repository.
+   */
   node_id: string;
   /**
    * The name of the repository.
    */
   name: string;
+  /**
+   * The full, globally unique, name of the repository.
+   */
   full_name: string;
   /**
    * Whether the repository is private or public.
    */
   private: boolean;
   owner: User;
+  /**
+   * The URL to view the repository on GitHub.com.
+   */
   html_url: string;
+  /**
+   * The repository description.
+   */
   description: string | null;
+  /**
+   * Whether the repository is a fork.
+   */
   fork: boolean;
+  /**
+   * The URL to get more information about the repository from the GitHub API.
+   */
   url: string;
+  /**
+   * The API URL to list the forks of the repository.
+   */
   forks_url: string;
+  /**
+   * A template for the API URL to get information about deploy keys on the repository.
+   */
   keys_url: string;
+  /**
+   * A template for the API URL to get information about collaborators of the repository.
+   */
   collaborators_url: string;
+  /**
+   * The API URL to list the teams on the repository.
+   */
   teams_url: string;
+  /**
+   * The API URL to list the hooks on the repository.
+   */
   hooks_url: string;
+  /**
+   * A template for the API URL to get information about issue events on the repository.
+   */
   issue_events_url: string;
+  /**
+   * The API URL to list the events of the repository.
+   */
   events_url: string;
+  /**
+   * A template for the API URL to list the available assignees for issues in the repository.
+   */
   assignees_url: string;
+  /**
+   * A template for the API URL to get information about branches in the repository.
+   */
   branches_url: string;
+  /**
+   * The API URL to get information about tags on the repository.
+   */
   tags_url: string;
+  /**
+   * A template for the API URL to create or retrieve a raw Git blob in the repository.
+   */
   blobs_url: string;
+  /**
+   * A template for the API URL to get information about Git tags of the repository.
+   */
   git_tags_url: string;
+  /**
+   * A template for the API URL to get information about Git refs of the repository.
+   */
   git_refs_url: string;
+  /**
+   * A template for the API URL to create or retrieve a raw Git tree of the repository.
+   */
   trees_url: string;
+  /**
+   * A template for the API URL to get information about statuses of a commit.
+   */
   statuses_url: string;
+  /**
+   * The API URL to get information about the languages of the repository.
+   */
   languages_url: string;
+  /**
+   * The API URL to list the stargazers on the repository.
+   */
   stargazers_url: string;
+  /**
+   * A template for the API URL to list the contributors to the repository.
+   */
   contributors_url: string;
+  /**
+   * The API URL to list the subscribers on the repository.
+   */
   subscribers_url: string;
+  /**
+   * The API URL to subscribe to notifications for this repository.
+   */
   subscription_url: string;
+  /**
+   * A template for the API URL to get information about commits on the repository.
+   */
   commits_url: string;
+  /**
+   * A template for the API URL to get information about Git commits of the repository.
+   */
   git_commits_url: string;
+  /**
+   * A template for the API URL to get information about comments on the repository.
+   */
   comments_url: string;
+  /**
+   * A template for the API URL to get information about issue comments on the repository.
+   */
   issue_comment_url: string;
+  /**
+   * A template for the API URL to get the contents of the repository.
+   */
   contents_url: string;
+  /**
+   * A template for the API URL to compare two commits or refs.
+   */
   compare_url: string;
+  /**
+   * The API URL to merge branches in the repository.
+   */
   merges_url: string;
+  /**
+   * A template for the API URL to download the repository as an archive.
+   */
   archive_url: string;
+  /**
+   * The API URL to list the downloads on the repository.
+   */
   downloads_url: string;
+  /**
+   * A template for the API URL to get information about issues on the repository.
+   */
   issues_url: string;
+  /**
+   * A template for the API URL to get information about pull requests on the repository.
+   */
   pulls_url: string;
+  /**
+   * A template for the API URL to get information about milestones of the repository.
+   */
   milestones_url: string;
+  /**
+   * A template for the API URL to get information about notifications on the repository.
+   */
   notifications_url: string;
+  /**
+   * A template for the API URL to get information about labels of the repository.
+   */
   labels_url: string;
+  /**
+   * A template for the API URL to get information about releases on the repository.
+   */
   releases_url: string;
+  /**
+   * The API URL to list the deployments of the repository.
+   */
   deployments_url: string;
   created_at: number | string;
   updated_at: string;
@@ -1480,6 +1606,9 @@ export interface CodeScanningAlertAppearedInBranchEvent {
      * The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
      */
     created_at: string;
+    /**
+     * The REST API URL of the alert resource.
+     */
     url: string;
     /**
      * The GitHub URL of the alert resource.
@@ -1604,6 +1733,9 @@ export interface CodeScanningAlertClosedByUserEvent {
      * The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
      */
     created_at: string;
+    /**
+     * The REST API URL of the alert resource.
+     */
     url: string;
     /**
      * The GitHub URL of the alert resource.
@@ -1683,6 +1815,9 @@ export interface CodeScanningAlertCreatedEvent {
      * The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
      */
     created_at: string;
+    /**
+     * The REST API URL of the alert resource.
+     */
     url: string;
     /**
      * The GitHub URL of the alert resource.
@@ -1762,6 +1897,9 @@ export interface CodeScanningAlertFixedEvent {
      * The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
      */
     created_at: string;
+    /**
+     * The REST API URL of the alert resource.
+     */
     url: string;
     /**
      * The GitHub URL of the alert resource.
@@ -1842,6 +1980,9 @@ export interface CodeScanningAlertReopenedEvent {
      * The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
      */
     created_at: string;
+    /**
+     * The REST API URL of the alert resource.
+     */
     url: string;
     /**
      * The GitHub URL of the alert resource.
@@ -1921,6 +2062,9 @@ export interface CodeScanningAlertReopenedByUserEvent {
      * The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`
      */
     created_at: string;
+    /**
+     * The REST API URL of the alert resource.
+     */
     url: string;
     /**
      * The GitHub URL of the alert resource.
@@ -2136,17 +2280,35 @@ export interface DeploymentCreatedEvent {
  */
 export interface Deployment {
   url: string;
+  /**
+   * Unique identifier of the deployment
+   */
   id: number;
   node_id: string;
   sha: string;
+  /**
+   * The ref to deploy. This can be a branch, tag, or sha.
+   */
   ref: string;
+  /**
+   * Parameter to specify a task to execute
+   */
   task: string;
   payload: {
     [k: string]: unknown;
   };
   original_environment: string;
+  /**
+   * Name of the target deployment environment.
+   */
   environment: string;
+  /**
+   * Specifies if the given environment will no longer exist at some point in the future. Default: false.
+   */
   transient_environment?: boolean;
+  /**
+   * Specifies if the given environment is one that end-users directly interact with. Default: false.
+   */
   production_environment?: boolean;
   description: string | null;
   creator: User;
@@ -2335,6 +2497,9 @@ export interface Discussion {
   id: number;
   node_id: string;
   number: number;
+  /**
+   * The discussion post's title.
+   */
   title: string;
   user: User;
   state: "open" | "locked" | "converting";
@@ -2344,6 +2509,9 @@ export interface Discussion {
   updated_at: string;
   author_association: AuthorAssociation;
   active_lock_reason: string | null;
+  /**
+   * The discussion post's body text.
+   */
   body: string;
   reactions?: Reactions;
 }
@@ -2549,6 +2717,9 @@ export interface DiscussionCommentCreatedEvent {
     user: User;
     created_at: string;
     updated_at: string;
+    /**
+     * The main text of the comment.
+     */
     body: string;
     reactions: Reactions;
   };
@@ -2572,6 +2743,9 @@ export interface DiscussionCommentDeletedEvent {
     user: User;
     created_at: string;
     updated_at: string;
+    /**
+     * The main text of the comment.
+     */
     body: string;
     reactions: Reactions;
   };
@@ -2600,6 +2774,9 @@ export interface DiscussionCommentEditedEvent {
     user: User;
     created_at: string;
     updated_at: string;
+    /**
+     * The main text of the comment.
+     */
     body: string;
     reactions: Reactions;
   };
@@ -2712,40 +2889,130 @@ export interface Installation {
   target_id: number;
   target_type: "User" | "Organization";
   permissions: {
+    /**
+     * The level of permission granted to the access token for GitHub Actions workflows, workflow runs, and artifacts.
+     */
     actions?: "read" | "write";
+    /**
+     * The level of permission granted to the access token for repository creation, deletion, settings, teams, and collaborators creation.
+     */
     administration?: "read" | "write";
+    /**
+     * The level of permission granted to the access token for checks on code.
+     */
     checks?: "read" | "write";
     content_references?: "read" | "write";
+    /**
+     * The level of permission granted to the access token for repository contents, commits, branches, downloads, releases, and merges.
+     */
     contents?: "read" | "write";
+    /**
+     * The level of permission granted to the access token for deployments and deployment statuses.
+     */
     deployments?: "read" | "write";
     discussions?: "read" | "write";
     emails?: "read" | "write";
+    /**
+     * The level of permission granted to the access token for managing repository environments.
+     */
     environments?: "read" | "write";
+    /**
+     * The level of permission granted to the access token for issues and related comments, assignees, labels, and milestones.
+     */
     issues?: "read" | "write";
+    /**
+     * The level of permission granted to the access token for organization teams and members.
+     */
     members?: "read" | "write";
+    /**
+     * The level of permission granted to the access token to search repositories, list collaborators, and access repository metadata.
+     */
     metadata?: "read" | "write";
+    /**
+     * The level of permission granted to the access token to manage access to an organization.
+     */
     organization_administration?: "read" | "write";
     organization_events?: "read" | "write";
+    /**
+     * The level of permission granted to the access token to manage the post-receive hooks for an organization.
+     */
     organization_hooks?: "read" | "write";
+    /**
+     * The level of permission granted to the access token for organization packages published to GitHub Packages.
+     */
     organization_packages?: "read" | "write";
+    /**
+     * The level of permission granted to the access token for viewing an organization's plan.
+     */
     organization_plan?: "read" | "write";
+    /**
+     * The level of permission granted to the access token to manage organization projects and projects beta (where available).
+     */
     organization_projects?: "read" | "write";
+    /**
+     * The level of permission granted to the access token to manage organization secrets.
+     */
     organization_secrets?: "read" | "write";
+    /**
+     * The level of permission granted to the access token to view and manage GitHub Actions self-hosted runners available to an organization.
+     */
     organization_self_hosted_runners?: "read" | "write";
+    /**
+     * The level of permission granted to the access token to view and manage users blocked by the organization.
+     */
     organization_user_blocking?: "read" | "write";
+    /**
+     * The level of permission granted to the access token for packages published to GitHub Packages.
+     */
     packages?: "read" | "write";
+    /**
+     * The level of permission granted to the access token to retrieve Pages statuses, configuration, and builds, as well as create new builds.
+     */
     pages?: "read" | "write";
+    /**
+     * The level of permission granted to the access token for pull requests and related comments, assignees, labels, milestones, and merges.
+     */
     pull_requests?: "read" | "write";
+    /**
+     * The level of permission granted to the access token to manage the post-receive hooks for a repository.
+     */
     repository_hooks?: "read" | "write";
+    /**
+     * The level of permission granted to the access token to manage repository projects, columns, and cards.
+     */
     repository_projects?: "read" | "write";
+    /**
+     * The level of permission granted to the access token to view and manage secret scanning alerts.
+     */
     secret_scanning_alerts?: "read" | "write";
+    /**
+     * The level of permission granted to the access token to manage repository secrets.
+     */
     secrets?: "read" | "write";
+    /**
+     * The level of permission granted to the access token to view and manage security events like code scanning alerts.
+     */
     security_events?: "read" | "write";
     security_scanning_alert?: "read" | "write";
+    /**
+     * The level of permission granted to the access token to manage just a single file.
+     */
     single_file?: "read" | "write";
+    /**
+     * The level of permission granted to the access token for commit statuses.
+     */
     statuses?: "read" | "write";
+    /**
+     * The level of permission granted to the access token to manage team discussions and related comments.
+     */
     team_discussions?: "read" | "write";
+    /**
+     * The level of permission granted to the access token to manage Dependabot alerts.
+     */
     vulnerability_alerts?: "read" | "write";
+    /**
+     * The level of permission granted to the access token to update GitHub Actions workflow files.
+     */
     workflows?: "read" | "write";
   };
   events: (
@@ -3019,6 +3286,9 @@ export interface Issue {
   html_url: string;
   id: number;
   node_id: string;
+  /**
+   * Number uniquely identifying the issue within its repository
+   */
   number: number;
   /**
    * Title of the issue
@@ -3055,6 +3325,9 @@ export interface Issue {
   body: string | null;
   reactions: Reactions;
   timeline_url?: string;
+  /**
+   * The reason for the current state
+   */
   state_reason?: string | null;
 }
 /**
@@ -3725,11 +3998,26 @@ export interface MetaDeletedEvent {
     name: string;
     active: boolean;
     events: WebhookEvents;
+    /**
+     * Configuration object of the webhook
+     */
     config: {
+      /**
+       * The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.
+       */
       content_type: "json" | "form";
-      insecure_ssl: string;
+      /**
+       * If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).
+       */
+      secret?: string;
+      /**
+       * The URL to which the payloads will be delivered.
+       */
       url: string;
-      secret: string;
+      /**
+       * Determines whether the SSL certificate of the host for `url` will be verified when delivering payloads. Supported values include `0` (verification is performed) and `1` (verification is not performed). The default is `0`.
+       */
+      insecure_ssl: "0" | "1";
     };
     updated_at: string;
     created_at: string;
@@ -3835,7 +4123,13 @@ export interface OrganizationDeletedEvent {
  */
 export interface Membership {
   url: string;
+  /**
+   * The state of the user's membership in the team.
+   */
   state: string;
+  /**
+   * The role of the user in the team.
+   */
   role: string;
   organization_url: string;
   user: User;
@@ -3890,20 +4184,44 @@ export interface PackagePublishedEvent {
    * Information about the package.
    */
   package: {
+    /**
+     * Unique identifier of the package.
+     */
     id: number;
+    /**
+     * The name of the package.
+     */
     name: string;
     namespace: string;
     description: string | null;
     ecosystem: string;
-    package_type: string;
+    /**
+     * The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry.
+     */
+    package_type:
+      | "npm"
+      | "maven"
+      | "rubygems"
+      | "docker"
+      | "nuget"
+      | "container";
     html_url: string;
     created_at: string;
     updated_at: string;
     owner: User;
+    /**
+     * A version of a software package
+     */
     package_version: {
+      /**
+       * Unique identifier of the package version.
+       */
       id: number;
       version: string;
       summary: string;
+      /**
+       * The name of the package version.
+       */
       name: string;
       description: string;
       body: string;
@@ -3930,6 +4248,9 @@ export interface PackagePublishedEvent {
       prerelease: boolean;
       created_at: string;
       updated_at: string;
+      /**
+       * Package Version Metadata
+       */
       metadata: unknown[];
       docker_metadata: unknown[];
       package_files: {
@@ -3967,20 +4288,41 @@ export interface PackageUpdatedEvent {
    * Information about the package.
    */
   package: {
+    /**
+     * Unique identifier of the package.
+     */
     id: number;
+    /**
+     * The name of the package.
+     */
     name: string;
     namespace: string;
     description: string | null;
     ecosystem: string;
-    package_type: string;
+    package_type:
+      | "npm"
+      | "maven"
+      | "rubygems"
+      | "docker"
+      | "nuget"
+      | "container";
     html_url: string;
     created_at: string;
     updated_at: string;
     owner: User;
+    /**
+     * A version of a software package
+     */
     package_version: {
+      /**
+       * Unique identifier of the package version.
+       */
       id: number;
       version: string;
       summary: string;
+      /**
+       * The name of the package version.
+       */
       name: string;
       description: string;
       body: string;
@@ -4007,6 +4349,9 @@ export interface PackageUpdatedEvent {
       prerelease: boolean;
       created_at: string;
       updated_at: string;
+      /**
+       * Package Version Metadata
+       */
       metadata: unknown[];
       docker_metadata: unknown[];
       package_files: {
@@ -4082,11 +4427,26 @@ export interface PingEvent {
      */
     app_id?: number;
     events: WebhookEvents;
+    /**
+     * Configuration object of the webhook
+     */
     config: {
+      /**
+       * The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.
+       */
       content_type: "json" | "form";
+      /**
+       * If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).
+       */
       secret?: string;
+      /**
+       * The URL to which the payloads will be delivered.
+       */
       url: string;
-      insecure_ssl: string;
+      /**
+       * Determines whether the SSL certificate of the host for `url` will be verified when delivering payloads. Supported values include `0` (verification is performed) and `1` (verification is not performed). The default is `0`.
+       */
+      insecure_ssl: "0" | "1";
     };
     updated_at: string;
     created_at: string;
@@ -6356,10 +6716,25 @@ export interface WorkflowRunCompletedEvent {
   installation?: InstallationLite;
 }
 export interface WorkflowRun {
+  /**
+   * The URL to the artifacts for the workflow run.
+   */
   artifacts_url: string;
+  /**
+   * The URL to cancel the workflow run.
+   */
   cancel_url: string;
+  /**
+   * The URL to the associated check suite.
+   */
   check_suite_url: string;
+  /**
+   * The ID of the associated check suite.
+   */
   check_suite_id: number;
+  /**
+   * The node ID of the associated check suite.
+   */
   check_suite_node_id: string;
   conclusion:
     | "success"
@@ -6376,13 +6751,31 @@ export interface WorkflowRun {
   head_branch: string;
   head_commit: SimpleCommit;
   head_repository: RepositoryLite;
+  /**
+   * The SHA of the head commit that points to the version of the workflow being run.
+   */
   head_sha: string;
+  /**
+   * The full path of the workflow
+   */
   path?: string;
   html_url: string;
+  /**
+   * The ID of the workflow run.
+   */
   id: number;
+  /**
+   * The URL to the jobs for the workflow run.
+   */
   jobs_url: string;
+  /**
+   * The URL to download the logs for the workflow run.
+   */
   logs_url: string;
   node_id: string;
+  /**
+   * The name of the workflow run.
+   */
   name: string;
   pull_requests: {
     url: string;
@@ -6400,75 +6793,225 @@ export interface WorkflowRun {
     };
   }[];
   repository: RepositoryLite;
+  /**
+   * The URL to rerun the workflow run.
+   */
   rerun_url: string;
+  /**
+   * The auto incrementing run number for the workflow run.
+   */
   run_number: number;
   status: "requested" | "in_progress" | "completed" | "queued" | "waiting";
   updated_at: string;
+  /**
+   * The URL to the workflow run.
+   */
   url: string;
+  /**
+   * The ID of the parent workflow.
+   */
   workflow_id: number;
+  /**
+   * The URL to the workflow.
+   */
   workflow_url: string;
+  /**
+   * Attempt number of the run, 1 for first attempt and higher if the workflow was re-run.
+   */
   run_attempt: number;
   referenced_workflows?: ReferencedWorkflow[];
+  /**
+   * The start time of the latest run. Resets on re-run.
+   */
   run_started_at: string;
+  /**
+   * The URL to the previous attempted run of this workflow, if one exists.
+   */
   previous_attempt_url: string | null;
   actor: User;
   triggering_actor: User;
 }
 export interface RepositoryLite {
+  /**
+   * A template for the API URL to download the repository as an archive.
+   */
   archive_url: string;
+  /**
+   * A template for the API URL to list the available assignees for issues in the repository.
+   */
   assignees_url: string;
+  /**
+   * A template for the API URL to create or retrieve a raw Git blob in the repository.
+   */
   blobs_url: string;
+  /**
+   * A template for the API URL to get information about branches in the repository.
+   */
   branches_url: string;
+  /**
+   * A template for the API URL to get information about collaborators of the repository.
+   */
   collaborators_url: string;
+  /**
+   * A template for the API URL to get information about comments on the repository.
+   */
   comments_url: string;
+  /**
+   * A template for the API URL to get information about commits on the repository.
+   */
   commits_url: string;
+  /**
+   * A template for the API URL to compare two commits or refs.
+   */
   compare_url: string;
+  /**
+   * A template for the API URL to get the contents of the repository.
+   */
   contents_url: string;
+  /**
+   * A template for the API URL to list the contributors to the repository.
+   */
   contributors_url: string;
+  /**
+   * The API URL to list the deployments of the repository.
+   */
   deployments_url: string;
+  /**
+   * The repository description.
+   */
   description: string | null;
+  /**
+   * The API URL to list the downloads on the repository.
+   */
   downloads_url: string;
+  /**
+   * The API URL to list the events of the repository.
+   */
   events_url: string;
+  /**
+   * Whether the repository is a fork.
+   */
   fork: boolean;
+  /**
+   * The API URL to list the forks of the repository.
+   */
   forks_url: string;
+  /**
+   * The full, globally unique, name of the repository.
+   */
   full_name: string;
+  /**
+   * A template for the API URL to get information about Git commits of the repository.
+   */
   git_commits_url: string;
+  /**
+   * A template for the API URL to get information about Git refs of the repository.
+   */
   git_refs_url: string;
+  /**
+   * A template for the API URL to get information about Git tags of the repository.
+   */
   git_tags_url: string;
+  /**
+   * The API URL to list the hooks on the repository.
+   */
   hooks_url: string;
+  /**
+   * The URL to view the repository on GitHub.com.
+   */
   html_url: string;
   /**
    * Unique identifier of the repository
    */
   id: number;
+  /**
+   * A template for the API URL to get information about issue comments on the repository.
+   */
   issue_comment_url: string;
+  /**
+   * A template for the API URL to get information about issue events on the repository.
+   */
   issue_events_url: string;
+  /**
+   * A template for the API URL to get information about issues on the repository.
+   */
   issues_url: string;
+  /**
+   * A template for the API URL to get information about deploy keys on the repository.
+   */
   keys_url: string;
+  /**
+   * A template for the API URL to get information about labels of the repository.
+   */
   labels_url: string;
+  /**
+   * The API URL to get information about the languages of the repository.
+   */
   languages_url: string;
+  /**
+   * The API URL to merge branches in the repository.
+   */
   merges_url: string;
+  /**
+   * A template for the API URL to get information about milestones of the repository.
+   */
   milestones_url: string;
   /**
    * The name of the repository.
    */
   name: string;
+  /**
+   * The GraphQL identifier of the repository.
+   */
   node_id: string;
+  /**
+   * A template for the API URL to get information about notifications on the repository.
+   */
   notifications_url: string;
   owner: User;
   /**
    * Whether the repository is private or public.
    */
   private: boolean;
+  /**
+   * A template for the API URL to get information about pull requests on the repository.
+   */
   pulls_url: string;
+  /**
+   * A template for the API URL to get information about releases on the repository.
+   */
   releases_url: string;
+  /**
+   * The API URL to list the stargazers on the repository.
+   */
   stargazers_url: string;
+  /**
+   * A template for the API URL to get information about statuses of a commit.
+   */
   statuses_url: string;
+  /**
+   * The API URL to list the subscribers on the repository.
+   */
   subscribers_url: string;
+  /**
+   * The API URL to subscribe to notifications for this repository.
+   */
   subscription_url: string;
+  /**
+   * The API URL to get information about tags on the repository.
+   */
   tags_url: string;
+  /**
+   * The API URL to list the teams on the repository.
+   */
   teams_url: string;
+  /**
+   * A template for the API URL to create or retrieve a raw Git tree of the repository.
+   */
   trees_url: string;
+  /**
+   * The URL to get more information about the repository from the GitHub API.
+   */
   url: string;
 }
 export interface WorkflowRunRequestedEvent {
