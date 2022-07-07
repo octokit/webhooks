@@ -4681,7 +4681,6 @@ export interface PullRequestOpenedEvent {
     state: "open";
     closed_at: null;
     merged_at: null;
-    merge_commit_sha: null;
     active_lock_reason: null;
     merged_by: null;
   };
