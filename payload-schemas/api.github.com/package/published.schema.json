@@ -161,7 +161,7 @@
               }
             },
             "author": { "$ref": "common/user.schema.json" },
-            "source_url": { "type": "string", "format": "uri" },
+            "source_url": { "type": "string" },
             "installation_command": { "type": "string" }
           },
           "additionalProperties": false
