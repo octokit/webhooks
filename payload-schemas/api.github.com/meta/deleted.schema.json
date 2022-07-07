@@ -30,12 +30,28 @@
         "events": { "$ref": "common/webhook-events.schema.json" },
         "config": {
           "type": "object",
-          "required": ["content_type", "insecure_ssl", "url", "secret"],
+          "required": ["content_type", "url", "insecure_ssl"],
+          "description": "Configuration object of the webhook",
           "properties": {
-            "content_type": { "type": "string", "enum": ["json", "form"] },
-            "insecure_ssl": { "type": "string" },
-            "url": { "type": "string", "format": "uri" },
-            "secret": { "type": "string" }
+            "content_type": {
+              "type": "string",
+              "enum": ["json", "form"],
+              "description": "The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`."
+            },
+            "secret": {
+              "type": "string",
+              "description": "If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers)."
+            },
+            "url": {
+              "type": "string",
+              "format": "uri",
+              "description": "The URL to which the payloads will be delivered."
+            },
+            "insecure_ssl": {
+              "type": "string",
+              "description": "Determines whether the SSL certificate of the host for `url` will be verified when delivering payloads. Supported values include `0` (verification is performed) and `1` (verification is not performed). The default is `0`.",
+              "enum": ["0", "1"]
+            }
           },
           "additionalProperties": false
         },

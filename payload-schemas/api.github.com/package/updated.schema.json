@@ -23,12 +23,18 @@
         "registry"
       ],
       "properties": {
-        "id": { "type": "integer" },
-        "name": { "type": "string" },
+        "id": {
+          "type": "integer",
+          "description": "Unique identifier of the package."
+        },
+        "name": { "type": "string", "description": "The name of the package." },
         "namespace": { "type": "string" },
         "description": { "type": ["string", "null"] },
         "ecosystem": { "type": "string" },
-        "package_type": { "type": "string" },
+        "package_type": {
+          "type": "string",
+          "enum": ["npm", "maven", "rubygems", "docker", "nuget", "container"]
+        },
         "html_url": { "type": "string", "format": "uri" },
         "created_at": { "type": "string", "format": "date-time" },
         "updated_at": { "type": "string", "format": "date-time" },
@@ -60,11 +66,18 @@
             "source_url",
             "installation_command"
           ],
+          "description": "A version of a software package",
           "properties": {
-            "id": { "type": "integer" },
+            "id": {
+              "type": "integer",
+              "description": "Unique identifier of the package version."
+            },
             "version": { "type": "string" },
             "summary": { "type": "string" },
-            "name": { "type": "string" },
+            "name": {
+              "type": "string",
+              "description": "The name of the package version."
+            },
             "description": { "type": "string" },
             "body": { "type": "string" },
             "body_html": { "type": "string" },
@@ -107,7 +120,11 @@
             "prerelease": { "type": "boolean" },
             "created_at": { "type": "string", "format": "date-time" },
             "updated_at": { "type": "string", "format": "date-time" },
-            "metadata": { "type": "array", "items": {} },
+            "metadata": {
+              "type": "array",
+              "items": {},
+              "description": "Package Version Metadata"
+            },
             "docker_metadata": { "type": "array", "items": {} },
             "package_files": {
               "type": "array",
@@ -143,7 +160,7 @@
               }
             },
             "author": { "$ref": "common/user.schema.json" },
-            "source_url": { "type": "string", "format": "uri" },
+            "source_url": { "type": "string" },
             "installation_command": { "type": "string" }
           },
           "additionalProperties": false
