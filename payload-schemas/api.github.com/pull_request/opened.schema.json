@@ -15,7 +15,6 @@
             "state",
             "closed_at",
             "merged_at",
-            "merge_commit_sha",
             "active_lock_reason",
             "merged_by"
           ],
@@ -23,7 +22,6 @@
             "state": { "type": "string", "enum": ["open"] },
             "closed_at": { "type": "null" },
             "merged_at": { "type": "null" },
-            "merge_commit_sha": { "type": "null" },
             "active_lock_reason": { "type": "null" },
             "merged_by": { "type": "null" }
           },
