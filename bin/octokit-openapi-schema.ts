@@ -47,11 +47,14 @@ const listEvents = () => {
     .map((entity) => entity.name);
 };
 
-// In OpenApi 3.1 you do not need a `paths` property anymore, so we omit it and re-add it as optional
-type EventSchema = Omit<OpenApi, "paths"> & {
+interface OpenAPI31 extends Omit<OpenApi, "paths"> {
+  openapi: "3.1.0";
   paths?: OpenApiPaths;
+  webhooks?: OpenApiMap<OpenApiReference | OpenApiPath>;
+}
+type EventSchema = OpenAPI31 & {
   components: { schemas: OpenApiMap<OpenApiSchema | OpenApiReference> };
-  webhooks: OpenApiMap<OpenApiReference | OpenApiPath>;
+  webhooks: OpenApiMap<OpenApiPath>;
 };
 
 const combineEventSchemas = () => {
@@ -62,16 +65,15 @@ const combineEventSchemas = () => {
       description: "Community driven webhook definitions for the GitHub API",
       version: "1.0.0",
       license: { name: "MIT", url: "https://spdx.org/licenses/MIT" },
-      termsOfService: "https://docs.github.com/articles/github-terms-of-service",
+      termsOfService:
+        "https://docs.github.com/articles/github-terms-of-service",
     },
     servers: [{ url: "https://api.github.com" }],
     externalDocs: {
       description: "GitHub Webhooks",
       url: "https://docs.github.com/webhooks",
     },
-    components: {
-      schemas: {},
-    },
+    components: { schemas: {} },
     webhooks: {},
   };
 
@@ -88,13 +90,13 @@ const combineEventSchemas = () => {
 
       assert.ok(eventName, `${event}/event.schema.json does not have an $id`);
 
-      eventSchema.components = {
-        schemas: {
-          ...eventSchema.components.schemas,
+      eventSchema.components.schemas = Object.assign(
+        eventSchema.components.schemas,
+        {
           ...(schema.definitions as any),
           [eventName]: schema,
-        },
-      };
+        }
+      );
 
       delete schema.definitions;
       delete schema.$schema;
@@ -124,13 +126,13 @@ const combineEventSchemas = () => {
 
       assert.ok(actionEventName, `${event}/${schemaName} does not have an $id`);
 
-      eventSchema.components = {
-        schemas: {
-          ...eventSchema.components.schemas,
+      eventSchema.components.schemas = Object.assign(
+        eventSchema.components.schemas,
+        {
           ...(schema.definitions as any),
           [actionEventName]: schema,
-        },
-      };
+        }
+      );
 
       delete schema.definitions;
       delete schema.$schema;
@@ -140,9 +142,9 @@ const combineEventSchemas = () => {
 
     const eventName = `${event}_event`;
 
-    eventSchema.components = {
-      schemas: {
-        ...eventSchema.components.schemas,
+    eventSchema.components.schemas = Object.assign(
+      eventSchema.components.schemas,
+      {
         [eventName]: {
           oneOf: eventActions.map((eventAction) => ({
             $ref: `#/components/schemas/${eventAction}`,
@@ -152,8 +154,8 @@ const combineEventSchemas = () => {
             mapping: {},
           },
         },
-      },
-    };
+      }
+    );
 
     eventActions.forEach((eventAction) => {
       (
@@ -188,12 +190,10 @@ async function run() {
     const commonSchemaDefinitions =
       buildCommonSchemasDefinitionSchema() as Record<string, JSONSchema7>;
 
-    schema.components = {
-      schemas: {
-        ...schema.components.schemas,
-        ...commonSchemaDefinitions,
-      },
-    };
+    schema.components.schemas = Object.assign(
+      schema.components.schemas,
+      commonSchemaDefinitions
+    );
 
     fs.writeFileSync(
       "./payload-schemas/openapi-schema.json",
