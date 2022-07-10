@@ -58,12 +58,16 @@ const combineEventSchemas = () => {
   const eventSchema: EventSchema = {
     openapi: "3.1.0",
     info: {
-      title: "webhooks",
+      title: "Octokit Webhooks",
+      description: "Community driven webhook definitions for the GitHub API",
       version: "1.0.0",
-      license: {
-        name: "MIT",
-        url: "https://spdx.org/licenses/MIT",
-      },
+      license: { name: "MIT", url: "https://spdx.org/licenses/MIT" },
+      termsOfService: "https://docs.github.com/articles/github-terms-of-service",
+    },
+    servers: [{ url: "https://api.github.com" }],
+    externalDocs: {
+      description: "GitHub Webhooks",
+      url: "https://docs.github.com/webhooks",
     },
     components: {
       schemas: {},
