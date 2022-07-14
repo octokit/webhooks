@@ -1421,7 +1421,7 @@ export interface CheckSuiteCompletedEvent {
      */
     head_sha: string;
     /**
-     * The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`.
+     * The summary status for all check runs that are part of the check suite. Can be `queued`, `requested`, `in_progress`, or `completed`.
      */
     status: "requested" | "in_progress" | "completed" | "queued" | null;
     /**
@@ -1500,7 +1500,7 @@ export interface CheckSuiteRequestedEvent {
      */
     head_sha: string;
     /**
-     * The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`.
+     * The summary status for all check runs that are part of the check suite. Can be `queued`, `requested`, `in_progress`, or `completed`.
      */
     status: "requested" | "in_progress" | "completed" | "queued" | null;
     /**
@@ -1556,7 +1556,7 @@ export interface CheckSuiteRerequestedEvent {
      */
     head_sha: string;
     /**
-     * The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`.
+     * The summary status for all check runs that are part of the check suite. Can be `queued`, `requested`, `in_progress`, or `completed`.
      */
     status: "requested" | "in_progress" | "completed" | "queued" | null;
     /**

@@ -1725,7 +1725,7 @@
       },
       "check_suite[status]": {
         "type": "string",
-        "description": "The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`."
+        "description": "The summary status for all check runs that are part of the check suite. Can be `queued`, `requested`, `in_progress`, or `completed`."
       },
       "check_suite[conclusion]": {
         "type": "string",
