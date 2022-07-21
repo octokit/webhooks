@@ -8,7 +8,7 @@
     "name": { "type": "string", "description": "The git author's name." },
     "email": {
       "description": "The git author's email address.",
-      "oneOf": [{ "type": "string", "format": "email" }, { "type": "null" }]
+      "oneOf": [{ "type": "string" }, { "type": "null" }]
     },
     "date": { "type": "string", "format": "date-time" },
     "username": { "type": "string" }
