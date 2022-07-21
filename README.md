@@ -327,6 +327,30 @@ the [`cache/`](cache/) folder.
 - [octokit/app-permissions](https://github.com/octokit/app-permissions) – GitHub
   App permission specifications
 
+## JSON Schema conventions
+
+What conventions are the schemas of this repository following?
+
+This section offers the origin of these conventions and the reasoning behind them.
+
+### `"email"` for `committer.schema.json` treated as a regular `string`
+
+The JSON schema for a committer (`committer.schema.json`) has a property `"email"`, which [originally was using](https://github.com/octokit/webhooks/blob/f2f7ffb6ed4179fe22b1b82b670d536a833d83f6/payload-schemas/api.github.com/common/committer.schema.json#L11) the default `email` format offered by [`ajv-format`](https://github.com/ajv-validator/ajv-formats/blob/4dd65447575b35d0187c6b125383366969e6267e/src/formats.ts#L65).
+
+What we noticed is [the Regular Expression used by ajv-format for `emails`](https://github.com/ajv-validator/ajv-formats/blob/4dd65447575b35d0187c6b125383366969e6267e/src/formats.ts#L65) is not accepting emails containing `[` or `]` characters (i.e. `41898282+github-actions`**[**`bot`**]**`@users.noreply.github.com`).
+
+After [considering the option](https://github.com/octokit/webhooks/pull/677) of applying our pattern by extending [`ajv-format` Regular Expression for emails](https://github.com/ajv-validator/ajv-formats/blob/4dd65447575b35d0187c6b125383366969e6267e/src/formats.ts#L65), we considered not to do that because:
+
+- It is an excellent way to cause more trouble (the size of this Regular Expression alone is enormous even before you think about all the sub-patterns).
+- The moment we decide to use our Regular Expression, we are committing to maintaining it, so if someone else comes along and presents another email that is considered invalid by this pattern but works with git, we will need to safely modify the pattern again to cover that in addition to what we currently consider valid.
+- If we want to be accurate, we should follow a spec to decide what is valid and what is not. [Since GitHub is not following a spec for emails (and it will not change any time soon)](https://github.com/octokit/webhooks/issues/453#issuecomment-1189113327), to be validating emails with our RegEx would not be correct either.
+
+You can read more details and the discussion behind in this resources:
+
+- https://github.com/octokit/webhooks/issues/453
+- https://github.com/octokit/webhooks/pull/677
+- https://github.com/octokit/webhooks/pull/678
+
 ## LICENSE
 
 [MIT](LICENSE.md)
