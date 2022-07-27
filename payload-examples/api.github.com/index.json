@@ -32751,7 +32751,7 @@
   },
   {
     "name": "project",
-    "description": "Activity related to project boards. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[projects](https://docs.github.com/en/rest/reference/projects)\" REST API.",
+    "description": "Activity related to classic projects. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[projects](https://docs.github.com/en/rest/reference/projects)\" REST API.",
     "actions": ["closed", "created", "deleted", "edited", "reopened"],
     "properties": {
       "changes": {
@@ -33257,7 +33257,7 @@
   },
   {
     "name": "project_card",
-    "description": "Activity related to project cards. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[project cards](https://docs.github.com/en/rest/reference/projects#cards)\" REST API.",
+    "description": "Activity related to cards in a classic project. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[project cards](https://docs.github.com/en/rest/reference/projects#cards)\" REST API.",
     "actions": ["converted", "created", "deleted", "edited", "moved"],
     "properties": {
       "changes": {
@@ -34717,7 +34717,7 @@
   },
   {
     "name": "project_column",
-    "description": "Activity related to columns in a project board. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[project columns](https://docs.github.com/en/rest/reference/projects#columns)\" REST API.",
+    "description": "Activity related to columns in a classic project. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[project columns](https://docs.github.com/en/rest/reference/projects#columns)\" REST API.",
     "actions": ["created", "deleted", "edited", "moved"],
     "properties": {
       "changes": {
@@ -35283,7 +35283,7 @@
   },
   {
     "name": "projects_v2_item",
-    "description": "Activity related to items in a Projects (beta) project. The type of activity is specified in the `action` property of the payload object. For more information, see \"[About projects (beta)](https://docs.github.com/en/issues/trying-out-the-new-projects-experience/about-projects).\"",
+    "description": "Activity related to items in a project. The type of activity is specified in the `action` property of the payload object. For more information, see \"[About projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects).\"",
     "actions": [
       "archived",
       "converted",
@@ -35296,7 +35296,7 @@
     "properties": {
       "projects_v2_item": {
         "type": "object",
-        "description": "The project item itself. To find more information about the project item, you can use `node_id` (the node ID of the project item) and `project_node_id` (the node ID of the project) to query information in the GraphQL API. For more information, see \"[Using the API to manage projects (beta)](https://docs.github.com/en/issues/trying-out-the-new-projects-experience/using-the-api-to-manage-projects).\""
+        "description": "The project item itself. To find more information about the project item, you can use `node_id` (the node ID of the project item) and `project_node_id` (the node ID of the project) to query information in the GraphQL API. For more information, see \"[Using the API to manage projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/automating-your-project/using-the-api-to-manage-projects).\""
       },
       "changes": {
         "type": "object",
