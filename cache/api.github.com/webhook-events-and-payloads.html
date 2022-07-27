@@ -10739,8 +10739,8 @@
         >project
       </h2>
       <p>
-        Activity related to project boards. The type of activity is specified in
-        the <code>action</code> property of the payload object. For more
+        Activity related to classic projects. The type of activity is specified
+        in the <code>action</code> property of the payload object. For more
         information, see the "<a href="/en/rest/reference/projects">projects</a
         >" REST API.
       </p>
@@ -10775,7 +10775,7 @@
       </ul>
       <div>
         <p>
-          <strong>Note</strong>: This event does not occur for Projects (beta).
+          <strong>Note</strong>: This event only occurs for projects (classic).
         </p>
       </div>
       <h3 id="webhook-payload-object-30">
@@ -11085,9 +11085,9 @@
         >project_card
       </h2>
       <p>
-        Activity related to project cards. The type of activity is specified in
-        the <code>action</code> property of the payload object. For more
-        information, see the "<a href="/en/rest/reference/projects#cards"
+        Activity related to cards in a classic project. The type of activity is
+        specified in the <code>action</code> property of the payload object. For
+        more information, see the "<a href="/en/rest/reference/projects#cards"
           >project cards</a
         >" REST API.
       </p>
@@ -11122,7 +11122,7 @@
       </ul>
       <div>
         <p>
-          <strong>Note</strong>: This event does not occur for Projects (beta).
+          <strong>Note</strong>: This event only occurs for projects (classic).
         </p>
       </div>
       <h3 id="webhook-payload-object-31">
@@ -11434,9 +11434,10 @@
         >project_column
       </h2>
       <p>
-        Activity related to columns in a project board. The type of activity is
-        specified in the <code>action</code> property of the payload object. For
-        more information, see the "<a href="/en/rest/reference/projects#columns"
+        Activity related to columns in a classic project. The type of activity
+        is specified in the <code>action</code> property of the payload object.
+        For more information, see the "<a
+          href="/en/rest/reference/projects#columns"
           >project columns</a
         >" REST API.
       </p>
@@ -11469,6 +11470,11 @@
           <code>organization_projects</code> permission
         </li>
       </ul>
+      <div>
+        <p>
+          <strong>Note</strong>: This event only occurs for projects (classic).
+        </p>
+      </div>
       <h3 id="webhook-payload-object-32">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-object-32"
           ><svg
@@ -11757,20 +11763,20 @@
       </h2>
       <div>
         <p>
-          <strong>Note:</strong> Webhook events for Projects (beta) are
-          currently in beta and subject to change. To share feedback about
-          Projects (beta) webhooks with GitHub, see the
+          <strong>Note:</strong> Webhook events for projects are currently in
+          beta and subject to change. To share feedback about projects webhooks
+          with GitHub, see the
           <a href="https://github.com/github/feedback/discussions/17405"
-            >Projects (beta) webhook feedback discussion</a
+            >Projects webhook feedback discussion</a
           >.
         </p>
       </div>
       <p>
-        Activity related to items in a Projects (beta) project. The type of
-        activity is specified in the <code>action</code> property of the payload
-        object. For more information, see "<a
-          href="/en/issues/trying-out-the-new-projects-experience/about-projects"
-          >About projects (beta)</a
+        Activity related to items in a project. The type of activity is
+        specified in the <code>action</code> property of the payload object. For
+        more information, see "<a
+          href="/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects"
+          >About projects</a
         >."
       </p>
       <h3 id="availability-33">
@@ -11850,8 +11856,8 @@
               project item) and <code>project_node_id</code> (the node ID of the
               project) to query information in the GraphQL API. For more
               information, see "<a
-                href="/en/issues/trying-out-the-new-projects-experience/using-the-api-to-manage-projects"
-                >Using the API to manage projects (beta)</a
+                href="/en/issues/planning-and-tracking-with-projects/automating-your-project/using-the-api-to-manage-projects"
+                >Using the API to manage projects</a
               >."
             </td>
           </tr>
