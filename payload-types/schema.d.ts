@@ -29,6 +29,7 @@ export type Schema =
   | MarketplacePurchaseEvent
   | MemberEvent
   | MembershipEvent
+  | MergeGroupEvent
   | MetaEvent
   | MilestoneEvent
   | OrgBlockEvent
@@ -162,6 +163,7 @@ export type MemberEvent =
   | MemberEditedEvent
   | MemberRemovedEvent;
 export type MembershipEvent = MembershipAddedEvent | MembershipRemovedEvent;
+export type MergeGroupEvent = MergGroupChecksRequestedEvent;
 export type MetaEvent = MetaDeletedEvent;
 export type WebhookEvents =
   | (
@@ -3984,6 +3986,30 @@ export interface MembershipRemovedEvent {
   organization: Organization;
   installation?: InstallationLite;
 }
+export interface MergGroupChecksRequestedEvent {
+  action: "checks_requested";
+  /**
+   * The merge group.
+   */
+  merge_group: {
+    /**
+     * The SHA of the merge group.
+     */
+    head_sha: string;
+    /**
+     * The full ref of the merge group.
+     */
+    head_ref: string;
+    /**
+     * The full ref of the branch the merge group will be merged into.
+     */
+    base_ref: string;
+  };
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
 export interface MetaDeletedEvent {
   action: "deleted";
   /**
@@ -4693,7 +4719,7 @@ export interface ProjectsV2ItemArchivedEvent {
   installation?: InstallationLite;
 }
 /**
- * The project item itself. To find more information about the project item, you can use `node_id` (the node ID of the project item) and `project_node_id` (the node ID of the project) to query information in the GraphQL API. For more information, see "[Using the API to manage projects (beta)](https://docs.github.com/en/issues/trying-out-the-new-projects-experience/using-the-api-to-manage-projects)."
+ * The project item itself. To find more information about the project item, you can use `node_id` (the node ID of the project item) and `project_node_id` (the node ID of the project) to query information in the GraphQL API. For more information, see "[Using the API to manage projects](https://docs.github.com/en/issues/trying-out-the-new-projects-experience/using-the-api-to-manage-projects)."
  */
 export interface ProjectsV2Item {
   id: number;
@@ -7048,6 +7074,7 @@ export interface EventPayloadMap {
   marketplace_purchase: MarketplacePurchaseEvent;
   member: MemberEvent;
   membership: MembershipEvent;
+  merge_group: MergeGroupEvent;
   meta: MetaEvent;
   milestone: MilestoneEvent;
   org_block: OrgBlockEvent;
