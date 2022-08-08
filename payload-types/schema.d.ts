@@ -163,7 +163,7 @@ export type MemberEvent =
   | MemberEditedEvent
   | MemberRemovedEvent;
 export type MembershipEvent = MembershipAddedEvent | MembershipRemovedEvent;
-export type MergeGroupEvent = MergGroupChecksRequestedEvent;
+export type MergeGroupEvent = MergeGroupChecksRequestedEvent;
 export type MetaEvent = MetaDeletedEvent;
 export type WebhookEvents =
   | (
@@ -3986,7 +3986,7 @@ export interface MembershipRemovedEvent {
   organization: Organization;
   installation?: InstallationLite;
 }
-export interface MergGroupChecksRequestedEvent {
+export interface MergeGroupChecksRequestedEvent {
   action: "checks_requested";
   /**
    * The merge group.
