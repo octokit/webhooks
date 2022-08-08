@@ -10,9 +10,18 @@
       "description": "The merge group.",
       "required": ["head_sha", "head_ref", "base_ref"],
       "properties": {
-        "head_sha": { "type": "string", "description": "The SHA of the merge group." },
-        "head_ref": { "type": "string", "description": "The full ref of the merge group." },
-        "base_ref": { "type": "string", "description": "The full ref of the branch the merge group will be merged into." }
+        "head_sha": {
+          "type": "string",
+          "description": "The SHA of the merge group."
+        },
+        "head_ref": {
+          "type": "string",
+          "description": "The full ref of the merge group."
+        },
+        "base_ref": {
+          "type": "string",
+          "description": "The full ref of the branch the merge group will be merged into."
+        }
       },
       "additionalProperties": false
     },
