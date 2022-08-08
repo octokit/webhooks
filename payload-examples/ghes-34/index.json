@@ -13940,7 +13940,7 @@
   },
   {
     "name": "project_card",
-    "description": "Activity related to project cards. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[project cards](https://docs.github.com/en/enterprise-server@3.4/rest/reference/projects#cards)\" REST API.",
+    "description": "Activity related to cards in a project board. The type of activity is specified in the `action` property of the payload object. For more information, see the \"[project cards](https://docs.github.com/en/enterprise-server@3.4/rest/reference/projects#cards)\" REST API.",
     "actions": ["converted", "created", "deleted", "edited", "moved"],
     "properties": {
       "changes": {
