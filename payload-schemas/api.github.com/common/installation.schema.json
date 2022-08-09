@@ -53,6 +53,7 @@
           "enum": ["read", "write"],
           "description": "The level of permission granted to the access token for repository creation, deletion, settings, teams, and collaborators creation."
         },
+        "blocking": { "type": "string", "enum": ["read", "write"] },
         "checks": {
           "type": "string",
           "enum": ["read", "write"],
