@@ -99,6 +99,16 @@
           },
           "additionalProperties": false
         },
+        "required_deployments_enforcement_level": {
+          "type": "object",
+          "required": ["from"],
+          "properties": {
+            "from": {
+              "type": "string",
+              "enum": ["off", "non_admins", "everyone"]
+            }
+          }
+        },
         "required_status_checks": {
           "type": "object",
           "required": ["from"],
