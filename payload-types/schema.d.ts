@@ -6746,7 +6746,9 @@ export interface WorkflowJobInProgressEvent {
   installation?: InstallationLite;
   repository: Repository;
   sender: User;
-  workflow_job: WorkflowJob;
+  workflow_job: WorkflowJob & {
+    status: "in_progress";
+  };
 }
 export interface WorkflowJobQueuedEvent {
   action: "queued";
