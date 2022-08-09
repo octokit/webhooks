@@ -107,7 +107,8 @@
               "type": "string",
               "enum": ["off", "non_admins", "everyone"]
             }
-          }
+          },
+          "additionalProperties": false
         },
         "required_status_checks": {
           "type": "object",

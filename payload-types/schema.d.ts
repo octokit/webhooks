@@ -826,7 +826,6 @@ export interface BranchProtectionRuleEditedEvent {
     };
     required_deployments_enforcement_level?: {
       from: "off" | "non_admins" | "everyone";
-      [k: string]: unknown;
     };
     required_status_checks?: {
       from: string[];
