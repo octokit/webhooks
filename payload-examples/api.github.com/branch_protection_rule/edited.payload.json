@@ -28,7 +28,20 @@
   },
   "changes": {
     "authorized_actors_only": { "from": false },
-    "authorized_actor_names": { "from": [] }
+    "authorized_actor_names": { "from": [] },
+    "authorized_dismissal_actors_only": { "from": null },
+    "linear_history_requirement_enforcement_level": { "from": "everyone" },
+    "required_approving_review_count": { "from": 2 },
+    "dismiss_stale_reviews_on_push": { "from": true },
+    "require_code_owner_review": { "from": true },
+    "allow_force_pushes_enforcement_level": { "from": "everyone" },
+    "required_deployments_enforcement_level": { "from": "off" },
+    "pull_request_reviews_enforcement_level": { "from": "off" },
+    "required_status_checks_enforcement_level": { "from": "off" },
+    "signature_requirement_enforcement_level": { "from": "non_admins" },
+    "admin_enforced": { "from": false },
+    "allow_deletions_enforcement_level": { "from": "off" },
+    "required_conversation_resolution_level": { "from": "off" }
   },
   "repository": {
     "id": 17273051,
