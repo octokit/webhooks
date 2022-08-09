@@ -790,15 +790,51 @@ export interface BranchProtectionRuleEditedEvent {
   /**
    * If the action was `edited`, the changes to the rule.
    */
-  changes: {
+  changes?: {
+    admin_enforced?: {
+      from: boolean;
+    };
+    allow_deletions_enforcement_level?: {
+      from: ("off" | "non_admins" | "everyone") | null;
+    };
+    allow_force_pushes_enforcement_level?: {
+      from: "off" | "non_admins" | "everyone";
+    };
     authorized_actors_only?: {
       from: boolean;
     };
     authorized_actor_names?: {
       from: string[];
     };
+    authorized_dismissal_actors_only?: {
+      from: boolean | null;
+    };
+    dismiss_stale_reviews_on_push?: {
+      from: boolean;
+    };
+    pull_request_reviews_enforcement_level?: {
+      from: "off" | "non_admins" | "everyone";
+    };
+    require_code_owner_review?: {
+      from: boolean;
+    };
+    required_approving_review_count?: {
+      from: number;
+    };
+    required_conversation_resolution_level?: {
+      from: "off" | "required" | "requested_and_required";
+    };
     required_status_checks?: {
       from: string[];
+    };
+    required_status_checks_enforcement_level?: {
+      from: "off" | "non_admins" | "everyone";
+    };
+    signature_requirement_enforcement_level?: {
+      from: "off" | "non_admins" | "everyone";
+    };
+    linear_history_requirement_enforcement_level?: {
+      from: "off" | "non_admins" | "everyone";
     };
   };
   repository: Repository;
@@ -982,6 +1018,7 @@ export interface App {
   permissions?: {
     actions?: "read" | "write";
     administration?: "read" | "write";
+    blocking?: "read" | "write";
     checks?: "read" | "write";
     content_references?: "read" | "write";
     contents?: "read" | "write";
@@ -2900,6 +2937,7 @@ export interface Installation {
      * The level of permission granted to the access token for repository creation, deletion, settings, teams, and collaborators creation.
      */
     administration?: "read" | "write";
+    blocking?: "read" | "write";
     /**
      * The level of permission granted to the access token for checks on code.
      */
@@ -6708,9 +6746,7 @@ export interface WorkflowJobInProgressEvent {
   installation?: InstallationLite;
   repository: Repository;
   sender: User;
-  workflow_job: WorkflowJob & {
-    status: "in_progress";
-  };
+  workflow_job: WorkflowJob;
 }
 export interface WorkflowJobQueuedEvent {
   action: "queued";
