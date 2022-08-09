@@ -37,6 +37,7 @@
       "properties": {
         "actions": { "type": "string", "enum": ["read", "write"] },
         "administration": { "type": "string", "enum": ["read", "write"] },
+        "blocking": { "type": "string", "enum": ["read", "write"] },
         "checks": { "type": "string", "enum": ["read", "write"] },
         "content_references": { "type": "string", "enum": ["read", "write"] },
         "contents": { "type": "string", "enum": ["read", "write"] },
