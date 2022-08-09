@@ -3,7 +3,7 @@
   "$id": "branch_protection_rule$edited",
   "type": "object",
   "description": "Activity related to a branch protection rule. For more information, see \"[About branch protection rules](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-rules).\"",
-  "required": ["action", "rule", "changes", "repository", "sender"],
+  "required": ["action", "rule", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["edited"] },
     "rule": { "$ref": "common/branch-protection-rule.schema.json" },
