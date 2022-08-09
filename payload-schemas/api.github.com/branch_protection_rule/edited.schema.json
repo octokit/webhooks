@@ -11,6 +11,34 @@
       "type": "object",
       "description": "If the action was `edited`, the changes to the rule.",
       "properties": {
+        "admin_enforced": {
+          "type": "object",
+          "required": ["from"],
+          "properties": { "from": { "type": "boolean" } },
+          "additionalProperties": false
+        },
+        "allow_deletions_enforcement_level": {
+          "type": "object",
+          "required": ["from"],
+          "properties": {
+            "from": {
+              "type": ["string", "null"],
+              "enum": ["off", "non_admins", "everyone"]
+            }
+          },
+          "additionalProperties": false
+        },
+        "allow_force_pushes_enforcement_level": {
+          "type": "object",
+          "required": ["from"],
+          "properties": {
+            "from": {
+              "type": "string",
+              "enum": ["off", "non_admins", "everyone"]
+            }
+          },
+          "additionalProperties": false
+        },
         "authorized_actors_only": {
           "type": "object",
           "required": ["from"],
@@ -25,11 +53,90 @@
           },
           "additionalProperties": false
         },
+        "authorized_dismissal_actors_only": {
+          "type": "object",
+          "required": ["from"],
+          "properties": { "from": { "type": ["boolean", "null"] } },
+          "additionalProperties": false
+        },
+        "dismiss_stale_reviews_on_push": {
+          "type": "object",
+          "required": ["from"],
+          "properties": { "from": { "type": "boolean" } },
+          "additionalProperties": false
+        },
+        "pull_request_reviews_enforcement_level": {
+          "type": "object",
+          "required": ["from"],
+          "properties": {
+            "from": {
+              "type": "string",
+              "enum": ["off", "non_admins", "everyone"]
+            }
+          },
+          "additionalProperties": false
+        },
+        "require_code_owner_review": {
+          "type": "object",
+          "required": ["from"],
+          "properties": { "from": { "type": ["boolean"] } },
+          "additionalProperties": false
+        },
+        "required_approving_review_count": {
+          "type": "object",
+          "required": ["from"],
+          "properties": { "from": { "type": "integer" } },
+          "additionalProperties": false
+        },
+        "required_conversation_resolution_level": {
+          "type": "object",
+          "required": ["from"],
+          "properties": {
+            "from": {
+              "type": "string",
+              "enum": ["off", "required", "requested_and_required"]
+            }
+          },
+          "additionalProperties": false
+        },
         "required_status_checks": {
           "type": "object",
           "required": ["from"],
           "properties": {
             "from": { "type": "array", "items": { "type": "string" } }
+          },
+          "additionalProperties": false
+        },
+        "required_status_checks_enforcement_level": {
+          "type": "object",
+          "required": ["from"],
+          "properties": {
+            "from": {
+              "type": "string",
+              "enum": ["off", "non_admins", "everyone"]
+            }
+          },
+          "additionalProperties": false
+        },
+        "signature_requirement_enforcement_level": {
+          "type": "object",
+          "required": ["from"],
+          "properties": {
+            "from": {
+              "type": "string",
+              "enum": ["off", "non_admins", "everyone"]
+            }
+          },
+          "additionalProperties": false
+        },
+        "linear_history_requirement_enforcement_level": {
+          "type": "object",
+          "required": ["from"],
+          "properties": {
+            "from": {
+              "type": "string",
+              "enum": ["off", "non_admins", "everyone"]
+            }
           },
           "additionalProperties": false
         }
