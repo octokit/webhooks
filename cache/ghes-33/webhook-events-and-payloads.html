@@ -14376,17 +14376,31 @@
           <tr>
             <td><code>commits[][added]</code></td>
             <td><code>array</code></td>
-            <td>An array of files added in the commit.</td>
+            <td>
+              An array of files added in the commit. For extremely large commits
+              where GitHub Enterprise Server is unable to calculate this list in
+              a timely manner, this may be empty even if files were added.
+            </td>
           </tr>
           <tr>
             <td><code>commits[][modified]</code></td>
             <td><code>array</code></td>
-            <td>An array of files modified by the commit.</td>
+            <td>
+              An array of files modified by the commit. For extremely large
+              commits where GitHub Enterprise Server is unable to calculate this
+              list in a timely manner, this may be empty even if files were
+              modified.
+            </td>
           </tr>
           <tr>
             <td><code>commits[][removed]</code></td>
             <td><code>array</code></td>
-            <td>An array of files removed in the commit.</td>
+            <td>
+              An array of files removed in the commit. For extremely large
+              commits where GitHub Enterprise Server is unable to calculate this
+              list in a timely manner, this may be empty even if files were
+              removed.
+            </td>
           </tr>
           <tr>
             <td><code>pusher</code></td>
