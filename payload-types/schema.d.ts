@@ -822,7 +822,7 @@ export interface BranchProtectionRuleEditedEvent {
       from: number;
     };
     required_conversation_resolution_level?: {
-      from: "off" | "required" | "requested_and_required";
+      from: "off" | "non_admins" | "everyone";
     };
     required_deployments_enforcement_level?: {
       from: "off" | "non_admins" | "everyone";
@@ -5332,7 +5332,7 @@ export interface PullRequestReviewEditedEvent {
      */
     commit_id: string;
     submitted_at: string;
-    state: string;
+    state: "commented" | "changes_requested" | "approved";
     html_url: string;
     pull_request_url: string;
     author_association: AuthorAssociation;
@@ -5368,7 +5368,7 @@ export interface PullRequestReviewSubmittedEvent {
      */
     commit_id: string;
     submitted_at: string;
-    state: string;
+    state: "commented" | "changes_requested" | "approved";
     html_url: string;
     pull_request_url: string;
     author_association: AuthorAssociation;
