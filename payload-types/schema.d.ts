@@ -67,6 +67,13 @@ export type BranchProtectionRuleEvent =
   | BranchProtectionRuleCreatedEvent
   | BranchProtectionRuleDeletedEvent
   | BranchProtectionRuleEditedEvent;
+export type BranchProtectionRuleEnforcementLevel =
+  | "off"
+  | "non_admins"
+  | "everyone";
+export type BranchProtectionRuleNumber = number;
+export type BranchProtectionRuleBoolean = boolean;
+export type BranchProtectionRuleArray = string[];
 export type CheckRunEvent =
   | CheckRunCompletedEvent
   | CheckRunCreatedEvent
@@ -417,29 +424,26 @@ export interface BranchProtectionRule {
   name: string;
   created_at: string;
   updated_at: string;
-  pull_request_reviews_enforcement_level: "off" | "non_admins" | "everyone";
-  required_approving_review_count: number;
-  dismiss_stale_reviews_on_push: boolean;
-  require_code_owner_review: boolean;
-  authorized_dismissal_actors_only: boolean;
-  ignore_approvals_from_contributors: boolean;
-  required_status_checks: string[];
-  required_status_checks_enforcement_level: "off" | "non_admins" | "everyone";
-  strict_required_status_checks_policy: boolean;
-  signature_requirement_enforcement_level: "off" | "non_admins" | "everyone";
-  linear_history_requirement_enforcement_level:
-    | "off"
-    | "non_admins"
-    | "everyone";
-  admin_enforced: boolean;
-  create_protected?: boolean;
-  allow_force_pushes_enforcement_level: "off" | "non_admins" | "everyone";
-  allow_deletions_enforcement_level: "off" | "non_admins" | "everyone";
-  merge_queue_enforcement_level: "off" | "non_admins" | "everyone";
-  required_deployments_enforcement_level: "off" | "non_admins" | "everyone";
-  required_conversation_resolution_level: "off" | "non_admins" | "everyone";
-  authorized_actors_only: boolean;
-  authorized_actor_names: string[];
+  pull_request_reviews_enforcement_level: BranchProtectionRuleEnforcementLevel;
+  required_approving_review_count: BranchProtectionRuleNumber;
+  dismiss_stale_reviews_on_push: BranchProtectionRuleBoolean;
+  require_code_owner_review: BranchProtectionRuleBoolean;
+  authorized_dismissal_actors_only: BranchProtectionRuleBoolean;
+  ignore_approvals_from_contributors: BranchProtectionRuleBoolean;
+  required_status_checks: BranchProtectionRuleArray;
+  required_status_checks_enforcement_level: BranchProtectionRuleEnforcementLevel;
+  strict_required_status_checks_policy: BranchProtectionRuleBoolean;
+  signature_requirement_enforcement_level: BranchProtectionRuleEnforcementLevel;
+  linear_history_requirement_enforcement_level: BranchProtectionRuleEnforcementLevel;
+  admin_enforced: BranchProtectionRuleBoolean;
+  create_protected?: BranchProtectionRuleBoolean;
+  allow_force_pushes_enforcement_level: BranchProtectionRuleEnforcementLevel;
+  allow_deletions_enforcement_level: BranchProtectionRuleEnforcementLevel;
+  merge_queue_enforcement_level: BranchProtectionRuleEnforcementLevel;
+  required_deployments_enforcement_level: BranchProtectionRuleEnforcementLevel;
+  required_conversation_resolution_level: BranchProtectionRuleEnforcementLevel;
+  authorized_actors_only: BranchProtectionRuleBoolean;
+  authorized_actor_names: BranchProtectionRuleArray;
 }
 /**
  * A git repository
@@ -792,52 +796,52 @@ export interface BranchProtectionRuleEditedEvent {
    */
   changes?: {
     admin_enforced?: {
-      from: boolean;
+      from: BranchProtectionRuleBoolean;
     };
     allow_deletions_enforcement_level?: {
-      from: ("off" | "non_admins" | "everyone") | null;
+      from: BranchProtectionRuleEnforcementLevel | null;
     };
     allow_force_pushes_enforcement_level?: {
-      from: "off" | "non_admins" | "everyone";
+      from: BranchProtectionRuleEnforcementLevel;
     };
     authorized_actors_only?: {
-      from: boolean;
+      from: BranchProtectionRuleBoolean;
     };
     authorized_actor_names?: {
-      from: string[];
+      from: BranchProtectionRuleArray;
     };
     authorized_dismissal_actors_only?: {
-      from: boolean | null;
+      from: BranchProtectionRuleBoolean | null;
     };
     dismiss_stale_reviews_on_push?: {
-      from: boolean;
+      from: BranchProtectionRuleBoolean;
     };
     pull_request_reviews_enforcement_level?: {
-      from: "off" | "non_admins" | "everyone";
+      from: BranchProtectionRuleEnforcementLevel;
     };
     require_code_owner_review?: {
-      from: boolean;
+      from: BranchProtectionRuleBoolean;
     };
     required_approving_review_count?: {
-      from: number;
+      from: BranchProtectionRuleNumber;
     };
     required_conversation_resolution_level?: {
-      from: "off" | "non_admins" | "everyone";
+      from: BranchProtectionRuleEnforcementLevel;
     };
     required_deployments_enforcement_level?: {
-      from: "off" | "non_admins" | "everyone";
+      from: BranchProtectionRuleEnforcementLevel;
     };
     required_status_checks?: {
-      from: string[];
+      from: BranchProtectionRuleArray;
     };
     required_status_checks_enforcement_level?: {
-      from: "off" | "non_admins" | "everyone";
+      from: BranchProtectionRuleEnforcementLevel;
     };
     signature_requirement_enforcement_level?: {
-      from: "off" | "non_admins" | "everyone";
+      from: BranchProtectionRuleEnforcementLevel;
     };
     linear_history_requirement_enforcement_level?: {
-      from: "off" | "non_admins" | "everyone";
+      from: BranchProtectionRuleEnforcementLevel;
     };
   };
   repository: Repository;
