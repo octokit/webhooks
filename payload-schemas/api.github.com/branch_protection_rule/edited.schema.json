@@ -94,7 +94,7 @@
           "properties": {
             "from": {
               "type": "string",
-              "enum": ["off", "required", "requested_and_required"]
+              "enum": ["off", "non_admins", "everyone"]
             }
           },
           "additionalProperties": false
