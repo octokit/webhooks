@@ -61,7 +61,10 @@
           "description": "A commit SHA for the review."
         },
         "submitted_at": { "type": "string", "format": "date-time" },
-        "state": { "type": "string" },
+        "state": {
+          "type": "string",
+          "enum": ["commented", "changes_requested", "approved"]
+        },
         "html_url": { "type": "string", "format": "uri" },
         "pull_request_url": { "type": "string", "format": "uri" },
         "author_association": {
