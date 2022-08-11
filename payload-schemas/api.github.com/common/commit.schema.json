@@ -38,17 +38,17 @@
     "added": {
       "type": "array",
       "items": { "type": "string" },
-      "description": "An array of files added in the commit."
+      "description": "An array of files added in the commit. For extremely large commits where GitHub is unable to calculate this list in a timely manner, this may be empty even if files were added."
     },
     "modified": {
       "type": "array",
       "items": { "type": "string" },
-      "description": "An array of files modified by the commit."
+      "description": "An array of files modified by the commit. For extremely large commits where GitHub is unable to calculate this list in a timely manner, this may be empty even if files were modified."
     },
     "removed": {
       "type": "array",
       "items": { "type": "string" },
-      "description": "An array of files removed in the commit."
+      "description": "An array of files removed in the commit. For extremely large commits where GitHub is unable to calculate this list in a timely manner, this may be empty even if files were removed."
     }
   },
   "additionalProperties": false,
