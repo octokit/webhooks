@@ -112,7 +112,11 @@
         "required_approving_review_count": {
           "type": "object",
           "required": ["from"],
-          "properties": { "from": { "$ref": "common/branch-protection-rule-number.schema.json" } },
+          "properties": {
+            "from": {
+              "$ref": "common/branch-protection-rule-number.schema.json"
+            }
+          },
           "additionalProperties": false
         },
         "required_conversation_resolution_level": {

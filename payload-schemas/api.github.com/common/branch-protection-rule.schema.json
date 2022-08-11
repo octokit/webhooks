@@ -38,7 +38,9 @@
     "pull_request_reviews_enforcement_level": {
       "$ref": "branch-protection-rule-enforcement-level.schema.json"
     },
-    "required_approving_review_count": { "$ref": "branch-protection-rule-number.schema.json" },
+    "required_approving_review_count": {
+      "$ref": "branch-protection-rule-number.schema.json"
+    },
     "dismiss_stale_reviews_on_push": {
       "$ref": "branch-protection-rule-boolean.schema.json"
     },
