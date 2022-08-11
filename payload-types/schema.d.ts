@@ -5780,15 +5780,15 @@ export interface Commit {
   author: Committer;
   committer: Committer;
   /**
-   * An array of files added in the commit.
+   * An array of files added in the commit. For extremely large commits where GitHub is unable to calculate this list in a timely manner, this may be empty even if files were added.
    */
   added: string[];
   /**
-   * An array of files modified by the commit.
+   * An array of files modified by the commit. For extremely large commits where GitHub is unable to calculate this list in a timely manner, this may be empty even if files were modified.
    */
   modified: string[];
   /**
-   * An array of files removed in the commit.
+   * An array of files removed in the commit. For extremely large commits where GitHub is unable to calculate this list in a timely manner, this may be empty even if files were removed.
    */
   removed: string[];
 }
