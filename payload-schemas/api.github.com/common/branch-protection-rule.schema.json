@@ -68,9 +68,7 @@
     "linear_history_requirement_enforcement_level": {
       "$ref": "branch-protection-rule-enforcement-level.schema.json"
     },
-    "admin_enforced": {
-      "$ref": "branch-protection-rule-boolean.schema.json"
-    },
+    "admin_enforced": { "$ref": "branch-protection-rule-boolean.schema.json" },
     "create_protected": {
       "$ref": "branch-protection-rule-boolean.schema.json"
     },
