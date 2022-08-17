@@ -36,55 +36,65 @@
     "created_at": { "type": "string", "format": "date-time" },
     "updated_at": { "type": "string", "format": "date-time" },
     "pull_request_reviews_enforcement_level": {
-      "type": "string",
-      "enum": ["off", "non_admins", "everyone"]
+      "$ref": "branch-protection-rule-enforcement-level.schema.json"
     },
-    "required_approving_review_count": { "type": "integer" },
-    "dismiss_stale_reviews_on_push": { "type": "boolean" },
-    "require_code_owner_review": { "type": "boolean" },
-    "authorized_dismissal_actors_only": { "type": "boolean" },
-    "ignore_approvals_from_contributors": { "type": "boolean" },
+    "required_approving_review_count": {
+      "$ref": "branch-protection-rule-number.schema.json"
+    },
+    "dismiss_stale_reviews_on_push": {
+      "$ref": "branch-protection-rule-boolean.schema.json"
+    },
+    "require_code_owner_review": {
+      "$ref": "branch-protection-rule-boolean.schema.json"
+    },
+    "authorized_dismissal_actors_only": {
+      "$ref": "branch-protection-rule-boolean.schema.json"
+    },
+    "ignore_approvals_from_contributors": {
+      "$ref": "branch-protection-rule-boolean.schema.json"
+    },
     "required_status_checks": {
-      "type": "array",
-      "items": { "type": "string" }
+      "$ref": "branch-protection-rule-array.schema.json"
     },
     "required_status_checks_enforcement_level": {
-      "type": "string",
-      "enum": ["off", "non_admins", "everyone"]
+      "$ref": "branch-protection-rule-enforcement-level.schema.json"
     },
-    "strict_required_status_checks_policy": { "type": "boolean" },
+    "strict_required_status_checks_policy": {
+      "$ref": "branch-protection-rule-boolean.schema.json"
+    },
     "signature_requirement_enforcement_level": {
-      "type": "string",
-      "enum": ["off", "non_admins", "everyone"]
+      "$ref": "branch-protection-rule-enforcement-level.schema.json"
     },
     "linear_history_requirement_enforcement_level": {
-      "type": "string",
-      "enum": ["off", "non_admins", "everyone"]
+      "$ref": "branch-protection-rule-enforcement-level.schema.json"
     },
-    "admin_enforced": { "type": "boolean" },
-    "create_protected": { "type": "boolean" },
+    "admin_enforced": {
+      "$ref": "branch-protection-rule-boolean.schema.json"
+    },
+    "create_protected": {
+      "$ref": "branch-protection-rule-boolean.schema.json"
+    },
     "allow_force_pushes_enforcement_level": {
-      "type": "string",
-      "enum": ["off", "non_admins", "everyone"]
+      "$ref": "branch-protection-rule-enforcement-level.schema.json"
     },
     "allow_deletions_enforcement_level": {
-      "type": "string",
-      "enum": ["off", "non_admins", "everyone"]
+      "$ref": "branch-protection-rule-enforcement-level.schema.json"
     },
     "merge_queue_enforcement_level": {
-      "type": "string",
-      "enum": ["off", "non_admins", "everyone"]
+      "$ref": "branch-protection-rule-enforcement-level.schema.json"
     },
     "required_deployments_enforcement_level": {
-      "type": "string",
-      "enum": ["off", "non_admins", "everyone"]
+      "$ref": "branch-protection-rule-enforcement-level.schema.json"
     },
     "required_conversation_resolution_level": {
-      "type": "string",
-      "enum": ["off", "non_admins", "everyone"]
+      "$ref": "branch-protection-rule-enforcement-level.schema.json"
     },
-    "authorized_actors_only": { "type": "boolean" },
-    "authorized_actor_names": { "type": "array", "items": { "type": "string" } }
+    "authorized_actors_only": {
+      "$ref": "branch-protection-rule-boolean.schema.json"
+    },
+    "authorized_actor_names": {
+      "$ref": "branch-protection-rule-array.schema.json"
+    }
   },
   "additionalProperties": false,
   "title": "branch protection rule"

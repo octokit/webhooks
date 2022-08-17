@@ -1,0 +1,7 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/branch-protection-rule-enforcement-level.schema.json",
+  "type": "string",
+  "enum": ["off", "non_admins", "everyone"],
+  "title": "Branch protection rule enforcement level"
+}
