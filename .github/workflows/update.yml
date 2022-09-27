@@ -9,8 +9,8 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3 # tag=v3
-      - uses: actions/setup-node@2fddd8803e2f5c9604345a0b591c3020ee971a93 # tag=v3
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: npm
@@ -39,10 +39,12 @@ jobs:
             message
             conventions](https://github.com/octokit/webhooks/blob/master/CONTRIBUTING.md#merging-the-pull-request--releasing-a-new-version).
 
-            If there are any new events added, follow the [steps outlined](https://github.com/octokit/webhooks/blob/master/CONTRIBUTING.md#creating-a-new-schema)
+            If there are any new events added, follow the [steps
+            outlined](https://github.com/octokit/webhooks/blob/master/CONTRIBUTING.md#creating-a-new-schema)
             in order to create the required schemas.
-            
-            If there were only description updates, or new properties added, simply modify the appropriate schemas and commit them to this PR.
+
+            If there were only description updates, or new properties added,
+            simply modify the appropriate schemas and commit them to this PR.
             Don't forget to generate the types as well.
           branch: webhooks-update
           author: Octokit Bot <octokitbot@martynus.net>
