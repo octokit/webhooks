@@ -271,10 +271,12 @@ export type PullRequestEvent =
   | PullRequestAutoMergeEnabledEvent
   | PullRequestClosedEvent
   | PullRequestConvertedToDraftEvent
+  | PullRequestDequeuedEvent
   | PullRequestEditedEvent
   | PullRequestLabeledEvent
   | PullRequestLockedEvent
   | PullRequestOpenedEvent
+  | PullRequestQueuedEvent
   | PullRequestReadyForReviewEvent
   | PullRequestReopenedEvent
   | PullRequestReviewRequestRemovedEvent
@@ -5040,6 +5042,22 @@ export interface PullRequestConvertedToDraftEvent {
   organization?: Organization;
   sender: User;
 }
+export interface PullRequestDequeuedEvent {
+  action: "dequeued";
+  /**
+   * The pull request number.
+   */
+  number: number;
+  /**
+   * The reason the pull request was removed from a merge queue.
+   */
+  reason: string;
+  pull_request: PullRequest;
+  repository: Repository;
+  installation?: InstallationLite;
+  organization?: Organization;
+  sender: User;
+}
 export interface PullRequestEditedEvent {
   action: "edited";
   /**
@@ -5115,6 +5133,18 @@ export interface PullRequestOpenedEvent {
     active_lock_reason: null;
     merged_by: null;
   };
+  repository: Repository;
+  installation?: InstallationLite;
+  organization?: Organization;
+  sender: User;
+}
+export interface PullRequestQueuedEvent {
+  action: "queued";
+  /**
+   * The pull request number.
+   */
+  number: number;
+  pull_request: PullRequest;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
