@@ -12561,6 +12561,12 @@
           >pull requests</a
         >" REST API.
       </p>
+      <div>
+        <p>
+          <strong>Note:</strong> The pull request merge queue feature is
+          currently in limited public beta and subject to change.
+        </p>
+      </div>
       <h3 id="availability-36">
         <a aria-hidden="" tabindex="-1" href="#availability-36"
           ><svg
@@ -12635,7 +12641,15 @@
                   <code>true</code>, the pull request was merged.
                 </li>
                 <li><code>converted_to_draft</code></li>
+                <li>
+                  <code>dequeued</code>: Triggered when a pull request is
+                  removed from a merge queue
+                </li>
                 <li><code>edited</code></li>
+                <li>
+                  <code>enqueued</code>: Triggered when a pull request is added
+                  to a merge queue
+                </li>
                 <li><code>labeled</code></li>
                 <li><code>locked</code></li>
                 <li><code>opened</code></li>
@@ -12688,6 +12702,14 @@
             <td><code>object</code></td>
             <td>
               The <a href="/en/rest/reference/pulls">pull request</a> itself.
+            </td>
+          </tr>
+          <tr>
+            <td><code>reason</code></td>
+            <td><code>string</code></td>
+            <td>
+              The reason the pull request was removed from a merge queue if the
+              action was <code>dequeued</code>.
             </td>
           </tr>
           <tr>
