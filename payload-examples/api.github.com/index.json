@@ -36405,7 +36405,9 @@
       "auto_merge_enabled",
       "closed",
       "converted_to_draft",
+      "dequeued",
       "edited",
+      "enqueued",
       "labeled",
       "locked",
       "merged",
@@ -36439,6 +36441,10 @@
       "pull_request": {
         "type": "object",
         "description": "The [pull request](https://docs.github.com/en/rest/reference/pulls) itself."
+      },
+      "reason": {
+        "type": "string",
+        "description": "The reason the pull request was removed from a merge queue if the action was `dequeued`."
       },
       "repository": {
         "type": "object",

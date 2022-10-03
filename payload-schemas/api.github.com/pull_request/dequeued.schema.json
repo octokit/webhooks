@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "pull_request$dequeued",
+  "type": "object",
+  "required": [
+    "action",
+    "number",
+    "reason",
+    "pull_request",
+    "repository",
+    "sender"
+  ],
+  "properties": {
+    "action": { "type": "string", "enum": ["dequeued"] },
+    "number": { "type": "integer", "description": "The pull request number." },
+    "reason": {
+      "type": "string",
+      "description": "The reason the pull request was removed from a merge queue."
+    },
+    "pull_request": { "$ref": "common/pull-request.schema.json" },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" }
+  },
+  "additionalProperties": false,
+  "title": "pull_request dequeued event"
+}
