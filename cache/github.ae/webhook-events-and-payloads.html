@@ -738,8 +738,7 @@
         <li>Repository webhooks</li>
         <li>Organization webhooks</li>
         <li>
-          GitHub Apps with at least <code>read-only</code> access on
-          repositories administration
+          GitHub Apps with <strong>Administration</strong> repository permission
         </li>
       </ul>
       <h3 id="webhook-payload-object">
@@ -1101,17 +1100,16 @@
           repositories
         </li>
         <li>
-          GitHub Apps with the <code>checks:read</code> permission receive
+          GitHub Apps with <strong>Checks</strong> read permission receive
           payloads for the <code>created</code> and
           <code>completed</code> events that occur in the repository where the
-          app is installed. The app must have the
-          <code>checks:write</code> permission to receive the
-          <code>rerequested</code> and <code>requested_action</code> event
-          types. The <code>rerequested</code> and
-          <code>requested_action</code> event type payloads are only sent to the
-          GitHub App being requested. GitHub Apps with the
-          <code>checks:write</code> are automatically subscribed to this webhook
-          event.
+          app is installed. The app must have <strong>Checks</strong> write
+          permission to receive the <code>rerequested</code> and
+          <code>requested_action</code> event types. The
+          <code>rerequested</code> and <code>requested_action</code> event type
+          payloads are only sent to the GitHub App being requested. GitHub Apps
+          with <strong>Checks</strong> write permission are automatically
+          subscribed to this webhook event.
         </li>
       </ul>
       <h3 id="webhook-payload-object-1">
@@ -1798,16 +1796,16 @@
           <code>completed</code> event types in repositories
         </li>
         <li>
-          GitHub Apps with the <code>checks:read</code> permission receive
+          GitHub Apps with <strong>Checks</strong> read permission receive
           payloads for the <code>created</code> and
           <code>completed</code> events that occur in the repository where the
-          app is installed. The app must have the
-          <code>checks:write</code> permission to receive the
-          <code>requested</code> and <code>rerequested</code> event types. The
-          <code>requested</code> and <code>rerequested</code> event type
-          payloads are only sent to the GitHub App being requested. GitHub Apps
-          with the <code>checks:write</code> are automatically subscribed to
-          this webhook event.
+          app is installed. The app must have <strong>Checks</strong> write
+          permission to receive the <code>requested</code> and
+          <code>rerequested</code> event types. The <code>requested</code> and
+          <code>rerequested</code> event type payloads are only sent to the
+          GitHub App being requested. GitHub Apps with
+          <strong>Checks</strong> write permission are automatically subscribed
+          to this webhook event.
         </li>
       </ul>
       <h3 id="webhook-payload-object-2">
@@ -2335,7 +2333,7 @@
         <li>Repository webhooks</li>
         <li>Organization webhooks</li>
         <li>
-          GitHub Apps with the <code>security_events :read</code> permission
+          GitHub Apps with <strong>Code scanning alerts</strong> permission
         </li>
       </ul>
       <h3 id="webhook-payload-object-3">
@@ -2669,7 +2667,7 @@
       <ul>
         <li>Repository webhooks</li>
         <li>Organization webhooks</li>
-        <li>GitHub Apps with the <code>contents</code> permission</li>
+        <li>GitHub Apps with <strong>Contents</strong> permission</li>
       </ul>
       <h3 id="webhook-payload-object-4">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-object-4"
@@ -3009,7 +3007,7 @@
       <ul>
         <li>Repository webhooks</li>
         <li>Organization webhooks</li>
-        <li>GitHub Apps with the <code>contents</code> permission</li>
+        <li>GitHub Apps with <strong>Contents</strong> permission</li>
       </ul>
       <h3 id="webhook-payload-object-5">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-object-5"
@@ -3342,7 +3340,7 @@
       <ul>
         <li>Repository webhooks</li>
         <li>Organization webhooks</li>
-        <li>GitHub Apps with the <code>contents</code> permission</li>
+        <li>GitHub Apps with <strong>Contents</strong> permission</li>
       </ul>
       <h3 id="webhook-payload-object-6">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-object-6"
@@ -3943,7 +3941,7 @@
       <ul>
         <li>Repository webhooks</li>
         <li>Organization webhooks</li>
-        <li>GitHub Apps with the <code>deployments</code> permission</li>
+        <li>GitHub Apps with <strong>Deployments</strong> permission</li>
       </ul>
       <h3 id="webhook-payload-object-8">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-object-8"
@@ -4279,7 +4277,7 @@
       <ul>
         <li>Repository webhooks</li>
         <li>Organization webhooks</li>
-        <li>GitHub Apps with the <code>deployments</code> permission</li>
+        <li>GitHub Apps with <strong>Deployments</strong> permission</li>
       </ul>
       <h3 id="webhook-payload-object-9">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-object-9"
@@ -4825,7 +4823,7 @@
       <ul>
         <li>Repository webhooks</li>
         <li>Organization webhooks</li>
-        <li>GitHub Apps with the <code>contents</code> permission</li>
+        <li>GitHub Apps with <strong>Contents</strong> permission</li>
       </ul>
       <h3 id="webhook-payload-object-11">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-object-11"
@@ -5369,7 +5367,7 @@
       <ul>
         <li>Repository webhooks</li>
         <li>Organization webhooks</li>
-        <li>GitHub Apps with the <code>contents</code> permission</li>
+        <li>GitHub Apps with <strong>Contents</strong> permission</li>
       </ul>
       <h3 id="webhook-payload-object-13">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-object-13"
@@ -6226,7 +6224,7 @@
       <ul>
         <li>Repository webhooks</li>
         <li>Organization webhooks</li>
-        <li>GitHub Apps with the <code>issues</code> permission</li>
+        <li>GitHub Apps with <strong>Issues</strong> permission</li>
       </ul>
       <h3 id="webhook-payload-object-16">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-object-16"
@@ -6715,7 +6713,7 @@
       <ul>
         <li>Repository webhooks</li>
         <li>Organization webhooks</li>
-        <li>GitHub Apps with the <code>issues</code> permission</li>
+        <li>GitHub Apps with <strong>Issues</strong> permission</li>
       </ul>
       <h3 id="webhook-payload-object-17">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-object-17"
@@ -7192,7 +7190,7 @@
       <ul>
         <li>Repository webhooks</li>
         <li>Organization webhooks</li>
-        <li>GitHub Apps with the <code>metadata</code> permission</li>
+        <li>GitHub Apps with <strong>Metadata</strong> permission</li>
       </ul>
       <h3 id="webhook-payload-object-18">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-object-18"
@@ -7521,7 +7519,7 @@
       <ul>
         <li>Repository webhooks</li>
         <li>Organization webhooks</li>
-        <li>GitHub Apps with the <code>members</code> permission</li>
+        <li>GitHub Apps with <strong>Members</strong> permission</li>
       </ul>
       <h3 id="webhook-payload-object-19">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-object-19"
@@ -7871,7 +7869,7 @@
       </h3>
       <ul>
         <li>Organization webhooks</li>
-        <li>GitHub Apps with the <code>members</code> permission</li>
+        <li>GitHub Apps with <strong>Members</strong> permission</li>
       </ul>
       <h3 id="webhook-payload-object-20">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-object-20"
@@ -8420,7 +8418,7 @@
       <ul>
         <li>Repository webhooks</li>
         <li>Organization webhooks</li>
-        <li>GitHub Apps with the <code>pull_requests</code> permission</li>
+        <li>GitHub Apps with <strong>Pull requests</strong> permission</li>
       </ul>
       <h3 id="webhook-payload-object-22">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-object-22"
@@ -8798,7 +8796,7 @@
           <code>added</code>, <code>removed</code>, <code>renamed</code>, and
           <code>invited</code> events
         </li>
-        <li>GitHub Apps with the <code>members</code> permission</li>
+        <li>GitHub Apps with <strong>Members</strong> permission</li>
       </ul>
       <h3 id="webhook-payload-object-23">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-object-23"
@@ -9436,7 +9434,7 @@
       <ul>
         <li>Repository webhooks</li>
         <li>Organization webhooks</li>
-        <li>GitHub Apps with the <code>pages</code> permission</li>
+        <li>GitHub Apps with <strong>Pages</strong> permission</li>
       </ul>
       <h3 id="webhook-payload-object-25">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-object-25"
@@ -10096,8 +10094,8 @@
         <li>Repository webhooks</li>
         <li>Organization webhooks</li>
         <li>
-          GitHub Apps with the <code>repository_projects</code> or
-          <code>organization_projects</code> permission
+          GitHub Apps with <strong>Projects</strong> repository or organization
+          permission
         </li>
       </ul>
       <h3 id="webhook-payload-object-27">
@@ -10458,7 +10456,7 @@
       <ul>
         <li>Repository webhooks</li>
         <li>Organization webhooks</li>
-        <li>GitHub Apps with the <code>pull_requests</code> permission</li>
+        <li>GitHub Apps with <strong>Pull requests</strong> permission</li>
       </ul>
       <h3 id="webhook-payload-object-28">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-object-28"
@@ -11153,7 +11151,7 @@
       <ul>
         <li>Repository webhooks</li>
         <li>Organization webhooks</li>
-        <li>GitHub Apps with the <code>pull_requests</code> permission</li>
+        <li>GitHub Apps with <strong>Pull requests</strong> permission</li>
       </ul>
       <h3 id="webhook-payload-object-29">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-object-29"
@@ -11834,7 +11832,7 @@
       <ul>
         <li>Repository webhooks</li>
         <li>Organization webhooks</li>
-        <li>GitHub Apps with the <code>pull_requests</code> permission</li>
+        <li>GitHub Apps with <strong>Pull requests</strong> permission</li>
       </ul>
       <h3 id="webhook-payload-object-30">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-object-30"
@@ -12526,7 +12524,7 @@
       <ul>
         <li>Repository webhooks</li>
         <li>Organization webhooks</li>
-        <li>GitHub Apps with the <code>pull_requests</code> permission</li>
+        <li>GitHub Apps with <strong>Pull requests</strong> permission</li>
       </ul>
       <h3 id="webhook-payload-object-31">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-object-31"
@@ -13252,7 +13250,7 @@
       <ul>
         <li>Repository webhooks</li>
         <li>Organization webhooks</li>
-        <li>GitHub Apps with the <code>contents</code> permission</li>
+        <li>GitHub Apps with <strong>Contents</strong> permission</li>
       </ul>
       <h3 id="webhook-payload-object-32">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-object-32"
@@ -13705,7 +13703,7 @@
       <ul>
         <li>Repository webhooks</li>
         <li>Organization webhooks</li>
-        <li>GitHub Apps with the <code>contents</code> permission</li>
+        <li>GitHub Apps with <strong>Contents</strong> permission</li>
       </ul>
       <h3 id="webhook-payload-object-33">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-object-33"
@@ -14087,10 +14085,7 @@
         >Availability
       </h3>
       <ul>
-        <li>
-          GitHub Apps must have the <code>contents</code> permission to receive
-          this webhook.
-        </li>
+        <li>GitHub Apps with <strong>Contents</strong> permission</li>
       </ul>
       <h3 id="webhook-payload-example-33">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-example-33"
@@ -14312,7 +14307,7 @@
         </li>
         <li>Organization webhooks</li>
         <li>
-          GitHub Apps with the <code>metadata</code> permission receive all
+          GitHub Apps with <strong>Metadata</strong> permission receive all
           event types except <code>deleted</code>
         </li>
       </ul>
@@ -14906,7 +14901,7 @@
       <ul>
         <li>Repository webhooks</li>
         <li>Organization webhooks</li>
-        <li>GitHub Apps with the <code>statuses</code> permission</li>
+        <li>GitHub Apps with <strong>Commit statuses</strong> permission</li>
       </ul>
       <h3 id="webhook-payload-object-36">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-object-36"
@@ -15317,7 +15312,7 @@
       </h3>
       <ul>
         <li>Organization webhooks</li>
-        <li>GitHub Apps with the <code>members</code> permission</li>
+        <li>GitHub Apps with <strong>Members</strong> permission</li>
       </ul>
       <h3 id="webhook-payload-object-37">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-object-37"
@@ -15692,7 +15687,7 @@
       <ul>
         <li>Repository webhooks</li>
         <li>Organization webhooks</li>
-        <li>GitHub Apps with the <code>members</code> permission</li>
+        <li>GitHub Apps with <strong>Members</strong> permission</li>
       </ul>
       <h3 id="webhook-payload-object-38">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-object-38"
@@ -16146,7 +16141,7 @@
       <ul>
         <li>Repository webhooks</li>
         <li>Organization webhooks</li>
-        <li>GitHub Apps with the <code>metadata</code> permission</li>
+        <li>GitHub Apps with <strong>Metadata</strong> permission</li>
       </ul>
       <h3 id="webhook-payload-object-39">
         <a aria-hidden="" tabindex="-1" href="#webhook-payload-object-39"
