@@ -30,7 +30,7 @@ const handleIssuesOpenedEvent = (event: IssuesOpenedEvent) => {
 };
 ```
 
-**Note**: You _MUST_ enable the [`strictNullChecks` option](https://www.typescriptlang.org/tsconfig#strictNullChecks) in your `tsconfig` in order to use the types. See [#395](https://github.com/octokit/webhooks/issues/395) for details.
+**⚠️ Caution ⚠️ **: Webhooks Types are expected to be used with [`strictNullChecks` option](https://www.typescriptlang.org/tsconfig#strictNullChecks) in your `tsconfig`. If you don't have this option enabled, there's the possibility you get `never` as the inferred type in some use cases. See [#395](https://github.com/octokit/webhooks/issues/395) for details.
 
 ## See also
 
