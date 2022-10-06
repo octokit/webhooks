@@ -30,6 +30,8 @@ const handleIssuesOpenedEvent = (event: IssuesOpenedEvent) => {
 };
 ```
 
+**⚠️ Caution ⚠️**: Webhooks Types are expected to be used with the [`strictNullChecks` option](https://www.typescriptlang.org/tsconfig#strictNullChecks) enabled in your `tsconfig`. If you don't have this option enabled, there's the possibility that you get `never` as the inferred type in some use cases. See [#395](https://github.com/octokit/webhooks/issues/395) for details.
+
 ## See also
 
 - [octokit/graphql-schema](https://github.com/octokit/graphql-schema) – GitHub’s

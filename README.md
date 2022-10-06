@@ -301,6 +301,8 @@ const handleIssuesOpenedEvent = (event: IssuesOpenedEvent) => {
 };
 ```
 
+**⚠️ Caution ⚠️**: Webhooks Types are expected to be used with the [`strictNullChecks` option](https://www.typescriptlang.org/tsconfig#strictNullChecks) enabled in your `tsconfig`. If you don't have this option enabled, there's the possibility that you get `never` as the inferred type in some use cases. See [#395](https://github.com/octokit/webhooks/issues/395) for details.
+
 ## How it works
 
 This package updates itself using a daily cronjob running on GitHub Actions. The
