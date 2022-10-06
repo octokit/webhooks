@@ -69500,7 +69500,7 @@
   {
     "name": "workflow_run",
     "description": "When a GitHub Actions workflow run is requested or completed. For more information, see \"[Events that trigger workflows](https://docs.github.com/en/actions/reference/events-that-trigger-workflows#workflow_run).\"",
-    "actions": ["completed", "requested"],
+    "actions": ["completed", "in_progress", "requested"],
     "properties": {
       "workflow_run": {
         "type": "object",
