@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "workflow_run$in_progress",
+  "type": "object",
+  "required": ["action", "repository", "sender", "workflow", "workflow_run"],
+  "properties": {
+    "action": { "type": "string", "enum": ["in_progress"] },
+    "organization": { "$ref": "common/organization.schema.json" },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "workflow": { "$ref": "common/workflow.schema.json" },
+    "workflow_run": { "$ref": "common/workflow-run.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" }
+  },
+  "additionalProperties": false,
+  "title": "workflow_run in_progress event"
+}

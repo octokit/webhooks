@@ -404,6 +404,7 @@ export type WorkflowJobEvent =
 export type WorkflowStep = WorkflowStepInProgress | WorkflowStepCompleted;
 export type WorkflowRunEvent =
   | WorkflowRunCompletedEvent
+  | WorkflowRunInProgressEvent
   | WorkflowRunRequestedEvent;
 
 /**
@@ -7114,6 +7115,15 @@ export interface RepositoryLite {
    * The URL to get more information about the repository from the GitHub API.
    */
   url: string;
+}
+export interface WorkflowRunInProgressEvent {
+  action: "in_progress";
+  organization?: Organization;
+  repository: Repository;
+  sender: User;
+  workflow: Workflow;
+  workflow_run: WorkflowRun;
+  installation?: InstallationLite;
 }
 export interface WorkflowRunRequestedEvent {
   action: "requested";
