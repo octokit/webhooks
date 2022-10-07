@@ -104,7 +104,12 @@ export type AuthorAssociation =
   | "MEMBER"
   | "NONE"
   | "OWNER";
-export type DependabotAlertEvent = DependabotAlertFixedEvent;
+export type DependabotAlertEvent =
+  | DependabotAlertCreatedEvent
+  | DependabotAlertDismissedEvent
+  | DependabotAlertFixedEvent
+  | DependabotAlertReintroducedEvent
+  | DependabotAlertReopenedEvent;
 export type DeployKeyEvent = DeployKeyCreatedEvent | DeployKeyDeletedEvent;
 export type DeploymentEvent = DeploymentCreatedEvent;
 export type DeploymentStatusEvent = DeploymentStatusCreatedEvent;
@@ -2279,183 +2284,72 @@ export interface DeleteEvent {
   installation?: InstallationLite;
   organization?: Organization;
 }
-export interface DependabotAlertFixedEvent {
-  action: "fixed";
+export interface DependabotAlertCreatedEvent {
+  action: "created";
+  alert: DependabotAlert & {
+    state: "open";
+    fixed_at: null;
+    dismissed_at: null;
+    dismissed_by: null;
+    dismissed_reason: null;
+    dismissed_comment: null;
+  };
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+/**
+ * A Dependabot alert.
+ */
+export interface DependabotAlert {
   /**
-   * A Dependabot alert.
+   * The security alert number.
    */
-  alert: {
+  number: number;
+  /**
+   * The state of the Dependabot alert.
+   */
+  state: "dismissed" | "fixed" | "open";
+  /**
+   * Details for the vulnerable dependency.
+   */
+  dependency: {
+    package: DependabotAlertPackage;
     /**
-     * The security alert number.
+     * The full path to the dependency manifest file, relative to the root of the repository.
      */
-    number: number;
+    manifest_path: string;
     /**
-     * The state of the Dependabot alert.
+     * The execution scope of the vulnerable dependency.
      */
-    state: "dismissed" | "fixed" | "open";
-    /**
-     * Details for the vulnerable dependency.
-     */
-    dependency: {
-      /**
-       * Details for the vulnerable package.
-       */
-      package: {
-        /**
-         * The unique package name within its ecosystem.
-         */
-        name: string;
-        /**
-         * The package's language or package management ecosystem.
-         */
-        ecosystem: string;
-      };
-      /**
-       * The full path to the dependency manifest file, relative to the root of the repository.
-       */
-      manifest_path: string;
-      /**
-       * The execution scope of the vulnerable dependency.
-       */
-      scope: "development" | "runtime" | null;
-    };
+    scope: "development" | "runtime" | null;
+  };
+  /**
+   * Details for the GitHub Security Advisory.
+   */
+  security_advisory: {
     /**
      * Details for the GitHub Security Advisory.
      */
-    security_advisory: {
-      /**
-       * Details for the GitHub Security Advisory.
-       */
-      ghsa_id: string;
-      /**
-       * The unique CVE ID assigned to the advisory.
-       */
-      cve_id: string | null;
-      /**
-       * A short, plain text summary of the advisory.
-       */
-      summary: string;
-      /**
-       * A long-form Markdown-supported description of the advisory.
-       */
-      description: string;
-      /**
-       * Vulnerable version range information for the advisory.
-       */
-      vulnerabilities: {
-        /**
-         * Details for the vulnerable package.
-         */
-        package: {
-          /**
-           * The unique package name within its ecosystem.
-           */
-          name: string;
-          /**
-           * The package's language or package management ecosystem.
-           */
-          ecosystem: string;
-        };
-        /**
-         * The severity of the vulnerability.
-         */
-        severity: "low" | "medium" | "high" | "critical";
-        /**
-         * Conditions that identify vulnerable versions of this vulnerability's package.
-         */
-        vulnerable_version_range: string;
-        /**
-         * Details pertaining to the package version that patches this vulnerability.
-         */
-        first_patched_version: {
-          /**
-           * The package version that patches this vulnerability.
-           */
-          identifier: string;
-        };
-      }[];
-      /**
-       * The severity of the advisory.
-       */
-      severity: "low" | "medium" | "high" | "critical";
-      /**
-       * Details for the advisory pertaining to the Common Vulnerability Scoring System.
-       */
-      cvss: {
-        /**
-         * The overall CVSS score of the advisory.
-         */
-        score: number;
-        /**
-         * The full CVSS vector string for the advisory.
-         */
-        vector_string: string | null;
-      };
-      /**
-       * Details for the advisory pertaining to Common Weakness Enumeration.
-       */
-      cwes: {
-        /**
-         * The unique CWE ID.
-         */
-        cwe_id: string;
-        /**
-         * The short, plain text name of the CWE.
-         */
-        name: string;
-      }[];
-      /**
-       * Values that identify this advisory among security information sources.
-       */
-      identifiers: {
-        /**
-         * The type of advisory identifier.
-         */
-        type: "CVE" | "GHSA";
-        /**
-         * The value of the advisory identifer.
-         */
-        value: string;
-      }[];
-      /**
-       * Links to additional advisory information.
-       */
-      references: {
-        /**
-         * The URL of the reference.
-         */
-        url: string;
-      }[];
-      /**
-       * The time that the advisory was published in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-       */
-      published_at: string;
-      /**
-       * The time that the advisory was last modified in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-       */
-      updated_at: string;
-      /**
-       * The time that the advisory was withdrawn in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-       */
-      withdrawn_at: string | null;
-    };
+    ghsa_id: string;
     /**
-     * Details pertaining to one vulnerable version range for the advisory.
+     * The unique CVE ID assigned to the advisory.
      */
-    security_vulnerability: {
-      /**
-       * Details for the vulnerable package.
-       */
-      package: {
-        /**
-         * The unique package name within its ecosystem.
-         */
-        name: string;
-        /**
-         * The package's language or package management ecosystem.
-         */
-        ecosystem: string;
-      };
+    cve_id: string | null;
+    /**
+     * A short, plain text summary of the advisory.
+     */
+    summary: string;
+    /**
+     * A long-form Markdown-supported description of the advisory.
+     */
+    description: string;
+    /**
+     * Vulnerable version range information for the advisory.
+     */
+    vulnerabilities: {
+      package: DependabotAlertPackage;
       /**
        * The severity of the vulnerability.
        */
@@ -2473,47 +2367,193 @@ export interface DependabotAlertFixedEvent {
          */
         identifier: string;
       };
-    };
+    }[];
     /**
-     * The REST API URL of the alert resource.
+     * The severity of the advisory.
      */
-    url: string;
+    severity: "low" | "medium" | "high" | "critical";
+    cvss: SecurityAdvisoryCvss;
     /**
-     * The GitHub URL of the alert resource.
+     * Details for the advisory pertaining to Common Weakness Enumeration.
      */
-    html_url: string;
+    cwes: SecurityAdvisoryCwes[];
     /**
-     * The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+     * Values that identify this advisory among security information sources.
      */
-    created_at: string;
+    identifiers: {
+      /**
+       * The type of advisory identifier.
+       */
+      type: "CVE" | "GHSA";
+      /**
+       * The value of the advisory identifer.
+       */
+      value: string;
+    }[];
     /**
-     * The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+     * Links to additional advisory information.
+     */
+    references: {
+      /**
+       * The URL of the reference.
+       */
+      url: string;
+    }[];
+    /**
+     * The time that the advisory was published in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+     */
+    published_at: string;
+    /**
+     * The time that the advisory was last modified in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
      */
     updated_at: string;
     /**
-     * The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+     * The time that the advisory was withdrawn in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
      */
-    dismissed_at: string | null;
-    dismissed_by: User | null;
+    withdrawn_at: string | null;
+  };
+  /**
+   * Details pertaining to one vulnerable version range for the advisory.
+   */
+  security_vulnerability: {
+    package: DependabotAlertPackage;
     /**
-     * The reason that the alert was dismissed.
+     * The severity of the vulnerability.
      */
+    severity: "low" | "medium" | "high" | "critical";
+    /**
+     * Conditions that identify vulnerable versions of this vulnerability's package.
+     */
+    vulnerable_version_range: string;
+    /**
+     * Details pertaining to the package version that patches this vulnerability.
+     */
+    first_patched_version: {
+      /**
+       * The package version that patches this vulnerability.
+       */
+      identifier: string;
+    };
+  };
+  /**
+   * The REST API URL of the alert resource.
+   */
+  url: string;
+  /**
+   * The GitHub URL of the alert resource.
+   */
+  html_url: string;
+  /**
+   * The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+   */
+  created_at: string;
+  /**
+   * The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+   */
+  updated_at: string;
+  /**
+   * The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+   */
+  dismissed_at: string | null;
+  dismissed_by: User | null;
+  /**
+   * The reason that the alert was dismissed.
+   */
+  dismissed_reason:
+    | "fix_started"
+    | "inaccurate"
+    | "no_bandwidth"
+    | "not_used"
+    | "tolerable_risk"
+    | null;
+  /**
+   * An optional comment associated with the alert's dismissal.
+   */
+  dismissed_comment: string | null;
+  /**
+   * The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+   */
+  fixed_at: string | null;
+}
+/**
+ * Details for the vulnerable package.
+ */
+export interface DependabotAlertPackage {
+  /**
+   * The unique package name within its ecosystem.
+   */
+  name: string;
+  /**
+   * The package's language or package management ecosystem.
+   */
+  ecosystem: string;
+}
+/**
+ * Details for the advisory pertaining to the Common Vulnerability Scoring System.
+ */
+export interface SecurityAdvisoryCvss {
+  /**
+   * The overall CVSS score of the advisory.
+   */
+  score: number;
+  /**
+   * The full CVSS vector string for the advisory.
+   */
+  vector_string: string | null;
+}
+/**
+ * A CWE weakness assigned to the advisory.
+ */
+export interface SecurityAdvisoryCwes {
+  /**
+   * The unique CWE ID.
+   */
+  cwe_id: string;
+  /**
+   * The short, plain text name of the CWE.
+   */
+  name: string;
+}
+export interface DependabotAlertDismissedEvent {
+  action: "dismissed";
+  alert: DependabotAlert & {
+    state: "dismissed";
+    dismissed_at: string;
+    dismissed_by: User;
     dismissed_reason:
       | "fix_started"
       | "inaccurate"
       | "no_bandwidth"
       | "not_used"
-      | "tolerable_risk"
-      | null;
-    /**
-     * An optional comment associated with the alert's dismissal.
-     */
-    dismissed_comment: string | null;
-    /**
-     * The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
-     */
-    fixed_at: string | null;
+      | "tolerable_risk";
   };
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DependabotAlertFixedEvent {
+  action: "fixed";
+  alert: DependabotAlert & {
+    state: "fixed";
+    fixed_at: string;
+  };
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DependabotAlertReintroducedEvent {
+  action: "reintroduced";
+  alert: DependabotAlert;
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface DependabotAlertReopenedEvent {
+  action: "reopened";
+  alert: DependabotAlert;
   repository: Repository;
   sender: User;
   installation?: InstallationLite;

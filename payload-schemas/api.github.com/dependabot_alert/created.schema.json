@@ -1,19 +1,32 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "dependabot_alert$fixed",
+  "$id": "dependabot_alert$created",
   "type": "object",
   "required": ["action", "alert", "repository", "sender"],
   "properties": {
-    "action": { "type": "string", "enum": ["fixed"] },
+    "action": { "type": "string", "enum": ["created"] },
     "alert": {
       "allOf": [
         { "$ref": "common/dependabot-alert.schema.json" },
         {
           "type": "object",
-          "required": ["state", "fixed_at"],
+          "required": [
+            "state",
+            "fixed_at",
+            "dismissed_at",
+            "dismissed_by",
+            "dismissed_reason",
+            "dismissed_comment"
+          ],
           "properties": {
-            "state": { "type": "string", "enum": ["fixed"] },
-            "fixed_at": { "type": "string", "format": "date-time" }
+            "state": { "type": "string", "enum": ["open"] },
+            "fixed_at": { "type": "null" },
+            "dismissed_at": { "type": "null" },
+            "dismissed_by": { "type": "null" },
+            "dismissed_reason": {
+              "type": "null"
+            },
+            "dismissed_comment": { "type": "null" }
           },
           "tsAdditionalProperties": false
         }
@@ -25,5 +38,5 @@
     "organization": { "$ref": "common/organization.schema.json" }
   },
   "additionalProperties": false,
-  "title": "dependabot_alert fixed event"
+  "title": "dependabot_alert created event"
 }
