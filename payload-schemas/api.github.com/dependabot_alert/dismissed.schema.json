@@ -10,7 +10,12 @@
         { "$ref": "common/dependabot-alert.schema.json" },
         {
           "type": "object",
-          "required": ["state", "dismissed_at", "dismissed_by", "dismissed_reason"],
+          "required": [
+            "state",
+            "dismissed_at",
+            "dismissed_by",
+            "dismissed_reason"
+          ],
           "properties": {
             "state": { "type": "string", "enum": ["dismissed"] },
             "dismissed_at": { "type": "string", "format": "date-time" },
