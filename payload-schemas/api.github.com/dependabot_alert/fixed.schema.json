@@ -1,0 +1,366 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "dependabot_alert$fixed",
+  "type": "object",
+  "required": ["action", "alert", "repository", "sender"],
+  "properties": {
+    "action": { "type": "string", "enum": ["fixed"] },
+    "alert": {
+      "type": "object",
+      "description": "A Dependabot alert.",
+      "required": [
+        "number",
+        "state",
+        "dependency",
+        "security_advisory",
+        "security_vulnerability",
+        "url",
+        "html_url",
+        "created_at",
+        "updated_at",
+        "dismissed_at",
+        "dismissed_by",
+        "dismissed_reason",
+        "dismissed_comment",
+        "fixed_at"
+      ],
+      "properties": {
+        "number": {
+          "type": "integer",
+          "description": "The security alert number."
+        },
+        "state": {
+          "type": "string",
+          "description": "The state of the Dependabot alert.",
+          "enum": ["dismissed", "fixed", "open"]
+        },
+        "dependency": {
+          "type": "object",
+          "description": "Details for the vulnerable dependency.",
+          "required": ["package", "manifest_path", "scope"],
+          "properties": {
+            "package": {
+              "type": "object",
+              "description": "Details for the vulnerable package.",
+              "required": ["name", "ecosystem"],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "The unique package name within its ecosystem."
+                },
+                "ecosystem": {
+                  "type": "string",
+                  "description": "The package's language or package management ecosystem."
+                }
+              },
+              "additionalProperties": false
+            },
+            "manifest_path": {
+              "type": "string",
+              "description": "The full path to the dependency manifest file, relative to the root of the repository."
+            },
+            "scope": {
+              "type": ["string", "null"],
+              "description": "The execution scope of the vulnerable dependency.",
+              "enum": ["development", "runtime", null]
+            }
+          },
+          "additionalProperties": false
+        },
+        "security_advisory": {
+          "type": "object",
+          "description": "Details for the GitHub Security Advisory.",
+          "required": [
+            "ghsa_id",
+            "cve_id",
+            "summary",
+            "description",
+            "vulnerabilities",
+            "severity",
+            "cvss",
+            "cwes",
+            "identifiers",
+            "references",
+            "published_at",
+            "updated_at",
+            "withdrawn_at"
+          ],
+          "properties": {
+            "ghsa_id": {
+              "type": "string",
+              "description": "Details for the GitHub Security Advisory."
+            },
+            "cve_id": {
+              "type": ["string", "null"],
+              "description": "The unique CVE ID assigned to the advisory."
+            },
+            "summary": {
+              "type": "string",
+              "description": "A short, plain text summary of the advisory."
+            },
+            "description": {
+              "type": "string",
+              "description": "A long-form Markdown-supported description of the advisory."
+            },
+            "vulnerabilities": {
+              "type": "array",
+              "description": "Vulnerable version range information for the advisory.",
+              "items": {
+                "type": "object",
+                "description": "Details pertaining to one vulnerable version range for the advisory.",
+                "required": [
+                  "package",
+                  "severity",
+                  "vulnerable_version_range",
+                  "first_patched_version"
+                ],
+                "properties": {
+                  "package": {
+                    "type": "object",
+                    "description": "Details for the vulnerable package.",
+                    "required": ["name", "ecosystem"],
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "The unique package name within its ecosystem."
+                      },
+                      "ecosystem": {
+                        "type": "string",
+                        "description": "The package's language or package management ecosystem."
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "severity": {
+                    "type": "string",
+                    "description": "The severity of the vulnerability.",
+                    "enum": ["low", "medium", "high", "critical"]
+                  },
+                  "vulnerable_version_range": {
+                    "type": "string",
+                    "description": "Conditions that identify vulnerable versions of this vulnerability's package."
+                  },
+                  "first_patched_version": {
+                    "type": "object",
+                    "description": "Details pertaining to the package version that patches this vulnerability.",
+                    "required": ["identifier"],
+                    "properties": {
+                      "identifier": {
+                        "type": "string",
+                        "description": "The package version that patches this vulnerability."
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "severity": {
+              "type": "string",
+              "description": "The severity of the advisory.",
+              "enum": ["low", "medium", "high", "critical"]
+            },
+            "cvss": {
+              "type": "object",
+              "description": "Details for the advisory pertaining to the Common Vulnerability Scoring System.",
+              "required": ["score", "vector_string"],
+              "properties": {
+                "score": {
+                  "type": "number",
+                  "description": "The overall CVSS score of the advisory.",
+                  "minimum": 0,
+                  "maximum": 10
+                },
+                "vector_string": {
+                  "type": ["string", "null"],
+                  "description": "The full CVSS vector string for the advisory."
+                }
+              },
+              "additionalProperties": false
+            },
+            "cwes": {
+              "type": "array",
+              "description": "Details for the advisory pertaining to Common Weakness Enumeration.",
+              "items": {
+                "type": "object",
+                "description": "A CWE weakness assigned to the advisory.",
+                "required": ["cwe_id", "name"],
+                "properties": {
+                  "cwe_id": {
+                    "type": "string",
+                    "description": "The unique CWE ID."
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The short, plain text name of the CWE."
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "identifiers": {
+              "type": "array",
+              "description": "Values that identify this advisory among security information sources.",
+              "items": {
+                "type": "object",
+                "description": "An advisory identifier.",
+                "required": ["type", "value"],
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "description": "The type of advisory identifier.",
+                    "enum": ["CVE", "GHSA"]
+                  },
+                  "value": {
+                    "type": "string",
+                    "description": "The value of the advisory identifer."
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "references": {
+              "type": "array",
+              "description": "Links to additional advisory information.",
+              "items": {
+                "type": "object",
+                "required": ["url"],
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "description": "The URL of the reference.",
+                    "format": "uri"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "published_at": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The time that the advisory was published in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+            },
+            "updated_at": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The time that the advisory was last modified in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+            },
+            "withdrawn_at": {
+              "type": ["string", "null"],
+              "description": "The time that the advisory was withdrawn in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+              "format": "date-time"
+            }
+          },
+          "additionalProperties": false
+        },
+        "security_vulnerability": {
+          "type": "object",
+          "description": "Details pertaining to one vulnerable version range for the advisory.",
+          "required": [
+            "package",
+            "severity",
+            "vulnerable_version_range",
+            "first_patched_version"
+          ],
+          "properties": {
+            "package": {
+              "type": "object",
+              "description": "Details for the vulnerable package.",
+              "required": ["name", "ecosystem"],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "The unique package name within its ecosystem."
+                },
+                "ecosystem": {
+                  "type": "string",
+                  "description": "The package's language or package management ecosystem."
+                }
+              },
+              "additionalProperties": false
+            },
+            "severity": {
+              "type": "string",
+              "description": "The severity of the vulnerability.",
+              "enum": ["low", "medium", "high", "critical"]
+            },
+            "vulnerable_version_range": {
+              "type": "string",
+              "description": "Conditions that identify vulnerable versions of this vulnerability's package."
+            },
+            "first_patched_version": {
+              "type": "object",
+              "description": "Details pertaining to the package version that patches this vulnerability.",
+              "required": ["identifier"],
+              "properties": {
+                "identifier": {
+                  "type": "string",
+                  "description": "The package version that patches this vulnerability."
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "The REST API URL of the alert resource."
+        },
+        "html_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "The GitHub URL of the alert resource."
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+        },
+        "dismissed_at": {
+          "type": ["string", "null"],
+          "format": "date-time",
+          "description": "The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+        },
+        "dismissed_by": {
+          "oneOf": [{ "$ref": "common/user.schema.json" }, { "type": "null" }]
+        },
+        "dismissed_reason": {
+          "type": ["string", "null"],
+          "description": "The reason that the alert was dismissed.",
+          "enum": [
+            "fix_started",
+            "inaccurate",
+            "no_bandwidth",
+            "not_used",
+            "tolerable_risk",
+            null
+          ]
+        },
+        "dismissed_comment": {
+          "type": ["string", "null"],
+          "description": "An optional comment associated with the alert's dismissal."
+        },
+        "fixed_at": {
+          "type": ["string", "null"],
+          "format": "date-time",
+          "description": "The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+        }
+      },
+      "additionalProperties": false
+    },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
+  },
+  "additionalProperties": false,
+  "title": "dependabot_alert fixed event"
+}
