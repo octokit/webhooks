@@ -10252,7 +10252,7 @@
     "properties": {
       "inputs": {
         "type": "object",
-        "description": "Inputs to the workflow. Each key represents the name of the input while it's value represents the value of that input."
+        "description": "Inputs to the workflow. Each key represents the name of the input while its value represents the value of that input."
       },
       "organization": {
         "type": "object",
