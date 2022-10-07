@@ -2295,7 +2295,7 @@ export interface DependabotAlertCreatedEvent {
     dismissed_comment: null;
   };
   repository: Repository;
-  sender: User;
+  sender: GitHubOrg;
   installation?: InstallationLite;
   organization?: Organization;
 }
@@ -2539,7 +2539,7 @@ export interface DependabotAlertFixedEvent {
     fixed_at: string;
   };
   repository: Repository;
-  sender: User;
+  sender: GitHubOrg;
   installation?: InstallationLite;
   organization?: Organization;
 }
@@ -2547,7 +2547,7 @@ export interface DependabotAlertReintroducedEvent {
   action: "reintroduced";
   alert: DependabotAlert;
   repository: Repository;
-  sender: User;
+  sender: GitHubOrg;
   installation?: InstallationLite;
   organization?: Organization;
 }
