@@ -5527,39 +5527,42 @@ export interface PullRequestUnlockedEvent {
 }
 export interface PullRequestReviewDismissedEvent {
   action: "dismissed";
-  /**
-   * The review that was affected.
-   */
-  review: {
-    /**
-     * Unique identifier of the review
-     */
-    id: number;
-    node_id: string;
-    user: User;
-    /**
-     * The text of the review.
-     */
-    body: string | null;
-    /**
-     * A commit SHA for the review.
-     */
-    commit_id: string;
-    submitted_at: string;
+  review: PullRequestReview & {
     state: "dismissed";
-    html_url: string;
-    pull_request_url: string;
-    author_association: AuthorAssociation;
-    _links: {
-      html: Link;
-      pull_request: Link;
-    };
   };
   pull_request: SimplePullRequest;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
   sender: User;
+}
+/**
+ * The review that was affected.
+ */
+export interface PullRequestReview {
+  /**
+   * Unique identifier of the review
+   */
+  id: number;
+  node_id: string;
+  user: User;
+  /**
+   * The text of the review.
+   */
+  body: string | null;
+  /**
+   * A commit SHA for the review.
+   */
+  commit_id: string;
+  submitted_at: string | null;
+  state: "commented" | "changes_requested" | "approved" | "dismissed";
+  html_url: string;
+  pull_request_url: string;
+  author_association: AuthorAssociation;
+  _links: {
+    html: Link;
+    pull_request: Link;
+  };
 }
 export interface SimplePullRequest {
   url: string;
@@ -5630,34 +5633,7 @@ export interface PullRequestReviewEditedEvent {
       from: string;
     };
   };
-  /**
-   * The review that was affected.
-   */
-  review: {
-    /**
-     * Unique identifier of the review
-     */
-    id: number;
-    node_id: string;
-    user: User;
-    /**
-     * The text of the review.
-     */
-    body: string | null;
-    /**
-     * A commit SHA for the review.
-     */
-    commit_id: string;
-    submitted_at: string;
-    state: "commented" | "changes_requested" | "approved";
-    html_url: string;
-    pull_request_url: string;
-    author_association: AuthorAssociation;
-    _links: {
-      html: Link;
-      pull_request: Link;
-    };
-  };
+  review: PullRequestReview;
   pull_request: SimplePullRequest;
   repository: Repository;
   installation?: InstallationLite;
@@ -5666,34 +5642,7 @@ export interface PullRequestReviewEditedEvent {
 }
 export interface PullRequestReviewSubmittedEvent {
   action: "submitted";
-  /**
-   * The review that was affected.
-   */
-  review: {
-    /**
-     * Unique identifier of the review
-     */
-    id: number;
-    node_id: string;
-    user: User;
-    /**
-     * The text of the review.
-     */
-    body: string | null;
-    /**
-     * A commit SHA for the review.
-     */
-    commit_id: string;
-    submitted_at: string;
-    state: "commented" | "changes_requested" | "approved";
-    html_url: string;
-    pull_request_url: string;
-    author_association: AuthorAssociation;
-    _links: {
-      html: Link;
-      pull_request: Link;
-    };
-  };
+  review: PullRequestReview;
   pull_request: SimplePullRequest;
   repository: Repository;
   installation?: InstallationLite;
