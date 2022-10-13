@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "dependabot_alert$fixed",
+  "type": "object",
+  "required": ["action", "alert", "repository", "sender"],
+  "properties": {
+    "action": { "type": "string", "enum": ["fixed"] },
+    "alert": {
+      "allOf": [
+        { "$ref": "common/dependabot-alert.schema.json" },
+        {
+          "type": "object",
+          "required": ["state", "fixed_at"],
+          "properties": {
+            "state": { "type": "string", "enum": ["fixed"] },
+            "fixed_at": { "type": "string", "format": "date-time" }
+          },
+          "tsAdditionalProperties": false
+        }
+      ]
+    },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/github-org.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
+  },
+  "additionalProperties": false,
+  "title": "dependabot_alert fixed event"
+}

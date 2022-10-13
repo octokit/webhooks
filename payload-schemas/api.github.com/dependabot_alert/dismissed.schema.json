@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "dependabot_alert$dismissed",
+  "type": "object",
+  "required": ["action", "alert", "repository", "sender"],
+  "properties": {
+    "action": { "type": "string", "enum": ["dismissed"] },
+    "alert": {
+      "allOf": [
+        { "$ref": "common/dependabot-alert.schema.json" },
+        {
+          "type": "object",
+          "required": [
+            "state",
+            "dismissed_at",
+            "dismissed_by",
+            "dismissed_reason"
+          ],
+          "properties": {
+            "state": { "type": "string", "enum": ["dismissed"] },
+            "dismissed_at": { "type": "string", "format": "date-time" },
+            "dismissed_by": { "$ref": "common/user.schema.json" },
+            "dismissed_reason": {
+              "type": "string",
+              "enum": [
+                "fix_started",
+                "inaccurate",
+                "no_bandwidth",
+                "not_used",
+                "tolerable_risk"
+              ]
+            }
+          },
+          "tsAdditionalProperties": false
+        }
+      ]
+    },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
+  },
+  "additionalProperties": false,
+  "title": "dependabot_alert dismissed event"
+}

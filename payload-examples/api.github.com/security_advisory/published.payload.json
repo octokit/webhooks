@@ -28,6 +28,7 @@
       }
     ],
     "cvss": { "vector_string": "", "score": 7.9 },
-    "cwes": [{ "cwe_id": "CWE-0000", "name": "" }]
+    "cwes": [{ "cwe_id": "CWE-0000", "name": "" }],
+    "cve_id": null
   }
 }

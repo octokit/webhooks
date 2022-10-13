@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/security-advisory-cvss.schema.json",
+  "type": "object",
+  "description": "Details for the advisory pertaining to the Common Vulnerability Scoring System.",
+  "required": ["score", "vector_string"],
+  "properties": {
+    "score": {
+      "type": "number",
+      "description": "The overall CVSS score of the advisory.",
+      "minimum": 0,
+      "maximum": 10
+    },
+    "vector_string": {
+      "type": ["string", "null"],
+      "description": "The full CVSS vector string for the advisory."
+    }
+  },
+  "additionalProperties": false,
+  "title": "security_advisory cvss"
+}

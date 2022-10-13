@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/security-advisory-cwes.schema.json",
+  "type": "object",
+  "description": "A CWE weakness assigned to the advisory.",
+  "required": ["cwe_id", "name"],
+  "properties": {
+    "cwe_id": {
+      "type": "string",
+      "description": "The unique CWE ID."
+    },
+    "name": {
+      "type": "string",
+      "description": "The short, plain text name of the CWE."
+    }
+  },
+  "additionalProperties": false,
+  "title": "security_advisory cwes"
+}

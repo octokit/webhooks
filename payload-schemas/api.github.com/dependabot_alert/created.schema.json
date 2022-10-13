@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "dependabot_alert$created",
+  "type": "object",
+  "required": ["action", "alert", "repository", "sender"],
+  "properties": {
+    "action": { "type": "string", "enum": ["created"] },
+    "alert": {
+      "allOf": [
+        { "$ref": "common/dependabot-alert.schema.json" },
+        {
+          "type": "object",
+          "required": [
+            "state",
+            "fixed_at",
+            "dismissed_at",
+            "dismissed_by",
+            "dismissed_reason",
+            "dismissed_comment"
+          ],
+          "properties": {
+            "state": { "type": "string", "enum": ["open"] },
+            "fixed_at": { "type": "null" },
+            "dismissed_at": { "type": "null" },
+            "dismissed_by": { "type": "null" },
+            "dismissed_reason": {
+              "type": "null"
+            },
+            "dismissed_comment": { "type": "null" }
+          },
+          "tsAdditionalProperties": false
+        }
+      ]
+    },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/github-org.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
+  },
+  "additionalProperties": false,
+  "title": "dependabot_alert created event"
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/dependabot-alert-package.schema.json",
+  "type": "object",
+  "description": "Details for the vulnerable package.",
+  "required": ["name", "ecosystem"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The unique package name within its ecosystem."
+    },
+    "ecosystem": {
+      "type": "string",
+      "description": "The package's language or package management ecosystem."
+    }
+  },
+  "additionalProperties": false,
+  "title": "dependabot_alert package"
+}
