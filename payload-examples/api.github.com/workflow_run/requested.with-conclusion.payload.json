@@ -240,6 +240,8 @@
       "url": "https://api.github.com/repos/octo-org/octo-repo"
     },
     "head_sha": "3484a3fb816e0859fd6e1cea078d76385ff50625",
+    "path": ".github/workflows/test.yml",
+    "display_title": "ci(action): update actions/setup-node digest to 8c91899",
     "html_url": "https://github.com/octo-org/octo-repo/actions/runs/289782451",
     "id": 289782451,
     "jobs_url": "https://api.github.com/repos/octo-org/octo-repo/actions/runs/289782451/jobs",
