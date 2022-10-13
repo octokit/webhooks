@@ -33,6 +33,7 @@
         "cwe_id": "CWE-94",
         "name": "Improper Control of Generation of Code ('Code Injection')"
       }
-    ]
+    ],
+    "cve_id": "CVE-2021-23334"
   }
 }
