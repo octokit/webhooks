@@ -33,7 +33,9 @@
     "run_started_at",
     "previous_attempt_url",
     "actor",
-    "triggering_actor"
+    "triggering_actor",
+    "path",
+    "display_title"
   ],
   "type": "object",
   "properties": {
