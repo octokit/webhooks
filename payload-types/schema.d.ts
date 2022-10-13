@@ -711,6 +711,10 @@ export interface Repository {
   allow_forking?: boolean;
   allow_update_branch?: boolean;
   use_squash_pr_title_as_default?: boolean;
+  squash_merge_commit_message?: string;
+  squash_merge_commit_title?: string;
+  merge_commit_message?: string;
+  merge_commit_title?: string;
   is_template: boolean;
   web_commit_signoff_required: boolean;
   topics: string[];
@@ -2666,6 +2670,7 @@ export interface DeploymentWorkflowRun {
   id: number;
   name: string;
   path?: string;
+  display_title?: string;
   node_id: string;
   head_branch: string;
   head_sha: string;
@@ -6453,6 +6458,7 @@ export interface SecurityAdvisoryPerformedEvent {
       name: string;
     }[];
     ghsa_id: string;
+    cve_id: string | null;
     summary: string;
     description: string;
     severity: string;
@@ -6494,6 +6500,7 @@ export interface SecurityAdvisoryPublishedEvent {
       name: string;
     }[];
     ghsa_id: string;
+    cve_id: string | null;
     summary: string;
     description: string;
     severity: string;
@@ -6535,6 +6542,7 @@ export interface SecurityAdvisoryUpdatedEvent {
       name: string;
     }[];
     ghsa_id: string;
+    cve_id: string | null;
     summary: string;
     description: string;
     severity: string;
@@ -6576,6 +6584,7 @@ export interface SecurityAdvisoryWithdrawnEvent {
       name: string;
     }[];
     ghsa_id: string;
+    cve_id: string | null;
     summary: string;
     description: string;
     severity: string;
@@ -7091,7 +7100,8 @@ export interface WorkflowRun {
   /**
    * The full path of the workflow
    */
-  path?: string;
+  path: string;
+  display_title: string;
   html_url: string;
   /**
    * The ID of the workflow run.
