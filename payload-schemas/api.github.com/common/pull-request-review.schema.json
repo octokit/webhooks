@@ -38,9 +38,7 @@
     },
     "html_url": { "type": "string", "format": "uri" },
     "pull_request_url": { "type": "string", "format": "uri" },
-    "author_association": {
-      "$ref": "author_association.schema.json"
-    },
+    "author_association": { "$ref": "author_association.schema.json" },
     "_links": {
       "type": "object",
       "required": ["html", "pull_request"],

@@ -137,8 +137,5 @@
     "type": "User",
     "site_admin": false
   },
-  "installation": {
-    "id": 1,
-    "node_id": "MDEyOk9yZ2FuaXphdGlvbjY4MTE2NzI="
-  }
+  "installation": { "id": 1, "node_id": "MDEyOk9yZ2FuaXphdGlvbjY4MTE2NzI=" }
 }

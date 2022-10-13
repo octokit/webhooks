@@ -95,9 +95,7 @@
               "first_patched_version"
             ],
             "properties": {
-              "package": {
-                "$ref": "dependabot-alert-package.schema.json"
-              },
+              "package": { "$ref": "dependabot-alert-package.schema.json" },
               "severity": {
                 "type": "string",
                 "description": "The severity of the vulnerability.",

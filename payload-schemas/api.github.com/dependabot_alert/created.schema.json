@@ -23,9 +23,7 @@
             "fixed_at": { "type": "null" },
             "dismissed_at": { "type": "null" },
             "dismissed_by": { "type": "null" },
-            "dismissed_reason": {
-              "type": "null"
-            },
+            "dismissed_reason": { "type": "null" },
             "dismissed_comment": { "type": "null" }
           },
           "tsAdditionalProperties": false
