@@ -87,6 +87,7 @@
       "type": "string",
       "description": "The full path of the workflow"
     },
+    "display_title": { "type": "string"},
     "html_url": { "type": "string", "format": "uri" },
     "id": { "type": "integer", "description": "The ID of the workflow run." },
     "jobs_url": {

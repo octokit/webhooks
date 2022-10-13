@@ -29,6 +29,7 @@
     "id": { "type": "integer" },
     "name": { "type": "string" },
     "path": { "type": "string" },
+    "display_title": { "type": "string" },
     "node_id": { "type": "string" },
     "head_branch": { "type": "string" },
     "head_sha": { "type": "string" },
