@@ -6,54 +6,17 @@
   "properties": {
     "action": { "type": "string", "enum": ["dismissed"] },
     "review": {
-      "type": "object",
-      "description": "The review that was affected.",
-      "required": [
-        "id",
-        "node_id",
-        "user",
-        "body",
-        "commit_id",
-        "submitted_at",
-        "state",
-        "html_url",
-        "pull_request_url",
-        "author_association",
-        "_links"
-      ],
-      "properties": {
-        "id": {
-          "type": "integer",
-          "description": "Unique identifier of the review"
-        },
-        "node_id": { "type": "string" },
-        "user": { "$ref": "common/user.schema.json" },
-        "body": {
-          "type": ["string", "null"],
-          "description": "The text of the review."
-        },
-        "commit_id": {
-          "type": "string",
-          "description": "A commit SHA for the review."
-        },
-        "submitted_at": { "type": "string", "format": "date-time" },
-        "state": { "type": "string", "enum": ["dismissed"] },
-        "html_url": { "type": "string", "format": "uri" },
-        "pull_request_url": { "type": "string", "format": "uri" },
-        "author_association": {
-          "$ref": "common/author_association.schema.json"
-        },
-        "_links": {
+      "allOf": [
+        { "$ref": "common/pull-request-review.schema.json" },
+        {
           "type": "object",
-          "required": ["html", "pull_request"],
+          "required": ["state"],
           "properties": {
-            "html": { "$ref": "common/link.schema.json" },
-            "pull_request": { "$ref": "common/link.schema.json" }
+            "state": { "type": "string", "enum": ["dismissed"] }
           },
-          "additionalProperties": false
+          "tsAdditionalProperties": false
         }
-      },
-      "additionalProperties": false
+      ]
     },
     "pull_request": { "$ref": "common/simple-pull-request.schema.json" },
     "repository": { "$ref": "common/repository.schema.json" },

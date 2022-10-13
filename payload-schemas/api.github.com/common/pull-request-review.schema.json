@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/pull-request-review.schema.json",
+  "type": "object",
+  "description": "The review that was affected.",
+  "required": [
+    "id",
+    "node_id",
+    "user",
+    "body",
+    "commit_id",
+    "submitted_at",
+    "state",
+    "html_url",
+    "pull_request_url",
+    "author_association",
+    "_links"
+  ],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier of the review"
+    },
+    "node_id": { "type": "string" },
+    "user": { "$ref": "user.schema.json" },
+    "body": {
+      "type": ["string", "null"],
+      "description": "The text of the review."
+    },
+    "commit_id": {
+      "type": "string",
+      "description": "A commit SHA for the review."
+    },
+    "submitted_at": { "type": ["string", "null"], "format": "date-time" },
+    "state": {
+      "type": "string",
+      "enum": ["commented", "changes_requested", "approved", "dismissed"]
+    },
+    "html_url": { "type": "string", "format": "uri" },
+    "pull_request_url": { "type": "string", "format": "uri" },
+    "author_association": {
+      "$ref": "author_association.schema.json"
+    },
+    "_links": {
+      "type": "object",
+      "required": ["html", "pull_request"],
+      "properties": {
+        "html": { "$ref": "link.schema.json" },
+        "pull_request": { "$ref": "link.schema.json" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "title": "Pull Request Review"
+}
