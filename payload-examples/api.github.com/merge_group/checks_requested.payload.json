@@ -97,7 +97,11 @@
     "forks": 0,
     "open_issues": 39,
     "watchers": 0,
-    "default_branch": "main"
+    "default_branch": "main",
+    "is_template": false,
+    "web_commit_signoff_required": false,
+    "topics": [],
+    "visibility": "public"
   },
   "organization": {
     "login": "octo-org",
