@@ -8,7 +8,13 @@
     "merge_group": {
       "type": "object",
       "description": "The merge group.",
-      "required": ["head_sha", "head_ref", "base_ref", "base_sha", "head_commit"],
+      "required": [
+        "head_sha",
+        "head_ref",
+        "base_ref",
+        "base_sha",
+        "head_commit"
+      ],
       "properties": {
         "head_sha": {
           "type": "string",
