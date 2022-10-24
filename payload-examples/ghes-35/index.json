@@ -25316,7 +25316,7 @@
       },
       "ref": {
         "type": "string",
-        "description": "The branch ref from which the workflow was run."
+        "description": "The branch or tag from which the workflow was run."
       },
       "repository": {
         "type": "object",
