@@ -50,7 +50,7 @@ jobs:
           author: Octokit Bot <octokitbot@martynus.net>
           path: cache/
           commit-message: "build: cache"
-          labels: maintenance
+          labels: "Type: Maintenance"
       - name: update .com webhooks
         uses: gr2m/create-or-update-pull-request-action@v1.x
         env:
