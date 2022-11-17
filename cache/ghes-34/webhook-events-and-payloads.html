@@ -554,53 +554,37 @@
           <tr>
             <td><code>sender</code></td>
             <td><code>object</code></td>
-            <td>
-              The user that triggered the event. This property is included in
-              every webhook payload.
-            </td>
-          </tr>
-          <tr>
-            <td><code>repository</code></td>
-            <td><code>object</code></td>
-            <td>
-              The
-              <a
-                href="/en/enterprise-server@3.4/rest/reference/repos#get-a-repository"
-                ><code>repository</code></a
-              >
-              where the event occurred. Webhook payloads contain the
-              <code>repository</code> property when the event occurs from
-              activity in a repository.
-            </td>
-          </tr>
-          <tr>
-            <td><code>organization</code></td>
-            <td><code>object</code></td>
-            <td>
-              Webhook payloads contain the
-              <a
-                href="/en/enterprise-server@3.4/rest/reference/orgs#get-an-organization"
-                ><code>organization</code></a
-              >
-              object when the webhook is configured for an organization or the
-              event occurs from activity in a repository owned by an
-              organization.
-            </td>
-          </tr>
-          <tr>
-            <td><code>installation</code></td>
-            <td><code>object</code></td>
-            <td>
-              The GitHub App installation. Webhook payloads contain the
-              <code>installation</code> property when the event is configured
-              for and sent to a GitHub App. For more information, see "<a
-                href="/en/enterprise-server@3.4/apps/building-github-apps"
-                >Building GitHub App</a
-              >."
-            </td>
+            <td>The user that triggered the event.</td>
           </tr>
         </tbody>
       </table>
+      <p>
+        This property is included in every webhook payload.
+        <code>repository</code> | <code>object</code> | The
+        <a
+          href="/en/enterprise-server@3.4/rest/reference/repos#get-a-repository"
+          ><code>repository</code></a
+        >
+        where the event occurred. Webhook payloads contain the
+        <code>repository</code> property when the event occurs from activity in
+        a repository. <code>organization</code> | <code>object</code> | Webhook
+        payloads contain the
+        <a
+          href="/en/enterprise-server@3.4/rest/reference/orgs#get-an-organization"
+          ><code>organization</code></a
+        >
+        object when the webhook is configured for an organization or the event
+        occurs from activity in a repository owned by an organization.
+      </p>
+      <p>
+        <code>installation</code> | <code>object</code> | The GitHub App
+        installation. Webhook payloads contain the
+        <code>installation</code> property when the event is configured for and
+        sent to a GitHub App. For more information, see "<a
+          href="/en/enterprise-server@3.4/apps/building-github-apps"
+          >Building GitHub App</a
+        >."
+      </p>
       <p>
         The unique properties for a webhook event are the same properties you'll
         find in the <code>payload</code> property when using the
