@@ -27211,13 +27211,6 @@
     ]
   },
   {
-    "name": "package_v2",
-    "description": "",
-    "properties": {},
-    "actions": [],
-    "examples": []
-  },
-  {
     "name": "page_build",
     "description": "",
     "actions": [],
