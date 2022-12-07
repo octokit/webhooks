@@ -83,7 +83,7 @@
     "got": "^11.8.5",
     "json-diff": "^1.0.0",
     "json-schema-to-typescript": "^11.0.0",
-    "prettier": "2.8.0",
+    "prettier": "2.8.1",
     "prettier-plugin-packagejson": "^2.2.15",
     "semantic-release": "^19.0.3",
     "semantic-release-plugin-update-version-in-files": "^1.1.0",
