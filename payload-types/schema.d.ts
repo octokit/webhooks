@@ -4596,6 +4596,9 @@ export interface PackagePublishedEvent {
     created_at: string;
     updated_at: string;
     owner: User;
+    /**
+     * A version of a software package
+     */
     package_version: {
       /**
        * Unique identifier of the package version.
@@ -4682,6 +4685,7 @@ export interface PackagePublishedEvent {
         created_at: string;
         updated_at: string;
       }[];
+      package_url?: string;
       author?: User;
       source_url?: string;
       installation_command: string;
@@ -4814,6 +4818,9 @@ export interface PackageUpdatedEvent {
     created_at: string;
     updated_at: string;
     owner: User;
+    /**
+     * A version of a software package
+     */
     package_version: {
       /**
        * Unique identifier of the package version.
@@ -4900,6 +4907,7 @@ export interface PackageUpdatedEvent {
         created_at: string;
         updated_at: string;
       }[];
+      package_url?: string;
       author?: User;
       source_url?: string;
       installation_command: string;
@@ -6265,6 +6273,9 @@ export interface RegistryPackagePublishedEvent {
     created_at: string;
     updated_at: string | null;
     owner: User;
+    /**
+     * A version of a software package
+     */
     package_version: {
       /**
        * Unique identifier of the package version.
@@ -6290,8 +6301,12 @@ export interface RegistryPackagePublishedEvent {
               name: string;
               path: string;
               size: number | null;
-              collection: null;
+              collection: boolean | null;
             };
+            attributes?: {
+              [k: string]: unknown;
+            };
+            _formatted?: boolean;
           };
       body_html?: string;
       release?: {
@@ -6322,8 +6337,32 @@ export interface RegistryPackagePublishedEvent {
       metadata: unknown[];
       docker_metadata?: unknown[];
       container_metadata?: {
-        labels?: {} | null;
-        manifest?: {} | null;
+        labels?: {
+          description?: string;
+          source?: string;
+          revision?: string;
+          image_url?: string;
+          licenses?: string;
+          all_labels?: {
+            [k: string]: string;
+          };
+        } | null;
+        manifest?: {
+          digest?: string;
+          media_type?: string;
+          uri?: string;
+          size?: number;
+          config?: {
+            digest?: string;
+            media_type?: string;
+            size?: number;
+          };
+          layers?: {
+            digest?: string;
+            media_type?: string;
+            size?: number;
+          }[];
+        } | null;
         tag?: {
           digest?: string;
           name?: string;
@@ -6345,6 +6384,7 @@ export interface RegistryPackagePublishedEvent {
         created_at: string;
         updated_at: string;
       }[];
+      package_url?: string;
       author?: {
         avatar_url: string;
         events_url: string;
@@ -6411,6 +6451,9 @@ export interface RegistryPackageUpdatedEvent {
     created_at: string;
     updated_at: string | null;
     owner: User;
+    /**
+     * A version of a software package
+     */
     package_version: {
       /**
        * Unique identifier of the package version.
@@ -6436,8 +6479,12 @@ export interface RegistryPackageUpdatedEvent {
               name: string;
               path: string;
               size: number | null;
-              collection: null;
+              collection: boolean | null;
             };
+            attributes?: {
+              [k: string]: unknown;
+            };
+            _formatted?: boolean;
           };
       body_html?: string;
       release?: {
@@ -6468,8 +6515,32 @@ export interface RegistryPackageUpdatedEvent {
       metadata: unknown[];
       docker_metadata?: unknown[];
       container_metadata?: {
-        labels?: {} | null;
-        manifest?: {} | null;
+        labels?: {
+          description?: string;
+          source?: string;
+          revision?: string;
+          image_url?: string;
+          licenses?: string;
+          all_labels?: {
+            [k: string]: string;
+          };
+        } | null;
+        manifest?: {
+          digest?: string;
+          media_type?: string;
+          uri?: string;
+          size?: number;
+          config?: {
+            digest?: string;
+            media_type?: string;
+            size?: number;
+          };
+          layers?: {
+            digest?: string;
+            media_type?: string;
+            size?: number;
+          }[];
+        } | null;
         tag?: {
           digest?: string;
           name?: string;
@@ -6491,6 +6562,7 @@ export interface RegistryPackageUpdatedEvent {
         created_at: string;
         updated_at: string;
       }[];
+      package_url?: string;
       author?: {
         avatar_url: string;
         events_url: string;
