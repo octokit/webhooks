@@ -48,6 +48,7 @@ export type Schema =
   | PullRequestReviewCommentEvent
   | PullRequestReviewThreadEvent
   | PushEvent
+  | RegistryPackageEvent
   | ReleaseEvent
   | RepositoryEvent
   | RepositoryDispatchEvent
@@ -357,6 +358,9 @@ export type PullRequestReviewCommentEvent =
 export type PullRequestReviewThreadEvent =
   | PullRequestReviewThreadResolvedEvent
   | PullRequestReviewThreadUnresolvedEvent;
+export type RegistryPackageEvent =
+  | RegistryPackagePublishedEvent
+  | RegistryPackageUpdatedEvent;
 export type ReleaseEvent =
   | ReleaseCreatedEvent
   | ReleaseDeletedEvent
@@ -4592,9 +4596,6 @@ export interface PackagePublishedEvent {
     created_at: string;
     updated_at: string;
     owner: User;
-    /**
-     * A version of a software package
-     */
     package_version: {
       /**
        * Unique identifier of the package version.
@@ -4607,9 +4608,26 @@ export interface PackagePublishedEvent {
        */
       name: string;
       description: string;
-      body: string;
-      body_html: string;
-      release: {
+      body?:
+        | string
+        | {
+            repository: {
+              repository: Repository;
+            };
+            info: {
+              type: string;
+              oid: string;
+              mode: number;
+              name: string;
+              path: string;
+              size: number | null;
+              collection: boolean;
+            };
+            attributes: {};
+            _formatted: boolean;
+          };
+      body_html?: string;
+      release?: {
         url: string;
         html_url: string;
         id: number;
@@ -4622,20 +4640,35 @@ export interface PackagePublishedEvent {
         created_at: string;
         published_at: string;
       };
-      manifest: string;
+      manifest?: string;
       html_url: string;
-      tag_name: string;
-      target_commitish: string;
-      target_oid: string;
-      draft: boolean;
-      prerelease: boolean;
-      created_at: string;
-      updated_at: string;
+      tag_name?: string;
+      target_commitish?: string;
+      target_oid?: string;
+      draft?: boolean;
+      prerelease?: boolean;
+      created_at?: string;
+      updated_at?: string;
       /**
        * Package Version Metadata
        */
       metadata: unknown[];
-      docker_metadata: unknown[];
+      container_metadata?: {
+        labels?: {
+          [k: string]: unknown;
+        } | null;
+        manifest?: {
+          [k: string]: unknown;
+        } | null;
+        tag?: {
+          digest?: string;
+          name?: string;
+        };
+      } | null;
+      docker_metadata?: unknown[];
+      npm_metadata?: PackageNPMMetadata | null;
+      nuget_metadata?: PackageNugetMetadata[] | null;
+      rubygems_metadata?: unknown[];
       package_files: {
         download_url: string;
         id: number;
@@ -4649,10 +4682,10 @@ export interface PackagePublishedEvent {
         created_at: string;
         updated_at: string;
       }[];
-      author: User;
-      source_url: string;
+      author?: User;
+      source_url?: string;
       installation_command: string;
-    };
+    } | null;
     registry: {
       about_url: string;
       name: string;
@@ -4664,6 +4697,94 @@ export interface PackagePublishedEvent {
   repository: Repository;
   sender: User;
   organization?: Organization;
+}
+export interface PackageNPMMetadata {
+  name?: string;
+  version?: string;
+  npm_user?: string;
+  author?: {
+    [k: string]: unknown;
+  } | null;
+  bugs?: {
+    [k: string]: unknown;
+  } | null;
+  dependencies?: {
+    [k: string]: unknown;
+  };
+  dev_dependencies?: {
+    [k: string]: unknown;
+  };
+  peer_dependencies?: {
+    [k: string]: unknown;
+  };
+  optional_dependencies?: {
+    [k: string]: unknown;
+  };
+  description?: string;
+  dist?: {
+    [k: string]: unknown;
+  } | null;
+  git_head?: string;
+  homepage?: string;
+  license?: string;
+  main?: string;
+  repository?: {
+    [k: string]: unknown;
+  } | null;
+  scripts?: {
+    [k: string]: unknown;
+  };
+  id?: string;
+  node_version?: string;
+  npm_version?: string;
+  has_shrinkwrap?: boolean;
+  maintainers?: {
+    [k: string]: unknown;
+  }[];
+  contributors?: {
+    [k: string]: unknown;
+  }[];
+  engines?: {
+    [k: string]: unknown;
+  };
+  keywords?: string[];
+  files?: string[];
+  bin?: {
+    [k: string]: unknown;
+  };
+  man?: {
+    [k: string]: unknown;
+  };
+  directories?: {
+    [k: string]: unknown;
+  } | null;
+  os?: string[];
+  cpu?: string[];
+  readme?: string;
+  installation_command?: string;
+  release_id?: number;
+  commit_oid?: string;
+  published_via_actions?: boolean;
+  deleted_by_id?: number;
+}
+export interface PackageNugetMetadata {
+  id?:
+    | string
+    | {
+        [k: string]: unknown;
+      }
+    | number;
+  name?: string;
+  value?:
+    | boolean
+    | string
+    | number
+    | {
+        url?: string;
+        branch?: string;
+        commit?: string;
+        type?: string;
+      };
 }
 export interface PackageUpdatedEvent {
   action: "updated";
@@ -4693,9 +4814,6 @@ export interface PackageUpdatedEvent {
     created_at: string;
     updated_at: string;
     owner: User;
-    /**
-     * A version of a software package
-     */
     package_version: {
       /**
        * Unique identifier of the package version.
@@ -4708,9 +4826,26 @@ export interface PackageUpdatedEvent {
        */
       name: string;
       description: string;
-      body: string;
-      body_html: string;
-      release: {
+      body?:
+        | string
+        | {
+            repository: {
+              repository: Repository;
+            };
+            info: {
+              type: string;
+              oid: string;
+              mode: number;
+              name: string;
+              path: string;
+              size: number | null;
+              collection: boolean;
+            };
+            attributes: {};
+            _formatted: boolean;
+          };
+      body_html?: string;
+      release?: {
         url: string;
         html_url: string;
         id: number;
@@ -4723,20 +4858,35 @@ export interface PackageUpdatedEvent {
         created_at: string;
         published_at: string;
       };
-      manifest: string;
+      manifest?: string;
       html_url: string;
-      tag_name: string;
-      target_commitish: string;
-      target_oid: string;
-      draft: boolean;
-      prerelease: boolean;
-      created_at: string;
-      updated_at: string;
+      tag_name?: string;
+      target_commitish?: string;
+      target_oid?: string;
+      draft?: boolean;
+      prerelease?: boolean;
+      created_at?: string;
+      updated_at?: string;
       /**
        * Package Version Metadata
        */
       metadata: unknown[];
-      docker_metadata: unknown[];
+      container_metadata?: {
+        labels?: {
+          [k: string]: unknown;
+        } | null;
+        manifest?: {
+          [k: string]: unknown;
+        } | null;
+        tag?: {
+          digest?: string;
+          name?: string;
+        };
+      } | null;
+      docker_metadata?: unknown[];
+      npm_metadata?: PackageNPMMetadata | null;
+      nuget_metadata?: PackageNugetMetadata[] | null;
+      rubygems_metadata?: unknown[];
       package_files: {
         download_url: string;
         id: number;
@@ -4750,10 +4900,10 @@ export interface PackageUpdatedEvent {
         created_at: string;
         updated_at: string;
       }[];
-      author: User;
-      source_url: string;
+      author?: User;
+      source_url?: string;
       installation_command: string;
-    };
+    } | null;
     registry: {
       about_url: string;
       name: string;
@@ -6083,6 +6233,298 @@ export interface Commit {
    * An array of files removed in the commit. For extremely large commits where GitHub is unable to calculate this list in a timely manner, this may be empty even if files were removed.
    */
   removed: string[];
+}
+export interface RegistryPackagePublishedEvent {
+  action: "published";
+  /**
+   * Information about the package.
+   */
+  registry_package: {
+    /**
+     * Unique identifier of the package.
+     */
+    id: number;
+    /**
+     * The name of the package.
+     */
+    name: string;
+    namespace: string;
+    description: string | null;
+    ecosystem: string;
+    /**
+     * The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry.
+     */
+    package_type:
+      | "npm"
+      | "maven"
+      | "rubygems"
+      | "docker"
+      | "nuget"
+      | "container";
+    html_url: string;
+    created_at: string;
+    updated_at: string | null;
+    owner: User;
+    package_version: {
+      /**
+       * Unique identifier of the package version.
+       */
+      id: number;
+      version: string;
+      summary: string;
+      /**
+       * The name of the package version.
+       */
+      name: string;
+      description: string;
+      body?:
+        | string
+        | {
+            repository: {
+              repository: Repository;
+            };
+            info: {
+              type: string;
+              oid: string;
+              mode: number;
+              name: string;
+              path: string;
+              size: number | null;
+              collection: null;
+            };
+          };
+      body_html?: string;
+      release?: {
+        url: string;
+        html_url: string;
+        id: number;
+        tag_name: string;
+        target_commitish: string;
+        name: string;
+        draft: boolean;
+        author: User;
+        prerelease: boolean;
+        created_at: string;
+        published_at: string;
+      };
+      manifest?: string;
+      html_url: string;
+      tag_name?: string;
+      target_commitish?: string;
+      target_oid?: string;
+      draft?: boolean;
+      prerelease?: boolean;
+      created_at?: string;
+      updated_at?: string;
+      /**
+       * Package Version Metadata
+       */
+      metadata: unknown[];
+      docker_metadata?: unknown[];
+      container_metadata?: {
+        labels?: {} | null;
+        manifest?: {} | null;
+        tag?: {
+          digest?: string;
+          name?: string;
+        };
+      };
+      npm_metadata?: PackageNPMMetadata | null;
+      nuget_metadata?: PackageNugetMetadata[] | null;
+      rubygems_metadata?: unknown[];
+      package_files: {
+        download_url: string;
+        id: number;
+        name: string;
+        sha256: string;
+        sha1: string;
+        md5: string;
+        content_type: string;
+        state: string;
+        size: number;
+        created_at: string;
+        updated_at: string;
+      }[];
+      author?: {
+        avatar_url: string;
+        events_url: string;
+        followers_url: string;
+        following_url: string;
+        gists_url: string;
+        gravatar_id: string;
+        html_url: string;
+        id: number;
+        login: string;
+        node_id: string;
+        organizations_url: string;
+        received_events_url: string;
+        repos_url: string;
+        site_admin: boolean;
+        starred_url: string;
+        subscriptions_url: string;
+        type: string;
+        url: string;
+      };
+      source_url?: string;
+      installation_command: string;
+    } | null;
+    registry: {
+      about_url: string;
+      name: string;
+      type: string;
+      url: string;
+      vendor: string;
+    };
+  };
+  repository: Repository;
+  sender: User;
+  organization?: Organization;
+}
+export interface RegistryPackageUpdatedEvent {
+  action: "updated";
+  /**
+   * Information about the package.
+   */
+  registry_package: {
+    /**
+     * Unique identifier of the package.
+     */
+    id: number;
+    /**
+     * The name of the package.
+     */
+    name: string;
+    namespace: string;
+    description: string | null;
+    ecosystem: string;
+    /**
+     * The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry.
+     */
+    package_type:
+      | "npm"
+      | "maven"
+      | "rubygems"
+      | "docker"
+      | "nuget"
+      | "container";
+    html_url: string;
+    created_at: string;
+    updated_at: string | null;
+    owner: User;
+    package_version: {
+      /**
+       * Unique identifier of the package version.
+       */
+      id: number;
+      version: string;
+      summary: string;
+      /**
+       * The name of the package version.
+       */
+      name: string;
+      description: string;
+      body?:
+        | string
+        | {
+            repository: {
+              repository: Repository;
+            };
+            info: {
+              type: string;
+              oid: string;
+              mode: number;
+              name: string;
+              path: string;
+              size: number | null;
+              collection: null;
+            };
+          };
+      body_html?: string;
+      release?: {
+        url: string;
+        html_url: string;
+        id: number;
+        tag_name: string;
+        target_commitish: string;
+        name: string;
+        draft: boolean;
+        author: User;
+        prerelease: boolean;
+        created_at: string;
+        published_at: string;
+      };
+      manifest?: string;
+      html_url: string;
+      tag_name?: string;
+      target_commitish?: string;
+      target_oid?: string;
+      draft?: boolean;
+      prerelease?: boolean;
+      created_at?: string;
+      updated_at?: string;
+      /**
+       * Package Version Metadata
+       */
+      metadata: unknown[];
+      docker_metadata?: unknown[];
+      container_metadata?: {
+        labels?: {} | null;
+        manifest?: {} | null;
+        tag?: {
+          digest?: string;
+          name?: string;
+        };
+      };
+      npm_metadata?: PackageNPMMetadata | null;
+      nuget_metadata?: PackageNugetMetadata[] | null;
+      rubygems_metadata?: unknown[];
+      package_files: {
+        download_url: string;
+        id: number;
+        name: string;
+        sha256: string;
+        sha1: string;
+        md5: string;
+        content_type: string;
+        state: string;
+        size: number;
+        created_at: string;
+        updated_at: string;
+      }[];
+      author?: {
+        avatar_url: string;
+        events_url: string;
+        followers_url: string;
+        following_url: string;
+        gists_url: string;
+        gravatar_id: string;
+        html_url: string;
+        id: number;
+        login: string;
+        node_id: string;
+        organizations_url: string;
+        received_events_url: string;
+        repos_url: string;
+        site_admin: boolean;
+        starred_url: string;
+        subscriptions_url: string;
+        type: string;
+        url: string;
+      };
+      source_url?: string;
+      installation_command: string;
+    } | null;
+    registry: {
+      about_url: string;
+      name: string;
+      type: string;
+      url: string;
+      vendor: string;
+    };
+  };
+  repository: Repository;
+  sender: User;
+  organization?: Organization;
 }
 export interface ReleaseCreatedEvent {
   action: "created";
@@ -7440,6 +7882,7 @@ export interface EventPayloadMap {
   pull_request_review_comment: PullRequestReviewCommentEvent;
   pull_request_review_thread: PullRequestReviewThreadEvent;
   push: PushEvent;
+  registry_package: RegistryPackageEvent;
   release: ReleaseEvent;
   repository: RepositoryEvent;
   repository_dispatch: RepositoryDispatchEvent;
