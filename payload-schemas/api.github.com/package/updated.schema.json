@@ -40,6 +40,7 @@
         "updated_at": { "type": "string", "format": "date-time" },
         "owner": { "$ref": "common/user.schema.json" },
         "package_version": {
+          "description": "A version of a software package",
           "oneOf": [
             {
               "type": "object",
@@ -54,7 +55,6 @@
                 "package_files",
                 "installation_command"
               ],
-              "description": "A version of a software package",
               "properties": {
                 "id": {
                   "type": "integer",
