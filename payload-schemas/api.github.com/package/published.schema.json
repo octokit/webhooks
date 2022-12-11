@@ -240,6 +240,7 @@
                     "additionalProperties": false
                   }
                 },
+                "package_url": { "type": "string" },
                 "author": { "$ref": "common/user.schema.json" },
                 "source_url": { "type": "string" },
                 "installation_command": { "type": "string" }
