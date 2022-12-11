@@ -4591,7 +4591,7 @@ export interface PackagePublishedEvent {
       | "rubygems"
       | "docker"
       | "nuget"
-      | "container";
+      | "CONTAINER";
     html_url: string;
     created_at: string;
     updated_at: string;
@@ -4809,7 +4809,7 @@ export interface PackageUpdatedEvent {
       | "rubygems"
       | "docker"
       | "nuget"
-      | "container";
+      | "CONTAINER";
     html_url: string;
     created_at: string;
     updated_at: string;
@@ -6260,7 +6260,7 @@ export interface RegistryPackagePublishedEvent {
       | "rubygems"
       | "docker"
       | "nuget"
-      | "container";
+      | "CONTAINER";
     html_url: string;
     created_at: string;
     updated_at: string | null;
@@ -6406,7 +6406,7 @@ export interface RegistryPackageUpdatedEvent {
       | "rubygems"
       | "docker"
       | "nuget"
-      | "container";
+      | "CONTAINER";
     html_url: string;
     created_at: string;
     updated_at: string | null;

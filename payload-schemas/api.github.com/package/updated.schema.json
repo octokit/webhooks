@@ -33,7 +33,7 @@
         "ecosystem": { "type": "string" },
         "package_type": {
           "type": "string",
-          "enum": ["npm", "maven", "rubygems", "docker", "nuget", "container"]
+          "enum": ["npm", "maven", "rubygems", "docker", "nuget", "CONTAINER"]
         },
         "html_url": { "type": "string", "format": "uri" },
         "created_at": { "type": "string", "format": "date-time" },
