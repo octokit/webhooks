@@ -41,6 +41,7 @@
         "updated_at": { "type": ["string", "null"], "format": "date-time" },
         "owner": { "$ref": "common/user.schema.json" },
         "package_version": {
+          "description": "A version of a software package",
           "oneOf": [
             {
               "type": "object",
@@ -55,7 +56,6 @@
                 "package_files",
                 "installation_command"
               ],
-              "description": "A version of a software package",
               "properties": {
                 "id": {
                   "type": "integer",
@@ -103,10 +103,12 @@
                             "name": { "type": "string" },
                             "path": { "type": "string" },
                             "size": { "type": ["integer", "null"] },
-                            "collection": { "type": "null" }
+                            "collection": { "type": ["boolean", "null"] }
                           },
                           "additionalProperties": false
-                        }
+                        },
+                        "attributes": { "type": "object", "properties": {} },
+                        "_formatted": { "type": "boolean" }
                       },
                       "additionalProperties": false
                     }
@@ -163,13 +165,57 @@
                   "properties": {
                     "labels": {
                       "oneOf": [
-                        { "type": "object", "additionalProperties": false },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "description": { "type": "string" },
+                            "source": { "type": "string", "format": "uri" },
+                            "revision": { "type": "string" },
+                            "image_url": { "type": "string", "format": "uri" },
+                            "licenses": { "type": "string" },
+                            "all_labels": {
+                              "type": "object",
+                              "additionalProperties": { "type": "string" }
+                            }
+                          },
+                          "additionalProperties": false
+                        },
                         { "type": "null" }
                       ]
                     },
                     "manifest": {
                       "oneOf": [
-                        { "type": "object", "additionalProperties": false },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "digest": { "type": "string" },
+                            "media_type": { "type": "string" },
+                            "uri": { "type": "string" },
+                            "size": { "type": "integer" },
+                            "config": {
+                              "type": "object",
+                              "properties": {
+                                "digest": { "type": "string" },
+                                "media_type": { "type": "string" },
+                                "size": { "type": "integer" }
+                              },
+                              "additionalProperties": false
+                            },
+                            "layers": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "digest": { "type": "string" },
+                                  "media_type": { "type": "string" },
+                                  "size": { "type": "integer" }
+                                },
+                                "additionalProperties": false
+                              }
+                            }
+                          },
+                          "additionalProperties": false
+                        },
                         { "type": "null" }
                       ]
                     },
@@ -186,7 +232,7 @@
                 },
                 "npm_metadata": {
                   "oneOf": [
-                    { "$ref": "common/package-npm-metadata.schema.json"},
+                    { "$ref": "common/package-npm-metadata.schema.json" },
                     { "type": "null" }
                   ]
                 },
@@ -194,7 +240,9 @@
                   "oneOf": [
                     {
                       "type": "array",
-                      "items": { "$ref": "common/package-nuget-metadata.schema.json" }
+                      "items": {
+                        "$ref": "common/package-nuget-metadata.schema.json"
+                      }
                     },
                     { "type": "null" }
                   ]
@@ -233,6 +281,7 @@
                     "additionalProperties": false
                   }
                 },
+                "package_url": { "type": "string" },
                 "author": {
                   "type": "object",
                   "required": [
