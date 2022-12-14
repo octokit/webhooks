@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common/package-npm-metadata.schema.json",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "version": { "type": "string" },
+    "npm_user": { "type": "string" },
+    "author": {
+      "oneOf": [
+        { "type": "object", "additionalProperties": { "type": "string" } },
+        { "type": "null" }
+      ]
+    },
+    "bugs": {
+      "oneOf": [
+        { "type": "object", "additionalProperties": { "type": "string" } },
+        { "type": "null" }
+      ]
+    },
+    "dependencies": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "dev_dependencies": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "peer_dependencies": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "optional_dependencies": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "description": { "type": "string" },
+    "dist": {
+      "oneOf": [
+        { "type": "object", "additionalProperties": { "type": "string" } },
+        { "type": "null" }
+      ]
+    },
+    "git_head": { "type": "string" },
+    "homepage": { "type": "string" },
+    "license": { "type": "string" },
+    "main": { "type": "string" },
+    "repository": {
+      "oneOf": [
+        { "type": "object", "additionalProperties": { "type": "string" } },
+        { "type": "null" }
+      ]
+    },
+    "scripts": { "type": "object" },
+    "id": { "type": "string" },
+    "node_version": { "type": "string" },
+    "npm_version": { "type": "string" },
+    "has_shrinkwrap": { "type": "boolean" },
+    "maintainers": { "type": "array", "items": { "type": "object" } },
+    "contributors": { "type": "array", "items": { "type": "object" } },
+    "engines": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "keywords": { "type": "array", "items": { "type": "string" } },
+    "files": { "type": "array", "items": { "type": "string" } },
+    "bin": { "type": "object" },
+    "man": { "type": "object" },
+    "directories": {
+      "oneOf": [
+        { "type": "object", "additionalProperties": { "type": "string" } },
+        { "type": "null" }
+      ]
+    },
+    "os": { "type": "array", "items": { "type": "string" } },
+    "cpu": { "type": "array", "items": { "type": "string" } },
+    "readme": { "type": "string" },
+    "installation_command": { "type": "string" },
+    "release_id": { "type": "integer" },
+    "commit_oid": { "type": "string" },
+    "published_via_actions": { "type": "boolean" },
+    "deleted_by_id": { "type": "integer" }
+  },
+  "additionalProperties": false,
+  "title": "Package NPM Metadata"
+}

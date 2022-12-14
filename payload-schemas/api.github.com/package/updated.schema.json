@@ -33,137 +33,221 @@
         "ecosystem": { "type": "string" },
         "package_type": {
           "type": "string",
-          "enum": ["npm", "maven", "rubygems", "docker", "nuget", "container"]
+          "enum": ["npm", "maven", "rubygems", "docker", "nuget", "CONTAINER"]
         },
         "html_url": { "type": "string", "format": "uri" },
         "created_at": { "type": "string", "format": "date-time" },
         "updated_at": { "type": "string", "format": "date-time" },
         "owner": { "$ref": "common/user.schema.json" },
         "package_version": {
-          "type": "object",
-          "required": [
-            "id",
-            "version",
-            "summary",
-            "name",
-            "description",
-            "body",
-            "body_html",
-            "release",
-            "manifest",
-            "html_url",
-            "tag_name",
-            "target_commitish",
-            "target_oid",
-            "draft",
-            "prerelease",
-            "created_at",
-            "updated_at",
-            "metadata",
-            "docker_metadata",
-            "package_files",
-            "author",
-            "source_url",
-            "installation_command"
-          ],
           "description": "A version of a software package",
-          "properties": {
-            "id": {
-              "type": "integer",
-              "description": "Unique identifier of the package version."
-            },
-            "version": { "type": "string" },
-            "summary": { "type": "string" },
-            "name": {
-              "type": "string",
-              "description": "The name of the package version."
-            },
-            "description": { "type": "string" },
-            "body": { "type": "string" },
-            "body_html": { "type": "string" },
-            "release": {
+          "oneOf": [
+            {
               "type": "object",
               "required": [
-                "url",
-                "html_url",
                 "id",
-                "tag_name",
-                "target_commitish",
+                "version",
+                "summary",
                 "name",
-                "draft",
-                "author",
-                "prerelease",
-                "created_at",
-                "published_at"
+                "description",
+                "html_url",
+                "metadata",
+                "package_files",
+                "installation_command"
               ],
               "properties": {
-                "url": { "type": "string", "format": "uri" },
+                "id": {
+                  "type": "integer",
+                  "description": "Unique identifier of the package version."
+                },
+                "version": { "type": "string" },
+                "summary": { "type": "string" },
+                "name": {
+                  "type": "string",
+                  "description": "The name of the package version."
+                },
+                "description": { "type": "string" },
+                "body": {
+                  "oneOf": [
+                    { "type": "string" },
+                    {
+                      "type": "object",
+                      "required": [
+                        "repository",
+                        "info",
+                        "attributes",
+                        "_formatted"
+                      ],
+                      "properties": {
+                        "repository": {
+                          "type": "object",
+                          "required": ["repository"],
+                          "properties": {
+                            "repository": {
+                              "$ref": "common/repository.schema.json"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "info": {
+                          "type": "object",
+                          "required": [
+                            "type",
+                            "oid",
+                            "mode",
+                            "name",
+                            "path",
+                            "size",
+                            "collection"
+                          ],
+                          "properties": {
+                            "type": { "type": "string" },
+                            "oid": { "type": "string" },
+                            "mode": { "type": "integer" },
+                            "name": { "type": "string" },
+                            "path": { "type": "string" },
+                            "size": { "type": ["integer", "null"] },
+                            "collection": { "type": "boolean" }
+                          },
+                          "additionalProperties": false
+                        },
+                        "attributes": {
+                          "type": "object",
+                          "additionalProperties": false
+                        },
+                        "_formatted": { "type": "boolean" }
+                      },
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "body_html": { "type": "string" },
+                "release": {
+                  "type": "object",
+                  "required": [
+                    "url",
+                    "html_url",
+                    "id",
+                    "tag_name",
+                    "target_commitish",
+                    "name",
+                    "draft",
+                    "author",
+                    "prerelease",
+                    "created_at",
+                    "published_at"
+                  ],
+                  "properties": {
+                    "url": { "type": "string", "format": "uri" },
+                    "html_url": { "type": "string", "format": "uri" },
+                    "id": { "type": "integer" },
+                    "tag_name": { "type": "string" },
+                    "target_commitish": { "type": "string" },
+                    "name": { "type": "string" },
+                    "draft": { "type": "boolean" },
+                    "author": { "$ref": "common/user.schema.json" },
+                    "prerelease": { "type": "boolean" },
+                    "created_at": { "type": "string", "format": "date-time" },
+                    "published_at": { "type": "string", "format": "date-time" }
+                  },
+                  "additionalProperties": false
+                },
+                "manifest": { "type": "string" },
                 "html_url": { "type": "string", "format": "uri" },
-                "id": { "type": "integer" },
                 "tag_name": { "type": "string" },
                 "target_commitish": { "type": "string" },
-                "name": { "type": "string" },
+                "target_oid": { "type": "string" },
                 "draft": { "type": "boolean" },
-                "author": { "$ref": "common/user.schema.json" },
                 "prerelease": { "type": "boolean" },
                 "created_at": { "type": "string", "format": "date-time" },
-                "published_at": { "type": "string", "format": "date-time" }
+                "updated_at": { "type": "string", "format": "date-time" },
+                "metadata": {
+                  "type": "array",
+                  "items": {},
+                  "description": "Package Version Metadata"
+                },
+                "container_metadata": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "labels": { "type": ["object", "null"] },
+                        "manifest": { "type": ["object", "null"] },
+                        "tag": {
+                          "type": "object",
+                          "properties": {
+                            "digest": { "type": "string" },
+                            "name": { "type": "string" }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    { "type": "null" }
+                  ]
+                },
+                "docker_metadata": { "type": "array", "items": {} },
+                "npm_metadata": {
+                  "oneOf": [
+                    { "$ref": "common/package-npm-metadata.schema.json" },
+                    { "type": "null" }
+                  ]
+                },
+                "nuget_metadata": {
+                  "oneOf": [
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "common/package-nuget-metadata.schema.json"
+                      }
+                    },
+                    { "type": "null" }
+                  ]
+                },
+                "rubygems_metadata": { "type": "array", "items": {} },
+                "package_files": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "download_url",
+                      "id",
+                      "name",
+                      "sha256",
+                      "sha1",
+                      "md5",
+                      "content_type",
+                      "state",
+                      "size",
+                      "created_at",
+                      "updated_at"
+                    ],
+                    "properties": {
+                      "download_url": { "type": "string", "format": "uri" },
+                      "id": { "type": "integer" },
+                      "name": { "type": "string" },
+                      "sha256": { "type": "string" },
+                      "sha1": { "type": "string" },
+                      "md5": { "type": "string" },
+                      "content_type": { "type": "string" },
+                      "state": { "type": "string" },
+                      "size": { "type": "integer" },
+                      "created_at": { "type": "string", "format": "date-time" },
+                      "updated_at": { "type": "string", "format": "date-time" }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "package_url": { "type": "string" },
+                "author": { "$ref": "common/user.schema.json" },
+                "source_url": { "type": "string" },
+                "installation_command": { "type": "string" }
               },
               "additionalProperties": false
             },
-            "manifest": { "type": "string" },
-            "html_url": { "type": "string", "format": "uri" },
-            "tag_name": { "type": "string" },
-            "target_commitish": { "type": "string" },
-            "target_oid": { "type": "string" },
-            "draft": { "type": "boolean" },
-            "prerelease": { "type": "boolean" },
-            "created_at": { "type": "string", "format": "date-time" },
-            "updated_at": { "type": "string", "format": "date-time" },
-            "metadata": {
-              "type": "array",
-              "items": {},
-              "description": "Package Version Metadata"
-            },
-            "docker_metadata": { "type": "array", "items": {} },
-            "package_files": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "required": [
-                  "download_url",
-                  "id",
-                  "name",
-                  "sha256",
-                  "sha1",
-                  "md5",
-                  "content_type",
-                  "state",
-                  "size",
-                  "created_at",
-                  "updated_at"
-                ],
-                "properties": {
-                  "download_url": { "type": "string", "format": "uri" },
-                  "id": { "type": "integer" },
-                  "name": { "type": "string" },
-                  "sha256": { "type": "string" },
-                  "sha1": { "type": "string" },
-                  "md5": { "type": "string" },
-                  "content_type": { "type": "string" },
-                  "state": { "type": "string" },
-                  "size": { "type": "integer" },
-                  "created_at": { "type": "string", "format": "date-time" },
-                  "updated_at": { "type": "string", "format": "date-time" }
-                },
-                "additionalProperties": false
-              }
-            },
-            "author": { "$ref": "common/user.schema.json" },
-            "source_url": { "type": "string" },
-            "installation_command": { "type": "string" }
-          },
-          "additionalProperties": false
+            { "type": "null" }
+          ]
         },
         "registry": {
           "type": "object",
