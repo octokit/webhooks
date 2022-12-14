@@ -6,19 +6,51 @@
     "name": { "type": "string" },
     "version": { "type": "string" },
     "npm_user": { "type": "string" },
-    "author": { "type": ["object", "null"] },
-    "bugs": { "type": ["object", "null"] },
-    "dependencies": { "type": "object" },
-    "dev_dependencies": { "type": "object" },
-    "peer_dependencies": { "type": "object" },
-    "optional_dependencies": { "type": "object" },
+    "author": {
+      "oneOf": [
+        { "type": "object", "additionalProperties": { "type": "string" } },
+        { "type": "null" }
+      ]
+    },
+    "bugs": {
+      "oneOf": [
+        { "type": "object", "additionalProperties": { "type": "string" } },
+        { "type": "null" }
+      ]
+    },
+    "dependencies": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "dev_dependencies": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "peer_dependencies": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "optional_dependencies": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
     "description": { "type": "string" },
-    "dist": { "type": ["object", "null"] },
+    "dist": {
+      "oneOf": [
+        { "type": "object", "additionalProperties": { "type": "string" } },
+        { "type": "null" }
+      ]
+    },
     "git_head": { "type": "string" },
     "homepage": { "type": "string" },
     "license": { "type": "string" },
     "main": { "type": "string" },
-    "repository": { "type": ["object", "null"] },
+    "repository": {
+      "oneOf": [
+        { "type": "object", "additionalProperties": { "type": "string" } },
+        { "type": "null" }
+      ]
+    },
     "scripts": { "type": "object" },
     "id": { "type": "string" },
     "node_version": { "type": "string" },
@@ -26,12 +58,20 @@
     "has_shrinkwrap": { "type": "boolean" },
     "maintainers": { "type": "array", "items": { "type": "object" } },
     "contributors": { "type": "array", "items": { "type": "object" } },
-    "engines": { "type": "object" },
+    "engines": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
     "keywords": { "type": "array", "items": { "type": "string" } },
     "files": { "type": "array", "items": { "type": "string" } },
     "bin": { "type": "object" },
     "man": { "type": "object" },
-    "directories": { "type": ["object", "null"] },
+    "directories": {
+      "oneOf": [
+        { "type": "object", "additionalProperties": { "type": "string" } },
+        { "type": "null" }
+      ]
+    },
     "os": { "type": "array", "items": { "type": "string" } },
     "cpu": { "type": "array", "items": { "type": "string" } },
     "readme": { "type": "string" },

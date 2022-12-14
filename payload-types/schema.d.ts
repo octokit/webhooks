@@ -4707,33 +4707,33 @@ export interface PackageNPMMetadata {
   version?: string;
   npm_user?: string;
   author?: {
-    [k: string]: unknown;
+    [k: string]: string;
   } | null;
   bugs?: {
-    [k: string]: unknown;
+    [k: string]: string;
   } | null;
   dependencies?: {
-    [k: string]: unknown;
+    [k: string]: string;
   };
   dev_dependencies?: {
-    [k: string]: unknown;
+    [k: string]: string;
   };
   peer_dependencies?: {
-    [k: string]: unknown;
+    [k: string]: string;
   };
   optional_dependencies?: {
-    [k: string]: unknown;
+    [k: string]: string;
   };
   description?: string;
   dist?: {
-    [k: string]: unknown;
+    [k: string]: string;
   } | null;
   git_head?: string;
   homepage?: string;
   license?: string;
   main?: string;
   repository?: {
-    [k: string]: unknown;
+    [k: string]: string;
   } | null;
   scripts?: {
     [k: string]: unknown;
@@ -4749,7 +4749,7 @@ export interface PackageNPMMetadata {
     [k: string]: unknown;
   }[];
   engines?: {
-    [k: string]: unknown;
+    [k: string]: string;
   };
   keywords?: string[];
   files?: string[];
@@ -4760,7 +4760,7 @@ export interface PackageNPMMetadata {
     [k: string]: unknown;
   };
   directories?: {
-    [k: string]: unknown;
+    [k: string]: string;
   } | null;
   os?: string[];
   cpu?: string[];
