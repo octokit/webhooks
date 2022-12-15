@@ -45,6 +45,7 @@
         "discussions": { "type": "string", "enum": ["read", "write"] },
         "emails": { "type": "string", "enum": ["read", "write"] },
         "environments": { "type": "string", "enum": ["read", "write"] },
+        "followers": { "type": "string", "enum": ["read", "write"] },
         "issues": { "type": "string", "enum": ["read", "write"] },
         "keys": { "type": "string", "enum": ["read", "write"] },
         "members": { "type": "string", "enum": ["read", "write"] },
