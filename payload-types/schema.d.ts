@@ -4565,8 +4565,12 @@ export interface OrganizationMemberRemovedEvent {
   organization: Organization;
 }
 export interface OrganizationRenamedEvent {
+  changes: {
+    login: {
+      from: string;
+    };
+  };
   action: "renamed";
-  membership: Membership;
   sender: User;
   installation?: InstallationLite;
   organization: Organization;
