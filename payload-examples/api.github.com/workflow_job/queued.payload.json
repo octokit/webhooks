@@ -20,7 +20,8 @@
     "runner_id": 5,
     "runner_name": "GitHub Actions 5",
     "runner_group_id": 2,
-    "runner_group_name": "GitHub Actions"
+    "runner_group_name": "GitHub Actions",
+    "workflow_name": "CodeQL"
   },
   "repository": {
     "id": 186853002,
