@@ -673,6 +673,10 @@ export interface Repository {
    */
   has_wiki: boolean;
   has_pages: boolean;
+  /**
+   * Whether discussions are enabled.
+   */
+  has_discussions?: boolean;
   forks_count: number;
   mirror_url: string | null;
   /**
@@ -1051,6 +1055,7 @@ export interface App {
     discussions?: "read" | "write";
     emails?: "read" | "write";
     environments?: "read" | "write";
+    followers?: "read" | "write";
     issues?: "read" | "write";
     keys?: "read" | "write";
     members?: "read" | "write";
@@ -3266,6 +3271,7 @@ export interface Installation {
      * The level of permission granted to the access token for organization teams and members.
      */
     members?: "read" | "write";
+    merge_queues?: "read" | "write";
     /**
      * The level of permission granted to the access token to search repositories, list collaborators, and access repository metadata.
      */
@@ -4559,8 +4565,12 @@ export interface OrganizationMemberRemovedEvent {
   organization: Organization;
 }
 export interface OrganizationRenamedEvent {
+  changes: {
+    login: {
+      from: string;
+    };
+  };
   action: "renamed";
-  membership: Membership;
   sender: User;
   installation?: InstallationLite;
   organization: Organization;
@@ -7536,6 +7546,7 @@ export interface WorkflowJob {
   runner_group_name: string | null;
   started_at: string;
   completed_at: string | null;
+  workflow_name: string;
 }
 export interface WorkflowStepInProgress {
   name: string;
