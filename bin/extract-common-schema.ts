@@ -34,7 +34,7 @@ const RequiredSchemaProperties = [
 ] as const;
 
 type CommonSchema = Required<
-  Pick<JSONSchema7, typeof RequiredSchemaProperties[number]>
+  Pick<JSONSchema7, (typeof RequiredSchemaProperties)[number]>
 > &
   JSONSchema7;
 
