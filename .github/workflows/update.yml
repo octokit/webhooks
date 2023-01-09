@@ -37,10 +37,10 @@ jobs:
             You'll have to figure that out on yourself and adapt the commit
             messages accordingly to trigger the right release, see [our commit
             message
-            conventions](https://github.com/octokit/webhooks/blob/master/CONTRIBUTING.md#merging-the-pull-request--releasing-a-new-version).
+            conventions](https://github.com/octokit/webhooks/blob/main/CONTRIBUTING.md#merging-the-pull-request--releasing-a-new-version).
 
             If there are any new events added, follow the [steps
-            outlined](https://github.com/octokit/webhooks/blob/master/CONTRIBUTING.md#creating-a-new-schema)
+            outlined](https://github.com/octokit/webhooks/blob/main/CONTRIBUTING.md#creating-a-new-schema)
             in order to create the required schemas.
 
             If there were only description updates, or new properties added,
