@@ -1,7 +1,7 @@
 "on":
   push:
     branches:
-      - master
+      - main
 name: Lint repository contents
 jobs:
   lint_repo:

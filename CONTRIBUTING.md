@@ -26,9 +26,9 @@ for these scripts in `bin/docs`, which can also be accessed by passing `--help`
 ## Adding examples
 
 The
-[`index.json` file](https://github.com/octokit/webhooks/blob/master/payload-examples/api.github.com/index.json)
+[`index.json` file](https://github.com/octokit/webhooks/blob/main/payload-examples/api.github.com/index.json)
 is generated, please do not edit it. Instead, make changes in the
-[`payload-examples/api.github.com/` folder](https://github.com/octokit/webhooks/tree/master/payload-examples/api.github.com),
+[`payload-examples/api.github.com/` folder](https://github.com/octokit/webhooks/tree/main/payload-examples/api.github.com),
 then update `index.json` by running the following command
 
 ```
@@ -125,9 +125,9 @@ In the end, you should have a document that resembles the following
 ## Updating types
 
 The
-[`schema.d.ts` file](https://github.com/octokit/webhooks/blob/master/payload-types/schema.d.ts)
+[`schema.d.ts` file](https://github.com/octokit/webhooks/blob/main/payload-types/schema.d.ts)
 is generated, please do not edit it. Instead, make changes to the schemas in the
-[`payload-schemas/schemas/` folder](https://github.com/octokit/webhooks/tree/master/payload-schemas/schemas),
+[`payload-schemas/schemas/` folder](https://github.com/octokit/webhooks/tree/main/payload-schemas/schemas),
 then generate the schema and update the types with the following commands:
 
 ```shell
