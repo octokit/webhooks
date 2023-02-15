@@ -520,7 +520,7 @@
         You can create webhooks that subscribe to the events listed on this
         page. Each webhook event includes a description of the webhook
         properties and an example payload. For more information, see "<a
-          href="/en/enterprise-server@3.5/webhooks/creating"
+          href="/en/enterprise-server@3.5/webhooks-and-events/webhooks/creating-webhooks"
           >Creating webhooks</a
         >."
       </p>
@@ -584,8 +584,7 @@
             <td><code>object</code></td>
             <td>
               The
-              <a
-                href="/en/enterprise-server@3.5/rest/reference/repos#get-a-repository"
+              <a href="/en/enterprise-server@3.5/rest/repos#get-a-repository"
                 ><code>repository</code></a
               >
               where the event occurred. Webhook payloads contain the
@@ -598,8 +597,7 @@
             <td><code>object</code></td>
             <td>
               Webhook payloads contain the
-              <a
-                href="/en/enterprise-server@3.5/rest/reference/orgs#get-an-organization"
+              <a href="/en/enterprise-server@3.5/rest/orgs#get-an-organization"
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -614,8 +612,8 @@
               The GitHub App installation. Webhook payloads contain the
               <code>installation</code> property when the event is configured
               for and sent to a GitHub App. For more information, see "<a
-                href="/en/enterprise-server@3.5/apps/building-github-apps"
-                >Building GitHub App</a
+                href="/en/enterprise-server@3.5/apps/creating-github-apps/creating-github-apps"
+                >Creating GitHub Apps</a
               >."
             </td>
           </tr>
@@ -624,9 +622,8 @@
       <p>
         The unique properties for a webhook event are the same properties you'll
         find in the <code>payload</code> property when using the
-        <a href="/en/enterprise-server@3.5/rest/reference/activity#events"
-          >Events API</a
-        >. One exception is the <a href="#push"><code>push</code> event</a>. The
+        <a href="/en/enterprise-server@3.5/rest/activity#events">Events API</a>.
+        One exception is the <a href="#push"><code>push</code> event</a>. The
         unique properties of the <code>push</code> event webhook payload and the
         <code>payload</code> property in the Events API differ. The webhook
         payload contains more detailed information.
@@ -707,7 +704,7 @@
             <td>
               This header is sent if the webhook is configured with a
               <a
-                href="/en/enterprise-server@3.5/rest/reference/repos#create-hook-config-params"
+                href="/en/enterprise-server@3.5/rest/repos#create-hook-config-params"
                 ><code>secret</code></a
               >. This is the HMAC hex digest of the request body, and is
               generated using the SHA-1 hash function and the
@@ -722,7 +719,7 @@
             <td>
               This header is sent if the webhook is configured with a
               <a
-                href="/en/enterprise-server@3.5/rest/reference/repos#create-hook-config-params"
+                href="/en/enterprise-server@3.5/rest/repos#create-hook-config-params"
                 ><code>secret</code></a
               >. This is the HMAC hex digest of the request body, and is
               generated using the SHA-256 hash function and the
