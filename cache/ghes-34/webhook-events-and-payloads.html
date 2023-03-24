@@ -861,74 +861,51 @@
       </h3>
       <p>
         HTTP POST payloads that are delivered to your webhook's configured URL
-        endpoint will contain several special headers:
+        endpoint will contain several special headers.
       </p>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Header</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><code>X-GitHub-Event</code></td>
-            <td>Name of the event that triggered the delivery.</td>
-          </tr>
-          <tr>
-            <td><code>X-GitHub-Delivery</code></td>
-            <td>
-              A
-              <a href="http://en.wikipedia.org/wiki/Globally_unique_identifier"
-                >GUID</a
-              >
-              to identify the delivery.
-            </td>
-          </tr>
-          <tr>
-            <td><code>X-GitHub-Enterprise-Version</code></td>
-            <td>
-              The version of the GitHub Enterprise Server instance that sent the
-              HTTP POST payload.
-            </td>
-          </tr>
-          <tr>
-            <td><code>X-GitHub-Enterprise-Host</code></td>
-            <td>
-              The hostname of the GitHub Enterprise Server instance that sent
-              the HTTP POST payload.
-            </td>
-          </tr>
-          <tr>
-            <td><code>X-Hub-Signature</code></td>
-            <td>
-              This header is sent if the webhook is configured with a
-              <a
-                href="/en/enterprise-server@3.4/rest/repos#create-hook-config-params"
-                ><code>secret</code></a
-              >. This is the HMAC hex digest of the request body, and is
-              generated using the SHA-1 hash function and the
-              <code>secret</code> as the HMAC <code>key</code>.
-              <code>X-Hub-Signature</code> is provided for compatibility with
-              existing integrations, and we recommend that you use the more
-              secure <code>X-Hub-Signature-256</code> instead.
-            </td>
-          </tr>
-          <tr>
-            <td><code>X-Hub-Signature-256</code></td>
-            <td>
-              This header is sent if the webhook is configured with a
-              <a
-                href="/en/enterprise-server@3.4/rest/repos#create-hook-config-params"
-                ><code>secret</code></a
-              >. This is the HMAC hex digest of the request body, and is
-              generated using the SHA-256 hash function and the
-              <code>secret</code> as the HMAC <code>key</code>.
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <ul>
+        <li>
+          <code>X-GitHub-Event</code>: Name of the event that triggered the
+          delivery.
+        </li>
+        <li>
+          <code>X-GitHub-Delivery</code>: A
+          <a href="http://en.wikipedia.org/wiki/Globally_unique_identifier"
+            >GUID</a
+          >
+          to identify the delivery.
+        </li>
+        <li>
+          <code>X-GitHub-Enterprise-Version</code>: The version of the GitHub
+          Enterprise Server instance that sent the HTTP POST payload.
+        </li>
+        <li>
+          <code>X-GitHub-Enterprise-Host</code>: The hostname of the GitHub
+          Enterprise Server instance that sent the HTTP POST payload.
+        </li>
+        <li>
+          <code>X-Hub-Signature</code>: This header is sent if the webhook is
+          configured with a
+          <a
+            href="/en/enterprise-server@3.4/rest/repos#create-hook-config-params"
+            ><code>secret</code></a
+          >. This is the HMAC hex digest of the request body, and is generated
+          using the SHA-1 hash function and the <code>secret</code> as the HMAC
+          <code>key</code>. <code>X-Hub-Signature</code> is provided for
+          compatibility with existing integrations, and we recommend that you
+          use the more secure <code>X-Hub-Signature-256</code> instead.
+        </li>
+        <li>
+          <code>X-Hub-Signature-256</code>: This header is sent if the webhook
+          is configured with a
+          <a
+            href="/en/enterprise-server@3.4/rest/repos#create-hook-config-params"
+            ><code>secret</code></a
+          >. This is the HMAC hex digest of the request body, and is generated
+          using the SHA-256 hash function and the <code>secret</code> as the
+          HMAC <code>key</code>.
+        </li>
+      </ul>
       <p>
         Also, the <code>User-Agent</code> for the requests will have the prefix
         <code>GitHub-Hookshot/</code>.
