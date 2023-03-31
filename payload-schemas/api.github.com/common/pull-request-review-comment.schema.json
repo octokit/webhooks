@@ -127,6 +127,14 @@
     "in_reply_to_id": {
       "type": "integer",
       "description": "The comment ID to reply to."
+    },
+    "subject_type": {
+      "description": "The level at which the comment is targeted, can be a diff line or a file.",
+      "type": "string",
+      "enum": [
+        "line",
+        "file"
+      ]
     }
   },
   "additionalProperties": false,
