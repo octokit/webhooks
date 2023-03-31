@@ -46,6 +46,8 @@
         "emails": { "type": "string", "enum": ["read", "write"] },
         "environments": { "type": "string", "enum": ["read", "write"] },
         "followers": { "type": "string", "enum": ["read", "write"] },
+        "gpg_keys": { "type": "string", "enum": ["read", "write"] },
+        "interaction_limits": { "type": "string", "enum": ["read", "write"] },
         "issues": { "type": "string", "enum": ["read", "write"] },
         "keys": { "type": "string", "enum": ["read", "write"] },
         "members": { "type": "string", "enum": ["read", "write"] },
@@ -76,6 +78,7 @@
         },
         "packages": { "type": "string", "enum": ["read", "write"] },
         "pages": { "type": "string", "enum": ["read", "write"] },
+        "plan": { "type": "string", "enum": ["read", "write"] },
         "pull_requests": { "type": "string", "enum": ["read", "write"] },
         "repository_hooks": { "type": "string", "enum": ["read", "write"] },
         "repository_projects": { "type": "string", "enum": ["read", "write"] },
@@ -90,9 +93,11 @@
           "enum": ["read", "write"]
         },
         "single_file": { "type": "string", "enum": ["read", "write"] },
+        "starring": { "type": "string", "enum": ["read", "write"] },
         "statuses": { "type": "string", "enum": ["read", "write"] },
         "team_discussions": { "type": "string", "enum": ["read", "write"] },
         "vulnerability_alerts": { "type": "string", "enum": ["read", "write"] },
+        "watching": { "type": "string", "enum": ["read", "write"] },
         "workflows": { "type": "string", "enum": ["read", "write"] }
       },
       "additionalProperties": false
