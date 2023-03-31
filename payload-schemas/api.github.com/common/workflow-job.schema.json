@@ -85,10 +85,7 @@
       "type": ["string", "null"],
       "description": "The name of the current branch."
     },
-    "created_at": {
-      "type": "string",
-      "format": "date-time"
-    }
+    "created_at": { "type": "string", "format": "date-time" }
   },
   "additionalProperties": false,
   "title": "Workflow Job"
