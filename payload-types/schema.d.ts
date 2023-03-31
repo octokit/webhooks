@@ -281,10 +281,12 @@ export type PullRequestEvent =
   | PullRequestAutoMergeEnabledEvent
   | PullRequestClosedEvent
   | PullRequestConvertedToDraftEvent
+  | PullRequestDemilestonedEvent
   | PullRequestDequeuedEvent
   | PullRequestEditedEvent
   | PullRequestLabeledEvent
   | PullRequestLockedEvent
+  | PullRequestMilestonedEvent
   | PullRequestOpenedEvent
   | PullRequestQueuedEvent
   | PullRequestReadyForReviewEvent
@@ -1058,6 +1060,8 @@ export interface App {
     emails?: "read" | "write";
     environments?: "read" | "write";
     followers?: "read" | "write";
+    gpg_keys?: "read" | "write";
+    interaction_limits?: "read" | "write";
     issues?: "read" | "write";
     keys?: "read" | "write";
     members?: "read" | "write";
@@ -1073,6 +1077,7 @@ export interface App {
     organization_user_blocking?: "read" | "write";
     packages?: "read" | "write";
     pages?: "read" | "write";
+    plan?: "read" | "write";
     pull_requests?: "read" | "write";
     repository_hooks?: "read" | "write";
     repository_projects?: "read" | "write";
@@ -1081,9 +1086,11 @@ export interface App {
     security_events?: "read" | "write";
     security_scanning_alert?: "read" | "write";
     single_file?: "read" | "write";
+    starring?: "read" | "write";
     statuses?: "read" | "write";
     team_discussions?: "read" | "write";
     vulnerability_alerts?: "read" | "write";
+    watching?: "read" | "write";
     workflows?: "read" | "write";
   };
   /**
@@ -1125,6 +1132,7 @@ export interface App {
     | "pull_request"
     | "pull_request_review"
     | "pull_request_review_comment"
+    | "pull_request_review_thread"
     | "push"
     | "registry_package"
     | "release"
@@ -5577,6 +5585,21 @@ export interface PullRequestConvertedToDraftEvent {
   organization?: Organization;
   sender: User;
 }
+export interface PullRequestDemilestonedEvent {
+  action: "demilestoned";
+  /**
+   * The pull request number.
+   */
+  number: number;
+  pull_request: PullRequest & {
+    milestone: Milestone;
+  };
+  milestone: Milestone;
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
 export interface PullRequestDequeuedEvent {
   action: "dequeued";
   /**
@@ -5654,6 +5677,21 @@ export interface PullRequestLockedEvent {
   installation?: InstallationLite;
   organization?: Organization;
   sender: User;
+}
+export interface PullRequestMilestonedEvent {
+  action: "milestoned";
+  /**
+   * The pull request number.
+   */
+  number: number;
+  pull_request: PullRequest & {
+    milestone: Milestone;
+  };
+  milestone: Milestone;
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
 }
 export interface PullRequestOpenedEvent {
   action: "opened";
@@ -6062,6 +6100,10 @@ export interface PullRequestReviewComment {
    * The comment ID to reply to.
    */
   in_reply_to_id?: number;
+  /**
+   * The level at which the comment is targeted, can be a diff line or a file.
+   */
+  subject_type?: "line" | "file";
 }
 export interface PullRequestReviewCommentDeletedEvent {
   action: "deleted";
@@ -7604,7 +7646,15 @@ export interface WorkflowJob {
   runner_group_name: string | null;
   started_at: string;
   completed_at: string | null;
-  workflow_name: string;
+  /**
+   * The name of the workflow.
+   */
+  workflow_name: string | null;
+  /**
+   * The name of the current branch.
+   */
+  head_branch: string | null;
+  created_at: string;
 }
 export interface WorkflowStepInProgress {
   name: string;
