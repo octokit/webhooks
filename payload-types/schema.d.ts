@@ -5462,7 +5462,7 @@ export interface PullRequest {
     ref: string;
     sha: string;
     user: User;
-    repo: Repository;
+    repo: Repository | null;
   };
   base: {
     label: string;

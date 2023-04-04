@@ -115,7 +115,9 @@
         "ref": { "type": "string" },
         "sha": { "type": "string" },
         "user": { "$ref": "user.schema.json" },
-        "repo": { "$ref": "repository.schema.json" }
+        "repo": {
+          "oneOf": [{ "$ref": "repository.schema.json" }, { "type": "null" }]
+        }
       },
       "additionalProperties": false
     },
