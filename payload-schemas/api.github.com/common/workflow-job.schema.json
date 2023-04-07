@@ -14,6 +14,7 @@
     "conclusion",
     "started_at",
     "completed_at",
+    "created_at",
     "name",
     "steps",
     "check_run_url",
@@ -22,7 +23,8 @@
     "runner_name",
     "runner_group_id",
     "runner_group_name",
-    "workflow_name"
+    "workflow_name",
+    "head_branch"
   ],
   "description": "The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`, and `started_at` are the same as those in a [`check_run`](#check_run) object.",
   "type": "object",
@@ -75,7 +77,15 @@
     "completed_at": {
       "oneOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }]
     },
-    "workflow_name": { "type": "string" }
+    "workflow_name": {
+      "type": ["string", "null"],
+      "description": "The name of the workflow."
+    },
+    "head_branch": {
+      "type": ["string", "null"],
+      "description": "The name of the current branch."
+    },
+    "created_at": { "type": "string", "format": "date-time" }
   },
   "additionalProperties": false,
   "title": "Workflow Job"

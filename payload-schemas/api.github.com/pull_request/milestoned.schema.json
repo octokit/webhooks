@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "pull_request$milestoned",
+  "type": "object",
+  "required": [
+    "action",
+    "number",
+    "pull_request",
+    "milestone",
+    "repository",
+    "sender"
+  ],
+  "properties": {
+    "action": { "type": "string", "enum": ["milestoned"] },
+    "number": { "type": "integer", "description": "The pull request number." },
+    "pull_request": {
+      "allOf": [
+        { "$ref": "common/pull-request.schema.json" },
+        {
+          "type": "object",
+          "required": ["milestone"],
+          "properties": {
+            "milestone": { "$ref": "common/milestone.schema.json" }
+          },
+          "tsAdditionalProperties": false
+        }
+      ]
+    },
+    "milestone": { "$ref": "common/milestone.schema.json" },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
+  },
+  "additionalProperties": false,
+  "title": "pull_request milestoned event"
+}
