@@ -735,6 +735,9 @@
         page. Each webhook event includes a description of the webhook
         properties and an example payload. For more information, see "<a
           href="/en/enterprise-server@3.5/webhooks-and-events/webhooks/creating-webhooks"
+          data-product-title="Webhooks and events"
+          data-title="Creating webhooks"
+          data-intro="Learn to build a webhook, choosing the events your webhook will listen for on GitHub and how to set up a server to receive and manage the webhook payload."
           >Creating webhooks</a
         >."
       </p>
@@ -798,7 +801,11 @@
             <td><code>object</code></td>
             <td>
               The
-              <a href="/en/enterprise-server@3.5/rest/repos#get-a-repository"
+              <a
+                href="/en/enterprise-server@3.5/rest/repos#get-a-repository"
+                data-product-title="REST API"
+                data-title="Repositories"
+                data-intro="Use the REST API to create, manage and control the workflow of public and private GitHub Enterprise Server repositories."
                 ><code>repository</code></a
               >
               where the event occurred. Webhook payloads contain the
@@ -811,7 +818,11 @@
             <td><code>object</code></td>
             <td>
               Webhook payloads contain the
-              <a href="/en/enterprise-server@3.5/rest/orgs#get-an-organization"
+              <a
+                href="/en/enterprise-server@3.5/rest/orgs#get-an-organization"
+                data-product-title="REST API"
+                data-title="Organizations"
+                data-intro="Use the REST API to control and manage all your GitHub Enterprise Server organizations."
                 ><code>organization</code></a
               >
               object when the webhook is configured for an organization or the
@@ -827,6 +838,9 @@
               <code>installation</code> property when the event is configured
               for and sent to a GitHub App. For more information, see "<a
                 href="/en/enterprise-server@3.5/apps/creating-github-apps/creating-github-apps"
+                data-product-title="Apps"
+                data-title="Creating GitHub Apps"
+                data-intro="Learn about building GitHub Apps."
                 >Creating GitHub Apps</a
               >."
             </td>
@@ -836,8 +850,13 @@
       <p>
         The unique properties for a webhook event are the same properties you'll
         find in the <code>payload</code> property when using the
-        <a href="/en/enterprise-server@3.5/rest/activity#events">Events API</a>.
-        One exception is the <a href="#push"><code>push</code> event</a>. The
+        <a
+          href="/en/enterprise-server@3.5/rest/activity#events"
+          data-product-title="REST API"
+          data-title="Activity"
+          data-intro="Use the REST API to list events and feeds and manage notifications, starring, and watching."
+          >Events API</a
+        >. One exception is the <a href="#push"><code>push</code> event</a>. The
         unique properties of the <code>push</code> event webhook payload and the
         <code>payload</code> property in the Events API differ. The webhook
         payload contains more detailed information.
@@ -901,6 +920,9 @@
           configured with a
           <a
             href="/en/enterprise-server@3.5/rest/repos#create-hook-config-params"
+            data-product-title="REST API"
+            data-title="Repositories"
+            data-intro="Use the REST API to create, manage and control the workflow of public and private GitHub Enterprise Server repositories."
             ><code>secret</code></a
           >. This is the HMAC hex digest of the request body, and is generated
           using the SHA-1 hash function and the <code>secret</code> as the HMAC
@@ -913,6 +935,9 @@
           is configured with a
           <a
             href="/en/enterprise-server@3.5/rest/repos#create-hook-config-params"
+            data-product-title="REST API"
+            data-title="Repositories"
+            data-intro="Use the REST API to create, manage and control the workflow of public and private GitHub Enterprise Server repositories."
             ><code>secret</code></a
           >. This is the HMAC hex digest of the request body, and is generated
           using the SHA-256 hash function and the <code>secret</code> as the
