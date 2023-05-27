@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "secret_scanning_alert$revoked",
+  "type": "object",
+  "required": ["action", "alert", "repository", "sender"],
+  "properties": {
+    "action": { "type": "string", "enum": ["revoked"] },
+    "alert": {
+      "allOf": [
+        { "$ref": "common/secret-scanning-alert.schema.json" },
+        {
+          "type": "object",
+          "required": ["resolution", "resolved_by", "resolved_at"],
+          "properties": {
+            "resolution": { "type": "string", "enum": ["revoked"] },
+            "resolved_by": { "$ref": "common/user.schema.json" },
+            "resolved_at": { "type": "string", "format": "date-time" }
+          },
+          "tsAdditionalProperties": false
+        }
+      ]
+    },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" }
+  },
+  "additionalProperties": false,
+  "title": "secret_scanning_alert revoked event"
+}
