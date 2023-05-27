@@ -6,23 +6,19 @@
   "properties": {
     "action": { "type": "string", "enum": ["created"] },
     "alert": {
-      "type": "object",
-      "description": "The secret scanning alert involved in the event.",
-      "required": [
-        "number",
-        "secret_type",
-        "resolution",
-        "resolved_by",
-        "resolved_at"
-      ],
-      "properties": {
-        "number": { "type": "integer" },
-        "secret_type": { "type": "string" },
-        "resolution": { "type": "null" },
-        "resolved_by": { "type": "null" },
-        "resolved_at": { "type": "null" }
-      },
-      "additionalProperties": false
+      "allOf": [
+        { "$ref": "common/secret-scanning-alert.schema.json" },
+        {
+          "type": "object",
+          "required": ["resolution", "resolved_by", "resolved_at"],
+          "properties": {
+            "resolution": { "type": "null" },
+            "resolved_by": { "type": "null" },
+            "resolved_at": { "type": "null" }
+          },
+          "tsAdditionalProperties": false
+        }
+      ]
     },
     "repository": { "$ref": "common/repository.schema.json" },
     "organization": { "$ref": "common/organization.schema.json" },

@@ -9,13 +9,16 @@
     "installation": { "$ref": "common/installation-lite.schema.json" },
     "repository": { "$ref": "common/repository.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
+    "deployment": { "$ref": "common/deployment.schema.json" },
     "workflow_job": {
       "allOf": [
         { "$ref": "common/workflow-job.schema.json" },
         {
           "type": "object",
           "required": ["status"],
-          "properties": { "status": { "type": "string", "enum": ["queued"] } },
+          "properties": {
+            "status": { "type": "string", "enum": ["queued", "waiting"] }
+          },
           "tsAdditionalProperties": false
         }
       ]

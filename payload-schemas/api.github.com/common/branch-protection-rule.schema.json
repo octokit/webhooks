@@ -53,6 +53,9 @@
     "ignore_approvals_from_contributors": {
       "$ref": "branch-protection-rule-boolean.schema.json"
     },
+    "require_last_push_approval": {
+      "$ref": "branch-protection-rule-boolean.schema.json"
+    },
     "required_status_checks": {
       "$ref": "branch-protection-rule-array.schema.json"
     },

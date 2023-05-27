@@ -41,7 +41,7 @@
     "url": { "type": "string", "format": "uri" },
     "status": {
       "type": "string",
-      "enum": ["queued", "in_progress", "completed"],
+      "enum": ["queued", "in_progress", "completed", "waiting"],
       "description": "The current status of the job. Can be `queued`, `in_progress`, or `completed`."
     },
     "steps": {

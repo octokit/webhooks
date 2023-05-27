@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "workflow_job$waiting",
+  "type": "object",
+  "required": ["action", "repository", "sender", "workflow_job"],
+  "properties": {
+    "action": { "type": "string", "enum": ["waiting"] },
+    "organization": { "$ref": "common/organization.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "deployment": { "$ref": "common/deployment.schema.json" },
+    "workflow_job": {
+      "allOf": [
+        { "$ref": "common/workflow-job.schema.json" },
+        {
+          "type": "object",
+          "required": ["status"],
+          "properties": { "status": { "type": "string", "enum": ["waiting"] } },
+          "tsAdditionalProperties": false
+        }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "title": "workflow_job waiting event"
+}
