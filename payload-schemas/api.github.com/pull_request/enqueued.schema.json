@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "pull_request$queued",
+  "$id": "pull_request$enqueued",
   "type": "object",
   "required": ["action", "number", "pull_request", "repository", "sender"],
   "properties": {
-    "action": { "type": "string", "enum": ["queued"] },
+    "action": { "type": "string", "enum": ["enqueued"] },
     "number": { "type": "integer", "description": "The pull request number." },
     "pull_request": { "$ref": "common/pull-request.schema.json" },
     "repository": { "$ref": "common/repository.schema.json" },
@@ -13,5 +13,5 @@
     "sender": { "$ref": "common/user.schema.json" }
   },
   "additionalProperties": false,
-  "title": "pull_request queued event"
+  "title": "pull_request enqueued event"
 }
