@@ -7225,6 +7225,7 @@ export interface SecretScanningAlertLocationCreatedEvent {
   alert: SecretScanningAlert;
   location: SecretScanningLocation;
   repository: Repository;
+  sender: User;
   organization?: Organization;
   installation?: InstallationLite;
 }
