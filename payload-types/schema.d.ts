@@ -16,6 +16,7 @@ export type Schema =
   | DependabotAlertEvent
   | DeployKeyEvent
   | DeploymentEvent
+  | DeploymentProtectionRuleEvent
   | DeploymentStatusEvent
   | DiscussionEvent
   | DiscussionCommentEvent
@@ -56,6 +57,7 @@ export type Schema =
   | RepositoryImportEvent
   | RepositoryVulnerabilityAlertEvent
   | SecretScanningAlertEvent
+  | SecretScanningAlertLocationEvent
   | SecurityAdvisoryEvent
   | SponsorshipEvent
   | StarEvent
@@ -114,6 +116,8 @@ export type DependabotAlertEvent =
   | DependabotAlertReopenedEvent;
 export type DeployKeyEvent = DeployKeyCreatedEvent | DeployKeyDeletedEvent;
 export type DeploymentEvent = DeploymentCreatedEvent;
+export type DeploymentProtectionRuleEvent =
+  DeploymentProtectionRuleRequestedEvent;
 export type DeploymentStatusEvent = DeploymentStatusCreatedEvent;
 export type DiscussionEvent =
   | DiscussionAnsweredEvent
@@ -284,11 +288,11 @@ export type PullRequestEvent =
   | PullRequestDemilestonedEvent
   | PullRequestDequeuedEvent
   | PullRequestEditedEvent
+  | PullRequestEnqueuedEvent
   | PullRequestLabeledEvent
   | PullRequestLockedEvent
   | PullRequestMilestonedEvent
   | PullRequestOpenedEvent
-  | PullRequestQueuedEvent
   | PullRequestReadyForReviewEvent
   | PullRequestReopenedEvent
   | PullRequestReviewRequestRemovedEvent
@@ -391,7 +395,39 @@ export type RepositoryVulnerabilityAlertEvent =
 export type SecretScanningAlertEvent =
   | SecretScanningAlertCreatedEvent
   | SecretScanningAlertReopenedEvent
-  | SecretScanningAlertResolvedEvent;
+  | SecretScanningAlertResolvedEvent
+  | SecretScanningAlertRevokedEvent;
+export type SecretScanningAlertLocationEvent =
+  SecretScanningAlertLocationCreatedEvent;
+export type SecretScanningLocation =
+  | {
+      /**
+       * The location type. Because secrets may be found in different types of resources (ie. code, comments, issues), this field identifies the type of resource where the secret was found.
+       */
+      type: "commit";
+      details: SecretScanningLocationCommit;
+    }
+  | {
+      /**
+       * The location type. Because secrets may be found in different types of resources (ie. code, comments, issues), this field identifies the type of resource where the secret was found.
+       */
+      type: "issue_title";
+      details: SecretScanningLocationIssueTitle;
+    }
+  | {
+      /**
+       * The location type. Because secrets may be found in different types of resources (ie. code, comments, issues), this field identifies the type of resource where the secret was found.
+       */
+      type: "issue_body";
+      details: SecretScanningLocationIssueBody;
+    }
+  | {
+      /**
+       * The location type. Because secrets may be found in different types of resources (ie. code, comments, issues), this field identifies the type of resource where the secret was found.
+       */
+      type: "issue_comment";
+      details: SecretScanningLocationIssueComment;
+    };
 export type SecurityAdvisoryEvent =
   | SecurityAdvisoryPerformedEvent
   | SecurityAdvisoryPublishedEvent
@@ -415,7 +451,8 @@ export type WatchEvent = WatchStartedEvent;
 export type WorkflowJobEvent =
   | WorkflowJobCompletedEvent
   | WorkflowJobInProgressEvent
-  | WorkflowJobQueuedEvent;
+  | WorkflowJobQueuedEvent
+  | WorkflowJobWaitingEvent;
 export type WorkflowStep = WorkflowStepInProgress | WorkflowStepCompleted;
 export type WorkflowRunEvent =
   | WorkflowRunCompletedEvent
@@ -448,6 +485,7 @@ export interface BranchProtectionRule {
   require_code_owner_review: BranchProtectionRuleBoolean;
   authorized_dismissal_actors_only: BranchProtectionRuleBoolean;
   ignore_approvals_from_contributors: BranchProtectionRuleBoolean;
+  require_last_push_approval?: BranchProtectionRuleBoolean;
   required_status_checks: BranchProtectionRuleArray;
   required_status_checks_enforcement_level: BranchProtectionRuleEnforcementLevel;
   strict_required_status_checks_policy: BranchProtectionRuleBoolean;
@@ -2727,6 +2765,241 @@ export interface ReferencedWorkflow {
   sha: string;
   ref?: string;
 }
+export interface DeploymentProtectionRuleRequestedEvent {
+  action: "requested";
+  /**
+   * The name of the environment that has the deployment protection rule.
+   */
+  environment?: string;
+  /**
+   * The event that triggered the deployment protection rule.
+   */
+  event?: string;
+  /**
+   * The URL to review the deployment protection rule.
+   */
+  deployment_callback_url?: string;
+  deployment?: Deployment;
+  pull_requests?: PullRequest[];
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface PullRequest {
+  url: string;
+  id: number;
+  node_id: string;
+  html_url: string;
+  diff_url: string;
+  patch_url: string;
+  issue_url: string;
+  /**
+   * Number uniquely identifying the pull request within its repository.
+   */
+  number: number;
+  /**
+   * State of this Pull Request. Either `open` or `closed`.
+   */
+  state: "open" | "closed";
+  locked: boolean;
+  /**
+   * The title of the pull request.
+   */
+  title: string;
+  user: User;
+  body: string | null;
+  created_at: string;
+  updated_at: string;
+  closed_at: string | null;
+  merged_at: string | null;
+  merge_commit_sha: string | null;
+  assignee: User | null;
+  assignees: User[];
+  requested_reviewers: (User | Team)[];
+  requested_teams: Team[];
+  labels: Label[];
+  milestone: Milestone | null;
+  commits_url: string;
+  review_comments_url: string;
+  review_comment_url: string;
+  comments_url: string;
+  statuses_url: string;
+  head: {
+    label: string;
+    ref: string;
+    sha: string;
+    user: User;
+    repo: Repository | null;
+  };
+  base: {
+    label: string;
+    ref: string;
+    sha: string;
+    user: User;
+    repo: Repository;
+  };
+  _links: {
+    self: Link;
+    html: Link;
+    issue: Link;
+    comments: Link;
+    review_comments: Link;
+    review_comment: Link;
+    commits: Link;
+    statuses: Link;
+  };
+  author_association: AuthorAssociation;
+  auto_merge: PullRequestAutoMerge | null;
+  active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
+  /**
+   * Indicates whether or not the pull request is a draft.
+   */
+  draft: boolean;
+  merged: boolean | null;
+  mergeable: boolean | null;
+  rebaseable: boolean | null;
+  mergeable_state: string;
+  merged_by: User | null;
+  comments: number;
+  review_comments: number;
+  /**
+   * Indicates whether maintainers can modify the pull request.
+   */
+  maintainer_can_modify: boolean;
+  commits: number;
+  additions: number;
+  deletions: number;
+  changed_files: number;
+}
+/**
+ * Groups of organization members that gives permissions on specified repositories.
+ */
+export interface Team {
+  /**
+   * Name of the team
+   */
+  name: string;
+  /**
+   * Unique identifier of the team
+   */
+  id: number;
+  node_id: string;
+  slug: string;
+  /**
+   * Description of the team
+   */
+  description: string | null;
+  privacy: "open" | "closed" | "secret";
+  /**
+   * URL for the team
+   */
+  url: string;
+  html_url: string;
+  members_url: string;
+  repositories_url: string;
+  /**
+   * Permission that the team will have for its repositories
+   */
+  permission: string;
+  parent?: {
+    /**
+     * Name of the team
+     */
+    name: string;
+    /**
+     * Unique identifier of the team
+     */
+    id: number;
+    node_id: string;
+    slug: string;
+    /**
+     * Description of the team
+     */
+    description: string | null;
+    privacy: "open" | "closed" | "secret";
+    /**
+     * URL for the team
+     */
+    url: string;
+    html_url: string;
+    members_url: string;
+    repositories_url: string;
+    /**
+     * Permission that the team will have for its repositories
+     */
+    permission: string;
+  } | null;
+}
+export interface Label {
+  id: number;
+  node_id: string;
+  /**
+   * URL for the label
+   */
+  url: string;
+  /**
+   * The name of the label.
+   */
+  name: string;
+  description: string | null;
+  /**
+   * 6-character hex code, without the leading #, identifying the color
+   */
+  color: string;
+  default: boolean;
+}
+/**
+ * A collection of related issues and pull requests.
+ */
+export interface Milestone {
+  url: string;
+  html_url: string;
+  labels_url: string;
+  id: number;
+  node_id: string;
+  /**
+   * The number of the milestone.
+   */
+  number: number;
+  /**
+   * The title of the milestone.
+   */
+  title: string;
+  description: string | null;
+  creator: User;
+  open_issues: number;
+  closed_issues: number;
+  /**
+   * The state of the milestone.
+   */
+  state: "open" | "closed";
+  created_at: string;
+  updated_at: string;
+  due_on: string | null;
+  closed_at: string | null;
+}
+export interface Link {
+  href: string;
+}
+/**
+ * The status of auto merging a pull request.
+ */
+export interface PullRequestAutoMerge {
+  enabled_by: User;
+  /**
+   * The merge method to use.
+   */
+  merge_method: "merge" | "squash" | "rebase";
+  /**
+   * Title for the merge commit message.
+   */
+  commit_title: string;
+  /**
+   * Commit message for the merge commit.
+   */
+  commit_message: string;
+}
 export interface DeploymentStatusCreatedEvent {
   action: "created";
   /**
@@ -2739,7 +3012,14 @@ export interface DeploymentStatusCreatedEvent {
     /**
      * The new state. Can be `pending`, `success`, `failure`, or `error`.
      */
-    state: string;
+    state:
+      | "pending"
+      | "in_progress"
+      | "success"
+      | "failure"
+      | "error"
+      | "waiting"
+      | "queued";
     creator: User;
     /**
      * The optional human-readable description added to the status.
@@ -2952,24 +3232,6 @@ export interface DiscussionLabeledEvent {
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
-}
-export interface Label {
-  id: number;
-  node_id: string;
-  /**
-   * URL for the label
-   */
-  url: string;
-  /**
-   * The name of the label.
-   */
-  name: string;
-  description: string | null;
-  /**
-   * 6-character hex code, without the leading #, identifying the color
-   */
-  color: string;
-  default: boolean;
 }
 export interface DiscussionLockedEvent {
   action: "locked";
@@ -3745,36 +4007,6 @@ export interface Issue {
   state_reason?: string | null;
 }
 /**
- * A collection of related issues and pull requests.
- */
-export interface Milestone {
-  url: string;
-  html_url: string;
-  labels_url: string;
-  id: number;
-  node_id: string;
-  /**
-   * The number of the milestone.
-   */
-  number: number;
-  /**
-   * The title of the milestone.
-   */
-  title: string;
-  description: string | null;
-  creator: User;
-  open_issues: number;
-  closed_issues: number;
-  /**
-   * The state of the milestone.
-   */
-  state: "open" | "closed";
-  created_at: string;
-  updated_at: string;
-  due_on: string | null;
-  closed_at: string | null;
-}
-/**
  * The [comment](https://docs.github.com/en/rest/reference/issues#comments) itself.
  */
 export interface IssueComment {
@@ -4316,65 +4548,6 @@ export interface MembershipAddedEvent {
   team: Team;
   organization: Organization;
   installation?: InstallationLite;
-}
-/**
- * Groups of organization members that gives permissions on specified repositories.
- */
-export interface Team {
-  /**
-   * Name of the team
-   */
-  name: string;
-  /**
-   * Unique identifier of the team
-   */
-  id: number;
-  node_id: string;
-  slug: string;
-  /**
-   * Description of the team
-   */
-  description: string | null;
-  privacy: "open" | "closed" | "secret";
-  /**
-   * URL for the team
-   */
-  url: string;
-  html_url: string;
-  members_url: string;
-  repositories_url: string;
-  /**
-   * Permission that the team will have for its repositories
-   */
-  permission: string;
-  parent?: {
-    /**
-     * Name of the team
-     */
-    name: string;
-    /**
-     * Unique identifier of the team
-     */
-    id: number;
-    node_id: string;
-    slug: string;
-    /**
-     * Description of the team
-     */
-    description: string | null;
-    privacy: "open" | "closed" | "secret";
-    /**
-     * URL for the team
-     */
-    url: string;
-    html_url: string;
-    members_url: string;
-    repositories_url: string;
-    /**
-     * Permission that the team will have for its repositories
-     */
-    permission: string;
-  } | null;
 }
 export interface MembershipRemovedEvent {
   action: "removed";
@@ -5418,113 +5591,6 @@ export interface PullRequestAssignedEvent {
   organization?: Organization;
   sender: User;
 }
-export interface PullRequest {
-  url: string;
-  id: number;
-  node_id: string;
-  html_url: string;
-  diff_url: string;
-  patch_url: string;
-  issue_url: string;
-  /**
-   * Number uniquely identifying the pull request within its repository.
-   */
-  number: number;
-  /**
-   * State of this Pull Request. Either `open` or `closed`.
-   */
-  state: "open" | "closed";
-  locked: boolean;
-  /**
-   * The title of the pull request.
-   */
-  title: string;
-  user: User;
-  body: string | null;
-  created_at: string;
-  updated_at: string;
-  closed_at: string | null;
-  merged_at: string | null;
-  merge_commit_sha: string | null;
-  assignee: User | null;
-  assignees: User[];
-  requested_reviewers: (User | Team)[];
-  requested_teams: Team[];
-  labels: Label[];
-  milestone: Milestone | null;
-  commits_url: string;
-  review_comments_url: string;
-  review_comment_url: string;
-  comments_url: string;
-  statuses_url: string;
-  head: {
-    label: string;
-    ref: string;
-    sha: string;
-    user: User;
-    repo: Repository | null;
-  };
-  base: {
-    label: string;
-    ref: string;
-    sha: string;
-    user: User;
-    repo: Repository;
-  };
-  _links: {
-    self: Link;
-    html: Link;
-    issue: Link;
-    comments: Link;
-    review_comments: Link;
-    review_comment: Link;
-    commits: Link;
-    statuses: Link;
-  };
-  author_association: AuthorAssociation;
-  auto_merge: PullRequestAutoMerge | null;
-  active_lock_reason: "resolved" | "off-topic" | "too heated" | "spam" | null;
-  /**
-   * Indicates whether or not the pull request is a draft.
-   */
-  draft: boolean;
-  merged: boolean | null;
-  mergeable: boolean | null;
-  rebaseable: boolean | null;
-  mergeable_state: string;
-  merged_by: User | null;
-  comments: number;
-  review_comments: number;
-  /**
-   * Indicates whether maintainers can modify the pull request.
-   */
-  maintainer_can_modify: boolean;
-  commits: number;
-  additions: number;
-  deletions: number;
-  changed_files: number;
-}
-export interface Link {
-  href: string;
-}
-/**
- * The status of auto merging a pull request.
- */
-export interface PullRequestAutoMerge {
-  enabled_by: User;
-  /**
-   * The merge method to use.
-   */
-  merge_method: "merge" | "squash" | "rebase";
-  /**
-   * Title for the merge commit message.
-   */
-  commit_title: string;
-  /**
-   * Commit message for the merge commit.
-   */
-  commit_message: string;
-}
 export interface PullRequestAutoMergeDisabledEvent {
   action: "auto_merge_disabled";
   number: number;
@@ -5653,6 +5719,18 @@ export interface PullRequestEditedEvent {
   organization?: Organization;
   sender: User;
 }
+export interface PullRequestEnqueuedEvent {
+  action: "enqueued";
+  /**
+   * The pull request number.
+   */
+  number: number;
+  pull_request: PullRequest;
+  repository: Repository;
+  installation?: InstallationLite;
+  organization?: Organization;
+  sender: User;
+}
 export interface PullRequestLabeledEvent {
   action: "labeled";
   /**
@@ -5706,18 +5784,6 @@ export interface PullRequestOpenedEvent {
     active_lock_reason: null;
     merged_by: null;
   };
-  repository: Repository;
-  installation?: InstallationLite;
-  organization?: Organization;
-  sender: User;
-}
-export interface PullRequestQueuedEvent {
-  action: "queued";
-  /**
-   * The pull request number.
-   */
-  number: number;
-  pull_request: PullRequest;
   repository: Repository;
   installation?: InstallationLite;
   organization?: Organization;
@@ -7040,12 +7106,7 @@ export interface RepositoryVulnerabilityAlertResolveEvent {
 }
 export interface SecretScanningAlertCreatedEvent {
   action: "created";
-  /**
-   * The secret scanning alert involved in the event.
-   */
-  alert: {
-    number: number;
-    secret_type: string;
+  alert: SecretScanningAlert & {
     resolution: null;
     resolved_by: null;
     resolved_at: null;
@@ -7053,6 +7114,70 @@ export interface SecretScanningAlertCreatedEvent {
   repository: Repository;
   organization?: Organization;
   installation?: InstallationLite;
+}
+export interface SecretScanningAlert {
+  /**
+   * The security alert number.
+   */
+  number: number;
+  /**
+   * The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+   */
+  created_at: string;
+  updated_at: string | null;
+  /**
+   * The REST API URL of the alert resource.
+   */
+  url: string;
+  /**
+   * The GitHub URL of the alert resource.
+   */
+  html_url: string;
+  /**
+   * The REST API URL of the code locations for this alert.
+   */
+  locations_url?: string;
+  state: "open" | "resolved";
+  /**
+   * **Required when the `state` is `resolved`.** The reason for resolving the alert.
+   */
+  resolution:
+    | "false_positive"
+    | "wont_fix"
+    | "revoked"
+    | "used_in_tests"
+    | null;
+  /**
+   * The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+   */
+  resolved_at: string | null;
+  resolved_by: User | null;
+  /**
+   * An optional comment to resolve an alert.
+   */
+  resolution_comment?: string | null;
+  /**
+   * The type of secret that secret scanning detected.
+   */
+  secret_type: string;
+  /**
+   * User-friendly name for the detected secret, matching the `secret_type`.
+   * For a list of built-in patterns, see "[Secret scanning patterns](https://docs.github.com/code-security/secret-scanning/secret-scanning-patterns#supported-secrets-for-advanced-security)."
+   */
+  secret_type_display_name?: string;
+  /**
+   * The secret that was detected.
+   */
+  secret?: string;
+  /**
+   * Whether push protection was bypassed for the detected secret.
+   */
+  push_protection_bypassed?: boolean | null;
+  push_protection_bypassed_by?: User | null;
+  /**
+   * The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+   */
+  push_protection_bypassed_at?: string | null;
 }
 export interface SecretScanningAlertReopenedEvent {
   action: "reopened";
@@ -7073,12 +7198,7 @@ export interface SecretScanningAlertReopenedEvent {
 }
 export interface SecretScanningAlertResolvedEvent {
   action: "resolved";
-  /**
-   * The secret scanning alert involved in the event.
-   */
-  alert: {
-    number: number;
-    secret_type: string;
+  alert: SecretScanningAlert & {
     resolution: "false_positive" | "wontfix" | "revoked" | "used_in_tests";
     resolved_by: User;
     resolved_at: string;
@@ -7087,6 +7207,94 @@ export interface SecretScanningAlertResolvedEvent {
   organization?: Organization;
   installation?: InstallationLite;
   sender: User;
+}
+export interface SecretScanningAlertRevokedEvent {
+  action: "revoked";
+  alert: SecretScanningAlert & {
+    resolution: "revoked";
+    resolved_by: User;
+    resolved_at: string;
+  };
+  repository: Repository;
+  organization?: Organization;
+  installation?: InstallationLite;
+  sender: User;
+}
+export interface SecretScanningAlertLocationCreatedEvent {
+  action?: "created";
+  alert: SecretScanningAlert;
+  location: SecretScanningLocation;
+  repository: Repository;
+  organization?: Organization;
+  installation?: InstallationLite;
+}
+/**
+ * Represents a 'commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository.
+ */
+export interface SecretScanningLocationCommit {
+  /**
+   * The file path in the repository
+   */
+  path: string;
+  /**
+   * Line number at which the secret starts in the file
+   */
+  start_line: number;
+  /**
+   * Line number at which the secret ends in the file
+   */
+  end_line: number;
+  /**
+   * The column at which the secret starts within the start line when the file is interpreted as 8BIT ASCII
+   */
+  start_column: number;
+  /**
+   * The column at which the secret ends within the end line when the file is interpreted as 8BIT ASCII
+   */
+  end_column: number;
+  /**
+   * SHA-1 hash ID of the associated blob
+   */
+  blob_sha: string;
+  /**
+   * The API URL to get the associated blob resource
+   */
+  blob_url: string;
+  /**
+   * SHA-1 hash ID of the associated commit
+   */
+  commit_sha: string;
+  /**
+   * The API URL to get the associated commit resource
+   */
+  commit_url: string;
+}
+/**
+ * Represents an 'issue_title' secret scanning location type. This location type shows that a secret was detected in the title of an issue.
+ */
+export interface SecretScanningLocationIssueTitle {
+  /**
+   * The API URL to get the issue where the secret was detected.
+   */
+  issue_title_url: string;
+}
+/**
+ * Represents an 'issue_body' secret scanning location type. This location type shows that a secret was detected in the body of an issue.
+ */
+export interface SecretScanningLocationIssueBody {
+  /**
+   * The API URL to get the issue where the secret was detected.
+   */
+  issue_body_url: string;
+}
+/**
+ * Represents an 'issue_comment' secret scanning location type. This location type shows that a secret was detected in a comment on an issue.
+ */
+export interface SecretScanningLocationIssueComment {
+  /**
+   * The API URL to get the issue comment where the secret was detected.
+   */
+  issue_comment_url: string;
 }
 export interface SecurityAdvisoryPerformedEvent {
   action: "performed";
@@ -7600,6 +7808,7 @@ export interface WorkflowJobCompletedEvent {
   installation?: InstallationLite;
   repository: Repository;
   sender: User;
+  deployment?: Deployment;
   workflow_job: WorkflowJob & {
     conclusion: "success" | "failure" | "cancelled" | "skipped";
   };
@@ -7621,7 +7830,7 @@ export interface WorkflowJob {
   /**
    * The current status of the job. Can be `queued`, `in_progress`, or `completed`.
    */
-  status: "queued" | "in_progress" | "completed";
+  status: "queued" | "in_progress" | "completed" | "waiting";
   steps: WorkflowStep[];
   conclusion: "success" | "failure" | "cancelled" | "skipped" | null;
   /**
@@ -7678,8 +7887,9 @@ export interface WorkflowJobInProgressEvent {
   installation?: InstallationLite;
   repository: Repository;
   sender: User;
+  deployment?: Deployment;
   workflow_job: WorkflowJob & {
-    status: "in_progress";
+    status: "queued" | "in_progress";
   };
 }
 export interface WorkflowJobQueuedEvent {
@@ -7688,8 +7898,20 @@ export interface WorkflowJobQueuedEvent {
   installation?: InstallationLite;
   repository: Repository;
   sender: User;
+  deployment?: Deployment;
   workflow_job: WorkflowJob & {
-    status: "queued";
+    status: "queued" | "waiting";
+  };
+}
+export interface WorkflowJobWaitingEvent {
+  action: "waiting";
+  organization?: Organization;
+  installation?: InstallationLite;
+  repository: Repository;
+  sender: User;
+  deployment?: Deployment;
+  workflow_job: WorkflowJob & {
+    status: "waiting";
   };
 }
 export interface WorkflowRunCompletedEvent {
@@ -8041,6 +8263,7 @@ export interface EventPayloadMap {
   dependabot_alert: DependabotAlertEvent;
   deploy_key: DeployKeyEvent;
   deployment: DeploymentEvent;
+  deployment_protection_rule: DeploymentProtectionRuleEvent;
   deployment_status: DeploymentStatusEvent;
   discussion: DiscussionEvent;
   discussion_comment: DiscussionCommentEvent;
@@ -8081,6 +8304,7 @@ export interface EventPayloadMap {
   repository_import: RepositoryImportEvent;
   repository_vulnerability_alert: RepositoryVulnerabilityAlertEvent;
   secret_scanning_alert: SecretScanningAlertEvent;
+  secret_scanning_alert_location: SecretScanningAlertLocationEvent;
   security_advisory: SecurityAdvisoryEvent;
   sponsorship: SponsorshipEvent;
   star: StarEvent;
