@@ -7221,7 +7221,7 @@ export interface SecretScanningAlertRevokedEvent {
   sender: User;
 }
 export interface SecretScanningAlertLocationCreatedEvent {
-  action?: "created";
+  action: "created";
   alert: SecretScanningAlert;
   location: SecretScanningLocation;
   repository: Repository;

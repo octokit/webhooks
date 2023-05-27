@@ -3,7 +3,7 @@
   "$id": "secret_scanning_alert_location$created",
   "title": "secret_scanning_alert_location created event",
   "type": "object",
-  "required": ["location", "alert", "repository", "sender"],
+  "required": ["action", "location", "alert", "repository", "sender"],
   "properties": {
     "action": { "type": "string", "enum": ["created"] },
     "alert": { "$ref": "common/secret-scanning-alert.schema.json" },
