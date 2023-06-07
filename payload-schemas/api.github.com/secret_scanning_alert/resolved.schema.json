@@ -14,7 +14,7 @@
           "properties": {
             "resolution": {
               "type": "string",
-              "enum": ["false_positive", "wontfix", "revoked", "used_in_tests"]
+              "enum": ["false_positive", "wont_fix", "revoked", "used_in_tests"]
             },
             "resolved_by": { "$ref": "common/user.schema.json" },
             "resolved_at": { "type": "string", "format": "date-time" }
