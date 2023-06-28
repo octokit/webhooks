@@ -8,6 +8,7 @@
     "slug": "github",
     "description": "Open-source team",
     "privacy": "secret",
+    "notification_setting": "notifications_enabled",
     "url": "https://api.github.com/teams/3253328",
     "html_url": "https://github.com/orgs/Octocoders/teams/github",
     "members_url": "https://api.github.com/teams/3253328/members{/member}",
