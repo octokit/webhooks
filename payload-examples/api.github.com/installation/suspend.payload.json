@@ -69,7 +69,6 @@
       "check_suite",
       "code_scanning_alert",
       "commit_comment",
-      "content_reference",
       "create",
       "delete",
       "deployment",
