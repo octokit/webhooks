@@ -453,7 +453,10 @@ export type WorkflowJobEvent =
   | WorkflowJobInProgressEvent
   | WorkflowJobQueuedEvent
   | WorkflowJobWaitingEvent;
-export type WorkflowStep = WorkflowStepInProgress | WorkflowStepCompleted;
+export type WorkflowStep =
+  | WorkflowStepInProgress
+  | WorkflowStepQueued
+  | WorkflowStepCompleted;
 export type WorkflowRunEvent =
   | WorkflowRunCompletedEvent
   | WorkflowRunInProgressEvent
@@ -1140,10 +1143,11 @@ export interface App {
     | "check_suite"
     | "code_scanning_alert"
     | "commit_comment"
-    | "content_reference"
     | "create"
     | "delete"
+    | "dependabot_alert"
     | "deployment"
+    | "deployment_protection_rule"
     | "deployment_review"
     | "deployment_status"
     | "deploy_key"
@@ -1176,6 +1180,7 @@ export interface App {
     | "release"
     | "repository"
     | "repository_dispatch"
+    | "repository_ruleset"
     | "secret_scanning_alert"
     | "secret_scanning_alert_location"
     | "security_and_analysis"
@@ -1185,8 +1190,8 @@ export interface App {
     | "team_add"
     | "watch"
     | "workflow_dispatch"
-    | "workflow_run"
     | "workflow_job"
+    | "workflow_run"
   )[];
 }
 export interface CheckRunCreatedEvent {
@@ -2371,7 +2376,7 @@ export interface DependabotAlert {
   /**
    * The state of the Dependabot alert.
    */
-  state: "dismissed" | "fixed" | "open";
+  state: "dismissed" | "fixed" | "open" | "auto_dismissed";
   /**
    * Details for the vulnerable dependency.
    */
@@ -2516,6 +2521,10 @@ export interface DependabotAlert {
    * The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
    */
   dismissed_at: string | null;
+  /**
+   * The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
+   */
+  auto_dismissed_at?: string | null;
   dismissed_by: User | null;
   /**
    * The reason that the alert was dismissed.
@@ -2929,7 +2938,15 @@ export interface Team {
      * Permission that the team will have for its repositories
      */
     permission: string;
+    /**
+     * Whether team members will receive notifications when their team is @mentioned
+     */
+    notification_setting?: "notifications_enabled" | "notifications_disabled";
   } | null;
+  /**
+   * Whether team members will receive notifications when their team is @mentioned
+   */
+  notification_setting?: "notifications_enabled" | "notifications_disabled";
 }
 export interface Label {
   id: number;
@@ -3641,7 +3658,6 @@ export interface Installation {
     | "check_suite"
     | "code_scanning_alert"
     | "commit_comment"
-    | "content_reference"
     | "create"
     | "delete"
     | "deployment"
@@ -3657,6 +3673,7 @@ export interface Installation {
     | "label"
     | "member"
     | "membership"
+    | "merge_group"
     | "merge_queue_entry"
     | "milestone"
     | "organization"
@@ -3678,6 +3695,7 @@ export interface Installation {
     | "repository_dispatch"
     | "secret_scanning_alert"
     | "secret_scanning_alert_location"
+    | "security_and_analysis"
     | "star"
     | "status"
     | "team"
@@ -6953,6 +6971,9 @@ export interface RepositoryEditedEvent {
     homepage?: {
       from: string | null;
     };
+    topics?: {
+      from: string[];
+    };
   };
   repository: Repository;
   sender: User;
@@ -7067,7 +7088,7 @@ export interface RepositoryVulnerabilityAlertAlert {
   ghsa_id: string;
   external_reference: string;
   external_identifier: string;
-  fixed_in: string;
+  fixed_in?: string;
   fixed_at?: string;
   fix_reason?: string;
   created_at: string;
@@ -7099,6 +7120,7 @@ export interface RepositoryVulnerabilityAlertResolveEvent {
     state: "fixed";
     fixed_at: string;
     fix_reason: string;
+    fixed_in: string;
   };
   repository: Repository;
   sender: GitHubOrg;
@@ -7872,6 +7894,14 @@ export interface WorkflowStepInProgress {
   conclusion: null;
   number: number;
   started_at: string;
+  completed_at: null;
+}
+export interface WorkflowStepQueued {
+  name: string;
+  status: "queued";
+  conclusion: null;
+  number: number;
+  started_at: null;
   completed_at: null;
 }
 export interface WorkflowStepCompleted {
