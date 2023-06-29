@@ -4967,6 +4967,7 @@ export interface PackagePublishedEvent {
   };
   repository: Repository;
   sender: User;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface PackageNPMMetadata {
@@ -5184,6 +5185,7 @@ export interface PackageUpdatedEvent {
   };
   repository: Repository;
   sender: User;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 /**
@@ -6607,6 +6609,7 @@ export interface RegistryPackagePublishedEvent {
   };
   repository: Repository;
   sender: User;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface RegistryPackageUpdatedEvent {
@@ -6785,6 +6788,7 @@ export interface RegistryPackageUpdatedEvent {
   };
   repository: Repository;
   sender: User;
+  installation?: InstallationLite;
   organization?: Organization;
 }
 export interface ReleaseCreatedEvent {
