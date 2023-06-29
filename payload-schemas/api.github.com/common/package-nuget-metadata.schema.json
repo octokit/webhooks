@@ -4,13 +4,7 @@
   "type": "object",
   "required": [],
   "properties": {
-    "id": {
-      "oneOf": [
-        { "type": "string" },
-        { "type": "object" },
-        { "type": "integer" }
-      ]
-    },
+    "id": { "oneOf": [{ "type": "string" }, { "type": "integer" }] },
     "name": { "type": "string" },
     "value": {
       "oneOf": [

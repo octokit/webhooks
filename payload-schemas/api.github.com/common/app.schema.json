@@ -113,10 +113,11 @@
           "check_suite",
           "code_scanning_alert",
           "commit_comment",
-          "content_reference",
           "create",
           "delete",
+          "dependabot_alert",
           "deployment",
+          "deployment_protection_rule",
           "deployment_review",
           "deployment_status",
           "deploy_key",
@@ -149,6 +150,7 @@
           "release",
           "repository",
           "repository_dispatch",
+          "repository_ruleset",
           "secret_scanning_alert",
           "secret_scanning_alert_location",
           "security_and_analysis",
@@ -158,8 +160,8 @@
           "team_add",
           "watch",
           "workflow_dispatch",
-          "workflow_run",
-          "workflow_job"
+          "workflow_job",
+          "workflow_run"
         ]
       }
     }

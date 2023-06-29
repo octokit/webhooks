@@ -25,6 +25,14 @@
           "required": ["from"],
           "properties": { "from": { "type": ["string", "null"] } },
           "additionalProperties": false
+        },
+        "topics": {
+          "type": "object",
+          "required": ["from"],
+          "properties": {
+            "from": { "type": "array", "items": { "type": "string" } }
+          },
+          "additionalProperties": false
         }
       },
       "additionalProperties": false

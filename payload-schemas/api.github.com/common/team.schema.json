@@ -77,9 +77,19 @@
         "permission": {
           "type": "string",
           "description": "Permission that the team will have for its repositories"
+        },
+        "notification_setting": {
+          "type": "string",
+          "enum": ["notifications_enabled", "notifications_disabled"],
+          "description": "Whether team members will receive notifications when their team is @mentioned"
         }
       },
       "additionalProperties": false
+    },
+    "notification_setting": {
+      "type": "string",
+      "enum": ["notifications_enabled", "notifications_disabled"],
+      "description": "Whether team members will receive notifications when their team is @mentioned"
     }
   },
   "additionalProperties": false,
