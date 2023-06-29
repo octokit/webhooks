@@ -5039,12 +5039,7 @@ export interface PackageNPMMetadata {
   deleted_by_id?: number;
 }
 export interface PackageNugetMetadata {
-  id?:
-    | string
-    | {
-        [k: string]: unknown;
-      }
-    | number;
+  id?: string | number;
   name?: string;
   value?:
     | boolean
