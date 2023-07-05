@@ -27,7 +27,7 @@
     "state": {
       "type": "string",
       "description": "The state of the Dependabot alert.",
-      "enum": ["dismissed", "fixed", "open"]
+      "enum": ["dismissed", "fixed", "open", "auto_dismissed"]
     },
     "dependency": {
       "type": "object",
@@ -246,6 +246,11 @@
       "type": ["string", "null"],
       "format": "date-time",
       "description": "The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    },
+    "auto_dismissed_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     },
     "dismissed_by": {
       "oneOf": [{ "$ref": "user.schema.json" }, { "type": "null" }]

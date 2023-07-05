@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "secret_scanning_alert_location$created",
+  "title": "secret_scanning_alert_location created event",
+  "type": "object",
+  "required": ["action", "location", "alert", "repository", "sender"],
+  "properties": {
+    "action": { "type": "string", "enum": ["created"] },
+    "alert": { "$ref": "common/secret-scanning-alert.schema.json" },
+    "location": { "$ref": "common/secret-scanning-location.schema.json" },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" }
+  },
+  "additionalProperties": false
+}

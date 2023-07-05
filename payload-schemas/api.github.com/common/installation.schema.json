@@ -87,6 +87,7 @@
           "enum": ["read", "write"],
           "description": "The level of permission granted to the access token for organization teams and members."
         },
+        "merge_queues": { "type": "string", "enum": ["read", "write"] },
         "metadata": {
           "type": "string",
           "enum": ["read", "write"],
@@ -215,7 +216,6 @@
           "check_suite",
           "code_scanning_alert",
           "commit_comment",
-          "content_reference",
           "create",
           "delete",
           "deployment",
@@ -231,6 +231,7 @@
           "label",
           "member",
           "membership",
+          "merge_group",
           "merge_queue_entry",
           "milestone",
           "organization",
@@ -252,6 +253,7 @@
           "repository_dispatch",
           "secret_scanning_alert",
           "secret_scanning_alert_location",
+          "security_and_analysis",
           "star",
           "status",
           "team",

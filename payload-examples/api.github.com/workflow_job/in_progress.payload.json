@@ -7,11 +7,13 @@
     "run_attempt": 1,
     "node_id": "MDExOldvcmtmbG93UnVuMjg5NzgyNDUx",
     "head_sha": "3484a3fb816e0859fd6e1cea078d76385ff50625",
+    "head_branch": "main",
     "url": "https://api.github.com/repos/octo-org/octo-repo/actions/jobs/1291536064",
     "html_url": "https://github.com/octo-org/octo-repo/runs/1291536064",
     "status": "in_progress",
     "conclusion": null,
     "started_at": "2021-09-13T02:21:13Z",
+    "created_at": "2021-09-13T02:21:13Z",
     "completed_at": null,
     "name": "Analyze (javascript)",
     "steps": [
@@ -29,7 +31,8 @@
     "runner_id": 5,
     "runner_name": "GitHub Actions 5",
     "runner_group_id": 2,
-    "runner_group_name": "GitHub Actions"
+    "runner_group_name": "GitHub Actions",
+    "workflow_name": "CodeQL"
   },
   "repository": {
     "id": 186853002,

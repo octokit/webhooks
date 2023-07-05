@@ -2,10 +2,22 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "organization$renamed",
   "type": "object",
-  "required": ["action", "membership", "organization", "sender"],
+  "required": ["changes", "action", "organization", "sender"],
   "properties": {
+    "changes": {
+      "type": "object",
+      "required": ["login"],
+      "properties": {
+        "login": {
+          "type": "object",
+          "required": ["from"],
+          "properties": { "from": { "type": "string" } },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
     "action": { "type": "string", "enum": ["renamed"] },
-    "membership": { "$ref": "common/membership.schema.json" },
     "sender": { "$ref": "common/user.schema.json" },
     "installation": { "$ref": "common/installation-lite.schema.json" },
     "organization": { "$ref": "common/organization.schema.json" }

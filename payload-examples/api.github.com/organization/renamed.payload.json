@@ -1,20 +1,6 @@
 {
-  "changes": {},
-  "action": "edited",
-  "team": {
-    "name": "github",
-    "id": 3253328,
-    "node_id": "MDQ6VGVhbTMyNTMzMjg=",
-    "slug": "github",
-    "description": "Open-source team",
-    "privacy": "secret",
-    "notification_setting": "notifications_enabled",
-    "url": "https://api.github.com/teams/3253328",
-    "html_url": "https://github.com/orgs/Octocoders/teams/github",
-    "members_url": "https://api.github.com/teams/3253328/members{/member}",
-    "repositories_url": "https://api.github.com/teams/3253328/repos",
-    "permission": "pull"
-  },
+  "action": "renamed",
+  "changes": { "login": { "from": "Octocoders" } },
   "organization": {
     "login": "Octocoders",
     "id": 38302899,

@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "deployment_protection_rule$requested",
+  "title": "deployment protection rule requested event",
+  "type": "object",
+  "required": ["action", "repository", "sender"],
+  "properties": {
+    "action": { "type": "string", "enum": ["requested"] },
+    "environment": {
+      "description": "The name of the environment that has the deployment protection rule.",
+      "type": "string"
+    },
+    "event": {
+      "description": "The event that triggered the deployment protection rule.",
+      "type": "string"
+    },
+    "deployment_callback_url": {
+      "description": "The URL to review the deployment protection rule.",
+      "type": "string",
+      "format": "uri"
+    },
+    "deployment": { "$ref": "common/deployment.schema.json" },
+    "pull_requests": {
+      "type": "array",
+      "items": { "$ref": "common/pull-request.schema.json" }
+    },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
+  },
+  "additionalProperties": false
+}
