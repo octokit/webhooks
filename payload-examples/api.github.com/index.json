@@ -1,7 +1,7 @@
 [
   {
     "name": "branch_protection_rule",
-    "description": "",
+    "description": "This event occurs when there is activity relating to branch protection rules. For more information, see \"[About protected branches](https://docs.github.com/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches).\" For information about the APIs to manage branch protection rules, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#branchprotectionrule) or \"[Branch protection](https://docs.github.com/rest/branches/branch-protection)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Administration\" repository permission\n\n### Availability for `branch_protection_rule`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `branch_protection_rule`\n\nAction type: created\n\nA branch protection rule was created.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `created`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`rule` object Required\n\nThe branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.\n\nProperties of `rule`\n\n`sender` object Required\n\nA GitHub user.",
     "actions": ["created", "deleted", "edited"],
     "properties": {},
     "examples": [
@@ -672,7 +672,7 @@
   },
   {
     "name": "check_run",
-    "description": "",
+    "description": "This event occurs when there is activity relating to a check run. For information about check runs, see \"[Getting started with the Checks API](https://docs.github.com/rest/guides/getting-started-with-the-checks-api).\" For information about the APIs to manage check runs, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#checkrun) or \"[Check Runs](https://docs.github.com/rest/checks/runs)\" in the REST API documentation.\n\nFor activity relating to check suites, use the `check-suite` event.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Checks\" repository permission. To receive the `rerequested` and `requested_action` event types, the app must have at least write-level access for the \"Checks\" permission. GitHub Apps with write-level access for the \"Checks\" permission are automatically subscribed to this webhook event.\n\nRepository and organization webhooks only receive payloads for the `created` and `completed` event types in repositories.\n\n**Note**: The API only looks for pushes in the repository where the check run was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.\n\n### Availability for `check_run`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `check_run`\n\nAction type: completed\n\nA check run was completed, and a conclusion is available.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string\n\nValue: `completed`\n\n`check_run` object Required\n\nA check performed on the code of a given code change\n\nProperties of `check_run`\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": ["completed", "created", "requested_action", "rerequested"],
     "properties": {},
     "examples": [
@@ -3037,7 +3037,7 @@
   },
   {
     "name": "check_suite",
-    "description": "",
+    "description": "This event occurs when there is activity relating to a check suite. For information about check suites, see \"[Getting started with the Checks API](https://docs.github.com/rest/guides/getting-started-with-the-checks-api).\" For information about the APIs to manage check suites, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#checksuite) or \"[Check Suites](https://docs.github.com/rest/checks/suites)\" in the REST API documentation.\n\nFor activity relating to check runs, use the `check_run` event.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Checks\" permission. To receive the `requested` and `rerequested` event types, the app must have at lease write-level access for the \"Checks\" permission. GitHub Apps with write-level access for the \"Checks\" permission are automatically subscribed to this webhook event.\n\nRepository and organization webhooks only receive payloads for the `completed` event types in repositories.\n\n**Note**: The API only looks for pushes in the repository where the check suite was created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.\n\n### Availability for `check_suite`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `check_suite`\n\nAction type: completed\n\nAll check runs in a check suite have completed, and a conclusion is available.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `completed`\n\n`actions_meta` object or null\n\n`check_suite` object Required\n\nThe [check\\_suite](https://docs.github.com/rest/reference/checks#suites).\n\nProperties of `check_suite`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": ["completed", "requested", "rerequested"],
     "properties": {},
     "examples": [
@@ -4827,7 +4827,7 @@
   },
   {
     "name": "code_scanning_alert",
-    "description": "",
+    "description": "This event occurs when there is activity relating to code scanning alerts in a repository. For more information, see \"[About code scanning](https://docs.github.com/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning)\" and \"[About code scanning alerts](https://docs.github.com/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-alerts).\" For information about the API to manage code scanning, see \"[Code scanning](https://docs.github.com/rest/code-scanning)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Code scanning alerts\" repository permission.\n\n### Availability for `code_scanning_alert`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `code_scanning_alert`\n\nAction type: appeared\\_in\\_branch\n\nA previously created code scanning alert appeared in another branch. This can happen when a branch is merged into or created from a branch with a pre-existing code scanning alert.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `appeared_in_branch`\n\n`alert` object Required\n\nThe code scanning alert involved in the event.\n\nProperties of `alert`\n\n`commit_oid` string Required\n\nThe commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty.\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`ref` string Required\n\nThe Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": ["closed_by_user", "created", "fixed", "reopened"],
     "properties": {},
     "examples": [
@@ -5756,7 +5756,7 @@
   },
   {
     "name": "commit_comment",
-    "description": "",
+    "description": "This event occurs when there is activity relating to commit comments. For more information about commit comments, see \"[Commenting on a pull request](https://docs.github.com/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request).\" For information about the APIs to manage commit comments, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#commitcomment) or \"[Commit comments](https://docs.github.com/rest/commits/comments)\" in the REST API documentation.\n\nFor activity relating to comments on pull request reviews, use the `pull_request_review_comment` event. For activity relating to issue comments, use the `issue_comment` event. For activity relating to discussion comments, use the `discussion_comment` event.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Contents\" repository permission.\n\n### Availability for `commit_comment`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `commit_comment`\n\nSomeone commented on a commit.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nThe action performed. Can be `created`.\n\nValue: `created`\n\n`comment` object Required\n\nThe [commit comment](https://docs.github.com/rest/reference/repos#get-a-commit-comment) resource.\n\nProperties of `comment`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": ["created"],
     "properties": {},
     "examples": [
@@ -6416,7 +6416,7 @@
   },
   {
     "name": "create",
-    "description": "",
+    "description": "This event occurs when a Git branch or tag is created.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Contents\" repository permission.\n\n**Note**: This event will not occur when more than three tags are created at once.\n\n### Availability for `create`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `create`\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`description` string or null Required\n\nThe repository's current description.\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`master_branch` string Required\n\nThe name of the repository's default branch (usually `main`).\n\n`organization` object\n\nA GitHub organization.\n\n`pusher_type` string Required\n\nThe pusher type for the event. Can be either `user` or a deploy key.\n\n`ref` string Required\n\nThe [`git ref`](https://docs.github.com/rest/reference/git#get-a-reference) resource.\n\n`ref_type` string Required\n\nThe type of Git ref object created in the repository.\n\nCan be one of: `tag`, `branch`\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": [],
     "properties": {},
     "examples": [
@@ -6942,7 +6942,7 @@
   },
   {
     "name": "delete",
-    "description": "",
+    "description": "This event occurs when a Git branch or tag is deleted.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Contents\" repository permission.\n\n**Note**: This event will not occur when more than three tags are deleted at once.\n\n### Availability for `delete`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `delete`\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`pusher_type` string Required\n\nThe pusher type for the event. Can be either `user` or a deploy key.\n\n`ref` string Required\n\nThe [`git ref`](https://docs.github.com/rest/reference/git#get-a-reference) resource.\n\n`ref_type` string Required\n\nThe type of Git ref object deleted in the repository.\n\nCan be one of: `tag`, `branch`\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": [],
     "properties": {},
     "examples": [
@@ -7337,7 +7337,7 @@
   },
   {
     "name": "dependabot_alert",
-    "description": "",
+    "description": "This event occurs when there is activity relating to Dependabot alerts.\n\nFor more information about Dependabot alerts, see \"[About Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\" For information about the API to manage Dependabot alerts, see \"[Dependabot alerts](https://docs.github.com/rest/dependabot/alerts)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Dependabot alerts\" repository permission.\n\n**Note**: Webhook events for Dependabot alerts are currently in beta and subject to change.\n\n### Availability for `dependabot_alert`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `dependabot_alert`\n\nAction type: auto\\_dismissed\n\nA Dependabot alert was automatically closed.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `auto_dismissed`\n\n`alert` object Required\n\nA Dependabot alert.\n\nProperties of `alert`\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": ["created", "fixed"],
     "properties": {},
     "examples": [
@@ -7750,7 +7750,7 @@
   },
   {
     "name": "deploy_key",
-    "description": "",
+    "description": "This event occurs when there is activity relating to deploy keys. For more information, see \"[Managing deploy keys](https://docs.github.com/developers/overview/managing-deploy-keys).\" For information about the APIs to manage deploy keys, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#deploykey) or \"[Deploy keys](https://docs.github.com/rest/deploy-keys)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Deployments\" repository permission.\n\n### Availability for `deploy_key`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `deploy_key`\n\nAction type: created\n\nA deploy key was created.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `created`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`key` object Required\n\nThe [`deploy key`](https://docs.github.com/rest/reference/deployments#get-a-deploy-key) resource.\n\nProperties of `key`\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": ["created"],
     "properties": {},
     "examples": [
@@ -7887,7 +7887,7 @@
   },
   {
     "name": "deployment",
-    "description": "",
+    "description": "This event occurs when there is activity relating to deployments. For more information, see \"[About deployments](https://docs.github.com/actions/deployment/about-deployments).\" For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#deployment) or \"[Deployments](https://docs.github.com/rest/deployments/deployments)\" in the REST API documentation.\n\nFor activity relating to deployment status, use the `deployment_status` event.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Deployments\" repository permission.\n\n### Availability for `deployment`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `deployment`\n\nA deployment was created.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `created`\n\n`deployment` object Required\n\nThe [deployment](https://docs.github.com/rest/reference/deployments#list-deployments).\n\nProperties of `deployment`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.\n\n`workflow` object or null Required\n\n`workflow_run` object or null Required",
     "actions": ["created"],
     "properties": {},
     "examples": [
@@ -8468,14 +8468,14 @@
   },
   {
     "name": "deployment_protection_rule",
-    "description": "",
+    "description": "This event occurs when there is activity relating to deployment protection rules. For more information, see \"[Using environments for deployment](https://docs.github.com/actions/deployment/targeting-different-environments/using-environments-for-deployment#environment-protection-rules).\" For information about the API to manage deployment protection rules, see [the REST API documentation](https://docs.github.com/rest/deployments/environments).\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Deployments\" repository permission.\n\n### Availability for `deployment_protection_rule`\n\n*   GitHub Apps\n\n### Webhook payload object for `deployment_protection_rule`\n\nA deployment protection rule was requested for an environment.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string\n\nValue: `requested`\n\n`environment` string\n\nThe name of the environment that has the deployment protection rule.\n\n`event` string\n\nThe event that triggered the deployment protection rule.\n\n`deployment_callback_url` string\n\nThe URL to review the deployment protection rule.\n\n`deployment` object\n\nA request for a specific ref(branch,sha,tag) to be deployed\n\nProperties of `deployment`\n\n`pull_requests` array of objects\n\nProperties of `pull_requests`\n\n`repository` object\n\nA repository on GitHub.\n\n`organization` object\n\nA GitHub organization.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`sender` object\n\nA GitHub user.",
     "properties": {},
     "actions": [],
     "examples": []
   },
   {
     "name": "deployment_status",
-    "description": "",
+    "description": "This event occurs when there is activity relating to deployment statuses. For more information, see \"[About deployments](https://docs.github.com/actions/deployment/about-deployments).\" For information about the APIs to manage deployments, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#deployment) or \"[Deployments](https://docs.github.com/rest/deployments/deployments)\" in the REST API documentation.\n\nFor activity relating to deployment creation, use the `deployment` event.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Deployments\" repository permission.\n\n### Availability for `deployment_status`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `deployment_status`\n\nA new deployment status was created.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `created`\n\n`check_run` object or null\n\n`deployment` object Required\n\nThe [deployment](https://docs.github.com/rest/reference/deployments#list-deployments).\n\nProperties of `deployment`\n\n`deployment_status` object Required\n\nThe [deployment status](https://docs.github.com/rest/reference/deployments#list-deployment-statuses).\n\nProperties of `deployment_status`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.\n\n`workflow` object or null\n\n`workflow_run` object or null",
     "actions": ["created"],
     "properties": {},
     "examples": [
@@ -9158,7 +9158,7 @@
   },
   {
     "name": "discussion",
-    "description": "",
+    "description": "This event occurs when there is activity relating to a discussion. For more information about discussions, see \"[GitHub Discussions](https://docs.github.com/discussions).\" For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#discussion).\n\nFor activity relating to a comment on a discussion, use the `discussion_comment` event.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.\n\n**Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.\n\n### Availability for `discussion`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `discussion`\n\nAction type: answered\n\nA comment on the discussion was marked as the answer.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `answered`\n\n`answer` object Required\n\nProperties of `answer`\n\n`discussion` object Required\n\nA Discussion in a repository.\n\nProperties of `discussion`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": [
       "answered",
       "category_changed",
@@ -11943,7 +11943,7 @@
   },
   {
     "name": "discussion_comment",
-    "description": "",
+    "description": "This event occurs when there is activity relating to a comment on a discussion. For more information about discussions, see \"[GitHub Discussions](https://docs.github.com/discussions).\" For information about the API to manage discussions, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#discussion).\n\nFor activity relating to a discussion as opposed to comments on a discussion, use the `discussion` event.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Discussions\" repository permission.\n\n**Note**: Webhook events for GitHub Discussions are currently in beta and subject to change.\n\n### Availability for `discussion_comment`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `discussion_comment`\n\nAction type: created\n\nA comment on a discussion was created.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `created`\n\n`comment` object Required\n\nProperties of `comment`\n\n`discussion` object Required\n\nA Discussion in a repository.\n\nProperties of `discussion`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": ["created", "deleted", "edited"],
     "properties": {},
     "examples": [
@@ -12612,7 +12612,7 @@
   },
   {
     "name": "fork",
-    "description": "",
+    "description": "This event occurs when someone forks a repository. For more information, see \"[Fork a repo](https://docs.github.com/get-started/quickstart/fork-a-repo).\" For information about the API to manage forks, see \"[Forks](https://docs.github.com/rest/repos/forks)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Contents\" repository permission.\n\n### Availability for `fork`\n\n*   Enterprises\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `fork`\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`forkee` Required\n\nThe created [`repository`](https://docs.github.com/rest/reference/repos#get-a-repository) resource.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": [],
     "properties": {},
     "examples": [
@@ -13062,7 +13062,7 @@
   },
   {
     "name": "github_app_authorization",
-    "description": "",
+    "description": "This event occurs when a user revokes their authorization of a GitHub App. For more information, see \"[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps).\" For information about the API to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or \"[Apps](https://docs.github.com/rest/apps)\" in the REST API documentation.\n\nA GitHub App receives this webhook by default and cannot unsubscribe from this event.\n\nAnyone can revoke their authorization of a GitHub App from their [GitHub account settings page](https://github.com/settings/apps/authorizations). Revoking the authorization of a GitHub App does not uninstall the GitHub App. You should program your GitHub App so that when it receives this webhook, it stops calling the API on behalf of the person who revoked the token. If your GitHub App continues to use a revoked access token, it will receive the `401 Bad Credentials` error. For details about requests with a user access token, which require GitHub App authorization, see \"[Authenticating with a GitHub App on behalf of a user](https://docs.github.com/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-with-a-github-app-on-behalf-of-a-user).\"\n\n### Availability for `github_app_authorization`\n\n*   GitHub Apps\n\n### Webhook payload object for `github_app_authorization`\n\nSomeone revoked their authorization of a GitHub App.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `revoked`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": ["revoked"],
     "properties": {},
     "examples": [
@@ -13093,7 +13093,7 @@
   },
   {
     "name": "gollum",
-    "description": "",
+    "description": "This event occurs when someone creates or updates a wiki page. For more information, see \"[About wikis](https://docs.github.com/communities/documenting-your-project-with-wikis/about-wikis).\"\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Contents\" repository permission.\n\n### Availability for `gollum`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `gollum`\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`pages` array of objects Required\n\nThe pages that were updated.\n\nProperties of `pages`\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": [],
     "properties": {},
     "examples": [
@@ -13365,7 +13365,7 @@
   },
   {
     "name": "installation",
-    "description": "",
+    "description": "This event occurs when there is activity relating to a GitHub App installation. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.\n\nFor more information about GitHub Apps, see \"[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps).\" For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or \"[Apps](https://docs.github.com/rest/reference/apps)\" in the REST API documentation.\n\n### Availability for `installation`\n\n*   GitHub Apps\n\n### Webhook payload object for `installation`\n\nAction type: created\n\nSomeone installed a GitHub App on a user or organization account.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `created`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object Required\n\nInstallation\n\n`organization` object\n\nA GitHub organization.\n\n`repositories` array of objects\n\nAn array of repository objects that the installation can access.\n\nProperties of `repositories`\n\n`repository` object\n\nA repository on GitHub.\n\n`requester` object or null\n\n`sender` object Required\n\nA GitHub user.",
     "actions": [
       "created",
       "deleted",
@@ -14056,7 +14056,7 @@
   },
   {
     "name": "installation_repositories",
-    "description": "",
+    "description": "This event occurs when there is activity relating to which repositories a GitHub App installation can access. All GitHub Apps receive this event by default. You cannot manually subscribe to this event.\n\nFor more information about GitHub Apps, see \"[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps).\" For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or \"[Apps](https://docs.github.com/rest/reference/apps)\" in the REST API documentation.\n\n### Availability for `installation_repositories`\n\n*   GitHub Apps\n\n### Webhook payload object for `installation_repositories`\n\nAction type: added\n\nA GitHub App installation was granted access to one or more repositories.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `added`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object Required\n\nInstallation\n\n`organization` object\n\nA GitHub organization.\n\n`repositories_added` array of objects Required\n\nAn array of repository objects, which were added to the installation.\n\nProperties of `repositories_added`\n\n`repositories_removed` array of objects Required\n\nAn array of repository objects, which were removed from the installation.\n\nProperties of `repositories_removed`\n\n`repository` object\n\nA repository on GitHub.\n\n`repository_selection` string Required\n\nDescribe whether all repositories have been selected or there's a selection involved\n\nCan be one of: `all`, `selected`\n\n`requester` object or null Required\n\n`sender` object Required\n\nA GitHub user.",
     "actions": ["added", "removed"],
     "properties": {},
     "examples": [
@@ -14244,14 +14244,14 @@
   },
   {
     "name": "installation_target",
-    "description": "",
+    "description": "This event occurs when there is activity relating to the user or organization account that a GitHub App is installed on. For more information, see \"[About apps](https://docs.github.com/developers/apps/getting-started-with-apps/about-apps#about-github-apps).\" For information about the APIs to manage GitHub Apps, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#app) or \"[Apps](https://docs.github.com/rest/reference/apps)\" in the REST API documentation.\n\n### Availability for `installation_target`\n\n*   GitHub Apps\n\n### Webhook payload object for `installation_target`\n\nSomebody renamed the user or organization account that a GitHub App is installed on.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`account` object Required\n\nProperties of `account`\n\n`action` string Required\n\n`changes` object Required\n\nProperties of `changes`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object Required\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object\n\nA repository on GitHub.\n\n`sender` object\n\nA GitHub user.\n\n`target_type` string Required",
     "properties": {},
     "actions": [],
     "examples": []
   },
   {
     "name": "issue_comment",
-    "description": "",
+    "description": "This event occurs when there is activity relating to a comment on an issue or pull request. For more information about issues and pull requests, see \"[About issues](https://docs.github.com/issues/tracking-your-work-with-issues/about-issues)\" and \"[About pull requests](https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).\" For information about the APIs to manage issue comments, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#issuecomment) or \"[Issue comments](https://docs.github.com/rest/issues/comments)\" in the REST API documentation.\n\nFor activity relating to an issue as opposed to comments on an issue, use the `issue` event. For activity related to pull request reviews or pull request review comments, use the `pull_request_review` or `pull_request_review_comment` events. For more information about the different types of pull request comments, see \"[Working with comments](https://docs.github.com/rest/guides/working-with-comments).\"\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Issues\" or \"Pull requests\" repository permissions.\n\n### Availability for `issue_comment`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `issue_comment`\n\nAction type: created\n\nA comment on an issue or pull request was created.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `created`\n\n`comment` object Required\n\nThe [comment](https://docs.github.com/rest/reference/issues#comments) itself.\n\nProperties of `comment`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`issue` Required\n\nThe [issue](https://docs.github.com/rest/reference/issues) the comment belongs to.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": ["created", "deleted", "edited"],
     "properties": {},
     "examples": [
@@ -16740,7 +16740,7 @@
   },
   {
     "name": "issues",
-    "description": "",
+    "description": "This event occurs when there is activity relating to an issue. For more information about issues, see \"[About issues](https://docs.github.com/issues/tracking-your-work-with-issues/about-issues).\" For information about the APIs to manage issues, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#issue) or \"[Issues](https://docs.github.com/rest/issues)\" in the REST API documentation.\n\nFor activity relating to a comment on an issue, use the `issue_comment` event.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Issues\" repository permission.\n\n### Availability for `issues`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `issues`\n\nAction type: assigned\n\nAn issue was assigned to a user.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nThe action that was performed.\n\nValue: `assigned`\n\n`assignee` object or null\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`issue` object Required\n\nThe [issue](https://docs.github.com/rest/reference/issues) itself.\n\nProperties of `issue`\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": [
       "assigned",
       "deleted",
@@ -24400,7 +24400,7 @@
   },
   {
     "name": "label",
-    "description": "",
+    "description": "This event occurs when there is activity relating to labels. For more information, see \"[Managing labels](https://docs.github.com/issues/using-labels-and-milestones-to-track-work/managing-labels).\" For information about the APIs to manage labels, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#label) or \"[Labels](https://docs.github.com/rest/issues/labels)\" in the REST API documentation.\n\nIf you want to receive an event when a label is added to or removed from an issue, pull request, or discussion, use the `labeled` or `unlabeled` action type for the `issues`, `pull_request`, or `discussion` events instead.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Metadata\" repository permission.\n\n### Availability for `label`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `label`\n\nAction type: created\n\nA label was created.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `created`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`label` object Required\n\nProperties of `label`\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object\n\nA GitHub user.",
     "actions": ["created", "deleted", "edited"],
     "properties": {},
     "examples": [
@@ -25063,7 +25063,7 @@
   },
   {
     "name": "marketplace_purchase",
-    "description": "",
+    "description": "This event occurs when there is activity relating to a GitHub Marketplace purchase. For more information, see \"[GitHub Marketplace](https://docs.github.com/marketplace).\" For information about the APIs to manage GitHub Marketplace listings, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#marketplacelisting) or \"[GitHub Marketplace](https://docs.github.com/rest/apps/marketplace)\" in the REST API documentation.\n\n### Availability for `marketplace_purchase`\n\n*   GitHub Marketplace\n\n### Webhook payload object for `marketplace_purchase`\n\nAction type: cancelled\n\nSomeone cancelled a GitHub Marketplace plan, and the last billing cycle has ended. The change will take effect on the account immediately.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `cancelled`\n\n`effective_date` string Required\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`marketplace_purchase` Required\n\n`organization` object\n\nA GitHub organization.\n\n`previous_marketplace_purchase` object\n\nProperties of `previous_marketplace_purchase`\n\n`repository` object\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": ["cancelled", "changed", "purchased"],
     "properties": {},
     "examples": [
@@ -25242,7 +25242,7 @@
   },
   {
     "name": "member",
-    "description": "",
+    "description": "This event occurs when there is activity relating to collaborators in a repository. For more information, see \"[Adding outside collaborators to repositories in your organization](https://docs.github.com/organizations/managing-user-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization).\" For more information about the API to manage repository collaborators, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#repositorycollaboratorconnection) or \"[Collaborators](https://docs.github.com/rest/collaborators/collaborators)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Members\" organization permission.\n\n### Availability for `member`\n\n*   Enterprises\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `member`\n\nAction type: added\n\nA GitHub user accepted an invitation to a repository.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `added`\n\n`changes` object\n\nProperties of `changes`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`member` object or null Required\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": ["added", "edited"],
     "properties": {},
     "examples": [
@@ -25677,7 +25677,7 @@
   },
   {
     "name": "membership",
-    "description": "",
+    "description": "This event occurs when there is activity relating to team membership. For more information, see \"[About teams](https://docs.github.com/organizations/organizing-members-into-teams/about-teams).\" For more information about the APIs to manage team memberships, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#team) or \"[Team members](https://docs.github.com/rest/teams/members)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Members\" organization permission.\n\n### Availability for `membership`\n\n*   Organizations\n*   Enterprises\n*   GitHub Apps\n\n### Webhook payload object for `membership`\n\nAction type: added\n\nAn organization member was added to a team.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `added`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`member` object or null Required\n\n`organization` object Required\n\nA GitHub organization.\n\n`repository` object\n\nA repository on GitHub.\n\n`scope` string Required\n\nThe scope of the membership. Currently, can only be `team`.\n\nValue: `team`\n\n`sender` object or null Required\n\n`team` object Required\n\nGroups of organization members that gives permissions on specified repositories.\n\nProperties of `team`",
     "actions": ["added", "removed"],
     "properties": {},
     "examples": [
@@ -25961,7 +25961,7 @@
   },
   {
     "name": "merge_group",
-    "description": "",
+    "description": "This event occurs when there is activity relating to a merge group in a merge queue. For more information, see \"[Managing a merge queue](https://docs.github.com/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue).\"\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Merge queues\" repository permission.\n\n### Availability for `merge_group`\n\n*   GitHub Apps\n\n### Webhook payload object for `merge_group`\n\nAction type: checks\\_requested\n\nStatus checks were requested for a merge group. This happens when a merge group is created or added to by the merge queue because a pull request was queued.\n\nWhen you receive this event, you should perform checks on the head SHA and report status back using check runs or commit statuses.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `checks_requested`\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`merge_group` object Required\n\nA group of pull requests that the merge queue has grouped together to be merged.\n\nProperties of `merge_group`\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object\n\nA repository on GitHub.\n\n`sender` object\n\nA GitHub user.",
     "actions": ["checks_requested"],
     "properties": {},
     "examples": [
@@ -26128,7 +26128,7 @@
   },
   {
     "name": "meta",
-    "description": "",
+    "description": "This event occurs when there is activity relating to a webhook itself.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Meta\" app permission.\n\n### Availability for `meta`\n\n*   GitHub Marketplace\n*   Enterprises\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `meta`\n\nThe webhook was deleted.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `deleted`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`hook` object Required\n\nThe modified webhook. This will contain different keys based on the type of webhook it is: repository, organization, business, app, or GitHub Marketplace.\n\nProperties of `hook`\n\n`hook_id` integer Required\n\nThe id of the modified webhook.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object\n\nA repository on GitHub.\n\n`sender` object\n\nA GitHub user.",
     "actions": ["deleted"],
     "properties": {},
     "examples": [
@@ -26272,7 +26272,7 @@
   },
   {
     "name": "milestone",
-    "description": "",
+    "description": "This event occurs when there is activity relating to milestones. For more information, see \"[About milestones](https://docs.github.com/issues/using-labels-and-milestones-to-track-work/about-milestones).\" For information about the APIs to manage milestones, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#milestone) or \"[Milestones](https://docs.github.com/rest/issues/milestones)\" in the REST API documentation.\n\nIf you want to receive an event when an issue or pull request is added to or removed from a milestone, use the `milestoned` or `demilestoned` action type for the `issues` or `pull_request` events instead.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Issues\" or \"Pull requests\" repository permissions.\n\n### Availability for `milestone`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `milestone`\n\nAction type: closed\n\nA milestone was closed.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `closed`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`milestone` object Required\n\nA collection of related issues and pull requests.\n\nProperties of `milestone`\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": ["closed", "created", "deleted"],
     "properties": {},
     "examples": [
@@ -26916,7 +26916,7 @@
   },
   {
     "name": "org_block",
-    "description": "",
+    "description": "This event occurs when organization owners or moderators block or unblock a non-member from collaborating on the organization's repositories. For more information, see \"[Blocking a user from your organization](https://docs.github.com/communities/maintaining-your-safety-on-github/blocking-a-user-from-your-organization).\" For information about the APIs to manage blocked users, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#userblockedevent) or \"[Blocking users](https://docs.github.com/rest/orgs/blocking)\" in the REST API documentation.\n\nIf you want to receive an event when members are added or removed from an organization, use the `organization` event instead.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Administration\" organization permission.\n\n### Availability for `org_block`\n\n*   Organizations\n*   Enterprises\n*   GitHub Apps\n\n### Webhook payload object for `org_block`\n\nAction type: blocked\n\nA user was blocked from the organization.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `blocked`\n\n`blocked_user` object or null Required\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object Required\n\nA GitHub organization.\n\n`repository` object\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": ["blocked", "unblocked"],
     "properties": {},
     "examples": [
@@ -27099,7 +27099,7 @@
   },
   {
     "name": "organization",
-    "description": "",
+    "description": "This event occurs when there is activity relating to an organization and its members. For more information, see \"[About organizations](https://docs.github.com/organizations/collaborating-with-groups-in-organizations/about-organizations).\" For information about the APIs to manage organizations, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#organization) or \"[Organizations](https://docs.github.com/rest/orgs)\" in the REST API documentation.\n\nIf you want to receive an event when a non-member is blocked or unblocked from an organization, use the `org_block` event instead.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Members\" organization permission.\n\n### Availability for `organization`\n\n*   Organizations\n*   Enterprises\n*   GitHub Apps\n\n### Webhook payload object for `organization`\n\nAction type: deleted\n\nAn organization was deleted.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `deleted`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`membership` object\n\nThe membership between the user and the organization. Not present when the action is `member_invited`.\n\nProperties of `membership`\n\n`organization` object Required\n\nA GitHub organization.\n\n`repository` object\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": ["member_added", "member_invited", "renamed"],
     "properties": {},
     "examples": [
@@ -27372,7 +27372,7 @@
   },
   {
     "name": "package",
-    "description": "",
+    "description": "This event occurs when there is activity relating to GitHub Packages. For more information, see \"[Introduction to GitHub Packages](https://docs.github.com/packages/learn-github-packages/introduction-to-github-packages).\" For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#package) or \"[Packages](https://docs.github.com/rest/packages)\" in the REST API documentation.\n\nTo install this event on a GitHub App, the app must have at least read-level access for the \"Packages\" repository permission.\n\n### Availability for `package`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `package`\n\nAction type: published\n\nA package was published to a registry.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `published`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`package` object Required\n\nInformation about the package.\n\nProperties of `package`\n\n`repository` object\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": ["published"],
     "properties": {},
     "examples": [
@@ -28002,7 +28002,7 @@
   },
   {
     "name": "page_build",
-    "description": "",
+    "description": "This event occurs when there is an attempted build of a GitHub Pages site. This event occurs regardless of whether the build is successful. For more information, see \"[Configuring a publishing source for your GitHub Pages site](https://docs.github.com/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).\" For information about the API to manage GitHub Pages, see \"[Pages](https://docs.github.com/rest/pages)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Pages\" repository permission.\n\n### Availability for `page_build`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `page_build`\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`build` object Required\n\nThe [List GitHub Pages builds](https://docs.github.com/rest/reference/repos#list-github-pages-builds) itself.\n\nProperties of `build`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`id` integer Required\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": [],
     "properties": {},
     "examples": [
@@ -28314,14 +28314,14 @@
   },
   {
     "name": "personal_access_token_request",
-    "description": "",
+    "description": "This event occurs when there is activity relating to a request for a fine-grained personal access token to access resources that belong to a resource owner that requires approval for token access. For more information, see \"[Creating a personal access token](https://docs.github.com/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).\"\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Personal access token requests\" organization permission.\n\n**Note**: Fine-grained PATs are in public beta. Related APIs, events, and functionality are subject to change.\n\n### Availability for `personal_access_token_request`\n\n*   GitHub Apps\n\n### Webhook payload object for `personal_access_token_request`\n\nAction type: approved\n\nA fine-grained personal access token request was approved.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `approved`\n\n`personal_access_token_request` object Required\n\nDetails of a Personal Access Token Request.\n\nProperties of `personal_access_token_request`\n\n`organization` object Required\n\nA GitHub organization.\n\n`sender` object Required\n\nA GitHub user.\n\n`installation` object Required\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.",
     "properties": {},
     "actions": [],
     "examples": []
   },
   {
     "name": "ping",
-    "description": "",
+    "description": "This event occurs when you create a new webhook. The ping event is a confirmation from GitHub that you configured the webhook correctly.\n\n### Availability for `ping`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n*   Enterprises\n*   GitHub Marketplace\n\n### Webhook payload object for `ping`\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`hook` object\n\nThe webhook that is being pinged\n\nProperties of `hook`\n\n`hook_id` integer\n\nThe ID of the webhook that triggered the ping.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object\n\nA repository on GitHub.\n\n`sender` object\n\nA GitHub user.\n\n`zen` string\n\nRandom string of GitHub zen.",
     "actions": [],
     "properties": {},
     "examples": [
@@ -28683,7 +28683,7 @@
   },
   {
     "name": "project_card",
-    "description": "",
+    "description": "This event occurs when there is activity relating to a card on a classic project. For more information, see \"[About projects (classic)](https://docs.github.com/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards).\" For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#project) or \"[Projects (classic)](https://docs.github.com/rest/projects)\" in the REST API documentation.\n\nFor activity relating to a project or a column on a project, use the `project` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" repository or organization permission.\n\n### Availability for `project_card`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `project_card`\n\nAction type: converted\n\nA note in a classic project was converted to an issue.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `converted`\n\n`changes` object Required\n\nProperties of `changes`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`project_card` object Required\n\nProperties of `project_card`\n\n`repository` object\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": ["created", "deleted", "moved"],
     "properties": {},
     "examples": [
@@ -29961,7 +29961,7 @@
   },
   {
     "name": "project",
-    "description": "",
+    "description": "This event occurs when there is activity relating to a classic project. For more information, see \"[About projects (classic)](https://docs.github.com/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards).\" For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#project) or \"[Projects (classic)](https://docs.github.com/rest/projects)\" in the REST API documentation.\n\nFor activity relating to a card or column on a project, use the `project_card` and `project_column` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" repository or organization permission.\n\n### Availability for `project`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `project`\n\nAction type: closed\n\nA classic project was closed.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `closed`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`project` object Required\n\nProperties of `project`\n\n`repository` object\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": ["created"],
     "properties": {},
     "examples": [
@@ -30283,7 +30283,7 @@
   },
   {
     "name": "project_column",
-    "description": "",
+    "description": "This event occurs when there is activity relating to a column on a classic project. For more information, see \"[About projects (classic)](https://docs.github.com/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards).\" For information about the API to manage classic projects, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#project) or \"[Projects (classic)](https://docs.github.com/rest/projects)\" in the REST API documentation.\n\nFor activity relating to a project or a card on a project, use the `project` and `project_card` event. For activity relating to Projects instead of Projects (classic), use the `projects_v2` event instead.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" repository or organization permission.\n\n### Availability for `project_column`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `project_column`\n\nAction type: created\n\nA column was added to a classic project.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `created`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`project_column` object Required\n\nProperties of `project_column`\n\n`repository` object\n\nA repository on GitHub.\n\n`sender` object\n\nA GitHub user.",
     "actions": ["created", "edited"],
     "properties": {},
     "examples": [
@@ -30689,14 +30689,14 @@
   },
   {
     "name": "projects_v2",
-    "description": "",
+    "description": "This event occurs when there is activity relating to an organization-level project. For more information, see \"[About Projects](https://docs.github.com/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects).\" For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#projectv2).\n\nFor activity relating to a item on a project, use the `projects_v2_item` event. For activity relating to Projects (classic), use the `project`, project\\_card`, and` project\\_column\\` events instead.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" organization permission.\n\n**Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).\n\n### Availability for `projects_v2`\n\n*   Organizations\n\n### Webhook payload object for `projects_v2`\n\nAction type: closed\n\nA project in the organization was closed.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `closed`\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object Required\n\nA GitHub organization.\n\n`projects_v2` object Required\n\nA projects v2 project\n\nProperties of `projects_v2`\n\n`sender` object Required\n\nA GitHub user.",
     "properties": {},
     "actions": [],
     "examples": []
   },
   {
     "name": "projects_v2_item",
-    "description": "",
+    "description": "This event occurs when there is activity relating to an item on an organization-level project. For more information, see \"[About Projects](https://docs.github.com/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects).\" For information about the Projects API, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#projectv2item).\n\nFor activity relating to a project (instead of an item on a project), use the `projects_v2` event. For activity relating to Projects (classic), use the `project`, `project_card`, and `project_column` events instead.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Projects\" organization permission.\n\n**Note**: Webhook events for projects are currently in beta and subject to change. To share feedback about projects webhooks with GitHub, see the [Projects webhook feedback discussion](https://github.com/orgs/community/discussions/17405).\n\n### Availability for `projects_v2_item`\n\n*   Organizations\n\n### Webhook payload object for `projects_v2_item`\n\nAction type: archived\n\nAn item on an organization project was archived. For more information, see \"[Archiving items from your project](https://docs.github.com/issues/planning-and-tracking-with-projects/managing-items-in-your-project/archiving-items-from-your-project).\"\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `archived`\n\n`changes` object Required\n\nProperties of `changes`\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object Required\n\nA GitHub organization.\n\n`projects_v2_item` object Required\n\nAn item belonging to a project\n\nProperties of `projects_v2_item`\n\n`sender` object Required\n\nA GitHub user.",
     "actions": [
       "archived",
       "converted",
@@ -31144,7 +31144,7 @@
   },
   {
     "name": "public",
-    "description": "",
+    "description": "This event occurs when repository visibility changes from private to public. For more information, see \"[Setting repository visibility](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/setting-repository-visibility).\"\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Metadata\" repository permission.\n\n### Availability for `public`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `public`\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": [],
     "properties": {},
     "examples": [
@@ -31396,7 +31396,7 @@
   },
   {
     "name": "pull_request",
-    "description": "",
+    "description": "This event occurs when there is activity on a pull request. For more information, see \"[About pull requests](https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).\" For information about the APIs to manage pull requests, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#pullrequest) or \"[Pulls](https://docs.github.com/rest/pulls/pulls)\" in the REST API documentation.\n\nFor activity related to pull request reviews, pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review`, `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Pull requests\" repository permission.\n\n### Availability for `pull_request`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `pull_request`\n\nAction type: assigned\n\nA pull request was assigned to a user.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `assigned`\n\n`assignee` object or null Required\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`number` integer Required\n\nThe pull request number.\n\n`organization` object\n\nA GitHub organization.\n\n`pull_request` object Required\n\nProperties of `pull_request`\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": [
       "assigned",
       "closed",
@@ -46285,7 +46285,7 @@
   },
   {
     "name": "pull_request_review_comment",
-    "description": "",
+    "description": "This event occurs when there is activity relating to a pull request review comment. A pull request review comment is a comment on a pull request's diff. For more information, see \"[Commenting on a pull request](https://docs.github.com/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request).\" For information about the APIs to manage pull request review comments, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#pullrequestreviewcomment) or \"[Pull request review comments](https://docs.github.com/rest/pulls/comments)\" in the REST API documentation.\n\nFor activity related to pull request reviews, pull request comments, or pull request review threads, use the `pull_request_review`, `issue_comment`, or `pull_request_review_thread` events instead.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Pull requests\" repository permission.\n\n### Availability for `pull_request_review_comment`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `pull_request_review_comment`\n\nAction type: created\n\nA comment on a pull request diff was created.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `created`\n\n`comment` object Required\n\nThe [comment](https://docs.github.com/rest/reference/pulls#comments) itself.\n\nProperties of `comment`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`pull_request` object Required\n\nProperties of `pull_request`\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": ["created", "deleted", "edited"],
     "properties": {},
     "examples": [
@@ -48580,7 +48580,7 @@
   },
   {
     "name": "pull_request_review",
-    "description": "",
+    "description": "This event occurs when there is activity relating to a pull request review. A pull request review is a group of pull request review comments in addition to a body comment and a state. For more information, see \"[About pull request reviews](https://docs.github.com/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews).\" For information about the APIs to manage pull request reviews, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#pullrequestreview) or \"[Pull request reviews](https://docs.github.com/rest/pulls/reviews)\" in the REST API documentation.\n\nFor activity related to pull request review comments, pull request comments, or pull request review threads, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review_thread` events instead.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Pull requests\" repository permission.\n\n### Availability for `pull_request_review`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `pull_request_review`\n\nAction type: dismissed\n\nA review on a pull request was dismissed.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `dismissed`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`pull_request` object Required\n\nProperties of `pull_request`\n\n`repository` object Required\n\nA repository on GitHub.\n\n`review` object Required\n\nThe review that was affected.\n\nProperties of `review`\n\n`sender` object Required\n\nA GitHub user.",
     "actions": ["dismissed", "submitted"],
     "properties": {},
     "examples": [
@@ -50242,7 +50242,7 @@
   },
   {
     "name": "pull_request_review_thread",
-    "description": "",
+    "description": "This event occurs when there is activity relating to a comment thread on a pull request. For more information, see \"[About pull request reviews](https://docs.github.com/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews).\" For information about the APIs to manage pull request review comment threads, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#pullrequestreviewthread) or \"[Pull request reviews](https://docs.github.com/rest/pulls/reviews)\" in the REST API documentation.\n\nFor activity related to pull request review comments, pull request comments, or pull request reviews, use the `pull_request_review_comment`, `issue_comment`, or `pull_request_review` events instead.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Pull requests\" repository permission.\n\n### Availability for `pull_request_review_thread`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `pull_request_review_thread`\n\nAction type: resolved\n\nA comment thread on a pull request was marked as resolved.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `resolved`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`pull_request` object Required\n\nProperties of `pull_request`\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object\n\nA GitHub user.\n\n`thread` object Required\n\nProperties of `thread`",
     "actions": ["resolved", "unresolved"],
     "properties": {},
     "examples": [
@@ -51400,7 +51400,7 @@
   },
   {
     "name": "push",
-    "description": "",
+    "description": "This event occurs when a commit or tag is pushed.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Contents\" repository permission.\n\n**Note**: An event will not be created when more than three tags are pushed at once.\n\n### Availability for `push`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `push`\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`after` string Required\n\nThe SHA of the most recent commit on `ref` after the push.\n\n`base_ref` string or null Required\n\n`before` string Required\n\nThe SHA of the most recent commit on `ref` before the push.\n\n`commits` array of objects Required\n\nAn array of commit objects describing the pushed commits. (Pushed commits are all commits that are included in the `compare` between the `before` commit and the `after` commit.) The array includes a maximum of 20 commits. If necessary, you can use the [Commits API](https://docs.github.com/rest/reference/repos#commits) to fetch additional commits. This limit is applied to timeline events only and isn't applied to webhook deliveries.\n\nProperties of `commits`\n\n`compare` string Required\n\nURL that shows the changes in this `ref` update, from the `before` commit to the `after` commit. For a newly created `ref` that is directly based on the default branch, this is the comparison between the head of the default branch and the `after` commit. Otherwise, this shows all commits until the `after` commit.\n\n`created` boolean Required\n\nWhether this push created the `ref`.\n\n`deleted` boolean Required\n\nWhether this push deleted the `ref`.\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`forced` boolean Required\n\nWhether this push was a force push of the `ref`.\n\n`head_commit` object or null Required\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`pusher` object Required\n\nMetaproperties for Git author/committer information.\n\nProperties of `pusher`\n\n`ref` string Required\n\nThe full git ref that was pushed. Example: `refs/heads/main` or `refs/tags/v3.14.1`.\n\n`repository` object Required\n\nA git repository\n\n`sender` object\n\nA GitHub user.",
     "actions": [],
     "properties": {},
     "examples": [
@@ -52359,7 +52359,7 @@
   },
   {
     "name": "registry_package",
-    "description": "",
+    "description": "This event occurs when there is activity relating to GitHub Packages. For more information, see \"[Introduction to GitHub Packages](https://docs.github.com/packages/learn-github-packages/introduction-to-github-packages).\" For information about the APIs to manage GitHub Packages, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#package) or \"[Packages](https://docs.github.com/rest/packages)\" in the REST API documentation.\n\nTo install this event on a GitHub App, the app must have at least read-level access for the \"Packages\" repository permission.\n\n**Note**: GitHub recommends that you use the newer `package` event instead.\n\n### Availability for `registry_package`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `registry_package`\n\nAction type: published\n\nA package was published to a registry.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `published`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`registry_package` object Required\n\nProperties of `registry_package`\n\n`repository` object\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": ["published"],
     "properties": {},
     "examples": [
@@ -52741,7 +52741,7 @@
   },
   {
     "name": "release",
-    "description": "",
+    "description": "This event occurs when there is activity relating to releases. For more information, see \"[About releases](https://docs.github.com/repositories/releasing-projects-on-github/about-releases).\" For information about the APIs to manage releases, see [the GraphQL API documentation](https://docs.github.com/graphql/reference/objects#release) or \"[Releases](https://docs.github.com/rest/releases)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Contents\" repository permission.\n\n### Availability for `release`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `release`\n\nAction type: created\n\nA draft was saved, or a release or pre-release was published without previously being saved as a draft.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `created`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`release` object Required\n\nThe [release](https://docs.github.com/rest/reference/repos/#get-a-release) object.\n\nProperties of `release`\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": [
       "created",
       "deleted",
@@ -54717,14 +54717,14 @@
   },
   {
     "name": "repository_advisory",
-    "description": "",
+    "description": "This event occurs when there is activity relating to a repository security advisory. For more information about repository security advisories, see \"[About GitHub Security Advisories for repositories](https://docs.github.com/code-security/repository-security-advisories/about-github-security-advisories-for-repositories).\"\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Repository security advisories\" permission.\n\n### Availability for `repository_advisory`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `repository_advisory`\n\nAction type: published\n\nA repository security advisory was published.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `published`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`repository_advisory` object Required\n\nA repository security advisory.\n\nProperties of `repository_advisory`\n\n`sender` object\n\nA GitHub user.",
     "properties": {},
     "actions": [],
     "examples": []
   },
   {
     "name": "repository",
-    "description": "",
+    "description": "This event occurs when there is activity relating to repositories. For more information, see \"[About repositories](https://docs.github.com/repositories/creating-and-managing-repositories/about-repositories).\" For information about the APIs to manage repositories, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#repository) or \"[Repositories](https://docs.github.com/rest/repos)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Metadata\" repository permission.\n\n### Availability for `repository`\n\n*   Enterprises\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `repository`\n\nAction type: archived\n\nA repository was archived.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `archived`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": [
       "created",
       "edited",
@@ -56396,7 +56396,7 @@
   },
   {
     "name": "repository_dispatch",
-    "description": "",
+    "description": "This event occurs when a GitHub App sends a `POST` request to `/repos/{owner}/{repo}/dispatches`. For more information, see [the REST API documentation for creating a repository dispatch event](https://docs.github.com/rest/repos/repos#create-a-repository-dispatch-event).\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Contents\" repository permission.\n\n### Availability for `repository_dispatch`\n\n*   GitHub Apps\n\n### Webhook payload object for `repository_dispatch`\n\nThe `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\n`branch` string Required\n\n`client_payload` object or null Required\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object Required\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": ["on-demand-test"],
     "properties": {},
     "examples": [
@@ -56544,7 +56544,7 @@
   },
   {
     "name": "repository_import",
-    "description": "",
+    "description": "This event occurs when a repository is imported to GitHub. For more information, see \"[Importing a repository with GitHub Importer](https://docs.github.com/get-started/importing-your-projects-to-github/importing-source-code-to-github/importing-a-repository-with-github-importer).\" For more information about the API to manage imports, see [the REST API documentation](https://docs.github.com/rest/migrations/source-imports).\n\n### Availability for `repository_import`\n\n*   Repositories\n*   Organizations\n\n### Webhook payload object for `repository_import`\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.\n\n`status` string Required\n\nCan be one of: `success`, `cancelled`, `failure`",
     "actions": [],
     "properties": {},
     "examples": [
@@ -56686,7 +56686,7 @@
   },
   {
     "name": "repository_vulnerability_alert",
-    "description": "",
+    "description": "This event occurs when there is activity relating to a security vulnerability alert in a repository.\n\n**Note**: This event is deprecated. Use the `dependabot_alert` event instead.\n\n### Availability for `repository_vulnerability_alert`\n\n*   Repositories\n*   Organizations\n\n### Webhook payload object for `repository_vulnerability_alert`\n\nAction type: create\n\nA repository vulnerability alert was created.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `create`\n\n`alert` Required\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": ["create", "dismiss"],
     "properties": {},
     "examples": [
@@ -57135,7 +57135,7 @@
   },
   {
     "name": "secret_scanning_alert",
-    "description": "",
+    "description": "This event occurs when there is activity relating to a secret scanning alert. For more information about secret scanning, see \"[About secret scanning](https://docs.github.com/code-security/secret-scanning/about-secret-scanning).\" For information about the API to manage secret scanning alerts, see \"[Secret scanning](https://docs.github.com/rest/secret-scanning)\" in the REST API documentation.\n\nFor activity relating to secret scanning alert locations, use the `secret_scanning_alert_location` event.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Secret scanning alerts\" repository permission.\n\n### Availability for `secret_scanning_alert`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `secret_scanning_alert`\n\nAction type: created\n\nA secret scanning alert was created.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `created`\n\n`alert` object Required\n\nProperties of `alert`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object\n\nA GitHub user.",
     "actions": ["reopened"],
     "properties": {},
     "examples": [
@@ -57285,14 +57285,14 @@
   },
   {
     "name": "secret_scanning_alert_location",
-    "description": "",
+    "description": "This event occurs when there is activity relating to the locations of a secret in a secret scanning alert.\n\nFor more information about secret scanning, see \"[About secret scanning](https://docs.github.com/code-security/secret-scanning/about-secret-scanning).\" For information about the API to manage secret scanning alerts, see \"[Secret scanning](https://docs.github.com/rest/secret-scanning)\" in the REST API documentation.\n\nFor activity relating to secret scanning alerts, use the `secret_scanning_alert` event.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Secret scanning alerts\" repository permission.\n\n### Availability for `secret_scanning_alert_location`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `secret_scanning_alert_location`\n\nA new instance of a previously detected secret was detected in a repository, and the location of the secret was added to the existing alert.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string\n\nValue: `created`\n\n`alert` object Required\n\nProperties of `alert`\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`location` object Required\n\nProperties of `location`\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "properties": {},
     "actions": [],
     "examples": []
   },
   {
     "name": "security_advisory",
-    "description": "",
+    "description": "This event occurs when there is activity relating to a security advisory that was reviewed by GitHub. A GitHub-reviewed security advisory provides information about security-related vulnerabilities in software on GitHub. For more information about security advisories, see \"[About GitHub Security Advisories for repositories](https://docs.github.com/code-security/repository-security-advisories/about-github-security-advisories-for-repositories).\" For information about the API to manage security advisories, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#securityadvisory).\n\nGitHub Dependabot alerts are also powered by the security advisory dataset. For more information, see \"[About Dependabot alerts](https://docs.github.com/code-security/dependabot/dependabot-alerts/about-dependabot-alerts).\"\n\n### Availability for `security_advisory`\n\n*   GitHub Apps\n\n### Webhook payload object for `security_advisory`\n\nAction type: published\n\nA security advisory was published to the GitHub community.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `published`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object\n\nA repository on GitHub.\n\n`security_advisory` object Required\n\nThe details of the security advisory, including summary, description, and severity.\n\nProperties of `security_advisory`\n\n`sender` object\n\nA GitHub user.",
     "actions": ["published", "updated", "withdrawn"],
     "properties": {},
     "examples": [
@@ -57406,14 +57406,14 @@
   },
   {
     "name": "security_and_analysis",
-    "description": "",
+    "description": "This event occurs when code security and analysis features are enabled or disabled for a repository. For more information, see \"[GitHub security features](https://docs.github.com/code-security/getting-started/github-security-features).\"\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Administration\" repository permission.\n\n### Availability for `security_and_analysis`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `security_and_analysis`\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`changes` object Required\n\nProperties of `changes`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nFull Repository\n\n`sender` object\n\nA GitHub user.",
     "properties": {},
     "actions": [],
     "examples": []
   },
   {
     "name": "sponsorship",
-    "description": "",
+    "description": "This event occurs when there is activity relating to a sponsorship listing. For more information, see \"[About GitHub Sponsors](https://docs.github.com/sponsors/getting-started-with-github-sponsors/about-github-sponsors).\" For information about the API to manage sponsors, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#sponsorship).\n\nYou can only create a sponsorship webhook on GitHub.com. For more information, see \"[Configuring webhooks for events in your sponsored account](https://docs.github.com/sponsors/integrating-with-github-sponsors/configuring-webhooks-for-events-in-your-sponsored-account).\"\n\n### Availability for `sponsorship`\n\n*   Sponsored accounts\n\n### Webhook payload object for `sponsorship`\n\nAction type: cancelled\n\nA sponsorship was cancelled and the last billing cycle has ended.\n\nThis event is only sent when a recurring (monthly) sponsorship is cancelled; it is not sent for one-time sponsorships.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `cancelled`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.\n\n`sponsorship` object Required\n\nProperties of `sponsorship`",
     "actions": ["created", "pending_tier_change"],
     "properties": {},
     "examples": [
@@ -57592,7 +57592,7 @@
   },
   {
     "name": "star",
-    "description": "",
+    "description": "This event occurs when there is activity relating to repository stars. For more information about stars, see \"[Saving repositories with stars](https://docs.github.com/get-started/exploring-projects-on-github/saving-repositories-with-stars).\" For information about the APIs to manage stars, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#starredrepositoryconnection) or \"[Starring](https://docs.github.com/rest/activity/starring)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Metadata\" repository permission.\n\n### Availability for `star`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `star`\n\nAction type: created\n\nSomeone starred a repository.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `created`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.\n\n`starred_at` string or null Required\n\nThe time the star was created. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. Will be `null` for the `deleted` action.",
     "actions": ["created", "deleted"],
     "properties": {},
     "examples": [
@@ -57844,7 +57844,7 @@
   },
   {
     "name": "status",
-    "description": "",
+    "description": "This event occurs when the status of a Git commit changes. For example, commits can be marked as `error`, `failure`, `pending`, or `success`. For more information, see \"[About status checks](https://docs.github.com/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks).\" For information about the APIs to manage commit statuses, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#status) or \"[Statuses](https://docs.github.com/rest/reference/commits#commit-statuses)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Commit statuses\" repository permission.\n\n### Availability for `status`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `status`\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`avatar_url` string or null\n\n`branches` array of objects Required\n\nAn array of branch objects containing the status' SHA. Each branch contains the given SHA, but the SHA may or may not be the head of the branch. The array includes a maximum of 10 branches.\n\nProperties of `branches`\n\n`commit` object Required\n\nProperties of `commit`\n\n`context` string Required\n\n`created_at` string Required\n\n`description` string or null Required\n\nThe optional human-readable description added to the status.\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`id` integer Required\n\nThe unique identifier of the status.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`name` string Required\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.\n\n`sha` string Required\n\nThe Commit SHA.\n\n`state` string Required\n\nThe new state. Can be `pending`, `success`, `failure`, or `error`.\n\nCan be one of: `pending`, `success`, `failure`, `error`\n\n`target_url` string or null Required\n\nThe optional link added to the status.\n\n`updated_at` string Required",
     "actions": [],
     "properties": {},
     "examples": [
@@ -58501,7 +58501,7 @@
   },
   {
     "name": "team_add",
-    "description": "",
+    "description": "This event occurs when a team is added to a repository. For more information, see \"[Managing teams and people with access to your repository](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-teams-and-people-with-access-to-your-repository).\"\n\nFor activity relating to teams, see the `teams` event.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Members\" organization permission.\n\n### Availability for `team_add`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `team_add`\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.\n\n`team` object Required\n\nGroups of organization members that gives permissions on specified repositories.\n\nProperties of `team`",
     "actions": [],
     "properties": {},
     "examples": [
@@ -58807,7 +58807,7 @@
   },
   {
     "name": "team",
-    "description": "",
+    "description": "This event occurs when there is activity relating to teams in an organization. For more information, see \"[About teams](https://docs.github.com/organizations/organizing-members-into-teams/about-teams).\"\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Members\" organization permission.\n\n### Availability for `team`\n\n*   Organizations\n*   Enterprises\n*   GitHub Apps\n\n### Webhook payload object for `team`\n\nAction type: added\\_to\\_repository\n\nA team was granted access to a repository.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `added_to_repository`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object Required\n\nA GitHub organization.\n\n`repository` object\n\nA git repository\n\n`sender` object\n\nA GitHub user.\n\n`team` object Required\n\nGroups of organization members that gives permissions on specified repositories.\n\nProperties of `team`",
     "actions": [
       "added_to_repository",
       "created",
@@ -59301,7 +59301,7 @@
   },
   {
     "name": "watch",
-    "description": "",
+    "description": "This event occurs when there is activity relating to watching, or subscribing to, a repository. For more information about watching, see \"[Managing your subscriptions](https://docs.github.com/account-and-profile/managing-subscriptions-and-notifications-on-github/managing-subscriptions-for-activity-on-github/managing-your-subscriptions).\" For information about the APIs to manage watching, see \"[Watching](https://docs.github.com/rest/activity/watching)\" in the REST API documentation.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Metadata\" repository permission.\n\n### Availability for `watch`\n\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `watch`\n\nSomeone started watching the repository.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `started`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.",
     "actions": ["started"],
     "properties": {},
     "examples": [
@@ -59555,7 +59555,7 @@
   },
   {
     "name": "workflow_dispatch",
-    "description": "",
+    "description": "This event occurs when a GitHub Actions workflow is manually triggered. For more information, see \"[Manually running a workflow](https://docs.github.com/actions/managing-workflow-runs/manually-running-a-workflow).\"\n\nFor activity relating to workflow runs, use the `workflow_run` event.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Contents\" repository permission.\n\n### Availability for `workflow_dispatch`\n\n*   GitHub Apps\n\n### Webhook payload object for `workflow_dispatch`\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`inputs` object or null Required\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`ref` string Required\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.\n\n`workflow` string Required",
     "actions": [],
     "properties": {},
     "examples": [
@@ -59699,7 +59699,7 @@
   },
   {
     "name": "workflow_job",
-    "description": "",
+    "description": "This event occurs when there is activity relating to a job in a GitHub Actions workflow. For more information, see \"[Using jobs in a workflow](https://docs.github.com/actions/using-jobs/using-jobs-in-a-workflow).\" For information about the API to manage workflow jobs, see \"[Workflow jobs](https://docs.github.com/rest/actions/workflow-jobs)\" in the REST API documentation.\n\nFor activity relating to a workflow run instead of a job in a workflow run, use the `workflow_run` event.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Actions\" repository permission.\n\n### Availability for `workflow_job`\n\n*   Enterprises\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `workflow_job`\n\nAction type: completed\n\nA job in a workflow run finished. This event occurs when a job in a workflow is completed, regardless of whether the job was successful or unsuccessful.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `completed`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.\n\n`workflow_job` Required\n\n`deployment` object\n\nA request for a specific ref(branch,sha,tag) to be deployed\n\nProperties of `deployment`",
     "actions": ["completed", "in_progress", "queued", "waiting"],
     "properties": {},
     "examples": [
@@ -61168,7 +61168,7 @@
   },
   {
     "name": "workflow_run",
-    "description": "",
+    "description": "This event occurs when there is activity relating to a run of a GitHub Actions workflow. For more information, see \"[About workflows](https://docs.github.com/actions/using-workflows/about-workflows).\" For information about the APIs to manage workflow runs, see [the GraphQL documentation](https://docs.github.com/graphql/reference/objects#workflowrun) or \"[Workflow runs](https://docs.github.com/rest/actions/workflow-runs)\" in the REST API documentation.\n\nFor activity relating to a job in a workflow run, use the `workflow_job` event.\n\nTo subscribe to this event, a GitHub App must have at least read-level access for the \"Actions\" repository permission.\n\n### Availability for `workflow_run`\n\n*   Enterprises\n*   Repositories\n*   Organizations\n*   GitHub Apps\n\n### Webhook payload object for `workflow_run`\n\nAction type: completed\n\nA workflow run finished. This event occurs when a workflow run is completed, regardless of whether the workflow was successful or unsuccessful.\n\nHeaders\n\nName, Type, Description\n\nBody parameters\n\nName, Type, Description\n\n`action` string Required\n\nValue: `completed`\n\n`enterprise` object\n\nAn enterprise on GitHub.\n\n`installation` object\n\nThe GitHub App installation. This property is included when the event is configured for and sent to a GitHub App.\n\n`organization` object\n\nA GitHub organization.\n\n`repository` object Required\n\nA repository on GitHub.\n\n`sender` object Required\n\nA GitHub user.\n\n`workflow` object or null Required\n\n`workflow_run` Required",
     "actions": ["completed", "requested"],
     "properties": {},
     "examples": [

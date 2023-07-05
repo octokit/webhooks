@@ -47,7 +47,6 @@ const getName = ($: cheerio.Root): string => $("h2").text().trim();
 const getDescription = ($: cheerio.Root): string =>
   $("h2")
     .nextUntil("h3")
-    .filter("p")
     .map((i, el) => $(el).html())
     .get()
     .map((html) => turndownService.turndown(html))
