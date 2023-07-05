@@ -20,7 +20,7 @@ const [
     "first argument must be path to a property on an interface to extract into a common schema",
     "second argument must be name of the interface the new common schema should generate",
   ],
-  ["overwrite"]
+  ["overwrite"],
 );
 
 const RequiredSchemaProperties = [
@@ -39,15 +39,15 @@ type CommonSchema = Required<
   JSONSchema7;
 
 function assertHasRequiredProperties(
-  schema: JSONSchema7
+  schema: JSONSchema7,
 ): asserts schema is CommonSchema {
   const missingProperties = RequiredSchemaProperties.filter(
-    (property) => schema[property] === undefined
+    (property) => schema[property] === undefined,
   ).join(", ");
 
   assert.ok(
     missingProperties.length === 0,
-    `schema is missing the following required properties: ${missingProperties}`
+    `schema is missing the following required properties: ${missingProperties}`,
   );
 }
 
@@ -71,9 +71,9 @@ const writeNewCommonSchema = (name: string, schema: JSONSchema7) => {
 
         return value;
       }),
-      { parser: "json" }
+      { parser: "json" },
     ),
-    { flag: overwriteIfExists ? "w" : "wx" }
+    { flag: overwriteIfExists ? "w" : "wx" },
   );
 };
 

@@ -137,8 +137,8 @@ async function run() {
 
           return value;
         }),
-        { parser: "json" }
-      )
+        { parser: "json" },
+      ),
     );
   } catch (err) {
     console.error(err);

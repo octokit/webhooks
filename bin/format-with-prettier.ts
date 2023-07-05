@@ -17,7 +17,7 @@ const formatJsonInDirectory = (pathToJsons: string) => {
     const contentsBefore = fs.readFileSync(filePath, "utf-8");
     const contentsAfter = format(
       JSON.stringify(JSON.parse(contentsBefore) as JSONSchema7),
-      { parser: "json" }
+      { parser: "json" },
     );
 
     if (contentsBefore === contentsAfter) {

@@ -18,7 +18,7 @@ const [
     "first argument must be path to a property on an interface to compare the schema of",
     "second argument must be path to a property on an interface to compare the schema of",
   ],
-  ["full"]
+  ["full"],
 );
 
 const schemas = loadMapOfSchemas();

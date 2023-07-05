@@ -19,7 +19,7 @@ const commonSchemas = fs
   .map<[name: string, schema: JSONSchema7]>((commonSchema) => [
     commonSchema,
     normalizeSchema(
-      require(`../${pathToSchemas}/common/${commonSchema}`) as JSONSchema7
+      require(`../${pathToSchemas}/common/${commonSchema}`) as JSONSchema7,
     ),
   ]);
 
@@ -27,14 +27,14 @@ const findCommonSchema = (object: JSONSchema7) => {
   const normalisedSchema = normalizeSchema(object);
 
   const [schema] = commonSchemas.find(([, commonSchema]) =>
-    deepEqual(commonSchema, normalisedSchema)
+    deepEqual(commonSchema, normalisedSchema),
   ) ?? [null];
 
   return schema;
 };
 
 const splitIntoObjectAndNull = (
-  object: Readonly<JSONSchema7>
+  object: Readonly<JSONSchema7>,
 ): [JSONSchema7, { type: "null" } | null] => {
   // if the object cannot be null, just return the object
   if (!ensureArray(object.type).includes("null")) {
@@ -87,11 +87,11 @@ forEachJsonFile(pathToSchemas, (filePath) => {
 
         return value;
       }),
-      { parser: "json" }
-    )
+      { parser: "json" },
+    ),
   );
 });
 
 console.log(
-  `replaced ${count} ${count === 1 ? "property" : "properties"} with $ref`
+  `replaced ${count} ${count === 1 ? "property" : "properties"} with $ref`,
 );
