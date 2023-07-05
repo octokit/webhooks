@@ -13,9 +13,9 @@ import {
 const [, { check: checkOnly }] = parseArgv(__filename, [], ["check"]);
 
 const formatJsonInDirectory = (pathToJsons: string) => {
-  forEachJsonFile(pathToJsons, (filePath) => {
+  forEachJsonFile(pathToJsons, async (filePath) => {
     const contentsBefore = fs.readFileSync(filePath, "utf-8");
-    const contentsAfter = format(
+    const contentsAfter = await format(
       JSON.stringify(JSON.parse(contentsBefore) as JSONSchema7),
       { parser: "json" },
     );

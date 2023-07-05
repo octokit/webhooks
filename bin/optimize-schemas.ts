@@ -68,12 +68,12 @@ const addNullToObject = (object: JSONSchema7) => {
   }
 };
 
-forEachJsonFile(pathToSchemas, (pathToSchema) => {
+forEachJsonFile(pathToSchemas, async (pathToSchema) => {
   const contents = JSON.parse(fs.readFileSync(pathToSchema, "utf-8"));
 
   fs.writeFileSync(
     pathToSchema,
-    format(
+    await format(
       JSON.stringify(contents, (key, value: unknown | JSONSchema7) => {
         if (!isJsonSchemaObject(value)) {
           return value;

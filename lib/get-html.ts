@@ -1,6 +1,6 @@
 import got from "got";
 import cheerio from "cheerio";
-import prettier from "prettier";
+import * as prettier from "prettier";
 import { State, cache } from ".";
 
 export const getHtml = async (
@@ -52,7 +52,10 @@ export const getHtml = async (
   });
   const html = data.html() ?? "";
 
-  await cache.write(cacheFilePath, prettier.format(html, { parser: "html" }));
+  await cache.write(
+    cacheFilePath,
+    await prettier.format(html, { parser: "html" }),
+  );
 
   return html;
 };

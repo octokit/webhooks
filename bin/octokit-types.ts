@@ -92,7 +92,7 @@ const run = async () => {
 
   await fs.writeFile(
     "./payload-types/schema.d.ts",
-    format(ts, { parser: "typescript" }),
+    await format(ts, { parser: "typescript" }),
   );
 };
 

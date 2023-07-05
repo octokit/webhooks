@@ -56,7 +56,7 @@ const splitIntoObjectAndNull = (
 
 let count = 0;
 
-forEachJsonFile(pathToSchemas, (filePath) => {
+forEachJsonFile(pathToSchemas, async (filePath) => {
   if (filePath.includes("/common/")) {
     return;
   }
@@ -65,7 +65,7 @@ forEachJsonFile(pathToSchemas, (filePath) => {
 
   fs.writeFileSync(
     filePath,
-    format(
+    await format(
       JSON.stringify(schema, (key, value) => {
         if (typeof value === "object" && value !== null) {
           const [object, nullType] = splitIntoObjectAndNull(value);

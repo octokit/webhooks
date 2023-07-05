@@ -51,14 +51,14 @@ function assertHasRequiredProperties(
   );
 }
 
-const writeNewCommonSchema = (name: string, schema: JSONSchema7) => {
+const writeNewCommonSchema = async (name: string, schema: JSONSchema7) => {
   const pathToSchema = `${pathToSchemas}/common/${name}.schema.json`;
 
   assertHasRequiredProperties(schema);
 
   fs.writeFileSync(
     pathToSchema,
-    format(
+    await format(
       JSON.stringify(schema, (key, value: unknown) => {
         if (
           key === "$ref" &&

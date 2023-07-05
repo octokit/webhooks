@@ -1,6 +1,6 @@
 import { writeFileSync, readFileSync } from "fs";
 import { diff, diffString } from "json-diff";
-import prettier from "prettier";
+import * as prettier from "prettier";
 import {
   State,
   WorkableWebhook,
@@ -112,7 +112,7 @@ export const checkOrUpdateWebhooks = async ({
 
   writeFileSync(
     `./payload-examples/${folderName}/index.json`,
-    prettier.format(JSON.stringify(webhooks), { parser: "json" }),
+    await prettier.format(JSON.stringify(webhooks), { parser: "json" }),
   );
   console.log(`✏️  ${folderName}/index.json, written`);
 };
