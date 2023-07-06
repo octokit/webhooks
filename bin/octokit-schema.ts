@@ -123,7 +123,7 @@ async function run() {
 
     fs.writeFileSync(
       "./payload-schemas/schema.json",
-      format(
+      await format(
         JSON.stringify(schema, (key, value: unknown) => {
           if (key === "$id") {
             return undefined;
@@ -137,8 +137,8 @@ async function run() {
 
           return value;
         }),
-        { parser: "json" }
-      )
+        { parser: "json" },
+      ),
     );
   } catch (err) {
     console.error(err);

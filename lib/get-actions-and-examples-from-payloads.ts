@@ -6,7 +6,7 @@ interface ActionsAndExamples {
 }
 
 export const getActionsAndExamplesFromPayloads = (
-  folderName: string
+  folderName: string,
 ): Record<string, ActionsAndExamples> => {
   const pathToPayloads = `payload-examples/${folderName}`;
   const eventsByName: Record<string, ActionsAndExamples> = {};

@@ -9,7 +9,7 @@ import { forEachJsonFile, parseArgv, pathToPayloads } from "./utils";
 const [, { continueOnError = false }] = parseArgv(
   __filename,
   [],
-  ["continue-on-error"]
+  ["continue-on-error"],
 );
 
 const printAjvErrors = () => {
@@ -18,7 +18,7 @@ const printAjvErrors = () => {
   ajv.errors?.forEach((error) => {
     const similarError = finalErrors.find(
       (er) =>
-        er.keyword === error.keyword && er.instancePath === error.instancePath
+        er.keyword === error.keyword && er.instancePath === error.instancePath,
     ) as DefinedError | undefined;
 
     if (similarError?.keyword === "enum") {
@@ -37,7 +37,7 @@ forEachJsonFile(pathToPayloads, (filePath) => {
   if (filePath.includes("/index.json")) return;
   const file = require(`../${filePath}`) as unknown;
   const { dir: event, base: filename } = path.parse(
-    path.relative(pathToPayloads, filePath)
+    path.relative(pathToPayloads, filePath),
   );
 
   try {

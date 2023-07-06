@@ -1,6 +1,6 @@
 import { WebhookEventName, WebhookEventMap } from "@octokit/webhooks-types";
 export type WebhookDefinition<
-  TName extends WebhookEventName = WebhookEventName
+  TName extends WebhookEventName = WebhookEventName,
 > = {
   name: TName;
   actions: string[];

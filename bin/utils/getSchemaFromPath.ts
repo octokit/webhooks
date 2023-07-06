@@ -6,7 +6,7 @@ const extractFromSchema = (schema: JSONSchema7, name: string): JSONSchema7 => {
   if (ensureArray(schema.type).includes("object")) {
     assert.ok(
       schema.properties,
-      "cannot extract from an object-type schema that lacks properties"
+      "cannot extract from an object-type schema that lacks properties",
     );
 
     const value = schema.properties[name];
@@ -25,17 +25,17 @@ const extractFromSchema = (schema: JSONSchema7, name: string): JSONSchema7 => {
   }
 
   throw new Error(
-    `schemas can only be extracted from objects or arrays (got ${schema.type})`
+    `schemas can only be extracted from objects or arrays (got ${schema.type})`,
   );
 };
 
 export const getSchemaFromPath = (
   interfacePropertyPath: string,
-  schemas: Record<string, JSONSchema7>
+  schemas: Record<string, JSONSchema7>,
 ): JSONSchema7 =>
   interfacePropertyPath
     .split(".")
     .reduce<JSONSchema7>(
       (schema, segment) => extractFromSchema(schema, segment),
-      { type: "object", properties: schemas }
+      { type: "object", properties: schemas },
     );

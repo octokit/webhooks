@@ -29,7 +29,7 @@ const JSONSchema7TypeNameOrder = [
 ] as const;
 
 const standardizeTypeProperty = (
-  types: JSONSchema7TypeName[]
+  types: JSONSchema7TypeName[],
 ): JSONSchema7TypeName | JSONSchema7TypeName[] => {
   if (types.length === 1) {
     return types[0];
@@ -39,7 +39,7 @@ const standardizeTypeProperty = (
 };
 
 const isNullType = (
-  object: JSONSchema7Definition
+  object: JSONSchema7Definition,
 ): object is { type: "null" | ["null"] } & JSONSchema7 => {
   if (typeof object === "boolean") {
     return false;
@@ -68,12 +68,12 @@ const addNullToObject = (object: JSONSchema7) => {
   }
 };
 
-forEachJsonFile(pathToSchemas, (pathToSchema) => {
+forEachJsonFile(pathToSchemas, async (pathToSchema) => {
   const contents = JSON.parse(fs.readFileSync(pathToSchema, "utf-8"));
 
   fs.writeFileSync(
     pathToSchema,
-    format(
+    await format(
       JSON.stringify(contents, (key, value: unknown | JSONSchema7) => {
         if (!isJsonSchemaObject(value)) {
           return value;
@@ -112,12 +112,12 @@ forEachJsonFile(pathToSchemas, (pathToSchema) => {
           // { "type": "null" } & { ... } can be combined as "type" supports an array
           if (value.oneOf.some(isNullType)) {
             const [notNullType] = value.oneOf.filter(
-              (object) => !isNullType(object)
+              (object) => !isNullType(object),
             );
 
             assert.ok(
               typeof notNullType !== "boolean",
-              "unexpected boolean in oneOf"
+              "unexpected boolean in oneOf",
             );
 
             if (!notNullType.$ref && !notNullType.allOf) {
@@ -135,7 +135,7 @@ forEachJsonFile(pathToSchemas, (pathToSchema) => {
 
         return value;
       }),
-      { parser: "json" }
-    )
+      { parser: "json" },
+    ),
   );
 });

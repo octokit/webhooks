@@ -12,12 +12,12 @@ parseArgv(__filename, []);
 const getEventName = (ref: string): string => {
   assert.ok(
     ref.startsWith("#/definitions/"),
-    `${ref} does not point to definitions`
+    `${ref} does not point to definitions`,
   );
 
   assert.ok(
     ref.endsWith("event"),
-    `${ref} does not point to an event definition`
+    `${ref} does not point to an event definition`,
   );
 
   const [, eventName] = /^#\/definitions\/(.+)[$_]event$/u.exec(ref) ?? [];
@@ -44,7 +44,7 @@ const buildEventPayloadMap = (schema: Schema): string => {
 
 const getSchema = async () =>
   JSON.parse(
-    await fs.readFile("./payload-schemas/schema.json", "utf-8")
+    await fs.readFile("./payload-schemas/schema.json", "utf-8"),
   ) as Schema;
 
 declare module "json-schema" {
@@ -71,7 +71,7 @@ const compileSchema = async (): Promise<string> => {
       }
 
       return value;
-    }
+    },
   ) as JSONSchema4;
 
   return compile(schema, "Schema", { format: false });
@@ -92,7 +92,7 @@ const run = async () => {
 
   await fs.writeFile(
     "./payload-types/schema.d.ts",
-    format(ts, { parser: "typescript" })
+    await format(ts, { parser: "typescript" }),
   );
 };
 
