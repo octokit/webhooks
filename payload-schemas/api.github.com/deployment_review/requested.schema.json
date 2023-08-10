@@ -1,21 +1,27 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "deplyment_review$requested",
+  "$id": "deployment_review$requested",
   "type": "object",
   "required": [
     "action",
+    "environment",
     "workflow_run",
     "since",
     "workflow_job_run",
-    "environment",
     "reviewers",
     "requestor",
     "repository",
+    "organization",
     "sender"
   ],
   "properties": {
     "action": { "type": "string", "enum": ["requested"] },
-    "workflow_run": { "$ref": "common/workflow-run.schema.json" },
+    "workflow_run": {
+      "oneOf": [
+        { "$ref": "common/workflow-run.schema.json" },
+        { "type": "null" }
+      ]
+    },
     "since": { "type": "string", "format": "date-time" },
     "workflow_job_run": {
       "type": "object",

@@ -119,7 +119,10 @@ export type DeployKeyEvent = DeployKeyCreatedEvent | DeployKeyDeletedEvent;
 export type DeploymentEvent = DeploymentCreatedEvent;
 export type DeploymentProtectionRuleEvent =
   DeploymentProtectionRuleRequestedEvent;
-export type DeploymentReviewEvent = DeploymentReviewRequestedEvent;
+export type DeploymentReviewEvent =
+  | DeploymentReviewApprovedEvent
+  | DeploymentReviewRejectedEvent
+  | DeploymentReviewRequestedEvent;
 export type DeploymentStatusEvent = DeploymentStatusCreatedEvent;
 export type DiscussionEvent =
   | DiscussionAnsweredEvent
@@ -3019,11 +3022,11 @@ export interface PullRequestAutoMerge {
    */
   commit_message: string;
 }
-export interface DeploymentReviewRequestedEvent {
-  action: "requested";
+export interface DeploymentReviewApprovedEvent {
+  action: "approved";
   workflow_run: WorkflowRun;
   since: string;
-  workflow_job_run: {
+  workflow_job_run?: {
     id: number;
     name: string;
     status: "queued" | "in_progress" | "completed" | "waiting";
@@ -3033,8 +3036,17 @@ export interface DeploymentReviewRequestedEvent {
     updated_at: string;
     environment: string;
   };
-  environment: string;
-  reviewers: (
+  workflow_job_runs?: {
+    id: number;
+    name: string;
+    status: "queued" | "in_progress" | "completed" | "waiting";
+    conclusion: "success" | "failure" | "cancelled" | "skipped" | null;
+    html_url: string;
+    created_at: string;
+    updated_at: string;
+    environment: string;
+  }[];
+  reviewers?: (
     | {
         type: "User";
         reviewer: User;
@@ -3044,9 +3056,10 @@ export interface DeploymentReviewRequestedEvent {
         reviewer: Team;
       }
   )[];
-  requestor: User;
+  approver?: User;
+  comment?: string;
   repository: Repository;
-  organization?: Organization;
+  organization: Organization;
   sender: User;
   installation?: InstallationLite;
 }
@@ -3349,6 +3362,78 @@ export interface RepositoryLite {
    * The URL to get more information about the repository from the GitHub API.
    */
   url: string;
+}
+export interface DeploymentReviewRejectedEvent {
+  action: "rejected";
+  workflow_run: WorkflowRun;
+  since: string;
+  workflow_job_run?: {
+    id: number;
+    name: string;
+    status: "queued" | "in_progress" | "completed" | "waiting";
+    conclusion: "success" | "failure" | "cancelled" | "skipped" | null;
+    html_url: string;
+    created_at: string;
+    updated_at: string;
+    environment: string;
+  };
+  workflow_job_runs?: {
+    id: number;
+    name: string;
+    status: "queued" | "in_progress" | "completed" | "waiting";
+    conclusion: "success" | "failure" | "cancelled" | "skipped" | null;
+    html_url: string;
+    created_at: string;
+    updated_at: string;
+    environment: string;
+  }[];
+  reviewers?: (
+    | {
+        type: "User";
+        reviewer: User;
+      }
+    | {
+        type: "Team";
+        reviewer: Team;
+      }
+  )[];
+  approver?: User;
+  comment?: string;
+  repository: Repository;
+  organization: Organization;
+  sender: User;
+  installation?: InstallationLite;
+}
+export interface DeploymentReviewRequestedEvent {
+  action: "requested";
+  workflow_run: WorkflowRun | null;
+  since: string;
+  workflow_job_run: {
+    id: number;
+    name: string;
+    status: "queued" | "in_progress" | "completed" | "waiting";
+    conclusion: "success" | "failure" | "cancelled" | "skipped" | null;
+    html_url: string;
+    created_at: string;
+    updated_at: string;
+    environment: string;
+  };
+  environment: string;
+  reviewers: (
+    | {
+        type: "User";
+        reviewer: User;
+      }
+    | {
+        type: "Team";
+        reviewer: Team;
+      }
+  )[];
+  requestor: User;
+  repository: Repository;
+  organization: Organization;
+  sender: User;
+  installation?: InstallationLite;
 }
 export interface DeploymentStatusCreatedEvent {
   action: "created";
