@@ -71,13 +71,8 @@
             "type": "object",
             "required": ["type", "reviewer"],
             "properties": {
-              "type": {
-                "type": "string",
-                "enum": ["Team"]
-              },
-              "reviewer": {
-                "$ref": "common/team.schema.json"
-              }
+              "type": { "type": "string", "enum": ["Team"] },
+              "reviewer": { "$ref": "common/team.schema.json" }
             },
             "additionalProperties": false
           }

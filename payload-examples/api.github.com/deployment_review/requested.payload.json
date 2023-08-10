@@ -104,10 +104,7 @@
         "name": "Massimiliano Donini",
         "email": "massimiliano.donini@gmail.com"
       },
-      "committer": {
-        "name": "GitHub",
-        "email": "noreply@github.com"
-      }
+      "committer": { "name": "GitHub", "email": "noreply@github.com" }
     },
     "repository": {
       "id": 616901961,
