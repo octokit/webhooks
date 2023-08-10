@@ -17,6 +17,7 @@ export type Schema =
   | DeployKeyEvent
   | DeploymentEvent
   | DeploymentProtectionRuleEvent
+  | DeploymentReviewEvent
   | DeploymentStatusEvent
   | DiscussionEvent
   | DiscussionCommentEvent
@@ -118,6 +119,10 @@ export type DeployKeyEvent = DeployKeyCreatedEvent | DeployKeyDeletedEvent;
 export type DeploymentEvent = DeploymentCreatedEvent;
 export type DeploymentProtectionRuleEvent =
   DeploymentProtectionRuleRequestedEvent;
+export type DeploymentReviewEvent =
+  | DeploymentReviewApprovedEvent
+  | DeploymentReviewRejectedEvent
+  | DeploymentReviewRequestedEvent;
 export type DeploymentStatusEvent = DeploymentStatusCreatedEvent;
 export type DiscussionEvent =
   | DiscussionAnsweredEvent
@@ -3016,6 +3021,419 @@ export interface PullRequestAutoMerge {
    * Commit message for the merge commit.
    */
   commit_message: string;
+}
+export interface DeploymentReviewApprovedEvent {
+  action: "approved";
+  workflow_run: WorkflowRun;
+  since: string;
+  workflow_job_run?: {
+    id: number;
+    name: string;
+    status: "queued" | "in_progress" | "completed" | "waiting";
+    conclusion: "success" | "failure" | "cancelled" | "skipped" | null;
+    html_url: string;
+    created_at: string;
+    updated_at: string;
+    environment: string;
+  };
+  workflow_job_runs?: {
+    id: number;
+    name: string;
+    status: "queued" | "in_progress" | "completed" | "waiting";
+    conclusion: "success" | "failure" | "cancelled" | "skipped" | null;
+    html_url: string;
+    created_at: string;
+    updated_at: string;
+    environment: string;
+  }[];
+  reviewers?: (
+    | {
+        type: "User";
+        reviewer: User;
+      }
+    | {
+        type: "Team";
+        reviewer: Team;
+      }
+  )[];
+  approver?: User;
+  comment?: string;
+  repository: Repository;
+  organization: Organization;
+  sender: User;
+  installation?: InstallationLite;
+}
+export interface WorkflowRun {
+  /**
+   * The URL to the artifacts for the workflow run.
+   */
+  artifacts_url: string;
+  /**
+   * The URL to cancel the workflow run.
+   */
+  cancel_url: string;
+  /**
+   * The URL to the associated check suite.
+   */
+  check_suite_url: string;
+  /**
+   * The ID of the associated check suite.
+   */
+  check_suite_id: number;
+  /**
+   * The node ID of the associated check suite.
+   */
+  check_suite_node_id: string;
+  conclusion:
+    | "success"
+    | "failure"
+    | "neutral"
+    | "cancelled"
+    | "timed_out"
+    | "action_required"
+    | "stale"
+    | "skipped"
+    | null;
+  created_at: string;
+  event: string;
+  head_branch: string;
+  head_commit: SimpleCommit;
+  head_repository: RepositoryLite;
+  /**
+   * The SHA of the head commit that points to the version of the workflow being run.
+   */
+  head_sha: string;
+  /**
+   * The full path of the workflow
+   */
+  path: string;
+  display_title: string;
+  html_url: string;
+  /**
+   * The ID of the workflow run.
+   */
+  id: number;
+  /**
+   * The URL to the jobs for the workflow run.
+   */
+  jobs_url: string;
+  /**
+   * The URL to download the logs for the workflow run.
+   */
+  logs_url: string;
+  node_id: string;
+  /**
+   * The name of the workflow run.
+   */
+  name: string;
+  pull_requests: {
+    url: string;
+    id: number;
+    number: number;
+    head: {
+      ref: string;
+      sha: string;
+      repo: RepoRef;
+    };
+    base: {
+      ref: string;
+      sha: string;
+      repo: RepoRef;
+    };
+  }[];
+  repository: RepositoryLite;
+  /**
+   * The URL to rerun the workflow run.
+   */
+  rerun_url: string;
+  /**
+   * The auto incrementing run number for the workflow run.
+   */
+  run_number: number;
+  status: "requested" | "in_progress" | "completed" | "queued" | "waiting";
+  updated_at: string;
+  /**
+   * The URL to the workflow run.
+   */
+  url: string;
+  /**
+   * The ID of the parent workflow.
+   */
+  workflow_id: number;
+  /**
+   * The URL to the workflow.
+   */
+  workflow_url: string;
+  /**
+   * Attempt number of the run, 1 for first attempt and higher if the workflow was re-run.
+   */
+  run_attempt: number;
+  referenced_workflows?: ReferencedWorkflow[];
+  /**
+   * The start time of the latest run. Resets on re-run.
+   */
+  run_started_at: string;
+  /**
+   * The URL to the previous attempted run of this workflow, if one exists.
+   */
+  previous_attempt_url: string | null;
+  actor: User;
+  triggering_actor: User;
+}
+export interface RepositoryLite {
+  /**
+   * A template for the API URL to download the repository as an archive.
+   */
+  archive_url: string;
+  /**
+   * A template for the API URL to list the available assignees for issues in the repository.
+   */
+  assignees_url: string;
+  /**
+   * A template for the API URL to create or retrieve a raw Git blob in the repository.
+   */
+  blobs_url: string;
+  /**
+   * A template for the API URL to get information about branches in the repository.
+   */
+  branches_url: string;
+  /**
+   * A template for the API URL to get information about collaborators of the repository.
+   */
+  collaborators_url: string;
+  /**
+   * A template for the API URL to get information about comments on the repository.
+   */
+  comments_url: string;
+  /**
+   * A template for the API URL to get information about commits on the repository.
+   */
+  commits_url: string;
+  /**
+   * A template for the API URL to compare two commits or refs.
+   */
+  compare_url: string;
+  /**
+   * A template for the API URL to get the contents of the repository.
+   */
+  contents_url: string;
+  /**
+   * A template for the API URL to list the contributors to the repository.
+   */
+  contributors_url: string;
+  /**
+   * The API URL to list the deployments of the repository.
+   */
+  deployments_url: string;
+  /**
+   * The repository description.
+   */
+  description: string | null;
+  /**
+   * The API URL to list the downloads on the repository.
+   */
+  downloads_url: string;
+  /**
+   * The API URL to list the events of the repository.
+   */
+  events_url: string;
+  /**
+   * Whether the repository is a fork.
+   */
+  fork: boolean;
+  /**
+   * The API URL to list the forks of the repository.
+   */
+  forks_url: string;
+  /**
+   * The full, globally unique, name of the repository.
+   */
+  full_name: string;
+  /**
+   * A template for the API URL to get information about Git commits of the repository.
+   */
+  git_commits_url: string;
+  /**
+   * A template for the API URL to get information about Git refs of the repository.
+   */
+  git_refs_url: string;
+  /**
+   * A template for the API URL to get information about Git tags of the repository.
+   */
+  git_tags_url: string;
+  /**
+   * The API URL to list the hooks on the repository.
+   */
+  hooks_url: string;
+  /**
+   * The URL to view the repository on GitHub.com.
+   */
+  html_url: string;
+  /**
+   * Unique identifier of the repository
+   */
+  id: number;
+  /**
+   * A template for the API URL to get information about issue comments on the repository.
+   */
+  issue_comment_url: string;
+  /**
+   * A template for the API URL to get information about issue events on the repository.
+   */
+  issue_events_url: string;
+  /**
+   * A template for the API URL to get information about issues on the repository.
+   */
+  issues_url: string;
+  /**
+   * A template for the API URL to get information about deploy keys on the repository.
+   */
+  keys_url: string;
+  /**
+   * A template for the API URL to get information about labels of the repository.
+   */
+  labels_url: string;
+  /**
+   * The API URL to get information about the languages of the repository.
+   */
+  languages_url: string;
+  /**
+   * The API URL to merge branches in the repository.
+   */
+  merges_url: string;
+  /**
+   * A template for the API URL to get information about milestones of the repository.
+   */
+  milestones_url: string;
+  /**
+   * The name of the repository.
+   */
+  name: string;
+  /**
+   * The GraphQL identifier of the repository.
+   */
+  node_id: string;
+  /**
+   * A template for the API URL to get information about notifications on the repository.
+   */
+  notifications_url: string;
+  owner: User;
+  /**
+   * Whether the repository is private or public.
+   */
+  private: boolean;
+  /**
+   * A template for the API URL to get information about pull requests on the repository.
+   */
+  pulls_url: string;
+  /**
+   * A template for the API URL to get information about releases on the repository.
+   */
+  releases_url: string;
+  /**
+   * The API URL to list the stargazers on the repository.
+   */
+  stargazers_url: string;
+  /**
+   * A template for the API URL to get information about statuses of a commit.
+   */
+  statuses_url: string;
+  /**
+   * The API URL to list the subscribers on the repository.
+   */
+  subscribers_url: string;
+  /**
+   * The API URL to subscribe to notifications for this repository.
+   */
+  subscription_url: string;
+  /**
+   * The API URL to get information about tags on the repository.
+   */
+  tags_url: string;
+  /**
+   * The API URL to list the teams on the repository.
+   */
+  teams_url: string;
+  /**
+   * A template for the API URL to create or retrieve a raw Git tree of the repository.
+   */
+  trees_url: string;
+  /**
+   * The URL to get more information about the repository from the GitHub API.
+   */
+  url: string;
+}
+export interface DeploymentReviewRejectedEvent {
+  action: "rejected";
+  workflow_run: WorkflowRun;
+  since: string;
+  workflow_job_run?: {
+    id: number;
+    name: string;
+    status: "queued" | "in_progress" | "completed" | "waiting";
+    conclusion: "success" | "failure" | "cancelled" | "skipped" | null;
+    html_url: string;
+    created_at: string;
+    updated_at: string;
+    environment: string;
+  };
+  workflow_job_runs?: {
+    id: number;
+    name: string;
+    status: "queued" | "in_progress" | "completed" | "waiting";
+    conclusion: "success" | "failure" | "cancelled" | "skipped" | null;
+    html_url: string;
+    created_at: string;
+    updated_at: string;
+    environment: string;
+  }[];
+  reviewers?: (
+    | {
+        type: "User";
+        reviewer: User;
+      }
+    | {
+        type: "Team";
+        reviewer: Team;
+      }
+  )[];
+  approver?: User;
+  comment?: string;
+  repository: Repository;
+  organization: Organization;
+  sender: User;
+  installation?: InstallationLite;
+}
+export interface DeploymentReviewRequestedEvent {
+  action: "requested";
+  workflow_run: WorkflowRun | null;
+  since: string;
+  workflow_job_run: {
+    id: number;
+    name: string;
+    status: "queued" | "in_progress" | "completed" | "waiting";
+    conclusion: "success" | "failure" | "cancelled" | "skipped" | null;
+    html_url: string;
+    created_at: string;
+    updated_at: string;
+    environment: string;
+  };
+  environment: string;
+  reviewers: (
+    | {
+        type: "User";
+        reviewer: User;
+      }
+    | {
+        type: "Team";
+        reviewer: Team;
+      }
+  )[];
+  requestor: User;
+  repository: Repository;
+  organization: Organization;
+  sender: User;
+  installation?: InstallationLite;
 }
 export interface DeploymentStatusCreatedEvent {
   action: "created";
@@ -7963,306 +8381,6 @@ export interface WorkflowRunCompletedEvent {
   };
   installation?: InstallationLite;
 }
-export interface WorkflowRun {
-  /**
-   * The URL to the artifacts for the workflow run.
-   */
-  artifacts_url: string;
-  /**
-   * The URL to cancel the workflow run.
-   */
-  cancel_url: string;
-  /**
-   * The URL to the associated check suite.
-   */
-  check_suite_url: string;
-  /**
-   * The ID of the associated check suite.
-   */
-  check_suite_id: number;
-  /**
-   * The node ID of the associated check suite.
-   */
-  check_suite_node_id: string;
-  conclusion:
-    | "success"
-    | "failure"
-    | "neutral"
-    | "cancelled"
-    | "timed_out"
-    | "action_required"
-    | "stale"
-    | "skipped"
-    | null;
-  created_at: string;
-  event: string;
-  head_branch: string;
-  head_commit: SimpleCommit;
-  head_repository: RepositoryLite;
-  /**
-   * The SHA of the head commit that points to the version of the workflow being run.
-   */
-  head_sha: string;
-  /**
-   * The full path of the workflow
-   */
-  path: string;
-  display_title: string;
-  html_url: string;
-  /**
-   * The ID of the workflow run.
-   */
-  id: number;
-  /**
-   * The URL to the jobs for the workflow run.
-   */
-  jobs_url: string;
-  /**
-   * The URL to download the logs for the workflow run.
-   */
-  logs_url: string;
-  node_id: string;
-  /**
-   * The name of the workflow run.
-   */
-  name: string;
-  pull_requests: {
-    url: string;
-    id: number;
-    number: number;
-    head: {
-      ref: string;
-      sha: string;
-      repo: RepoRef;
-    };
-    base: {
-      ref: string;
-      sha: string;
-      repo: RepoRef;
-    };
-  }[];
-  repository: RepositoryLite;
-  /**
-   * The URL to rerun the workflow run.
-   */
-  rerun_url: string;
-  /**
-   * The auto incrementing run number for the workflow run.
-   */
-  run_number: number;
-  status: "requested" | "in_progress" | "completed" | "queued" | "waiting";
-  updated_at: string;
-  /**
-   * The URL to the workflow run.
-   */
-  url: string;
-  /**
-   * The ID of the parent workflow.
-   */
-  workflow_id: number;
-  /**
-   * The URL to the workflow.
-   */
-  workflow_url: string;
-  /**
-   * Attempt number of the run, 1 for first attempt and higher if the workflow was re-run.
-   */
-  run_attempt: number;
-  referenced_workflows?: ReferencedWorkflow[];
-  /**
-   * The start time of the latest run. Resets on re-run.
-   */
-  run_started_at: string;
-  /**
-   * The URL to the previous attempted run of this workflow, if one exists.
-   */
-  previous_attempt_url: string | null;
-  actor: User;
-  triggering_actor: User;
-}
-export interface RepositoryLite {
-  /**
-   * A template for the API URL to download the repository as an archive.
-   */
-  archive_url: string;
-  /**
-   * A template for the API URL to list the available assignees for issues in the repository.
-   */
-  assignees_url: string;
-  /**
-   * A template for the API URL to create or retrieve a raw Git blob in the repository.
-   */
-  blobs_url: string;
-  /**
-   * A template for the API URL to get information about branches in the repository.
-   */
-  branches_url: string;
-  /**
-   * A template for the API URL to get information about collaborators of the repository.
-   */
-  collaborators_url: string;
-  /**
-   * A template for the API URL to get information about comments on the repository.
-   */
-  comments_url: string;
-  /**
-   * A template for the API URL to get information about commits on the repository.
-   */
-  commits_url: string;
-  /**
-   * A template for the API URL to compare two commits or refs.
-   */
-  compare_url: string;
-  /**
-   * A template for the API URL to get the contents of the repository.
-   */
-  contents_url: string;
-  /**
-   * A template for the API URL to list the contributors to the repository.
-   */
-  contributors_url: string;
-  /**
-   * The API URL to list the deployments of the repository.
-   */
-  deployments_url: string;
-  /**
-   * The repository description.
-   */
-  description: string | null;
-  /**
-   * The API URL to list the downloads on the repository.
-   */
-  downloads_url: string;
-  /**
-   * The API URL to list the events of the repository.
-   */
-  events_url: string;
-  /**
-   * Whether the repository is a fork.
-   */
-  fork: boolean;
-  /**
-   * The API URL to list the forks of the repository.
-   */
-  forks_url: string;
-  /**
-   * The full, globally unique, name of the repository.
-   */
-  full_name: string;
-  /**
-   * A template for the API URL to get information about Git commits of the repository.
-   */
-  git_commits_url: string;
-  /**
-   * A template for the API URL to get information about Git refs of the repository.
-   */
-  git_refs_url: string;
-  /**
-   * A template for the API URL to get information about Git tags of the repository.
-   */
-  git_tags_url: string;
-  /**
-   * The API URL to list the hooks on the repository.
-   */
-  hooks_url: string;
-  /**
-   * The URL to view the repository on GitHub.com.
-   */
-  html_url: string;
-  /**
-   * Unique identifier of the repository
-   */
-  id: number;
-  /**
-   * A template for the API URL to get information about issue comments on the repository.
-   */
-  issue_comment_url: string;
-  /**
-   * A template for the API URL to get information about issue events on the repository.
-   */
-  issue_events_url: string;
-  /**
-   * A template for the API URL to get information about issues on the repository.
-   */
-  issues_url: string;
-  /**
-   * A template for the API URL to get information about deploy keys on the repository.
-   */
-  keys_url: string;
-  /**
-   * A template for the API URL to get information about labels of the repository.
-   */
-  labels_url: string;
-  /**
-   * The API URL to get information about the languages of the repository.
-   */
-  languages_url: string;
-  /**
-   * The API URL to merge branches in the repository.
-   */
-  merges_url: string;
-  /**
-   * A template for the API URL to get information about milestones of the repository.
-   */
-  milestones_url: string;
-  /**
-   * The name of the repository.
-   */
-  name: string;
-  /**
-   * The GraphQL identifier of the repository.
-   */
-  node_id: string;
-  /**
-   * A template for the API URL to get information about notifications on the repository.
-   */
-  notifications_url: string;
-  owner: User;
-  /**
-   * Whether the repository is private or public.
-   */
-  private: boolean;
-  /**
-   * A template for the API URL to get information about pull requests on the repository.
-   */
-  pulls_url: string;
-  /**
-   * A template for the API URL to get information about releases on the repository.
-   */
-  releases_url: string;
-  /**
-   * The API URL to list the stargazers on the repository.
-   */
-  stargazers_url: string;
-  /**
-   * A template for the API URL to get information about statuses of a commit.
-   */
-  statuses_url: string;
-  /**
-   * The API URL to list the subscribers on the repository.
-   */
-  subscribers_url: string;
-  /**
-   * The API URL to subscribe to notifications for this repository.
-   */
-  subscription_url: string;
-  /**
-   * The API URL to get information about tags on the repository.
-   */
-  tags_url: string;
-  /**
-   * The API URL to list the teams on the repository.
-   */
-  teams_url: string;
-  /**
-   * A template for the API URL to create or retrieve a raw Git tree of the repository.
-   */
-  trees_url: string;
-  /**
-   * The URL to get more information about the repository from the GitHub API.
-   */
-  url: string;
-}
 export interface WorkflowRunInProgressEvent {
   action: "in_progress";
   organization?: Organization;
@@ -8294,6 +8412,7 @@ export interface EventPayloadMap {
   deploy_key: DeployKeyEvent;
   deployment: DeploymentEvent;
   deployment_protection_rule: DeploymentProtectionRuleEvent;
+  deployment_review: DeploymentReviewEvent;
   deployment_status: DeploymentStatusEvent;
   discussion: DiscussionEvent;
   discussion_comment: DiscussionCommentEvent;
