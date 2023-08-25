@@ -53,13 +53,23 @@ const getDescription = ($: cheerio.Root): string =>
     .join("\n\n");
 
 const getPropertiesEl = ($: cheerio.Root): cheerio.Element[][] => {
-  const $table = $('[id^="webhook-payload-object"]').next("table");
+  const $table = $("table");
 
   if (!$table.is("table")) {
     return [];
   }
 
-  return $table.find("tbody tr").get() as cheerio.Element[][];
+  return $table
+    .find("tbody tr")
+    .get()
+    .map((el) => {
+      const $el = $(el).find("td");
+      const keyEl = $el.find("div > code").get()[0] as cheerio.Element;
+      const descriptionEl = $el.find("div > p").get()[0] as cheerio.Element;
+      const typeEl = $el.find("div > span:eq(0)").get()[0] as cheerio.Element;
+
+      return [keyEl, typeEl, descriptionEl];
+    }) as cheerio.Element[][];
 };
 
 const getProperties = ($: cheerio.Root): Webhook["properties"] => {
@@ -67,11 +77,9 @@ const getProperties = ($: cheerio.Root): Webhook["properties"] => {
   const properties: Webhook["properties"] = {};
 
   propertiesEl.forEach((propertyEl) => {
-    const [keyEl, typeEl, descriptionEl] = $(propertyEl)
-      .find("td")
-      .get() as cheerio.Element[];
+    const [keyEl, typeEl, descriptionEl] = propertyEl;
     const key = $(keyEl).text();
-    if (key !== "action") {
+    if (key !== "action" && key !== "") {
       const type = $(typeEl).text() as JSONSchema7TypeName;
       const description = turndownService.turndown(
         $(descriptionEl).html() ?? "",
@@ -86,9 +94,7 @@ const getProperties = ($: cheerio.Root): Webhook["properties"] => {
 const getActions = ($: cheerio.Root): string[] => {
   const unwantedActions = ["true", "false", "status"];
 
-  const [keyEl, , descriptionEl] = $(getPropertiesEl($)[0])
-    .find("td")
-    .get() as cheerio.Element[];
+  const [keyEl, , descriptionEl] = getPropertiesEl($)[0];
 
   if ($(keyEl).text().trim() !== "action") {
     return [];
