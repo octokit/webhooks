@@ -296,7 +296,7 @@ const handleWebhookEvent = (event: WebhookEvent) => {
 
 const handleIssuesOpenedEvent = (event: IssuesOpenedEvent) => {
   console.log(
-    `${event.sender.login} opened "${event.issue.title}" on ${event.repository.full_name}`
+    `${event.sender.login} opened "${event.issue.title}" on ${event.repository.full_name}`,
   );
 };
 ```

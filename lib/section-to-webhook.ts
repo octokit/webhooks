@@ -28,7 +28,7 @@ export const toWebhook = (section: Section): Webhook | null => {
     if (url.startsWith("/en/")) {
       $(element).attr(
         "href",
-        url.replace("/en/", "https://docs.github.com/en/")
+        url.replace("/en/", "https://docs.github.com/en/"),
       );
     }
   });
@@ -74,7 +74,7 @@ const getProperties = ($: cheerio.Root): Webhook["properties"] => {
     if (key !== "action") {
       const type = $(typeEl).text() as JSONSchema7TypeName;
       const description = turndownService.turndown(
-        $(descriptionEl).html() ?? ""
+        $(descriptionEl).html() ?? "",
       );
 
       properties[key] = { type, description };

@@ -13,13 +13,13 @@ type Join<T extends unknown[], D extends string> = T extends []
 
 type CapitalizeIf<
   Condition extends boolean,
-  T extends string
+  T extends string,
 > = Condition extends true ? Capitalize<T> : T;
 
 type SplitCamel<
   S extends string,
   D extends string,
-  IsTail extends boolean = false
+  IsTail extends boolean = false,
 > = string extends S
   ? string[]
   : S extends ""
@@ -49,7 +49,7 @@ const getArgsAndFlags = (argv: string[]): [args: string[], flags: string[]] => {
 
 function assertHasRequiredArgs<T extends string[]>(
   foundArgs: string[],
-  requiredArgs: T
+  requiredArgs: T,
 ): asserts foundArgs is T {
   requiredArgs.forEach((missingMessage, index) => {
     assert.ok(foundArgs[index], missingMessage);
@@ -81,12 +81,12 @@ const getHelpText = (pathToScript: string, full = false): string => {
 
 const isSupportedFlag = <TFlag extends string>(
   flag: string,
-  supportedFlags: TFlag[]
+  supportedFlags: TFlag[],
 ): flag is TFlag => supportedFlags.includes(flag as TFlag);
 
 const processFlags = <TFlag extends string>(
   flags: string[],
-  supportedFlags: TFlag[] = []
+  supportedFlags: TFlag[] = [],
 ): CamelCasedFlags<TFlag> => {
   const finalFlags: CamelCasedFlags<TFlag> = {};
 
@@ -106,7 +106,7 @@ const processFlags = <TFlag extends string>(
 export const parseArgv = <TRequiredArgs extends string[], TFlag extends string>(
   pathToScript: string,
   argsMissingMessages: TRequiredArgs,
-  supportedFlags: TFlag[] = []
+  supportedFlags: TFlag[] = [],
 ): [args: TRequiredArgs, flags: CamelCasedFlags<TFlag>] => {
   const [foundArgs, flags] = getArgsAndFlags(process.argv.slice(2));
 

@@ -16,7 +16,7 @@ const schemaDir = resolve(__dirname, "api.github.com");
 const requireSchema = (
   event: string,
   filename: string,
-  keyName = `${event}/${filename}`
+  keyName = `${event}/${filename}`,
 ) => {
   const schemaPath = `${schemaDir}/${event}/${filename}`;
 
@@ -28,7 +28,7 @@ const requireSchema = (
 ajv.addKeyword("tsAdditionalProperties");
 
 readdirSync(`${schemaDir}/common`).forEach((filename) =>
-  requireSchema("common", filename)
+  requireSchema("common", filename),
 );
 readdirSync(schemaDir, { withFileTypes: true })
   .filter((entity) => entity.isDirectory())
@@ -36,14 +36,14 @@ readdirSync(schemaDir, { withFileTypes: true })
   .filter((dir) => dir !== "common")
   .forEach((eventName) => {
     const addedSchemas = readdirSync(`${schemaDir}/${eventName}`).map(
-      (filename) => requireSchema(eventName, filename)
+      (filename) => requireSchema(eventName, filename),
     );
 
     ajv.addSchema(
       {
         oneOf: addedSchemas.map((schema) => ({ $ref: schema })),
       },
-      eventName
+      eventName,
     );
   });
 

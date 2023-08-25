@@ -1,0 +1,114 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "deployment_review$approved",
+  "type": "object",
+  "required": [
+    "action",
+    "workflow_run",
+    "since",
+    "repository",
+    "organization",
+    "sender"
+  ],
+  "properties": {
+    "action": { "type": "string", "enum": ["approved"] },
+    "workflow_run": { "$ref": "common/workflow-run.schema.json" },
+    "since": { "type": "string", "format": "date-time" },
+    "workflow_job_run": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "status",
+        "conclusion",
+        "html_url",
+        "created_at",
+        "updated_at",
+        "environment"
+      ],
+      "properties": {
+        "id": { "type": "integer" },
+        "name": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": ["queued", "in_progress", "completed", "waiting"]
+        },
+        "conclusion": {
+          "type": ["string", "null"],
+          "enum": ["success", "failure", "cancelled", "skipped", null]
+        },
+        "html_url": { "type": "string", "format": "uri" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "environment": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "workflow_job_runs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "status",
+          "conclusion",
+          "html_url",
+          "created_at",
+          "updated_at",
+          "environment"
+        ],
+        "properties": {
+          "id": { "type": "integer" },
+          "name": { "type": "string" },
+          "status": {
+            "type": "string",
+            "enum": ["queued", "in_progress", "completed", "waiting"]
+          },
+          "conclusion": {
+            "type": ["string", "null"],
+            "enum": ["success", "failure", "cancelled", "skipped", null]
+          },
+          "html_url": { "type": "string", "format": "uri" },
+          "created_at": { "type": "string", "format": "date-time" },
+          "updated_at": { "type": "string", "format": "date-time" },
+          "environment": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "reviewers": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": ["type", "reviewer"],
+            "properties": {
+              "type": { "type": "string", "enum": ["User"] },
+              "reviewer": { "$ref": "common/user.schema.json" }
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "required": ["type", "reviewer"],
+            "properties": {
+              "type": { "type": "string", "enum": ["Team"] },
+              "reviewer": { "$ref": "common/team.schema.json" }
+            },
+            "additionalProperties": false
+          }
+        ]
+      }
+    },
+    "approver": { "$ref": "common/user.schema.json" },
+    "comment": { "type": "string" },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" }
+  },
+  "additionalProperties": false,
+  "title": "deployment_review approved event"
+}

@@ -1,10 +1,10 @@
 import got from "got";
 import cheerio from "cheerio";
-import prettier from "prettier";
+import * as prettier from "prettier";
 import { State, cache } from ".";
 
 export const getHtml = async (
-  state: State & { baseUrl: string; folderName: string }
+  state: State & { baseUrl: string; folderName: string },
 ): Promise<string> => {
   const WEBHOOKS_DOCS_URL = state.baseUrl;
   const cacheFilePath = `${state.folderName}/webhook-events-and-payloads.html`;
@@ -40,7 +40,7 @@ export const getHtml = async (
       const filteredClasses = classes
         .split(" ")
         .filter((classSelector) =>
-          ["language-json", "warning"].includes(classSelector)
+          ["language-json", "warning"].includes(classSelector),
         );
 
       if (filteredClasses.length) {
@@ -52,7 +52,10 @@ export const getHtml = async (
   });
   const html = data.html() ?? "";
 
-  await cache.write(cacheFilePath, prettier.format(html, { parser: "html" }));
+  await cache.write(
+    cacheFilePath,
+    await prettier.format(html, { parser: "html" }),
+  );
 
   return html;
 };

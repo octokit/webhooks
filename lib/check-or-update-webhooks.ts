@@ -1,6 +1,6 @@
 import { writeFileSync, readFileSync } from "fs";
 import { diff, diffString } from "json-diff";
-import prettier from "prettier";
+import * as prettier from "prettier";
 import {
   State,
   WorkableWebhook,
@@ -63,7 +63,7 @@ export const checkOrUpdateWebhooks = async ({
       ];
 
   const currentWebhooks = JSON.parse(
-    readFileSync(`./payload-examples/${folderName}/index.json`).toString()
+    readFileSync(`./payload-examples/${folderName}/index.json`).toString(),
   );
   const html = await getHtml({ cached, baseUrl, folderName });
   const sections = getSections(html);
@@ -86,7 +86,7 @@ export const checkOrUpdateWebhooks = async ({
       name,
       description: webhook.description,
       actions: Array.from(
-        new Set(webhook.actions.concat(webhookFromPayloadExamples.actions))
+        new Set(webhook.actions.concat(webhookFromPayloadExamples.actions)),
       ),
       properties: webhook.properties,
       examples: webhook.examples.concat(webhookFromPayloadExamples.examples),
@@ -112,7 +112,7 @@ export const checkOrUpdateWebhooks = async ({
 
   writeFileSync(
     `./payload-examples/${folderName}/index.json`,
-    prettier.format(JSON.stringify(webhooks), { parser: "json" })
+    await prettier.format(JSON.stringify(webhooks), { parser: "json" }),
   );
   console.log(`✏️  ${folderName}/index.json, written`);
 };

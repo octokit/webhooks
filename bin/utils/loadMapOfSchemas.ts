@@ -9,7 +9,7 @@ export const loadMapOfSchemas = (): Record<string, JSONSchema7> => {
 
   forEachJsonFile(pathToSchemas, (pathToSchema) => {
     const schema = JSON.parse(
-      fs.readFileSync(pathToSchema, "utf-8")
+      fs.readFileSync(pathToSchema, "utf-8"),
     ) as JSONSchema7;
 
     entries.push([guessAtInterfaceName(schema), schema]);
