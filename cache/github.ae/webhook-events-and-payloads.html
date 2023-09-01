@@ -2229,7 +2229,12 @@
           </h2>
           <div>
             <div>
-              <p>This event occurs when a Git branch or tag is deleted.</p>
+              <p>
+                This event occurs when a Git branch or tag is deleted. To
+                subscribe to all pushes to a repository, including branch and
+                tag deletions, use the
+                <a href="#push"><code>push</code></a> webhook event.
+              </p>
               <p>
                 To subscribe to this event, a GitHub App must have at least
                 read-level access for the "Contents" repository permission.
@@ -9615,8 +9620,12 @@
           <div>
             <div>
               <p>
-                This event occurs when a commit or tag is pushed, or when a
-                repository is cloned.
+                This event occurs when there is a push to a repository branch.
+                This includes when a commit is pushed, when a commit tag is
+                pushed, when a branch is deleted, when a tag is deleted, or when
+                a repository is cloned. To subscribe to only branch and tag
+                deletions, use the
+                <a href="#delete"><code>delete</code></a> webhook event.
               </p>
               <p>
                 To subscribe to this event, a GitHub App must have at least
