@@ -20,9 +20,9 @@ const buildCommonSchemasDefinitionSchema = (): Record<string, JSONSchema7> => {
   const definitions: Record<string, JSONSchema7> = {};
 
   commonSchemas.forEach((schema) => {
-    definitions[
-      removeExtension(schema, ".schema.json")
-    ] = require(`../${pathToSchemas}/common/${schema}`);
+    definitions[removeExtension(schema, ".schema.json")] = require(
+      `../${pathToSchemas}/common/${schema}`,
+    );
   });
 
   return definitions;
@@ -56,8 +56,9 @@ const combineEventSchemas = () => {
 
     if (schemas.length === 1 && schemas[0] === "event.schema.json") {
       // schemas without any actions are just called "event"
-      const schema =
-        require(`../${pathToSchemas}/${event}/event.schema.json`) as JSONSchema7;
+      const schema = require(
+        `../${pathToSchemas}/${event}/event.schema.json`,
+      ) as JSONSchema7;
       const eventName = schema.$id;
 
       assert.ok(eventName, `${event}/event.schema.json does not have an $id`);
@@ -76,8 +77,9 @@ const combineEventSchemas = () => {
     }
 
     const eventActions = schemas.map((schemaName) => {
-      const schema =
-        require(`../${pathToSchemas}/${event}/${schemaName}`) as JSONSchema7;
+      const schema = require(
+        `../${pathToSchemas}/${event}/${schemaName}`,
+      ) as JSONSchema7;
       const actionEventName = schema.$id;
 
       assert.ok(actionEventName, `${event}/${schemaName} does not have an $id`);
