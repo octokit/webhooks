@@ -1011,9 +1011,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -1026,7 +1030,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -1040,7 +1052,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -1093,7 +1112,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -1267,9 +1291,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -1282,7 +1310,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -1296,7 +1332,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -1310,7 +1353,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -1354,7 +1402,7 @@
                 To subscribe to this event, a GitHub App must have at least
                 read-level access for the "Checks" permission. To receive the
                 <code>requested</code> and <code>rerequested</code> event types,
-                the app must have at lease write-level access for the "Checks"
+                the app must have at least write-level access for the "Checks"
                 permission. GitHub Apps with write-level access for the "Checks"
                 permission are automatically subscribed to this webhook event.
               </p>
@@ -1504,9 +1552,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -1519,7 +1571,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -1533,7 +1593,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -1547,7 +1614,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -1741,9 +1813,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -1756,7 +1832,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -1792,7 +1876,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -1806,7 +1897,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -1953,9 +2049,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -1968,7 +2068,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -1982,7 +2090,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -1996,7 +2111,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -2081,9 +2201,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -2115,7 +2239,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -2196,7 +2328,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -2210,7 +2349,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -2284,9 +2428,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -2299,7 +2447,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -2380,7 +2536,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -2394,7 +2557,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -2549,9 +2717,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -2564,7 +2736,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -2589,7 +2769,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -2603,7 +2790,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -2738,9 +2930,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -2787,7 +2983,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -2801,7 +3005,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -2815,7 +3026,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -2950,9 +3166,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -2965,7 +3185,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -2979,7 +3207,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -2993,7 +3228,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -3230,7 +3470,14 @@
                       <div>
                         <div><code>repository</code> <span>object</span></div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -3241,7 +3488,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -3254,9 +3509,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -3269,7 +3528,12 @@
                       <div>
                         <div><code>sender</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -3442,9 +3706,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -3460,7 +3728,15 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -3474,7 +3750,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -3512,7 +3795,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -3794,9 +4082,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -3809,7 +4101,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -3823,7 +4123,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -3837,7 +4144,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -4076,9 +4388,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -4091,7 +4407,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -4105,7 +4429,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -4119,7 +4450,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -4310,9 +4646,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -4325,7 +4665,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -4339,7 +4687,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -4353,7 +4708,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -4462,9 +4822,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -4477,7 +4841,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -4491,7 +4863,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -4505,7 +4884,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -4622,9 +5006,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -4637,7 +5025,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -4648,7 +5044,14 @@
                       <div>
                         <div><code>repository</code> <span>object</span></div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -4662,7 +5065,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -4733,9 +5141,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -4748,7 +5160,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -4787,7 +5207,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -4801,7 +5228,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -4952,7 +5384,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -4993,7 +5433,14 @@
                       <div>
                         <div><code>repository</code> <span>object</span></div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -5031,7 +5478,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -5185,7 +5637,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -5259,7 +5719,14 @@
                       <div>
                         <div><code>repository</code> <span>object</span></div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -5323,7 +5790,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -5475,9 +5947,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -5490,7 +5966,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -5501,7 +5985,14 @@
                       <div>
                         <div><code>repository</code> <span>object</span></div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -5512,7 +6003,12 @@
                       <div>
                         <div><code>sender</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -5713,9 +6209,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -5762,7 +6262,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -5776,7 +6284,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -5790,7 +6305,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -5953,9 +6473,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -6002,7 +6526,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -6016,7 +6548,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -6030,7 +6569,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -6172,9 +6716,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -6212,7 +6760,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -6226,7 +6782,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -6237,7 +6800,12 @@
                       <div>
                         <div><code>sender</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -6399,9 +6967,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -6439,7 +7011,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -6453,7 +7033,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -6467,7 +7054,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -6603,9 +7195,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -6646,7 +7242,15 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -6657,7 +7261,14 @@
                       <div>
                         <div><code>repository</code> <span>object</span></div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -6860,9 +7471,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -6875,7 +7490,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -6886,7 +7509,14 @@
                       <div>
                         <div><code>repository</code> <span>object</span></div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -6897,7 +7527,12 @@
                       <div>
                         <div><code>sender</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -7040,9 +7675,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -7084,7 +7723,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -7098,7 +7745,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -7112,7 +7766,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -7253,9 +7912,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -7299,7 +7962,15 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -7310,7 +7981,14 @@
                       <div>
                         <div><code>repository</code> <span>object</span></div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -7324,7 +8002,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -7461,9 +8144,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -7476,7 +8163,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -7512,7 +8207,14 @@
                       <div>
                         <div><code>repository</code> <span>object</span></div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -7526,7 +8228,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -7649,9 +8356,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -7664,7 +8375,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -7678,7 +8397,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -7692,7 +8418,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -7783,7 +8514,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -7794,7 +8533,14 @@
                       <div>
                         <div><code>repository</code> <span>object</span></div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -7805,7 +8551,12 @@
                       <div>
                         <div><code>sender</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -7988,9 +8739,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -8003,7 +8758,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -8039,7 +8802,14 @@
                       <div>
                         <div><code>repository</code> <span>object</span></div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -8053,7 +8823,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -8196,9 +8971,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -8211,7 +8990,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -8247,7 +9034,14 @@
                       <div>
                         <div><code>repository</code> <span>object</span></div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -8261,7 +9055,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -8406,9 +9205,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -8421,7 +9224,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -8457,7 +9268,14 @@
                       <div>
                         <div><code>repository</code> <span>object</span></div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -8468,7 +9286,12 @@
                       <div>
                         <div><code>sender</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -8603,9 +9426,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -8621,7 +9448,15 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -8660,7 +9495,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -8731,9 +9571,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -8746,7 +9590,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -8760,7 +9612,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -8774,7 +9633,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -8944,9 +9808,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -8973,7 +9841,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -9012,7 +9888,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -9026,7 +9909,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -9208,9 +10096,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -9223,7 +10115,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -9262,7 +10162,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -9276,7 +10183,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -9423,9 +10335,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -9438,7 +10354,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -9477,7 +10401,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -9516,7 +10447,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -9665,9 +10601,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -9680,7 +10620,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -9719,7 +10667,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -9730,7 +10685,12 @@
                       <div>
                         <div><code>sender</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -10031,9 +10991,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -10046,7 +11010,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -10121,7 +11093,12 @@
                       <div>
                         <div><code>sender</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -10264,9 +11241,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -10279,7 +11260,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -10315,7 +11304,14 @@
                       <div>
                         <div><code>repository</code> <span>object</span></div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -10329,7 +11325,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -10469,9 +11470,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -10484,7 +11489,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -10532,7 +11545,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -10546,7 +11566,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -10692,9 +11717,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -10707,7 +11736,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -10718,7 +11755,14 @@
                       <div>
                         <div><code>repository</code> <span>object</span></div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -10729,7 +11773,12 @@
                       <div>
                         <div><code>sender</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -10859,9 +11908,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -10874,7 +11927,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -10888,7 +11949,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -10902,7 +11970,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -11068,9 +12141,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -11083,7 +12160,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -11097,7 +12182,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -11108,7 +12200,12 @@
                       <div>
                         <div><code>sender</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -11234,9 +12331,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -11274,7 +12375,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -11288,7 +12397,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -11302,7 +12418,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -11404,9 +12525,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -11419,7 +12544,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -11444,7 +12577,12 @@
                       <div>
                         <div><code>sender</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -11587,9 +12725,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -11602,7 +12744,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -11613,7 +12763,14 @@
                       <div>
                         <div><code>repository</code> <span>object</span></div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -11627,7 +12784,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -11787,9 +12949,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -11802,7 +12968,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -11816,7 +12990,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -11830,7 +13011,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -12066,9 +13252,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -12095,7 +13285,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -12109,7 +13307,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -12123,7 +13328,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -12270,9 +13480,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -12285,7 +13499,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -12299,7 +13521,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -12313,7 +13542,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -12470,9 +13704,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -12488,7 +13726,15 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -12510,7 +13756,12 @@
                       <div>
                         <div><code>sender</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -12658,9 +13909,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -12673,7 +13928,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -12684,7 +13947,14 @@
                       <div>
                         <div><code>repository</code> <span>object</span></div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -12695,7 +13965,12 @@
                       <div>
                         <div><code>sender</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -12811,9 +14086,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -12826,7 +14105,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -12840,7 +14127,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -12854,7 +14148,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -12943,9 +14242,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -12958,7 +14261,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -12986,7 +14297,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -13000,7 +14318,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -13158,9 +14481,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -13173,7 +14500,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -13187,7 +14522,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -13201,7 +14543,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -13401,9 +14748,13 @@
                         <div>
                           <div>
                             <p>
-                              The GitHub App installation. This property is
-                              included when the event is configured for and sent
-                              to a GitHub App.
+                              The GitHub App installation. Webhook payloads
+                              contain the <code>installation</code> property
+                              when the event is configured for and sent to a
+                              GitHub App. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps"
+                                >Using webhooks with GitHub Apps</a
+                              >."
                             </p>
                           </div>
                           <div></div>
@@ -13416,7 +14767,15 @@
                       <div>
                         <div><code>organization</code> <span>object</span></div>
                         <div>
-                          <div><p>A GitHub organization.</p></div>
+                          <div>
+                            <p>
+                              A GitHub organization. Webhook payloads contain
+                              the <code>organization</code> property when the
+                              webhook is configured for an organization, or when
+                              the event occurs from activity in a repository
+                              owned by an organization.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -13430,7 +14789,14 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A repository on GitHub.</p></div>
+                          <div>
+                            <p>
+                              The repository on GitHub where the event occurred.
+                              Webhook payloads contain the
+                              <code>repository</code> property when the event
+                              occurs from activity in a repository.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -13444,7 +14810,12 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div><p>A GitHub user.</p></div>
+                          <div>
+                            <p>
+                              The GitHub user that triggered the event. This
+                              property is included in every webhook payload.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
