@@ -9,7 +9,8 @@
   "main": "api.github.com/index.json",
   "files": [
     "index.d.ts",
-    "api.github.com/index.json"
+    "api.github.com/index.json",
+    "ghes-*/index.json"
   ],
   "scripts": {},
   "dependencies": {
