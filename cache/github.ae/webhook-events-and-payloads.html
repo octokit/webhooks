@@ -10,9 +10,9 @@
           tabindex="0"
           aria-labelledby=":R1pbd36: "
           aria-current="false"
-          href="#webhook-payload-object-common-properties"
+          href="#about-webhook-events-and-payloads"
           ><div data-component="ActionList.Item--DividerContainer">
-            <span id=":R1pbd36:">Webhook payload object common properties</span>
+            <span id=":R1pbd36:">About webhook events and payloads</span>
           </div></a
         >
       </li>
@@ -678,122 +678,28 @@
 <div data-container="article" data-search="article-body">
   <div id="article-contents">
     <div>
-      <p>
-        When configuring a webhook, you can choose which events will send you
-        payloads. To limit the number of HTTP requests to your server, you
-        should only subscribe to the specific events that you plan on handling.
-        By default, webhooks installed on
-        <a href="/en/github-ae@latest/rest/enterprise-admin#global-webhooks"
-          >GitHub Enterprise</a
-        >, an
-        <a href="/en/github-ae@latest/rest/orgs/webhooks">organization</a>, or a
-        <a href="/en/github-ae@latest/rest/webhooks">repository</a> are only
-        subscribed to the push event. By default, webhooks on GitHub Apps are
-        not subscribed to any events. You can change events that a webhook is
-        subscribed to at any time.
-      </p>
-      <p>
-        You can create webhooks that subscribe to the events listed on this
-        page. Each webhook event includes a description of the webhook
-        properties and an example payload. For more information, see "<a
-          href="/en/github-ae@latest/webhooks-and-events/webhooks/creating-webhooks"
-          >Creating webhooks</a
-        >."
-      </p>
-      <h2 id="webhook-payload-object-common-properties" tabindex="-1">
-        <a href="#webhook-payload-object-common-properties"
-          >Webhook payload object common properties<span
-            aria-hidden="true"
-          ></span
+      <h2 id="about-webhook-events-and-payloads" tabindex="-1">
+        <a href="#about-webhook-events-and-payloads"
+          >About webhook events and payloads<span aria-hidden="true"></span
         ></a>
       </h2>
       <p>
-        Each webhook event payload also contains properties unique to the event.
-        You can find the unique properties in the individual event type
-        sections.
-      </p>
-
-      <table>
-        <thead>
-          <tr>
-            <th scope="col">Key</th>
-            <th scope="col">Type</th>
-            <th scope="col">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><code>action</code></td>
-            <td><code>string</code></td>
-            <td>
-              Most webhook payloads contain an <code>action</code> property that
-              contains the specific activity that triggered the event.
-            </td>
-          </tr>
-          <tr>
-            <td><code>sender</code></td>
-            <td><code>object</code></td>
-            <td>
-              The user that triggered the event. This property is included in
-              every webhook payload.
-            </td>
-          </tr>
-          <tr>
-            <td><code>repository</code></td>
-            <td><code>object</code></td>
-            <td>
-              The
-              <a href="/en/github-ae@latest/rest/repos#get-a-repository"
-                ><code>repository</code></a
-              >
-              where the event occurred. Webhook payloads contain the
-              <code>repository</code> property when the event occurs from
-              activity in a repository.
-            </td>
-          </tr>
-          <tr>
-            <td><code>organization</code></td>
-            <td><code>object</code></td>
-            <td>
-              Webhook payloads contain the
-              <a href="/en/github-ae@latest/rest/orgs#get-an-organization"
-                ><code>organization</code></a
-              >
-              object when the webhook is configured for an organization or the
-              event occurs from activity in a repository owned by an
-              organization.
-            </td>
-          </tr>
-          <tr>
-            <td><code>installation</code></td>
-            <td><code>object</code></td>
-            <td>
-              The GitHub App installation. Webhook payloads contain the
-              <code>installation</code> property when the event is configured
-              for and sent to a GitHub App. For more information, see "<a
-                href="/en/github-ae@latest/apps/creating-github-apps/setting-up-a-github-app"
-                >Registering a GitHub App</a
-              >."
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <p>
-        The unique properties for a webhook event are the same properties you'll
-        find in the <code>payload</code> property when using the
-        <a href="/en/github-ae@latest/rest/activity#events">Events API</a>. One
-        exception is the <a href="#push"><code>push</code> event</a>. The unique
-        properties of the <code>push</code> event webhook payload and the
-        <code>payload</code> property in the Events API differ. The webhook
-        payload contains more detailed information.
+        You can create webhooks that subscribe to the events listed on this
+        page. Each webhook event on this page includes a description of the
+        webhook properties for that event. If the event has multiple actions,
+        the properties corresponding to each action are included. For more
+        information, see "<a
+          href="/en/github-ae@latest/webhooks/creating-webhooks"
+          >Creating webhooks</a
+        >."
       </p>
       <div>
         <p>
-          <strong>Note:</strong> Payloads are capped at 25 MB. If your event
-          generates a larger payload, a webhook will not be fired. This may
-          happen, for example, on a <code>create</code> event if many branches
-          or tags are pushed at once. We suggest monitoring your payload size to
-          ensure delivery.
+          <strong>Note:</strong> Payloads are capped at 25 MB. If an event
+          generates a larger payload, GitHub will not deliver a payload for that
+          webhook event. This may happen, for example, on a
+          <code>create</code> event if many branches or tags are pushed at once.
+          We suggest monitoring your payload size to ensure delivery.
         </p>
       </div>
       <h3 id="delivery-headers" tabindex="-1">
@@ -803,7 +709,7 @@
       </h3>
       <p>
         HTTP POST payloads that are delivered to your webhook's configured URL
-        endpoint will contain several special headers.
+        endpoint will contain several special headers:
       </p>
       <ul>
         <li>
@@ -834,16 +740,28 @@
           using the SHA-256 hash function and the <code>secret</code> as the
           HMAC <code>key</code>.
         </li>
+        <li>
+          <code>User-Agent</code>: This header will always have the prefix
+          <code>GitHub-Hookshot/</code>.
+        </li>
       </ul>
       <p>
-        Also, the <code>User-Agent</code> for the requests will have the prefix
-        <code>GitHub-Hookshot/</code>.
+        To see what each header might look like in a webhook payload, see "<a
+          href="#example-webhook-delivery"
+          >Example webhook delivery</a
+        >."
       </p>
-      <h3 id="example-delivery" tabindex="-1">
-        <a href="#example-delivery"
-          >Example delivery<span aria-hidden="true"></span
+      <h3 id="example-webhook-delivery" tabindex="-1">
+        <a href="#example-webhook-delivery"
+          >Example webhook delivery<span aria-hidden="true"></span
         ></a>
       </h3>
+      <p>
+        You can choose to have payloads delivered in JSON format
+        (<code>application/json</code>) or as URL-encoded data
+        (<code>x-www-form-urlencoded</code>). Following is an example of a
+        webhook POST request that uses the JSON format.
+      </p>
       <pre><code><span>&gt; </span><span>POST /payload HTTP/2</span>
 <span>
 &gt; </span><span>Host: localhost:4567</span>
