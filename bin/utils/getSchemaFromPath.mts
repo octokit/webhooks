@@ -1,6 +1,6 @@
 import { strict as assert } from "assert";
 import { JSONSchema7 } from "json-schema";
-import { ensureArray } from ".";
+import { ensureArray } from "./index.mjs";
 
 const extractFromSchema = (schema: JSONSchema7, name: string): JSONSchema7 => {
   if (ensureArray(schema.type).includes("object")) {

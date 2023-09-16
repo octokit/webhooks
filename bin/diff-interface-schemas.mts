@@ -7,7 +7,7 @@ import {
   loadMapOfSchemas,
   normalizeSchema,
   parseArgv,
-} from "./utils";
+} from "./utils/index.mjs";
 
 const [
   [interfacePropertyPath1, interfacePropertyPath2],

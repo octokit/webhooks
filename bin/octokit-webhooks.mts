@@ -1,7 +1,8 @@
 #!/usr/bin/env ts-node-transpile-only
 
 import yargs from "yargs";
-import { checkOrUpdateWebhooks } from "../lib";
+import { hideBin } from 'yargs/helpers'
+import { checkOrUpdateWebhooks } from "../lib/index.mjs";
 
 interface Options {
   cached: boolean;
@@ -40,7 +41,7 @@ const {
   githubAE,
   updateAll,
   _: [command],
-} = yargs
+} = yargs(hideBin(process.argv))
   .command("update", "Update webhooks", (yargs) => {
     yargs.options(options).example("$0 update --cached", "");
   })

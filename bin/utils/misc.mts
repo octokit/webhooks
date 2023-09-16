@@ -15,7 +15,7 @@ export const guessAtInterfaceName = (schema: JSONSchema7): string => {
     .join("");
 };
 
-export const ensureArray = <T>(arr: T | T[]): T[] =>
+export const ensureArray = <T extends any>(arr: T | T[]): T[] =>
   Array.isArray(arr) ? arr : [arr];
 
 export const isJsonSchemaObject = (object: unknown): object is JSONSchema7 =>

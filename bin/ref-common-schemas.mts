@@ -10,7 +10,7 @@ import {
   normalizeSchema,
   parseArgv,
   pathToSchemas,
-} from "./utils";
+} from "./utils/index.mjs";
 
 parseArgv(__filename, []);
 

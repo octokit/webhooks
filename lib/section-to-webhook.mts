@@ -2,7 +2,7 @@ import { strict as assert } from "assert";
 import cheerio from "cheerio";
 import { JSONSchema7TypeName } from "json-schema";
 import TurndownService from "turndown";
-import { Section, Webhook } from ".";
+import { Section, Webhook } from "./index.mjs";
 
 const turndownService = new TurndownService({
   codeBlockStyle: "fenced",

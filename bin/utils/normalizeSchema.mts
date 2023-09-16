@@ -1,5 +1,5 @@
 import { JSONSchema7 } from "json-schema";
-import { ensureArray, isJsonSchemaObject } from ".";
+import { ensureArray, isJsonSchemaObject } from "./index.mjs";
 
 const metaProperties = [
   "$schema", //

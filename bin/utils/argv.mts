@@ -1,7 +1,7 @@
 import { strict as assert } from "assert";
 import fs from "fs";
 import path from "path";
-import { capitalize } from ".";
+import { capitalize } from "./index.mjs";
 
 type Join<T extends unknown[], D extends string> = T extends []
   ? ""

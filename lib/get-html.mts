@@ -1,7 +1,7 @@
 import got from "got";
 import cheerio from "cheerio";
 import * as prettier from "prettier";
-import { State, cache } from ".";
+import { State, cache } from "./index.mjs";
 
 export const getHtml = async (
   state: State & { baseUrl: string; folderName: string },

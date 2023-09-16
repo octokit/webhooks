@@ -1,6 +1,6 @@
 import Ajv, { ErrorObject } from "ajv";
 import { JSONSchema7 } from "json-schema";
-import webhooks from "./payload-examples/api.github.com/index.json";
+import webhooks from "./payload-examples/api.github.com/index.json" assert { type: "json" };
 const ajv = new Ajv();
 
 const schema: JSONSchema7 = {

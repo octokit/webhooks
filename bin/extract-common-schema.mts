@@ -9,7 +9,7 @@ import {
   loadMapOfSchemas,
   parseArgv,
   pathToSchemas,
-} from "./utils";
+} from "./utils/index.mjs";
 
 const [
   [interfacePropertyPath, interfaceName],
