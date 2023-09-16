@@ -1,7 +1,7 @@
 #!/usr/bin/env ts-node-transpile-only
 
 import yargs from "yargs";
-import { hideBin } from 'yargs/helpers'
+import { hideBin } from "yargs/helpers";
 import { checkOrUpdateWebhooks } from "../lib/index.mjs";
 
 interface Options {

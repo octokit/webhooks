@@ -20,7 +20,9 @@ export const getActionsAndExamplesFromPayloads = (
         .filter((path) => path.endsWith(".json"))
         .forEach((path) => {
           const payload = JSON.parse(
-            readFileSync(new URL(`${pathToPayloads}/${event}/${path}`, parentDirURL)).toString(),
+            readFileSync(
+              new URL(`${pathToPayloads}/${event}/${path}`, parentDirURL),
+            ).toString(),
           ) as {
             action?: string;
           };

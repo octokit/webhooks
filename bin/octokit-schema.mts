@@ -24,7 +24,9 @@ const buildCommonSchemasDefinitionSchema = (): Record<string, JSONSchema7> => {
 
   commonSchemas.forEach((schema) => {
     definitions[removeExtension(schema, ".schema.json")] = JSON.parse(
-      readFileSync(new URL(`${pathToSchemas}/common/${schema}`, parentDirURL)).toString(),
+      readFileSync(
+        new URL(`${pathToSchemas}/common/${schema}`, parentDirURL),
+      ).toString(),
     );
   });
 
@@ -61,10 +63,7 @@ const combineEventSchemas = () => {
       // schemas without any actions are just called "event"
       const schema = JSON.parse(
         readFileSync(
-          new URL(
-            `${pathToSchemas}/${event}/event.schema.json`,
-            parentDirURL,
-          ),
+          new URL(`${pathToSchemas}/${event}/event.schema.json`, parentDirURL),
         ).toString(),
       ) as JSONSchema7;
       const eventName = schema.$id;
@@ -87,10 +86,7 @@ const combineEventSchemas = () => {
     const eventActions = schemas.map((schemaName) => {
       const schema = JSON.parse(
         readFileSync(
-          new URL(
-            `${pathToSchemas}/${event}/${schemaName}`,
-            parentDirURL,
-          ),
+          new URL(`${pathToSchemas}/${event}/${schemaName}`, parentDirURL),
         ).toString(),
       ) as JSONSchema7;
       const actionEventName = schema.$id;
