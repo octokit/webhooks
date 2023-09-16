@@ -84,7 +84,7 @@
     "json-schema-to-typescript": "^13.0.0",
     "prettier": "3.0.3",
     "prettier-plugin-packagejson": "^2.2.15",
-    "semantic-release": "^21.0.0",
+    "semantic-release": "^22.0.0",
     "semantic-release-plugin-update-version-in-files": "^1.1.0",
     "ts-node": "^10.4.0",
     "turndown": "^7.1.1",
