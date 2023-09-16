@@ -2,7 +2,11 @@ import Ajv, { ErrorObject } from "ajv";
 import { readFileSync } from "fs";
 import { JSONSchema7 } from "json-schema";
 
-const webhooks = JSON.parse(readFileSync(new URL("./payload-examples/api.github.com/index.json", import.meta.url)).toString());
+const webhooks = JSON.parse(
+  readFileSync(
+    new URL("./payload-examples/api.github.com/index.json", import.meta.url),
+  ).toString(),
+) as import("./payload-examples/index.d.ts").WebhookDefinition[];
 const ajv = new Ajv.default();
 
 const schema: JSONSchema7 = {
