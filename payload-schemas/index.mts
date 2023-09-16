@@ -12,7 +12,7 @@ export const ajv = new Ajv.default({
 
 addFormats.default(ajv);
 
-const __dirname = fileURLToPath(new URL('.', import.meta.url));
+const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const schemaDir = resolve(__dirname, "api.github.com");
 
 const requireSchema = (
