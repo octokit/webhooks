@@ -4,7 +4,9 @@
   "type": "object",
   "required": ["enabled_by", "merge_method", "commit_title", "commit_message"],
   "properties": {
-    "enabled_by": { "oneOf": [{ "$ref": "user.schema.json" }, { "type": "null" }] },
+    "enabled_by": {
+      "oneOf": [{ "$ref": "user.schema.json" }, { "type": "null" }]
+    },
     "merge_method": {
       "type": "string",
       "enum": ["merge", "squash", "rebase"],
