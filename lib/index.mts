@@ -5,4 +5,4 @@ export * from "./workarounds.mjs";
 export * from "./get-html.mjs";
 export * from "./get-sections.mjs";
 export * from "./cache.mjs";
-export * from "./types.js";
+export type * from "./types.js";
