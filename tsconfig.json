@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "target": "es2019",
-    "module": "ESNext",
-    "moduleResolution": "node",
+    "module": "Node16",
+    "moduleResolution": "node16",
     "lib": ["es2020"],
     "rootDir": "./",
     "allowJs": true,

@@ -1,6 +1,7 @@
 #!/usr/bin/env ts-node-transpile-only
 
 import yargs from "yargs";
+import type { Options as yargsOptions, Arguments } from "yargs";
 import { hideBin } from "yargs/helpers";
 import { checkOrUpdateWebhooks } from "../lib/index.mjs";
 
@@ -11,7 +12,7 @@ interface Options {
   updateAll?: boolean;
 }
 
-const options: Record<string, yargs.Options> = {
+const options: Record<string, yargsOptions> = {
   cached: {
     describe: "Load HTML from local cache",
     type: "boolean",
@@ -52,7 +53,7 @@ const {
   .alias("h", ["help", "usage"])
   .demandCommand(1, "")
   .scriptName("bin/octokit-webhooks")
-  .usage("$0 <command> [--cached]").argv as yargs.Arguments<Options>;
+  .usage("$0 <command> [--cached]").argv as Arguments<Options>;
 
 if (!["update", "check"].includes(command.toString())) {
   console.log(`"${command}" must be one of: update, check`);

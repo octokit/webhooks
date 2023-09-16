@@ -10,9 +10,9 @@ import { parseArgv } from "./utils/index.mjs";
 const __filename = fileURLToPath(import.meta.url);
 const [, {}] = parseArgv(__filename, [], []);
 
-const ajv = new Ajv({ strict: true });
+const ajv = new Ajv.default({ strict: true });
 
-addFormats(ajv);
+addFormats.default(ajv);
 ajv.addKeyword("tsAdditionalProperties");
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
