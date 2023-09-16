@@ -1,4 +1,4 @@
-# bin/optimize-schemas.ts
+# bin/optimize-schemas.mts
 
 Applies a handful of "optimizations" to all the schemas in
 `payload-schemas/schemas`.
@@ -18,4 +18,4 @@ These optimizations include:
 
 ## Usage
 
-    bin/optimize-schemas.ts
+    bin/optimize-schemas.mts

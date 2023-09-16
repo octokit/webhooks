@@ -1,4 +1,4 @@
-# bin/format-with-prettier.ts
+# bin/format-with-prettier.mts
 
 Formats all the json payloads and schemas within this repo using `prettier`
 consistently by stripping them of all whitespace and newlines first.
@@ -11,5 +11,5 @@ without writing the formatted contents back to disk.
 
 ## Usage
 
-    bin/format-with-prettier.ts [--check]
-    bin/format-with-prettier.ts
+    bin/format-with-prettier.mts [--check]
+    bin/format-with-prettier.mts

@@ -1,4 +1,4 @@
-# bin/extract-common-schema.ts
+# bin/extract-common-schema.mts
 
 Extracts a schema from within another into a new "common" schema which are
 placed in `schemas/common/`.
@@ -8,8 +8,8 @@ generated name. You can pass the `--overwrite` flag to change this behaviour.
 
 ## Usage
 
-    bin/extract-common-schema.ts <interface property path> <interface name> [--overwrite]
-    bin/extract-common-schema.ts PullRequestOpenEvent.pull_request PullRequest
+    bin/extract-common-schema.mts <interface property path> <interface name> [--overwrite]
+    bin/extract-common-schema.mts PullRequestOpenEvent.pull_request PullRequest
 
 ## Details
 
@@ -45,7 +45,7 @@ You could extract the schema for the type of `pull_request` property on one of
 the interfaces into its own common schema that would generate an interface named
 `PullRequest` with the following:
 
-    bin/extract-common-schema.ts PullRequestOpenEvent.pull_request PullRequest
+    bin/extract-common-schema.mts PullRequestOpenEvent.pull_request PullRequest
 
 This would create a new schema located at
 `payload-schemas/schemas/common/pull-request.schema.json` which would generate
