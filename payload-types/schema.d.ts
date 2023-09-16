@@ -3008,7 +3008,7 @@ export interface Link {
  * The status of auto merging a pull request.
  */
 export interface PullRequestAutoMerge {
-  enabled_by: User;
+  enabled_by: User | null;
   /**
    * The merge method to use.
    */
@@ -3016,11 +3016,11 @@ export interface PullRequestAutoMerge {
   /**
    * Title for the merge commit message.
    */
-  commit_title: string;
+  commit_title: string | null;
   /**
    * Commit message for the merge commit.
    */
-  commit_message: string;
+  commit_message: string | null;
 }
 export interface DeploymentReviewApprovedEvent {
   action: "approved";
