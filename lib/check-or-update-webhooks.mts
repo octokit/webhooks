@@ -9,9 +9,10 @@ import {
   getHtml,
   getSections,
   toWebhook,
-} from ".";
+} from "./index.mjs";
 
-const isNotNull = <T>(value: T | null): value is T => value !== null;
+const isNotNull = <T extends any>(value: T | null): value is T =>
+  value !== null;
 
 export const checkOrUpdateWebhooks = async ({
   cached,

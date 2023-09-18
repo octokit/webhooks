@@ -1,6 +1,6 @@
 import { strict as assert } from "assert";
 import cheerio from "cheerio";
-import { Section } from ".";
+import { Section } from "./index.mjs";
 
 export const getSections = (html: string): Section[] => {
   const $ = cheerio.load(html);

@@ -1,11 +1,14 @@
-#!/usr/bin/env ts-node-transpile-only
+#!/usr/bin/env -S ts-node-transpile-only --esm
 
 import { DefinedError, ErrorObject } from "ajv";
 import path from "path";
 import { inspect } from "util";
-import { ajv, validate } from "../payload-schemas/index";
-import { forEachJsonFile, parseArgv, pathToPayloads } from "./utils";
+import { ajv, validate } from "../payload-schemas/index.mjs";
+import { forEachJsonFile, parseArgv, pathToPayloads } from "./utils/index.mjs";
+import { fileURLToPath } from "url";
+import { readFileSync } from "fs";
 
+const __filename = fileURLToPath(import.meta.url);
 const [, { continueOnError = false }] = parseArgv(
   __filename,
   [],
@@ -35,7 +38,11 @@ const printAjvErrors = () => {
 
 forEachJsonFile(pathToPayloads, (filePath) => {
   if (filePath.includes("/index.json")) return;
-  const file = require(`../${filePath}`) as unknown;
+  const file = JSON.parse(
+    readFileSync(
+      path.join(fileURLToPath(import.meta.url), "..", "..", filePath),
+    ).toString(),
+  ) as unknown;
   const { dir: event, base: filename } = path.parse(
     path.relative(pathToPayloads, filePath),
   );

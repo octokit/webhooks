@@ -1,10 +1,11 @@
-import { readdirSync } from "fs";
+import { readFileSync, readdirSync } from "fs";
 
 interface ActionsAndExamples {
   actions: string[];
   examples: object[];
 }
 
+const parentDirURL = new URL("..", import.meta.url);
 export const getActionsAndExamplesFromPayloads = (
   folderName: string,
 ): Record<string, ActionsAndExamples> => {
@@ -18,7 +19,11 @@ export const getActionsAndExamplesFromPayloads = (
       readdirSync(`${pathToPayloads}/${event}`)
         .filter((path) => path.endsWith(".json"))
         .forEach((path) => {
-          const payload = require(`../${pathToPayloads}/${event}/${path}`) as {
+          const payload = JSON.parse(
+            readFileSync(
+              new URL(`${pathToPayloads}/${event}/${path}`, parentDirURL),
+            ).toString(),
+          ) as {
             action?: string;
           };
 

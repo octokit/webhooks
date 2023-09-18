@@ -8,7 +8,7 @@ import {
   parseArgv,
   pathToPayloads,
   pathToSchemas,
-} from "./utils";
+} from "./utils/index.mjs";
 
 const [, { check: checkOnly }] = parseArgv(__filename, [], ["check"]);
 

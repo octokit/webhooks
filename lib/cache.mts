@@ -1,6 +1,8 @@
 import { promises as fs } from "fs";
 import { dirname, resolve as resolvePath } from "path";
+import { fileURLToPath } from "url";
 
+const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const CACHE_DIR = resolvePath(__dirname, "..", "cache");
 
 const toCachePath = (path: string) => resolvePath(CACHE_DIR, `./${path}`);

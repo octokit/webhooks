@@ -1,12 +1,15 @@
 #!/usr/bin/env ts-node-transpile-only
 
 import { strict as assert } from "assert";
-import fs from "fs";
+import fs, { readFileSync } from "fs";
 import { JSONSchema7 } from "json-schema";
 import path from "path";
 import { format } from "prettier";
-import { parseArgv, pathToSchemas } from "./utils";
+import { parseArgv, pathToSchemas } from "./utils/index.mjs";
+import { fileURLToPath } from "url";
 
+const parentDirURL = new URL("..", import.meta.url);
+const __filename = fileURLToPath(import.meta.url);
 parseArgv(__filename, []);
 
 const removeExtension = (fileName: string, ext: string): string => {
@@ -20,8 +23,10 @@ const buildCommonSchemasDefinitionSchema = (): Record<string, JSONSchema7> => {
   const definitions: Record<string, JSONSchema7> = {};
 
   commonSchemas.forEach((schema) => {
-    definitions[removeExtension(schema, ".schema.json")] = require(
-      `../${pathToSchemas}/common/${schema}`,
+    definitions[removeExtension(schema, ".schema.json")] = JSON.parse(
+      readFileSync(
+        new URL(`${pathToSchemas}/common/${schema}`, parentDirURL),
+      ).toString(),
     );
   });
 
@@ -56,8 +61,10 @@ const combineEventSchemas = () => {
 
     if (schemas.length === 1 && schemas[0] === "event.schema.json") {
       // schemas without any actions are just called "event"
-      const schema = require(
-        `../${pathToSchemas}/${event}/event.schema.json`,
+      const schema = JSON.parse(
+        readFileSync(
+          new URL(`${pathToSchemas}/${event}/event.schema.json`, parentDirURL),
+        ).toString(),
       ) as JSONSchema7;
       const eventName = schema.$id;
 
@@ -77,8 +84,10 @@ const combineEventSchemas = () => {
     }
 
     const eventActions = schemas.map((schemaName) => {
-      const schema = require(
-        `../${pathToSchemas}/${event}/${schemaName}`,
+      const schema = JSON.parse(
+        readFileSync(
+          new URL(`${pathToSchemas}/${event}/${schemaName}`, parentDirURL),
+        ).toString(),
       ) as JSONSchema7;
       const actionEventName = schema.$id;
 

@@ -1,6 +1,10 @@
 import fs from "fs";
 import { JSONSchema7 } from "json-schema";
-import { forEachJsonFile, guessAtInterfaceName, pathToSchemas } from ".";
+import {
+  forEachJsonFile,
+  guessAtInterfaceName,
+  pathToSchemas,
+} from "./index.mjs";
 
 type InterfaceNameAndSchema = [interfaceName: string, schema: JSONSchema7];
 

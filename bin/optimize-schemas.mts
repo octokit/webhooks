@@ -14,7 +14,7 @@ import {
   isJsonSchemaObject,
   forEachJsonFile,
   parseArgv,
-} from "./utils";
+} from "./utils/index.mjs";
 
 parseArgv(__filename, []);
 

@@ -1,4 +1,4 @@
-# bin/validate-payload-examples.ts
+# bin/validate-payload-examples.mts
 
 Validates all the payload examples in `payload-examples` against the appropriate
 schemas in `payload-schemas`.
@@ -9,5 +9,5 @@ validation will stop. You can change this behaviour by passing the
 
 ## Usage
 
-    bin/validate-payload-examples.ts [--continue-on-error]
-    bin/validate-payload-examples.ts
+    bin/validate-payload-examples.mts [--continue-on-error]
+    bin/validate-payload-examples.mts

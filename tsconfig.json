@@ -1,14 +1,15 @@
 {
   "compilerOptions": {
     "target": "es2019",
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "module": "Node16",
+    "moduleResolution": "node16",
     "lib": ["es2020"],
     "rootDir": "./",
     "allowJs": true,
     "checkJs": true,
     "noEmit": true,
     "strict": true,
+    "skipLibCheck": true,
     "resolveJsonModule": true,
     "useDefineForClassFields": true,
     "forceConsistentCasingInFileNames": true,
@@ -19,5 +20,5 @@
     "esModuleInterop": true
   },
   "exclude": ["cache", "coverage", "node_modules"],
-  "include": ["**/*.js", "**/*.ts"]
+  "include": ["**/*.js", "**/*.ts", "**/*.mts"]
 }

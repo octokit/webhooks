@@ -1,16 +1,18 @@
 import Ajv from "ajv";
 import addFormats from "ajv-formats";
-import { readdirSync } from "fs";
+import { readFileSync, readdirSync } from "fs";
 import { resolve } from "path";
+import { fileURLToPath } from "url";
 
-export const ajv = new Ajv({
+export const ajv = new Ajv.default({
   strict: true,
   strictTypes: true,
   strictTuples: true,
 });
 
-addFormats(ajv);
+addFormats.default(ajv);
 
+const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const schemaDir = resolve(__dirname, "api.github.com");
 
 const requireSchema = (
@@ -20,7 +22,8 @@ const requireSchema = (
 ) => {
   const schemaPath = `${schemaDir}/${event}/${filename}`;
 
-  ajv.addSchema(require(schemaPath), keyName);
+  const schema = JSON.parse(readFileSync(schemaPath, "utf-8").toString());
+  ajv.addSchema(schema, keyName);
 
   return keyName;
 };

@@ -1,4 +1,4 @@
-# bin/ref-common-schemas.ts
+# bin/ref-common-schemas.mts
 
 Compares the contents of every schema within `payload-schemas/schemas` _except
 the common schemas_ against the common schemas, replacing any matches with a
@@ -13,5 +13,5 @@ how much difference there is between two schemas at time of validation.
 
 ## Usage
 
-    bin/ref-common-schemas.ts <interface property path> <interface property path> [--full]
-    bin/ref-common-schemas.ts PullRequestOpenEvent.pull_request PullRequestCloseEvent.pull_request
+    bin/ref-common-schemas.mts <interface property path> <interface property path> [--full]
+    bin/ref-common-schemas.mts PullRequestOpenEvent.pull_request PullRequestCloseEvent.pull_request

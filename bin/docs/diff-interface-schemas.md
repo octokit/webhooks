@@ -1,4 +1,4 @@
-# bin/diff-interface-schemas.ts
+# bin/diff-interface-schemas.mts
 
 Shows the difference between the json schemas for the given interface
 properties.
@@ -13,8 +13,8 @@ You can see the full diff for two schemas by passing the `--full` flag.
 
 ## Usage
 
-    bin/diff-interface-schemas.ts <interface property path> <interface property path> [--full]
-    bin/diff-interface-schemas.ts PullRequestOpenEvent.pull_request PullRequestCloseEvent.pull_request
+    bin/diff-interface-schemas.mts <interface property path> <interface property path> [--full]
+    bin/diff-interface-schemas.mts PullRequestOpenEvent.pull_request PullRequestCloseEvent.pull_request
 
 ## Details
 
@@ -49,7 +49,7 @@ interface PullRequestCloseEvent {
 You could compare the schemas of the "pull_request" property on each interface
 like so:
 
-    bin/diff-interface-schema.ts PullRequestOpenEvent.pull_request PullRequestCloseEvent.pull_request
+    bin/diff-interface-schema.mts PullRequestOpenEvent.pull_request PullRequestCloseEvent.pull_request
 
 Note that you can also provide just the name of an interface, i.e.
 
@@ -72,4 +72,4 @@ interface PullRequestCloseEvent {
 }
 ```
 
-    bin/diff-interface-schema.ts PullRequest PullRequestCloseEvent.pull_request
+    bin/diff-interface-schema.mts PullRequest PullRequestCloseEvent.pull_request

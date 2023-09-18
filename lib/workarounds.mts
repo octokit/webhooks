@@ -1,4 +1,4 @@
-import { Webhook } from ".";
+import { Webhook } from "./index.mjs";
 
 export type WorkableWebhook =
   | ({ name: "repository_dispatch" } & Webhook<{ client_payload: object }>)
