@@ -1,4 +1,4 @@
-#!/usr/bin/env ts-node-transpile-only
+#!/usr/bin/env -S ts-node-transpile-only --esms
 
 import { strict as assert } from "assert";
 import fs from "fs";
@@ -10,7 +10,9 @@ import {
   parseArgv,
   pathToSchemas,
 } from "./utils/index.mjs";
+import { fileURLToPath } from "url";
 
+const __filename = fileURLToPath(import.meta.url);
 const [
   [interfacePropertyPath, interfaceName],
   { overwrite: overwriteIfExists },

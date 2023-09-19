@@ -16,7 +16,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: echo "./node_modules/.bin" >> $GITHUB_PATH
-      - run: ./bin/format-with-prettier.ts
+      - run: ./bin/format-with-prettier.mts
       - run: git diff-index --quiet HEAD
       - if: failure()
         run: |

@@ -1,4 +1,4 @@
-#!/usr/bin/env ts-node-transpile-only
+#!/usr/bin/env -S ts-node-transpile-only --esm
 
 import deepEqual from "fast-deep-equal";
 import fs from "fs";
@@ -11,7 +11,9 @@ import {
   parseArgv,
   pathToSchemas,
 } from "./utils/index.mjs";
+import { fileURLToPath } from "url";
 
+const __filename = fileURLToPath(import.meta.url);
 parseArgv(__filename, []);
 
 const commonSchemas = fs

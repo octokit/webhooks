@@ -1,4 +1,4 @@
-#!/usr/bin/env ts-node-transpile-only
+#!/usr/bin/env -S ts-node-transpile-only --esm
 
 import Ajv from "ajv";
 import addFormats from "ajv-formats";
