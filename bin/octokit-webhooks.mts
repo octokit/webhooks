@@ -1,4 +1,4 @@
-#!/usr/bin/env ts-node-transpile-only
+#!/usr/bin/env -S ts-node-transpile-only --esm
 
 import yargs from "yargs";
 import type { Options as yargsOptions, Arguments } from "yargs";

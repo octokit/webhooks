@@ -1,4 +1,4 @@
-#!/usr/bin/env ts-node-transpile-only
+#!/usr/bin/env -S ts-node-transpile-only --esm
 
 import fs from "fs";
 import { JSONSchema7 } from "json-schema";
@@ -9,7 +9,9 @@ import {
   pathToPayloads,
   pathToSchemas,
 } from "./utils/index.mjs";
+import { fileURLToPath } from "url";
 
+const __filename = fileURLToPath(import.meta.url);
 const [, { check: checkOnly }] = parseArgv(__filename, [], ["check"]);
 
 const formatJsonInDirectory = (pathToJsons: string) => {

@@ -1,4 +1,4 @@
-#!/usr/bin/env ts-node-transpile-only
+#!/usr/bin/env -S ts-node-transpile-only --esm
 
 import { strict as assert } from "assert";
 import fs from "fs";
@@ -15,7 +15,9 @@ import {
   forEachJsonFile,
   parseArgv,
 } from "./utils/index.mjs";
+import { fileURLToPath } from "url";
 
+const __filename = fileURLToPath(import.meta.url);
 parseArgv(__filename, []);
 
 const JSONSchema7TypeNameOrder = [
