@@ -916,7 +916,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -1457,7 +1468,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -1718,7 +1740,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -1954,7 +1987,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -2058,10 +2102,20 @@
                 To subscribe to this event, a GitHub App must have at least
                 read-level access for the "Contents" repository permission.
               </p>
-              <p>
-                <strong>Note</strong>: This event will not occur when more than
-                three tags are created at once.
-              </p>
+              <p><strong>Notes</strong>:</p>
+              <ul>
+                <li>
+                  This event will not occur when more than three tags are
+                  created at once.
+                </li>
+                <li>
+                  Payloads are capped at 25 MB. If an event generates a larger
+                  payload, GitHub will not deliver a payload for that webhook
+                  event. This may happen, for example, if many branches or tags
+                  are pushed at once. We suggest monitoring your payload size to
+                  ensure delivery.
+                </li>
+              </ul>
             </div>
             <h3>Availability for <code>create</code></h3>
             <ul>
@@ -2106,7 +2160,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -2333,7 +2398,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -2673,7 +2749,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -2835,7 +2922,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -3071,7 +3169,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -3611,7 +3720,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -3987,7 +4107,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -4293,7 +4424,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -4551,7 +4693,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -4693,7 +4846,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -4911,7 +5075,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -5046,7 +5221,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -5277,7 +5463,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -5530,7 +5727,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -5849,7 +6057,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -6114,7 +6333,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -6378,7 +6608,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -6621,7 +6862,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -6872,7 +7124,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -7100,7 +7363,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -7330,7 +7604,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -7580,7 +7865,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -7817,7 +8113,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -8049,7 +8356,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -8247,7 +8565,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -8644,7 +8973,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -8876,7 +9216,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -9110,7 +9461,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -9476,7 +9838,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -9713,7 +10086,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -10001,7 +10385,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -10240,7 +10635,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -10506,7 +10912,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -10852,7 +11269,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -11146,7 +11574,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -11375,7 +11814,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -11622,7 +12072,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -11810,7 +12271,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -12046,7 +12518,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -12430,7 +12913,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -12630,7 +13124,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -12854,7 +13359,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -13143,7 +13659,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -13385,7 +13912,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -13609,7 +14147,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -13814,7 +14363,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -13991,7 +14551,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -14133,7 +14704,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -14386,7 +14968,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
@@ -14653,7 +15246,18 @@
                       <div>
                         <div><code>enterprise</code> <span>object</span></div>
                         <div>
-                          <div><p>An enterprise on GitHub.</p></div>
+                          <div>
+                            <p>
+                              An enterprise on GitHub. Webhook payloads contain
+                              the <code>enterprise</code> property when the
+                              webhook is configured on an enterprise account or
+                              an organization that's part of an enterprise
+                              account. For more information, see "<a
+                                href="https://docs.github.com/github-ae@latest/admin/overview/about-enterprise-accounts"
+                                >About enterprise accounts</a
+                              >."
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
