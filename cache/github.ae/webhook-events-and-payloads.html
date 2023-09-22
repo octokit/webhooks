@@ -713,15 +713,15 @@
       </p>
       <ul>
         <li>
-          <code>X-GitHub-Event</code>: Name of the event that triggered the
+          <code>X-GitHub-Hook-ID</code>: The unique identifier of the webhook.
+        </li>
+        <li>
+          <code>X-GitHub-Event</code>: The name of the event that triggered the
           delivery.
         </li>
         <li>
-          <code>X-GitHub-Delivery</code>: A
-          <a href="https://en.wikipedia.org/wiki/Globally_unique_identifier"
-            >GUID</a
-          >
-          to identify the delivery.
+          <code>X-GitHub-Delivery</code>: A globally unique identifier (GUID) to
+          identify the delivery.
         </li>
         <li>
           <code>X-GitHub-Enterprise-Version</code>: The version of the GitHub
@@ -733,16 +733,25 @@
         </li>
         <li>
           <code>X-Hub-Signature-256</code>: This header is sent if the webhook
-          is configured with a
-          <a href="/en/github-ae@latest/rest/repos#create-hook-config-params"
-            ><code>secret</code></a
-          >. This is the HMAC hex digest of the request body, and is generated
-          using the SHA-256 hash function and the <code>secret</code> as the
-          HMAC <code>key</code>.
+          is configured with a secret. This is the HMAC hex digest of the
+          request body, and is generated using the SHA-256 hash function and the
+          configured secret as the HMAC <code>key</code>. For more information,
+          see "<a
+            href="/en/github-ae@latest/webhooks/using-webhooks/securing-your-webhooks"
+            >Securing your webhooks</a
+          >."
         </li>
         <li>
           <code>User-Agent</code>: This header will always have the prefix
           <code>GitHub-Hookshot/</code>.
+        </li>
+        <li>
+          <code>X-GitHub-Hook-Installation-Target-Type</code>: The type of
+          resource where the webhook was created.
+        </li>
+        <li>
+          <code>X-GitHub-Hook-Installation-Target-ID</code>: The unique
+          identifier of the resource where the webhook was created.
         </li>
       </ul>
       <p>
@@ -764,8 +773,7 @@
       </p>
       <pre><code><span>&gt; </span><span>POST /payload HTTP/2</span>
 <span>
-&gt; </span><span>Host: localhost:4567</span>
-<span>&gt; </span><span>X-GitHub-Delivery: 72d3162e-cc78-11e3-81ab-4c9367dc0958</span>
+&gt; </span><span>X-GitHub-Delivery: 72d3162e-cc78-11e3-81ab-4c9367dc0958</span>
 <span>&gt; </span><span>X-GitHub-Enterprise-Version: 2.15.0</span>
 <span>&gt; </span><span>X-GitHub-Enterprise-Host: example.com</span>
 <span>&gt; </span><span>X-Hub-Signature-256: sha256=d57c68ca6f92289e6987922ff26938930f6e66a2d161ef06abdf1859230aa23c</span>
@@ -773,6 +781,9 @@
 <span>&gt; </span><span>Content-Type: application/json</span>
 <span>&gt; </span><span>Content-Length: 6615</span>
 <span>&gt; </span><span>X-GitHub-Event: issues</span>
+<span>&gt; </span><span>X-GitHub-Hook-ID: 292430182</span>
+<span>&gt; </span><span>X-GitHub-Hook-Installation-Target-ID: 79929171</span>
+<span>&gt; </span><span>X-GitHub-Hook-Installation-Target-Type: repository</span>
 <span>
 &gt; </span><span>{</span>
 <span>&gt; </span><span>  <span>"action"</span>: <span>"opened"</span>,</span>
