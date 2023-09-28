@@ -733,12 +733,12 @@
         </li>
         <li>
           <code>X-Hub-Signature-256</code>: This header is sent if the webhook
-          is configured with a secret. This is the HMAC hex digest of the
-          request body, and is generated using the SHA-256 hash function and the
-          configured secret as the HMAC <code>key</code>. For more information,
-          see "<a
+          is configured with a <code>secret</code>. This is the HMAC hex digest
+          of the request body, and is generated using the SHA-256 hash function
+          and the <code>secret</code> as the HMAC <code>key</code>. For more
+          information, see "<a
             href="/en/github-ae@latest/webhooks/using-webhooks/securing-your-webhooks"
-            >Securing your webhooks</a
+            >Validating webhook deliveries</a
           >."
         </li>
         <li>
