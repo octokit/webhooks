@@ -685,26 +685,37 @@
       </h2>
       <p>
         You can create webhooks that subscribe to the events listed on this
-        page. Each webhook event on this page includes a description of the
-        webhook properties for that event. If the event has multiple actions,
-        the properties corresponding to each action are included. For more
-        information about subscribing to events, see "<a
+        page. To limit the number of HTTP requests to your server, you should
+        only subscribe to the specific events that you plan on handling. For
+        more information, see "<a
           href="/en/github-ae@latest/webhooks/creating-webhooks"
           >Creating webhooks</a
-        >" and "<a
-          href="/en/github-ae@latest/webhooks/using-webhooks/editing-webhooks"
-          >Editing webhooks</a
         >."
       </p>
-      <div>
-        <p>
-          <strong>Note:</strong> Payloads are capped at 25 MB. If an event
-          generates a larger payload, GitHub will not deliver a payload for that
-          webhook event. This may happen, for example, on a
-          <code>create</code> event if many branches or tags are pushed at once.
-          We suggest monitoring your payload size to ensure delivery.
-        </p>
-      </div>
+      <p>
+        Each webhook event on this page includes a description of the webhook
+        properties for that event. If the event has multiple actions, the
+        properties corresponding to each action are included.
+      </p>
+      <p>
+        Each event is only available to specific types of webhooks. For example,
+        an organization webhook can subscribe to the <code>team</code> event,
+        but a repository webhook cannot. The description of each webhook event
+        lists the availability for that event. For more information, see "<a
+          href="/en/github-ae@latest/webhooks/types-of-webhooks"
+          >Types of webhooks</a
+        >."
+      </p>
+      <h3 id="payload-cap" tabindex="-1">
+        <a href="#payload-cap">Payload cap<span aria-hidden="true"></span></a>
+      </h3>
+      <p>
+        Payloads are capped at 25 MB. If an event generates a larger payload,
+        GitHub will not deliver a payload for that webhook event. This may
+        happen, for example, on a <code>create</code> event if many branches or
+        tags are pushed at once. We suggest monitoring your payload size to
+        ensure delivery.
+      </p>
       <h3 id="delivery-headers" tabindex="-1">
         <a href="#delivery-headers"
           >Delivery headers<span aria-hidden="true"></span
