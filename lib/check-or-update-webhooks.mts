@@ -54,14 +54,14 @@ export const checkOrUpdateWebhooks = async ({
         `ghes-${ghe.replace(".", "")}`,
       ]
     : githubAE
-    ? [
-        "https://docs.github.com/en/github-ae@latest/developers/webhooks-and-events/webhooks/webhook-events-and-payloads",
-        "github.ae",
-      ]
-    : [
-        "https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/webhooks/webhook-events-and-payloads",
-        "api.github.com",
-      ];
+      ? [
+          "https://docs.github.com/en/github-ae@latest/developers/webhooks-and-events/webhooks/webhook-events-and-payloads",
+          "github.ae",
+        ]
+      : [
+          "https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/webhooks/webhook-events-and-payloads",
+          "api.github.com",
+        ];
 
   const currentWebhooks = JSON.parse(
     readFileSync(`./payload-examples/${folderName}/index.json`).toString(),
