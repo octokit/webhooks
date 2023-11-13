@@ -25,7 +25,7 @@
     "typecheck": "tsc -p . --noEmit",
     "validate": "npm run -s validate:payloads && npm run -s validate:schema",
     "validate:payloads": "node --no-warnings=ExperimentalWarning --loader ts-node/esm bin/validate-payload-examples.mts",
-    "validate:schema": "node --no-warnings=ExperimentalWarning --loader ts-node/esm file.ts bin/validate-schema.mts"
+    "validate:schema": "node --no-warnings=ExperimentalWarning --loader ts-node/esm bin/validate-schema.mts"
   },
   "prettier": {},
   "release": {
