@@ -21,7 +21,7 @@
     "octokit-schema": "node --no-warnings=ExperimentalWarning --loader ts-node/esm bin/octokit-schema.mts",
     "octokit-webhooks": "node --no-warnings=ExperimentalWarning --loader ts-node/esm bin/octokit-webhooks.mts",
     "pretest": "npm run -s lint",
-    "test": "npm run build && npm run build:schema && npm run validate -- --continue-on-error && ts-node --esm -T test.mts",
+    "test": "npm run build && npm run build:schema && npm run validate -- --continue-on-error && node --no-warnings=ExperimentalWarning --loader ts-node/esm test.mts",
     "typecheck": "tsc -p . --noEmit",
     "validate": "npm run -s validate:payloads && npm run -s validate:schema",
     "validate:payloads": "node --no-warnings=ExperimentalWarning --loader ts-node/esm bin/validate-payload-examples.mts",
