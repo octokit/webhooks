@@ -6,10 +6,10 @@ import { capitalize } from "./index.mjs";
 type Join<T extends unknown[], D extends string> = T extends []
   ? ""
   : T extends [string]
-  ? `${T[0]}`
-  : T extends [string, ...infer U]
-  ? `${T[0]}${D}${Join<U, D>}`
-  : string;
+    ? `${T[0]}`
+    : T extends [string, ...infer U]
+      ? `${T[0]}${D}${Join<U, D>}`
+      : string;
 
 type CapitalizeIf<
   Condition extends boolean,
@@ -23,10 +23,10 @@ type SplitCamel<
 > = string extends S
   ? string[]
   : S extends ""
-  ? []
-  : S extends `${infer T}${D}${infer U}`
-  ? [CapitalizeIf<IsTail, T>, ...SplitCamel<U, D, true>]
-  : [CapitalizeIf<IsTail, S>];
+    ? []
+    : S extends `${infer T}${D}${infer U}`
+      ? [CapitalizeIf<IsTail, T>, ...SplitCamel<U, D, true>]
+      : [CapitalizeIf<IsTail, S>];
 
 type Camelize<S> = S extends string ? Join<SplitCamel<S, "-">, ""> : S;
 
