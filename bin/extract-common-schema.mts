@@ -1,4 +1,4 @@
-#!/usr/bin/env -S ts-node-transpile-only --esms
+#!/usr/bin/env -S ts-node-transpile-only --esm
 
 import { strict as assert } from "assert";
 import fs from "fs";
