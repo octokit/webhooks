@@ -3659,7 +3659,12 @@
                 </button>
               </div>
             </div>
-            <div><p>A Dependabot alert was automatically closed.</p></div>
+            <div>
+              <p>
+                A Dependabot alert was automatically closed by a Dependabot
+                auto-triage rule.
+              </p>
+            </div>
             <div>
               <table
                 summary="Column one describes the parameter. The first line includes the name, type, and whether the parameter is required. The second line is a description of the parameter."
@@ -10768,7 +10773,7 @@
             <div>
               <p>
                 This event occurs when there is activity relating to a card on a
-                classic project. For more information, see "<a
+                project (classic). For more information, see "<a
                   href="https://docs.github.com/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards"
                   >About projects (classic)</a
                 >." For information about the API to manage classic projects,
@@ -10782,10 +10787,14 @@
                 >" in the REST API documentation.
               </p>
               <p>
-                For activity relating to a project or a column on a project, use
-                the <code>project</code> and <code>project_column</code> event.
-                For activity relating to Projects instead of Projects (classic),
-                use the <code>projects_v2</code> event instead.
+                For activity relating to a project (classic) or a column on a
+                project (classic), use the <code>project</code> and
+                <code>project_column</code> event.
+              </p>
+              <p>
+                This event relates to projects (classic) only. For activity
+                relating to the new Projects experience, use the
+                <code>projects_v2</code> event instead.
               </p>
               <p>
                 To subscribe to this event, a GitHub App must have at least
@@ -10837,7 +10846,7 @@
               </div>
             </div>
             <div>
-              <p>A note in a classic project was converted to an issue.</p>
+              <p>A note in a project (classic) was converted to an issue.</p>
             </div>
             <div>
               <table
@@ -11035,8 +11044,8 @@
           <div>
             <div>
               <p>
-                This event occurs when there is activity relating to a classic
-                project. For more information, see "<a
+                This event occurs when there is activity relating to a project
+                (classic). For more information, see "<a
                   href="https://docs.github.com/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards"
                   >About projects (classic)</a
                 >." For information about the API to manage classic projects,
@@ -11050,10 +11059,14 @@
                 >" in the REST API documentation.
               </p>
               <p>
-                For activity relating to a card or column on a project, use the
-                <code>project_card</code> and <code>project_column</code> event.
-                For activity relating to Projects instead of Projects (classic),
-                use the <code>projects_v2</code> event instead.
+                For activity relating to a card or column on a project
+                (classic), use the <code>project_card</code> and
+                <code>project_column</code> event.
+              </p>
+              <p>
+                This event relates to projects (classic) only. For activity
+                relating to the new Projects experience, use the
+                <code>projects_v2</code> event instead.
               </p>
               <p>
                 To subscribe to this event, a GitHub App must have at least
@@ -11104,7 +11117,7 @@
                 </button>
               </div>
             </div>
-            <div><p>A classic project was closed.</p></div>
+            <div><p>A project (classic) was closed.</p></div>
             <div>
               <table
                 summary="Column one describes the parameter. The first line includes the name, type, and whether the parameter is required. The second line is a description of the parameter."
@@ -11279,7 +11292,7 @@
             <div>
               <p>
                 This event occurs when there is activity relating to a column on
-                a classic project. For more information, see "<a
+                a project (classic). For more information, see "<a
                   href="https://docs.github.com/issues/organizing-your-work-with-project-boards/managing-project-boards/about-project-boards"
                   >About projects (classic)</a
                 >." For information about the API to manage classic projects,
@@ -11293,10 +11306,14 @@
                 >" in the REST API documentation.
               </p>
               <p>
-                For activity relating to a project or a card on a project, use
-                the <code>project</code> and <code>project_card</code> event.
-                For activity relating to Projects instead of Projects (classic),
-                use the <code>projects_v2</code> event instead.
+                For activity relating to a project (classic) or a card on a
+                project (classic), use the <code>project</code> and
+                <code>project_card</code> event.
+              </p>
+              <p>
+                This event relates to projects (classic) only. For activity
+                relating to the new Projects experience, use the
+                <code>projects_v2</code> event instead.
               </p>
               <p>
                 To subscribe to this event, a GitHub App must have at least
@@ -11347,7 +11364,7 @@
                 </button>
               </div>
             </div>
-            <div><p>A column was added to a classic project.</p></div>
+            <div><p>A column was added to a project (classic).</p></div>
             <div>
               <table
                 summary="Column one describes the parameter. The first line includes the name, type, and whether the parameter is required. The second line is a description of the parameter."
@@ -15866,15 +15883,21 @@
           <div>
             <div>
               <p>
-                This event occurs when there is activity relating to a security
-                advisory that was reviewed by GitHub. A GitHub-reviewed security
-                advisory provides information about security-related
-                vulnerabilities in software on GitHub. For more information
-                about security advisories, see "<a
-                  href="https://docs.github.com/code-security/repository-security-advisories/about-github-security-advisories-for-repositories"
-                  >About GitHub Security Advisories for repositories</a
+                This event occurs when there is activity relating to a global
+                security advisory that was reviewed by GitHub. A GitHub-reviewed
+                global security advisory provides information about security
+                vulnerabilities or malware that have been mapped to packages in
+                ecosystems we support. For more information about global
+                security advisories, see "<a
+                  href="https://docs.github.com/code-security/security-advisories/working-with-global-security-advisories-from-the-github-advisory-database/about-global-security-advisories"
+                  >About global security advisories</a
                 >." For information about the API to manage security advisories,
                 see
+                <a
+                  href="https://docs.github.com/rest/security-advisories/global-advisories"
+                  >the REST API documentation</a
+                >
+                or
                 <a
                   href="https://docs.github.com/graphql/reference/objects#securityadvisory"
                   >the GraphQL documentation</a
