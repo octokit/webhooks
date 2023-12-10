@@ -9129,115 +9129,6 @@
           </div>
         </div>
       </div>
-      <h3 id="delivery-headers" tabindex="-1">
-        <a href="#delivery-headers"
-          >Delivery headers<span aria-hidden="true"></span
-        ></a>
-      </h3>
-      <p>
-        HTTP POST payloads that are delivered to your webhook's configured URL
-        endpoint will contain several special headers:
-      </p>
-      <ul>
-        <li>
-          <code>X-GitHub-Hook-ID</code>: The unique identifier of the webhook.
-        </li>
-        <li>
-          <code>X-GitHub-Event</code>: The name of the event that triggered the
-          delivery.
-        </li>
-        <li>
-          <code>X-GitHub-Delivery</code>: A globally unique identifier (GUID) to
-          identify the delivery.
-        </li>
-        <li>
-          <code>X-Hub-Signature</code>: This header is sent if the webhook is
-          configured with a <code>secret</code>. This is the HMAC hex digest of
-          the request body, and is generated using the SHA-1 hash function and
-          the <code>secret</code> as the HMAC <code>key</code>.
-          <code>X-Hub-Signature</code> is provided for compatibility with
-          existing integrations. We recommend that you use the more secure
-          <code>X-Hub-Signature-256</code> instead.
-        </li>
-        <li>
-          <code>X-Hub-Signature-256</code>: This header is sent if the webhook
-          is configured with a <code>secret</code>. This is the HMAC hex digest
-          of the request body, and is generated using the SHA-256 hash function
-          and the <code>secret</code> as the HMAC <code>key</code>. For more
-          information, see "<a
-            href="/en/webhooks/using-webhooks/securing-your-webhooks"
-            >Validating webhook deliveries</a
-          >."
-        </li>
-        <li>
-          <code>User-Agent</code>: This header will always have the prefix
-          <code>GitHub-Hookshot/</code>.
-        </li>
-        <li>
-          <code>X-GitHub-Hook-Installation-Target-Type</code>: The type of
-          resource where the webhook was created.
-        </li>
-        <li>
-          <code>X-GitHub-Hook-Installation-Target-ID</code>: The unique
-          identifier of the resource where the webhook was created.
-        </li>
-      </ul>
-      <p>
-        To see what each header might look like in a webhook payload, see "<a
-          href="#example-webhook-delivery"
-          >Example webhook delivery</a
-        >."
-      </p>
-      <h3 id="example-webhook-delivery" tabindex="-1">
-        <a href="#example-webhook-delivery"
-          >Example webhook delivery<span aria-hidden="true"></span
-        ></a>
-      </h3>
-      <p>
-        You can choose to have payloads delivered in JSON format
-        (<code>application/json</code>) or as URL-encoded data
-        (<code>x-www-form-urlencoded</code>). Following is an example of a
-        webhook POST request that uses the JSON format.
-      </p>
-      <pre><code><span>&gt; </span><span>POST /payload HTTP/2</span>
-<span>
-&gt; </span><span>X-GitHub-Delivery: 72d3162e-cc78-11e3-81ab-4c9367dc0958</span>
-<span>&gt; </span><span>X-Hub-Signature: sha1=7d38cdd689735b008b3c702edd92eea23791c5f6</span>
-<span>&gt; </span><span>X-Hub-Signature-256: sha256=d57c68ca6f92289e6987922ff26938930f6e66a2d161ef06abdf1859230aa23c</span>
-<span>&gt; </span><span>User-Agent: GitHub-Hookshot/044aadd</span>
-<span>&gt; </span><span>Content-Type: application/json</span>
-<span>&gt; </span><span>Content-Length: 6615</span>
-<span>&gt; </span><span>X-GitHub-Event: issues</span>
-<span>&gt; </span><span>X-GitHub-Hook-ID: 292430182</span>
-<span>&gt; </span><span>X-GitHub-Hook-Installation-Target-ID: 79929171</span>
-<span>&gt; </span><span>X-GitHub-Hook-Installation-Target-Type: repository</span>
-<span>
-&gt; </span><span>{</span>
-<span>&gt; </span><span>  <span>"action"</span>: <span>"opened"</span>,</span>
-<span>&gt; </span><span>  <span>"issue"</span>: {</span>
-<span>&gt; </span><span>    <span>"url"</span>: <span>"https://api.github.com/repos/octocat/Hello-World/issues/1347"</span>,</span>
-<span>&gt; </span><span>    <span>"number"</span>: 1347,</span>
-<span>&gt; </span><span>    ...</span>
-<span>&gt; </span><span>  },</span>
-<span>&gt; </span><span>  <span>"repository"</span> : {</span>
-<span>&gt; </span><span>    <span>"id"</span>: 1296269,</span>
-<span>&gt; </span><span>    <span>"full_name"</span>: <span>"octocat/Hello-World"</span>,</span>
-<span>&gt; </span><span>    <span>"owner"</span>: {</span>
-<span>&gt; </span><span>      <span>"login"</span>: <span>"octocat"</span>,</span>
-<span>&gt; </span><span>      <span>"id"</span>: 1,</span>
-<span>&gt; </span><span>      ...</span>
-<span>&gt; </span><span>    },</span>
-<span>&gt; </span><span>    ...</span>
-<span>&gt; </span><span>  },</span>
-<span>&gt; </span><span>  <span>"sender"</span>: {</span>
-<span>&gt; </span><span>    <span>"login"</span>: <span>"octocat"</span>,</span>
-<span>&gt; </span><span>    <span>"id"</span>: 1,</span>
-<span>&gt; </span><span>    ...</span>
-<span>&gt; </span><span>  }</span>
-<span>&gt; </span><span>}</span>
-</code></pre>
-    </div>
-    <div>
       <div>
         <div>
           <h2 id="milestone" tabindex="-1">
@@ -9486,6 +9377,115 @@
           </div>
         </div>
       </div>
+      <h3 id="delivery-headers" tabindex="-1">
+        <a href="#delivery-headers"
+          >Delivery headers<span aria-hidden="true"></span
+        ></a>
+      </h3>
+      <p>
+        HTTP POST payloads that are delivered to your webhook's configured URL
+        endpoint will contain several special headers:
+      </p>
+      <ul>
+        <li>
+          <code>X-GitHub-Hook-ID</code>: The unique identifier of the webhook.
+        </li>
+        <li>
+          <code>X-GitHub-Event</code>: The name of the event that triggered the
+          delivery.
+        </li>
+        <li>
+          <code>X-GitHub-Delivery</code>: A globally unique identifier (GUID) to
+          identify the delivery.
+        </li>
+        <li>
+          <code>X-Hub-Signature</code>: This header is sent if the webhook is
+          configured with a <code>secret</code>. This is the HMAC hex digest of
+          the request body, and is generated using the SHA-1 hash function and
+          the <code>secret</code> as the HMAC <code>key</code>.
+          <code>X-Hub-Signature</code> is provided for compatibility with
+          existing integrations. We recommend that you use the more secure
+          <code>X-Hub-Signature-256</code> instead.
+        </li>
+        <li>
+          <code>X-Hub-Signature-256</code>: This header is sent if the webhook
+          is configured with a <code>secret</code>. This is the HMAC hex digest
+          of the request body, and is generated using the SHA-256 hash function
+          and the <code>secret</code> as the HMAC <code>key</code>. For more
+          information, see "<a
+            href="/en/webhooks/using-webhooks/securing-your-webhooks"
+            >Validating webhook deliveries</a
+          >."
+        </li>
+        <li>
+          <code>User-Agent</code>: This header will always have the prefix
+          <code>GitHub-Hookshot/</code>.
+        </li>
+        <li>
+          <code>X-GitHub-Hook-Installation-Target-Type</code>: The type of
+          resource where the webhook was created.
+        </li>
+        <li>
+          <code>X-GitHub-Hook-Installation-Target-ID</code>: The unique
+          identifier of the resource where the webhook was created.
+        </li>
+      </ul>
+      <p>
+        To see what each header might look like in a webhook payload, see "<a
+          href="#example-webhook-delivery"
+          >Example webhook delivery</a
+        >."
+      </p>
+      <h3 id="example-webhook-delivery" tabindex="-1">
+        <a href="#example-webhook-delivery"
+          >Example webhook delivery<span aria-hidden="true"></span
+        ></a>
+      </h3>
+      <p>
+        You can choose to have payloads delivered in JSON format
+        (<code>application/json</code>) or as URL-encoded data
+        (<code>x-www-form-urlencoded</code>). Following is an example of a
+        webhook POST request that uses the JSON format.
+      </p>
+      <pre><code><span>&gt; </span><span>POST /payload HTTP/2</span>
+<span>
+&gt; </span><span>X-GitHub-Delivery: 72d3162e-cc78-11e3-81ab-4c9367dc0958</span>
+<span>&gt; </span><span>X-Hub-Signature: sha1=7d38cdd689735b008b3c702edd92eea23791c5f6</span>
+<span>&gt; </span><span>X-Hub-Signature-256: sha256=d57c68ca6f92289e6987922ff26938930f6e66a2d161ef06abdf1859230aa23c</span>
+<span>&gt; </span><span>User-Agent: GitHub-Hookshot/044aadd</span>
+<span>&gt; </span><span>Content-Type: application/json</span>
+<span>&gt; </span><span>Content-Length: 6615</span>
+<span>&gt; </span><span>X-GitHub-Event: issues</span>
+<span>&gt; </span><span>X-GitHub-Hook-ID: 292430182</span>
+<span>&gt; </span><span>X-GitHub-Hook-Installation-Target-ID: 79929171</span>
+<span>&gt; </span><span>X-GitHub-Hook-Installation-Target-Type: repository</span>
+<span>
+&gt; </span><span>{</span>
+<span>&gt; </span><span>  <span>"action"</span>: <span>"opened"</span>,</span>
+<span>&gt; </span><span>  <span>"issue"</span>: {</span>
+<span>&gt; </span><span>    <span>"url"</span>: <span>"https://api.github.com/repos/octocat/Hello-World/issues/1347"</span>,</span>
+<span>&gt; </span><span>    <span>"number"</span>: 1347,</span>
+<span>&gt; </span><span>    ...</span>
+<span>&gt; </span><span>  },</span>
+<span>&gt; </span><span>  <span>"repository"</span> : {</span>
+<span>&gt; </span><span>    <span>"id"</span>: 1296269,</span>
+<span>&gt; </span><span>    <span>"full_name"</span>: <span>"octocat/Hello-World"</span>,</span>
+<span>&gt; </span><span>    <span>"owner"</span>: {</span>
+<span>&gt; </span><span>      <span>"login"</span>: <span>"octocat"</span>,</span>
+<span>&gt; </span><span>      <span>"id"</span>: 1,</span>
+<span>&gt; </span><span>      ...</span>
+<span>&gt; </span><span>    },</span>
+<span>&gt; </span><span>    ...</span>
+<span>&gt; </span><span>  },</span>
+<span>&gt; </span><span>  <span>"sender"</span>: {</span>
+<span>&gt; </span><span>    <span>"login"</span>: <span>"octocat"</span>,</span>
+<span>&gt; </span><span>    <span>"id"</span>: 1,</span>
+<span>&gt; </span><span>    ...</span>
+<span>&gt; </span><span>  }</span>
+<span>&gt; </span><span>}</span>
+</code></pre>
+    </div>
+    <div>
       <div>
         <div>
           <h2 id="org_block" tabindex="-1">
