@@ -22,7 +22,7 @@
           "required": ["state", "closed_at"],
           "properties": {
             "state": { "type": "string", "enum": ["open"] },
-            "closed_at": { "type": "null" }
+            "closed_at": { "type": ["string", "null"] }
           },
           "tsAdditionalProperties": false
         }
