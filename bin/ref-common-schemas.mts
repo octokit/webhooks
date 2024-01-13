@@ -18,12 +18,9 @@ parseArgv(__filename, []);
 
 const commonSchemas = fs
   .readdirSync(`${pathToSchemas}/common`)
-  .map<[name: string, schema: JSONSchema7]>((commonSchema) => [
-    commonSchema,
-    normalizeSchema(
-      require(`../${pathToSchemas}/common/${commonSchema}`) as JSONSchema7,
-    ),
-  ]);
+  .map<
+    [name: string, schema: JSONSchema7]
+  >((commonSchema) => [commonSchema, normalizeSchema(require(`../${pathToSchemas}/common/${commonSchema}`) as JSONSchema7)]);
 
 const findCommonSchema = (object: JSONSchema7) => {
   const normalisedSchema = normalizeSchema(object);
