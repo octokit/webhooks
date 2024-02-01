@@ -15,7 +15,7 @@
     "status": { "type": "string", "enum": ["completed"] },
     "conclusion": {
       "type": "string",
-      "enum": ["failure", "skipped", "success"]
+      "enum": ["failure", "skipped", "success", "cancelled"]
     },
     "number": { "type": "integer" },
     "started_at": { "type": "string", "format": "date-time" },
