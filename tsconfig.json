@@ -17,8 +17,8 @@
     "noFallthroughCasesInSwitch": true,
     "noEmitOnError": true,
     "removeComments": false,
-    "esModuleInterop": true,
+    "esModuleInterop": true
   },
   "exclude": ["cache", "coverage", "node_modules"],
-  "include": ["**/*.js", "**/*.ts", "**/*.mts"],
+  "include": ["**/*.js", "**/*.ts", "**/*.mts"]
 }
