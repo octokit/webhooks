@@ -3,7 +3,7 @@
   "package": {
     "id": 10696,
     "name": "hello-world-npm",
-    "namespace": "Codertocaat/hello-world-npm",
+    "namespace": "Codertocat/hello-world-npm",
     "description": null,
     "ecosystem": "docker",
     "package_type": "npm",
