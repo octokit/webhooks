@@ -1,4 +1,4 @@
-#!/usr/bin/env -S ts-node-transpile-only --esm
+#!/usr/bin/env -S node --no-warnings=ExperimentalWarning --loader ts-node/esm
 
 import fs from "fs";
 import { JSONSchema7 } from "json-schema";
