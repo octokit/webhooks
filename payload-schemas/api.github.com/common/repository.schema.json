@@ -79,7 +79,8 @@
     "is_template",
     "web_commit_signoff_required",
     "topics",
-    "visibility"
+    "visibility",
+    "custom_properties"
   ],
   "properties": {
     "id": {
@@ -426,7 +427,17 @@
       "additionalProperties": false
     },
     "public": { "type": "boolean" },
-    "organization": { "type": "string" }
+    "organization": { "type": "string" },
+    "custom_properties": {
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          { "type": "null" },
+          { "type": "string" },
+          { "type": "array", "items": { "type": "string" } }
+        ]
+      }
+    }
   },
   "additionalProperties": false,
   "title": "Repository"
