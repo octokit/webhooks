@@ -128,7 +128,7 @@
         "site_admin": false
       },
       "html_url": "https://github.com/Codertocat/hello-world-npm",
-      "description": "This is a simple npm package that demonstrates the Github Package Registry",
+      "description": "This is a simple npm package that demonstrates the GitHub Package Registry",
       "fork": false,
       "url": "https://api.github.com/repos/Codertocat/hello-world-npm",
       "forks_url": "https://api.github.com/repos/Codertocat/hello-world-npm/forks",
