@@ -179,7 +179,8 @@
     "forks": 0,
     "open_issues": 13,
     "watchers": 0,
-    "default_branch": "master"
+    "default_branch": "master",
+    "custom_properties": {}
   },
   "sender": {
     "login": "github",
