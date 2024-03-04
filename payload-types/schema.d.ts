@@ -791,7 +791,7 @@ export interface Repository {
   };
   public?: boolean;
   organization?: string;
-  custom_properties?: {
+  custom_properties: {
     [k: string]: null | string | string[];
   };
 }
