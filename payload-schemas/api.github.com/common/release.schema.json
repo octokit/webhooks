@@ -37,7 +37,7 @@
     "name": { "type": "string" },
     "draft": {
       "type": "boolean",
-      "description": "Wether the release is a draft or published"
+      "description": "Whether the release is a draft or published"
     },
     "author": { "$ref": "user.schema.json" },
     "prerelease": {

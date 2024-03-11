@@ -70,7 +70,7 @@ The webhook schemas are [JSON schemas](https://json-schema.org/) that are manual
     "enum": ["foo", "bar", null]
   }
   ```
-- When a property can be of multiple types, use a [`oneOf`](https://json-schema.org/understanding-json-schema/reference/combining.html#oneof) for the decleration of that property, and declare each type in the `oneOf`
+- When a property can be of multiple types, use a [`oneOf`](https://json-schema.org/understanding-json-schema/reference/combining.html#oneof) for the declaration of that property, and declare each type in the `oneOf`
 - When it is possible that a property may have a value of `null`:
 
   - if there is only one other type the property can be, change the `type` property to an array including the type, and the string `null`
