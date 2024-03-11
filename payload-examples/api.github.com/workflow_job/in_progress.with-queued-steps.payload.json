@@ -202,7 +202,8 @@
     "forks": 0,
     "open_issues": 8,
     "watchers": 0,
-    "default_branch": "main"
+    "default_branch": "main",
+    "custom_properties": {}
   },
   "sender": {
     "login": "renovate[bot]",

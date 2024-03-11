@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "custom_property$created",
+  "title": "custom property created event",
+  "type": "object",
+  "properties": {
+    "action": { "type": "string", "enum": ["created"] },
+    "definition": { "$ref": "common/org-custom-property.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" }
+  },
+  "required": ["action", "definition", "organization"],
+  "additionalProperties": false
+}

@@ -277,7 +277,8 @@
         "is_template": false,
         "topics": [],
         "visibility": "public",
-        "web_commit_signoff_required": false
+        "web_commit_signoff_required": false,
+        "custom_properties": {}
       }
     },
     "base": {
@@ -400,7 +401,8 @@
         "is_template": false,
         "topics": [],
         "visibility": "public",
-        "web_commit_signoff_required": false
+        "web_commit_signoff_required": false,
+        "custom_properties": {}
       }
     },
     "_links": {
@@ -549,7 +551,8 @@
     "is_template": false,
     "topics": [],
     "visibility": "public",
-    "web_commit_signoff_required": false
+    "web_commit_signoff_required": false,
+    "custom_properties": {}
   },
   "installation": {
     "id": 1,

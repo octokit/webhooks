@@ -1,0 +1,31 @@
+{
+  "title": "Custom property values updated event",
+  "$id": "custom_property_values$updated",
+  "type": "object",
+  "properties": {
+    "action": { "type": "string", "enum": ["updated"] },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "new_property_values": {
+      "type": "array",
+      "description": "The new custom property values for the repository.",
+      "items": { "$ref": "common/custom-property-value.schema.json" }
+    },
+    "old_property_values": {
+      "type": "array",
+      "description": "The old custom property values for the repository.",
+      "items": { "$ref": "common/custom-property-value.schema.json" }
+    }
+  },
+  "required": [
+    "action",
+    "repository",
+    "organization",
+    "sender",
+    "new_property_values",
+    "old_property_values"
+  ],
+  "additionalProperties": false
+}

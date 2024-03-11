@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "custom property deleted event",
+  "$id": "custom_property$deleted",
+  "type": "object",
+  "properties": {
+    "action": { "type": "string", "enum": ["deleted"] },
+    "definition": {
+      "type": "object",
+      "properties": {
+        "property_name": {
+          "type": "string",
+          "description": "The name of the property that was deleted."
+        }
+      },
+      "required": ["property_name"],
+      "additionalProperties": false
+    },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" }
+  },
+  "required": ["action", "definition", "organization"],
+  "additionalProperties": false
+}

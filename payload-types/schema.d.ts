@@ -6,12 +6,15 @@
  */
 
 export type Schema =
+  | BranchProtectionConfigurationEvent
   | BranchProtectionRuleEvent
   | CheckRunEvent
   | CheckSuiteEvent
   | CodeScanningAlertEvent
   | CommitCommentEvent
   | CreateEvent
+  | CustomPropertyEvent
+  | CustomPropertyValuesEvent
   | DeleteEvent
   | DependabotAlertEvent
   | DeployKeyEvent
@@ -69,6 +72,9 @@ export type Schema =
   | WorkflowDispatchEvent
   | WorkflowJobEvent
   | WorkflowRunEvent;
+export type BranchProtectionConfigurationEvent =
+  | BranchProtectionConfigurationDisabledEvent
+  | BranchProtectionConfigurationEnabledEvent;
 export type BranchProtectionRuleEvent =
   | BranchProtectionRuleCreatedEvent
   | BranchProtectionRuleDeletedEvent
@@ -109,6 +115,10 @@ export type AuthorAssociation =
   | "MEMBER"
   | "NONE"
   | "OWNER";
+export type CustomPropertyEvent =
+  | CustomPropertyCreatedEvent
+  | CustomPropertyDeletedEvent;
+export type CustomPropertyValuesEvent = CustomPropertyValuesUpdatedEvent;
 export type DependabotAlertEvent =
   | DependabotAlertCreatedEvent
   | DependabotAlertDismissedEvent
@@ -467,47 +477,37 @@ export type WorkflowRunEvent =
   | WorkflowRunInProgressEvent
   | WorkflowRunRequestedEvent;
 
-/**
- * Activity related to a branch protection rule. For more information, see "[About branch protection rules](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-rules)."
- */
-export interface BranchProtectionRuleCreatedEvent {
-  action: "created";
-  rule: BranchProtectionRule;
-  repository: Repository;
-  sender: User;
+export interface BranchProtectionConfigurationDisabledEvent {
+  action: "disabled";
   installation?: InstallationLite;
   organization?: Organization;
+  repository: Repository;
+  sender: User;
 }
 /**
- * The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
+ * Installation
  */
-export interface BranchProtectionRule {
+export interface InstallationLite {
+  /**
+   * The ID of the installation.
+   */
   id: number;
-  repository_id: number;
-  name: string;
-  created_at: string;
-  updated_at: string;
-  pull_request_reviews_enforcement_level: BranchProtectionRuleEnforcementLevel;
-  required_approving_review_count: BranchProtectionRuleNumber;
-  dismiss_stale_reviews_on_push: BranchProtectionRuleBoolean;
-  require_code_owner_review: BranchProtectionRuleBoolean;
-  authorized_dismissal_actors_only: BranchProtectionRuleBoolean;
-  ignore_approvals_from_contributors: BranchProtectionRuleBoolean;
-  require_last_push_approval?: BranchProtectionRuleBoolean;
-  required_status_checks: BranchProtectionRuleArray;
-  required_status_checks_enforcement_level: BranchProtectionRuleEnforcementLevel;
-  strict_required_status_checks_policy: BranchProtectionRuleBoolean;
-  signature_requirement_enforcement_level: BranchProtectionRuleEnforcementLevel;
-  linear_history_requirement_enforcement_level: BranchProtectionRuleEnforcementLevel;
-  admin_enforced: BranchProtectionRuleBoolean;
-  create_protected?: BranchProtectionRuleBoolean;
-  allow_force_pushes_enforcement_level: BranchProtectionRuleEnforcementLevel;
-  allow_deletions_enforcement_level: BranchProtectionRuleEnforcementLevel;
-  merge_queue_enforcement_level: BranchProtectionRuleEnforcementLevel;
-  required_deployments_enforcement_level: BranchProtectionRuleEnforcementLevel;
-  required_conversation_resolution_level: BranchProtectionRuleEnforcementLevel;
-  authorized_actors_only: BranchProtectionRuleBoolean;
-  authorized_actor_names: BranchProtectionRuleArray;
+  node_id: string;
+}
+export interface Organization {
+  login: string;
+  id: number;
+  node_id: string;
+  url: string;
+  html_url?: string;
+  repos_url: string;
+  events_url: string;
+  hooks_url: string;
+  issues_url: string;
+  members_url: string;
+  public_members_url: string;
+  avatar_url: string;
+  description: string | null;
 }
 /**
  * A git repository
@@ -791,6 +791,9 @@ export interface Repository {
   };
   public?: boolean;
   organization?: string;
+  custom_properties: {
+    [k: string]: null | string | string[];
+  };
 }
 export interface User {
   login: string;
@@ -821,30 +824,54 @@ export interface License {
   url: string | null;
   node_id: string;
 }
-/**
- * Installation
- */
-export interface InstallationLite {
-  /**
-   * The ID of the installation.
-   */
-  id: number;
-  node_id: string;
+export interface BranchProtectionConfigurationEnabledEvent {
+  action: "enabled";
+  installation?: InstallationLite;
+  organization?: Organization;
+  repository: Repository;
+  sender: User;
 }
-export interface Organization {
-  login: string;
+/**
+ * Activity related to a branch protection rule. For more information, see "[About branch protection rules](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-rules)."
+ */
+export interface BranchProtectionRuleCreatedEvent {
+  action: "created";
+  rule: BranchProtectionRule;
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+/**
+ * The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
+ */
+export interface BranchProtectionRule {
   id: number;
-  node_id: string;
-  url: string;
-  html_url?: string;
-  repos_url: string;
-  events_url: string;
-  hooks_url: string;
-  issues_url: string;
-  members_url: string;
-  public_members_url: string;
-  avatar_url: string;
-  description: string | null;
+  repository_id: number;
+  name: string;
+  created_at: string;
+  updated_at: string;
+  pull_request_reviews_enforcement_level: BranchProtectionRuleEnforcementLevel;
+  required_approving_review_count: BranchProtectionRuleNumber;
+  dismiss_stale_reviews_on_push: BranchProtectionRuleBoolean;
+  require_code_owner_review: BranchProtectionRuleBoolean;
+  authorized_dismissal_actors_only: BranchProtectionRuleBoolean;
+  ignore_approvals_from_contributors: BranchProtectionRuleBoolean;
+  require_last_push_approval?: BranchProtectionRuleBoolean;
+  required_status_checks: BranchProtectionRuleArray;
+  required_status_checks_enforcement_level: BranchProtectionRuleEnforcementLevel;
+  strict_required_status_checks_policy: BranchProtectionRuleBoolean;
+  signature_requirement_enforcement_level: BranchProtectionRuleEnforcementLevel;
+  linear_history_requirement_enforcement_level: BranchProtectionRuleEnforcementLevel;
+  admin_enforced: BranchProtectionRuleBoolean;
+  create_protected?: BranchProtectionRuleBoolean;
+  allow_force_pushes_enforcement_level: BranchProtectionRuleEnforcementLevel;
+  allow_deletions_enforcement_level: BranchProtectionRuleEnforcementLevel;
+  merge_queue_enforcement_level: BranchProtectionRuleEnforcementLevel;
+  required_deployments_enforcement_level: BranchProtectionRuleEnforcementLevel;
+  required_conversation_resolution_level: BranchProtectionRuleEnforcementLevel;
+  authorized_actors_only: BranchProtectionRuleBoolean;
+  authorized_actor_names: BranchProtectionRuleArray;
 }
 /**
  * Activity related to a branch protection rule. For more information, see "[About branch protection rules](https://docs.github.com/en/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-rules)."
@@ -2333,6 +2360,89 @@ export interface CreateEvent {
   sender: User;
   installation?: InstallationLite;
   organization?: Organization;
+}
+export interface CustomPropertyCreatedEvent {
+  action: "created";
+  definition: OrganizationCustomProperty;
+  installation?: InstallationLite;
+  organization: Organization;
+  sender?: User;
+}
+/**
+ * Custom property defined on an organization
+ */
+export interface OrganizationCustomProperty {
+  /**
+   * The name of the property
+   */
+  property_name: string;
+  /**
+   * The type of the value for the property
+   */
+  value_type: "string" | "single_select";
+  /**
+   * Whether the property is required.
+   */
+  required?: boolean;
+  /**
+   * Default value of the property
+   */
+  default_value?: string | null;
+  /**
+   * Short description of the property
+   */
+  description?: string | null;
+  /**
+   * An ordered list of the allowed values of the property.
+   * The property can have up to 200 allowed values.
+   *
+   * @maxItems 200
+   */
+  allowed_values?: string[] | null;
+  /**
+   * Who can edit the values of the property
+   */
+  values_editable_by?: "org_actors" | "org_and_repo_actors" | null;
+}
+export interface CustomPropertyDeletedEvent {
+  action: "deleted";
+  definition: {
+    /**
+     * The name of the property that was deleted.
+     */
+    property_name: string;
+  };
+  installation?: InstallationLite;
+  organization: Organization;
+  sender?: User;
+}
+export interface CustomPropertyValuesUpdatedEvent {
+  action: "updated";
+  installation?: InstallationLite;
+  repository: Repository;
+  organization: Organization;
+  sender: User;
+  /**
+   * The new custom property values for the repository.
+   */
+  new_property_values: CustomPropertyValue[];
+  /**
+   * The old custom property values for the repository.
+   */
+  old_property_values: CustomPropertyValue[];
+}
+/**
+ * Custom property name and associated value
+ */
+export interface CustomPropertyValue {
+  /**
+   * The name of the property
+   */
+  property_name: string;
+  /**
+   * The value assigned to the property
+   */
+  value: string | string[] | null;
 }
 /**
  * A Git branch or tag is deleted.
@@ -8401,12 +8511,15 @@ export interface WorkflowRunRequestedEvent {
 }
 
 export interface EventPayloadMap {
+  branch_protection_configuration: BranchProtectionConfigurationEvent;
   branch_protection_rule: BranchProtectionRuleEvent;
   check_run: CheckRunEvent;
   check_suite: CheckSuiteEvent;
   code_scanning_alert: CodeScanningAlertEvent;
   commit_comment: CommitCommentEvent;
   create: CreateEvent;
+  custom_property: CustomPropertyEvent;
+  custom_property_values: CustomPropertyValuesEvent;
   delete: DeleteEvent;
   dependabot_alert: DependabotAlertEvent;
   deploy_key: DeployKeyEvent;
