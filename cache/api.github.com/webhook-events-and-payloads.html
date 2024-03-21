@@ -14420,7 +14420,9 @@
                   href="https://docs.github.com/rest/repos/repos#create-a-repository-dispatch-event"
                   >the REST API documentation for creating a repository dispatch
                   event</a
-                >.
+                >. In the payload, the <code>action</code> will be the
+                <code>event_type</code> that was specified in the
+                <code>POST /repos/{owner}/{repo}/dispatches</code> request body.
               </p>
               <p>
                 To subscribe to this event, a GitHub App must have at least
@@ -14432,12 +14434,7 @@
               <li>GitHub Apps</li>
             </ul>
             <h3>Webhook payload object for <code>repository_dispatch</code></h3>
-            <div>
-              <p>
-                The <code>event_type</code> that was specified in the
-                <code>POST /repos/{owner}/{repo}/dispatches</code> request body.
-              </p>
-            </div>
+            <div></div>
             <div>
               <table
                 summary="Column one describes the parameter. The first line includes the name, type, and whether the parameter is required. The second line is a description of the parameter."
@@ -14460,13 +14457,15 @@
                           <span>Required</span>
                         </div>
                         <div>
-                          <div></div>
                           <div>
                             <p>
-                              <span>Value<!-- -->:<!-- --> </span
-                              ><span><code>sample.collected</code> </span>
+                              The <code>event_type</code> that was specified in
+                              the
+                              <code>POST /repos/{owner}/{repo}/dispatches</code>
+                              request body.
                             </p>
                           </div>
+                          <div></div>
                         </div>
                       </div>
                     </td>
@@ -14493,7 +14492,14 @@
                           <span>object or null</span> <span>Required</span>
                         </div>
                         <div>
-                          <div></div>
+                          <div>
+                            <p>
+                              The <code>client_payload</code> that was specified
+                              in the
+                              <code>POST /repos/{owner}/{repo}/dispatches</code>
+                              request body.
+                            </p>
+                          </div>
                           <div></div>
                         </div>
                       </div>
