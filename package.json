@@ -93,6 +93,7 @@
     "yargs": "^17.3.1"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   }
 }
