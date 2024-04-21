@@ -1,6 +1,6 @@
 {
   "title": "branch protection configuration disabled event",
-  "$id": "branch_protection_rule$disabled",
+  "$id": "branch_protection_configuration$disabled",
   "type": "object",
   "properties": {
     "action": { "type": "string", "enum": ["disabled"] },
