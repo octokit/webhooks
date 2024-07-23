@@ -1593,13 +1593,28 @@
                 the <code>created</code> and <code>completed</code> event types
                 in repositories.
               </p>
-              <p>
-                <strong>Note</strong>: The API only looks for pushes in the
-                repository where the check run was created. Pushes to a branch
-                in a forked repository are not detected and return an empty
-                <code>pull_requests</code> array and a <code>null</code> value
-                for <code>head_branch</code>.
-              </p>
+              <div>
+                <p>
+                  <svg
+                    version="1.1"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    aria-hidden=""
+                  >
+                    <path
+                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"
+                    ></path></svg
+                  >Note
+                </p>
+                <p>
+                  The API only looks for pushes in the repository where the
+                  check run was created. Pushes to a branch in a forked
+                  repository are not detected and return an empty
+                  <code>pull_requests</code> array and a <code>null</code> value
+                  for <code>head_branch</code>.
+                </p>
+              </div>
             </div>
             <h3>Availability for <code>check_run</code></h3>
             <ul>
@@ -1832,13 +1847,28 @@
                 Repository and organization webhooks only receive payloads for
                 the <code>completed</code> event types in repositories.
               </p>
-              <p>
-                <strong>Note</strong>: The API only looks for pushes in the
-                repository where the check suite was created. Pushes to a branch
-                in a forked repository are not detected and return an empty
-                <code>pull_requests</code> array and a <code>null</code> value
-                for <code>head_branch</code>.
-              </p>
+              <div>
+                <p>
+                  <svg
+                    version="1.1"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    aria-hidden=""
+                  >
+                    <path
+                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"
+                    ></path></svg
+                  >Note
+                </p>
+                <p>
+                  The API only looks for pushes in the repository where the
+                  check suite was created. Pushes to a branch in a forked
+                  repository are not detected and return an empty
+                  <code>pull_requests</code> array and a <code>null</code> value
+                  for <code>head_branch</code>.
+                </p>
+              </div>
             </div>
             <h3>Availability for <code>check_suite</code></h3>
             <ul>
@@ -3319,10 +3349,25 @@
                 To subscribe to this event, a GitHub App must have at least
                 read-level access for the "Contents" repository permission.
               </p>
-              <p>
-                <strong>Note</strong>: This event will not occur when more than
-                three tags are deleted at once.
-              </p>
+              <div>
+                <p>
+                  <svg
+                    version="1.1"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    aria-hidden=""
+                  >
+                    <path
+                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"
+                    ></path></svg
+                  >Note
+                </p>
+                <p>
+                  This event will not occur when more than three tags are
+                  deleted at once.
+                </p>
+              </div>
             </div>
             <h3>Availability for <code>delete</code></h3>
             <ul>
@@ -3548,10 +3593,25 @@
                 read-level access for the "Dependabot alerts" repository
                 permission.
               </p>
-              <p>
-                <strong>Note</strong>: Webhook events for Dependabot alerts are
-                currently in beta and subject to change.
-              </p>
+              <div>
+                <p>
+                  <svg
+                    version="1.1"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    aria-hidden=""
+                  >
+                    <path
+                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"
+                    ></path></svg
+                  >Note
+                </p>
+                <p>
+                  Webhook events for Dependabot alerts are currently in beta and
+                  subject to change.
+                </p>
+              </div>
             </div>
             <h3>Availability for <code>dependabot_alert</code></h3>
             <ul>
@@ -5236,10 +5296,25 @@
                 To subscribe to this event, a GitHub App must have at least
                 read-level access for the "Discussions" repository permission.
               </p>
-              <p>
-                <strong>Note</strong>: Webhook events for GitHub Discussions are
-                currently in beta and subject to change.
-              </p>
+              <div>
+                <p>
+                  <svg
+                    version="1.1"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    aria-hidden=""
+                  >
+                    <path
+                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"
+                    ></path></svg
+                  >Note
+                </p>
+                <p>
+                  Webhook events for GitHub Discussions are currently in beta
+                  and subject to change.
+                </p>
+              </div>
             </div>
             <h3>Availability for <code>discussion</code></h3>
             <ul>
@@ -5506,10 +5581,25 @@
                 To subscribe to this event, a GitHub App must have at least
                 read-level access for the "Discussions" repository permission.
               </p>
-              <p>
-                <strong>Note</strong>: Webhook events for GitHub Discussions are
-                currently in beta and subject to change.
-              </p>
+              <div>
+                <p>
+                  <svg
+                    version="1.1"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    aria-hidden=""
+                  >
+                    <path
+                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"
+                    ></path></svg
+                  >Note
+                </p>
+                <p>
+                  Webhook events for GitHub Discussions are currently in beta
+                  and subject to change.
+                </p>
+              </div>
             </div>
             <h3>Availability for <code>discussion_comment</code></h3>
             <ul>
@@ -10288,10 +10378,25 @@
                 read-level access for the "Personal access token requests"
                 organization permission.
               </p>
-              <p>
-                <strong>Note</strong>: Fine-grained PATs are in public beta.
-                Related APIs, events, and functionality are subject to change.
-              </p>
+              <div>
+                <p>
+                  <svg
+                    version="1.1"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    aria-hidden=""
+                  >
+                    <path
+                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"
+                    ></path></svg
+                  >Note
+                </p>
+                <p>
+                  Fine-grained PATs are in public beta. Related APIs, events,
+                  and functionality are subject to change.
+                </p>
+              </div>
             </div>
             <h3>Availability for <code>personal_access_token_request</code></h3>
             <ul>
@@ -11435,14 +11540,29 @@
                 To subscribe to this event, a GitHub App must have at least
                 read-level access for the "Projects" organization permission.
               </p>
-              <p>
-                <strong>Note</strong>: Webhook events for projects are currently
-                in beta and subject to change. To share feedback about projects
-                webhooks with GitHub, see the
-                <a href="https://github.com/orgs/community/discussions/17405"
-                  >Projects webhook feedback discussion</a
-                >.
-              </p>
+              <div>
+                <p>
+                  <svg
+                    version="1.1"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    aria-hidden=""
+                  >
+                    <path
+                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"
+                    ></path></svg
+                  >Note
+                </p>
+                <p>
+                  Webhook events for projects are currently in beta and subject
+                  to change. To share feedback about projects webhooks with
+                  GitHub, see the
+                  <a href="https://github.com/orgs/community/discussions/17405"
+                    >Projects webhook feedback discussion</a
+                  >.
+                </p>
+              </div>
             </div>
             <h3>Availability for <code>projects_v2</code></h3>
             <ul>
@@ -11643,14 +11763,29 @@
                 To subscribe to this event, a GitHub App must have at least
                 read-level access for the "Projects" organization permission.
               </p>
-              <p>
-                <strong>Note</strong>: Webhook events for projects are currently
-                in beta and subject to change. To share feedback about projects
-                webhooks with GitHub, see the
-                <a href="https://github.com/orgs/community/discussions/17405"
-                  >Projects webhook feedback discussion</a
-                >.
-              </p>
+              <div>
+                <p>
+                  <svg
+                    version="1.1"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    aria-hidden=""
+                  >
+                    <path
+                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"
+                    ></path></svg
+                  >Note
+                </p>
+                <p>
+                  Webhook events for projects are currently in beta and subject
+                  to change. To share feedback about projects webhooks with
+                  GitHub, see the
+                  <a href="https://github.com/orgs/community/discussions/17405"
+                    >Projects webhook feedback discussion</a
+                  >.
+                </p>
+              </div>
             </div>
             <h3>Availability for <code>projects_v2_item</code></h3>
             <ul>
@@ -11878,13 +12013,27 @@
                 To subscribe to this event, a GitHub App must have at least
                 read-level access for the "Projects" organization permission.
               </p>
-              <p>
-                <strong>Note</strong>: To share feedback about projects webhooks
-                with GitHub, see the
-                <a href="https://github.com/orgs/community/discussions/17405"
-                  >Projects webhook feedback discussion</a
-                >.
-              </p>
+              <div>
+                <p>
+                  <svg
+                    version="1.1"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    aria-hidden=""
+                  >
+                    <path
+                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"
+                    ></path></svg
+                  >Note
+                </p>
+                <p>
+                  To share feedback about projects webhooks with GitHub, see the
+                  <a href="https://github.com/orgs/community/discussions/17405"
+                    >Projects webhook feedback discussion</a
+                  >.
+                </p>
+              </div>
             </div>
             <h3>Availability for <code>projects_v2_status_update</code></h3>
             <ul>
@@ -13342,11 +13491,26 @@
                 To subscribe to this event, a GitHub App must have at least
                 read-level access for the "Contents" repository permission.
               </p>
-              <p>
-                <strong>Note</strong>: Events will not be created if more than
-                5000 branches are pushed at once. Events will not be created for
-                tags when more than three tags are pushed at once.
-              </p>
+              <div>
+                <p>
+                  <svg
+                    version="1.1"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    aria-hidden=""
+                  >
+                    <path
+                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"
+                    ></path></svg
+                  >Note
+                </p>
+                <p>
+                  Events will not be created if more than 5000 branches are
+                  pushed at once. Events will not be created for tags when more
+                  than three tags are pushed at once.
+                </p>
+              </div>
             </div>
             <h3>Availability for <code>push</code></h3>
             <ul>
@@ -13743,10 +13907,25 @@
                 least read-level access for the "Packages" repository
                 permission.
               </p>
-              <p>
-                <strong>Note</strong>: GitHub recommends that you use the newer
-                <code>package</code> event instead.
-              </p>
+              <div>
+                <p>
+                  <svg
+                    version="1.1"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    aria-hidden=""
+                  >
+                    <path
+                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"
+                    ></path></svg
+                  >Note
+                </p>
+                <p>
+                  GitHub recommends that you use the newer
+                  <code>package</code> event instead.
+                </p>
+              </div>
             </div>
             <h3>Availability for <code>registry_package</code></h3>
             <ul>
@@ -15289,10 +15468,25 @@
                 This event occurs when there is activity relating to a security
                 vulnerability alert in a repository.
               </p>
-              <p>
-                <strong>Note</strong>: This event is deprecated. Use the
-                <code>dependabot_alert</code> event instead.
-              </p>
+              <div>
+                <p>
+                  <svg
+                    version="1.1"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    aria-hidden=""
+                  >
+                    <path
+                      d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"
+                    ></path></svg
+                  >Warning
+                </p>
+                <p>
+                  <strong>Deprecation notice:</strong> This event is deprecated.
+                  Use the <code>dependabot_alert</code> event instead.
+                </p>
+              </div>
             </div>
             <h3>
               Availability for <code>repository_vulnerability_alert</code>
