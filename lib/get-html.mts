@@ -1,5 +1,5 @@
 import got from "got";
-import cheerio from "cheerio";
+import * as cheerio from 'cheerio';
 import * as prettier from "prettier";
 import { State, cache } from "./index.mjs";
 
