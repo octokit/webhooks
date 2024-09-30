@@ -3662,6 +3662,7 @@ export interface Discussion {
   repository_url: string;
   category: {
     id: number;
+    node_id: string;
     repository_id: number;
     emoji: string;
     name: string;
