@@ -29,6 +29,7 @@
       "type": "object",
       "required": [
         "id",
+        "node_id",
         "repository_id",
         "emoji",
         "name",
@@ -40,6 +41,7 @@
       ],
       "properties": {
         "id": { "type": "integer" },
+        "node_id": { "type": "string" },
         "repository_id": { "type": "integer" },
         "emoji": { "type": "string" },
         "name": { "type": "string" },
