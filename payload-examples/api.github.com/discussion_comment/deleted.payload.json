@@ -49,6 +49,7 @@
     "repository_url": "https://api.github.com/repos/Codertocat/Hello-World",
     "category": {
       "id": 32809314,
+      "node_id": "MDEwOkkpc4F1c3Npg24zMjk5NjE0",
       "repository_id": 186853002,
       "emoji": ":speech_balloon:",
       "name": "General",

@@ -3662,17 +3662,7 @@ export interface DiscussionAnsweredEvent {
 }
 export interface Discussion {
   repository_url: string;
-  category: {
-    id: number;
-    repository_id: number;
-    emoji: string;
-    name: string;
-    description: string;
-    created_at: string;
-    updated_at: string;
-    slug: string;
-    is_answerable: boolean;
-  };
+  category: DiscussionCategory;
   answer_html_url: string | null;
   answer_chosen_at: string | null;
   answer_chosen_by: User | null;
@@ -3698,6 +3688,18 @@ export interface Discussion {
   body: string;
   reactions?: Reactions;
 }
+export interface DiscussionCategory {
+  id: number;
+  node_id: string;
+  repository_id: number;
+  emoji: string;
+  name: string;
+  description: string;
+  created_at: string;
+  updated_at: string;
+  slug: string;
+  is_answerable: boolean;
+}
 export interface Reactions {
   url: string;
   total_count: number;
@@ -3713,17 +3715,7 @@ export interface Reactions {
 export interface DiscussionCategoryChangedEvent {
   changes: {
     category: {
-      from: {
-        id: number;
-        repository_id: number;
-        emoji: string;
-        name: string;
-        description: string;
-        created_at: string;
-        updated_at: string;
-        slug: string;
-        is_answerable: boolean;
-      };
+      from: DiscussionCategory;
     };
   };
   action: "category_changed";

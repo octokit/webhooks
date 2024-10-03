@@ -12,32 +12,7 @@
           "type": "object",
           "required": ["from"],
           "properties": {
-            "from": {
-              "type": "object",
-              "required": [
-                "id",
-                "repository_id",
-                "emoji",
-                "name",
-                "description",
-                "created_at",
-                "updated_at",
-                "slug",
-                "is_answerable"
-              ],
-              "properties": {
-                "id": { "type": "integer" },
-                "repository_id": { "type": "integer" },
-                "emoji": { "type": "string" },
-                "name": { "type": "string" },
-                "description": { "type": "string" },
-                "created_at": { "type": "string", "format": "date-time" },
-                "updated_at": { "type": "string", "format": "date-time" },
-                "slug": { "type": "string" },
-                "is_answerable": { "type": "boolean" }
-              },
-              "additionalProperties": false
-            }
+            "from": { "$ref": "common/discussion-category.schema.json" }
           },
           "additionalProperties": false
         }
