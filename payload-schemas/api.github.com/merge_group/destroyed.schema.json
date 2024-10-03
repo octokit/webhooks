@@ -1,83 +1,86 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "merge_group$destroyed",
-    "type": "object",
-    "required": ["action", "merge_group", "reason", "repository", "sender"],
-    "properties": {
-      "action": { "type": "string", "enum": ["destroyed"] },
-      "merge_group": {
-        "type": "object",
-        "description": "The merge group.",
-        "required": [
-          "head_sha",
-          "head_ref",
-          "base_ref",
-          "base_sha",
-          "head_commit"
-        ],
-        "properties": {
-          "head_sha": {
-            "type": "string",
-            "description": "The SHA of the merge group."
-          },
-          "head_ref": {
-            "type": "string",
-            "description": "The full ref of the merge group."
-          },
-          "base_ref": {
-            "type": "string",
-            "description": "The full ref of the branch the merge group will be merged into."
-          },
-          "base_sha": {
-            "type": "string",
-            "description": "The SHA of the merge group's parent commit."
-          },
-          "head_commit": {
-            "type": "object",
-            "description": "An expanded representation of the `head_sha` commit.",
-            "required": [
-              "id",
-              "tree_id",
-              "message",
-              "timestamp",
-              "author",
-              "committer"
-            ],
-            "properties": {
-              "id": { "type": "string" },
-              "tree_id": { "type": "string" },
-              "message": { "type": "string" },
-              "timestamp": { "type": "string", "format": "date-time" },
-              "author": {
-                "type": "object",
-                "required": ["name", "email"],
-                "properties": {
-                  "name": { "type": "string" },
-                  "email": { "type": "string" }
-                },
-                "additionalProperties": false
-              },
-              "committer": {
-                "type": "object",
-                "required": ["name", "email"],
-                "properties": {
-                  "name": { "type": "string" },
-                  "email": { "type": "string" }
-                },
-                "additionalProperties": false
-              }
-            },
-            "additionalProperties": false
-          }
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "merge_group$destroyed",
+  "type": "object",
+  "required": ["action", "merge_group", "reason", "repository", "sender"],
+  "properties": {
+    "action": { "type": "string", "enum": ["destroyed"] },
+    "merge_group": {
+      "type": "object",
+      "description": "The merge group.",
+      "required": [
+        "head_sha",
+        "head_ref",
+        "base_ref",
+        "base_sha",
+        "head_commit"
+      ],
+      "properties": {
+        "head_sha": {
+          "type": "string",
+          "description": "The SHA of the merge group."
         },
-        "additionalProperties": false
+        "head_ref": {
+          "type": "string",
+          "description": "The full ref of the merge group."
+        },
+        "base_ref": {
+          "type": "string",
+          "description": "The full ref of the branch the merge group will be merged into."
+        },
+        "base_sha": {
+          "type": "string",
+          "description": "The SHA of the merge group's parent commit."
+        },
+        "head_commit": {
+          "type": "object",
+          "description": "An expanded representation of the `head_sha` commit.",
+          "required": [
+            "id",
+            "tree_id",
+            "message",
+            "timestamp",
+            "author",
+            "committer"
+          ],
+          "properties": {
+            "id": { "type": "string" },
+            "tree_id": { "type": "string" },
+            "message": { "type": "string" },
+            "timestamp": { "type": "string", "format": "date-time" },
+            "author": {
+              "type": "object",
+              "required": ["name", "email"],
+              "properties": {
+                "name": { "type": "string" },
+                "email": { "type": "string" }
+              },
+              "additionalProperties": false
+            },
+            "committer": {
+              "type": "object",
+              "required": ["name", "email"],
+              "properties": {
+                "name": { "type": "string" },
+                "email": { "type": "string" }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
       },
-      "reason": { "type": "string", "enum": ["dequeued", "invalidated", "merged"] },
-      "repository": { "$ref": "common/repository.schema.json" },
-      "sender": { "$ref": "common/user.schema.json" },
-      "installation": { "$ref": "common/installation-lite.schema.json" },
-      "organization": { "$ref": "common/organization.schema.json" }
+      "additionalProperties": false
     },
-    "additionalProperties": false,
-    "title": "merge group destroyed event"
-  }
+    "reason": {
+      "type": "string",
+      "enum": ["dequeued", "invalidated", "merged"]
+    },
+    "repository": { "$ref": "common/repository.schema.json" },
+    "sender": { "$ref": "common/user.schema.json" },
+    "installation": { "$ref": "common/installation-lite.schema.json" },
+    "organization": { "$ref": "common/organization.schema.json" }
+  },
+  "additionalProperties": false,
+  "title": "merge group destroyed event"
+}
