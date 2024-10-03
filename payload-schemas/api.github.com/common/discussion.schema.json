@@ -25,34 +25,7 @@
   "type": "object",
   "properties": {
     "repository_url": { "type": "string" },
-    "category": {
-      "type": "object",
-      "required": [
-        "id",
-        "node_id",
-        "repository_id",
-        "emoji",
-        "name",
-        "description",
-        "created_at",
-        "updated_at",
-        "slug",
-        "is_answerable"
-      ],
-      "properties": {
-        "id": { "type": "integer" },
-        "node_id": { "type": "string" },
-        "repository_id": { "type": "integer" },
-        "emoji": { "type": "string" },
-        "name": { "type": "string" },
-        "description": { "type": "string" },
-        "created_at": { "type": "string", "format": "date-time" },
-        "updated_at": { "type": "string", "format": "date-time" },
-        "slug": { "type": "string" },
-        "is_answerable": { "type": "boolean" }
-      },
-      "additionalProperties": false
-    },
+    "category": { "$ref": "discussion-category.schema.json" },
     "answer_html_url": { "type": ["string", "null"] },
     "answer_chosen_at": {
       "oneOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }]
