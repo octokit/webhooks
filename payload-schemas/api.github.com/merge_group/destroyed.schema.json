@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "merge_group$destroyed",
     "type": "object",
-    "required": ["action", "merge_group", "repository", "sender"],
+    "required": ["action", "merge_group", "reason", "repository", "sender"],
     "properties": {
       "action": { "type": "string", "enum": ["destroyed"] },
       "merge_group": {
