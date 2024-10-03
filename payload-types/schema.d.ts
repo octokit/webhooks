@@ -199,7 +199,9 @@ export type MemberEvent =
   | MemberEditedEvent
   | MemberRemovedEvent;
 export type MembershipEvent = MembershipAddedEvent | MembershipRemovedEvent;
-export type MergeGroupEvent = MergeGroupChecksRequestedEvent;
+export type MergeGroupEvent =
+  | MergeGroupChecksRequestedEvent
+  | MergeGroupDestroyedEvent;
 export type MetaEvent = MetaDeletedEvent;
 export type WebhookEvents =
   | (
@@ -5156,6 +5158,52 @@ export interface MergeGroupChecksRequestedEvent {
       };
     };
   };
+  repository: Repository;
+  sender: User;
+  installation?: InstallationLite;
+  organization?: Organization;
+}
+export interface MergeGroupDestroyedEvent {
+  action: "destroyed";
+  /**
+   * The merge group.
+   */
+  merge_group: {
+    /**
+     * The SHA of the merge group.
+     */
+    head_sha: string;
+    /**
+     * The full ref of the merge group.
+     */
+    head_ref: string;
+    /**
+     * The full ref of the branch the merge group will be merged into.
+     */
+    base_ref: string;
+    /**
+     * The SHA of the merge group's parent commit.
+     */
+    base_sha: string;
+    /**
+     * An expanded representation of the `head_sha` commit.
+     */
+    head_commit: {
+      id: string;
+      tree_id: string;
+      message: string;
+      timestamp: string;
+      author: {
+        name: string;
+        email: string;
+      };
+      committer: {
+        name: string;
+        email: string;
+      };
+    };
+  };
+  reason: "dequeued" | "invalidated" | "merged";
   repository: Repository;
   sender: User;
   installation?: InstallationLite;
