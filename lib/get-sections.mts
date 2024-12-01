@@ -1,5 +1,5 @@
 import { strict as assert } from "assert";
-import * as cheerio from 'cheerio';
+import * as cheerio from "cheerio";
 import { Section } from "./index.mjs";
 
 export const getSections = (html: string): Section[] => {
