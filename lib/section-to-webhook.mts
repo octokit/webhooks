@@ -1,5 +1,5 @@
 import { strict as assert } from "assert";
-import * as cheerio from 'cheerio';
+import * as cheerio from "cheerio";
 import { JSONSchema7TypeName } from "json-schema";
 import TurndownService from "turndown";
 import { Section, Webhook } from "./index.mjs";
