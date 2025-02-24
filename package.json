@@ -86,7 +86,7 @@
     "prettier": "3.5.2",
     "prettier-plugin-packagejson": "^2.2.15",
     "semantic-release": "^24.0.0",
-    "semantic-release-plugin-update-version-in-files": "^1.1.0",
+    "semantic-release-plugin-update-version-in-files": "^2.0.0",
     "ts-node": "^10.4.0",
     "turndown": "^7.1.1",
     "typescript": "^5.0.0",
