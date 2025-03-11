@@ -11,21 +11,21 @@
   "main": "index.json",
   "files": [],
   "scripts": {
-    "build": "node --no-warnings=ExperimentalWarning --loader ts-node/esm bin/octokit-webhooks.mts check --cached",
+    "build": "tsx bin/octokit-webhooks.mts check --cached",
     "build:all": "npm run -s build:webhooks && npm run -s build:schema && npm run -s build:types",
-    "build:schema": "node --no-warnings=ExperimentalWarning --loader ts-node/esm bin/octokit-schema.mts",
-    "build:types": "node --no-warnings=ExperimentalWarning --loader ts-node/esm bin/octokit-types.mts",
-    "build:webhooks": "node --no-warnings=ExperimentalWarning --loader ts-node/esm bin/octokit-webhooks.mts update",
+    "build:schema": "tsx bin/octokit-schema.mts",
+    "build:types": "tsx bin/octokit-types.mts",
+    "build:webhooks": "tsx bin/octokit-webhooks.mts update",
     "lint": "prettier --check '{bin,lib}/**/*.ts' '*.{md,json}' 'bin/docs/*.md' '{payload-examples,payload-schemas,payload-types}/**/*.{mts,md,json,d.ts}' 'test.mts'",
     "lint:fix": "prettier --write '{bin,lib}/**/*.{ts,mts}' '*.{md,json}' 'bin/docs/*.md' '{payload-examples,payload-schemas,payload-types}/**/*.{mts,md,json,d.ts}' 'test.mts'",
-    "octokit-schema": "node --no-warnings=ExperimentalWarning --loader ts-node/esm bin/octokit-schema.mts",
-    "octokit-webhooks": "node --no-warnings=ExperimentalWarning --loader ts-node/esm bin/octokit-webhooks.mts",
+    "octokit-schema": "tsx bin/octokit-schema.mts",
+    "octokit-webhooks": "tsx bin/octokit-webhooks.mts",
     "pretest": "npm run -s lint",
-    "test": "npm run build && npm run build:schema && npm run validate -- --continue-on-error && node --no-warnings=ExperimentalWarning --loader ts-node/esm test.mts",
+    "test": "npm run build && npm run build:schema && npm run validate -- --continue-on-error && tsx test.mts",
     "typecheck": "tsc -p . --noEmit",
     "validate": "npm run -s validate:payloads && npm run -s validate:schema",
-    "validate:payloads": "node --no-warnings=ExperimentalWarning --loader ts-node/esm bin/validate-payload-examples.mts",
-    "validate:schema": "node --no-warnings=ExperimentalWarning --loader ts-node/esm bin/validate-schema.mts"
+    "validate:payloads": "tsx bin/validate-payload-examples.mts",
+    "validate:schema": "tsx bin/validate-schema.mts"
   },
   "prettier": {},
   "release": {
@@ -72,7 +72,6 @@
     "@types/cheerio": "^0.22.30",
     "@types/json-diff": "^1.0.0",
     "@types/json-schema": "^7.0.9",
-    "@types/lodash": "^4.14.178",
     "@types/node": "^22.0.0",
     "@types/turndown": "^5.0.1",
     "@types/yargs": "^17.0.8",
@@ -85,11 +84,10 @@
     "json-schema-to-typescript": "^15.0.0",
     "prettier": "3.5.2",
     "prettier-plugin-packagejson": "^2.2.15",
-    "semantic-release": "^24.0.0",
     "semantic-release-plugin-update-version-in-files": "^2.0.0",
-    "ts-node": "^10.4.0",
     "turndown": "^7.1.1",
     "typescript": "^5.0.0",
+    "tsx": "^4.19.3",
     "yargs": "^17.3.1"
   }
 }

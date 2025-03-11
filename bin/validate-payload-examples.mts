@@ -1,4 +1,4 @@
-#!/usr/bin/env -S ts-node-transpile-only --esm
+#!/usr/bin/env -S npx tsx
 
 import { DefinedError, ErrorObject } from "ajv";
 import path from "path";

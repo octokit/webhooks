@@ -1,4 +1,4 @@
-#!/usr/bin/env -S ts-node-transpile-only --esm
+#!/usr/bin/env -S npx tsx
 
 import { strict as assert } from "assert";
 import { promises as fs } from "fs";

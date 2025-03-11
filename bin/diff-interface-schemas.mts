@@ -1,4 +1,4 @@
-#!/usr/bin/env -S ts-node-transpile-only --esm
+#!/usr/bin/env -S npx tsx
 
 import { diffString } from "json-diff";
 import { JSONSchema7 } from "json-schema";
