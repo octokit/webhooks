@@ -72,7 +72,6 @@
     "@types/cheerio": "^0.22.30",
     "@types/json-diff": "^1.0.0",
     "@types/json-schema": "^7.0.9",
-    "@types/lodash": "^4.14.178",
     "@types/node": "^22.0.0",
     "@types/turndown": "^5.0.1",
     "@types/yargs": "^17.0.8",
@@ -85,11 +84,10 @@
     "json-schema-to-typescript": "^15.0.0",
     "prettier": "3.5.2",
     "prettier-plugin-packagejson": "^2.2.15",
-    "semantic-release": "^24.0.0",
     "semantic-release-plugin-update-version-in-files": "^2.0.0",
-    "ts-node": "^10.4.0",
     "turndown": "^7.1.1",
     "typescript": "^5.0.0",
+    "tsx": "^4.19.3",
     "yargs": "^17.3.1"
   }
 }
