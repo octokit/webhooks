@@ -1,4 +1,4 @@
-#!/usr/bin/env -S ts-node-transpile-only --esm
+#!/usr/bin/env -S npx tsx
 
 import Ajv from "ajv";
 import addFormats from "ajv-formats";
