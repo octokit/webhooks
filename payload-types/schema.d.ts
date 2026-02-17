@@ -472,6 +472,7 @@ export type WorkflowJobEvent =
   | WorkflowJobWaitingEvent;
 export type WorkflowStep =
   | WorkflowStepInProgress
+  | WorkflowStepPending
   | WorkflowStepQueued
   | WorkflowStepCompleted;
 export type WorkflowRunEvent =
@@ -8461,6 +8462,14 @@ export interface WorkflowStepInProgress {
   conclusion: null;
   number: number;
   started_at: string;
+  completed_at: null;
+}
+export interface WorkflowStepPending {
+  name: string;
+  status: "pending";
+  conclusion: null;
+  number: number;
+  started_at: null;
   completed_at: null;
 }
 export interface WorkflowStepQueued {
