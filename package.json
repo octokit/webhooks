@@ -72,7 +72,7 @@
     "@types/cheerio": "^0.22.30",
     "@types/json-diff": "^1.0.0",
     "@types/json-schema": "^7.0.9",
-    "@types/node": "^22.0.0",
+    "@types/node": "^24.0.0",
     "@types/turndown": "^5.0.1",
     "@types/yargs": "^17.0.8",
     "ajv": "^8.9.0",

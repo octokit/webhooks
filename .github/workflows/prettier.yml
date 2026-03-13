@@ -12,7 +12,7 @@ jobs:
           token: ${{ secrets.OCTOKITBOT_PAT }}
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 24
           cache: npm
       - run: npm ci
       - run: echo "./node_modules/.bin" >> $GITHUB_PATH
