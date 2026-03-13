@@ -69,7 +69,7 @@
     ]
   },
   "devDependencies": {
-    "@types/cheerio": "^0.22.30",
+    "@types/cheerio": "^1.0.0",
     "@types/json-diff": "^1.0.0",
     "@types/json-schema": "^7.0.9",
     "@types/node": "^22.0.0",
