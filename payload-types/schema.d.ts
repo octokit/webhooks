@@ -4039,6 +4039,7 @@ export interface Installation {
   repositories_url: string;
   html_url: string;
   app_id: number;
+  client_id?: string;
   app_slug?: string;
   /**
    * The ID of the user or organization this token is being scoped to.
