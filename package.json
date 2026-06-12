@@ -87,7 +87,7 @@
     "semantic-release-plugin-update-version-in-files": "^2.0.0",
     "turndown": "^7.1.1",
     "typescript": "^5.0.0",
-    "tsx": "^4.19.3",
+    "tsx": "^4.22.4",
     "yargs": "^17.3.1"
   }
 }
