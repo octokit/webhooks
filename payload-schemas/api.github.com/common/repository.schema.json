@@ -79,8 +79,7 @@
     "is_template",
     "web_commit_signoff_required",
     "topics",
-    "visibility",
-    "custom_properties"
+    "visibility"
   ],
   "properties": {
     "id": {
