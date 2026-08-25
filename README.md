@@ -1,5 +1,14 @@
 # Octokit Webhooks
 
+>[!Warning]
+> Please see https://github.com/octokit/webhooks/issues/901
+>
+> This repository is woefully out of date and not maintained anymore. It's hand crafted schemas based on payload examples and GitHub documentation from before the release of the OpenAPI schema for webhooks.
+> The update process that was used in this repository is broken by the switch to OpenAPI for the documentation.
+>
+> Please switch to using the OpenAPI spec that is located at https://github.com/octokit/openapi-webhooks/
+> 
+
 > machine-readable, always up-to-date GitHub Webhooks specifications
 
 ![Update status](https://github.com/octokit/webhooks/workflows/Update/badge.svg)
