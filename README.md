@@ -1,6 +1,6 @@
 # Octokit Webhooks
 
->[!WARNING]
+> [!WARNING]
 >
 > Please see https://github.com/octokit/webhooks/issues/901
 >
@@ -8,7 +8,6 @@
 > The update process that was used in this repository is broken by the switch to OpenAPI for the documentation.
 >
 > Please switch to using the OpenAPI spec that is located at https://github.com/octokit/openapi-webhooks/
-> 
 
 > machine-readable, always up-to-date GitHub Webhooks specifications
 
